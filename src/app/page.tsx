@@ -1,3 +1,4 @@
+// Figan hero v1 — deployment trigger
 const nav = ["Ana Sayfa", "Biz Kimiz", "Yazarlar", "Hizmetler", "Nasıl Çalışır?", "Blog", "İletişim"];
 
 export default function Home() {
