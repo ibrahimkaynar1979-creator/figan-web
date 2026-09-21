@@ -43,9 +43,37 @@ button{font:inherit;color:inherit}
 
 .hero{
   position:relative;
-  padding:30px 28px 18px;
+  min-height:1380px;
+  padding:30px 28px 34px;
   overflow:hidden;
-  background:linear-gradient(180deg,#f7f1e8 0%,#f2e8d9 100%);
+  background:#f5ede2;
+}
+.heroArt{
+  position:absolute;
+  z-index:1;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:auto;
+  display:block;
+}
+.heroArtFade{
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(
+      180deg,
+      #f7f1e8 0%,
+      #f7f1e8 33%,
+      rgba(247,241,232,.97) 39%,
+      rgba(247,241,232,.88) 45%,
+      rgba(247,241,232,.60) 50%,
+      rgba(247,241,232,.24) 56%,
+      rgba(247,241,232,0) 63%
+    );
 }
 .heroContent{position:relative;z-index:8;max-width:520px}
 .eyebrow{
@@ -108,13 +136,6 @@ button{font:inherit;color:inherit}
   display:block;margin-top:14px;
   font-family:var(--font-ui);font-size:10px;font-style:normal;font-weight:700;letter-spacing:.29em;
 }
-.heroPhotoSection{position:relative;background:#1d130d;overflow:hidden;margin-top:-1px}
-.heroPhotoSection::before{
-  content:"";position:absolute;z-index:2;left:0;right:0;top:0;height:110px;
-  pointer-events:none;
-  background:linear-gradient(180deg,#f2e8d9 0%,rgba(242,232,217,.86) 24%,rgba(242,232,217,.34) 62%,rgba(242,232,217,0) 100%);
-}
-.heroPhotoSection img{display:block;width:100%;height:auto}
 
 
 .manifesto{padding:90px 28px 105px;background:#f5ede2}
@@ -135,7 +156,24 @@ button{font:inherit;color:inherit}
 .primaryCta.light{background:#f3eadc;color:#2a170c;box-shadow:none}
 
 @media(max-width:520px){
+  .hero{min-height:1380px}
   .heroContent{padding-top:5px}
+  .hero h1{font-size:clamp(60px,18vw,70px)}
+  .poetic{font-size:clamp(38px,11vw,41px)}
+  .heroArtFade{
+    background:
+      linear-gradient(
+        180deg,
+        #f7f1e8 0%,
+        #f7f1e8 32%,
+        rgba(247,241,232,.98) 38%,
+        rgba(247,241,232,.90) 44%,
+        rgba(247,241,232,.66) 49%,
+        rgba(247,241,232,.30) 55%,
+        rgba(247,241,232,0) 62%
+      );
+  }
+}
   .hero h1{font-size:clamp(60px,18vw,70px)}
   .poetic{font-size:clamp(38px,11vw,41px)}
 }
@@ -144,7 +182,29 @@ button{font:inherit;color:inherit}
   .siteHeader{height:94px;padding:0 5vw}
   .wordmark strong{font-size:35px}
   .hero{
-    padding:64px 6vw 30px;
+    min-height:940px;
+    padding:64px 6vw 50px;
+  }
+  .heroArt{
+    width:58%;
+    left:auto;
+    right:0;
+    bottom:0;
+    height:100%;
+    object-fit:cover;
+    object-position:center 58%;
+  }
+  .heroArtFade{
+    background:
+      linear-gradient(
+        90deg,
+        #f7f1e8 0%,
+        #f7f1e8 36%,
+        rgba(247,241,232,.94) 44%,
+        rgba(247,241,232,.62) 54%,
+        rgba(247,241,232,.14) 68%,
+        rgba(247,241,232,0) 80%
+      );
   }
   .heroContent{max-width:560px}
   .hero h1{font-size:clamp(92px,7.5vw,118px)}
@@ -152,8 +212,6 @@ button{font:inherit;color:inherit}
   .lead{font-size:18px}
   .heroActions{flex-direction:row;align-items:center}
   .heroQuote{display:block;right:6vw;top:110px;width:210px;font-size:21px}
-  .heroPhotoSection{max-height:920px}
-  .heroPhotoSection img{width:100%;height:920px;object-fit:cover;object-position:center 64%}
   .manifesto,.placeholderCta{padding-left:8vw;padding-right:8vw}
   .manifesto h2{font-size:68px}
   .placeholderCta h2{font-size:68px}
