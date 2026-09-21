@@ -56,10 +56,6 @@ export default function Home() {
 
       <section className="heroPhotoSection" id="hero-photo" aria-label="Figan yayın dünyası görseli">
         <img src="/figan-hero-ibrahim.webp" alt="Figan yayın dünyası; kitap, mürekkep, tüy ve İstanbul atmosferi" />
-        <div className="rightMotto" aria-hidden="true">
-          <span>DAHA</span><span>FAZLA</span><span>İYİ KİTAP.</span><span>DAHA FAZLA</span><span>İNSAN.</span>
-        </div>
-        <a href="#manifesto" className="discover">KEŞFET <span>↓</span></a>
       </section>
 
       <section className="manifesto" id="manifesto">
