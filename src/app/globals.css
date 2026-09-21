@@ -174,9 +174,6 @@ button{font:inherit;color:inherit}
       );
   }
 }
-  .hero h1{font-size:clamp(60px,18vw,70px)}
-  .poetic{font-size:clamp(38px,11vw,41px)}
-}
 
 @media(min-width:760px){
   .siteHeader{height:94px;padding:0 5vw}
