@@ -1,42 +1,68 @@
-import Image from "next/image";
+const services = ["E-KİTAP", "SESLİ KİTAP", "YAZAR SİTESİ", "DİJİTAL DAĞITIM"];
 
-const nav = [["Yayın Yolculuğu","#yolculuk"],["E-Kitap","#ekitap"],["Figan Reader","#reader"],["Yazar Sitesi","#yazar-sitesi"],["Dağıtım","#dagitim"]];
-const journey = [
-  ["01","Dosyanız bize ulaşır","Eserinizi ve yayın hedefinizi birlikte değerlendiririz."],
-  ["02","Editörlük","Metni dil, anlatı ve yayın bütünlüğüyle güçlendiririz."],
-  ["03","E-kitap","Her ekranda kusursuz okunan profesyonel EPUB hazırlarız."],
-  ["04","Figan Reader","Eserinizi çağdaş ve etkileşimli bir okuma dünyasına taşırız."],
-  ["05","Sesli kitap","Metni doğru ses, tempo ve prodüksiyonla dinlenebilir kılarız."],
-  ["06","Yazar sitesi & dağıtım","Yazar markanızı kurar, eserinizi doğru kanallarla buluştururuz."],
-];
-const reasons = [
-  ["Tek merkezden yayın","Editörlükten dağıtıma kadar bütün süreç aynı yayın vizyonuyla ilerler."],
-  ["Güçlü dijital kimlik","Kitabınız kadar sizi de görünür kılan kalıcı bir yazar dünyası kurulur."],
-  ["Uzun ömürlü eser","Eseriniz tek bir satış anına değil, sürekli erişilebilen bir yayın hayatına kavuşur."],
-  ["Daha fazla okuyucu","Okuma, dinleme ve web deneyimiyle farklı okur alışkanlıklarına ulaşırsınız."],
-];
+function SearchIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4 4"/></svg>;
+}
 
-function Brand(){return <a className="brand" href="#top" aria-label="Figan Yayınevi ana sayfa"><span className="brand-mark" aria-hidden="true"><i/><i/><i/><i/><i/><i/></span><span className="brand-copy"><strong>FİGAN</strong><small>YAYINEVİ</small><em>Sözün yeni dünyası.</em></span></a>}
-function SectionHeading({index,eyebrow,title,copy}:{index:string;eyebrow:string;title:string;copy?:string}){return <div className="section-heading"><div className="section-kicker"><span>{index}</span>{eyebrow}</div><h2>{title}</h2>{copy&&<p>{copy}</p>}</div>}
+function MenuIcon() {
+  return <span className="menuIcon" aria-hidden="true"><i/><i/><i/></span>;
+}
 
-export default function Home(){
-return <main className="figan-page" id="top">
-  <section className="hero-reference">
-    <header className="ref-header"><Brand/><nav className="ref-nav" aria-label="Ana menü">{nav.map(([item,href])=><a href={href} key={item}>{item}</a>)}</nav><a href="#basvuru" className="ref-author">Yazar Başvurusu <span>↗</span></a></header>
-    <div className="ref-copy"><p className="ref-eyebrow">DİJİTAL YAYINCILIĞIN<br/>YENİ DÜNYASI</p><h1><b>Bir kitap yazdınız.</b><em>Şimdi ona ait</em><b>bir dünya kuralım.</b></h1><p className="ref-lead">E-kitabınız, sesli kitabınız, yazar siteniz ve dijital dağıtımınız tek bir yayın dünyasında.</p><div className="ref-ctas"><a className="ref-primary" href="#basvuru">Yazar Başvurusu Yap <span>↗</span></a><a className="ref-secondary" href="#reader"><i>▶</i> Figan Reader&apos;ı Dene</a></div><div className="ref-manifest"><span/><p>DAHA FAZLA YAZAR.<br/>DAHA FAZLA OKUYUCU.<br/>DAHA UZUN ÖMÜRLÜ ESERLER.</p></div></div>
-    <div className="ref-laptop"><div className="ref-laptop-lid"><span className="ref-camera"/><Image src="/ibrahim-author-site.png" alt="İbrahim Kaynar kişisel yazar sitesi" fill sizes="660px" priority/></div><div className="ref-laptop-base"><span/></div></div>
-    <div className="ref-phone"><span className="ref-island"/><div className="ref-phone-ui"><div className="ref-phone-top"><span>9:41</span><span>•••</span></div><h3>Kütüphanem</h3><div className="ref-phone-book"><Image src="/icimdeki-ibrahim-mockup.png" alt="İçimdeki İbrahim" fill sizes="180px"/></div><strong>İçimdeki İbrahim</strong><small>İbrahim Kaynar</small><div className="ref-tabs"><span>⌂</span><span>▣</span><span>◇</span><span>♙</span></div></div></div>
-    <div className="ref-tablet"><span className="ref-tablet-cam"/><div className="ref-tablet-ui"><div className="ref-reader-top"><span>‹</span><b>FİGAN READER</b><span>•••</span></div><div className="ref-reader-copy"><small>Bölüm 04</small><h2>Kendine Dönüş</h2><p>İnsan, bazen en çok kendinden uzaklaştığında, kendine yaklaşır.</p></div><div className="ref-reader-scene"/><div className="ref-progress"><i/><b>%37</b></div><div className="ref-reader-icons"><span>Aa</span><span>◐</span><span>▱</span><span>☷</span></div></div></div>
-    <div className="ref-book"><Image src="/icimdeki-ibrahim-cutout.webp" alt="İbrahim Kaynar - İçimdeki İbrahim" fill sizes="170px"/></div><div className="ref-tag"><span/>SÖZ<br/>SINIRLARI<br/>AŞAR.</div>
-  </section>
-  <section className="journey section" id="yolculuk"><SectionHeading index="01" eyebrow="YAYIN YOLCULUĞU" title="Bir dosyadan, yaşayan bir yayın dünyasına." copy="Figan’da her aşama bir sonrakini düşünerek tasarlanır. Eseriniz yalnızca hazırlanmaz; okunacağı, dinleneceği ve keşfedileceği bütün alanlarla birlikte kurulur."/><div className="journey-grid">{journey.map(([no,title,copy])=><article className="journey-card" key={no}><span>{no}</span><div className="journey-symbol">{Number(no)<6?"↘":"◆"}</div><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
-  <section className="feature feature-ebook section" id="ekitap"><div className="feature-copy"><SectionHeading index="02" eyebrow="E-KİTAP" title="Metninize yakışan dijital yayın kalitesi."/><p className="feature-lead">E-kitabınız yalnızca bir dosya formatına dönüştürülmez. Tipografi, bölüm yapısı, ekran uyumu ve okuma ritmi birlikte ele alınır.</p><ul><li>Profesyonel EPUB hazırlığı</li><li>Telefon, tablet ve e-okuyucu uyumu</li><li>Temiz tipografi ve güçlü okunabilirlik</li><li>Yayın standartlarına uygun teknik kontrol</li></ul></div><div className="editorial-stage ebook-stage"><div className="stage-label">FIGAN DIGITAL EDITION <b>01</b></div><div className="tablet-landscape"><div className="reading-page"><span>Bölüm 04</span><h3>Kendine Dönüş</h3><p>İnsan, bazen en çok kendinden uzaklaştığında, kendine yaklaşır. Her cümle yeni bir eşik, her sayfa kendine açılan başka bir kapıdır.</p><i>37 / 184</i></div></div><div className="book-standing"><Image src="/icimdeki-ibrahim-cutout.webp" alt="İçimdeki İbrahim e-kitap kapağı" fill sizes="250px"/></div></div></section>
-  <section className="feature feature-audio section" id="audio"><div className="audio-stage editorial-stage"><div className="audio-orbit"><div className="audio-book"><Image src="/icimdeki-ibrahim.webp" alt="İçimdeki İbrahim sesli kitap" fill sizes="330px"/></div><div className="audio-player"><span>FIGAN AUDIO</span><h3>İçimdeki İbrahim</h3><p>İbrahim Kaynar</p><div className="wave">▂▅▃▇▄▆▂▅▇▃▆▂▇▄▅▂▆▃▇</div><div className="player-controls"><b>↶</b><i>▶</i><b>↷</b></div></div></div></div><div className="feature-copy"><SectionHeading index="03" eyebrow="SESLİ KİTAP" title="Söz, bu kez sesle okura ulaşır."/><p className="feature-lead">Figan Audio, metnin duygusunu koruyan profesyonel seslendirme ve prodüksiyon yaklaşımıyla eserinize yeni bir yaşam alanı açar.</p><ul><li>Metne ve türe uygun ses seçimi</li><li>Profesyonel kayıt, kurgu ve mastering</li><li>Bölümlendirilmiş dijital dinleme deneyimi</li><li>Uygun sesli kitap kanallarına hazırlık</li></ul></div></section>
-  <section className="reader-section section" id="reader"><div className="reader-intro"><SectionHeading index="04" eyebrow="FİGAN READER" title="Kitap, ekranın içinde yeniden nefes alır." copy="Figan Reader; kitabı, kütüphaneyi ve okuru aynı zarif deneyimde buluşturur. Okumaya kaldığınız yerden, istediğiniz cihazdan devam edin."/></div><div className="reader-showcase"><div className="reader-phone"><div className="mini-library"><b>Kütüphanem</b><Image src="/icimdeki-ibrahim.webp" alt="Figan mobil kütüphanesi" width={160} height={230}/><strong>İçimdeki İbrahim</strong><small>İbrahim Kaynar</small></div></div><div className="reader-tablet"><div className="reader-spread"><span>FIGAN READER</span><h3>Kendine Dönüş</h3><p>İnsan, bazen en çok kendinden uzaklaştığında, kendine yaklaşır. Belki de yol, hiç gitmediğin yerde değil; hep döndüğün yerdedir.</p><div className="reader-line"/></div></div><div className="reader-notes"><article><b>01</b><h3>Kişisel kütüphane</h3><p>Tüm Figan kitapları tek bir sade alanda.</p></article><article><b>02</b><h3>Her ekranda erişim</h3><p>Mobil ve tablette kesintisiz okuma.</p></article><article><b>03</b><h3>İnteraktif yayın</h3><p>Metnin ötesine geçen zengin içerik alanları.</p></article></div></div></section>
-  <section className="author-site section" id="yazar-sitesi"><div className="author-site-copy"><SectionHeading index="05" eyebrow="YAZAR WEB SİTESİ" title="Her yazara, kendine ait bir dijital sahne."/><p>Kitaplarınız değişir, okurlarınız çoğalır; yazar siteniz bütün üretiminizi tek bir kalıcı kimlikte bir araya getirir.</p><div className="site-features"><span>Biyografi</span><span>Eserler</span><span>Yazılar</span><span>Basın</span><span>İletişim</span><span>Kitap sayfaları</span></div><a href="#basvuru">Yazar dünyanızı oluşturalım <b>↗</b></a></div><div className="author-browser"><div className="browser-bar"><i/><i/><i/><span>ibrahimkaynar.com</span></div><Image src="/ibrahim-author-site.png" alt="İbrahim Kaynar yazar web sitesi" fill sizes="780px"/></div></section>
-  <section className="distribution section" id="dagitim"><div className="distribution-copy"><SectionHeading index="06" eyebrow="TÜRKİYE VE DÜNYA" title="Eserinizin yolculuğu sınırda bitmez." copy="Türkiye’de uygun dijital yayın ve dağıtım kanallarına hazırlanır. Talebiniz halinde eseriniz profesyonel İngilizce çeviri ve editoryal uyarlamayla global okura açılır."/><div className="distribution-cols"><div><b>TR</b><h3>Türkiye dağıtımı</h3><p>Yerel okuma ve dinleme platformları için doğru format, metadata ve yayın hazırlığı.</p></div><div><b>EN</b><h3>Global yayın</h3><p>İngilizce çeviri, editoryal uyarlama ve uygun uluslararası dijital kanallara hazırlık.</p></div></div></div><div className="globe-art" aria-hidden="true"><span>İZMİR</span><i/><b>LONDON</b><em>NEW YORK</em><div className="orbit one"/><div className="orbit two"/><div className="orbit three"/></div></section>
-  <section className="why section"><SectionHeading index="07" eyebrow="NEDEN FİGAN" title="Bir hizmet değil, bütünlüklü bir yayın dünyası."/><div className="why-grid">{reasons.map(([title,copy],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
-  <section className="application section" id="basvuru"><div className="application-copy"><span className="section-kicker"><span>08</span>YAZAR BAŞVURUSU</span><h2>Dosyanız hazırsa,<br/><em>ilk sayfayı birlikte açalım.</em></h2><p>Eseriniz ve yayın hedefiniz hakkında birkaç bilgi paylaşın. Editoryal ekibimiz başvurunuzu değerlendirdikten sonra sizinle iletişime geçsin.</p><small>Başvurunuz gizlilikle değerlendirilir.</small></div><form className="application-form"><label>Adınız Soyadınız<input name="name" placeholder="Adınız ve soyadınız"/></label><div className="form-row"><label>E-posta<input name="email" type="email" placeholder="ornek@mail.com"/></label><label>Telefon<input name="phone" type="tel" placeholder="+90 5__ ___ __ __"/></label></div><label>Eserinizin adı<input name="book" placeholder="Eser adı"/></label><div className="form-row"><label>Eser türü<select name="genre" defaultValue=""><option value="" disabled>Seçiniz</option><option>Roman</option><option>Öykü</option><option>Şiir</option><option>Deneme</option><option>Diğer</option></select></label><label>Dosya durumu<select name="status" defaultValue=""><option value="" disabled>Seçiniz</option><option>Tamamlandı</option><option>Editörlük aşamasında</option><option>Devam ediyor</option></select></label></div><label>Kısaca eseriniz<textarea name="message" rows={3} placeholder="Eserinizi ve yayın hedefinizi anlatın"/></label><button type="submit">Başvuruyu Gönder <span>↗</span></button></form></section>
-  <footer><div className="footer-top"><Brand/><p>Dijital çağ için<br/>zamansız yayıncılık.</p><div className="footer-links"><a href="#yolculuk">Yayın Yolculuğu</a><a href="#ekitap">E-Kitap</a><a href="#audio">Figan Audio</a><a href="#reader">Figan Reader</a></div><div className="footer-links"><a href="#basvuru">Yazar Başvurusu</a><a href="mailto:merhaba@figanyayinevi.com">merhaba@figanyayinevi.com</a><a href="#">Instagram</a><a href="#">LinkedIn</a></div></div><div className="footer-bottom"><span>© 2026 Figan Yayınevi</span><span><a href="#">KVKK</a><a href="#">Gizlilik Politikası</a><a href="#">Kullanım Koşulları</a></span><b>SÖZÜN YENİ DÜNYASI.</b></div></footer>
-</main>
+export default function Home() {
+  return (
+    <main>
+      <header className="siteHeader">
+        <a className="wordmark" href="#top" aria-label="Figan Yayınevi ana sayfa">
+          <strong>FİGAN</strong>
+          <span>YAYINEVİ</span>
+        </a>
+        <div className="headerActions">
+          <button className="iconButton" aria-label="Ara"><SearchIcon /></button>
+          <span className="headerRule" />
+          <button className="iconButton" aria-label="Menüyü aç"><MenuIcon /></button>
+        </div>
+      </header>
+
+      <section className="hero" id="top">
+        <div className="heroShade" aria-hidden="true" />
+        <div className="heroContent">
+          <p className="eyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
+          <h1>
+            <span>Bir kitap</span>
+            <span className="displayBlack">yazdınız.</span>
+          </h1>
+          <p className="poetic">Şimdi ona ait<br/>bir dünya kuralım.</p>
+          <div className="shortRule" />
+          <p className="lead">E-kitabınız. Sesli kitabınız.<br/>Yazar siteniz. Dijital dağıtımınız.<br/>Tek bir yayın dünyasında.</p>
+
+          <div className="heroActions">
+            <a className="primaryCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
+            <button className="videoCta" type="button"><span className="play">▶</span><span><b>Figan’ı İzleyin</b><small>2 dakikada tanıyın.</small></span></button>
+          </div>
+        </div>
+
+        <blockquote className="heroQuote">“Bazı yaralar,<br/>insanı göğe<br/>daha yakın kılar.”<cite>— FİGAN</cite></blockquote>
+
+        <div className="heroServiceRail" aria-label="Figan hizmetleri">
+          {services.map((item) => <span key={item}>{item}</span>)}
+        </div>
+
+        <a href="#manifesto" className="discover">KEŞFET <span>↓</span></a>
+      </section>
+
+      <section className="manifesto" id="manifesto">
+        <p className="eyebrow">FİGAN NE YAPIYOR?</p>
+        <h2>Eserinizi yalnızca yayımlamıyoruz.<br/><em>Ona ait bir yayın dünyası kuruyoruz.</em></h2>
+        <p>Figan, dosyanızı profesyonel olarak yayına hazırlar; e-kitap ve sesli kitaba dönüştürür, size özel yazar sitesi kurar ve eserinizi dijital dünyada okuyucuyla buluşturur.</p>
+        <a href="#basvuru" className="textLink">Yayın yolculuğunu keşfet <span>→</span></a>
+      </section>
+
+      <section id="basvuru" className="placeholderCta">
+        <p className="eyebrow">YAZAR BAŞVURUSU</p>
+        <h2>Bir dosyanız mı var?</h2>
+        <p>Ya da henüz yalnızca bir fikriniz? İkisi de başlamak için yeterli.</p>
+        <a className="primaryCta" href="mailto:merhaba@figanyayinevi.com">Başvuruyu Başlat <span>→</span></a>
+      </section>
+    </main>
+  );
 }
