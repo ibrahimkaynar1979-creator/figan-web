@@ -22,7 +22,6 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="heroTopWash" aria-hidden="true" />
         <div className="heroContent">
           <p className="eyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
 
@@ -54,10 +53,14 @@ export default function Home() {
           <cite>— FİGAN</cite>
         </blockquote>
 
+        <a href="#hero-photo" className="discover dark">KEŞFET <span>↓</span></a>
+      </section>
+
+      <section className="heroPhotoSection" id="hero-photo" aria-label="Figan yayın dünyası görseli">
+        <img src="/figan-hero-ibrahim.webp" alt="Figan yayın dünyası; kitap, mürekkep, tüy ve İstanbul atmosferi" />
         <div className="rightMotto" aria-hidden="true">
           <span>DAHA</span><span>FAZLA</span><span>İYİ KİTAP.</span><span>DAHA FAZLA</span><span>İNSAN.</span>
         </div>
-
         <a href="#manifesto" className="discover">KEŞFET <span>↓</span></a>
       </section>
 
