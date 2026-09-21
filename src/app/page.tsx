@@ -22,6 +22,13 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
+        <img
+          className="heroArt"
+          src="/figan-hero-ibrahim.webp"
+          alt=""
+          aria-hidden="true"
+        />
+        <div className="heroArtFade" aria-hidden="true" />
         <div className="heroContent">
           <p className="eyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
 
@@ -52,10 +59,6 @@ export default function Home() {
           “Bazı yaralar,<br/>insanı göğe<br/>daha yakın kılar.”
           <cite>— FİGAN</cite>
         </blockquote>
-      </section>
-
-      <section className="heroPhotoSection" id="hero-photo" aria-label="Figan yayın dünyası görseli">
-        <img src="/figan-hero-ibrahim.webp" alt="Figan yayın dünyası; kitap, mürekkep, tüy ve İstanbul atmosferi" />
       </section>
 
       <section className="manifesto" id="manifesto">
