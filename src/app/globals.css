@@ -43,7 +43,7 @@ button{font:inherit;color:inherit}
 
 .hero{
   position:relative;
-  padding:38px 28px 46px;
+  padding:30px 28px 18px;
   overflow:hidden;
   background:linear-gradient(180deg,#f7f1e8 0%,#f2e8d9 100%);
 }
@@ -108,7 +108,7 @@ button{font:inherit;color:inherit}
   display:block;margin-top:14px;
   font-family:var(--font-ui);font-size:10px;font-style:normal;font-weight:700;letter-spacing:.29em;
 }
-.heroPhotoSection{position:relative;background:#1d130d;overflow:hidden}
+.heroPhotoSection{position:relative;background:#1d130d;overflow:hidden;margin-top:0}
 .heroPhotoSection img{display:block;width:100%;height:auto}
 .rightMotto{
   position:absolute;z-index:8;right:18px;bottom:160px;
@@ -124,7 +124,7 @@ button{font:inherit;color:inherit}
   font-size:11px;font-weight:700;letter-spacing:.29em;
 }
 .discover span{font-size:29px;line-height:1;font-weight:400}
-.discover.dark{position:static;transform:none;margin:38px auto 0;color:var(--espresso);text-shadow:none;width:max-content}
+
 
 .manifesto{padding:90px 28px 105px;background:#f5ede2}
 .manifesto h2{
@@ -153,7 +153,7 @@ button{font:inherit;color:inherit}
   .siteHeader{height:94px;padding:0 5vw}
   .wordmark strong{font-size:35px}
   .hero{
-    padding:76px 6vw 66px;
+    padding:64px 6vw 30px;
   }
   .heroContent{max-width:560px}
   .hero h1{font-size:clamp(92px,7.5vw,118px)}
