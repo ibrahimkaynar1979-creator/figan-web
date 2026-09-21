@@ -52,8 +52,6 @@ export default function Home() {
           “Bazı yaralar,<br/>insanı göğe<br/>daha yakın kılar.”
           <cite>— FİGAN</cite>
         </blockquote>
-
-        <a href="#hero-photo" className="discover dark">KEŞFET <span>↓</span></a>
       </section>
 
       <section className="heroPhotoSection" id="hero-photo" aria-label="Figan yayın dünyası görseli">
