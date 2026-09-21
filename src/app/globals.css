@@ -43,7 +43,7 @@ button{font:inherit;color:inherit}
 
 .hero{
   position:relative;
-  min-height:1380px;
+  min-height:1180px;
   padding:30px 28px 34px;
   overflow:hidden;
   background:#f5ede2;
@@ -53,7 +53,7 @@ button{font:inherit;color:inherit}
   z-index:1;
   left:0;
   right:0;
-  bottom:0;
+  bottom:-40px;
   width:100%;
   height:auto;
   display:block;
@@ -67,12 +67,12 @@ button{font:inherit;color:inherit}
     linear-gradient(
       180deg,
       #f7f1e8 0%,
-      #f7f1e8 33%,
-      rgba(247,241,232,.97) 39%,
-      rgba(247,241,232,.88) 45%,
-      rgba(247,241,232,.60) 50%,
-      rgba(247,241,232,.24) 56%,
-      rgba(247,241,232,0) 63%
+      #f7f1e8 28%,
+      rgba(247,241,232,.97) 34%,
+      rgba(247,241,232,.88) 40%,
+      rgba(247,241,232,.60) 45%,
+      rgba(247,241,232,.24) 50%,
+      rgba(247,241,232,0) 56%
     );
 }
 .heroContent{position:relative;z-index:8;max-width:520px}
@@ -156,7 +156,7 @@ button{font:inherit;color:inherit}
 .primaryCta.light{background:#f3eadc;color:#2a170c;box-shadow:none}
 
 @media(max-width:520px){
-  .hero{min-height:1380px}
+  .hero{min-height:1180px}
   .heroContent{padding-top:5px}
   .hero h1{font-size:clamp(60px,18vw,70px)}
   .poetic{font-size:clamp(38px,11vw,41px)}
@@ -165,12 +165,12 @@ button{font:inherit;color:inherit}
       linear-gradient(
         180deg,
         #f7f1e8 0%,
-        #f7f1e8 32%,
-        rgba(247,241,232,.98) 38%,
-        rgba(247,241,232,.90) 44%,
-        rgba(247,241,232,.66) 49%,
-        rgba(247,241,232,.30) 55%,
-        rgba(247,241,232,0) 62%
+        #f7f1e8 27%,
+        rgba(247,241,232,.98) 33%,
+        rgba(247,241,232,.90) 39%,
+        rgba(247,241,232,.66) 44%,
+        rgba(247,241,232,.30) 49%,
+        rgba(247,241,232,0) 55%
       );
   }
 }
