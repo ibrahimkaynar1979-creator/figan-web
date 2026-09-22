@@ -1530,3 +1530,90 @@ button{font:inherit;color:inherit}
 @media(min-width:521px){
   .mobileHeroActions{display:none!important}
 }
+
+/* MOBILE HERO FIT — fit first screen and crop left foliage */
+@media(max-width:520px){
+  .hero{
+    height:calc(100svh - 106px);
+    min-height:0;
+    max-height:none;
+    aspect-ratio:auto;
+    overflow:hidden;
+  }
+
+  .heroArt{
+    top:0;
+    bottom:auto;
+    left:-10%;
+    right:auto;
+    width:112%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 48%;
+    transform:none;
+    filter:none;
+    opacity:1;
+  }
+
+  .heroContent{
+    inset:0;
+    width:100%;
+    height:100%;
+    padding:28px 0 0 26px;
+  }
+
+  .heroCopy{
+    width:70%;
+    max-width:305px;
+  }
+
+  .hero .eyebrow{
+    font-size:8px;
+    margin-bottom:14px;
+  }
+
+  .hero h1{
+    font-size:clamp(50px,13.7vw,59px);
+    line-height:.88;
+  }
+
+  .poetic{
+    max-width:285px;
+    font-size:clamp(27px,7.5vw,32px);
+    line-height:1;
+    margin-top:11px;
+  }
+
+  .shortRule{
+    margin:15px 0 13px;
+  }
+
+  .hero .lead{
+    max-width:260px;
+    font-size:12.5px;
+    line-height:1.42;
+  }
+
+  .mobileHeroActions{
+    left:16px;
+    right:16px;
+    bottom:12px;
+    grid-template-columns:1.08fr .92fr;
+    gap:8px;
+  }
+
+  .mobileApplyCta,
+  .mobileWatchCta{
+    height:52px;
+    min-height:52px;
+    padding:0 12px;
+    font-size:11.5px;
+  }
+
+  .mobileCtaIcon,
+  .mobilePlay{
+    width:31px;
+    height:31px;
+    flex-basis:31px;
+  }
+}
