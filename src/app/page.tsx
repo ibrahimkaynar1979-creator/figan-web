@@ -29,21 +29,23 @@ export default function Home() {
           aria-hidden="true"
         />
         <div className="heroContent">
-          <p className="eyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
+          <div className="heroCopy">
+            <p className="eyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
 
-          <h1>
-            <span>Bir kitap</span>
-            <em>yazdınız.</em>
-          </h1>
+            <h1>
+              <span>Bir kitap</span>
+              <em>yazdınız.</em>
+            </h1>
 
-          <p className="poetic">Şimdi ona ait<br/>bir dünya kuralım.</p>
-          <div className="shortRule" />
+            <p className="poetic">Şimdi ona ait<br/>bir dünya kuralım.</p>
+            <div className="shortRule" />
 
-          <p className="lead">
-            E-kitabınız. Sesli kitabınız.<br/>
-            Yazar siteniz. Dijital dağıtımınız.<br/>
-            Tek bir yayın dünyasında.
-          </p>
+            <p className="lead">
+              E-kitabınız. Sesli kitabınız.<br/>
+              Yazar siteniz. Dijital dağıtımınız.<br/>
+              Tek bir yayın dünyasında.
+            </p>
+          </div>
 
           <div className="heroActions">
             <a className="primaryCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
