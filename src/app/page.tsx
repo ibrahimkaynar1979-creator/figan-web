@@ -24,7 +24,7 @@ export default function Home() {
       <section className="hero" id="top">
         <img
           className="heroArt"
-          src="/figan-hero-ibrahim.webp"
+          src="/figan-hero-final.webp"
           alt=""
           aria-hidden="true"
         />
