@@ -58,24 +58,6 @@ button{font:inherit;color:inherit}
   height:auto;
   display:block;
 }
-.heroArtFade{
-  position:absolute;
-  z-index:2;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(
-      180deg,
-      #f7f1e8 0%,
-      #f7f1e8 25%,
-      rgba(247,241,232,.98) 31%,
-      rgba(247,241,232,.92) 36%,
-      rgba(247,241,232,.74) 41%,
-      rgba(247,241,232,.44) 46%,
-      rgba(247,241,232,.16) 51%,
-      rgba(247,241,232,0) 57%
-    );
-}
 .heroContent{position:relative;z-index:8;max-width:520px}
 .eyebrow{
   margin:0 0 28px;
@@ -160,82 +142,22 @@ button{font:inherit;color:inherit}
   .hero{
     min-height:980px;
     padding-bottom:34px;
+    background:#f7f1e8;
   }
   .heroContent{padding-top:5px}
   .hero h1{font-size:clamp(60px,18vw,70px)}
   .poetic{font-size:clamp(38px,11vw,41px)}
-
   .heroArt{
     left:0;
     right:auto;
-    top:225px;
+    top:330px;
     bottom:auto;
     width:100%;
     height:auto;
     transform:none;
+    filter:none;
+    opacity:1;
   }
-
-  .heroArtFade{
-    background:
-      linear-gradient(
-        180deg,
-        #f7f1e8 0%,
-        #f7f1e8 28%,
-        rgba(247,241,232,.98) 38%,
-        rgba(247,241,232,.90) 48%,
-        rgba(247,241,232,.66) 57%,
-        rgba(247,241,232,.34) 66%,
-        rgba(247,241,232,.10) 76%,
-        rgba(247,241,232,0) 88%
-      ),
-      linear-gradient(
-        90deg,
-        rgba(247,241,232,.92) 0%,
-        rgba(247,241,232,.76) 58%,
-        rgba(247,241,232,.18) 100%
-      );
-  }
-}
-
-@media(min-width:760px){
-  .siteHeader{height:94px;padding:0 5vw}
-  .wordmark strong{font-size:35px}
-  .hero{
-    min-height:940px;
-    padding:64px 6vw 50px;
-  }
-  .heroArt{
-    width:58%;
-    left:auto;
-    right:0;
-    bottom:0;
-    height:100%;
-    object-fit:cover;
-    object-position:center 58%;
-  }
-  .heroArtFade{
-    background:
-      linear-gradient(
-        90deg,
-        #f7f1e8 0%,
-        #f7f1e8 36%,
-        rgba(247,241,232,.94) 44%,
-        rgba(247,241,232,.62) 54%,
-        rgba(247,241,232,.14) 68%,
-        rgba(247,241,232,0) 80%
-      );
-  }
-  .heroContent{max-width:560px}
-  .hero h1{font-size:clamp(92px,7.5vw,118px)}
-  .poetic{font-size:clamp(60px,4.8vw,76px)}
-  .lead{font-size:18px}
-  .heroActions{flex-direction:row;align-items:center}
-  .heroQuote{display:block;right:6vw;top:110px;width:210px;font-size:21px}
-  .manifesto,.placeholderCta{padding-left:8vw;padding-right:8vw}
-  .manifesto h2{font-size:68px}
-  .placeholderCta h2{font-size:68px}
-}
-@media(max-width:520px){
   .heroActions{
     position:relative;
     z-index:10;
@@ -248,6 +170,6 @@ button{font:inherit;color:inherit}
   .videoCta{
     padding:6px 10px 6px 0;
     border-radius:999px;
-    backdrop-filter:blur(4px);
   }
 }
+
