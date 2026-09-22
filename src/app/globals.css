@@ -157,22 +157,42 @@ button{font:inherit;color:inherit}
 .primaryCta.light{background:#f3eadc;color:#2a170c;box-shadow:none}
 
 @media(max-width:520px){
-  .hero{min-height:1180px}
+  .hero{
+    min-height:980px;
+    padding-bottom:34px;
+  }
   .heroContent{padding-top:5px}
   .hero h1{font-size:clamp(60px,18vw,70px)}
   .poetic{font-size:clamp(38px,11vw,41px)}
+
+  .heroArt{
+    left:0;
+    right:auto;
+    top:225px;
+    bottom:auto;
+    width:100%;
+    height:auto;
+    transform:none;
+  }
+
   .heroArtFade{
     background:
       linear-gradient(
         180deg,
         #f7f1e8 0%,
-        #f7f1e8 24%,
-        rgba(247,241,232,.98) 30%,
-        rgba(247,241,232,.93) 35%,
-        rgba(247,241,232,.76) 40%,
-        rgba(247,241,232,.48) 45%,
-        rgba(247,241,232,.18) 50%,
-        rgba(247,241,232,0) 56%
+        #f7f1e8 28%,
+        rgba(247,241,232,.98) 38%,
+        rgba(247,241,232,.90) 48%,
+        rgba(247,241,232,.66) 57%,
+        rgba(247,241,232,.34) 66%,
+        rgba(247,241,232,.10) 76%,
+        rgba(247,241,232,0) 88%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(247,241,232,.92) 0%,
+        rgba(247,241,232,.76) 58%,
+        rgba(247,241,232,.18) 100%
       );
   }
 }
@@ -216,10 +236,6 @@ button{font:inherit;color:inherit}
   .placeholderCta h2{font-size:68px}
 }
 @media(max-width:520px){
-  .heroArt{
-    transform:scale(1.055);
-    transform-origin:center bottom;
-  }
   .heroActions{
     position:relative;
     z-index:10;
