@@ -47,7 +47,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="heroActions">
+          <div className="heroActions heroActionsBottom">
             <a className="primaryCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
             <button className="videoCta" type="button">
               <span className="play">▶</span>
