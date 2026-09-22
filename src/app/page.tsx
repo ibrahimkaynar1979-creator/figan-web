@@ -28,7 +28,6 @@ export default function Home() {
           alt=""
           aria-hidden="true"
         />
-        <div className="heroArtFade" aria-hidden="true" />
         <div className="heroContent">
           <p className="eyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
 
