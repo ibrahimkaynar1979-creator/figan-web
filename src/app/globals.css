@@ -2689,3 +2689,12 @@ button{font:inherit;color:inherit}
     height:calc(100svh - 68px - 64px)!important;
   }
 }
+
+/* HEADER COLOR — dark editorial logo on warm ivory */
+.siteHeader{
+  background:#f4eee5!important;
+}
+.logoWordmark img{
+  filter:brightness(0) saturate(100%)!important;
+  opacity:.88!important;
+}
