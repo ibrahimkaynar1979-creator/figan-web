@@ -2011,3 +2011,37 @@ button{font:inherit;color:inherit}
     font-size:16px!important;
   }
 }
+
+/* MOBILE HERO COPY FIX — keep CTA/photo locked, reveal full headline */
+@media(max-width:520px){
+  .heroContent{
+    padding-top:18px!important;
+  }
+
+  .heroCopy{
+    transform:translateY(0)!important;
+    margin-top:0!important;
+  }
+
+  .hero .eyebrow{
+    margin-top:0!important;
+    margin-bottom:12px!important;
+  }
+
+  .hero h1{
+    margin-top:0!important;
+  }
+
+  .poetic{
+    margin-top:10px!important;
+  }
+
+  .shortRule{
+    margin-top:14px!important;
+    margin-bottom:12px!important;
+  }
+
+  .hero .lead{
+    margin-top:0!important;
+  }
+}
