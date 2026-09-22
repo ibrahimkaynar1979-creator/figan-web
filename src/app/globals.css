@@ -880,3 +880,103 @@ button{font:inherit;color:inherit}
     display:none!important;
   }
 }
+
+/* FIGAN MOBILE HERO — editorial final composition */
+@media(max-width:520px){
+  .hero{
+    height:calc(100svh - 108px);
+    min-height:720px;
+    max-height:820px;
+  }
+
+  .heroContent{
+    height:100%;
+    min-height:0;
+    padding:26px 22px 20px;
+    display:block;
+  }
+
+  .heroCopy{
+    width:250px;
+    max-width:250px;
+    margin:0 0 0 8px;
+  }
+
+  .hero .eyebrow{
+    margin:0 0 13px;
+    padding:0;
+    font-size:8px;
+    line-height:1.2;
+    letter-spacing:.18em;
+    color:#3a2415;
+    white-space:nowrap;
+  }
+
+  .hero h1{
+    width:250px;
+    margin:0;
+    font-size:52px;
+    line-height:.87;
+    letter-spacing:-.05em;
+    color:#17110d;
+  }
+
+  .hero h1 em{
+    margin-top:3px;
+    color:#7b4d22;
+  }
+
+  .poetic{
+    width:240px;
+    max-width:240px;
+    margin:11px 0 0;
+    font-size:27px;
+    line-height:1.01;
+    color:#17110d;
+  }
+
+  .shortRule{
+    width:36px;
+    margin:15px 0 0;
+  }
+
+  .hero .lead{
+    display:none;
+  }
+
+  .heroActionsBottom{
+    position:static;
+    width:230px;
+    margin:17px 0 0 8px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .heroActionsBottom .primaryCta{
+    min-width:214px;
+    min-height:50px;
+    padding:0 18px;
+    font-size:13px;
+    gap:20px;
+  }
+
+  .heroActionsBottom .videoCta{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:#17110d;
+  }
+
+  .heroActionsBottom .play{
+    width:40px;
+    height:40px;
+  }
+
+  .heroActionsBottom .videoCta b{font-size:12.5px}
+  .heroActionsBottom .videoCta small{font-size:10px}
+
+  /* leave the lower 60% of the artwork free of interface */
+  .heroQuote{display:none!important}
+}
