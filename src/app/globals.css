@@ -2646,3 +2646,46 @@ button{font:inherit;color:inherit}
     height:calc(100svh - 78px - 64px)!important;
   }
 }
+
+/* HEADER COMPACT — reduce band, keep logo size */
+@media(max-width:520px){
+  .siteHeader{
+    height:70px!important;
+    padding:0 18px!important;
+  }
+
+  .logoWordmark img{
+    height:54px!important;
+    width:auto!important;
+    object-fit:contain!important;
+  }
+
+  .menuButton{
+    width:34px!important;
+    height:34px!important;
+  }
+
+  .menuIcon{
+    width:24px!important;
+    gap:4px!important;
+  }
+
+  .hero{
+    height:calc(100svh - 70px - 68px)!important;
+  }
+}
+
+@media(max-width:390px){
+  .siteHeader{
+    height:68px!important;
+    padding:0 16px!important;
+  }
+
+  .logoWordmark img{
+    height:50px!important;
+  }
+
+  .hero{
+    height:calc(100svh - 68px - 64px)!important;
+  }
+}
