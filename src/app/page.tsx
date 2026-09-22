@@ -10,14 +10,11 @@ export default function Home() {
   return (
     <main>
       <header className="siteHeader">
-        <a className="wordmark" href="#top" aria-label="Figan Yayınevi ana sayfa">
-          <strong>FİGAN</strong>
-          <span>YAYINEVİ</span>
+        <a className="wordmark logoWordmark" href="#top" aria-label="Figan Yayınevi ana sayfa">
+          <img src="/figan-logo-silver.png" alt="Figan Yayınevi" />
         </a>
         <div className="headerActions">
-          <button className="iconButton" aria-label="Ara"><SearchIcon /></button>
-          <span className="headerRule" />
-          <button className="iconButton" aria-label="Menüyü aç"><MenuIcon /></button>
+          <button className="iconButton menuButton" aria-label="Menüyü aç"><MenuIcon /></button>
         </div>
       </header>
 
