@@ -2186,3 +2186,64 @@ button{font:inherit;color:inherit}
     gap:6px!important;
   }
 }
+
+/* MOBILE PREMIUM POLISH — preserve artwork/composition */
+@media(max-width:520px){
+  .siteHeader{
+    height:84px!important;
+    padding:0 20px!important;
+  }
+  .wordmark strong{font-size:34px!important;}
+  .wordmark span{font-size:9px!important;letter-spacing:.34em!important;}
+  .headerActions{gap:16px!important;}
+  .iconButton{width:38px!important;height:38px!important;}
+  .hero{
+    height:calc(100svh - 84px)!important;
+  }
+  .heroContent{
+    padding:15px 0 78px 34px!important;
+  }
+  .hero .eyebrow{
+    margin-bottom:8px!important;
+    font-size:7px!important;
+  }
+  .hero h1{
+    font-size:clamp(44px,12.7vw,54px)!important;
+    line-height:.88!important;
+  }
+  .poetic{
+    margin-top:7px!important;
+    font-size:clamp(23px,6.5vw,28px)!important;
+    line-height:1.02!important;
+  }
+  .shortRule{
+    margin:11px 0 9px!important;
+  }
+  .hero .lead{
+    font-size:11.5px!important;
+    line-height:1.34!important;
+    max-width:245px!important;
+  }
+  .mobileHeroActions{
+    bottom:16px!important;
+  }
+  .mobileApplyCta,
+  .mobileWatchCta{
+    height:41px!important;
+    min-height:41px!important;
+    padding-left:38px!important;
+    font-size:9.5px!important;
+  }
+  .mobileCtaIcon,
+  .mobilePlay{
+    width:43px!important;
+    height:43px!important;
+    flex-basis:43px!important;
+  }
+}
+@media(max-width:390px){
+  .siteHeader{height:82px!important;}
+  .hero{height:calc(100svh - 82px)!important;}
+  .heroContent{padding:14px 0 76px 28px!important;}
+  .mobileHeroActions{bottom:14px!important;}
+}
