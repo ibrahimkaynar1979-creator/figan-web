@@ -173,3 +173,97 @@ button{font:inherit;color:inherit}
   }
 }
 
+
+@media(max-width:520px){
+  .hero{
+    min-height:980px;
+    padding:0 18px 24px;
+  }
+
+  .heroArt{
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+  }
+
+  .heroContent{
+    position:relative;
+    z-index:8;
+    padding-top:24px;
+    max-width:none;
+  }
+
+  .heroCopy{
+    width:min(88%, 360px);
+    padding:18px 18px 20px;
+    background:rgba(247,241,232,.92);
+    border:1px solid rgba(118,80,38,.15);
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(42,23,12,.08);
+    backdrop-filter:none;
+  }
+
+  .hero .eyebrow{
+    margin-bottom:16px;
+    font-size:10px;
+    letter-spacing:.24em;
+  }
+
+  .hero h1{
+    font-size:clamp(52px,15vw,60px);
+    line-height:.88;
+  }
+
+  .hero h1 em{
+    margin-top:4px;
+  }
+
+  .poetic{
+    margin-top:12px;
+    font-size:clamp(31px,9vw,36px);
+    line-height:.98;
+  }
+
+  .shortRule{
+    margin:20px 0 18px;
+    width:44px;
+  }
+
+  .lead{
+    font-size:15px;
+    line-height:1.42;
+  }
+
+  .heroActions{
+    margin-top:18px;
+    gap:12px;
+    width:min(88%, 360px);
+  }
+
+  .primaryCta{
+    min-height:56px;
+    padding:0 22px;
+    gap:24px;
+    font-size:15px;
+  }
+
+  .videoCta{
+    background:rgba(247,241,232,.90);
+    border:1px solid rgba(118,80,38,.14);
+    padding:8px 14px 8px 8px;
+    border-radius:999px;
+  }
+
+  .play{
+    width:46px;
+    height:46px;
+  }
+
+  .videoCta b{font-size:15px}
+  .videoCta small{font-size:12px}
+
+  .heroQuote{display:none!important}
+}
