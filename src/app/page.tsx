@@ -89,6 +89,14 @@ export default function Home() {
         <p>Ya da henüz yalnızca bir fikriniz? İkisi de başlamak için yeterli.</p>
         <a className="primaryCta light" href="mailto:merhaba@figanyayinevi.com">Başvuruyu Başlat <span>→</span></a>
       </section>
+
+      <nav className="mobileDock" aria-label="Mobil alt menü">
+        <a className="active" href="#top"><span>⌂</span><b>Ana Sayfa</b></a>
+        <a href="#manifesto"><span>▤</span><b>Hizmetler</b></a>
+        <a href="#top"><span>✒</span><b>Yazarlar</b></a>
+        <a href="#top"><span>▭</span><b>Kitaplar</b></a>
+        <a href="#basvuru"><span>○</span><b>İletişim</b></a>
+      </nav>
     </main>
   );
 }
