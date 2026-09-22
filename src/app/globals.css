@@ -394,3 +394,89 @@ button{font:inherit;color:inherit}
 
   .heroQuote{display:none!important}
 }
+
+@media(max-width:520px){
+  .heroContent{
+    min-height:calc(100svh - 108px);
+    padding:22px 18px 20px;
+  }
+
+  .heroCopy{
+    width:100%;
+    max-width:none;
+    padding:0;
+    background:transparent;
+    border:0;
+    box-shadow:none;
+  }
+
+  .hero .eyebrow{
+    margin:0 0 10px 0;
+    padding-left:46%;
+    font-size:9px;
+    letter-spacing:.20em;
+    color:#5f3b1d;
+    white-space:nowrap;
+  }
+
+  .hero h1{
+    width:68%;
+    margin-left:32%;
+    font-size:clamp(48px,14vw,57px);
+    line-height:.86;
+    text-align:left;
+    text-shadow:0 1px 0 rgba(247,241,232,.35);
+  }
+
+  .hero h1 em{
+    margin-top:2px;
+    color:#6f461f;
+  }
+
+  .poetic{
+    width:62%;
+    margin:10px 0 0 38%;
+    font-size:clamp(26px,7.6vw,31px);
+    line-height:.98;
+    text-align:left;
+    text-shadow:0 1px 0 rgba(247,241,232,.40);
+  }
+
+  .shortRule{
+    margin:16px 0 14px 38%;
+    width:38px;
+  }
+
+  .lead{
+    width:58%;
+    margin-left:42%;
+    font-size:12px;
+    line-height:1.42;
+    text-align:left;
+    text-shadow:0 1px 0 rgba(247,241,232,.55);
+  }
+
+  .heroActionsBottom{
+    left:18px;
+    right:18px;
+    bottom:18px;
+    width:auto;
+    justify-content:space-between;
+    gap:8px;
+  }
+
+  .heroActionsBottom .primaryCta{
+    min-height:50px;
+    padding:0 17px;
+    gap:16px;
+    font-size:13px;
+  }
+
+  .heroActionsBottom .videoCta{
+    color:#17120e;
+    text-shadow:0 1px 0 rgba(247,241,232,.55);
+  }
+
+  .heroActionsBottom .videoCta b{font-size:12px}
+  .heroActionsBottom .videoCta small{font-size:10px}
+}
