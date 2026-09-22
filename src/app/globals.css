@@ -43,19 +43,19 @@ button{font:inherit;color:inherit}
 
 .hero{
   position:relative;
-  min-height:1180px;
-  padding:30px 28px 34px;
+  min-height:calc(100svh - 108px);
+  padding:30px 28px 32px;
   overflow:hidden;
   background:#f5ede2;
 }
 .heroArt{
   position:absolute;
   z-index:1;
-  left:0;
-  right:0;
-  bottom:-10px;
+  inset:0;
   width:100%;
-  height:auto;
+  height:100%;
+  object-fit:cover;
+  object-position:center 62%;
   display:block;
 }
 .heroArtFade{
@@ -66,14 +66,19 @@ button{font:inherit;color:inherit}
   background:
     linear-gradient(
       180deg,
-      #f7f1e8 0%,
-      #f7f1e8 25%,
-      rgba(247,241,232,.98) 31%,
-      rgba(247,241,232,.92) 36%,
-      rgba(247,241,232,.74) 41%,
-      rgba(247,241,232,.44) 46%,
-      rgba(247,241,232,.16) 51%,
-      rgba(247,241,232,0) 57%
+      rgba(247,241,232,.98) 0%,
+      rgba(247,241,232,.96) 18%,
+      rgba(247,241,232,.88) 34%,
+      rgba(247,241,232,.66) 48%,
+      rgba(247,241,232,.28) 63%,
+      rgba(247,241,232,.04) 82%,
+      rgba(247,241,232,0) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(247,241,232,.95) 0%,
+      rgba(247,241,232,.84) 58%,
+      rgba(247,241,232,.24) 100%
     );
 }
 .heroContent{position:relative;z-index:8;max-width:520px}
