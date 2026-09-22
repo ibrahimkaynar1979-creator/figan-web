@@ -2411,3 +2411,105 @@ button{font:inherit;color:inherit}
   .mobileDock a span{font-size:18px}
   .mobileDock a b{font-size:8px}
 }
+
+/* HERO COPY TONE — photo-colored blur, cream typography, no visible panel */
+@media(max-width:520px){
+  .heroCopy{
+    position:relative!important;
+    isolation:isolate;
+  }
+
+  .heroCopy::before{
+    content:"";
+    position:absolute;
+    z-index:-2;
+    left:-36px;
+    top:-30px;
+    width:calc(100% + 64px);
+    height:calc(100% + 54px);
+    background:rgba(34,24,18,.10);
+    -webkit-backdrop-filter:blur(12px) saturate(108%);
+    backdrop-filter:blur(12px) saturate(108%);
+    -webkit-mask-image:
+      radial-gradient(ellipse at 18% 26%,
+        #000 0%,
+        rgba(0,0,0,.94) 38%,
+        rgba(0,0,0,.62) 66%,
+        transparent 90%);
+    mask-image:
+      radial-gradient(ellipse at 18% 26%,
+        #000 0%,
+        rgba(0,0,0,.94) 38%,
+        rgba(0,0,0,.62) 66%,
+        transparent 90%);
+    pointer-events:none;
+  }
+
+  .heroCopy::after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    left:-36px;
+    top:-30px;
+    width:calc(100% + 64px);
+    height:calc(100% + 54px);
+    background:
+      linear-gradient(108deg,
+        rgba(21,17,15,.52) 0%,
+        rgba(21,17,15,.34) 34%,
+        rgba(21,17,15,.14) 61%,
+        rgba(21,17,15,0) 84%);
+    -webkit-mask-image:
+      radial-gradient(ellipse at 18% 24%,
+        #000 0%,
+        rgba(0,0,0,.96) 40%,
+        rgba(0,0,0,.60) 68%,
+        transparent 92%);
+    mask-image:
+      radial-gradient(ellipse at 18% 24%,
+        #000 0%,
+        rgba(0,0,0,.96) 40%,
+        rgba(0,0,0,.60) 68%,
+        transparent 92%);
+    pointer-events:none;
+  }
+
+  .hero .eyebrow{
+    color:#f7efe5!important;
+    text-shadow:0 1px 12px rgba(0,0,0,.24)!important;
+  }
+
+  .hero h1{
+    color:#fffaf4!important;
+    text-shadow:0 2px 18px rgba(0,0,0,.22)!important;
+  }
+
+  .hero h1 em{
+    color:#d8ad82!important;
+    text-shadow:0 2px 18px rgba(0,0,0,.20)!important;
+  }
+
+  .poetic{
+    color:#fff7ef!important;
+    text-shadow:0 2px 16px rgba(0,0,0,.22)!important;
+  }
+
+  .shortRule{
+    background:rgba(255,245,234,.82)!important;
+    box-shadow:none!important;
+  }
+
+  .hero .lead{
+    color:#fff7ef!important;
+    font-weight:500!important;
+    text-shadow:0 1px 14px rgba(0,0,0,.22)!important;
+  }
+}
+
+@media(max-width:390px){
+  .heroCopy::before,
+  .heroCopy::after{
+    left:-30px;
+    width:calc(100% + 52px);
+  }
+}
