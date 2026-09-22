@@ -60,25 +60,19 @@ export default function Home() {
           “Bazı yaralar,<br/>insanı göğe<br/>daha yakın kılar.”
           <cite>— FİGAN</cite>
         </blockquote>
-      </section>
 
-      <section className="mobileHeroActions" aria-label="Figan hızlı işlemler">
-        <a className="mobileApplyCta" href="#basvuru">
-          <span className="mobileCtaIcon">▤</span>
-          <span>Yazar Başvurusu Yap</span>
-          <span className="mobileCtaArrow">→</span>
-        </a>
+        <div className="mobileHeroActions" aria-label="Figan hızlı işlemler">
+          <a className="mobileApplyCta" href="#basvuru">
+            <span className="mobileCtaIcon">▤</span>
+            <span>Yazar Başvurusu Yap</span>
+            <span className="mobileCtaArrow">→</span>
+          </a>
 
-        <button className="mobileWatchCta" type="button">
-          <span className="mobilePlay">▶</span>
-          <span>Figan’ı İzleyin</span>
-          <span className="mobileCtaArrow">→</span>
-        </button>
-
-        <div className="mobileHeroTagline">
-          <i />
-          <span>KELİMELER DAHA FAZLA İNSANA</span>
-          <i />
+          <button className="mobileWatchCta" type="button">
+            <span className="mobilePlay">▶</span>
+            <span>Figan’ı İzleyin</span>
+            <span className="mobileCtaArrow">→</span>
+          </button>
         </div>
       </section>
 
