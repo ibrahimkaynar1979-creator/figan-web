@@ -2513,3 +2513,51 @@ button{font:inherit;color:inherit}
     width:calc(100% + 52px);
   }
 }
+
+/* USE PRE-DARKENED HERO ART — remove CSS blur/dark overlays */
+@media(max-width:520px){
+  .heroCopy::before,
+  .heroCopy::after{
+    content:none!important;
+    display:none!important;
+    background:none!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
+  }
+
+  .heroCopy{
+    padding-left:0!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  .hero .eyebrow{
+    color:#f7efe5!important;
+    text-shadow:0 1px 10px rgba(0,0,0,.22)!important;
+  }
+
+  .hero h1{
+    color:#fffaf4!important;
+    text-shadow:0 2px 16px rgba(0,0,0,.20)!important;
+  }
+
+  .hero h1 em{
+    color:#ddb07f!important;
+    text-shadow:0 2px 16px rgba(0,0,0,.18)!important;
+  }
+
+  .poetic,
+  .hero .lead{
+    color:#fff7ef!important;
+    text-shadow:0 2px 14px rgba(0,0,0,.18)!important;
+  }
+
+  .shortRule{
+    background:rgba(255,245,234,.86)!important;
+  }
+}
