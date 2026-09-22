@@ -765,3 +765,118 @@ button{font:inherit;color:inherit}
     display:none!important;
   }
 }
+
+/* MOBILE HERO — final text repositioning, photo locked */
+@media(max-width:520px){
+  .heroContent{
+    padding:28px 24px 20px;
+  }
+
+  .heroCopy{
+    width:68%;
+    max-width:310px;
+    margin-left:18%;
+  }
+
+  .hero .eyebrow{
+    margin:0 0 12px;
+    padding:0;
+    font-size:8px;
+    line-height:1.2;
+    letter-spacing:.18em;
+    color:#3b281b;
+    text-align:left;
+  }
+
+  .hero h1{
+    width:100%;
+    margin:0;
+    font-size:clamp(48px,13.3vw,56px);
+    line-height:.88;
+    color:#17110d;
+    text-align:left;
+    text-shadow:none;
+  }
+
+  .hero h1 em{
+    color:#7a4e25;
+  }
+
+  .poetic{
+    width:100%;
+    max-width:265px;
+    margin:10px 0 0;
+    font-size:clamp(26px,7.2vw,30px);
+    line-height:1;
+    color:#17110d;
+    text-align:left;
+    text-shadow:none;
+  }
+
+  .shortRule{
+    margin:15px 0 13px;
+    width:36px;
+  }
+
+  .lead{
+    width:100%;
+    max-width:235px;
+    margin:0;
+    font-size:12.5px;
+    line-height:1.4;
+    font-weight:600;
+    color:#17110d;
+    text-align:left;
+    text-shadow:none;
+  }
+
+  .heroActionsBottom{
+    position:static;
+    width:auto;
+    margin-top:16px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:9px;
+  }
+
+  .heroActionsBottom .primaryCta{
+    min-width:205px;
+    min-height:50px;
+    padding:0 17px 0 18px;
+    gap:18px;
+    font-size:12.5px;
+  }
+
+  .heroActionsBottom .videoCta{
+    margin:0;
+    padding:0;
+    gap:8px;
+    color:#17110d;
+    background:transparent;
+    border:0;
+  }
+
+  .heroActionsBottom .play{
+    width:38px;
+    height:38px;
+    background:#f7f1e8;
+  }
+
+  .heroActionsBottom .videoCta b{
+    font-size:12px;
+  }
+
+  .heroActionsBottom .videoCta small{
+    font-size:10px;
+  }
+
+  /* hide floating dev/brand mark if present */
+  [class*="cornerMark"],
+  [class*="nextjs"],
+  [class*="vercel"],
+  [data-next-badge-root],
+  nextjs-portal{
+    display:none!important;
+  }
+}
