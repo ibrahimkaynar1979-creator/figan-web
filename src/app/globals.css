@@ -2045,3 +2045,144 @@ button{font:inherit;color:inherit}
     margin-top:0!important;
   }
 }
+
+/* MOBILE VIEWPORT FINAL — full CTA visibility on first screen */
+@media(max-width:520px){
+  .siteHeader{
+    height:96px!important;
+    padding:0 22px!important;
+  }
+
+  .hero{
+    height:calc(100svh - 96px)!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    overflow:hidden!important;
+  }
+
+  .heroArt{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center 54%!important;
+    transform:none!important;
+    filter:none!important;
+    opacity:1!important;
+  }
+
+  .heroContent{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    padding:18px 0 84px 34px!important;
+    display:block!important;
+  }
+
+  .heroCopy{
+    width:72%!important;
+    max-width:300px!important;
+    margin:0!important;
+  }
+
+  .hero .eyebrow{
+    margin:0 0 10px!important;
+    font-size:7.5px!important;
+    letter-spacing:.18em!important;
+  }
+
+  .hero h1{
+    font-size:clamp(46px,13.2vw,56px)!important;
+    line-height:.88!important;
+  }
+
+  .hero h1 em{
+    margin-top:2px!important;
+  }
+
+  .poetic{
+    margin-top:9px!important;
+    max-width:275px!important;
+    font-size:clamp(25px,7vw,30px)!important;
+    line-height:1!important;
+  }
+
+  .shortRule{
+    margin:13px 0 11px!important;
+    width:34px!important;
+  }
+
+  .hero .lead{
+    max-width:250px!important;
+    font-size:12px!important;
+    line-height:1.36!important;
+  }
+
+  .mobileHeroActions{
+    left:12px!important;
+    right:12px!important;
+    bottom:10px!important;
+    gap:8px!important;
+  }
+
+  .mobileApplyCta,
+  .mobileWatchCta{
+    height:44px!important;
+    min-height:44px!important;
+    padding-left:40px!important;
+    padding-right:9px!important;
+    font-size:10px!important;
+  }
+
+  .mobileCtaIcon,
+  .mobilePlay{
+    width:46px!important;
+    height:46px!important;
+    flex-basis:46px!important;
+  }
+
+  .mobileCtaArrow{
+    font-size:16px!important;
+  }
+}
+
+@media(max-width:390px){
+  .siteHeader{
+    height:92px!important;
+  }
+
+  .hero{
+    height:calc(100svh - 92px)!important;
+  }
+
+  .heroContent{
+    padding:16px 0 80px 28px!important;
+  }
+
+  .heroCopy{
+    width:74%!important;
+  }
+
+  .hero h1{
+    font-size:clamp(43px,12.8vw,51px)!important;
+  }
+
+  .poetic{
+    font-size:clamp(23px,6.7vw,28px)!important;
+  }
+
+  .hero .lead{
+    font-size:11.5px!important;
+    max-width:235px!important;
+  }
+
+  .mobileHeroActions{
+    left:10px!important;
+    right:10px!important;
+    bottom:8px!important;
+    gap:6px!important;
+  }
+}
