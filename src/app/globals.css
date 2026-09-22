@@ -980,3 +980,148 @@ button{font:inherit;color:inherit}
   /* leave the lower 60% of the artwork free of interface */
   .heroQuote{display:none!important}
 }
+
+/* FIGAN MOBILE HERO — refined frosted editorial composition */
+@media(max-width:520px){
+  .hero{
+    height:calc(100svh - 108px);
+    min-height:720px;
+    max-height:820px;
+    padding:0;
+  }
+
+  .heroContent{
+    position:relative;
+    height:100%;
+    padding:22px 20px 18px;
+  }
+
+  .heroCopy{
+    width:76%;
+    max-width:315px;
+    margin:0;
+    padding:18px 18px 17px;
+    background:rgba(247,241,232,.54);
+    border:1px solid rgba(255,255,255,.34);
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(38,23,12,.07);
+    -webkit-backdrop-filter:blur(9px) saturate(108%);
+    backdrop-filter:blur(9px) saturate(108%);
+  }
+
+  .hero .eyebrow{
+    margin:0 0 12px;
+    font-size:8px;
+    line-height:1.2;
+    letter-spacing:.20em;
+    color:#3a2415;
+  }
+
+  .hero h1{
+    width:100%;
+    margin:0;
+    font-size:clamp(50px,14vw,58px);
+    line-height:.87;
+    letter-spacing:-.052em;
+    color:#17110d;
+  }
+
+  .hero h1 em{
+    margin-top:3px;
+    color:#7b4d22;
+  }
+
+  .poetic{
+    width:100%;
+    margin:11px 0 0;
+    font-size:clamp(25px,7vw,29px);
+    line-height:1.02;
+    color:#17110d;
+  }
+
+  .shortRule{
+    width:36px;
+    margin:15px 0 13px;
+  }
+
+  .hero .lead{
+    display:block;
+    width:100%;
+    max-width:260px;
+    margin:0;
+    font-size:12.5px;
+    line-height:1.5;
+    font-weight:500;
+    color:#21160f;
+  }
+
+  .heroActionsBottom{
+    position:absolute;
+    left:20px;
+    right:20px;
+    bottom:18px;
+    width:auto;
+    margin:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    align-items:stretch;
+  }
+
+  .heroActionsBottom .primaryCta,
+  .heroActionsBottom .videoCta{
+    width:100%;
+    height:54px;
+    min-height:54px;
+    border-radius:999px;
+    box-sizing:border-box;
+  }
+
+  .heroActionsBottom .primaryCta{
+    min-width:0;
+    padding:0 15px;
+    gap:8px;
+    justify-content:space-between;
+    font-size:12px;
+    white-space:nowrap;
+  }
+
+  .heroActionsBottom .videoCta{
+    margin:0;
+    padding:0 14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    color:#17110d;
+    background:rgba(247,241,232,.88);
+    border:1px solid rgba(91,57,29,.22);
+    box-shadow:0 8px 22px rgba(38,23,12,.08);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+  }
+
+  .heroActionsBottom .play{
+    width:34px;
+    height:34px;
+    flex:0 0 34px;
+    background:transparent;
+    border:1px solid rgba(23,17,13,.65);
+  }
+
+  .heroActionsBottom .videoCta span:last-child{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .heroActionsBottom .videoCta b{
+    font-size:11.5px;
+    line-height:1.05;
+    white-space:nowrap;
+  }
+
+  .heroActionsBottom .videoCta small{
+    display:none;
+  }
+}
