@@ -209,60 +209,28 @@ export default function Home() {
 
       <section className="ecosystemSection" id="ekosistem">
         <div className="ecosystemIntro">
-          <div className="ecosystemKicker"><span>YAZARINIZ İÇİN DAHA FAZLASI</span><i/><b>04</b></div>
+          <div className="ecosystemKicker"><span>YAYIN DÜNYANIZ</span><i/><b>04</b></div>
           <h2>Bir kitabın ötesinde,<br/><em>sizin dünyanız.</em></h2>
-          <p>E-kitabınız. Sesli kitabınız. Yazar siteniz. Dijital dağıtımınız. Tek bir yayın dünyasında.</p>
+          <p>E-kitabınız, sesli kitabınız ve dijital yayın dünyanız tek bir bütünün içinde buluşur.</p>
         </div>
 
-        <div className="ecosystemCanvas">
-          <svg className="ecosystemLines" viewBox="0 0 1000 720" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M500 108 C500 165 500 190 500 235"/>
-            <path d="M178 260 C285 245 325 270 382 322"/>
-            <path d="M822 260 C715 245 675 270 618 322"/>
-            <path d="M190 535 C300 520 340 485 395 438"/>
-            <path d="M810 535 C700 520 660 485 605 438"/>
-          </svg>
+        <figure className="ecosystemHeroVisual">
+          <img src="/figan-ekosistem-premium.webp" alt="Figan dijital yayın ekosistemi" />
+        </figure>
 
-          <div className="ecoNode ecoEbook">
-            <span className="ecoIcon"><ProcessIcon type="book" /></span>
-            <h3>E-KİTAP</h3>
-            <strong>Okunur.</strong>
-            <p>Tüm cihazlarda,<br/>her yerde.</p>
-          </div>
-
-          <div className="ecoNode ecoAudio">
-            <span className="ecoIcon"><ProcessIcon type="audio" /></span>
-            <h3>SESLİ KİTAP</h3>
-            <strong>Dinlenir.</strong>
-            <p>Profesyonel seslendirme ile hikâyeniz daha uzağa gider.</p>
-          </div>
-
-          <div className="ecoNode ecoSite">
-            <span className="ecoIcon"><ProcessIcon type="site" /></span>
-            <h3>YAZAR SİTESİ</h3>
-            <strong>Yazarın dünyasını kurar.</strong>
-            <p>Kendi alanınızda okurlarınızla buluşun.</p>
-          </div>
-
-          <div className="ecoNode ecoLanguage">
+        <div className="ecosystemExpansion">
+          <article>
             <span className="ecoIcon"><ProcessIcon type="globe" /></span>
             <h3>YABANCI DİL</h3>
             <strong>Yeni okurlara açılır.</strong>
-            <p>Profesyonel çeviri ve editoryal uyarlama.</p>
-          </div>
-
-          <div className="ecoNode ecoDistribution">
+            <p>Profesyonel çeviri ve editoryal uyarlamayla eseriniz yeni dillere hazırlanır.</p>
+          </article>
+          <article>
             <span className="ecoIcon"><ProcessIcon type="distribution" /></span>
             <h3>DİJİTAL DAĞITIM</h3>
             <strong>Dünyaya ulaşır.</strong>
-            <p>Türkiye’de ve uluslararası dijital kanallarda.</p>
-          </div>
-
-          <div className="ecosystemStage" aria-label="Figan dijital yayın ekosistemi">
-            <img className="ecoReader" src="/ekosistem-reader.webp" alt="Figan Reader üzerinde İçimdeki İbrahim" />
-            <img className="ecoBook" src="/ekosistem-kitap.webp" alt="İçimdeki İbrahim kitap mockup" />
-            <img className="ecoAudioPhone" src="/ekosistem-audio-transparent.webp" alt="Figan Audio üzerinde İçimdeki İbrahim" />
-          </div>
+            <p>Türkiye’de ve uluslararası dijital yayın kanallarında okurla buluşur.</p>
+          </article>
         </div>
 
         <div className="ecosystemClosing">
