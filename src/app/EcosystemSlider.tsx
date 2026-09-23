@@ -35,7 +35,7 @@ const slides = [
     kicker: "YAZAR SİTESİ",
     title: "Size ait\nbir dijital dünya.",
     body: "Eserleriniz, biyografiniz ve okurlarınızla bağınız tek bir kişisel adreste buluşur.",
-    image: "/figan-hizmet-03-yazar-sitesi.webp",
+    image: "/figan-yazar-sitesi-laptop.webp",
     imageClass: "productSite",
     alt: "Figan yazar sitesi laptop görünümü",
   },
