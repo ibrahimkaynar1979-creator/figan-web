@@ -181,8 +181,8 @@ export default function Home() {
           </article>
           <article>
             <div className="processMarks"><span className="processNo">6</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="player" /></span></div>
-            <div className="processMain"><h3>Figan Reader &amp; Audio</h3><p>Okuma ve dinleme deneyimini tek dünyada buluşturuyoruz.</p></div>
-            <small>Okur ve dinleyiciyle buluşur.</small>
+            <div className="processMain"><h3>Figan Reader &amp; Audio</h3><p>E-kitabınız ve sesli kitabınız Figan’ın dijital okuma ve dinleme deneyiminde yerini alır.</p></div>
+            <small>İki format. Tek yayın dünyası.</small>
           </article>
           <article>
             <div className="processMarks"><span className="processNo">7</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="site" /></span></div>
@@ -203,6 +203,71 @@ export default function Home() {
 
         <a className="processCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
         <blockquote>“Her kitap, yeni bir dünyaya açılan kapıdır.” <cite>— FİGAN</cite></blockquote>
+      </section>
+
+      <section className="ecosystemSection" id="ekosistem">
+        <div className="ecosystemIntro">
+          <div className="ecosystemKicker"><span>FİGAN EKOSİSTEMİ</span><i/><b>04</b></div>
+          <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
+          <p>E-kitabınız okunur. Sesli kitabınız dinlenir. Yazar siteniz sizi anlatır. Figan bütününü tek bir yayın dünyasında bir araya getirir.</p>
+        </div>
+
+        <div className="ecosystemCanvas">
+          <svg className="ecosystemLines" viewBox="0 0 1000 720" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M500 108 C500 165 500 190 500 235"/>
+            <path d="M178 260 C285 245 325 270 382 322"/>
+            <path d="M822 260 C715 245 675 270 618 322"/>
+            <path d="M190 535 C300 520 340 485 395 438"/>
+            <path d="M810 535 C700 520 660 485 605 438"/>
+          </svg>
+
+          <div className="ecoNode ecoEbook">
+            <span className="ecoIcon"><ProcessIcon type="book" /></span>
+            <h3>E-KİTAP</h3>
+            <strong>Okunur.</strong>
+            <p>Tüm cihazlarda,<br/>her yerde.</p>
+          </div>
+
+          <div className="ecoNode ecoAudio">
+            <span className="ecoIcon"><ProcessIcon type="audio" /></span>
+            <h3>SESLİ KİTAP</h3>
+            <strong>Dinlenir.</strong>
+            <p>Profesyonel seslendirme ile hikâyeniz daha uzağa gider.</p>
+          </div>
+
+          <div className="ecoNode ecoSite">
+            <span className="ecoIcon"><ProcessIcon type="site" /></span>
+            <h3>YAZAR SİTESİ</h3>
+            <strong>Yazarın dünyasını kurar.</strong>
+            <p>Kendi alanınızda okurlarınızla buluşun.</p>
+          </div>
+
+          <div className="ecoNode ecoLanguage">
+            <span className="ecoIcon"><ProcessIcon type="globe" /></span>
+            <h3>YABANCI DİL</h3>
+            <strong>Yeni okurlara açılır.</strong>
+            <p>Profesyonel çeviri ve editoryal uyarlama.</p>
+          </div>
+
+          <div className="ecoNode ecoDistribution">
+            <span className="ecoIcon"><ProcessIcon type="distribution" /></span>
+            <h3>DİJİTAL DAĞITIM</h3>
+            <strong>Dünyaya ulaşır.</strong>
+            <p>Türkiye’de ve uluslararası dijital kanallarda.</p>
+          </div>
+
+          <div className="ecosystemStage" aria-label="Figan dijital yayın ekosistemi">
+            <img className="ecoReader" src="/ekosistem-reader.webp" alt="Figan Reader üzerinde İçimdeki İbrahim" />
+            <img className="ecoBook" src="/ekosistem-kitap.webp" alt="İçimdeki İbrahim kitap mockup" />
+            <img className="ecoAudioPhone" src="/ekosistem-audio.webp" alt="Figan Audio üzerinde İçimdeki İbrahim" />
+          </div>
+        </div>
+
+        <div className="ecosystemClosing">
+          <p>Dosyanız yalnızca bir kitaba dönüşmez.</p>
+          <strong>Kendi yayın dünyasına dönüşür.</strong>
+          <span>Daha fazla okur. Daha fazla yaşam.</span>
+        </div>
       </section>
 
       <section id="basvuru" className="placeholderCta">
