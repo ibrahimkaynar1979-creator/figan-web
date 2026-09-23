@@ -322,3 +322,10 @@
   .ecosystemClosing p { font-size: 20px; }
   .ecosystemClosing strong { font-size: 21px; }
 }
+
+
+/* Tighten transition from section 04 to 05 */
+@media(max-width:720px){
+  .ecosystemSection{padding-bottom:8px}
+  .ecosystemClosing{margin-top:20px;padding-bottom:12px}
+}
