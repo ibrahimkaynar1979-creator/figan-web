@@ -1,10 +1,93 @@
-/* Section 04 - Figan Ecosystem readability pass */
+/* Section 04 - Figan Ecosystem mobile final pass */
 @media (max-width: 720px) {
+  .ecosystemSection {
+    padding: 56px 16px 104px !important;
+  }
+
   .ecosystemIntro > p {
+    margin-top: 18px !important;
+    max-width: 460px !important;
     font-size: 15px !important;
     line-height: 1.58 !important;
     color: #3f352d !important;
-    max-width: 460px;
+  }
+
+  .ecosystemCanvas {
+    min-height: 630px !important;
+    margin-top: 24px !important;
+  }
+
+  .ecosystemStage {
+    top: 47% !important;
+    width: 100% !important;
+    height: 300px !important;
+  }
+
+  .ecosystemStage::before {
+    width: 72% !important;
+    opacity: .68 !important;
+  }
+
+  .ecoReader {
+    left: 2% !important;
+    bottom: 4% !important;
+    width: 45% !important;
+    height: 76% !important;
+  }
+
+  .ecoBook {
+    left: 50% !important;
+    bottom: 0 !important;
+    width: 46% !important;
+    height: 94% !important;
+  }
+
+  .ecoAudioPhone {
+    right: 1% !important;
+    bottom: 3% !important;
+    width: 34% !important;
+    height: 73% !important;
+  }
+
+  .ecoNode {
+    width: 46% !important;
+    padding: 0 5px !important;
+  }
+
+  .ecoEbook {
+    width: 48% !important;
+    top: 0 !important;
+  }
+
+  .ecoAudio {
+    left: 0 !important;
+    top: 18% !important;
+  }
+
+  .ecoSite {
+    right: 0 !important;
+    top: 18% !important;
+  }
+
+  .ecoLanguage {
+    left: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .ecoDistribution {
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .ecoIcon {
+    width: 52px !important;
+    height: 52px !important;
+    margin-bottom: 9px !important;
+  }
+
+  .ecoIcon svg {
+    width: 25px !important;
+    height: 25px !important;
   }
 
   .ecoNode h3 {
@@ -23,9 +106,13 @@
   .ecoNode p {
     margin-top: 7px !important;
     max-width: 190px !important;
-    font-size: 12px !important;
+    font-size: 12.5px !important;
     line-height: 1.42 !important;
-    color: #5d5046 !important;
+    color: #56493f !important;
+  }
+
+  .ecosystemClosing {
+    margin-top: 16px !important;
   }
 
   .ecosystemClosing p {
@@ -34,12 +121,13 @@
   }
 
   .ecosystemClosing strong {
+    margin-top: 4px !important;
     font-size: 24px !important;
     line-height: 1.16 !important;
   }
 
   .ecosystemClosing span {
-    margin-top: 24px !important;
+    margin-top: 22px !important;
     font-size: 8px !important;
     line-height: 1.5 !important;
     letter-spacing: .25em !important;
@@ -47,9 +135,35 @@
 }
 
 @media (max-width: 390px) {
+  .ecosystemSection {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
   .ecosystemIntro > p {
     font-size: 14px !important;
     line-height: 1.56 !important;
+  }
+
+  .ecosystemCanvas {
+    min-height: 605px !important;
+  }
+
+  .ecosystemStage {
+    height: 280px !important;
+    top: 47% !important;
+  }
+
+  .ecoReader {
+    width: 44% !important;
+  }
+
+  .ecoBook {
+    width: 45% !important;
+  }
+
+  .ecoAudioPhone {
+    width: 33% !important;
   }
 
   .ecoNode h3 {
