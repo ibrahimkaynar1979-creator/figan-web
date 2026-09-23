@@ -74,34 +74,72 @@ export default function Home() {
         </button>
       </section>
 
-      <section className="manifesto" id="manifesto">
-        <div className="manifestoIntro">
-          <p className="eyebrow">FİGAN NE YAPIYOR?</p>
-          <h2>Kitabınızı yalnızca<br/>yayımlamıyoruz.</h2>
-          <p className="manifestoLead">Etrafında bir yayın dünyası kuruyoruz.</p>
-          <p className="manifestoBody">Dosyanızı dijital yayına hazırlıyor; e-kitabınızı, sesli kitabınızı ve yazar sitenizi tek bir yayın deneyiminde bir araya getiriyoruz.</p>
+      <section className="servicesSection" id="manifesto">
+        <p className="eyebrow">HİZMETLERİMİZ</p>
+        <h2>Her ihtiyaç için,<br/><em>tek bir yayın dünyasında.</em></h2>
+        <p className="servicesLead">Eserinizi en iyi haliyle hazırlıyor, dijital dünyada okuyucuya ulaşacağı bütün parçaları tek çatı altında kuruyoruz.</p>
+
+        <div className="serviceEditorialList">
+          <article className="serviceEditorialItem">
+            <span className="serviceIndex">01</span>
+            <div className="serviceEditorialCopy">
+              <h3>E-Kitap</h3>
+              <p>Her yerde okunsun.</p>
+              <span>Profesyonel dijital hazırlık · Tüm cihazlarla uyum · Yayına hazır EPUB</span>
+            </div>
+            <a href="#surec" aria-label="E-Kitap detayları">→</a>
+          </article>
+
+          <article className="serviceEditorialItem">
+            <span className="serviceIndex">02</span>
+            <div className="serviceEditorialCopy">
+              <h3>Sesli Kitap</h3>
+              <p>Hikâyeniz ses bulsun.</p>
+              <span>Profesyonel ses üretimi · Bölüm bazlı dinleme · Figan Audio deneyimi</span>
+            </div>
+            <a href="#surec" aria-label="Sesli Kitap detayları">→</a>
+          </article>
+
+          <article className="serviceEditorialItem">
+            <span className="serviceIndex">03</span>
+            <div className="serviceEditorialCopy">
+              <h3>Yazar Sitesi</h3>
+              <p>Size ait bir dijital dünya.</p>
+              <span>Eserleriniz · Yazar kimliğiniz · Okurla doğrudan bağ kuran kişisel alanınız</span>
+            </div>
+            <a href="#surec" aria-label="Yazar Sitesi detayları">→</a>
+          </article>
+
+          <article className="serviceEditorialItem">
+            <span className="serviceIndex">04</span>
+            <div className="serviceEditorialCopy">
+              <h3>Dijital Dağıtım</h3>
+              <p>Daha fazla okura ulaşın.</p>
+              <span>Türkiye ve dünya · Uygun dijital yayın kanalları · Uzun vadeli yayın desteği</span>
+            </div>
+            <a href="#surec" aria-label="Dijital Dağıtım detayları">→</a>
+          </article>
+        </div>
+      </section>
+
+      <section className="processSection" id="surec">
+        <p className="eyebrow">BİR DOSYA, BİR YOLCULUK.</p>
+        <h2>Nasıl çalışıyoruz?</h2>
+        <p className="processLead">Eseriniz, Figan’ın profesyonel yayın süreciyle adım adım dijital dünyaya hazırlanır.</p>
+
+        <div className="processTimeline">
+          <article><span>1</span><div><h3>Başvuru</h3><p>Dosyanızı bizimle paylaşın.</p></div><small>Hayaliniz ilk adımı atar.</small></article>
+          <article><span>2</span><div><h3>Editörlük</h3><p>Metninizi yayın için güçlendiriyoruz.</p></div><small>Daha güçlü bir metin.</small></article>
+          <article><span>3</span><div><h3>Kapak &amp; Tasarım</h3><p>Eserinize özgü yayın kimliği oluşturuyoruz.</p></div><small>İlk bakışta fark yaratır.</small></article>
+          <article><span>4</span><div><h3>E-Kitap</h3><p>Tüm cihazlarda okunabilen dijital formata hazırlıyoruz.</p></div><small>Her yerde okunsun.</small></article>
+          <article><span>5</span><div><h3>Sesli Kitap</h3><p>Eserinizi dinleme deneyimine dönüştürüyoruz.</p></div><small>Sözün sesi daha uzağa gider.</small></article>
+          <article><span>6</span><div><h3>Figan Reader &amp; Audio</h3><p>Okuma ve dinleme deneyimini tek dünyada buluşturuyoruz.</p></div><small>Okur ve dinleyiciyle buluşur.</small></article>
+          <article><span>7</span><div><h3>Yazar Sitesi</h3><p>Size özel profesyonel yazar alanınızı kuruyoruz.</p></div><small>Dijitalde sizin dünyanız.</small></article>
+          <article><span>8</span><div><h3>Dijital Dağıtım</h3><p>Eserinizi uygun dijital yayın kanallarına taşıyoruz.</p></div><small>Daha fazla okur, daha fazla erişim.</small></article>
         </div>
 
-        <div className="serviceLines" aria-label="Figan hizmetleri">
-          <div className="serviceLine">
-            <span className="serviceNo">01</span>
-            <div><b>E-Kitap</b><small>Yayına hazır dijital eser</small></div>
-          </div>
-          <div className="serviceLine">
-            <span className="serviceNo">02</span>
-            <div><b>Sesli Kitap</b><small>Eserinizin dinlenen hali</small></div>
-          </div>
-          <div className="serviceLine">
-            <span className="serviceNo">03</span>
-            <div><b>Yazar Sitesi</b><small>Size ait dijital merkez</small></div>
-          </div>
-          <div className="serviceLine">
-            <span className="serviceNo">04</span>
-            <div><b>Dijital Dağıtım</b><small>Okuyucuya ulaşan yayın ağı</small></div>
-          </div>
-        </div>
-
-        <a href="#basvuru" className="textLink manifestoLink">Figan’ın yayın modelini keşfet <span>→</span></a>
+        <a className="processCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
+        <blockquote>“Her kitap, yeni bir dünyaya açılan kapıdır.” <cite>— FİGAN</cite></blockquote>
       </section>
 
       <section id="basvuru" className="placeholderCta">
