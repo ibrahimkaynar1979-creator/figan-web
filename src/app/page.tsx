@@ -75,10 +75,33 @@ export default function Home() {
       </section>
 
       <section className="manifesto" id="manifesto">
-        <p className="eyebrow">FİGAN NE YAPIYOR?</p>
-        <h2>Bir dosyadan,<br/>bir yazar dünyasına.</h2>
-        <p>Dosyanızı profesyonel yayın süreciyle e-kitaba ve sesli kitaba dönüştürüyor; size özel yazar sitesi kuruyor ve eserinizi dijital kanallar aracılığıyla okuyucuyla buluşturuyoruz.</p>
-        <a href="#basvuru" className="textLink">Süreci keşfet <span>→</span></a>
+        <div className="manifestoIntro">
+          <p className="eyebrow">FİGAN NE YAPIYOR?</p>
+          <h2>Kitabınızı yalnızca<br/>yayımlamıyoruz.</h2>
+          <p className="manifestoLead">Etrafında bir yayın dünyası kuruyoruz.</p>
+          <p className="manifestoBody">Dosyanızı dijital yayına hazırlıyor; e-kitabınızı, sesli kitabınızı ve yazar sitenizi tek bir yayın deneyiminde bir araya getiriyoruz.</p>
+        </div>
+
+        <div className="serviceLines" aria-label="Figan hizmetleri">
+          <div className="serviceLine">
+            <span className="serviceNo">01</span>
+            <div><b>E-Kitap</b><small>Yayına hazır dijital eser</small></div>
+          </div>
+          <div className="serviceLine">
+            <span className="serviceNo">02</span>
+            <div><b>Sesli Kitap</b><small>Eserinizin dinlenen hali</small></div>
+          </div>
+          <div className="serviceLine">
+            <span className="serviceNo">03</span>
+            <div><b>Yazar Sitesi</b><small>Size ait dijital merkez</small></div>
+          </div>
+          <div className="serviceLine">
+            <span className="serviceNo">04</span>
+            <div><b>Dijital Dağıtım</b><small>Okuyucuya ulaşan yayın ağı</small></div>
+          </div>
+        </div>
+
+        <a href="#basvuru" className="textLink manifestoLink">Figan’ın yayın modelini keşfet <span>→</span></a>
       </section>
 
       <section id="basvuru" className="placeholderCta">
