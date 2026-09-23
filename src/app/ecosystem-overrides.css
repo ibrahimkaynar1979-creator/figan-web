@@ -3,7 +3,7 @@
   .ecosystemSection {
     position: relative;
     overflow: hidden;
-    padding: 50px 0 132px;
+    padding: 50px 0 28px;
     background:
       radial-gradient(circle at 50% 44%, rgba(164,107,57,.08), transparent 34%),
       linear-gradient(180deg,#f8f3eb 0%,#f4eadc 64%,#f8f3eb 100%);
