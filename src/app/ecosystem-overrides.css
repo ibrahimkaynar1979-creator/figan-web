@@ -1,18 +1,18 @@
-/* 04 / FIGAN ECOSYSTEM — single-image premium section */
+/* 04 / Figan Ecosystem slider — rebuilt from scratch */
 @media (max-width: 720px) {
   .ecosystemSection {
     position: relative;
     overflow: hidden;
-    padding: 50px 14px 132px;
+    padding: 50px 0 132px;
     background:
-      radial-gradient(circle at 50% 46%, rgba(166,112,64,.08), transparent 34%),
-      linear-gradient(180deg,#f8f3eb 0%,#f5ecdf 62%,#f8f3eb 100%);
+      radial-gradient(circle at 50% 44%, rgba(164,107,57,.08), transparent 34%),
+      linear-gradient(180deg,#f8f3eb 0%,#f4eadc 64%,#f8f3eb 100%);
   }
 
   .ecosystemIntro {
     max-width: 500px;
     margin: 0 auto;
-    text-align: left;
+    padding: 0 14px;
   }
 
   .ecosystemKicker {
@@ -40,10 +40,9 @@
 
   .ecosystemIntro h2 {
     margin: 0;
-    max-width: 460px;
-    font-size: clamp(41px,10.2vw,52px);
-    line-height: .98;
-    letter-spacing: -.035em;
+    font-size: clamp(42px,10.4vw,53px);
+    line-height: .96;
+    letter-spacing: -.04em;
   }
 
   .ecosystemIntro h2 em {
@@ -53,187 +52,288 @@
 
   .ecosystemIntro > p {
     margin: 18px 0 0;
-    max-width: 455px;
-    color: #4d4137;
+    max-width: 450px;
+    color: #4e4136;
     font-size: 14px;
-    line-height: 1.55;
+    line-height: 1.52;
   }
 
-  .ecosystemHeroVisual {
+  .ecosystemSlider {
     position: relative;
-    width: calc(100% + 28px);
-    margin: 30px -14px 0;
+    margin-top: 30px;
+    min-height: 560px;
     overflow: hidden;
-    background: #20130b;
+    border-top: 1px solid rgba(106,72,44,.08);
+    border-bottom: 1px solid rgba(106,72,44,.08);
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.05)),
+      radial-gradient(circle at 50% 70%,rgba(174,118,67,.12),transparent 38%);
   }
 
-  .ecosystemHeroVisual::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0;
-    height: 18%;
-    pointer-events: none;
-    background: linear-gradient(180deg,transparent,rgba(29,17,9,.12));
-  }
-
-  .ecosystemHeroVisual img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1.08;
-    object-fit: cover;
-    object-position: center 48%;
-  }
-
-  .ecosystemExpansion {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 28px 4px 0;
-  }
-
-  .ecosystemExpansion article {
+  .ecosystemSlideCopy {
     position: relative;
-    padding: 0 14px;
+    z-index: 4;
+    padding: 28px 62px 0;
     text-align: center;
   }
 
-  .ecosystemExpansion article + article::before {
+  .slideNo,
+  .slideKicker {
+    display: block;
+  }
+
+  .slideNo {
+    color: #a06a3b;
+    font-size: 10px;
+    letter-spacing: .18em;
+  }
+
+  .slideKicker {
+    margin-top: 6px;
+    color: #322419;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .24em;
+  }
+
+  .ecosystemSlideCopy h3 {
+    margin: 10px auto 0;
+    max-width: 370px;
+    color: #1d140e;
+    font-size: 31px;
+    line-height: .98;
+    font-weight: 500;
+    letter-spacing: -.025em;
+  }
+
+  .ecosystemSlideCopy p {
+    margin: 12px auto 0;
+    max-width: 330px;
+    color: #625348;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .ecosystemProductStage {
+    position: relative;
+    height: 345px;
+    margin: 8px 48px 0;
+  }
+
+  .ecosystemProductStage::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 8px;
-    bottom: 10px;
-    width: 1px;
-    background: rgba(149,97,57,.19);
-  }
-
-  .ecosystemExpansion .ecoIcon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 10px;
-    border: 1px solid rgba(150,104,63,.23);
+    left: 50%;
+    bottom: 32px;
+    width: 82%;
+    height: 38px;
+    transform: translateX(-50%);
     border-radius: 50%;
-    background: rgba(248,237,222,.92);
-    box-shadow: 0 7px 18px rgba(74,47,27,.045);
+    background: linear-gradient(180deg,rgba(232,216,197,.85),rgba(207,182,153,.55));
+    box-shadow: 0 14px 28px rgba(62,40,23,.09);
   }
 
-  .ecosystemExpansion .ecoIcon svg {
-    width: 22px;
-    height: 22px;
+  .ecosystemProductStage::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    width: 64%;
+    height: 14px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(53,34,20,.12);
+    filter: blur(10px);
   }
 
-  .ecosystemExpansion h3 {
-    margin: 0;
-    font-size: 17px;
-    line-height: 1.08;
-    letter-spacing: .01em;
-  }
-
-  .ecosystemExpansion strong {
+  .ecosystemProductStage img {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
     display: block;
-    margin-top: 5px;
-    color: #8e5b31;
-    font-size: 14px;
-    line-height: 1.2;
-    font-weight: 400;
+    object-fit: contain;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 15px 18px rgba(41,26,15,.16));
+    animation: ecosystemIn .38s ease both;
   }
 
-  .ecosystemExpansion p {
-    margin: 7px auto 0;
-    max-width: 185px;
-    color: #625348;
-    font-size: 11.5px;
-    line-height: 1.42;
+  .ecosystemProductStage .productBook {
+    width: 64%;
+    height: 292px;
+  }
+
+  .ecosystemProductStage .productReader {
+    width: 72%;
+    height: 278px;
+  }
+
+  .ecosystemProductStage .productAudio {
+    width: 50%;
+    height: 292px;
+  }
+
+  .ecosystemProductStage .productSite {
+    width: 90%;
+    height: 272px;
+    border-radius: 16px;
+  }
+
+  .sliderArrow {
+    position: absolute;
+    top: 55%;
+    z-index: 6;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 1px solid rgba(115,77,45,.42);
+    border-radius: 50%;
+    background: rgba(248,241,230,.84);
+    color: #6d4527;
+    font-size: 20px;
+    line-height: 1;
+    backdrop-filter: blur(10px);
+  }
+
+  .sliderPrev { left: 12px; }
+  .sliderNext { right: 12px; }
+
+  .sliderDots {
+    position: absolute;
+    left: 50%;
+    bottom: 58px;
+    z-index: 7;
+    display: flex;
+    gap: 7px;
+    transform: translateX(-50%);
+  }
+
+  .sliderDots button {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(95,65,42,.25);
+  }
+
+  .sliderDots button.active {
+    width: 20px;
+    border-radius: 10px;
+    background: #9b6235;
+  }
+
+  .sliderProgress {
+    position: absolute;
+    left: 50%;
+    bottom: 23px;
+    z-index: 7;
+    display: grid;
+    grid-template-columns: auto 110px auto;
+    align-items: center;
+    gap: 9px;
+    width: max-content;
+    transform: translateX(-50%);
+    color: #70533c;
+    font-size: 9px;
+    letter-spacing: .12em;
+  }
+
+  .sliderProgress i {
+    position: relative;
+    display: block;
+    height: 1px;
+    overflow: hidden;
+    background: rgba(112,83,60,.22);
+  }
+
+  .sliderProgress i b {
+    position: absolute;
+    inset: 0 auto 0 0;
+    display: block;
+    background: #9b6235;
+    transition: width .3s ease;
   }
 
   .ecosystemClosing {
     max-width: 470px;
-    margin: 30px auto 0;
-    padding: 0 10px 26px;
+    margin: 28px auto 0;
+    padding: 0 16px 24px;
     text-align: center;
   }
 
   .ecosystemClosing p {
     margin: 0;
-    font-size: 22px;
-    line-height: 1.16;
+    font-size: 21px;
+    line-height: 1.17;
   }
 
   .ecosystemClosing strong {
     display: block;
     margin-top: 4px;
     color: #9b6235;
-    font-size: 23px;
-    line-height: 1.14;
+    font-size: 22px;
+    line-height: 1.15;
     font-weight: 400;
   }
 
   .ecosystemClosing span {
     display: block;
-    margin-top: 18px;
+    margin-top: 17px;
     color: #956139;
     font-size: 8px;
     line-height: 1.4;
     letter-spacing: .23em;
     text-transform: uppercase;
   }
+
+  @keyframes ecosystemIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px) scale(.98); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  }
 }
 
 @media (max-width: 390px) {
-  .ecosystemSection {
-    padding: 42px 12px 126px;
-  }
+  .ecosystemSection { padding-top: 42px; }
+  .ecosystemIntro { padding: 0 12px; }
+  .ecosystemIntro h2 { font-size: 39px; }
+  .ecosystemIntro > p { font-size: 13px; }
 
-  .ecosystemIntro h2 {
-    font-size: 39px;
-  }
-
-  .ecosystemIntro > p {
-    font-size: 13px;
-  }
-
-  .ecosystemHeroVisual {
-    width: calc(100% + 24px);
-    margin-left: -12px;
-    margin-right: -12px;
+  .ecosystemSlider {
+    min-height: 520px;
     margin-top: 26px;
   }
 
-  .ecosystemExpansion {
-    padding-top: 24px;
+  .ecosystemSlideCopy {
+    padding: 24px 54px 0;
   }
 
-  .ecosystemExpansion article {
-    padding: 0 10px;
+  .ecosystemSlideCopy h3 {
+    font-size: 28px;
   }
 
-  .ecosystemExpansion h3 {
-    font-size: 15.5px;
+  .ecosystemSlideCopy p {
+    font-size: 11px;
   }
 
-  .ecosystemExpansion strong {
-    font-size: 13px;
+  .ecosystemProductStage {
+    height: 320px;
+    margin: 4px 40px 0;
   }
 
-  .ecosystemExpansion p {
-    font-size: 10.6px;
+  .ecosystemProductStage .productBook { width: 66%; height: 270px; }
+  .ecosystemProductStage .productReader { width: 76%; height: 260px; }
+  .ecosystemProductStage .productAudio { width: 52%; height: 270px; }
+  .ecosystemProductStage .productSite { width: 92%; height: 250px; }
+
+  .sliderArrow {
+    width: 36px;
+    height: 36px;
   }
 
-  .ecosystemClosing {
-    margin-top: 24px;
-    padding-bottom: 30px;
+  .sliderProgress {
+    grid-template-columns: auto 96px auto;
   }
 
-  .ecosystemClosing p {
-    font-size: 20px;
-  }
-
-  .ecosystemClosing strong {
-    font-size: 21px;
-  }
+  .ecosystemClosing p { font-size: 20px; }
+  .ecosystemClosing strong { font-size: 21px; }
 }
