@@ -3601,3 +3601,114 @@ button{font:inherit;color:inherit}
     padding-top:42px!important;
   }
 }
+
+/* SERVICES CARDS — equal size, alternating image/text like approved reference */
+@media(max-width:520px){
+  .serviceShowcase{
+    margin:30px 14px 0!important;
+    border-top:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:12px!important;
+  }
+
+  .serviceShowcaseRow,
+  .serviceShowcaseRow.imageRight{
+    grid-template-columns:50% 50%!important;
+    min-height:0!important;
+    height:188px!important;
+    border:1px solid rgba(48,32,20,.10)!important;
+    border-radius:16px!important;
+    overflow:hidden!important;
+    background:#f8f3eb!important;
+    box-shadow:0 5px 16px rgba(40,25,15,.07)!important;
+  }
+
+  .serviceVisual{
+    width:100%!important;
+    min-height:0!important;
+    height:188px!important;
+    background:#ded2c4!important;
+  }
+
+  .serviceVisual img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center!important;
+  }
+
+  .serviceShowcaseCopy{
+    min-width:0!important;
+    height:188px!important;
+    padding:17px 15px!important;
+    justify-content:center!important;
+    background:#f8f3eb!important;
+  }
+
+  .serviceKicker{
+    font-size:7px!important;
+    line-height:1.15!important;
+    letter-spacing:.17em!important;
+  }
+
+  .serviceShowcaseCopy h3{
+    margin-top:8px!important;
+    font-size:22px!important;
+    line-height:.96!important;
+    letter-spacing:-.03em!important;
+  }
+
+  .serviceShowcaseCopy p{
+    margin-top:8px!important;
+    font-size:9.5px!important;
+    line-height:1.38!important;
+  }
+
+  .serviceShowcaseCopy a{
+    margin-top:11px!important;
+    padding-bottom:3px!important;
+    font-size:9px!important;
+    gap:8px!important;
+  }
+
+  .serviceShowcaseCopy a b{
+    font-size:14px!important;
+  }
+
+  .servicesSection{
+    padding-bottom:48px!important;
+  }
+}
+
+@media(max-width:390px){
+  .serviceShowcase{
+    margin-left:12px!important;
+    margin-right:12px!important;
+    gap:10px!important;
+  }
+
+  .serviceShowcaseRow,
+  .serviceShowcaseRow.imageRight{
+    grid-template-columns:50% 50%!important;
+    height:176px!important;
+    border-radius:14px!important;
+  }
+
+  .serviceVisual,
+  .serviceShowcaseCopy{
+    height:176px!important;
+  }
+
+  .serviceShowcaseCopy{
+    padding:15px 12px!important;
+  }
+
+  .serviceShowcaseCopy h3{
+    font-size:20px!important;
+  }
+
+  .serviceShowcaseCopy p{
+    font-size:9px!important;
+  }
+}
