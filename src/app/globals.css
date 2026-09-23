@@ -4264,3 +4264,40 @@ button{font:inherit;color:inherit}
     height:42px!important;
   }
 }
+
+/* PROCESS V7 — exact vertical centering inside each card */
+@media(max-width:520px){
+  .processTimeline article{
+    position:relative!important;
+    min-height:88px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+  }
+
+  .processMarks{
+    position:absolute!important;
+    left:0!important;
+    top:50%!important;
+    height:auto!important;
+    padding:0!important;
+    margin:0!important;
+    transform:translateY(-50%)!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+  }
+
+  .processTimeline .processNo,
+  .processTimeline .processIcon{
+    margin:0!important;
+    top:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+  }
+}
+
+@media(max-width:390px){
+  .processMarks{
+    gap:6px!important;
+  }
+}
