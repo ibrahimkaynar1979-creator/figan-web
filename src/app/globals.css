@@ -3489,3 +3489,115 @@ button{font:inherit;color:inherit}
     object-fit:cover!important;
   }
 }
+
+/* SERVICES SHOWCASE POLISH — larger visuals, better crop, tighter section rhythm */
+@media(max-width:520px){
+  .serviceShowcaseRow{
+    grid-template-columns:57% 43%!important;
+    min-height:220px!important;
+  }
+
+  .serviceShowcaseRow.imageRight{
+    grid-template-columns:43% 57%!important;
+  }
+
+  .serviceVisual{
+    min-height:220px!important;
+  }
+
+  .serviceVisual img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center!important;
+  }
+
+  .serviceShowcaseRow:nth-child(1) .serviceVisual img{
+    object-position:50% 50%!important;
+  }
+
+  .serviceShowcaseRow:nth-child(2) .serviceVisual img{
+    object-position:52% 50%!important;
+  }
+
+  .serviceShowcaseRow:nth-child(3) .serviceVisual img{
+    object-position:48% 48%!important;
+  }
+
+  .serviceShowcaseRow:nth-child(4) .serviceVisual img{
+    object-position:50% 50%!important;
+  }
+
+  .serviceShowcaseRow:nth-child(5) .serviceVisual img{
+    object-position:48% 50%!important;
+  }
+
+  .serviceShowcaseCopy{
+    padding:22px 16px!important;
+  }
+
+  .serviceKicker{
+    font-size:7.5px!important;
+    letter-spacing:.16em!important;
+  }
+
+  .serviceShowcaseCopy h3{
+    margin-top:9px!important;
+    font-size:25px!important;
+    line-height:.95!important;
+  }
+
+  .serviceShowcaseCopy p{
+    margin-top:10px!important;
+    font-size:10px!important;
+    line-height:1.42!important;
+  }
+
+  .serviceShowcaseCopy a{
+    margin-top:14px!important;
+    font-size:9.5px!important;
+  }
+
+  .servicesSection{
+    padding-bottom:54px!important;
+  }
+
+  .processSection{
+    padding-top:48px!important;
+  }
+}
+
+@media(max-width:390px){
+  .serviceShowcaseRow{
+    grid-template-columns:56% 44%!important;
+    min-height:206px!important;
+  }
+
+  .serviceShowcaseRow.imageRight{
+    grid-template-columns:44% 56%!important;
+  }
+
+  .serviceVisual{
+    min-height:206px!important;
+  }
+
+  .serviceShowcaseCopy{
+    padding:19px 13px!important;
+  }
+
+  .serviceShowcaseCopy h3{
+    font-size:23px!important;
+  }
+
+  .serviceShowcaseCopy p{
+    font-size:9.6px!important;
+  }
+
+  .servicesSection{
+    padding-bottom:46px!important;
+  }
+
+  .processSection{
+    padding-top:42px!important;
+  }
+}
