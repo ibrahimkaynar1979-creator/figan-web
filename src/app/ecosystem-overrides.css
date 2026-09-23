@@ -365,3 +365,120 @@
     font-size:9px!important;
   }
 }
+
+
+/* FIGAN ECOSYSTEM MOBILE FINAL POLISH */
+@media(max-width:720px){
+  .ecosystemSection{
+    padding-top:42px!important;
+    padding-bottom:0!important;
+  }
+  .ecosystemIntro{
+    padding:0 20px!important;
+  }
+  .ecosystemIntro>p{
+    margin-top:16px!important;
+    font-size:14px!important;
+    line-height:1.5!important;
+  }
+
+  .ecosystemSlider{
+    min-height:505px!important;
+    margin-top:24px!important;
+  }
+  .ecosystemSlideCopy{
+    padding:24px 52px 0!important;
+  }
+  .ecosystemSlideCopy h3{
+    font-size:36px!important;
+    line-height:.97!important;
+  }
+  .ecosystemSlideCopy p{
+    margin-top:12px!important;
+    font-size:14px!important;
+    line-height:1.46!important;
+  }
+
+  .ecosystemProductStage{
+    height:305px!important;
+    margin:0 42px!important;
+  }
+  .ecosystemProductStage img{
+    bottom:48px!important;
+  }
+  .ecosystemProductStage .productBook{
+    width:68%!important;
+    height:272px!important;
+  }
+  .ecosystemProductStage .productReader{
+    width:78%!important;
+    height:264px!important;
+  }
+  .ecosystemProductStage .productAudio{
+    width:54%!important;
+    height:274px!important;
+  }
+  .ecosystemProductStage .productSite{
+    width:96%!important;
+    height:252px!important;
+  }
+
+  .sliderArrow{
+    top:56%!important;
+  }
+  .sliderDots{
+    bottom:26px!important;
+  }
+  .sliderProgress{
+    display:none!important;
+  }
+
+  .ecosystemClosing{
+    margin-top:18px!important;
+    padding:0 18px 96px!important;
+  }
+  .ecosystemClosing p{
+    font-size:21px!important;
+    line-height:1.15!important;
+  }
+  .ecosystemClosing strong{
+    font-size:22px!important;
+    line-height:1.14!important;
+  }
+  .ecosystemClosing span{
+    margin-top:15px!important;
+    font-size:8px!important;
+  }
+}
+
+@media(max-width:390px){
+  .ecosystemIntro{
+    padding:0 16px!important;
+  }
+  .ecosystemIntro h2{
+    font-size:39px!important;
+  }
+  .ecosystemSlider{
+    min-height:480px!important;
+  }
+  .ecosystemSlideCopy{
+    padding:22px 48px 0!important;
+  }
+  .ecosystemSlideCopy h3{
+    font-size:33px!important;
+  }
+  .ecosystemSlideCopy p{
+    font-size:13px!important;
+  }
+  .ecosystemProductStage{
+    height:286px!important;
+    margin:0 36px!important;
+  }
+  .ecosystemProductStage .productSite{
+    width:98%!important;
+    height:238px!important;
+  }
+  .ecosystemClosing{
+    padding-bottom:92px!important;
+  }
+}
