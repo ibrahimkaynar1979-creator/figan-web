@@ -2808,3 +2808,52 @@ button{font:inherit;color:inherit}
     height:36px!important;
   }
 }
+
+/* FINAL MOBILE FLOW — first viewport is hero photo, CTAs start on second screen */
+@media(max-width:520px){
+  header.siteHeader{
+    height:58px!important;
+    min-height:58px!important;
+  }
+
+  .hero{
+    height:calc(100svh - 58px)!important;
+    min-height:calc(100svh - 58px)!important;
+    max-height:none!important;
+    overflow:hidden!important;
+  }
+
+  .heroArt{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center 50%!important;
+  }
+
+  .mobileHeroActions{
+    display:none!important;
+  }
+
+  .mobileActionPanel{
+    position:relative!important;
+    width:100%!important;
+    margin:0!important;
+    padding:16px 12px 18px!important;
+    background:#f4eee5!important;
+    border-top:0!important;
+  }
+}
+
+@media(max-width:390px){
+  header.siteHeader{
+    height:58px!important;
+    min-height:58px!important;
+  }
+
+  .hero{
+    height:calc(100svh - 58px)!important;
+    min-height:calc(100svh - 58px)!important;
+  }
+}
