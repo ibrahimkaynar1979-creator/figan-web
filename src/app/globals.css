@@ -2857,3 +2857,18 @@ button{font:inherit;color:inherit}
     min-height:calc(100svh - 58px)!important;
   }
 }
+
+/* MOBILE HERO HEIGHT FIX — keep photo fully inside first screen above fixed dock */
+@media(max-width:520px){
+  .hero{
+    height:calc(100svh - 58px - 68px)!important;
+    min-height:calc(100svh - 58px - 68px)!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero{
+    height:calc(100svh - 58px - 64px)!important;
+    min-height:calc(100svh - 58px - 64px)!important;
+  }
+}
