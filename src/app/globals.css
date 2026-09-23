@@ -4681,3 +4681,15 @@ button{font:inherit;color:inherit}
   .authorWorldBenefits p{font-size:10.5px}
   .authorWorldDark h3{font-size:41px}
 }
+
+
+/* Section 05 mobile spacing refinement */
+@media(max-width:720px){
+  .authorWorldHead{padding-top:36px;padding-bottom:18px}
+  .authorWorldKicker{margin-bottom:14px}
+  .authorWorldHead>p{margin-top:14px}
+  .authorWorldVisual{padding-bottom:16px}
+  .authorWorldBenefits{padding-bottom:30px}
+  .authorWorldBenefits article{min-height:116px;padding-top:14px;padding-bottom:14px}
+  .authorWorldDark{padding-top:48px;padding-bottom:78px}
+}
