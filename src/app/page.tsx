@@ -79,55 +79,55 @@ export default function Home() {
         <h2>Her ihtiyaç için,<br/><em>tek bir yayın dünyasında.</em></h2>
         <p className="servicesLead">Eserinizi en iyi haliyle hazırlıyor, dijital dünyada okuyucuya ulaşacağı bütün parçaları tek çatı altında kuruyoruz.</p>
 
-        <div className="serviceEditorialList">
-          <article className="serviceEditorialItem">
-            <span className="serviceIndex">01</span>
-            <div className="serviceEditorialCopy">
-              <h3>E-Kitap</h3>
-              <p>Her yerde okunsun.</p>
-              <span>Profesyonel dijital hazırlık · Tüm cihazlarla uyum · Yayına hazır EPUB</span>
+        <div className="serviceShowcase" aria-label="Figan hizmetleri">
+          <article className="serviceShowcaseRow imageLeft">
+            <div className="serviceVisual placeholderVisual"><span>01</span><small>E-KİTAP GÖRSELİ</small></div>
+            <div className="serviceShowcaseCopy">
+              <span className="serviceKicker">01 · E-KİTAP</span>
+              <h3>Her yerde<br/>okunsun.</h3>
+              <p>Profesyonel dijital hazırlık ve tüm cihazlarla uyumlu yayın deneyimi.</p>
+              <a href="#surec">Detaylı Bilgi <b>→</b></a>
             </div>
-            <a href="#surec" aria-label="E-Kitap detayları">→</a>
           </article>
 
-          <article className="serviceEditorialItem">
-            <span className="serviceIndex">02</span>
-            <div className="serviceEditorialCopy">
-              <h3>Sesli Kitap</h3>
-              <p>Hikâyeniz ses bulsun.</p>
-              <span>Profesyonel ses üretimi · Bölüm bazlı dinleme · Figan Audio deneyimi</span>
+          <article className="serviceShowcaseRow imageRight">
+            <div className="serviceShowcaseCopy">
+              <span className="serviceKicker">02 · SESLİ KİTAP</span>
+              <h3>Hikâyeniz<br/>ses bulsun.</h3>
+              <p>Eserinizi güçlü bir dinleme deneyimine dönüştürüyoruz.</p>
+              <a href="#surec">Detaylı Bilgi <b>→</b></a>
             </div>
-            <a href="#surec" aria-label="Sesli Kitap detayları">→</a>
+            <div className="serviceVisual placeholderVisual"><span>02</span><small>SESLİ KİTAP GÖRSELİ</small></div>
           </article>
 
-          <article className="serviceEditorialItem">
-            <span className="serviceIndex">03</span>
-            <div className="serviceEditorialCopy">
-              <h3>Yazar Sitesi</h3>
-              <p>Size ait bir dijital dünya.</p>
-              <span>Eserleriniz · Yazar kimliğiniz · Okurla doğrudan bağ kuran kişisel alanınız</span>
+          <article className="serviceShowcaseRow imageLeft">
+            <div className="serviceVisual placeholderVisual"><span>03</span><small>YAZAR SİTESİ GÖRSELİ</small></div>
+            <div className="serviceShowcaseCopy">
+              <span className="serviceKicker">03 · YAZAR SİTESİ</span>
+              <h3>Size ait bir<br/>dijital dünya.</h3>
+              <p>Eserlerinizi ve yazar kimliğinizi tek bir kişisel merkezde buluşturuyoruz.</p>
+              <a href="#surec">Detaylı Bilgi <b>→</b></a>
             </div>
-            <a href="#surec" aria-label="Yazar Sitesi detayları">→</a>
           </article>
 
-          <article className="serviceEditorialItem">
-            <span className="serviceIndex">04</span>
-            <div className="serviceEditorialCopy">
-              <h3>Yabancı Dil Yayını</h3>
-              <p>Eseriniz başka dillerde de yaşasın.</p>
-              <span>Profesyonel çeviri · Editoryal uyarlama · Uluslararası yayına hazırlık</span>
+          <article className="serviceShowcaseRow imageRight">
+            <div className="serviceShowcaseCopy">
+              <span className="serviceKicker">04 · YABANCI DİL YAYINI</span>
+              <h3>Eseriniz<br/>sınırları aşsın.</h3>
+              <p>Profesyonel çeviri ve editoryal uyarlamayla uluslararası yayına hazırlıyoruz.</p>
+              <a href="#surec">Detaylı Bilgi <b>→</b></a>
             </div>
-            <a href="#surec" aria-label="Yabancı Dil Yayını detayları">→</a>
+            <div className="serviceVisual placeholderVisual"><span>04</span><small>YABANCI DİL GÖRSELİ</small></div>
           </article>
 
-          <article className="serviceEditorialItem">
-            <span className="serviceIndex">05</span>
-            <div className="serviceEditorialCopy">
-              <h3>Dijital Dağıtım</h3>
-              <p>Daha fazla okura ulaşın.</p>
-              <span>Türkiye ve dünya · Uygun dijital yayın kanalları · Uzun vadeli yayın desteği</span>
+          <article className="serviceShowcaseRow imageLeft">
+            <div className="serviceVisual placeholderVisual"><span>05</span><small>DİJİTAL DAĞITIM GÖRSELİ</small></div>
+            <div className="serviceShowcaseCopy">
+              <span className="serviceKicker">05 · DİJİTAL DAĞITIM</span>
+              <h3>Daha fazla<br/>okura ulaşın.</h3>
+              <p>Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.</p>
+              <a href="#surec">Detaylı Bilgi <b>→</b></a>
             </div>
-            <a href="#surec" aria-label="Dijital Dağıtım detayları">→</a>
           </article>
         </div>
       </section>
