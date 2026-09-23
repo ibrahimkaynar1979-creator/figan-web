@@ -2,6 +2,22 @@ function SearchIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4 4"/></svg>;
 }
 
+function ProcessIcon({ type }: { type: string }) {
+  const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  const paths: Record<string, React.ReactNode> = {
+    document: <><path {...common} d="M7 3.5h7l3 3V20.5H7z"/><path {...common} d="M14 3.5v4h4M10 11h5M10 14h5M10 17h4"/></>,
+    edit: <><path {...common} d="M5 19l1-4L15.5 5.5a2.1 2.1 0 013 3L9 18z"/><path {...common} d="M13.8 7.2l3 3"/></>,
+    design: <><rect {...common} x="4" y="5" width="16" height="14" rx="2"/><circle {...common} cx="9" cy="10" r="1.4"/><path {...common} d="M6.5 17l4.2-4 2.6 2.4 2.2-2 2.5 3.6"/></>,
+    book: <><path {...common} d="M4 6.5c3-1 5.5-.5 8 1.2v11c-2.5-1.7-5-2.2-8-1.2zM20 6.5c-3-1-5.5-.5-8 1.2v11c2.5-1.7 5-2.2 8-1.2z"/></>,
+    audio: <><path {...common} d="M5 13v-2a7 7 0 0114 0v2"/><path {...common} d="M5 12h2v6H5a2 2 0 01-2-2v-2a2 2 0 012-2zM19 12h-2v6h2a2 2 0 002-2v-2a2 2 0 00-2-2z"/></>,
+    player: <><rect {...common} x="3.5" y="5" width="17" height="14" rx="2.5"/><path {...common} d="M10 9l5 3-5 3z"/></>,
+    site: <><circle {...common} cx="12" cy="8" r="3"/><path {...common} d="M6 20c.5-4 2.5-6 6-6s5.5 2 6 6"/></>,
+    globe: <><circle {...common} cx="12" cy="12" r="8.5"/><path {...common} d="M3.8 12h16.4M12 3.5c2.4 2.3 3.5 5.1 3.5 8.5S14.4 18.2 12 20.5C9.6 18.2 8.5 15.4 8.5 12S9.6 5.8 12 3.5"/></>,
+    distribution: <><path {...common} d="M5 19V13h3v6zM10.5 19V9h3v10zM16 19V5h3v14z"/></>
+  };
+  return <svg viewBox="0 0 24 24" aria-hidden="true">{paths[type]}</svg>;
+}
+
 function MenuIcon() {
   return <span className="menuIcon" aria-hidden="true"><i/><i/><i/></span>;
 }
@@ -140,55 +156,55 @@ export default function Home() {
         <div className="processTimeline">
           <article>
             <span className="processNo">1</span>
-            <span className="processIcon" aria-hidden="true">▤</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="document" /></span>
             <div className="processMain"><h3>Başvuru</h3><p>Dosyanızı bizimle paylaşın.</p></div>
             <small>Hayaliniz ilk adımı atar.</small>
           </article>
           <article>
             <span className="processNo">2</span>
-            <span className="processIcon" aria-hidden="true">✎</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="edit" /></span>
             <div className="processMain"><h3>Editörlük</h3><p>Metninizi yayın için güçlendiriyoruz.</p></div>
             <small>Daha güçlü bir metin.</small>
           </article>
           <article>
             <span className="processNo">3</span>
-            <span className="processIcon" aria-hidden="true">▧</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="design" /></span>
             <div className="processMain"><h3>Kapak &amp; Tasarım</h3><p>Eserinize özgü yayın kimliği oluşturuyoruz.</p></div>
             <small>İlk bakışta fark yaratır.</small>
           </article>
           <article>
             <span className="processNo">4</span>
-            <span className="processIcon" aria-hidden="true">▭</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="book" /></span>
             <div className="processMain"><h3>E-Kitap</h3><p>Tüm cihazlarda okunabilen dijital formata hazırlıyoruz.</p></div>
             <small>Her yerde okunsun.</small>
           </article>
           <article>
             <span className="processNo">5</span>
-            <span className="processIcon" aria-hidden="true">◉</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="audio" /></span>
             <div className="processMain"><h3>Sesli Kitap</h3><p>Eserinizi dinleme deneyimine dönüştürüyoruz.</p></div>
             <small>Sözün sesi daha uzağa gider.</small>
           </article>
           <article>
             <span className="processNo">6</span>
-            <span className="processIcon" aria-hidden="true">▶</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="player" /></span>
             <div className="processMain"><h3>Figan Reader &amp; Audio</h3><p>Okuma ve dinleme deneyimini tek dünyada buluşturuyoruz.</p></div>
             <small>Okur ve dinleyiciyle buluşur.</small>
           </article>
           <article>
             <span className="processNo">7</span>
-            <span className="processIcon" aria-hidden="true">○</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="site" /></span>
             <div className="processMain"><h3>Yazar Sitesi</h3><p>Size özel profesyonel yazar alanınızı kuruyoruz.</p></div>
             <small>Dijitalde sizin dünyanız.</small>
           </article>
           <article>
             <span className="processNo">8</span>
-            <span className="processIcon" aria-hidden="true">文</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="globe" /></span>
             <div className="processMain"><h3>Yabancı Dil Yayını</h3><p>Eserinizi profesyonel çeviri ve editoryal uyarlamayla farklı dillere hazırlıyoruz.</p></div>
             <small>Hikâyeniz sınırları aşar.</small>
           </article>
           <article>
             <span className="processNo">9</span>
-            <span className="processIcon" aria-hidden="true">▥</span>
+            <span className="processIcon" aria-hidden="true"><ProcessIcon type="distribution" /></span>
             <div className="processMain"><h3>Dijital Dağıtım</h3><p>Eserinizi uygun dijital yayın kanallarına taşıyoruz.</p></div>
             <small>Daha fazla okur, daha fazla erişim.</small>
           </article>
