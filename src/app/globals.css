@@ -3773,3 +3773,67 @@ button{font:inherit;color:inherit}
     background:transparent!important;
   }
 }
+
+/* SERVICE CARDS V3 — image flush to all edges inside its half */
+@media(max-width:520px){
+  .serviceShowcaseRow,
+  .serviceShowcaseRow.imageRight{
+    position:relative!important;
+    overflow:hidden!important;
+  }
+
+  .serviceVisual{
+    position:relative!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:100%!important;
+    padding:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+    background:none!important;
+    background-image:none!important;
+    display:block!important;
+  }
+
+  .serviceVisual::after{
+    display:none!important;
+    content:none!important;
+  }
+
+  .serviceVisual img{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:100%!important;
+    min-height:100%!important;
+    margin:0!important;
+    padding:0!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    background:none!important;
+    border:0!important;
+  }
+
+  .serviceShowcaseRow.imageLeft .serviceVisual img{
+    border-radius:15px 0 0 15px!important;
+  }
+
+  .serviceShowcaseRow.imageRight .serviceVisual img{
+    border-radius:0 15px 15px 0!important;
+  }
+
+  .serviceShowcaseCopy{
+    margin:0!important;
+    border-radius:0!important;
+  }
+}
+
+@media(max-width:390px){
+  .serviceShowcaseRow.imageLeft .serviceVisual img{
+    border-radius:13px 0 0 13px!important;
+  }
+
+  .serviceShowcaseRow.imageRight .serviceVisual img{
+    border-radius:0 13px 13px 0!important;
+  }
+}
