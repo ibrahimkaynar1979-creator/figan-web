@@ -2698,3 +2698,113 @@ button{font:inherit;color:inherit}
   filter:brightness(0) saturate(100%)!important;
   opacity:.88!important;
 }
+
+/* FINAL LOCAL MOBILE CTA LAYOUT — stacked below image */
+.mobileActionPanel{display:none}
+
+@media(max-width:520px){
+  .mobileHeroActions{display:none!important}
+
+  .hero{
+    height:calc(100svh - 58px - 68px - 120px)!important;
+    min-height:0!important;
+  }
+
+  .mobileActionPanel{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:8px!important;
+    width:100%!important;
+    padding:10px 12px 12px!important;
+    margin:0!important;
+    background:#f4eee5!important;
+    border-top:1px solid rgba(20,17,14,.08)!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta,
+  .mobileActionPanel .mobileWatchCta{
+    position:relative!important;
+    width:100%!important;
+    height:50px!important;
+    min-height:50px!important;
+    border-radius:999px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    padding:0 16px 0 58px!important;
+    font-size:13px!important;
+    font-weight:700!important;
+    white-space:nowrap!important;
+    box-sizing:border-box!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta{
+    background:linear-gradient(105deg,#29170c,#3b210e 52%,#251309)!important;
+    color:#fff!important;
+    border:1px solid rgba(202,156,86,.72)!important;
+    box-shadow:0 8px 18px rgba(28,16,8,.12)!important;
+  }
+
+  .mobileActionPanel .mobileWatchCta{
+    background:#fbf7f0!important;
+    color:#17110d!important;
+    border:1px solid rgba(42,23,12,.18)!important;
+    box-shadow:0 8px 18px rgba(28,16,8,.08)!important;
+  }
+
+  .mobileActionPanel .mobileCtaIcon,
+  .mobileActionPanel .mobilePlay{
+    position:absolute!important;
+    left:6px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    width:38px!important;
+    height:38px!important;
+    border-radius:50%!important;
+    display:grid!important;
+    place-items:center!important;
+  }
+
+  .mobileActionPanel .mobileCtaIcon{
+    background:#2a170c!important;
+    color:#fff!important;
+    border:1px solid rgba(255,255,255,.42)!important;
+    font-size:15px!important;
+  }
+
+  .mobileActionPanel .mobilePlay{
+    background:#fbf8f2!important;
+    color:#17110d!important;
+    border:1px solid rgba(23,17,13,.28)!important;
+    font-size:10px!important;
+    padding-left:2px!important;
+  }
+
+  .mobileActionPanel .mobileCtaArrow{
+    margin-left:auto!important;
+    font-size:20px!important;
+    font-weight:400!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero{
+    height:calc(100svh - 58px - 64px - 116px)!important;
+  }
+  .mobileActionPanel{
+    gap:7px!important;
+    padding:9px 10px 10px!important;
+  }
+  .mobileActionPanel .mobileApplyCta,
+  .mobileActionPanel .mobileWatchCta{
+    height:48px!important;
+    min-height:48px!important;
+    padding-left:54px!important;
+    font-size:12px!important;
+  }
+  .mobileActionPanel .mobileCtaIcon,
+  .mobileActionPanel .mobilePlay{
+    width:36px!important;
+    height:36px!important;
+  }
+}
