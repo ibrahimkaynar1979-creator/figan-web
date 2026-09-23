@@ -5032,3 +5032,227 @@ button{font:inherit;color:inherit}
     font-size:39px!important;
   }
 }
+
+
+/* 2026-09-23 — Mobile hero: four-object ecosystem composition */
+.mobileHeroShowcase,
+.mobileHeroOffer{display:none}
+
+@media(max-width:520px){
+  .hero{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    padding:0 0 26px!important;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 84% 8%, rgba(180,134,71,.12), transparent 27%),
+      linear-gradient(180deg,#fbf7f0 0%,#f3eadc 100%)!important;
+  }
+
+  .heroArt{display:none!important}
+
+  .heroContent{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:28px 24px 0!important;
+    display:block!important;
+    pointer-events:auto!important;
+  }
+
+  .heroCopy{
+    width:100%!important;
+    max-width:360px!important;
+    margin:0!important;
+    padding:0!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  .hero .eyebrow{
+    margin:0 0 13px!important;
+    color:#765026!important;
+    font-size:9px!important;
+    line-height:1.25!important;
+    letter-spacing:.22em!important;
+    text-shadow:none!important;
+  }
+
+  .hero h1{
+    width:100%!important;
+    margin:0!important;
+    color:#14110e!important;
+    font-size:clamp(51px,14.2vw,61px)!important;
+    line-height:.88!important;
+    letter-spacing:-.055em!important;
+    text-shadow:none!important;
+  }
+
+  .hero h1 em{
+    margin-top:3px!important;
+    color:#8b5b2c!important;
+    text-shadow:none!important;
+  }
+
+  .poetic{
+    width:100%!important;
+    max-width:325px!important;
+    margin:11px 0 0!important;
+    color:#18120e!important;
+    font-size:clamp(28px,7.8vw,33px)!important;
+    line-height:1!important;
+    text-shadow:none!important;
+  }
+
+  .shortRule{
+    width:42px!important;
+    margin:17px 0 15px!important;
+    background:#8b5b2c!important;
+  }
+
+  .hero .lead{
+    display:block!important;
+    width:100%!important;
+    max-width:310px!important;
+    margin:0!important;
+    color:#2e251d!important;
+    font-size:13.5px!important;
+    line-height:1.48!important;
+    font-weight:500!important;
+    text-shadow:none!important;
+  }
+
+  .desktopHeroActions{display:none!important}
+  .heroQuote{display:none!important}
+
+  .mobileHeroShowcase{
+    position:relative;
+    z-index:9;
+    display:block;
+    width:100%;
+    height:430px;
+    margin:16px auto 0;
+  }
+
+  .mobileHeroShowcase img{
+    position:absolute;
+    display:block;
+    height:auto;
+    max-width:none;
+    object-fit:contain;
+    filter:drop-shadow(0 18px 22px rgba(38,23,12,.16));
+    user-select:none;
+    pointer-events:none;
+  }
+
+  .mobileShowcaseLaptop{
+    z-index:1;
+    width:91%;
+    left:-7%;
+    top:0;
+  }
+
+  .mobileShowcaseReader{
+    z-index:3;
+    width:39%;
+    right:-4%;
+    top:76px;
+  }
+
+  .mobileShowcaseAudio{
+    z-index:4;
+    width:26%;
+    left:29%;
+    top:164px;
+  }
+
+  .mobileShowcaseBook{
+    z-index:5;
+    width:29%;
+    right:1%;
+    top:204px;
+  }
+
+  .mobileHeroOffer{
+    position:relative;
+    z-index:10;
+    display:block;
+    margin:0 18px;
+    padding:18px 18px 16px;
+    background:rgba(255,252,247,.82);
+    border:1px solid rgba(118,80,38,.18);
+    border-radius:22px;
+    box-shadow:0 18px 38px rgba(42,23,12,.10);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+  }
+
+  .mobileOfferTop{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+  }
+
+  .mobileOfferKicker{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.18em;
+    color:#6f461f;
+  }
+
+  .mobileOfferOld{
+    font-family:var(--font-editorial),serif;
+    font-size:17px;
+    color:#74675b;
+    text-decoration:line-through;
+    text-decoration-thickness:1px;
+  }
+
+  .mobileOfferPrice{
+    margin-top:4px;
+    font-family:var(--font-editorial),serif;
+    font-size:44px;
+    line-height:1;
+    letter-spacing:-.035em;
+    color:#7b4d22;
+  }
+
+  .mobileHeroOffer p{
+    margin:9px 0 15px;
+    font-size:11.5px;
+    line-height:1.45;
+    color:#5a4d42;
+  }
+
+  .mobileOfferCta{
+    min-height:54px;
+    width:100%;
+    padding:0 18px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    background:linear-gradient(105deg,#29170c,#3b210e 52%,#251309);
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    box-shadow:inset 0 0 0 1px rgba(202,156,86,.76),0 10px 24px rgba(42,23,12,.14);
+  }
+
+  .mobileOfferCta span{
+    font-size:22px;
+    font-weight:400;
+    transform:translateY(-1px);
+  }
+
+  .mobileActionPanel{display:none!important}
+}
