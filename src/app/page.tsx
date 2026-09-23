@@ -209,9 +209,9 @@ export default function Home() {
 
       <section className="ecosystemSection" id="ekosistem">
         <div className="ecosystemIntro">
-          <div className="ecosystemKicker"><span>FİGAN EKOSİSTEMİ</span><i/><b>04</b></div>
-          <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
-          <p>E-kitabınız okunur. Sesli kitabınız dinlenir. Yazar siteniz sizi anlatır. Figan bütününü tek bir yayın dünyasında bir araya getirir.</p>
+          <div className="ecosystemKicker"><span>YAZARINIZ İÇİN DAHA FAZLASI</span><i/><b>04</b></div>
+          <h2>Bir kitabın ötesinde,<br/><em>sizin dünyanız.</em></h2>
+          <p>E-kitabınız. Sesli kitabınız. Yazar siteniz. Dijital dağıtımınız. Tek bir yayın dünyasında.</p>
         </div>
 
         <div className="ecosystemCanvas">
