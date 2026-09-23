@@ -4111,3 +4111,64 @@ button{font:inherit;color:inherit}
     font-size:19px!important;
   }
 }
+
+/* PROCESS V4 — centered numbers, larger tighter typography */
+@media(max-width:520px){
+  .processTimeline article{
+    grid-template-columns:40px 48px minmax(0,1fr)!important;
+    column-gap:9px!important;
+    row-gap:0!important;
+    min-height:82px!important;
+    padding:9px 13px 9px 0!important;
+    align-items:center!important;
+  }
+
+  .processTimeline .processNo{
+    width:36px!important;
+    height:36px!important;
+    margin:0 auto!important;
+    align-self:center!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    line-height:1!important;
+    transform:none!important;
+  }
+
+  .processTimeline .processIcon{
+    align-self:center!important;
+  }
+
+  .processTimeline h3{
+    font-size:22px!important;
+    line-height:1!important;
+    margin:0!important;
+  }
+
+  .processTimeline p{
+    font-size:12.5px!important;
+    line-height:1.28!important;
+    margin:4px 0 0!important;
+  }
+
+  .processTimeline small{
+    font-size:11px!important;
+    line-height:1.2!important;
+    margin:5px 0 0!important;
+  }
+
+  .processTimeline article:nth-child(6) h3{
+    font-size:20px!important;
+  }
+}
+
+@media(max-width:390px){
+  .processTimeline article{
+    grid-template-columns:38px 46px minmax(0,1fr)!important;
+    column-gap:8px!important;
+  }
+  .processTimeline h3{font-size:21px!important;}
+  .processTimeline p{font-size:12px!important;}
+  .processTimeline small{font-size:10.5px!important;}
+  .processTimeline article:nth-child(6) h3{font-size:19px!important;}
+}
