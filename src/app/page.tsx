@@ -208,7 +208,9 @@ export default function Home() {
         <blockquote>“Her kitap, yeni bir dünyaya açılan kapıdır.” <cite>— FİGAN</cite></blockquote>
       </section>
 
-      <EcosystemSlider />\n\n      <section className="authorWorldSection" id="yazar-sitesi">
+      <EcosystemSlider />
+
+      <section className="authorWorldSection" id="yazar-sitesi">
         <div className="authorWorldHead">
           <div className="authorWorldKicker"><span>YAZAR SİTESİ</span><i/><b>05</b></div>
           <h2>Sadece bir sayfa değil.<br/><em>Size ait bir yazar dünyası.</em></h2>
