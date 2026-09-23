@@ -4057,3 +4057,57 @@ button{font:inherit;color:inherit}
     font-size:10.5px!important;
   }
 }
+
+/* PROCESS POLISH V3 — editorial density + unified line icons */
+@media(max-width:520px){
+  .processTimeline article{
+    min-height:86px!important;
+    margin-bottom:8px!important;
+    padding-top:9px!important;
+    padding-bottom:9px!important;
+    border-color:rgba(72,48,30,.055)!important;
+    background:rgba(255,252,247,.66)!important;
+    box-shadow:0 2px 9px rgba(55,34,20,.025)!important;
+  }
+  .processTimeline .processIcon{
+    background:#f5ecdf!important;
+    border-color:rgba(129,91,55,.12)!important;
+  }
+  .processTimeline .processIcon svg{
+    width:25px!important;
+    height:25px!important;
+    display:block!important;
+  }
+  .processTimeline h3{
+    letter-spacing:-.015em!important;
+  }
+  .processTimeline p{
+    margin-top:4px!important;
+  }
+  .processTimeline small{
+    margin-top:4px!important;
+    color:#9a6c43!important;
+  }
+  .processTimeline article:nth-child(6) h3{
+    font-size:21px!important;
+  }
+  .processCta{
+    margin-top:30px!important;
+  }
+  .processSection blockquote{
+    margin-top:34px!important;
+  }
+}
+@media(max-width:390px){
+  .processTimeline article{
+    min-height:84px!important;
+    margin-bottom:7px!important;
+  }
+  .processTimeline .processIcon svg{
+    width:23px!important;
+    height:23px!important;
+  }
+  .processTimeline article:nth-child(6) h3{
+    font-size:19px!important;
+  }
+}
