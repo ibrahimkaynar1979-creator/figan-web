@@ -208,7 +208,33 @@ export default function Home() {
         <blockquote>“Her kitap, yeni bir dünyaya açılan kapıdır.” <cite>— FİGAN</cite></blockquote>
       </section>
 
-      <EcosystemSlider />\n\n      <section id="basvuru" className="placeholderCta">
+      <EcosystemSlider />\n\n      <section className="authorWorldSection" id="yazar-sitesi">
+        <div className="authorWorldHead">
+          <div className="authorWorldKicker"><span>YAZAR SİTESİ</span><i/><b>05</b></div>
+          <h2>Sadece bir sayfa değil.<br/><em>Size ait bir yazar dünyası.</em></h2>
+          <p>Kitaplarınız, hikâyeniz ve okurlarınızla kurduğunuz bağ; sosyal medya akışında kaybolmayan, size ait bir dijital adreste buluşur.</p>
+        </div>
+
+        <div className="authorWorldVisual">
+          <img src="/figan-yazar-sitesi-laptop.webp" alt="Figan kişisel yazar sitesi laptop görünümü" />
+        </div>
+
+        <div className="authorWorldBenefits">
+          <article><span>01</span><h3>Kendi dijital adresiniz</h3><p>Yazar kimliğinizi size ait bir alanda kalıcılaştırın.</p></article>
+          <article><span>02</span><h3>Tüm eserleriniz</h3><p>Kitaplarınızı tek bir seçkin vitrinde bir araya getirin.</p></article>
+          <article><span>03</span><h3>Yazılar &amp; etkinlikler</h3><p>Yeni metinlerinizi, buluşmalarınızı ve duyurularınızı paylaşın.</p></article>
+          <article><span>04</span><h3>Okurla doğrudan bağ</h3><p>Okurlarınızın sizi ve eserlerinizi doğrudan keşfetmesini sağlayın.</p></article>
+        </div>
+
+        <div className="authorWorldDark">
+          <span className="authorWorldDarkNo">05 / YAZAR SİTESİ</span>
+          <h3>Sosyal medyada<br/><em>kiracı olmayın.</em></h3>
+          <p>Algoritmalar değişir. Platformlar değişir.<br/>Size ait olan dijital dünya kalır.</p>
+          <a href="#basvuru">Yazar Sitenizi Keşfedin <span>→</span></a>
+        </div>
+      </section>
+
+      <section id="basvuru" className="placeholderCta">
         <p className="eyebrow">YAZAR BAŞVURUSU</p>
         <h2>Bir dosyanız mı var?</h2>
         <p>Ya da henüz yalnızca bir fikriniz? İkisi de başlamak için yeterli.</p>
