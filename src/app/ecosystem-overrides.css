@@ -271,3 +271,25 @@
   .ecosystemClosing p { font-size:20px !important; }
   .ecosystemClosing strong { font-size:21px !important; }
 }
+
+
+/* 04 ecosystem — compact mobile rhythm fix */
+@media (max-width:720px){
+  .ecosystemCanvas{margin-top:24px!important}
+  .ecosystemStage{height:244px!important;margin:10px auto 8px!important}
+  .ecoBook{height:210px!important;bottom:20px!important}
+  .ecoReader{height:194px!important;bottom:20px!important}
+  .ecoAudioPhone{height:190px!important;bottom:20px!important}
+  .ecosystemStage::before{bottom:9px!important}
+  .ecosystemStage::after{bottom:3px!important}
+  .ecoLanguage,.ecoDistribution{padding-top:0!important}
+  .ecosystemClosing{margin-top:20px!important;padding-bottom:28px!important}
+}
+@media (max-width:390px){
+  .ecosystemCanvas{margin-top:22px!important}
+  .ecosystemStage{height:226px!important;margin:8px auto 6px!important}
+  .ecoBook{height:194px!important;bottom:18px!important}
+  .ecoReader{height:180px!important;bottom:18px!important}
+  .ecoAudioPhone{height:176px!important;bottom:18px!important}
+  .ecosystemClosing{margin-top:18px!important;padding-bottom:30px!important}
+}
