@@ -138,15 +138,60 @@ export default function Home() {
         <p className="processLead">Eseriniz, Figan’ın profesyonel yayın süreciyle adım adım dijital dünyaya hazırlanır.</p>
 
         <div className="processTimeline">
-          <article><span>1</span><div><h3>Başvuru</h3><p>Dosyanızı bizimle paylaşın.</p></div><small>Hayaliniz ilk adımı atar.</small></article>
-          <article><span>2</span><div><h3>Editörlük</h3><p>Metninizi yayın için güçlendiriyoruz.</p></div><small>Daha güçlü bir metin.</small></article>
-          <article><span>3</span><div><h3>Kapak &amp; Tasarım</h3><p>Eserinize özgü yayın kimliği oluşturuyoruz.</p></div><small>İlk bakışta fark yaratır.</small></article>
-          <article><span>4</span><div><h3>E-Kitap</h3><p>Tüm cihazlarda okunabilen dijital formata hazırlıyoruz.</p></div><small>Her yerde okunsun.</small></article>
-          <article><span>5</span><div><h3>Sesli Kitap</h3><p>Eserinizi dinleme deneyimine dönüştürüyoruz.</p></div><small>Sözün sesi daha uzağa gider.</small></article>
-          <article><span>6</span><div><h3>Figan Reader &amp; Audio</h3><p>Okuma ve dinleme deneyimini tek dünyada buluşturuyoruz.</p></div><small>Okur ve dinleyiciyle buluşur.</small></article>
-          <article><span>7</span><div><h3>Yazar Sitesi</h3><p>Size özel profesyonel yazar alanınızı kuruyoruz.</p></div><small>Dijitalde sizin dünyanız.</small></article>
-          <article><span>8</span><div><h3>Yabancı Dil Yayını</h3><p>Eserinizi profesyonel çeviri ve editoryal uyarlamayla farklı dillere hazırlıyoruz.</p></div><small>Hikâyeniz sınırları aşar.</small></article>
-          <article><span>9</span><div><h3>Dijital Dağıtım</h3><p>Eserinizi uygun dijital yayın kanallarına taşıyoruz.</p></div><small>Daha fazla okur, daha fazla erişim.</small></article>
+          <article>
+            <span className="processNo">1</span>
+            <span className="processIcon" aria-hidden="true">▤</span>
+            <div className="processMain"><h3>Başvuru</h3><p>Dosyanızı bizimle paylaşın.</p></div>
+            <small>Hayaliniz ilk adımı atar.</small>
+          </article>
+          <article>
+            <span className="processNo">2</span>
+            <span className="processIcon" aria-hidden="true">✎</span>
+            <div className="processMain"><h3>Editörlük</h3><p>Metninizi yayın için güçlendiriyoruz.</p></div>
+            <small>Daha güçlü bir metin.</small>
+          </article>
+          <article>
+            <span className="processNo">3</span>
+            <span className="processIcon" aria-hidden="true">▧</span>
+            <div className="processMain"><h3>Kapak &amp; Tasarım</h3><p>Eserinize özgü yayın kimliği oluşturuyoruz.</p></div>
+            <small>İlk bakışta fark yaratır.</small>
+          </article>
+          <article>
+            <span className="processNo">4</span>
+            <span className="processIcon" aria-hidden="true">▭</span>
+            <div className="processMain"><h3>E-Kitap</h3><p>Tüm cihazlarda okunabilen dijital formata hazırlıyoruz.</p></div>
+            <small>Her yerde okunsun.</small>
+          </article>
+          <article>
+            <span className="processNo">5</span>
+            <span className="processIcon" aria-hidden="true">◉</span>
+            <div className="processMain"><h3>Sesli Kitap</h3><p>Eserinizi dinleme deneyimine dönüştürüyoruz.</p></div>
+            <small>Sözün sesi daha uzağa gider.</small>
+          </article>
+          <article>
+            <span className="processNo">6</span>
+            <span className="processIcon" aria-hidden="true">▶</span>
+            <div className="processMain"><h3>Figan Reader &amp; Audio</h3><p>Okuma ve dinleme deneyimini tek dünyada buluşturuyoruz.</p></div>
+            <small>Okur ve dinleyiciyle buluşur.</small>
+          </article>
+          <article>
+            <span className="processNo">7</span>
+            <span className="processIcon" aria-hidden="true">○</span>
+            <div className="processMain"><h3>Yazar Sitesi</h3><p>Size özel profesyonel yazar alanınızı kuruyoruz.</p></div>
+            <small>Dijitalde sizin dünyanız.</small>
+          </article>
+          <article>
+            <span className="processNo">8</span>
+            <span className="processIcon" aria-hidden="true">文</span>
+            <div className="processMain"><h3>Yabancı Dil Yayını</h3><p>Eserinizi profesyonel çeviri ve editoryal uyarlamayla farklı dillere hazırlıyoruz.</p></div>
+            <small>Hikâyeniz sınırları aşar.</small>
+          </article>
+          <article>
+            <span className="processNo">9</span>
+            <span className="processIcon" aria-hidden="true">▥</span>
+            <div className="processMain"><h3>Dijital Dağıtım</h3><p>Eserinizi uygun dijital yayın kanallarına taşıyoruz.</p></div>
+            <small>Daha fazla okur, daha fazla erişim.</small>
+          </article>
         </div>
 
         <a className="processCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
