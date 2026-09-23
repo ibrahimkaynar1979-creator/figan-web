@@ -261,7 +261,7 @@ export default function Home() {
           <div className="ecosystemStage" aria-label="Figan dijital yayın ekosistemi">
             <img className="ecoReader" src="/ekosistem-reader.webp" alt="Figan Reader üzerinde İçimdeki İbrahim" />
             <img className="ecoBook" src="/ekosistem-kitap.webp" alt="İçimdeki İbrahim kitap mockup" />
-            <img className="ecoAudioPhone" src="/ekosistem-audio.webp" alt="Figan Audio üzerinde İçimdeki İbrahim" />
+            <img className="ecoAudioPhone" src="/ekosistem-audio-transparent.webp" alt="Figan Audio üzerinde İçimdeki İbrahim" />
           </div>
         </div>
 
