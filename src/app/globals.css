@@ -3837,3 +3837,154 @@ button{font:inherit;color:inherit}
     border-radius:0 13px 13px 0!important;
   }
 }
+
+/* PROCESS V2 — premium compact cards based on approved concept */
+@media(max-width:520px){
+  .processSection{
+    padding:50px 18px 92px!important;
+    background:
+      radial-gradient(circle at 90% 8%, rgba(177,132,79,.10), transparent 24%),
+      #f8f2e9!important;
+  }
+
+  .processSection>.eyebrow,
+  .processSection>h2,
+  .processSection>.processLead{
+    margin-left:4px!important;
+    margin-right:4px!important;
+  }
+
+  .processSection h2{
+    margin-top:12px!important;
+    font-size:45px!important;
+    line-height:.96!important;
+  }
+
+  .processLead{
+    margin-top:14px!important;
+    font-size:13px!important;
+    line-height:1.5!important;
+  }
+
+  .processTimeline{
+    margin-top:30px!important;
+    padding-left:0!important;
+  }
+
+  .processTimeline::before{
+    left:17px!important;
+    top:26px!important;
+    bottom:26px!important;
+    background:rgba(155,113,72,.34)!important;
+  }
+
+  .processTimeline article{
+    display:grid!important;
+    grid-template-columns:36px 50px minmax(0,1fr) 76px!important;
+    gap:10px!important;
+    align-items:center!important;
+    min-height:82px!important;
+    margin:0 0 10px!important;
+    padding:10px 12px 10px 0!important;
+    border:1px solid rgba(72,48,30,.08)!important;
+    border-radius:15px!important;
+    background:rgba(255,252,247,.78)!important;
+    box-shadow:0 4px 14px rgba(55,34,20,.045)!important;
+  }
+
+  .processTimeline .processNo{
+    position:relative!important;
+    z-index:2!important;
+    display:grid!important;
+    place-items:center!important;
+    width:34px!important;
+    height:34px!important;
+    margin-left:0!important;
+    border-radius:50%!important;
+    background:#a47b52!important;
+    color:#fff!important;
+    font-size:12px!important;
+    font-weight:700!important;
+    box-shadow:0 0 0 5px #f8f2e9!important;
+  }
+
+  .processTimeline .processIcon{
+    display:grid!important;
+    place-items:center!important;
+    width:46px!important;
+    height:46px!important;
+    border:1px solid rgba(129,91,55,.14)!important;
+    border-radius:12px!important;
+    background:#f2e8da!important;
+    color:#3b291d!important;
+    font-size:21px!important;
+    line-height:1!important;
+  }
+
+  .processTimeline .processMain{
+    min-width:0!important;
+  }
+
+  .processTimeline h3{
+    margin:0!important;
+    font-size:20px!important;
+    line-height:1!important;
+  }
+
+  .processTimeline p{
+    margin-top:5px!important;
+    font-size:10.5px!important;
+    line-height:1.35!important;
+    color:#665b51!important;
+  }
+
+  .processTimeline small{
+    grid-column:auto!important;
+    margin:0!important;
+    padding-left:9px!important;
+    border-left:1px solid rgba(164,123,82,.45)!important;
+    color:#7f6e5e!important;
+    font-family:var(--font-ui),sans-serif!important;
+    font-size:9px!important;
+    line-height:1.35!important;
+    font-style:normal!important;
+  }
+
+  .processCta{
+    margin-top:22px!important;
+    min-height:52px!important;
+  }
+
+  .processSection blockquote{
+    margin-top:30px!important;
+    font-size:19px!important;
+    line-height:1.25!important;
+  }
+}
+
+@media(max-width:390px){
+  .processTimeline article{
+    grid-template-columns:34px 44px minmax(0,1fr) 68px!important;
+    gap:8px!important;
+    min-height:78px!important;
+    padding-right:10px!important;
+  }
+
+  .processTimeline .processIcon{
+    width:42px!important;
+    height:42px!important;
+    font-size:19px!important;
+  }
+
+  .processTimeline h3{
+    font-size:18px!important;
+  }
+
+  .processTimeline p{
+    font-size:9.8px!important;
+  }
+
+  .processTimeline small{
+    font-size:8.5px!important;
+  }
+}
