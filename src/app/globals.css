@@ -4301,3 +4301,203 @@ button{font:inherit;color:inherit}
     gap:6px!important;
   }
 }
+
+/* =========================
+   FIGAN ECOSYSTEM — SECTION 04
+   ========================= */
+.ecosystemSection{
+  position:relative;
+  overflow:hidden;
+  padding:88px 28px 108px;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(190,151,101,.10),transparent 32%),
+    #f7f1e8;
+  border-top:1px solid rgba(52,34,22,.10);
+}
+.ecosystemIntro{max-width:680px}
+.ecosystemKicker{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:25px;
+  color:#8a5f35;
+  font-size:11px;font-weight:700;letter-spacing:.25em;
+}
+.ecosystemKicker i{display:block;width:94px;height:1px;background:rgba(138,95,53,.48)}
+.ecosystemKicker b{color:#2c2119;font-size:12px;letter-spacing:.12em}
+.ecosystemIntro h2{
+  margin:0;
+  font-family:var(--font-editorial),serif;
+  font-size:clamp(52px,8vw,82px);
+  line-height:.92;
+  letter-spacing:-.045em;
+  font-weight:600;
+}
+.ecosystemIntro h2 em{color:#8b6038;font-weight:400}
+.ecosystemIntro>p{
+  max-width:600px;
+  margin:26px 0 0;
+  font-size:16px;line-height:1.55;
+  color:#4f453c;
+}
+.ecosystemCanvas{
+  position:relative;
+  max-width:1120px;
+  min-height:720px;
+  margin:38px auto 0;
+}
+.ecosystemLines{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  pointer-events:none;
+}
+.ecosystemLines path{
+  fill:none;
+  stroke:rgba(157,111,67,.36);
+  stroke-width:1.25;
+}
+.ecosystemStage{
+  position:absolute;
+  left:50%;top:49%;
+  width:48%;height:54%;
+  transform:translate(-50%,-50%);
+}
+.ecosystemStage::before{
+  content:"";
+  position:absolute;left:50%;top:53%;
+  width:78%;aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(157,111,67,.20);
+  border-radius:50%;
+}
+.ecosystemStage img{
+  position:absolute;
+  object-fit:contain;
+  filter:drop-shadow(0 17px 20px rgba(48,32,20,.16));
+}
+.ecoReader{left:-2%;bottom:2%;width:47%;height:78%;z-index:1}
+.ecoBook{left:50%;bottom:0;width:43%;height:94%;transform:translateX(-50%);z-index:3}
+.ecoAudioPhone{right:-4%;bottom:1%;width:34%;height:75%;z-index:4}
+.ecoNode{
+  position:absolute;
+  width:205px;
+  text-align:center;
+  color:#201710;
+}
+.ecoNode::after{
+  content:"";
+  position:absolute;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#8f6138;
+}
+.ecoIcon{
+  width:66px;height:66px;margin:0 auto 12px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  background:#f2e5d3;
+  border:1px solid rgba(142,99,58,.20);
+}
+.ecoIcon svg{width:31px;height:31px}
+.ecoNode h3{
+  margin:0;
+  font-family:var(--font-editorial),serif;
+  font-size:21px;line-height:1.05;letter-spacing:.03em;
+}
+.ecoNode strong{
+  display:block;margin-top:5px;
+  font-family:var(--font-editorial),serif;
+  font-size:17px;font-weight:500;
+}
+.ecoNode p{margin:8px auto 0;max-width:180px;font-size:12px;line-height:1.42;color:#6a5b50}
+.ecoEbook{left:50%;top:0;transform:translateX(-50%)}
+.ecoEbook::after{left:50%;bottom:-22px;transform:translateX(-50%)}
+.ecoAudio{left:0;top:31%}
+.ecoAudio::after{right:-18px;top:52%}
+.ecoSite{right:0;top:31%}
+.ecoSite::after{left:-18px;top:52%}
+.ecoLanguage{left:4%;bottom:1%}
+.ecoLanguage::after{right:-17px;top:29%}
+.ecoDistribution{right:4%;bottom:1%}
+.ecoDistribution::after{left:-17px;top:29%}
+.ecosystemClosing{
+  position:relative;
+  z-index:2;
+  margin:10px auto 0;
+  text-align:center;
+}
+.ecosystemClosing p{
+  margin:0;
+  font-family:var(--font-poetic),serif;
+  font-style:italic;
+  font-size:26px;line-height:1.12;
+}
+.ecosystemClosing strong{
+  display:block;margin-top:3px;
+  font-family:var(--font-poetic),serif;
+  font-style:italic;font-weight:500;
+  font-size:27px;color:#9a693e;
+}
+.ecosystemClosing span{
+  display:block;margin-top:30px;
+  font-size:9px;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:#9a6c43;
+}
+
+@media(max-width:720px){
+  .ecosystemSection{padding:60px 16px 86px}
+  .ecosystemKicker{gap:10px;margin-bottom:18px;font-size:9px}
+  .ecosystemKicker i{width:62px}
+  .ecosystemIntro h2{font-size:47px}
+  .ecosystemIntro>p{margin-top:18px;font-size:13px;line-height:1.48}
+
+  .ecosystemCanvas{
+    min-height:850px;
+    margin-top:28px;
+  }
+  .ecosystemLines{display:none}
+
+  .ecosystemStage{
+    top:46%;
+    width:100%;
+    height:330px;
+  }
+  .ecosystemStage::before{
+    width:76%;
+    opacity:.75;
+  }
+  .ecoReader{left:3%;bottom:5%;width:43%;height:72%}
+  .ecoBook{left:50%;bottom:0;width:44%;height:91%}
+  .ecoAudioPhone{right:2%;bottom:4%;width:32%;height:69%}
+
+  .ecoNode{
+    width:46%;
+    padding:0 4px;
+  }
+  .ecoIcon{
+    width:50px;height:50px;margin-bottom:8px;
+  }
+  .ecoIcon svg{width:24px;height:24px}
+  .ecoNode h3{font-size:17px}
+  .ecoNode strong{font-size:14px}
+  .ecoNode p{font-size:10px;line-height:1.32;margin-top:5px}
+  .ecoNode::after{display:none}
+
+  .ecoEbook{width:48%;top:0}
+  .ecoAudio{left:0;top:19%}
+  .ecoSite{right:0;top:19%}
+  .ecoLanguage{left:0;bottom:0}
+  .ecoDistribution{right:0;bottom:0}
+
+  .ecosystemClosing{margin-top:2px}
+  .ecosystemClosing p{font-size:21px}
+  .ecosystemClosing strong{font-size:22px}
+  .ecosystemClosing span{margin-top:22px;font-size:7px}
+}
+
+@media(max-width:390px){
+  .ecosystemSection{padding-left:12px;padding-right:12px}
+  .ecosystemIntro h2{font-size:42px}
+  .ecosystemCanvas{min-height:820px}
+  .ecosystemStage{height:300px}
+  .ecoNode h3{font-size:16px}
+  .ecoNode strong{font-size:13px}
+  .ecoNode p{font-size:9.5px}
+}
