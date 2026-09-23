@@ -155,56 +155,47 @@ export default function Home() {
 
         <div className="processTimeline">
           <article>
-            <span className="processNo">1</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="document" /></span>
+            <div className="processMarks"><span className="processNo">1</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="document" /></span></div>
             <div className="processMain"><h3>Başvuru</h3><p>Dosyanızı bizimle paylaşın.</p></div>
             <small>Hayaliniz ilk adımı atar.</small>
           </article>
           <article>
-            <span className="processNo">2</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="edit" /></span>
+            <div className="processMarks"><span className="processNo">2</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="edit" /></span></div>
             <div className="processMain"><h3>Editörlük</h3><p>Metninizi yayın için güçlendiriyoruz.</p></div>
             <small>Daha güçlü bir metin.</small>
           </article>
           <article>
-            <span className="processNo">3</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="design" /></span>
+            <div className="processMarks"><span className="processNo">3</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="design" /></span></div>
             <div className="processMain"><h3>Kapak &amp; Tasarım</h3><p>Eserinize özgü yayın kimliği oluşturuyoruz.</p></div>
             <small>İlk bakışta fark yaratır.</small>
           </article>
           <article>
-            <span className="processNo">4</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="book" /></span>
+            <div className="processMarks"><span className="processNo">4</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="book" /></span></div>
             <div className="processMain"><h3>E-Kitap</h3><p>Tüm cihazlarda okunabilen dijital formata hazırlıyoruz.</p></div>
             <small>Her yerde okunsun.</small>
           </article>
           <article>
-            <span className="processNo">5</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="audio" /></span>
+            <div className="processMarks"><span className="processNo">5</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="audio" /></span></div>
             <div className="processMain"><h3>Sesli Kitap</h3><p>Eserinizi dinleme deneyimine dönüştürüyoruz.</p></div>
             <small>Sözün sesi daha uzağa gider.</small>
           </article>
           <article>
-            <span className="processNo">6</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="player" /></span>
+            <div className="processMarks"><span className="processNo">6</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="player" /></span></div>
             <div className="processMain"><h3>Figan Reader &amp; Audio</h3><p>Okuma ve dinleme deneyimini tek dünyada buluşturuyoruz.</p></div>
             <small>Okur ve dinleyiciyle buluşur.</small>
           </article>
           <article>
-            <span className="processNo">7</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="site" /></span>
+            <div className="processMarks"><span className="processNo">7</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="site" /></span></div>
             <div className="processMain"><h3>Yazar Sitesi</h3><p>Size özel profesyonel yazar alanınızı kuruyoruz.</p></div>
             <small>Dijitalde sizin dünyanız.</small>
           </article>
           <article>
-            <span className="processNo">8</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="globe" /></span>
+            <div className="processMarks"><span className="processNo">8</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="globe" /></span></div>
             <div className="processMain"><h3>Yabancı Dil Yayını</h3><p>Eserinizi profesyonel çeviri ve editoryal uyarlamayla farklı dillere hazırlıyoruz.</p></div>
             <small>Hikâyeniz sınırları aşar.</small>
           </article>
           <article>
-            <span className="processNo">9</span>
-            <span className="processIcon" aria-hidden="true"><ProcessIcon type="distribution" /></span>
+            <div className="processMarks"><span className="processNo">9</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="distribution" /></span></div>
             <div className="processMain"><h3>Dijital Dağıtım</h3><p>Eserinizi uygun dijital yayın kanallarına taşıyoruz.</p></div>
             <small>Daha fazla okur, daha fazla erişim.</small>
           </article>
