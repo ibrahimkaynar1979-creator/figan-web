@@ -4172,3 +4172,31 @@ button{font:inherit;color:inherit}
   .processTimeline small{font-size:10.5px!important;}
   .processTimeline article:nth-child(6) h3{font-size:19px!important;}
 }
+
+/* PROCESS V5 — number + icon share exact card centerline */
+@media(max-width:520px){
+  .processTimeline article{
+    position:relative!important;
+    align-items:center!important;
+  }
+
+  .processTimeline .processNo,
+  .processTimeline .processIcon{
+    align-self:center!important;
+    justify-self:center!important;
+    margin-top:0!important;
+    margin-bottom:0!important;
+    top:auto!important;
+    transform:none!important;
+  }
+
+  .processTimeline .processNo{
+    position:relative!important;
+  }
+
+  .processTimeline .processIcon{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+}
