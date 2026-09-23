@@ -1,4 +1,4 @@
-import "./ecosystem-overrides.css";
+import "./ecosystem-overrides.css";\nimport EcosystemSlider from "./EcosystemSlider";
 
 function SearchIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4 4"/></svg>;
@@ -207,40 +207,7 @@ export default function Home() {
         <blockquote>“Her kitap, yeni bir dünyaya açılan kapıdır.” <cite>— FİGAN</cite></blockquote>
       </section>
 
-      <section className="ecosystemSection" id="ekosistem">
-        <div className="ecosystemIntro">
-          <div className="ecosystemKicker"><span>YAYIN DÜNYANIZ</span><i/><b>04</b></div>
-          <h2>Bir kitabın ötesinde,<br/><em>sizin dünyanız.</em></h2>
-          <p>E-kitabınız, sesli kitabınız ve dijital yayın dünyanız tek bir bütünün içinde buluşur.</p>
-        </div>
-
-        <figure className="ecosystemHeroVisual">
-          <img src="/figan-ekosistem-premium.webp" alt="Figan dijital yayın ekosistemi" />
-        </figure>
-
-        <div className="ecosystemExpansion">
-          <article>
-            <span className="ecoIcon"><ProcessIcon type="globe" /></span>
-            <h3>YABANCI DİL</h3>
-            <strong>Yeni okurlara açılır.</strong>
-            <p>Profesyonel çeviri ve editoryal uyarlamayla eseriniz yeni dillere hazırlanır.</p>
-          </article>
-          <article>
-            <span className="ecoIcon"><ProcessIcon type="distribution" /></span>
-            <h3>DİJİTAL DAĞITIM</h3>
-            <strong>Dünyaya ulaşır.</strong>
-            <p>Türkiye’de ve uluslararası dijital yayın kanallarında okurla buluşur.</p>
-          </article>
-        </div>
-
-        <div className="ecosystemClosing">
-          <p>Dosyanız yalnızca bir kitaba dönüşmez.</p>
-          <strong>Kendi yayın dünyasına dönüşür.</strong>
-          <span>Daha fazla okur. Daha fazla yaşam.</span>
-        </div>
-      </section>
-
-      <section id="basvuru" className="placeholderCta">
+      <EcosystemSlider />\n\n      <section id="basvuru" className="placeholderCta">
         <p className="eyebrow">YAZAR BAŞVURUSU</p>
         <h2>Bir dosyanız mı var?</h2>
         <p>Ya da henüz yalnızca bir fikriniz? İkisi de başlamak için yeterli.</p>
