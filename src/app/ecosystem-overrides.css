@@ -1,9 +1,9 @@
-/* Section 04 - Figan Ecosystem corrected mobile composition */
+/* Section 04 - Figan Ecosystem mobile lock */
 @media (max-width: 720px) {
   .ecosystemSection {
-    padding: 52px 18px 118px !important;
+    padding: 52px 18px 132px !important;
     background:
-      radial-gradient(circle at 50% 55%, rgba(180,134,71,.09), transparent 34%),
+      radial-gradient(circle at 50% 54%, rgba(180,134,71,.08), transparent 32%),
       #f7f1e8 !important;
   }
 
@@ -27,9 +27,9 @@
       "stage stage stage stage stage stage"
       "lang lang lang dist dist dist" !important;
     column-gap: 8px !important;
-    row-gap: 18px !important;
+    row-gap: 14px !important;
     min-height: 0 !important;
-    margin: 30px auto 0 !important;
+    margin: 34px auto 0 !important;
     max-width: 510px !important;
     align-items: start !important;
   }
@@ -65,33 +65,34 @@
 
   .ecoNode h3 {
     margin:0 !important;
-    font-size: 17px !important;
-    line-height: 1.05 !important;
+    font-size:17px !important;
+    line-height:1.06 !important;
+    letter-spacing:.01em !important;
   }
 
   .ecoNode strong {
     display:block !important;
     margin-top:5px !important;
-    font-size:14px !important;
-    line-height:1.15 !important;
+    font-size:14.5px !important;
+    line-height:1.18 !important;
   }
 
   .ecoNode p {
     margin:6px auto 0 !important;
-    max-width:145px !important;
-    font-size:11.5px !important;
-    line-height:1.38 !important;
+    max-width:148px !important;
+    font-size:12px !important;
+    line-height:1.4 !important;
     color:#5b4d42 !important;
   }
 
   .ecosystemStage {
     grid-area: stage !important;
-    position: relative !important;
+    position:relative !important;
     left:auto !important;
     top:auto !important;
     width:100% !important;
-    height:330px !important;
-    margin: 0 auto !important;
+    height:288px !important;
+    margin:-8px auto -2px !important;
     transform:none !important;
   }
 
@@ -99,11 +100,11 @@
     content:"" !important;
     position:absolute !important;
     left:50% !important;
-    top:50% !important;
-    width:78% !important;
+    top:52% !important;
+    width:61% !important;
     aspect-ratio:1 !important;
     transform:translate(-50%,-50%) !important;
-    border:1px solid rgba(157,111,67,.18) !important;
+    border:1px solid rgba(157,111,67,.13) !important;
     border-radius:50% !important;
   }
 
@@ -111,12 +112,12 @@
     content:"" !important;
     position:absolute !important;
     left:50% !important;
-    bottom:16px !important;
-    width:70% !important;
-    height:16px !important;
+    bottom:14px !important;
+    width:62% !important;
+    height:14px !important;
     transform:translateX(-50%) !important;
-    background:rgba(54,36,24,.09) !important;
-    filter:blur(13px) !important;
+    background:rgba(54,36,24,.08) !important;
+    filter:blur(12px) !important;
     border-radius:50% !important;
     z-index:0 !important;
   }
@@ -125,50 +126,42 @@
     position:absolute !important;
     display:block !important;
     object-fit:contain !important;
-    filter:drop-shadow(0 12px 12px rgba(48,32,20,.14)) !important;
+    filter:drop-shadow(0 11px 12px rgba(48,32,20,.13)) !important;
   }
 
   /* balanced three-piece product lockup */
   .ecoReader {
-    left: 0 !important;
-    bottom: 30px !important;
-    width: 41% !important;
-    height: 70% !important;
+    left:2% !important;
+    bottom:24px !important;
+    width:37% !important;
+    height:66% !important;
     z-index:1 !important;
   }
 
   .ecoBook {
     left:50% !important;
-    bottom:18px !important;
-    width:41% !important;
-    height:88% !important;
+    bottom:10px !important;
+    width:42% !important;
+    height:91% !important;
     transform:translateX(-50%) !important;
     z-index:3 !important;
   }
 
   .ecoAudioPhone {
-    right: 0 !important;
-    bottom: 30px !important;
-    width: 29% !important;
-    height: 70% !important;
+    right:2% !important;
+    bottom:23px !important;
+    width:32% !important;
+    height:72% !important;
     z-index:2 !important;
   }
 
   .ecoLanguage,
   .ecoDistribution {
     position:relative !important;
-    padding-top:4px !important;
+    padding-top:0 !important;
   }
 
-  .ecoDistribution::before {
-    content:"" !important;
-    position:absolute !important;
-    left:-5px !important;
-    top:12px !important;
-    bottom:12px !important;
-    width:1px !important;
-    background:rgba(157,111,67,.18) !important;
-  }
+  .ecoDistribution::before { display:none !important; }
 
   .ecoLanguage .ecoIcon,
   .ecoDistribution .ecoIcon {
@@ -178,7 +171,8 @@
 
   .ecoLanguage h3,
   .ecoDistribution h3 {
-    font-size:18px !important;
+    font-size:17.5px !important;
+    letter-spacing:0 !important;
   }
 
   .ecoLanguage strong,
@@ -193,7 +187,7 @@
   }
 
   .ecosystemClosing {
-    margin: 24px auto 0 !important;
+    margin:20px auto 0 !important;
     padding:0 10px !important;
     max-width:470px !important;
   }
@@ -210,9 +204,9 @@
   }
 
   .ecosystemClosing span {
-    margin-top:18px !important;
+    margin-top:16px !important;
     font-size:8px !important;
-    letter-spacing:.24em !important;
+    letter-spacing:.22em !important;
   }
 }
 
@@ -220,11 +214,13 @@
   .ecosystemSection {
     padding-left:14px !important;
     padding-right:14px !important;
+    padding-bottom:128px !important;
   }
 
   .ecosystemCanvas {
     column-gap:5px !important;
-    row-gap:16px !important;
+    row-gap:12px !important;
+    margin-top:30px !important;
   }
 
   .ecoIcon {
@@ -237,36 +233,37 @@
   }
 
   .ecoNode strong {
-    font-size:13px !important;
+    font-size:13.5px !important;
   }
 
   .ecoNode p {
-    max-width:116px !important;
-    font-size:10.5px !important;
+    max-width:118px !important;
+    font-size:10.8px !important;
   }
 
   .ecosystemStage {
-    height:300px !important;
+    height:270px !important;
+    margin-top:-8px !important;
   }
 
   .ecoReader {
-    width:42% !important;
-    bottom:28px !important;
+    width:38% !important;
+    bottom:22px !important;
   }
 
   .ecoBook {
     width:42% !important;
-    bottom:16px !important;
+    bottom:9px !important;
   }
 
   .ecoAudioPhone {
-    width:29% !important;
-    bottom:28px !important;
+    width:32% !important;
+    bottom:21px !important;
   }
 
   .ecoLanguage h3,
   .ecoDistribution h3 {
-    font-size:17px !important;
+    font-size:16.5px !important;
   }
 
   .ecoLanguage p,
