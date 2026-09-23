@@ -3265,3 +3265,43 @@ button{font:inherit;color:inherit}
   .processTimeline article{grid-template-columns:40px minmax(0,1fr) minmax(150px,.5fr);align-items:start}
   .processTimeline small{grid-column:3;margin-top:0}
 }
+
+/* SERVICE/PROCESS COMPACT POLISH — includes foreign-language publishing */
+@media(max-width:520px){
+  .serviceEditorialItem{
+    min-height:104px!important;
+    padding:18px 0!important;
+  }
+
+  .serviceEditorialCopy h3{
+    font-size:25px!important;
+  }
+
+  .serviceEditorialCopy p{
+    margin-top:5px!important;
+  }
+
+  .serviceEditorialCopy span{
+    margin-top:8px!important;
+    font-size:10.5px!important;
+    line-height:1.4!important;
+  }
+
+  .processTimeline article{
+    padding-bottom:18px!important;
+  }
+
+  .processTimeline h3{
+    font-size:23px!important;
+  }
+
+  .processTimeline p{
+    margin-top:5px!important;
+    font-size:12px!important;
+  }
+
+  .processTimeline small{
+    margin-top:-8px!important;
+    font-size:13px!important;
+  }
+}
