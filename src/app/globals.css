@@ -3741,3 +3741,35 @@ button{font:inherit;color:inherit}
     background:#e7dccd!important;
   }
 }
+
+/* SERVICE IMAGE FIT V2 — preserve full image, fill empty area with softened same image */
+@media(max-width:520px){
+  .serviceVisual{
+    position:relative!important;
+    overflow:hidden!important;
+    background-size:cover!important;
+    background-position:center!important;
+    background-repeat:no-repeat!important;
+  }
+
+  .serviceVisual::after{
+    content:""!important;
+    position:absolute!important;
+    inset:0!important;
+    background:rgba(244,238,229,.34)!important;
+    backdrop-filter:blur(10px)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+    pointer-events:none!important;
+  }
+
+  .serviceVisual img{
+    position:relative!important;
+    z-index:1!important;
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    background:transparent!important;
+  }
+}
