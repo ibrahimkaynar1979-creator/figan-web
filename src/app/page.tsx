@@ -58,19 +58,20 @@ export default function Home() {
           <cite>— FİGAN</cite>
         </blockquote>
 
-        <div className="mobileHeroActions" aria-label="Figan hızlı işlemler">
-          <a className="mobileApplyCta" href="#basvuru">
-            <span className="mobileCtaIcon">▤</span>
-            <span>Yazar Başvurusu Yap</span>
-            <span className="mobileCtaArrow">→</span>
-          </a>
+      </section>
 
-          <button className="mobileWatchCta" type="button">
-            <span className="mobilePlay">▶</span>
-            <span>Figan’ı İzleyin</span>
-            <span className="mobileCtaArrow">→</span>
-          </button>
-        </div>
+      <section className="mobileActionPanel" aria-label="Figan hızlı işlemler">
+        <a className="mobileApplyCta" href="#basvuru">
+          <span className="mobileCtaIcon">▤</span>
+          <span>Yazar Başvurusu Yap</span>
+          <span className="mobileCtaArrow">→</span>
+        </a>
+
+        <button className="mobileWatchCta" type="button">
+          <span className="mobilePlay">▶</span>
+          <span>Figan’ı İzleyin</span>
+          <span className="mobileCtaArrow">→</span>
+        </button>
       </section>
 
       <section className="manifesto" id="manifesto">
