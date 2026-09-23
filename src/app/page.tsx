@@ -81,7 +81,7 @@ export default function Home() {
 
         <div className="serviceShowcase" aria-label="Figan hizmetleri">
           <article className="serviceShowcaseRow imageLeft">
-            <div className="serviceVisual"><img src="/figan-hizmet-01-ekitap.webp" alt="Figan E-Kitap" /></div>
+            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-01-ekitap.webp')"}}><img src="/figan-hizmet-01-ekitap.webp" alt="Figan E-Kitap" /></div>
             <div className="serviceShowcaseCopy">
               <span className="serviceKicker">01 · E-KİTAP</span>
               <h3>Her yerde<br/>okunsun.</h3>
@@ -97,11 +97,11 @@ export default function Home() {
               <p>Eserinizi güçlü bir dinleme deneyimine dönüştürüyoruz.</p>
               <a href="#surec">Detaylı Bilgi <b>→</b></a>
             </div>
-            <div className="serviceVisual"><img src="/figan-hizmet-02-sesli-kitap.webp" alt="Figan Sesli Kitap" /></div>
+            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-02-sesli-kitap.webp')"}}><img src="/figan-hizmet-02-sesli-kitap.webp" alt="Figan Sesli Kitap" /></div>
           </article>
 
           <article className="serviceShowcaseRow imageLeft">
-            <div className="serviceVisual"><img src="/figan-hizmet-03-yazar-sitesi.webp" alt="Figan Yazar Sitesi" /></div>
+            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-03-yazar-sitesi.webp')"}}><img src="/figan-hizmet-03-yazar-sitesi.webp" alt="Figan Yazar Sitesi" /></div>
             <div className="serviceShowcaseCopy">
               <span className="serviceKicker">03 · YAZAR SİTESİ</span>
               <h3>Size ait bir<br/>dijital dünya.</h3>
@@ -117,11 +117,11 @@ export default function Home() {
               <p>Profesyonel çeviri ve editoryal uyarlamayla uluslararası yayına hazırlıyoruz.</p>
               <a href="#surec">Detaylı Bilgi <b>→</b></a>
             </div>
-            <div className="serviceVisual"><img src="/figan-hizmet-04-yabanci-dil.webp" alt="Figan Yabancı Dil Yayını" /></div>
+            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-04-yabanci-dil.webp')"}}><img src="/figan-hizmet-04-yabanci-dil.webp" alt="Figan Yabancı Dil Yayını" /></div>
           </article>
 
           <article className="serviceShowcaseRow imageLeft">
-            <div className="serviceVisual"><img src="/figan-hizmet-05-dijital-dagitim.webp" alt="Figan Dijital Dağıtım" /></div>
+            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-05-dijital-dagitim.webp')"}}><img src="/figan-hizmet-05-dijital-dagitim.webp" alt="Figan Dijital Dağıtım" /></div>
             <div className="serviceShowcaseCopy">
               <span className="serviceKicker">05 · DİJİTAL DAĞITIM</span>
               <h3>Daha fazla<br/>okura ulaşın.</h3>
