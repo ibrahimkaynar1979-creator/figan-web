@@ -2872,3 +2872,139 @@ button{font:inherit;color:inherit}
     min-height:calc(100svh - 58px - 64px)!important;
   }
 }
+
+/* SECOND SECTION — editorial publishing world */
+.manifesto{
+  background:#f4eee5!important;
+  padding:88px 28px 104px!important;
+}
+
+.manifestoIntro{
+  max-width:640px;
+}
+
+.manifesto .eyebrow{
+  margin-bottom:22px!important;
+  color:#7a4e22!important;
+}
+
+.manifesto h2{
+  margin:0!important;
+  font-family:var(--font-editorial),serif!important;
+  font-size:clamp(42px,8vw,68px)!important;
+  line-height:.95!important;
+  letter-spacing:-.045em!important;
+  font-weight:600!important;
+  color:#17110d!important;
+}
+
+.manifestoLead{
+  margin:18px 0 0!important;
+  max-width:560px!important;
+  font-family:var(--font-editorial),serif!important;
+  font-size:clamp(27px,5vw,38px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.03em!important;
+  color:#8a5a2a!important;
+}
+
+.manifestoBody{
+  max-width:580px!important;
+  margin:26px 0 0!important;
+  font-size:16px!important;
+  line-height:1.68!important;
+  color:#4f453b!important;
+}
+
+.serviceLines{
+  margin-top:46px;
+  border-top:1px solid rgba(23,17,13,.16);
+}
+
+.serviceLine{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:20px 0;
+  border-bottom:1px solid rgba(23,17,13,.16);
+}
+
+.serviceNo{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:#9a6d3c;
+}
+
+.serviceLine b{
+  display:block;
+  font-family:var(--font-editorial),serif;
+  font-size:24px;
+  line-height:1.05;
+  font-weight:600;
+  color:#17110d;
+}
+
+.serviceLine small{
+  display:block;
+  margin-top:5px;
+  font-size:13px;
+  line-height:1.35;
+  color:#6b6055;
+}
+
+.manifestoLink{
+  margin-top:32px!important;
+}
+
+@media(max-width:520px){
+  .manifesto{
+    padding:68px 24px 92px!important;
+  }
+
+  .manifesto .eyebrow{
+    margin-bottom:18px!important;
+    font-size:9px!important;
+    letter-spacing:.24em!important;
+  }
+
+  .manifesto h2{
+    font-size:clamp(40px,11vw,50px)!important;
+    line-height:.96!important;
+  }
+
+  .manifestoLead{
+    margin-top:14px!important;
+    font-size:clamp(24px,7vw,31px)!important;
+  }
+
+  .manifestoBody{
+    margin-top:20px!important;
+    font-size:14px!important;
+    line-height:1.6!important;
+  }
+
+  .serviceLines{
+    margin-top:34px!important;
+  }
+
+  .serviceLine{
+    grid-template-columns:38px 1fr!important;
+    gap:10px!important;
+    padding:17px 0!important;
+  }
+
+  .serviceLine b{
+    font-size:22px!important;
+  }
+
+  .serviceLine small{
+    font-size:12px!important;
+  }
+
+  .manifestoLink{
+    margin-top:28px!important;
+    font-size:13px!important;
+  }
+}
