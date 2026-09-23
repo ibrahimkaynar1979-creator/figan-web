@@ -113,6 +113,16 @@ export default function Home() {
           <article className="serviceEditorialItem">
             <span className="serviceIndex">04</span>
             <div className="serviceEditorialCopy">
+              <h3>Yabancı Dil Yayını</h3>
+              <p>Eseriniz başka dillerde de yaşasın.</p>
+              <span>Profesyonel çeviri · Editoryal uyarlama · Uluslararası yayına hazırlık</span>
+            </div>
+            <a href="#surec" aria-label="Yabancı Dil Yayını detayları">→</a>
+          </article>
+
+          <article className="serviceEditorialItem">
+            <span className="serviceIndex">05</span>
+            <div className="serviceEditorialCopy">
               <h3>Dijital Dağıtım</h3>
               <p>Daha fazla okura ulaşın.</p>
               <span>Türkiye ve dünya · Uygun dijital yayın kanalları · Uzun vadeli yayın desteği</span>
@@ -135,7 +145,8 @@ export default function Home() {
           <article><span>5</span><div><h3>Sesli Kitap</h3><p>Eserinizi dinleme deneyimine dönüştürüyoruz.</p></div><small>Sözün sesi daha uzağa gider.</small></article>
           <article><span>6</span><div><h3>Figan Reader &amp; Audio</h3><p>Okuma ve dinleme deneyimini tek dünyada buluşturuyoruz.</p></div><small>Okur ve dinleyiciyle buluşur.</small></article>
           <article><span>7</span><div><h3>Yazar Sitesi</h3><p>Size özel profesyonel yazar alanınızı kuruyoruz.</p></div><small>Dijitalde sizin dünyanız.</small></article>
-          <article><span>8</span><div><h3>Dijital Dağıtım</h3><p>Eserinizi uygun dijital yayın kanallarına taşıyoruz.</p></div><small>Daha fazla okur, daha fazla erişim.</small></article>
+          <article><span>8</span><div><h3>Yabancı Dil Yayını</h3><p>Eserinizi profesyonel çeviri ve editoryal uyarlamayla farklı dillere hazırlıyoruz.</p></div><small>Hikâyeniz sınırları aşar.</small></article>
+          <article><span>9</span><div><h3>Dijital Dağıtım</h3><p>Eserinizi uygun dijital yayın kanallarına taşıyoruz.</p></div><small>Daha fazla okur, daha fazla erişim.</small></article>
         </div>
 
         <a className="processCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
