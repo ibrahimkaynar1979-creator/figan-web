@@ -3712,3 +3712,32 @@ button{font:inherit;color:inherit}
     font-size:9px!important;
   }
 }
+
+/* SHOW FULL SERVICE IMAGES — no crop */
+@media(max-width:520px){
+  .serviceVisual{
+    background:#e7dccd!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+
+  .serviceVisual img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    background:#e7dccd!important;
+  }
+}
+
+@media(max-width:390px){
+  .serviceVisual{
+    background:#e7dccd!important;
+  }
+
+  .serviceVisual img{
+    object-fit:contain!important;
+    background:#e7dccd!important;
+  }
+}
