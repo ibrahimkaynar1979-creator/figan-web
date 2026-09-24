@@ -359,3 +359,28 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     bottom:92px!important;
   }
 }
+
+
+/* 2026-09-24 — FIGAN HERO PHOTO SIZE LIKE PATILIYOLAR */
+@media(max-width:600px){
+  /* Patiliyolar gibi: ekranın tamamını kaplamayan, kart içinde kontrollü hero fotoğrafı */
+  .hero-visual{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:489 / 500!important;
+    margin:0!important;
+    overflow:hidden!important;
+    border-radius:0!important;
+    background:#f3e8da!important;
+  }
+
+  .hero-visual img{
+    width:100%!important;
+    height:100%!important;
+    max-height:none!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    transform:none!important;
+  }
+}
