@@ -6686,3 +6686,26 @@ button{font:inherit;color:inherit}
     line-height:1.32!important;
   }
 }
+
+
+/* 2026-09-24 — REMOVE MOBILE HERO BOTTOM STRIP */
+@media(max-width:520px){
+  .mobileHeroFresh{
+    margin-bottom:0!important;
+    padding-bottom:0!important;
+  }
+
+  .mobileHeroFreshImage{
+    display:block!important;
+    margin-bottom:0!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+    padding-top:0!important;
+  }
+
+  body{
+    padding-bottom:0!important;
+  }
+}
