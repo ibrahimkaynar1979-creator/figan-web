@@ -5722,3 +5722,23 @@ button{font:inherit;color:inherit}
     line-height:1.42!important;
   }
 }
+
+
+/* 2026-09-24 — FINAL hero cleanup: no price card */
+@media(max-width:520px){
+  .hero{
+    padding-bottom:0!important;
+  }
+
+  .mobileHeroOffer{
+    display:none!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    margin:0!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+  }
+}
