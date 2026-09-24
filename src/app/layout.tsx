@@ -25,8 +25,61 @@ const ui = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Figan Yayınevi | Bir kitabınız varsa, ona ait bir dünya kuralım",
-  description: "E-kitap, sesli kitap, yazar sitesi, Figan Reader & Audio ve dijital dağıtım tek bir yayın dünyasında.",
+  metadataBase: new URL("https://www.fiyayinevi.com"),
+  title: {
+    default: "Fi Yayınevi | Basılı Kitap, E-Kitap, Sesli Kitap ve Yazar Sitesi",
+    template: "%s | Fi Yayınevi",
+  },
+  description: "Fi Yayınevi; editörlük, kapak ve tasarım, bandrollü basım, fizikî ve dijital dağıtım, e-kitap, sesli kitap, yabancı dil çeviri ve yazar sitesi hizmetlerini tek yayın dünyasında buluşturur.",
+  keywords: [
+    "Fi Yayınevi",
+    "kitap yayınlama",
+    "kitap bastırma",
+    "bandrollü basım",
+    "fiziki kitap dağıtımı",
+    "e-kitap yayını",
+    "sesli kitap",
+    "yazar sitesi",
+    "dijital dağıtım",
+    "yabancı dil çeviri",
+    "İzmir yayınevi",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    url: "/",
+    siteName: "Fi Yayınevi",
+    title: "Fi Yayınevi | Bir kitabın ötesinde, bütün bir yayın dünyası",
+    description: "Basılı kitaptan e-kitaba, sesli kitaptan yazar sitesine kadar tüm yayın yolculuğunuzu Fi Yayınevi ile tek çatı altında kurun.",
+    images: [
+      {
+        url: "/figan-hero-mobile-cropped.webp",
+        width: 1200,
+        height: 630,
+        alt: "Fi Yayınevi yayın dünyası",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fi Yayınevi | Bir kitabın ötesinde, bütün bir yayın dünyası",
+    description: "Basılı ve dijital yayın, sesli kitap, yazar sitesi ve dağıtım hizmetleri.",
+    images: ["/figan-hero-mobile-cropped.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
