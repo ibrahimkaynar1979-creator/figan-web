@@ -336,10 +336,8 @@ export default function Home() {
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} Figan Yayınevi. Tüm hakları saklıdır.</p>
             <div className="footer-legal"><a href="/gizlilik">Gizlilik Politikası</a><i/><a href="/kvkk">KVKK</a><i/><a href="/kullanim-kosullari">Kullanım Koşulları</a></div>
-            <div className="naribo-credit" aria-label="Naribo Creative">
-              <span className="naribo-mark">N</span>
-              <span className="naribo-word">NARIBO</span>
-              <span className="naribo-creative">CREATIVE</span>
+            <div className="naribo-credit" aria-label="Naribo Creative Agency">
+              <img src="https://raw.githubusercontent.com/ibrahimkaynar1979-creator/patiliyolar-web/master/public/logos/naribo-creative-agency.png" alt="Naribo Creative Agency"/>
             </div>
           </div>
         </div>
