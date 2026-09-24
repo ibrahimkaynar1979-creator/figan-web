@@ -76,16 +76,6 @@ export default function Home() {
           <img className="mobileHeroCompositeImage" src="/figan-hero-mobile-final.webp" alt="Figan dijital yayın ekosistemi: kitap, Reader, Audio ve yazar sitesi" />
         </div>
 
-        <div className="mobileHeroOffer" aria-label="Ekim ayı özel yayın paketi">
-          <div className="mobileOfferTop">
-            <span className="mobileOfferKicker">EKİM AYINA ÖZEL</span>
-            <span className="mobileOfferOld">32.000 TL</span>
-          </div>
-          <div className="mobileOfferPrice">15.990 TL</div>
-          <p>E-kitap · Sesli kitap · Yazar sitesi · Dijital dağıtım</p>
-          <a className="mobileOfferCta" href="#basvuru">Yazar Dünyamı Oluştur <span>→</span></a>
-        </div>
-
         <blockquote className="heroQuote">
           “Bazı yaralar,<br/>insanı göğe<br/>daha yakın kılar.”
           <cite>— FİGAN</cite>
