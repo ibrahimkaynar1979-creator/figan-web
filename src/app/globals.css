@@ -1676,3 +1676,105 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     border-radius:16px 16px 0 0!important;
   }
 }
+
+
+/* 2026-09-25 - FINAL MOBILE COMPACTION PASS */
+.ecosystem-orbit{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;place-content:center;min-height:300px;padding:34px;border-radius:26px;background:radial-gradient(circle at 50% 50%,rgba(218,167,111,.24),transparent 32%),linear-gradient(145deg,#4a2a1a,#2b170e);border:1px solid rgba(255,255,255,.12)}
+.ecosystem-orbit span{display:grid;place-items:center;min-height:72px;padding:12px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:rgba(255,255,255,.055);color:#ead5bd;font-size:12px;font-weight:700;text-align:center}
+.ecosystem-orbit strong{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:92px;height:92px;border-radius:50%;background:#f5eadc;color:#3b2114;font-family:var(--font-editorial),Georgia,serif;font-size:28px;font-weight:500;box-shadow:0 12px 35px rgba(0,0,0,.22)}
+
+@media(max-width:760px){
+  /* overall vertical rhythm */
+  .section{padding-top:42px!important;padding-bottom:42px!important}
+
+  /* hero: rounded image top corners */
+  .home-hero{padding:0 8px 6px!important}
+  .hero-grid{border-radius:18px!important;overflow:hidden!important}
+  .hero-visual{overflow:hidden!important;border-radius:18px 18px 0 0!important;clip-path:inset(0 round 18px 18px 0 0)!important}
+  .hero-visual img{display:block!important;border-radius:18px 18px 0 0!important}
+  .hero-copy{padding:18px 20px 10px!important}
+  .hero-actions{padding-bottom:16px!important}
+
+  /* service cards: same height, shorter copy */
+  .figan-services-showcase{padding-top:28px!important;padding-bottom:38px!important}
+  .figan-services-header{margin-bottom:20px!important}
+  .figan-services-track{padding-bottom:10px!important}
+  .figan-service-card{display:flex!important;min-height:0!important}
+  .figan-service-link{display:flex!important;flex-direction:column!important;width:100%!important}
+  .figan-service-photo{flex:0 0 auto!important}
+  .figan-service-content{display:flex!important;flex-direction:column!important;min-height:260px!important;padding:30px 18px 16px!important}
+  .figan-service-title-row h3{font-size:24px!important}
+  .figan-service-content>p{display:-webkit-box!important;overflow:hidden!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:3!important;margin:12px 0 14px!important;font-size:11.5px!important;line-height:1.5!important}
+  .figan-service-cta{margin-top:auto!important;padding:.62rem .82rem!important;font-size:.64rem!important}
+
+  /* process single card: much tighter */
+  .process{padding:6px 8px 38px!important}
+  .process-panel{padding:24px 18px 18px!important;border-radius:20px!important}
+  .process-kicker{margin-bottom:12px!important;font-size:8.5px!important}
+  .process-panel h2{font-size:39px!important;line-height:.94!important}
+  .process-ornament{margin:14px 0 12px!important}
+  .process-intro{font-size:12.5px!important;line-height:1.5!important}
+  .process-list{margin-top:16px!important}
+  .process-card{grid-template-columns:36px 1fr!important;gap:10px!important;min-height:54px!important;padding:8px 0!important}
+  .process-no{width:32px!important;height:32px!important;flex-basis:32px!important;font-size:9px!important}
+  .process-copy h3{font-size:11.5px!important;line-height:1.2!important}
+  .process-copy p{margin-top:2px!important;font-size:9.5px!important;line-height:1.32!important}
+  .process-cta{min-height:42px!important;margin-top:16px!important;font-size:11px!important}
+
+  /* ecosystem: compact, no broken asset */
+  .ecosystem{padding:6px 8px 38px!important}
+  .ecosystem-grid{gap:16px!important;padding:24px 18px 18px!important;border-radius:20px!important}
+  .ecosystem-copy h2{font-size:38px!important}
+  .ecosystem-copy>p{font-size:12.5px!important;line-height:1.5!important}
+  .ecosystem-copy .btn{min-height:44px!important;margin-top:16px!important;font-size:11.5px!important}
+  .ecosystem-visual{width:100%!important;margin:2px 0 0!important}
+  .ecosystem-orbit{min-height:190px!important;padding:20px!important;border-radius:16px!important}
+  .ecosystem-orbit span{min-height:52px!important;padding:8px!important;border-radius:13px!important;font-size:9.5px!important}
+  .ecosystem-orbit strong{width:66px!important;height:66px!important;font-size:21px!important}
+
+  /* author site: reduce giant vertical footprint */
+  .author-site{padding:38px 8px!important}
+  .author-grid{gap:16px!important;padding:22px 18px 0!important}
+  .author-copy h2{font-size:38px!important;line-height:.98!important}
+  .author-copy>p{font-size:12.5px!important;line-height:1.5!important}
+  .benefit-grid{grid-template-columns:1fr 1fr!important;gap:7px!important;margin-top:16px!important}
+  .benefit-grid>div{min-height:0!important;padding:12px!important;border-radius:14px!important}
+  .benefit-grid b{font-size:9px!important}
+  .benefit-grid h3{margin:6px 0 4px!important;font-size:15px!important;line-height:1.15!important}
+  .benefit-grid p{font-size:9.5px!important;line-height:1.35!important}
+  .author-visual{width:calc(100% + 36px)!important;margin:14px -18px 0!important}
+  .author-visual img{display:block!important;width:100%!important}
+
+  /* final CTA */
+  .final-cta{padding:6px 8px 38px!important}
+  .final-panel{padding:24px 18px!important}
+  .final-panel h2{font-size:39px!important}
+  .final-panel>p{font-size:12.5px!important;line-height:1.5!important}
+  .final-panel .btn{min-height:44px!important;margin-top:16px!important;font-size:11.5px!important}
+
+  /* footer: Patiliyolar-like compact proportions */
+  .figan-footer{padding:6px 8px 74px!important}
+  .figan-footer-shell{padding:26px 18px 16px!important}
+  .footer-logo img{width:142px!important}
+  .footer-logo-row p{max-width:260px!important;margin-top:8px!important;font-size:10.5px!important}
+  .footer-divider{margin:20px 0 18px!important}
+  .footer-groups{gap:18px!important}
+  .footer-group h4{margin-bottom:10px!important;padding-bottom:6px!important;font-size:18px!important}
+  .footer-group a,.footer-contact span{margin-bottom:6px!important;font-size:10.5px!important;line-height:1.3!important}
+  .footer-signature{margin:18px 0 12px!important}
+  .footer-signature i{width:58px!important}
+  .footer-bottom{gap:6px!important}
+  .footer-bottom p{font-size:9px!important}
+  .footer-legal span{font-size:8px!important}
+
+  /* floating contact controls: smaller and clear of dock */
+  .contact-float{right:10px!important;bottom:92px!important;gap:9px!important}
+  .contact-float a{width:52px!important;height:52px!important}
+  .contact-float svg{width:23px!important;height:23px!important}
+
+  /* bottom dock: less viewport obstruction */
+  .mobile-dock{height:70px!important;padding:8px 8px 6px!important}
+  .mobile-dock a{font-size:9.5px!important;gap:3px!important}
+  .mobile-dock a span{font-size:19px!important}
+  body{padding-bottom:70px!important}
+}
