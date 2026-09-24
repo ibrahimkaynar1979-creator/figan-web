@@ -77,12 +77,13 @@ const process = [
   ["01","Başvuru","Dosyanızı bizimle paylaşın."],
   ["02","Editörlük","Metninizi yayın için güçlendiriyoruz."],
   ["03","Kapak & Tasarım","Eserinize özgü yayın kimliği oluşturuyoruz."],
-  ["04","E-Kitap","Tüm cihazlarda okunabilir dijital formata hazırlıyoruz."],
-  ["05","Sesli Kitap","Eserinizi dinleme deneyimine dönüştürüyoruz."],
-  ["06","Figan Reader & Audio","Okuma ve dinleme deneyiminizi tek dünyada buluşturuyoruz."],
-  ["07","Yazar Sitesi","Size özel profesyonel yazar alanınızı kuruyoruz."],
-  ["08","Yabancı Dil Yayını","Eserinizi farklı dillere hazırlıyoruz."],
-  ["09","Dijital Dağıtım","Uygun yayın kanallarına taşıyoruz."],
+  ["04","Bandrollü Basım & Fizikî Dağıtım","Kitabınızı bandrollü olarak basıma hazırlıyor, fizikî satış ve dağıtım kanallarına taşıyoruz."],
+  ["05","E-Kitap","Tüm cihazlarda okunabilir dijital formata hazırlıyoruz."],
+  ["06","Sesli Kitap","Eserinizi dinleme deneyimine dönüştürüyoruz."],
+  ["07","Figan Reader & Audio","Okuma ve dinleme deneyiminizi tek dünyada buluşturuyoruz."],
+  ["08","Yazar Sitesi","Size özel profesyonel yazar alanınızı kuruyoruz."],
+  ["09","Yabancı Dil Yayını","Eserinizi farklı dillere hazırlıyoruz."],
+  ["10","Dijital Dağıtım","Uygun yayın kanallarına taşıyoruz."],
 ] as const;
 
 export default function Home() {
