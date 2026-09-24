@@ -19,6 +19,7 @@ const services = [
   {
     no:"01",
     title:"Yazar Sitesi",
+    traits:["Size Özel","Mobil Uyumlu","Kalıcı Dijital Alan"],
     badge:"Size Özel Dijital Alan",
     text:"Eserlerinizi, biyografinizi ve okurla bağınızı size ait seçkin bir dijital merkezde buluşturuyoruz.",
     image:"/figan-hizmet-03-yazar-sitesi.webp",
@@ -27,6 +28,7 @@ const services = [
   {
     no:"02",
     title:"E-Kitap",
+    traits:["EPUB","Mobil Uyumlu","Yayın Hazır"],
     badge:"Her Cihazda Okunsun",
     text:"Eserinizi profesyonel dijital yayına hazırlıyor, tüm cihazlarda okunabilir formata dönüştürüyoruz.",
     image:"/figan-hizmet-01-ekitap.webp",
@@ -35,6 +37,7 @@ const services = [
   {
     no:"03",
     title:"Sesli Kitap",
+    traits:["Doğal Ses","Stüdyo Kalitesi","Platform Hazır"],
     badge:"Hikâyeniz Ses Bulsun",
     text:"Metninizi güçlü, doğal ve kaliteli bir dinleme deneyimine dönüştürüyoruz.",
     image:"/figan-hizmet-02-sesli-kitap.webp",
@@ -43,6 +46,7 @@ const services = [
   {
     no:"04",
     title:"Kitap Kapağı",
+    traits:["Özgün Tasarım","Baskı Uyumlu","Dijital Uyumlu"],
     badge:"İlk Bakışta Fark Yaratın",
     text:"Eserinizin ruhunu taşıyan, yayın kimliğinizi güçlendiren özgün kapak tasarımları hazırlıyoruz.",
     image:"/ekosistem-kitap.webp",
@@ -51,6 +55,7 @@ const services = [
   {
     no:"05",
     title:"Dijital Dağıtım",
+    traits:["Türkiye","Global","Tek Noktadan"],
     badge:"Daha Fazla Okura Ulaşın",
     text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.",
     image:"/figan-hizmet-05-dijital-dagitim.webp",
@@ -181,11 +186,14 @@ export default function Home() {
                     <div className="figan-service-content">
                       <span className="figan-service-emblem" aria-hidden="true">✦</span>
                       <div className="figan-service-title-row">
-                        <span className="figan-service-no">{service.no}</span>
                         <h3>{service.title}</h3>
+                        <span className="figan-service-title-mark" aria-hidden="true">✦</span>
                       </div>
+                      <ul className="figan-service-traits" aria-label={`${service.title} özellikleri`}>
+                        {service.traits.map((trait) => <li key={trait}>{trait}</li>)}
+                      </ul>
                       <p>{service.text}</p>
-                      <span className="figan-service-cta">İnceleyin <i>→</i></span>
+                      <span className="figan-service-cta">{service.title} Hizmetini İnceleyin <i>→</i></span>
                     </div>
                   </a>
                 </article>
