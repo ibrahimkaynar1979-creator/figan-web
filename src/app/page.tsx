@@ -37,6 +37,28 @@ export default function Home() {
         </div>
       </header>
 
+      <section className="mobileHeroFresh" id="top-mobile" aria-label="Figan mobil ana ekran">
+        <img
+          className="mobileHeroFreshImage"
+          src="/figan-hero-mobile-final.webp"
+          alt="Figan dijital yayın ekosistemi: kitap, Reader, Audio ve yazar sitesi"
+        />
+        <div className="mobileHeroFreshCopy">
+          <p className="mobileHeroFreshEyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
+          <h1 className="mobileHeroFreshTitle">
+            <span>Bir kitap</span>
+            <em>yazdınız.</em>
+          </h1>
+          <p className="mobileHeroFreshPoetic">Şimdi ona ait<br/>bir dünya kuralım.</p>
+          <div className="mobileHeroFreshRule" />
+          <p className="mobileHeroFreshLead">
+            E-kitabınız. Sesli kitabınız.<br/>
+            Yazar siteniz. Dijital dağıtımınız.<br/>
+            Tek bir yayın dünyasında.
+          </p>
+        </div>
+      </section>
+
       <section className="hero" id="top">
         <img
           className="heroArt"
