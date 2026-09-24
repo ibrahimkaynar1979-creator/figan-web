@@ -3170,3 +3170,103 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     display:none;
   }
 }
+
+
+/* 2026-09-25 - RICH SERVICE SEO CONTENT */
+.seo-service-rich,
+.seo-service-output,
+.seo-service-faq{
+  padding:0 18px 34px;
+  background:#f6f0e7;
+}
+.seo-service-rich-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.seo-service-rich-grid>article,
+.seo-service-output-card,
+.seo-service-faq-card{
+  padding:26px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:22px;
+  background:#fffdf9;
+}
+.seo-service-rich h2,
+.seo-service-output h2,
+.seo-service-faq h2{
+  margin:0 0 14px;
+  color:#49362e;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:30px;
+  font-weight:500;
+  line-height:1.02;
+}
+.seo-service-rich ul,
+.seo-service-rich ol{
+  margin:0;
+  padding-left:20px;
+}
+.seo-service-rich li{
+  margin-bottom:9px;
+  color:#5f5149;
+  font-size:13px;
+  line-height:1.55;
+}
+.seo-service-output-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.seo-service-output-grid article{
+  padding:16px;
+  border:1px solid rgba(169,105,52,.12);
+  border-radius:14px;
+  background:#fffaf5;
+}
+.seo-service-output-grid b{
+  display:block;
+  margin-bottom:8px;
+  color:#6e7845;
+  font-size:10px;
+  letter-spacing:.12em;
+}
+.seo-service-output-grid p{
+  margin:0;
+  color:#5f5149;
+  font-size:13px;
+  line-height:1.5;
+}
+.seo-service-faq-card .faq-list{
+  margin-top:10px;
+}
+
+@media(max-width:760px){
+  .seo-service-rich,
+  .seo-service-output,
+  .seo-service-faq{
+    padding:0 8px 24px!important;
+  }
+  .seo-service-rich-grid{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  .seo-service-rich-grid>article,
+  .seo-service-output-card,
+  .seo-service-faq-card{
+    padding:20px 18px!important;
+    border-radius:18px!important;
+  }
+  .seo-service-rich h2,
+  .seo-service-output h2,
+  .seo-service-faq h2{
+    font-size:26px!important;
+  }
+  .seo-service-rich li,
+  .seo-service-output-grid p{
+    font-size:12.5px!important;
+  }
+  .seo-service-output-grid{
+    grid-template-columns:1fr!important;
+  }
+}
