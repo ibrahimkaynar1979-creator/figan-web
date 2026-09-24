@@ -5331,3 +5331,103 @@ button{font:inherit;color:inherit}
     top:158px!important;
   }
 }
+
+
+/* 2026-09-24 — Mobile hero layout v3: compact layered group */
+@media(max-width:520px){
+  .mobileHeroShowcase{
+    position:relative!important;
+    width:100%!important;
+    height:355px!important;
+    margin:10px auto 0!important;
+    overflow:visible!important;
+  }
+
+  .mobileHeroShowcase img{
+    position:absolute!important;
+    max-width:none!important;
+    height:auto!important;
+    object-fit:contain!important;
+    transform:none!important;
+  }
+
+  /* Laptop: back layer, centered and lower */
+  .mobileShowcaseLaptop{
+    z-index:1!important;
+    width:70%!important;
+    left:15%!important;
+    right:auto!important;
+    top:18px!important;
+  }
+
+  /* Reader: front-left, large */
+  .mobileShowcaseReader{
+    z-index:4!important;
+    width:31%!important;
+    left:4%!important;
+    right:auto!important;
+    top:132px!important;
+  }
+
+  /* Audio: front-center, narrow and lowest */
+  .mobileShowcaseAudio{
+    z-index:6!important;
+    width:22%!important;
+    left:39%!important;
+    right:auto!important;
+    top:153px!important;
+  }
+
+  /* Book: front-right, large and slightly taller than reader */
+  .mobileShowcaseBook{
+    z-index:5!important;
+    width:32%!important;
+    left:auto!important;
+    right:4%!important;
+    top:117px!important;
+  }
+
+  /* create one grounded visual group instead of four floating objects */
+  .mobileHeroShowcase::after{
+    content:"";
+    position:absolute;
+    z-index:0;
+    left:5%;
+    right:5%;
+    bottom:6px;
+    height:74px;
+    border-radius:50%;
+    background:radial-gradient(ellipse at center,
+      rgba(84,52,28,.16) 0%,
+      rgba(84,52,28,.08) 42%,
+      rgba(84,52,28,0) 74%);
+    filter:blur(4px);
+    pointer-events:none;
+  }
+}
+
+@media(max-width:390px){
+  .mobileHeroShowcase{
+    height:335px!important;
+  }
+  .mobileShowcaseLaptop{
+    width:72%!important;
+    left:14%!important;
+    top:16px!important;
+  }
+  .mobileShowcaseReader{
+    width:32%!important;
+    left:3%!important;
+    top:126px!important;
+  }
+  .mobileShowcaseAudio{
+    width:22%!important;
+    left:39%!important;
+    top:146px!important;
+  }
+  .mobileShowcaseBook{
+    width:33%!important;
+    right:3%!important;
+    top:111px!important;
+  }
+}
