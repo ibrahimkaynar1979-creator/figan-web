@@ -1331,3 +1331,20 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     line-height:1.55!important;
   }
 }
+
+
+/* 2026-09-24 — HERO CTA EDGE ALIGNMENT */
+@media(max-width:600px){
+  .hero-actions{
+    width:100%!important;
+    margin:0!important;
+    padding:8px 0 20px!important;
+    gap:10px!important;
+  }
+
+  .hero-actions .btn{
+    width:100%!important;
+    min-height:50px!important;
+    margin:0!important;
+  }
+}
