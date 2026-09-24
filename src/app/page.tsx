@@ -11,7 +11,7 @@ const nav = [
   ["Hizmetler", "#hizmetler"],
   ["Süreç", "#surec"],
   ["Figan Ekosistemi", "#ekosistem"],
-  ["Yazarlarımız", "#yazarlar"],
+  ["Yazar Dünyamız", "#yazarlar"],
   ["Yazar Sitesi", "#yazar-sitesi"],
   ["İletişim", "#basvuru"],
 ] as const;
@@ -21,7 +21,6 @@ const services = [
     no:"01",
     title:"Yazar Sitesi",
     traits:["Size Özel","Mobil Uyumlu","Kalıcı Dijital Alan"],
-    badge:"Size Özel Dijital Alan",
     text:"Eserlerinizi, biyografinizi ve okurla bağınızı size ait seçkin bir dijital merkezde buluşturuyoruz.",
     image:"/figan-hizmet-yazar-sitesi.webp",
     href:"#yazar-sitesi",
@@ -30,7 +29,6 @@ const services = [
     no:"02",
     title:"E-Kitap",
     traits:["EPUB","Mobil Uyumlu","Yayın Hazır"],
-    badge:"Her Cihazda Okunsun",
     text:"Eserinizi profesyonel dijital yayına hazırlıyor, tüm cihazlarda okunabilir formata dönüştürüyoruz.",
     image:"/figan-hizmet-e-kitap.webp",
     href:"#basvuru",
@@ -39,7 +37,6 @@ const services = [
     no:"03",
     title:"Sesli Kitap",
     traits:["Doğal Ses","Stüdyo Kalitesi","Platform Hazır"],
-    badge:"Hikâyeniz Ses Bulsun",
     text:"Metninizi güçlü, doğal ve kaliteli bir dinleme deneyimine dönüştürüyoruz.",
     image:"/figan-hizmet-sesli-kitap.webp",
     href:"#basvuru",
@@ -48,7 +45,6 @@ const services = [
     no:"04",
     title:"Basılı Kitap Yayını & Dağıtım",
     traits:["Kapak Tasarımı","Bandrollü Basım","Fizikî Dağıtım"],
-    badge:"Kitabınız Basılsın, Dağıtıma Çıksın",
     text:"Kapak tasarımı, baskı hazırlığı, bandrollü basım ve fizikî dağıtım sürecini birlikte yürütüyor; kitabınızın online kitap satış kanalları ve dağıtım ağlarında yer almasına yönelik yayın sürecini yönetiyoruz.",
     image:"/figan-hizmet-basili-kitap-yayini.webp",
     href:"#basvuru",
@@ -57,7 +53,6 @@ const services = [
     no:"05",
     title:"Dijital Dağıtım",
     traits:["Türkiye","Global","Tek Noktadan"],
-    badge:"Daha Fazla Okura Ulaşın",
     text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.",
     image:"/figan-hizmet-dijital-dagitim.webp",
     href:"#basvuru",
@@ -66,7 +61,6 @@ const services = [
     no:"06",
     title:"Yabancı Dil Çeviri",
     traits:["Editoryal Çeviri","Yayın Dili","Global Hazırlık"],
-    badge:"Eseriniz Yeni Dillere Açılsın",
     text:"Eserinizi hedef dile yalnızca çevirmiyor; yayın dili, editoryal akış ve uluslararası yayın hazırlığı açısından yeniden ele alıyoruz.",
     image:"/figan-hizmet-05-dijital-dagitim.webp",
     href:"#basvuru",
@@ -74,16 +68,13 @@ const services = [
 ];
 
 const process = [
-  ["01","Başvuru","Dosyanızı bizimle paylaşın."],
-  ["02","Editörlük","Metninizi yayın için güçlendiriyoruz."],
-  ["03","Kapak & Tasarım","Eserinize özgü yayın kimliği oluşturuyoruz."],
+  ["01","Başvuru & Değerlendirme","Dosyanızı alıyor, yayın hedefinizi ve eserinizi birlikte değerlendiriyoruz."],
+  ["02","Editörlük","Metninizi dil, akış ve yayın standardı açısından güçlendiriyoruz."],
+  ["03","Kapak & Tasarım","Eserinize özgü kapak ve iç sayfa yayın kimliğini oluşturuyoruz."],
   ["04","Bandrollü Basım & Fizikî Dağıtım","Kitabınızı bandrollü olarak basıma hazırlıyor, fizikî satış ve dağıtım kanallarına taşıyoruz."],
-  ["05","E-Kitap","Tüm cihazlarda okunabilir dijital formata hazırlıyoruz."],
-  ["06","Sesli Kitap","Eserinizi dinleme deneyimine dönüştürüyoruz."],
-  ["07","Figan Reader & Audio","Okuma ve dinleme deneyiminizi tek dünyada buluşturuyoruz."],
-  ["08","Yazar Sitesi","Size özel profesyonel yazar alanınızı kuruyoruz."],
-  ["09","Yabancı Dil Yayını","Eserinizi farklı dillere hazırlıyoruz."],
-  ["10","Dijital Dağıtım","Uygun yayın kanallarına taşıyoruz."],
+  ["05","Dijital Yayına Hazırlık","E-kitabınızı ve gerekli dijital dosyaları platformlara uygun biçimde hazırlıyoruz."],
+  ["06","Sesli Kitap & Figan Audio","Eserinizi profesyonel dinleme deneyimine dönüştürüyoruz."],
+  ["07","Yazar Dünyası & Yayın","Yazar sitenizi, dijital dağıtımınızı ve gerekli yabancı dil yayın hazırlıklarını tek yayın dünyasında birleştiriyoruz."],
 ] as const;
 
 export default function Home() {
@@ -131,10 +122,10 @@ export default function Home() {
           <div className="figan-category-panel">
             <div className="figan-category-scroller">
               {[
-                ["E-Kitap", "/figan-hizmet-01-ekitap.webp", "#hizmetler"],
-                ["Sesli Kitap", "/figan-hizmet-02-sesli-kitap.webp", "#hizmetler"],
-                ["Yazar Sitesi", "/figan-hizmet-03-yazar-sitesi.webp", "#yazar-sitesi"],
-                ["Dijital Dağıtım", "/figan-hizmet-05-dijital-dagitim.webp", "#hizmetler"],
+                ["Basılı Yayın", "/figan-hizmet-basili-kitap-yayini.webp", "#hizmetler"],
+                ["Dijital Yayın", "/figan-hizmet-e-kitap.webp", "#hizmetler"],
+                ["Sesli Kitap", "/figan-hizmet-sesli-kitap.webp", "#hizmetler"],
+                ["Yazar Dünyası", "/figan-hizmet-yazar-sitesi.webp", "#yazar-sitesi"],
               ].map(([label, image, href]) => (
                 <a className="figan-category-item" href={href} key={label}>
                   <span className="figan-category-image">
@@ -147,26 +138,15 @@ export default function Home() {
           </div>
         </nav>
 
-        <section className="category-strip">
-          <div className="container category-inner">
-            <span>Figan Yayınevi</span><i/>
-            <a href="#hizmetler">E-Kitap</a>
-            <a href="#hizmetler">Sesli Kitap</a>
-            <a href="#yazar-sitesi">Yazar Sitesi</a>
-            <a href="#hizmetler">Dijital Dağıtım</a>
-          </div>
-        </section>
-
         <section className="home-hero">
           <div className="container hero-grid">
             <div className="hero-copy">
               <p className="eyebrow"><span/>FIGAN YAYINEVİ</p>
               <h1><span>Bir kitap</span><em>yazdınız.</em></h1>
               <h2>Şimdi ona ait bir dünya kuralım.</h2>
-              <p className="hero-lead">E-kitabınız, sesli kitabınız, yazar siteniz ve dijital dağıtımınız için tüm süreci tek bir yayın dünyasında bir araya getiriyoruz.</p>
+              <p className="hero-lead">Editörlükten bandrollü basıma, e-kitaptan sesli kitaba, yazar sitenizden dijital ve fizikî dağıtıma kadar tüm yayın dünyanızı tek çatı altında kuruyoruz.</p>
               <div className="hero-actions">
                 <a href="#basvuru" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">Yazar Başvurusu Yap</span><b className="cta-arrow">→</b></a>
-                <button className="btn secondary" type="button"><span className="cta-icon cta-play">▶</span><span className="cta-label">Figan’ı İzleyin</span><b className="cta-arrow">→</b></button>
               </div>
             </div>
             <div className="hero-visual">
@@ -203,7 +183,7 @@ export default function Home() {
                         {service.traits.map((trait) => <li key={trait}>{trait}</li>)}
                       </ul>
                       <p>{service.text}</p>
-                      <span className="figan-service-cta">Detayları İnceleyin <i>→</i></span>
+                      <span className="figan-service-cta">Bilgi Alın <i>→</i></span>
                     </div>
                   </a>
                 </article>
@@ -244,32 +224,9 @@ export default function Home() {
             </div>
             <div className="ecosystem-visual" aria-hidden="true">
               <div className="ecosystem-orbit">
-                <span>E-Kitap</span><span>Sesli Kitap</span><span>Yazar Sitesi</span><span>Dijital Dağıtım</span><span>Bandrollü Basım</span><span>Fizikî Dağıtım</span>
+                <span>Basılı Kitap</span><span>E-Kitap</span><span>Sesli Kitap</span><span>Yazar Sitesi</span><span>Türkiye Dağıtımı</span><span>Global Yayın</span>
                 <strong>Figan</strong>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="yazarlar" className="section authors-section">
-          <div className="container authors-wrap">
-            <header className="authors-header">
-              <p className="eyebrow"><span/>YAZARLARIMIZ</p>
-              <h2>Figan’ın yayın dünyasında<br/><em>yazarlar ve eserleri.</em></h2>
-              <p>Her eser kendi sesiyle, her yazar kendi yayın kimliğiyle Figan dünyasında yerini alır.</p>
-            </header>
-            <div className="authors-grid">
-              <article className="author-card">
-                <div className="author-card-visual">
-                  <img src="/icimdeki-ibrahim.webp" alt="İçimdeki İbrahim kitap kapağı"/>
-                </div>
-                <div className="author-card-copy">
-                  <p className="author-card-kicker">FIGAN YAZARI</p>
-                  <h3>İbrahim Kaynar</h3>
-                  <p>“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.</p>
-                  <a href="#basvuru">Yazar dünyasını keşfedin <span>→</span></a>
-                </div>
-              </article>
             </div>
           </div>
         </section>
@@ -288,6 +245,30 @@ export default function Home() {
               </div>
             </div>
             <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="Figan yazar sitesi örneği"/></div>
+          </div>
+        </section>
+
+        
+
+        <section id="yazarlar" className="section authors-section">
+          <div className="container authors-wrap">
+            <header className="authors-header">
+              <p className="eyebrow"><span/>YAZAR DÜNYAMIZ</p>
+              <h2>Figan’dan bir yazar,<br/><em>bir eser, bir dünya.</em></h2>
+              <p>Yayımladığımız her eseri, yazarının sesi ve kimliğiyle birlikte görünür kılan bir yayın dünyası kuruyoruz.</p>
+            </header>
+            <div className="authors-grid">
+              <article className="author-card">
+                <div className="author-card-visual">
+                  <img src="/icimdeki-ibrahim.webp" alt="İçimdeki İbrahim kitap kapağı"/>
+                </div>
+                <div className="author-card-copy">
+                  <p className="author-card-kicker">FIGAN YAZARI</p>
+                  <h3>İbrahim Kaynar</h3>
+                  <p>“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.</p>
+                </div>
+              </article>
+            </div>
           </div>
         </section>
 
@@ -311,31 +292,34 @@ export default function Home() {
           <div className="footer-groups">
             <section className="footer-group">
               <h4>Yayın Dünyası</h4>
+              <a href="#hizmetler"><span>✦</span>Basılı Kitap Yayını</a>
               <a href="#hizmetler"><span>✦</span>E-Kitap</a>
               <a href="#hizmetler"><span>✦</span>Sesli Kitap</a>
               <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
               <a href="#hizmetler"><span>✦</span>Dijital Dağıtım</a>
+              <a href="#hizmetler"><span>✦</span>Yabancı Dil Çeviri</a>
             </section>
             <section className="footer-group">
               <h4>Figan</h4>
               <a href="#surec"><span>✦</span>Nasıl Çalışıyoruz?</a>
               <a href="#ekosistem"><span>✦</span>Figan Ekosistemi</a>
-              <a href="#yazarlar"><span>✦</span>Yazarlarımız</a>
+              <a href="#yazarlar"><span>✦</span>Yazar Dünyamız</a>
               <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
               <a href="#basvuru"><span>✦</span>Yazar Başvurusu</a>
             </section>
             <section className="footer-group footer-contact">
               <h4>Bize Ulaşın</h4>
-              <a href="tel:+905532419397"><span aria-hidden="true">☎</span>0 532 4 290 290</a>
+              <p className="footer-phone"><span aria-hidden="true">☎</span><strong>Ofis</strong> 0 532 4 290 290</p>
+              <a href="tel:+905532419397"><span aria-hidden="true">☎</span><strong>Mobil</strong> 0 553 241 93 97</a>
               <a href="https://wa.me/905532419397?text=Merhaba%2C%20Figan%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span>WhatsApp’tan Yazın</a>
               <a href="mailto:info@figanyayinevi.com"><span aria-hidden="true">✉</span>info@figanyayinevi.com</a>
-              <p className="footer-address"><span aria-hidden="true">⌖</span>Adalet Mah. Manas Blv. Folkart Towers A Kule No:47/B Kat:26 Daire:2601, Bayraklı / İzmir</p>
+              <p className="footer-address"><span aria-hidden="true">⌖</span><span className="footer-address-lines">Folkart Towers A Kule<br/>Adalet Mah. Manas Blv. No:47/B<br/>Kat:26 D:2601 · Bayraklı / İzmir</span></p>
             </section>
           </div>
           <div className="footer-signature"><i/><span>✦</span><i/></div>
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} Figan Yayınevi. Tüm hakları saklıdır.</p>
-            <div className="footer-legal"><span>Gizlilik Politikası</span><i/><span>KVKK</span><i/><span>Kullanım Koşulları</span></div>
+            <div className="footer-legal"><a href="/gizlilik">Gizlilik Politikası</a><i/><a href="/kvkk">KVKK</a><i/><a href="/kullanim-kosullari">Kullanım Koşulları</a></div>
             <div className="naribo-credit" aria-label="Naribo Creative">
               <span className="naribo-mark">N</span>
               <span className="naribo-word">NARIBO</span>
