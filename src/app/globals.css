@@ -6750,3 +6750,52 @@ button{font:inherit;color:inherit}
     padding-top:26px!important;
   }
 }
+
+
+/* 2026-09-24 — TRUE FULLSCREEN MOBILE HERO FINAL */
+@media(max-width:520px){
+  .mobileHeroFresh{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    height:calc(100svh - 72px - 68px)!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:#f6eee2!important;
+  }
+
+  .mobileHeroFreshImage{
+    position:absolute!important;
+    inset:0!important;
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    transform:none!important;
+  }
+
+  .mobileHeroFreshCopy{
+    position:absolute!important;
+    z-index:5!important;
+    top:12px!important;
+    left:20px!important;
+    right:18px!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileHeroFresh{
+    height:calc(100svh - 68px - 64px)!important;
+  }
+}
