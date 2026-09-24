@@ -5256,3 +5256,78 @@ button{font:inherit;color:inherit}
 
   .mobileActionPanel{display:none!important}
 }
+
+
+/* 2026-09-24 — Mobile hero layout v2: recommended composition */
+@media(max-width:520px){
+  .mobileHeroShowcase{
+    height:430px!important;
+    margin-top:18px!important;
+    overflow:visible!important;
+  }
+
+  /* Back layer: centered laptop */
+  .mobileShowcaseLaptop{
+    z-index:1!important;
+    width:92%!important;
+    left:4%!important;
+    right:auto!important;
+    top:4px!important;
+    transform:none!important;
+  }
+
+  /* Front-left: Reader */
+  .mobileShowcaseReader{
+    z-index:3!important;
+    width:34%!important;
+    left:5%!important;
+    right:auto!important;
+    top:178px!important;
+    transform:none!important;
+  }
+
+  /* Front-center: Audio */
+  .mobileShowcaseAudio{
+    z-index:5!important;
+    width:24%!important;
+    left:38%!important;
+    right:auto!important;
+    top:195px!important;
+    transform:none!important;
+  }
+
+  /* Front-right: Book */
+  .mobileShowcaseBook{
+    z-index:4!important;
+    width:31%!important;
+    left:auto!important;
+    right:4%!important;
+    top:164px!important;
+    transform:none!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileHeroShowcase{
+    height:408px!important;
+  }
+  .mobileShowcaseLaptop{
+    width:94%!important;
+    left:3%!important;
+  }
+  .mobileShowcaseReader{
+    width:35%!important;
+    left:4%!important;
+    top:170px!important;
+  }
+  .mobileShowcaseAudio{
+    width:24%!important;
+    left:38%!important;
+    top:188px!important;
+  }
+  .mobileShowcaseBook{
+    width:31%!important;
+    right:3%!important;
+    top:158px!important;
+  }
+}
