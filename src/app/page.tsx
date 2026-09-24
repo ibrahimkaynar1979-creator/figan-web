@@ -10,7 +10,7 @@ const nav = [
   ["Ana Sayfa", "#top"],
   ["Hizmetler", "#hizmetler"],
   ["Süreç", "#surec"],
-  ["Figan Ekosistemi", "#ekosistem"],
+  ["Fi Ekosistemi", "#ekosistem"],
   ["Yazar Dünyamız", "#yazarlar"],
   ["Yazar Sitesi", "#yazar-sitesi"],
   ["İletişim", "#basvuru"],
@@ -73,22 +73,22 @@ const process = [
   ["03","Kapak & Tasarım","Eserinize özgü kapak ve iç sayfa yayın kimliğini oluşturuyoruz."],
   ["04","Bandrollü Basım & Fizikî Dağıtım","Kitabınızı bandrollü olarak basıma hazırlıyor, fizikî satış ve dağıtım kanallarına taşıyoruz."],
   ["05","Dijital Yayına Hazırlık","E-kitabınızı ve gerekli dijital dosyaları platformlara uygun biçimde hazırlıyoruz."],
-  ["06","Sesli Kitap & Figan Audio","Eserinizi profesyonel dinleme deneyimine dönüştürüyoruz."],
+  ["06","Sesli Kitap & Fi Audio","Eserinizi profesyonel dinleme deneyimine dönüştürüyoruz."],
   ["07","Yazar Dünyası & Yayın","Yazar sitenizi, dijital dağıtımınızı ve gerekli yabancı dil yayın hazırlıklarını tek yayın dünyasında birleştiriyoruz."],
 ] as const;
 
 const authors = [
   {
     name:"İbrahim Kaynar",
-    kicker:"FIGAN YAZARI",
+    kicker:"Fİ YAZARI",
     description:"“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.",
     image:"/icimdeki-ibrahim.webp",
     initials:"İK",
   },
   {
     name:"Figen Yavuz",
-    kicker:"FIGAN YAZARI",
-    description:"Yazar profili ve eserleri eklendikçe bu kart üzerinden Figan yayın dünyasında yerini alacak.",
+    kicker:"Fİ YAZARI",
+    description:"Yazar profili ve eserleri eklendikçe bu kart üzerinden Fi yayın dünyasında yerini alacak.",
     image:null,
     initials:"FY",
   },
@@ -114,9 +114,7 @@ export default function Home() {
     <>
       <header className={`site-header ${scrolled?"is-scrolled":""}`}>
         <div className="container header-inner">
-          <a href="#top" className="brand" aria-label="Figan Yayınevi ana sayfa">
-            <img src="/figan-logo-silver.png" alt="Figan Yayınevi"/>
-          </a>
+          <a href="#top" className="brand brand-fi" aria-label="Fi Yayınevi ana sayfa"><span className="brand-fi-main">Fi</span><span className="brand-fi-sub">YAYINEVİ</span></a>
           <nav className="desktop-nav">
             {nav.map(([label,href])=><a key={href} href={href}>{label}</a>)}
           </nav>
@@ -135,7 +133,7 @@ export default function Home() {
 
       <main id="top">
 
-        <nav className="figan-category-nav" aria-label="Figan yayın hizmetleri">
+        <nav className="figan-category-nav" aria-label="Fi yayın hizmetleri">
           <div className="figan-category-panel">
             <div className="figan-category-scroller">
               {[
@@ -166,7 +164,7 @@ export default function Home() {
               <p className="hero-lead">Editörlükten bandrollü basıma, e-kitaptan sesli kitaba, yazar sitenizden dijital ve fizikî dağıtıma kadar tüm yayın dünyanızı tek çatı altında kuruyoruz.</p>
               <div className="hero-actions">
                 <a href="#basvuru" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">Yazar Başvurusu Yap</span><b className="cta-arrow">→</b></a>
-                <a href="#figan-video" className="btn secondary"><span className="cta-icon cta-play">▶</span><span className="cta-label">Figan’ı İzleyin</span><b className="cta-arrow">→</b></a>
+                <a href="#fi-video" className="btn secondary"><span className="cta-icon cta-play">▶</span><span className="cta-label">Fi’yi İzleyin</span><b className="cta-arrow">→</b></a>
               </div>
             </div>
             <div className="hero-visual">
@@ -185,7 +183,7 @@ export default function Home() {
               </p>
             </header>
 
-            <div className="figan-services-track" aria-label="Figan yayın hizmetleri">
+            <div className="figan-services-track" aria-label="Fi yayın hizmetleri">
               {services.map((service) => (
                 <article className="figan-service-card" key={service.no}>
                   <a className="figan-service-link" href={service.href}>
@@ -219,7 +217,7 @@ export default function Home() {
                 <p className="process-kicker"><span>✦</span> BİR DOSYA, BİR YOLCULUK</p>
                 <h2>Nasıl çalışıyoruz?</h2>
                 <div className="process-ornament" aria-hidden="true"><span/><i>✦</i></div>
-                <p className="process-intro">Eseriniz, Figan’ın profesyonel yayın süreciyle adım adım hazırlanır; metinden tasarıma, dijital yayından dağıtıma kadar bütün yolculuk tek bir yayın dünyasında ilerler.</p>
+                <p className="process-intro">Eseriniz, Fi’nin profesyonel yayın süreciyle adım adım hazırlanır; metinden tasarıma, dijital yayından dağıtıma kadar bütün yolculuk tek bir yayın dünyasında ilerler.</p>
               </div>
               <div className="process-list">
                 {process.map(([no,title,text])=>(
@@ -237,7 +235,7 @@ export default function Home() {
         <section id="ekosistem" className="section ecosystem">
           <div className="container ecosystem-grid">
             <div className="ecosystem-copy">
-              <p className="eyebrow light"><span/>FİGAN EKOSİSTEMİ</p>
+              <p className="eyebrow light"><span/>Fİ EKOSİSTEMİ</p>
               <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
               <p>Kitabınız dijitalde ve fizikî dünyada birlikte yaşar; okunur, dinlenir, bandrollü olarak basılır ve uygun dağıtım kanallarıyla okura ulaşır.</p>
               <a href="#basvuru" className="btn light-btn">Yayın Dünyamı Kur <b>→</b></a>
@@ -274,11 +272,11 @@ export default function Home() {
           <div className="container authors-wrap">
             <header className="authors-header">
               <p className="eyebrow"><span/>YAZAR DÜNYAMIZ</p>
-              <h2>Figan yazarları,<br/><em>kayan bir yayın vitrini.</em></h2>
-              <p>Yeni yazarlar eklendikçe aynı kart sistemi içinde yan yana yer alacak; mobilde ve masaüstünde yatay kaydırılarak keşfedilebilecek.</p>
+              <h2>Fi yazarları,<br/><em>bir yayın vitrini.</em></h2>
+              <p>Yeni yazarlar eklendikçe aynı kart sistemi içinde yan yana yer alacak ve yayın vitrini büyüyecek.</p>
             </header>
 
-            <div className="authors-track" aria-label="Figan yazarları">
+            <div className="authors-track" aria-label="Fi yazarları">
               {authors.map((author)=>(
                 <article className="author-slide-card" key={author.name}>
                   <div className="author-slide-visual">
@@ -303,9 +301,9 @@ export default function Home() {
           <div className="container">
             <div className="about-figan-card">
               <div className="about-figan-copy">
-                <p className="eyebrow"><span/>FİGAN HAKKINDA</p>
+                <p className="eyebrow"><span/>Fİ HAKKINDA</p>
                 <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
-                <p>Figan, yazarın yalnızca kitabını değil; editörlükten tasarıma, bandrollü basımdan dijital yayına, sesli kitaptan yazar sitesine kadar bütün yayın yolculuğunu tek çatı altında kurmayı hedefler.</p>
+                <p>Fi, yazarın yalnızca kitabını değil; editörlükten tasarıma, bandrollü basımdan dijital yayına, sesli kitaptan yazar sitesine kadar bütün yayın yolculuğunu tek çatı altında kurmayı hedefler.</p>
               </div>
               <div className="about-figan-points">
                 <article><b>01</b><div><h3>Tek çatı</h3><p>Basılı ve dijital yayın süreçlerini aynı yayın planı içinde bir araya getiririz.</p></div></article>
@@ -316,12 +314,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="figan-video" className="section figan-video-placeholder">
-          <div className="container figan-video-card">
-            <p className="eyebrow light"><span/>FİGAN’I İZLEYİN</p>
-            <h2>Figan’ın yayın dünyasını<br/><em>videoda keşfedin.</em></h2>
+        <section id="fi-video" className="section fi-video-placeholder">
+          <div className="container fi-video-card">
+            <p className="eyebrow light"><span/>Fİ’Yİ İZLEYİN</p>
+            <h2>Fi’nin yayın dünyasını<br/><em>videoda keşfedin.</em></h2>
             <p>Tanıtım videonuz hazır olduğunda bu alan doğrudan videoyu oynatacak şekilde bağlanacak.</p>
-            <div className="figan-video-frame"><span>▶</span></div>
+            <div className="fi-video-frame"><span>▶</span></div>
           </div>
         </section>
 
@@ -330,7 +328,7 @@ export default function Home() {
             <p className="eyebrow light"><span/>YAZAR BAŞVURUSU</p>
             <h2>Bir kitabınız varsa,<br/><em>ona ait dünyayı birlikte kuralım.</em></h2>
             <p>Dosyanızı paylaşın; yayın yolculuğunuzu birlikte planlayalım.</p>
-            <a className="btn gold" href="https://wa.me/905532419397?text=Merhaba%2C%20Figan%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Başvur <b>→</b></a>
+            <a className="btn gold" href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Başvur <b>→</b></a>
           </div>
         </section>
       </main>
@@ -338,7 +336,7 @@ export default function Home() {
       <footer className="figan-footer">
         <div className="container figan-footer-shell">
           <div className="footer-logo-row">
-            <a href="#top" className="footer-logo"><img src="/figan-logo-silver.png" alt="Figan Yayınevi"/></a>
+            <a href="#top" className="footer-logo footer-logo-fi" aria-label="Fi Yayınevi"><span className="brand-fi-main">Fi</span><span className="brand-fi-sub">YAYINEVİ</span></a>
             <p>Bir kitabın ötesinde, size ait bir yayın dünyası.</p>
           </div>
           <div className="footer-divider"/>
@@ -355,24 +353,24 @@ export default function Home() {
             <section className="footer-group">
               <h4>Figan</h4>
               <a href="#surec"><span>✦</span>Nasıl Çalışıyoruz?</a>
-              <a href="#ekosistem"><span>✦</span>Figan Ekosistemi</a>
+              <a href="#ekosistem"><span>✦</span>Fi Ekosistemi</a>
               <a href="#yazarlar"><span>✦</span>Yazar Dünyamız</a>
               <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
-              <a href="#hakkimizda"><span>✦</span>Figan Hakkında</a>
+              <a href="#hakkimizda"><span>✦</span>Fi Hakkında</a>
               <a href="#basvuru"><span>✦</span>Yazar Başvurusu</a>
             </section>
             <section className="footer-group footer-contact">
               <h4>Bize Ulaşın</h4>
               <p className="footer-phone"><span aria-hidden="true">☎</span><strong>Ofis</strong> 0 532 4 290 290</p>
               <a href="tel:+905532419397"><span aria-hidden="true">☎</span><strong>Mobil</strong> 0 553 241 93 97</a>
-              <a href="https://wa.me/905532419397?text=Merhaba%2C%20Figan%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span>WhatsApp’tan Yazın</a>
-              <a href="mailto:info@figanyayinevi.com"><span aria-hidden="true">✉</span>info@figanyayinevi.com</a>
+              <a href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span>WhatsApp’tan Yazın</a>
+              <a href="mailto:info@fiyayinevi.com"><span aria-hidden="true">✉</span>info@fiyayinevi.com</a>
               <p className="footer-address"><span aria-hidden="true">⌖</span><span className="footer-address-lines">Folkart Towers A Kule<br/>Adalet Mah. Manas Blv. No:47/B<br/>Kat:26 D:2601 · Bayraklı / İzmir</span></p>
             </section>
           </div>
           <div className="footer-signature"><i/><span>✦</span><i/></div>
           <div className="footer-bottom">
-            <p>© {new Date().getFullYear()} Figan Yayınevi. Tüm hakları saklıdır.</p>
+            <p>© {new Date().getFullYear()} Fi Yayınevi. Tüm hakları saklıdır.</p>
             <div className="footer-legal"><a href="/gizlilik">Gizlilik Politikası</a><i/><a href="/kvkk">KVKK</a><i/><a href="/kullanim-kosullari">Kullanım Koşulları</a></div>
             <div className="naribo-credit" aria-label="Naribo Creative Agency">
               <img src="https://raw.githubusercontent.com/ibrahimkaynar1979-creator/patiliyolar-web/master/public/logos/naribo-creative-agency.png" alt="Naribo Creative Agency"/>
@@ -382,12 +380,12 @@ export default function Home() {
       </footer>
 
       <div className="contact-float">
-        <a className="call" href="tel:+905532419397" aria-label="Figan Yayınevi'ni telefonla ara" title="Telefonla ara">
+        <a className="call" href="tel:+905532419397" aria-label="Fi Yayınevi'ni telefonla ara" title="Telefonla ara">
           <svg viewBox="0 0 24 24" width="29" height="29" aria-hidden="true">
             <path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
           </svg>
         </a>
-        <a className="wa" href="https://wa.me/905532419397?text=Merhaba%2C%20Figan%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="Figan Yayınevi ile WhatsApp üzerinden iletişime geçin" title="WhatsApp">
+        <a className="wa" href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="Fi Yayınevi ile WhatsApp üzerinden iletişime geçin" title="WhatsApp">
           <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
             <path fill="currentColor" d="M16.04 3C9.39 3 4 8.2 4 14.61c0 2.28.69 4.51 1.99 6.41L4 28l7.23-1.89a12.4 12.4 0 0 0 4.8.96h.01C22.68 27.07 28 21.86 28 15.45 28 9.04 22.68 3 16.04 3Zm0 21.96h-.01a10.25 10.25 0 0 1-4.35-.96l-.31-.15-4.29 1.12 1.15-4.07-.2-.32a9.41 9.41 0 0 1-1.5-5.08c0-5.21 4.38-9.45 9.76-9.45 5.38 0 9.76 4.24 9.76 9.45 0 5.21-4.38 9.46-10.01 9.46Zm5.35-7.07c-.29-.14-1.72-.82-1.99-.91-.27-.1-.47-.14-.67.14-.2.29-.77.91-.94 1.1-.17.19-.35.22-.64.07-.29-.14-1.24-.44-2.36-1.41-.87-.75-1.46-1.67-1.63-1.95-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.51.15-.17.2-.29.29-.48.1-.19.05-.36-.02-.51-.07-.14-.67-1.56-.91-2.14-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.36-.27.29-1.04.98-1.04 2.39 0 1.41 1.07 2.77 1.22 2.96.15.19 2.11 3.12 5.1 4.38.71.29 1.27.46 1.7.59.71.22 1.36.19 1.87.12.57-.08 1.72-.68 1.96-1.34.24-.65.24-1.22.17-1.34-.07-.12-.27-.19-.56-.33Z"/>
           </svg>
