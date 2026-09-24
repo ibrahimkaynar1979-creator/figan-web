@@ -1,5 +1,7 @@
 "use client";
 
+// deployment-refresh-2026-09-24
+
 import { useEffect, useState } from "react";
 
 const nav = [
