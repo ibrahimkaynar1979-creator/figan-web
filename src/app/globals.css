@@ -5431,3 +5431,124 @@ button{font:inherit;color:inherit}
     top:111px!important;
   }
 }
+
+
+/* 2026-09-24 — Mobile hero layout v4: reference composition */
+@media(max-width:520px){
+  .mobileHeroShowcase{
+    position:relative!important;
+    width:100%!important;
+    height:370px!important;
+    margin:12px auto 0!important;
+    overflow:visible!important;
+    isolation:isolate!important;
+  }
+
+  .mobileHeroShowcase img{
+    position:absolute!important;
+    display:block!important;
+    max-width:none!important;
+    height:auto!important;
+    object-fit:contain!important;
+    transform-origin:50% 100%!important;
+    filter:drop-shadow(0 16px 18px rgba(39,24,14,.17))!important;
+    user-select:none!important;
+    pointer-events:none!important;
+  }
+
+  /* REFERENCE: laptop = large back-left anchor */
+  .mobileShowcaseLaptop{
+    z-index:1!important;
+    width:76%!important;
+    left:-4%!important;
+    right:auto!important;
+    top:38px!important;
+    transform:rotate(-1.2deg)!important;
+  }
+
+  /* REFERENCE: reader = tall back-right, partly behind phone */
+  .mobileShowcaseReader{
+    z-index:3!important;
+    width:34%!important;
+    left:auto!important;
+    right:7%!important;
+    top:74px!important;
+    transform:rotate(.8deg)!important;
+  }
+
+  /* REFERENCE: audio = narrow front-center, overlaps both laptop + reader */
+  .mobileShowcaseAudio{
+    z-index:5!important;
+    width:22%!important;
+    left:43%!important;
+    right:auto!important;
+    top:154px!important;
+    transform:translateX(-50%) rotate(-.4deg)!important;
+  }
+
+  /* REFERENCE: book = far-right, upright, slightly behind reader */
+  .mobileShowcaseBook{
+    z-index:2!important;
+    width:27%!important;
+    left:auto!important;
+    right:-3%!important;
+    top:95px!important;
+    transform:rotate(.4deg)!important;
+  }
+
+  /* one grounded product cluster, no separate floating shadows */
+  .mobileHeroShowcase::before{
+    content:"";
+    position:absolute;
+    z-index:0;
+    left:2%;
+    right:1%;
+    bottom:8px;
+    height:58px;
+    border-radius:50%;
+    background:radial-gradient(
+      ellipse at center,
+      rgba(81,52,31,.18) 0%,
+      rgba(81,52,31,.09) 42%,
+      rgba(81,52,31,0) 74%
+    );
+    filter:blur(7px);
+    pointer-events:none;
+  }
+
+  .mobileHeroShowcase::after{
+    display:none!important;
+    content:none!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileHeroShowcase{
+    height:348px!important;
+    margin-top:10px!important;
+  }
+
+  .mobileShowcaseLaptop{
+    width:78%!important;
+    left:-6%!important;
+    top:35px!important;
+  }
+
+  .mobileShowcaseReader{
+    width:35%!important;
+    right:6%!important;
+    top:70px!important;
+  }
+
+  .mobileShowcaseAudio{
+    width:22%!important;
+    left:43%!important;
+    top:146px!important;
+  }
+
+  .mobileShowcaseBook{
+    width:28%!important;
+    right:-4%!important;
+    top:90px!important;
+  }
+}
