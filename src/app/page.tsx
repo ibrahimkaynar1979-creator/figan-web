@@ -272,6 +272,21 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="hakkimizda" className="section about-figan">
+          <div className="container about-figan-panel">
+            <div className="about-figan-copy">
+              <p className="eyebrow"><span/>FİGAN HAKKINDA</p>
+              <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
+              <p>Figan, yazarın yalnızca kitabını değil; editörlükten tasarıma, bandrollü basımdan dijital yayına, sesli kitaptan yazar sitesine kadar bütün yayın yolculuğunu tek çatı altında kurmayı hedefler.</p>
+            </div>
+            <div className="about-figan-points">
+              <article><b>01</b><h3>Tek çatı</h3><p>Basılı ve dijital yayın süreçlerini aynı yayın planı içinde bir araya getiririz.</p></article>
+              <article><b>02</b><h3>Yazar odaklı</h3><p>Eseri kadar yazar kimliğini ve okurla kurduğu bağı da görünür kılan bir yapı kurarız.</p></article>
+              <article><b>03</b><h3>Çok formatlı yayın</h3><p>Basılı kitap, e-kitap, sesli kitap ve yazar sitesi aynı yayın dünyasının parçaları olarak ilerler.</p></article>
+            </div>
+          </div>
+        </section>
+
         <section id="basvuru" className="section final-cta">
           <div className="container final-panel">
             <p className="eyebrow light"><span/>YAZAR BAŞVURUSU</p>
@@ -305,6 +320,7 @@ export default function Home() {
               <a href="#ekosistem"><span>✦</span>Figan Ekosistemi</a>
               <a href="#yazarlar"><span>✦</span>Yazar Dünyamız</a>
               <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
+              <a href="#hakkimizda"><span>✦</span>Figan Hakkında</a>
               <a href="#basvuru"><span>✦</span>Yazar Başvurusu</a>
             </section>
             <section className="footer-group footer-contact">
