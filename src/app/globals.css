@@ -5814,3 +5814,74 @@ button{font:inherit;color:inherit}
     max-height:525px!important;
   }
 }
+
+
+/* 2026-09-24 — FINAL mobile hero crop v2 */
+@media(max-width:520px){
+  .hero{
+    position:relative!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:#f7efe3!important;
+  }
+
+  .heroContent{
+    position:absolute!important;
+    z-index:30!important;
+    top:18px!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    padding:0 22px!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    position:relative!important;
+    z-index:1!important;
+    width:100%!important;
+    height:615px!important;
+    min-height:615px!important;
+    max-height:615px!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:none!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    display:block!important;
+    position:absolute!important;
+    inset:0 auto auto 0!important;
+    width:100%!important;
+    height:auto!important;
+    max-width:none!important;
+    margin:0!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    transform:translateY(-6px)!important;
+    filter:none!important;
+  }
+
+  .mobileHeroOffer,
+  .heroQuote{
+    display:none!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    height:575px!important;
+    min-height:575px!important;
+    max-height:575px!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    transform:translateY(-4px)!important;
+  }
+}
