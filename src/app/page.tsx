@@ -93,7 +93,7 @@ const authors = [
     image:null,
     initials:"FY",
     href:"/yazarlar/figen-yavuz",
-    published:false,
+    published:true,
   },
 ] as const;
 
