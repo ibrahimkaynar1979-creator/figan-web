@@ -5916,3 +5916,29 @@ button{font:inherit;color:inherit}
     margin-top:0!important;
   }
 }
+
+
+/* 2026-09-24 — FINAL mobile hero zoom-out */
+@media(max-width:520px){
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    overflow:hidden!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    display:block!important;
+    position:relative!important;
+    width:92%!important;
+    height:auto!important;
+    max-width:none!important;
+    margin:0 auto!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    transform:none!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    width:90%!important;
+  }
+}
