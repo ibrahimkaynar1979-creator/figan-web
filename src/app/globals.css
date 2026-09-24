@@ -6270,3 +6270,131 @@ button{font:inherit;color:inherit}
     transform:none!important;
   }
 }
+
+
+/* 2026-09-24 — CLEAN MOBILE HERO REBUILD */
+.mobileHeroFresh{
+  display:none;
+}
+
+@media(max-width:520px){
+  /* Ignore the old mobile hero completely. Desktop hero remains untouched. */
+  .hero{
+    display:none!important;
+  }
+
+  .mobileHeroFresh{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:#f6eee2!important;
+  }
+
+  .mobileHeroFreshImage{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+  }
+
+  .mobileHeroFreshCopy{
+    position:absolute!important;
+    z-index:2!important;
+    top:16px!important;
+    left:20px!important;
+    right:18px!important;
+    margin:0!important;
+    padding:0!important;
+    color:#1c140f!important;
+    pointer-events:none!important;
+  }
+
+  .mobileHeroFreshEyebrow{
+    margin:0 0 12px!important;
+    font-family:var(--font-sans,Arial,sans-serif)!important;
+    font-size:10px!important;
+    line-height:1.2!important;
+    font-weight:700!important;
+    letter-spacing:.28em!important;
+    color:#9b5d2d!important;
+  }
+
+  .mobileHeroFreshTitle{
+    margin:0!important;
+    padding:0!important;
+    font-family:var(--font-serif,Georgia,serif)!important;
+    font-weight:400!important;
+    font-size:58px!important;
+    line-height:.86!important;
+    letter-spacing:-.035em!important;
+  }
+
+  .mobileHeroFreshTitle span,
+  .mobileHeroFreshTitle em{
+    display:block!important;
+  }
+
+  .mobileHeroFreshTitle em{
+    margin-top:5px!important;
+    font-weight:400!important;
+    font-style:italic!important;
+    color:#9a5b2b!important;
+  }
+
+  .mobileHeroFreshPoetic{
+    margin:10px 0 0!important;
+    font-family:var(--font-serif,Georgia,serif)!important;
+    font-size:28px!important;
+    line-height:1.02!important;
+    font-weight:400!important;
+  }
+
+  .mobileHeroFreshRule{
+    width:35px!important;
+    height:1px!important;
+    margin:16px 0 13px!important;
+    background:#9a5b2b!important;
+  }
+
+  .mobileHeroFreshLead{
+    margin:0!important;
+    font-family:var(--font-sans,Arial,sans-serif)!important;
+    font-size:13px!important;
+    line-height:1.45!important;
+    color:#352b24!important;
+  }
+
+  .mobileActionPanel{
+    display:none!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileHeroFreshCopy{
+    top:14px!important;
+    left:18px!important;
+    right:16px!important;
+  }
+
+  .mobileHeroFreshTitle{
+    font-size:52px!important;
+  }
+
+  .mobileHeroFreshPoetic{
+    font-size:26px!important;
+  }
+
+  .mobileHeroFreshLead{
+    font-size:12.5px!important;
+  }
+}
