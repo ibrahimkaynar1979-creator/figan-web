@@ -115,7 +115,7 @@ export default function Home() {
               </div>
             </div>
             <div className="hero-visual">
-              <img src="/figan-hero-mobile-final_v1.webp" alt="Figan yayın dünyası: kitap, Reader, Audio ve yazar sitesi"/>
+              <img src="/figan-hero-mobile-cropped.webp" alt="Figan yayın dünyası: kitap, Reader, Audio ve yazar sitesi"/>
             </div>
           </div>
         </section>
