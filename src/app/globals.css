@@ -1842,3 +1842,173 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     margin-top:20px!important;
   }
 }
+
+
+/* 2026-09-25 - FINAL READABILITY + FOOTER DENSITY */
+@media(max-width:760px){
+  body{
+    font-size:14.5px!important;
+    line-height:1.56!important;
+  }
+
+  /* site-wide minimum readable sizes */
+  .hero-lead,
+  .figan-services-description,
+  .process-intro,
+  .ecosystem-copy>p,
+  .author-copy>p,
+  .final-panel>p{
+    font-size:14px!important;
+    line-height:1.58!important;
+  }
+
+  .figan-service-content>p{
+    font-size:13px!important;
+    line-height:1.52!important;
+  }
+  .figan-service-traits li,
+  .figan-service-badge,
+  .figan-service-cta{
+    font-size:11.5px!important;
+  }
+
+  /* process: readable without making the card huge */
+  .process-kicker{
+    font-size:10.5px!important;
+  }
+  .process-intro{
+    font-size:13.5px!important;
+  }
+  .process-copy h3{
+    font-size:14px!important;
+    line-height:1.25!important;
+  }
+  .process-copy p{
+    font-size:12.5px!important;
+    line-height:1.42!important;
+  }
+  .process-no{
+    font-size:10.5px!important;
+  }
+  .process-card{
+    min-height:58px!important;
+    padding:9px 0!important;
+  }
+  .process-cta{
+    font-size:12.5px!important;
+  }
+
+  /* author benefits */
+  .benefit-grid h3{
+    font-size:17px!important;
+  }
+  .benefit-grid p{
+    font-size:12px!important;
+    line-height:1.42!important;
+  }
+
+  /* footer: larger text, tighter vertical rhythm */
+  .figan-footer-shell{
+    padding:28px 20px 18px!important;
+  }
+  .footer-logo-row p{
+    font-size:13px!important;
+    line-height:1.45!important;
+  }
+  .footer-divider{
+    margin:18px 0 16px!important;
+  }
+  .footer-groups{
+    gap:14px!important;
+  }
+  .footer-group{
+    gap:0!important;
+  }
+  .footer-group h4{
+    margin-bottom:8px!important;
+    padding-bottom:6px!important;
+    font-size:21px!important;
+    line-height:1.1!important;
+  }
+  .footer-group a,
+  .footer-contact a,
+  .footer-contact .footer-address{
+    margin-bottom:5px!important;
+    font-size:13.5px!important;
+    line-height:1.34!important;
+  }
+  .footer-group a>span,
+  .footer-contact a>span,
+  .footer-contact .footer-address>span{
+    font-size:12px!important;
+  }
+  .footer-signature{
+    margin:16px 0 10px!important;
+  }
+  .footer-bottom{
+    gap:7px!important;
+  }
+  .footer-bottom p{
+    font-size:11px!important;
+    line-height:1.35!important;
+  }
+  .footer-legal{
+    gap:7px!important;
+  }
+  .footer-legal span{
+    font-size:10px!important;
+  }
+}
+
+.naribo-credit{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  margin-top:5px;
+  color:#51483f;
+  line-height:1;
+}
+.naribo-mark{
+  display:grid!important;
+  place-items:center;
+  width:22px;
+  height:22px;
+  margin:0!important;
+  border:1px solid rgba(81,72,63,.45);
+  border-radius:50%;
+  font-family:Georgia,serif;
+  font-size:12px!important;
+  font-weight:700;
+}
+.naribo-word{
+  margin:0!important;
+  font-size:11px!important;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.naribo-creative{
+  margin:0!important;
+  padding-left:5px;
+  border-left:1px solid rgba(81,72,63,.30);
+  font-size:8px!important;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+@media(max-width:760px){
+  .naribo-credit{
+    margin-top:4px!important;
+  }
+  .naribo-mark{
+    width:21px!important;
+    height:21px!important;
+    font-size:11px!important;
+  }
+  .naribo-word{
+    font-size:10.5px!important;
+  }
+  .naribo-creative{
+    font-size:7.5px!important;
+  }
+}
