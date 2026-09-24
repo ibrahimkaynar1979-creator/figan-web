@@ -147,6 +147,7 @@ export default function Home() {
               <p className="hero-lead">Editörlükten bandrollü basıma, e-kitaptan sesli kitaba, yazar sitenizden dijital ve fizikî dağıtıma kadar tüm yayın dünyanızı tek çatı altında kuruyoruz.</p>
               <div className="hero-actions">
                 <a href="#basvuru" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">Yazar Başvurusu Yap</span><b className="cta-arrow">→</b></a>
+                <a href="#figan-video" className="btn secondary"><span className="cta-icon cta-play">▶</span><span className="cta-label">Figan’ı İzleyin</span><b className="cta-arrow">→</b></a>
               </div>
             </div>
             <div className="hero-visual">
@@ -273,17 +274,28 @@ export default function Home() {
         </section>
 
         <section id="hakkimizda" className="section about-figan">
-          <div className="container about-figan-panel">
-            <div className="about-figan-copy">
-              <p className="eyebrow"><span/>FİGAN HAKKINDA</p>
-              <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
-              <p>Figan, yazarın yalnızca kitabını değil; editörlükten tasarıma, bandrollü basımdan dijital yayına, sesli kitaptan yazar sitesine kadar bütün yayın yolculuğunu tek çatı altında kurmayı hedefler.</p>
+          <div className="container">
+            <div className="about-figan-card">
+              <div className="about-figan-copy">
+                <p className="eyebrow"><span/>FİGAN HAKKINDA</p>
+                <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
+                <p>Figan, yazarın yalnızca kitabını değil; editörlükten tasarıma, bandrollü basımdan dijital yayına, sesli kitaptan yazar sitesine kadar bütün yayın yolculuğunu tek çatı altında kurmayı hedefler.</p>
+              </div>
+              <div className="about-figan-points">
+                <article><b>01</b><div><h3>Tek çatı</h3><p>Basılı ve dijital yayın süreçlerini aynı yayın planı içinde bir araya getiririz.</p></div></article>
+                <article><b>02</b><div><h3>Yazar odaklı</h3><p>Eseri kadar yazar kimliğini ve okurla kurduğu bağı da görünür kılan bir yapı kurarız.</p></div></article>
+                <article><b>03</b><div><h3>Çok formatlı yayın</h3><p>Basılı kitap, e-kitap, sesli kitap ve yazar sitesi aynı yayın dünyasının parçaları olarak ilerler.</p></div></article>
+              </div>
             </div>
-            <div className="about-figan-points">
-              <article><b>01</b><h3>Tek çatı</h3><p>Basılı ve dijital yayın süreçlerini aynı yayın planı içinde bir araya getiririz.</p></article>
-              <article><b>02</b><h3>Yazar odaklı</h3><p>Eseri kadar yazar kimliğini ve okurla kurduğu bağı da görünür kılan bir yapı kurarız.</p></article>
-              <article><b>03</b><h3>Çok formatlı yayın</h3><p>Basılı kitap, e-kitap, sesli kitap ve yazar sitesi aynı yayın dünyasının parçaları olarak ilerler.</p></article>
-            </div>
+          </div>
+        </section>
+
+        <section id="figan-video" className="section figan-video-placeholder">
+          <div className="container figan-video-card">
+            <p className="eyebrow light"><span/>FİGAN’I İZLEYİN</p>
+            <h2>Figan’ın yayın dünyasını<br/><em>videoda keşfedin.</em></h2>
+            <p>Tanıtım videonuz hazır olduğunda bu alan doğrudan videoyu oynatacak şekilde bağlanacak.</p>
+            <div className="figan-video-frame"><span>▶</span></div>
           </div>
         </section>
 
