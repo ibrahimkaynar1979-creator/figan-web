@@ -1,290 +1,208 @@
-import "./ecosystem-overrides.css";
-import EcosystemSlider from "./EcosystemSlider";
+"use client";
 
-function SearchIcon() {
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4 4"/></svg>;
-}
+import { useEffect, useState } from "react";
 
-function ProcessIcon({ type }: { type: string }) {
-  const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  const paths: Record<string, React.ReactNode> = {
-    document: <><path {...common} d="M7 3.5h7l3 3V20.5H7z"/><path {...common} d="M14 3.5v4h4M10 11h5M10 14h5M10 17h4"/></>,
-    edit: <><path {...common} d="M5 19l1-4L15.5 5.5a2.1 2.1 0 013 3L9 18z"/><path {...common} d="M13.8 7.2l3 3"/></>,
-    design: <><rect {...common} x="4" y="5" width="16" height="14" rx="2"/><circle {...common} cx="9" cy="10" r="1.4"/><path {...common} d="M6.5 17l4.2-4 2.6 2.4 2.2-2 2.5 3.6"/></>,
-    book: <><path {...common} d="M4 6.5c3-1 5.5-.5 8 1.2v11c-2.5-1.7-5-2.2-8-1.2zM20 6.5c-3-1-5.5-.5-8 1.2v11c2.5-1.7 5-2.2 8-1.2z"/></>,
-    audio: <><path {...common} d="M5 13v-2a7 7 0 0114 0v2"/><path {...common} d="M5 12h2v6H5a2 2 0 01-2-2v-2a2 2 0 012-2zM19 12h-2v6h2a2 2 0 002-2v-2a2 2 0 00-2-2z"/></>,
-    player: <><rect {...common} x="3.5" y="5" width="17" height="14" rx="2.5"/><path {...common} d="M10 9l5 3-5 3z"/></>,
-    site: <><circle {...common} cx="12" cy="8" r="3"/><path {...common} d="M6 20c.5-4 2.5-6 6-6s5.5 2 6 6"/></>,
-    globe: <><circle {...common} cx="12" cy="12" r="8.5"/><path {...common} d="M3.8 12h16.4M12 3.5c2.4 2.3 3.5 5.1 3.5 8.5S14.4 18.2 12 20.5C9.6 18.2 8.5 15.4 8.5 12S9.6 5.8 12 3.5"/></>,
-    distribution: <><path {...common} d="M5 19V13h3v6zM10.5 19V9h3v10zM16 19V5h3v14z"/></>
-  };
-  return <svg viewBox="0 0 24 24" aria-hidden="true">{paths[type]}</svg>;
-}
+const nav = [
+  ["Ana Sayfa", "#top"],
+  ["Hizmetler", "#hizmetler"],
+  ["Süreç", "#surec"],
+  ["Figan Ekosistemi", "#ekosistem"],
+  ["Yazar Sitesi", "#yazar-sitesi"],
+  ["İletişim", "#basvuru"],
+] as const;
 
-function MenuIcon() {
-  return <span className="menuIcon" aria-hidden="true"><i/><i/><i/></span>;
-}
+const services = [
+  { no:"01", title:"E-Kitap", text:"Eserinizi profesyonel dijital yayına hazırlıyor, tüm cihazlarda okunabilir formata dönüştürüyoruz.", image:"/figan-hizmet-01-ekitap.webp" },
+  { no:"02", title:"Sesli Kitap", text:"Metninizi güçlü ve doğal bir dinleme deneyimine dönüştürüyoruz.", image:"/figan-hizmet-02-sesli-kitap.webp" },
+  { no:"03", title:"Yazar Sitesi", text:"Eserlerinizi, biyografinizi ve okur bağınızı tek bir kişisel merkezde buluşturuyoruz.", image:"/figan-hizmet-03-yazar-sitesi.webp" },
+  { no:"04", title:"Yabancı Dil", text:"Profesyonel çeviri ve editoryal uyarlamayla eserinizi farklı dillere hazırlıyoruz.", image:"/figan-hizmet-04-yabanci-dil.webp" },
+  { no:"05", title:"Dijital Dağıtım", text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.", image:"/figan-hizmet-05-dijital-dagitim.webp" },
+];
+
+const process = [
+  ["01","Başvuru","Dosyanızı bizimle paylaşın."],
+  ["02","Editörlük","Metninizi yayın için güçlendiriyoruz."],
+  ["03","Kapak & Tasarım","Eserinize özgü yayın kimliği oluşturuyoruz."],
+  ["04","E-Kitap","Tüm cihazlarda okunabilir dijital formata hazırlıyoruz."],
+  ["05","Sesli Kitap","Eserinizi dinleme deneyimine dönüştürüyoruz."],
+  ["06","Figan Reader & Audio","Okuma ve dinleme deneyiminizi tek dünyada buluşturuyoruz."],
+  ["07","Yazar Sitesi","Size özel profesyonel yazar alanınızı kuruyoruz."],
+  ["08","Yabancı Dil Yayını","Eserinizi farklı dillere hazırlıyoruz."],
+  ["09","Dijital Dağıtım","Uygun yayın kanallarına taşıyoruz."],
+] as const;
 
 export default function Home() {
+  const [open,setOpen] = useState(false);
+  const [scrolled,setScrolled] = useState(false);
+
+  useEffect(()=>{
+    const onScroll=()=>setScrolled(window.scrollY>8);
+    onScroll();
+    window.addEventListener("scroll",onScroll,{passive:true});
+    return ()=>window.removeEventListener("scroll",onScroll);
+  },[]);
+
+  useEffect(()=>{
+    document.body.style.overflow=open?"hidden":"";
+    return ()=>{document.body.style.overflow=""};
+  },[open]);
+
   return (
-    <main>
-      <header className="siteHeader">
-        <a className="wordmark logoWordmark" href="#top" aria-label="Figan Yayınevi ana sayfa">
-          <img src="/figan-logo-silver.png" alt="Figan Yayınevi" />
-        </a>
-        <div className="headerActions">
-          <button className="iconButton menuButton" aria-label="Menüyü aç"><MenuIcon /></button>
-        </div>
-      </header>
-
-      <section className="mobileHeroFresh" id="top-mobile" aria-label="Figan mobil ana ekran">
-        <img
-          className="mobileHeroFreshImage"
-          src="/figan-hero-mobile-final.webp"
-          alt="Figan dijital yayın ekosistemi: kitap, Reader, Audio ve yazar sitesi"
-        />
-        <div className="mobileHeroFreshCopy">
-          <p className="mobileHeroFreshEyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
-          <h1 className="mobileHeroFreshTitle">
-            <span>Bir kitap</span>
-            <em>yazdınız.</em>
-          </h1>
-          <p className="mobileHeroFreshPoetic">Şimdi ona ait<br/>bir dünya kuralım.</p>
-          <div className="mobileHeroFreshRule" />
-          <p className="mobileHeroFreshLead">
-            E-kitabınız. Sesli kitabınız.<br/>
-            Yazar siteniz. Dijital dağıtımınız.<br/>
-            Tek bir yayın dünyasında.
-          </p>
-        </div>
-      </section>
-
-      <section className="hero" id="top">
-        <img
-          className="heroArt"
-          src="/figan-hero-dark.webp"
-          alt=""
-          aria-hidden="true"
-        />
-        <div className="heroContent">
-          <div className="heroCopy">
-            <p className="eyebrow">YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
-
-            <h1>
-              <span>Bir kitap</span>
-              <em>yazdınız.</em>
-            </h1>
-
-            <p className="poetic">Şimdi ona ait<br/>bir dünya kuralım.</p>
-            <div className="shortRule" />
-
-            <p className="lead">
-              E-kitabınız. Sesli kitabınız.<br/>
-              Yazar siteniz. Dijital dağıtımınız.<br/>
-              Tek bir yayın dünyasında.
-            </p>
-          </div>
-
-          <div className="heroActions heroActionsBottom desktopHeroActions">
-            <a className="primaryCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
-            <button className="videoCta" type="button">
-              <span className="play">▶</span>
-              <span><b>Figan’ı İzleyin</b><small>2 dakikada tanıyın.</small></span>
+    <>
+      <header className={`site-header ${scrolled?"is-scrolled":""}`}>
+        <div className="container header-inner">
+          <a href="#top" className="brand" aria-label="Figan Yayınevi ana sayfa">
+            <img src="/figan-logo-silver.png" alt="Figan Yayınevi"/>
+          </a>
+          <nav className="desktop-nav">
+            {nav.map(([label,href])=><a key={href} href={href}>{label}</a>)}
+          </nav>
+          <div className="header-actions">
+            <a className="header-cta" href="#basvuru">Yazar Başvurusu</a>
+            <button className="menu-btn" aria-label="Menüyü aç" onClick={()=>setOpen(!open)}>
+              <span/><span/><span/>
             </button>
           </div>
         </div>
-
-        <div className="mobileHeroShowcase mobileHeroComposite" aria-label="Figan dijital yayın ekosistemi">
-          <img className="mobileHeroCompositeImage" src="/figan-hero-mobile-final.webp" alt="Figan dijital yayın ekosistemi: kitap, Reader, Audio ve yazar sitesi" />
+        <div className={`mobile-menu ${open?"open":""}`}>
+          <nav>{nav.map(([label,href])=><a key={href} href={href} onClick={()=>setOpen(false)}>{label}</a>)}</nav>
+          <a href="#basvuru" className="mobile-menu-cta" onClick={()=>setOpen(false)}>Yazar Başvurusu Yap</a>
         </div>
+      </header>
 
-        <blockquote className="heroQuote">
-          “Bazı yaralar,<br/>insanı göğe<br/>daha yakın kılar.”
-          <cite>— FİGAN</cite>
-        </blockquote>
+      <main id="top">
+        <section className="category-strip">
+          <div className="container category-inner">
+            <span>Figan Yayınevi</span><i/>
+            <a href="#hizmetler">E-Kitap</a>
+            <a href="#hizmetler">Sesli Kitap</a>
+            <a href="#yazar-sitesi">Yazar Sitesi</a>
+            <a href="#hizmetler">Dijital Dağıtım</a>
+          </div>
+        </section>
 
-      </section>
-
-      <section className="mobileActionPanel" aria-label="Figan hızlı işlemler">
-        <a className="mobileApplyCta" href="#basvuru">
-          <span className="mobileCtaIcon">▤</span>
-          <span>Yazar Başvurusu Yap</span>
-          <span className="mobileCtaArrow">→</span>
-        </a>
-
-        <button className="mobileWatchCta" type="button">
-          <span className="mobilePlay">▶</span>
-          <span>Figan’ı İzleyin</span>
-          <span className="mobileCtaArrow">→</span>
-        </button>
-      </section>
-
-      <section className="servicesSection" id="manifesto">
-        <p className="eyebrow">HİZMETLERİMİZ</p>
-        <h2>Her ihtiyaç için,<br/><em>tek bir yayın dünyasında.</em></h2>
-        <p className="servicesLead">Eserinizi en iyi haliyle hazırlıyor, dijital dünyada okuyucuya ulaşacağı bütün parçaları tek çatı altında kuruyoruz.</p>
-
-        <div className="serviceShowcase" aria-label="Figan hizmetleri">
-          <article className="serviceShowcaseRow imageLeft">
-            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-01-ekitap.webp')"}}><img src="/figan-hizmet-01-ekitap.webp" alt="Figan E-Kitap" /></div>
-            <div className="serviceShowcaseCopy">
-              <span className="serviceKicker">01 · E-KİTAP</span>
-              <h3>Her yerde<br/>okunsun.</h3>
-              <p>Profesyonel dijital hazırlık ve tüm cihazlarla uyumlu yayın deneyimi.</p>
-              <a href="#surec">Detaylı Bilgi <b>→</b></a>
+        <section className="home-hero">
+          <div className="container hero-grid">
+            <div className="hero-copy">
+              <p className="eyebrow"><span/>YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
+              <h1><span>Bir kitap</span><em>yazdınız.</em></h1>
+              <h2>Şimdi ona ait<br/>bir dünya kuralım.</h2>
+              <p className="hero-lead">E-kitabınız. Sesli kitabınız. Yazar siteniz. Dijital dağıtımınız.<br/>Tek bir yayın dünyasında.</p>
+              <div className="hero-actions">
+                <a href="#basvuru" className="btn primary">Yazar Başvurusu Yap <b>→</b></a>
+                <button className="btn secondary" type="button">Figan’ı İzleyin <b>▶</b></button>
+              </div>
             </div>
-          </article>
-
-          <article className="serviceShowcaseRow imageRight">
-            <div className="serviceShowcaseCopy">
-              <span className="serviceKicker">02 · SESLİ KİTAP</span>
-              <h3>Hikâyeniz<br/>ses bulsun.</h3>
-              <p>Eserinizi güçlü bir dinleme deneyimine dönüştürüyoruz.</p>
-              <a href="#surec">Detaylı Bilgi <b>→</b></a>
+            <div className="hero-visual">
+              <img src="/figan-hero-mobile-final.webp" alt="Figan yayın dünyası: kitap, Reader, Audio ve yazar sitesi"/>
             </div>
-            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-02-sesli-kitap.webp')"}}><img src="/figan-hizmet-02-sesli-kitap.webp" alt="Figan Sesli Kitap" /></div>
-          </article>
+          </div>
+        </section>
 
-          <article className="serviceShowcaseRow imageLeft">
-            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-03-yazar-sitesi.webp')"}}><img src="/figan-hizmet-03-yazar-sitesi.webp" alt="Figan Yazar Sitesi" /></div>
-            <div className="serviceShowcaseCopy">
-              <span className="serviceKicker">03 · YAZAR SİTESİ</span>
-              <h3>Size ait bir<br/>dijital dünya.</h3>
-              <p>Eserlerinizi ve yazar kimliğinizi tek bir kişisel merkezde buluşturuyoruz.</p>
-              <a href="#surec">Detaylı Bilgi <b>→</b></a>
+        <section id="hizmetler" className="section services">
+          <div className="container">
+            <div className="section-head">
+              <p className="eyebrow"><span/>HİZMETLERİMİZ</p>
+              <h2>Her ihtiyaç için,<br/><em>tek bir yayın dünyasında.</em></h2>
+              <p>Eserinizi en iyi haliyle hazırlıyor, dijital dünyada okuyucuya ulaşacağı bütün parçaları tek çatı altında kuruyoruz.</p>
             </div>
-          </article>
-
-          <article className="serviceShowcaseRow imageRight">
-            <div className="serviceShowcaseCopy">
-              <span className="serviceKicker">04 · YABANCI DİL YAYINI</span>
-              <h3>Eseriniz<br/>sınırları aşsın.</h3>
-              <p>Profesyonel çeviri ve editoryal uyarlamayla uluslararası yayına hazırlıyoruz.</p>
-              <a href="#surec">Detaylı Bilgi <b>→</b></a>
+            <div className="service-grid">
+              {services.map((s,i)=>(
+                <article className={`service-card ${i%2?"reverse":""}`} key={s.no}>
+                  <div className="service-image"><img src={s.image} alt=""/></div>
+                  <div className="service-copy">
+                    <span className="service-no">{s.no}</span>
+                    <h3>{s.title}</h3>
+                    <p>{s.text}</p>
+                    <a href="#basvuru">Detaylı bilgi <b>→</b></a>
+                  </div>
+                </article>
+              ))}
             </div>
-            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-04-yabanci-dil.webp')"}}><img src="/figan-hizmet-04-yabanci-dil.webp" alt="Figan Yabancı Dil Yayını" /></div>
-          </article>
+          </div>
+        </section>
 
-          <article className="serviceShowcaseRow imageLeft">
-            <div className="serviceVisual" style={{backgroundImage:"url('/figan-hizmet-05-dijital-dagitim.webp')"}}><img src="/figan-hizmet-05-dijital-dagitim.webp" alt="Figan Dijital Dağıtım" /></div>
-            <div className="serviceShowcaseCopy">
-              <span className="serviceKicker">05 · DİJİTAL DAĞITIM</span>
-              <h3>Daha fazla<br/>okura ulaşın.</h3>
-              <p>Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.</p>
-              <a href="#surec">Detaylı Bilgi <b>→</b></a>
+        <section id="surec" className="section process">
+          <div className="container">
+            <div className="section-head narrow">
+              <p className="eyebrow"><span/>BİR DOSYA, BİR YOLCULUK.</p>
+              <h2>Nasıl çalışıyoruz?</h2>
+              <p>Eseriniz, Figan’ın profesyonel yayın süreciyle adım adım dijital dünyaya hazırlanır.</p>
             </div>
-          </article>
+            <div className="process-list">
+              {process.map(([no,title,text])=>(
+                <article className="process-card" key={no}>
+                  <span className="process-no">{no}</span>
+                  <div><h3>{title}</h3><p>{text}</p></div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="ekosistem" className="section ecosystem">
+          <div className="container ecosystem-grid">
+            <div className="ecosystem-copy">
+              <p className="eyebrow light"><span/>FİGAN EKOSİSTEMİ</p>
+              <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
+              <p>Kitabınız farklı biçimlerde yaşar; okunur, dinlenir ve size ait dijital dünyada okurla buluşur.</p>
+              <a href="#basvuru" className="btn light-btn">Yayın Dünyamı Kur <b>→</b></a>
+            </div>
+            <div className="ecosystem-visual">
+              <img src="/figan-ekosistem-premium.webp" alt="Figan ekosistemi"/>
+            </div>
+          </div>
+        </section>
+
+        <section id="yazar-sitesi" className="section author-site">
+          <div className="container author-grid">
+            <div className="author-copy">
+              <p className="eyebrow"><span/>YAZAR SİTESİ</p>
+              <h2>Sadece bir sayfa değil.<br/><em>Size ait bir yazar dünyası.</em></h2>
+              <p>Kitaplarınız, hikâyeniz ve okurlarınızla kurduğunuz bağ; sosyal medya akışında kaybolmayan, size ait bir dijital adreste buluşur.</p>
+              <div className="benefit-grid">
+                <div><b>01</b><h3>Kendi dijital adresiniz</h3><p>Yazar kimliğinizi size ait bir alanda kalıcılaştırın.</p></div>
+                <div><b>02</b><h3>Tüm eserleriniz</h3><p>Kitaplarınızı tek bir seçkin vitrinde bir araya getirin.</p></div>
+                <div><b>03</b><h3>Yazılar & etkinlikler</h3><p>Yeni metinlerinizi, buluşmalarınızı ve duyurularınızı paylaşın.</p></div>
+                <div><b>04</b><h3>Okurla doğrudan bağ</h3><p>Okurlarınızın sizi ve eserlerinizi doğrudan keşfetmesini sağlayın.</p></div>
+              </div>
+            </div>
+            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="Figan yazar sitesi örneği"/></div>
+          </div>
+        </section>
+
+        <section id="basvuru" className="section final-cta">
+          <div className="container final-panel">
+            <p className="eyebrow light"><span/>YAZAR BAŞVURUSU</p>
+            <h2>Bir kitabınız varsa,<br/><em>ona ait dünyayı birlikte kuralım.</em></h2>
+            <p>Dosyanızı paylaşın; yayın yolculuğunuzu birlikte planlayalım.</p>
+            <a className="btn gold" href="https://wa.me/905324290290?text=Merhaba%2C%20Figan%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Başvur <b>→</b></a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="container footer-grid">
+          <div className="footer-brand"><img src="/figan-logo-silver.png" alt="Figan Yayınevi"/><p>Bir kitabın ötesinde, size ait bir yayın dünyası.</p></div>
+          <div><h4>Yayın Dünyası</h4><a href="#hizmetler">E-Kitap</a><a href="#hizmetler">Sesli Kitap</a><a href="#yazar-sitesi">Yazar Sitesi</a><a href="#hizmetler">Dijital Dağıtım</a></div>
+          <div><h4>Figan</h4><a href="#surec">Nasıl Çalışıyoruz?</a><a href="#ekosistem">Ekosistem</a><a href="#basvuru">Yazar Başvurusu</a></div>
+          <div><h4>İletişim</h4><a href="tel:+905324290290">0 532 429 02 90</a><a href="mailto:info@figanyayinevi.com">info@figanyayinevi.com</a><span>İzmir</span></div>
         </div>
-      </section>
+        <div className="container footer-bottom">© {new Date().getFullYear()} Figan Yayınevi. Tüm hakları saklıdır.</div>
+      </footer>
 
-      <section className="processSection" id="surec">
-        <p className="eyebrow">BİR DOSYA, BİR YOLCULUK.</p>
-        <h2>Nasıl çalışıyoruz?</h2>
-        <p className="processLead">Eseriniz, Figan’ın profesyonel yayın süreciyle adım adım dijital dünyaya hazırlanır.</p>
-
-        <div className="processTimeline">
-          <article>
-            <div className="processMarks"><span className="processNo">1</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="document" /></span></div>
-            <div className="processMain"><h3>Başvuru</h3><p>Dosyanızı bizimle paylaşın.</p></div>
-            <small>Hayaliniz ilk adımı atar.</small>
-          </article>
-          <article>
-            <div className="processMarks"><span className="processNo">2</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="edit" /></span></div>
-            <div className="processMain"><h3>Editörlük</h3><p>Metninizi yayın için güçlendiriyoruz.</p></div>
-            <small>Daha güçlü bir metin.</small>
-          </article>
-          <article>
-            <div className="processMarks"><span className="processNo">3</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="design" /></span></div>
-            <div className="processMain"><h3>Kapak &amp; Tasarım</h3><p>Eserinize özgü yayın kimliği oluşturuyoruz.</p></div>
-            <small>İlk bakışta fark yaratır.</small>
-          </article>
-          <article>
-            <div className="processMarks"><span className="processNo">4</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="book" /></span></div>
-            <div className="processMain"><h3>E-Kitap</h3><p>Tüm cihazlarda okunabilen dijital formata hazırlıyoruz.</p></div>
-            <small>Her yerde okunsun.</small>
-          </article>
-          <article>
-            <div className="processMarks"><span className="processNo">5</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="audio" /></span></div>
-            <div className="processMain"><h3>Sesli Kitap</h3><p>Eserinizi dinleme deneyimine dönüştürüyoruz.</p></div>
-            <small>Sözün sesi daha uzağa gider.</small>
-          </article>
-          <article>
-            <div className="processMarks"><span className="processNo">6</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="player" /></span></div>
-            <div className="processMain"><h3>Figan Reader &amp; Audio</h3><p>E-kitabınız ve sesli kitabınız Figan’ın dijital okuma ve dinleme deneyiminde yerini alır.</p></div>
-            <small>İki format. Tek yayın dünyası.</small>
-          </article>
-          <article>
-            <div className="processMarks"><span className="processNo">7</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="site" /></span></div>
-            <div className="processMain"><h3>Yazar Sitesi</h3><p>Size özel profesyonel yazar alanınızı kuruyoruz.</p></div>
-            <small>Dijitalde sizin dünyanız.</small>
-          </article>
-          <article>
-            <div className="processMarks"><span className="processNo">8</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="globe" /></span></div>
-            <div className="processMain"><h3>Yabancı Dil Yayını</h3><p>Eserinizi profesyonel çeviri ve editoryal uyarlamayla farklı dillere hazırlıyoruz.</p></div>
-            <small>Hikâyeniz sınırları aşar.</small>
-          </article>
-          <article>
-            <div className="processMarks"><span className="processNo">9</span><span className="processIcon" aria-hidden="true"><ProcessIcon type="distribution" /></span></div>
-            <div className="processMain"><h3>Dijital Dağıtım</h3><p>Eserinizi uygun dijital yayın kanallarına taşıyoruz.</p></div>
-            <small>Daha fazla okur, daha fazla erişim.</small>
-          </article>
-        </div>
-
-        <a className="processCta" href="#basvuru">Yazar Başvurusu Yap <span>→</span></a>
-        <blockquote>“Her kitap, yeni bir dünyaya açılan kapıdır.” <cite>— FİGAN</cite></blockquote>
-      </section>
-
-      <EcosystemSlider />
-
-      <section className="authorWorldSection" id="yazar-sitesi">
-        <div className="authorWorldHead">
-          <div className="authorWorldKicker"><span>YAZAR SİTESİ</span><i/><b>05</b></div>
-          <h2>Sadece bir sayfa değil.<br/><em>Size ait bir yazar dünyası.</em></h2>
-          <p>Kitaplarınız, hikâyeniz ve okurlarınızla kurduğunuz bağ; sosyal medya akışında kaybolmayan, size ait bir dijital adreste buluşur.</p>
-        </div>
-
-        <div className="authorWorldVisual">
-          <img src="/figan-yazar-sitesi-laptop.webp" alt="Figan kişisel yazar sitesi laptop görünümü" />
-        </div>
-
-        <div className="authorWorldBenefits">
-          <article><span>01</span><h3>Kendi dijital adresiniz</h3><p>Yazar kimliğinizi size ait bir alanda kalıcılaştırın.</p></article>
-          <article><span>02</span><h3>Tüm eserleriniz</h3><p>Kitaplarınızı tek bir seçkin vitrinde bir araya getirin.</p></article>
-          <article><span>03</span><h3>Yazılar &amp; etkinlikler</h3><p>Yeni metinlerinizi, buluşmalarınızı ve duyurularınızı paylaşın.</p></article>
-          <article><span>04</span><h3>Okurla doğrudan bağ</h3><p>Okurlarınızın sizi ve eserlerinizi doğrudan keşfetmesini sağlayın.</p></article>
-        </div>
-
-        <div className="authorWorldDark">
-          <span className="authorWorldDarkNo">05 / YAZAR SİTESİ</span>
-          <h3>Sosyal medyada<br/><em>kiracı olmayın.</em></h3>
-          <p>Algoritmalar değişir. Platformlar değişir.<br/>Size ait olan dijital dünya kalır.</p>
-          <a href="#basvuru">Yazar Sitenizi Keşfedin <span>→</span></a>
-        </div>
-      </section>
-
-      <section id="basvuru" className="placeholderCta">
-        <p className="eyebrow">YAZAR BAŞVURUSU</p>
-        <h2>Bir dosyanız mı var?</h2>
-        <p>Ya da henüz yalnızca bir fikriniz? İkisi de başlamak için yeterli.</p>
-        <a className="primaryCta light" href="mailto:merhaba@figanyayinevi.com">Başvuruyu Başlat <span>→</span></a>
-      </section>
-
-      <div className="floatingContact" aria-label="Hızlı iletişim">
-        <a className="floatingCall" href="tel:+905532419397" aria-label="0553 241 93 97 numarasını ara" title="Ara">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 3 3.9 5.4 6.9 6.9l2.3-2.3c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 3.3c0-.6.4-1 1-1h3.3c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1l-2.1 2.6z"/></svg>
-        </a>
-        <a className="floatingWhatsapp" href="https://wa.me/905532419397?text=Merhaba%2C%20Figan%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%0AYay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer" aria-label="WhatsApp ile iletişime geç" title="WhatsApp">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L.2 24l6.4-1.7a11.8 11.8 0 0 0 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.4Zm-8.4 18.2c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-3.8 1 1-3.7-.2-.4a9.7 9.7 0 1 1 8.3 4.6Zm5.3-7.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.9 5.2 2.2.9 3 .9 4.1.8.7-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"/></svg>
-        </a>
+      <div className="contact-float">
+        <a className="call" href="tel:+905324290290" aria-label="Ara">☎</a>
+        <a className="wa" href="https://wa.me/905324290290" target="_blank" rel="noreferrer" aria-label="WhatsApp">W</a>
       </div>
 
-      <nav className="mobileDock" aria-label="Mobil alt menü">
-        <a className="active" href="#top"><span>⌂</span><b>Ana Sayfa</b></a>
-        <a href="#manifesto"><span>▤</span><b>Hizmetler</b></a>
-        <a href="#top"><span>✒</span><b>Yazarlar</b></a>
-        <a href="#top"><span>▭</span><b>Kitaplar</b></a>
-        <a href="#basvuru"><span>○</span><b>İletişim</b></a>
+      <nav className="mobile-dock" aria-label="Mobil alt menü">
+        <a href="#top"><span>⌂</span>Ana Sayfa</a>
+        <a href="#hizmetler"><span>▤</span>Hizmetler</a>
+        <a href="#yazar-sitesi"><span>✒</span>Yazarlar</a>
+        <a href="#ekosistem"><span>▱</span>Kitaplar</a>
+        <a href="#basvuru"><span>○</span>İletişim</a>
       </nav>
-    </main>
+    </>
   );
 }
