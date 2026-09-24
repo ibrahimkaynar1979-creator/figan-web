@@ -7421,3 +7421,91 @@ button{font:inherit;color:inherit}
   .floatingContact a{width:50px;height:50px}
   .floatingContact svg{width:22px;height:22px}
 }
+
+
+/* 2026-09-24 — MOBILE HERO VIEWPORT FIT FINAL */
+@media(max-width:520px){
+  /* Hero fills the mobile screen; next-section CTA is hidden */
+  .hero{
+    position:relative!important;
+    height:calc(100dvh - 74px)!important;
+    min-height:calc(100dvh - 74px)!important;
+    max-height:calc(100dvh - 74px)!important;
+    padding:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+    background:#f7efe3!important;
+  }
+
+  /* Keep the complete artwork visible inside the hero */
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    position:absolute!important;
+    inset:0!important;
+    z-index:1!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:none!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    position:absolute!important;
+    inset:0!important;
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    margin:0!important;
+    max-width:none!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    transform:none!important;
+    filter:none!important;
+  }
+
+  /* Copy remains over the empty upper part of the artwork */
+  .heroContent{
+    position:absolute!important;
+    z-index:30!important;
+    top:18px!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    padding:0 22px!important;
+    pointer-events:none!important;
+  }
+
+  .heroCopy{
+    max-width:330px!important;
+  }
+
+  /* No large mobile CTA below the hero */
+  .mobileActionPanel{
+    display:none!important;
+  }
+
+  .mobileHeroOffer,
+  .heroQuote{
+    display:none!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero{
+    height:calc(100dvh - 70px)!important;
+    min-height:calc(100dvh - 70px)!important;
+    max-height:calc(100dvh - 70px)!important;
+  }
+
+  .heroContent{
+    top:14px!important;
+    padding:0 18px!important;
+  }
+}
