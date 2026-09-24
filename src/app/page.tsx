@@ -203,19 +203,23 @@ export default function Home() {
         </section>
 
         <section id="surec" className="section process">
-          <div className="container">
-            <div className="section-head narrow">
-              <p className="eyebrow"><span/>BİR DOSYA, BİR YOLCULUK.</p>
-              <h2>Nasıl çalışıyoruz?</h2>
-              <p>Eseriniz, Figan’ın profesyonel yayın süreciyle adım adım dijital dünyaya hazırlanır.</p>
-            </div>
-            <div className="process-list">
-              {process.map(([no,title,text])=>(
-                <article className="process-card" key={no}>
-                  <span className="process-no">{no}</span>
-                  <div><h3>{title}</h3><p>{text}</p></div>
-                </article>
-              ))}
+          <div className="container process-wrap">
+            <div className="process-panel">
+              <div className="process-panel-head">
+                <p className="process-kicker"><span>✦</span> BİR DOSYA, BİR YOLCULUK</p>
+                <h2>Nasıl çalışıyoruz?</h2>
+                <div className="process-ornament" aria-hidden="true"><span/><i>✦</i></div>
+                <p className="process-intro">Eseriniz, Figan’ın profesyonel yayın süreciyle adım adım hazırlanır; metinden tasarıma, dijital yayından dağıtıma kadar bütün yolculuk tek bir yayın dünyasında ilerler.</p>
+              </div>
+              <div className="process-list">
+                {process.map(([no,title,text])=>(
+                  <article className="process-card" key={no}>
+                    <span className="process-no">{no}</span>
+                    <div className="process-copy"><h3>{title}</h3><p>{text}</p></div>
+                  </article>
+                ))}
+              </div>
+              <a href="#basvuru" className="process-cta"><span>Yayın Yolculuğunu Başlat</span><b>→</b></a>
             </div>
           </div>
         </section>
@@ -261,14 +265,41 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>
-        <div className="container footer-grid">
-          <div className="footer-brand"><img src="/figan-logo-silver.png" alt="Figan Yayınevi"/><p>Bir kitabın ötesinde, size ait bir yayın dünyası.</p></div>
-          <div><h4>Yayın Dünyası</h4><a href="#hizmetler">E-Kitap</a><a href="#hizmetler">Sesli Kitap</a><a href="#yazar-sitesi">Yazar Sitesi</a><a href="#hizmetler">Dijital Dağıtım</a></div>
-          <div><h4>Figan</h4><a href="#surec">Nasıl Çalışıyoruz?</a><a href="#ekosistem">Ekosistem</a><a href="#basvuru">Yazar Başvurusu</a></div>
-          <div><h4>İletişim</h4><a href="tel:+905324290290">0 532 429 02 90</a><a href="mailto:info@figanyayinevi.com">info@figanyayinevi.com</a><span>İzmir</span></div>
+      <footer className="figan-footer">
+        <div className="container figan-footer-shell">
+          <div className="footer-logo-row">
+            <a href="#top" className="footer-logo"><img src="/figan-logo-silver.png" alt="Figan Yayınevi"/></a>
+            <p>Bir kitabın ötesinde, size ait bir yayın dünyası.</p>
+          </div>
+          <div className="footer-divider"/>
+          <div className="footer-groups">
+            <section className="footer-group">
+              <h4>Yayın Dünyası</h4>
+              <a href="#hizmetler"><span>✦</span>E-Kitap</a>
+              <a href="#hizmetler"><span>✦</span>Sesli Kitap</a>
+              <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
+              <a href="#hizmetler"><span>✦</span>Dijital Dağıtım</a>
+            </section>
+            <section className="footer-group">
+              <h4>Figan</h4>
+              <a href="#surec"><span>✦</span>Nasıl Çalışıyoruz?</a>
+              <a href="#ekosistem"><span>✦</span>Figan Ekosistemi</a>
+              <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
+              <a href="#basvuru"><span>✦</span>Yazar Başvurusu</a>
+            </section>
+            <section className="footer-group footer-contact">
+              <h4>Bize Ulaşın</h4>
+              <a href="tel:+905324290290">0 532 429 02 90</a>
+              <a href="mailto:info@figanyayinevi.com">info@figanyayinevi.com</a>
+              <span>İzmir</span>
+            </section>
+          </div>
+          <div className="footer-signature"><i/><span>✦</span><i/></div>
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} Figan Yayınevi. Tüm hakları saklıdır.</p>
+            <div className="footer-legal"><span>Gizlilik Politikası</span><i/><span>KVKK</span><i/><span>Kullanım Koşulları</span></div>
+          </div>
         </div>
-        <div className="container footer-bottom">© {new Date().getFullYear()} Figan Yayınevi. Tüm hakları saklıdır.</div>
       </footer>
 
       <div className="contact-float">
