@@ -6834,3 +6834,41 @@ button{font:inherit;color:inherit}
     height:calc(100svh - 68px)!important;
   }
 }
+
+
+/* 2026-09-24 — FINAL DOCK OVERLAP: cover last seam without touching hero */
+@media(max-width:520px){
+  .mobileHeroFresh{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+
+  .mobileHeroFreshImage{
+    position:relative!important;
+    inset:auto!important;
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    max-width:none!important;
+    margin:0!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    transform:none!important;
+  }
+
+  .mobileDock{
+    height:80px!important;
+    padding:10px 10px 9px!important;
+    border-top:0!important;
+    box-shadow:0 -8px 20px rgba(20,12,7,.14)!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileDock{
+    height:76px!important;
+    padding:9px 8px 8px!important;
+  }
+}
