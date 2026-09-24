@@ -6799,3 +6799,38 @@ button{font:inherit;color:inherit}
     height:calc(100svh - 68px - 64px)!important;
   }
 }
+
+
+/* 2026-09-24 — MOBILE HERO: DOCK OVERLAYS IMAGE, ZERO BOTTOM STRIP */
+@media(max-width:520px){
+  body{padding-bottom:0!important;}
+
+  .mobileHeroFresh{
+    height:calc(100svh - 72px)!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+  }
+
+  .mobileHeroFreshImage{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center bottom!important;
+  }
+
+  .mobileDock{
+    position:fixed!important;
+    bottom:0!important;
+    z-index:100!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileHeroFresh{
+    height:calc(100svh - 68px)!important;
+  }
+}
