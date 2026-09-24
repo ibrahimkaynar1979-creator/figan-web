@@ -84,6 +84,7 @@ const authors = [
     description:"“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.",
     image:"/icimdeki-ibrahim.webp",
     initials:"İK",
+    href:"/yazarlar/ibrahim-kaynar",
   },
   {
     name:"Figen Yavuz",
@@ -91,8 +92,38 @@ const authors = [
     description:"Yazar profili ve eserleri eklendikçe bu kart üzerinden Fi yayın dünyasında yerini alacak.",
     image:null,
     initials:"FY",
+    href:"/yazarlar/figen-yavuz",
   },
 ] as const;
+
+const faqs = [
+  {
+    q:"Kitap yayınlatmak için ne yapmalıyım?",
+    a:"Dosyanızı Fi Yayınevi ile paylaşmanızın ardından eseriniz ve yayın hedefiniz değerlendirilir; editörlük, tasarım, basılı ve dijital yayın seçenekleri birlikte planlanır.",
+  },
+  {
+    q:"Bandrollü basım ve fizikî dağıtım yapılıyor mu?",
+    a:"Evet. Basılı kitap sürecinde kapak ve iç tasarım, baskı hazırlığı, bandrollü basım ve uygun fizikî satış ve dağıtım kanallarına hazırlık birlikte yürütülür.",
+  },
+  {
+    q:"E-kitap ve sesli kitap birlikte hazırlanabilir mi?",
+    a:"Evet. Aynı eser için basılı kitap, e-kitap ve sesli kitap formatları tek bir yayın planı içinde birlikte hazırlanabilir.",
+  },
+  {
+    q:"Yazar sitesi hizmeti neleri kapsar?",
+    a:"Yazar sitesi; biyografi, kitaplar, yazılar, etkinlikler ve okurla iletişim gibi içerikleri size ait kalıcı bir dijital adreste bir araya getirir.",
+  },
+] as const;
+
+const faqSchema = {
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  mainEntity: faqs.map((item)=>({
+    "@type":"Question",
+    name:item.q,
+    acceptedAnswer:{ "@type":"Answer", text:item.a },
+  })),
+};
 
 export default function Home() {
   const [open,setOpen] = useState(false);
@@ -132,6 +163,7 @@ export default function Home() {
       </header>
 
       <main id="top">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
 
         <nav className="figan-category-nav" aria-label="Fi yayın hizmetleri">
           <div className="figan-category-panel">
@@ -290,6 +322,7 @@ export default function Home() {
                     <p className="author-card-kicker">{author.kicker}</p>
                     <h3>{author.name}</h3>
                     <p>{author.description}</p>
+                    <a className="author-slide-link" href={author.href}>Profili Gör <span>→</span></a>
                   </div>
                 </article>
               ))}
