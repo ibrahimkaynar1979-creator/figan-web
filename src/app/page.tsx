@@ -11,6 +11,7 @@ const nav = [
   ["Hizmetler", "#hizmetler"],
   ["Süreç", "#surec"],
   ["Figan Ekosistemi", "#ekosistem"],
+  ["Yazarlarımız", "#yazarlar"],
   ["Yazar Sitesi", "#yazar-sitesi"],
   ["İletişim", "#basvuru"],
 ] as const;
@@ -59,6 +60,15 @@ const services = [
     badge:"Daha Fazla Okura Ulaşın",
     text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.",
     image:"/figan-hizmet-dijital-dagitim.webp",
+    href:"#basvuru",
+  },
+  {
+    no:"06",
+    title:"Yabancı Dil Çeviri",
+    traits:["Editoryal Çeviri","Yayın Dili","Global Hazırlık"],
+    badge:"Eseriniz Yeni Dillere Açılsın",
+    text:"Eserinizi hedef dile yalnızca çevirmiyor; yayın dili, editoryal akış ve uluslararası yayın hazırlığı açısından yeniden ele alıyoruz.",
+    image:"/figan-hizmet-05-dijital-dagitim.webp",
     href:"#basvuru",
   },
 ];
@@ -180,7 +190,6 @@ export default function Home() {
                   <a className="figan-service-link" href={service.href}>
                     <div className="figan-service-photo">
                       <img src={service.image} alt="" />
-                      <span className="figan-service-badge">{service.badge}</span>
                     </div>
 
                     <div className="figan-service-content">
@@ -229,14 +238,37 @@ export default function Home() {
             <div className="ecosystem-copy">
               <p className="eyebrow light"><span/>FİGAN EKOSİSTEMİ</p>
               <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
-              <p>Kitabınız farklı biçimlerde yaşar; okunur, dinlenir ve size ait dijital dünyada okurla buluşur.</p>
+              <p>Kitabınız dijitalde ve fizikî dünyada birlikte yaşar; okunur, dinlenir, bandrollü olarak basılır ve uygun dağıtım kanallarıyla okura ulaşır.</p>
               <a href="#basvuru" className="btn light-btn">Yayın Dünyamı Kur <b>→</b></a>
             </div>
             <div className="ecosystem-visual" aria-hidden="true">
               <div className="ecosystem-orbit">
-                <span>E-Kitap</span><span>Sesli Kitap</span><span>Yazar Sitesi</span><span>Dijital Dağıtım</span>
+                <span>E-Kitap</span><span>Sesli Kitap</span><span>Yazar Sitesi</span><span>Dijital Dağıtım</span><span>Bandrollü Basım</span><span>Fizikî Dağıtım</span>
                 <strong>Figan</strong>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="yazarlar" className="section authors-section">
+          <div className="container authors-wrap">
+            <header className="authors-header">
+              <p className="eyebrow"><span/>YAZARLARIMIZ</p>
+              <h2>Figan’ın yayın dünyasında<br/><em>yazarlar ve eserleri.</em></h2>
+              <p>Her eser kendi sesiyle, her yazar kendi yayın kimliğiyle Figan dünyasında yerini alır.</p>
+            </header>
+            <div className="authors-grid">
+              <article className="author-card">
+                <div className="author-card-visual">
+                  <img src="/icimdeki-ibrahim.webp" alt="İçimdeki İbrahim kitap kapağı"/>
+                </div>
+                <div className="author-card-copy">
+                  <p className="author-card-kicker">FIGAN YAZARI</p>
+                  <h3>İbrahim Kaynar</h3>
+                  <p>“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.</p>
+                  <a href="#basvuru">Yazar dünyasını keşfedin <span>→</span></a>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -287,6 +319,7 @@ export default function Home() {
               <h4>Figan</h4>
               <a href="#surec"><span>✦</span>Nasıl Çalışıyoruz?</a>
               <a href="#ekosistem"><span>✦</span>Figan Ekosistemi</a>
+              <a href="#yazarlar"><span>✦</span>Yazarlarımız</a>
               <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
               <a href="#basvuru"><span>✦</span>Yazar Başvurusu</a>
             </section>
@@ -327,7 +360,7 @@ export default function Home() {
       <nav className="mobile-dock" aria-label="Mobil alt menü">
         <a href="#top"><span>⌂</span>Ana Sayfa</a>
         <a href="#hizmetler"><span>▤</span>Hizmetler</a>
-        <a href="#yazar-sitesi"><span>✒</span>Yazarlar</a>
+        <a href="#yazarlar"><span>✒</span>Yazarlar</a>
         <a href="#ekosistem"><span>▱</span>Kitaplar</a>
         <a href="#basvuru"><span>○</span>İletişim</a>
       </nav>
