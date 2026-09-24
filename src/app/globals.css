@@ -1506,3 +1506,53 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     font-size:.72rem!important;
   }
 }
+
+
+/* 2026-09-24 — MOBILE SERVICE CARDS MATCH PATILIYOLAR WIDTH */
+@media(max-width:760px){
+  .figan-services-track{
+    gap:12px!important;
+    padding:0 8px 18px!important;
+  }
+
+  .figan-service-card{
+    flex:0 0 66vw!important;
+    width:66vw!important;
+    max-width:322px!important;
+    min-width:0!important;
+  }
+
+  .figan-service-photo{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:320 / 345!important;
+  }
+
+  .figan-service-content{
+    min-height:286px!important;
+    padding:2rem 1.15rem 1.1rem!important;
+  }
+
+  .figan-service-title-row h3{
+    font-size:1.35rem!important;
+  }
+
+  .figan-service-traits{
+    gap:.42rem!important;
+    margin:.72rem 0 0!important;
+  }
+
+  .figan-service-traits li{
+    padding:.42rem .62rem!important;
+    font-size:.62rem!important;
+  }
+
+  .figan-service-content>p{
+    font-size:.72rem!important;
+    line-height:1.55!important;
+  }
+
+  .figan-service-cta{
+    font-size:.68rem!important;
+  }
+}
