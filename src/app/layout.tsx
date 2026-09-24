@@ -24,6 +24,39 @@ const ui = Manrope({
   display: "swap",
 });
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.fiyayinevi.com/#organization",
+  name: "Fi Yayınevi",
+  url: "https://www.fiyayinevi.com",
+  email: "info@fiyayinevi.com",
+  telephone: "+90 553 241 93 97",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Adalet Mah. Manas Blv. No:47/B, Folkart Towers A Kule, Kat:26 D:2601",
+    addressLocality: "Bayraklı",
+    addressRegion: "İzmir",
+    addressCountry: "TR",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+90 553 241 93 97",
+    contactType: "customer service",
+    availableLanguage: ["tr"],
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.fiyayinevi.com/#website",
+  url: "https://www.fiyayinevi.com",
+  name: "Fi Yayınevi",
+  publisher: { "@id": "https://www.fiyayinevi.com/#organization" },
+  inLanguage: "tr-TR",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fiyayinevi.com"),
   title: {
@@ -85,7 +118,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="tr" className={`${editorial.variable} ${poetic.variable} ${ui.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+        {children}
+      </body>
     </html>
   );
 }
