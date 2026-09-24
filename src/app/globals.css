@@ -7093,3 +7093,127 @@ button{font:inherit;color:inherit}
     font-size:17px!important;
   }
 }
+
+
+/* 2026-09-24 — ACTION CARDS SIMPLE FLEX FINAL */
+@media(max-width:520px){
+  .mobileActionPanel{
+    display:flex!important;
+    align-items:stretch!important;
+    gap:10px!important;
+    width:100%!important;
+    margin:0!important;
+    padding:12px 14px 16px!important;
+    background:#f4eee5!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta,
+  .mobileActionPanel .mobileWatchCta{
+    flex:1 1 0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:8px!important;
+    min-width:0!important;
+    height:62px!important;
+    margin:0!important;
+    padding:0 11px!important;
+    border-radius:17px!important;
+    box-sizing:border-box!important;
+    text-decoration:none!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta{
+    background:#2b170f!important;
+    color:#fffaf5!important;
+    border:1px solid #2b170f!important;
+    box-shadow:0 9px 20px rgba(43,23,15,.10)!important;
+  }
+
+  .mobileActionPanel .mobileWatchCta{
+    background:#fffaf4!important;
+    color:#2b170f!important;
+    border:1px solid rgba(43,23,15,.14)!important;
+    box-shadow:0 8px 18px rgba(43,23,15,.045)!important;
+  }
+
+  .mobileActionPanel .mobileCtaIcon,
+  .mobileActionPanel .mobilePlay{
+    flex:0 0 28px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:28px!important;
+    height:28px!important;
+    margin:0!important;
+    padding:0!important;
+    border-radius:50%!important;
+    box-sizing:border-box!important;
+    font-size:11px!important;
+    line-height:1!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta .mobileCtaIcon{
+    border:1px solid rgba(255,255,255,.28)!important;
+    background:rgba(255,255,255,.08)!important;
+    color:#fffaf5!important;
+  }
+
+  .mobileActionPanel .mobileWatchCta .mobilePlay{
+    border:1px solid rgba(43,23,15,.14)!important;
+    background:#f7eee4!important;
+    color:#2b170f!important;
+  }
+
+  .mobileActionPanel a > span:nth-child(2),
+  .mobileActionPanel button > span:nth-child(2){
+    flex:1 1 auto!important;
+    display:block!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    font-size:10.5px!important;
+    line-height:1!important;
+    font-weight:700!important;
+    letter-spacing:-.02em!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+  }
+
+  .mobileActionPanel .mobileCtaArrow{
+    flex:0 0 14px!important;
+    display:block!important;
+    width:14px!important;
+    margin-left:auto!important;
+    padding:0!important;
+    text-align:right!important;
+    font-size:17px!important;
+    line-height:1!important;
+    font-weight:400!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileActionPanel{
+    gap:8px!important;
+    padding:10px 10px 14px!important;
+  }
+  .mobileActionPanel .mobileApplyCta,
+  .mobileActionPanel .mobileWatchCta{
+    gap:6px!important;
+    height:58px!important;
+    padding:0 9px!important;
+    border-radius:15px!important;
+  }
+  .mobileActionPanel .mobileCtaIcon,
+  .mobileActionPanel .mobilePlay{
+    flex-basis:26px!important;
+    width:26px!important;
+    height:26px!important;
+  }
+  .mobileActionPanel a > span:nth-child(2),
+  .mobileActionPanel button > span:nth-child(2){
+    font-size:9.5px!important;
+  }
+}
