@@ -1364,3 +1364,145 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     margin-top:0!important;
   }
 }
+
+
+/* 2026-09-24 — SERVICE CARDS EXACT PATILIYOLAR PROPORTIONS */
+.figan-service-card{
+  border-radius:1.35rem!important;
+  background:#fffaf5!important;
+  border:1px solid rgba(107,73,57,.16)!important;
+  box-shadow:0 8px 22px rgba(54,40,29,.045),0 20px 45px rgba(54,40,29,.04)!important;
+}
+
+.figan-service-photo{
+  aspect-ratio:auto!important;
+  min-height:31rem!important;
+}
+
+.figan-service-badge{
+  top:1rem!important;
+  left:1rem!important;
+  padding:.62rem .85rem!important;
+  border:1px solid rgba(255,255,255,.72)!important;
+  border-radius:999px!important;
+  background:rgba(255,253,249,.91)!important;
+  color:#594237!important;
+  font-size:.68rem!important;
+  font-weight:600!important;
+}
+
+.figan-service-content{
+  padding:2.2rem 1.5rem 1.35rem!important;
+  background:linear-gradient(180deg,rgba(255,253,249,.99),rgba(255,249,243,.96))!important;
+}
+
+.figan-service-emblem{
+  width:3.5rem!important;
+  height:3.5rem!important;
+  border:1px solid rgba(198,95,62,.22)!important;
+  background:#fffaf5!important;
+  color:#c65f3e!important;
+}
+
+.figan-service-title-row{
+  display:flex!important;
+  align-items:center!important;
+  gap:.55rem!important;
+}
+
+.figan-service-title-row h3{
+  margin:0!important;
+  color:#4d392f!important;
+  font-size:clamp(1.8rem,2.6vw,2.65rem)!important;
+  font-weight:500!important;
+  line-height:1!important;
+  letter-spacing:-.035em!important;
+}
+
+.figan-service-title-mark{
+  color:#c65f3e!important;
+  font-size:1rem!important;
+}
+
+.figan-service-no{
+  display:none!important;
+}
+
+.figan-service-traits{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:.5rem!important;
+  margin:.85rem 0 0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+
+.figan-service-traits li{
+  display:inline-flex!important;
+  align-items:center!important;
+  padding:.45rem .72rem!important;
+  border-radius:999px!important;
+  background:#f3e9de!important;
+  color:#563e33!important;
+  font-size:.66rem!important;
+  line-height:1!important;
+}
+
+.figan-service-content>p{
+  margin:.9rem 0 0!important;
+  color:#65564e!important;
+  font-size:.76rem!important;
+  line-height:1.6!important;
+}
+
+.figan-service-cta{
+  margin-top:auto!important;
+  padding-top:1.15rem!important;
+  padding-bottom:.2rem!important;
+  border-bottom:1px dotted rgba(198,95,62,.65)!important;
+  color:#c65f3e!important;
+  font-size:.72rem!important;
+  font-weight:750!important;
+}
+
+@media(max-width:760px){
+  .figan-services-track{
+    gap:12px!important;
+    padding:0 8px 18px!important;
+  }
+
+  .figan-service-card{
+    flex:0 0 76vw!important;
+    max-width:372px!important;
+    border-radius:1.35rem!important;
+  }
+
+  .figan-service-photo{
+    min-height:26rem!important;
+    aspect-ratio:auto!important;
+  }
+
+  .figan-service-content{
+    min-height:335px!important;
+    padding:2.2rem 1.5rem 1.35rem!important;
+  }
+
+  .figan-service-emblem{
+    width:3.5rem!important;
+    height:3.5rem!important;
+    font-size:1.15rem!important;
+  }
+
+  .figan-service-title-row h3{
+    font-size:1.8rem!important;
+  }
+
+  .figan-service-content>p{
+    font-size:.76rem!important;
+    line-height:1.6!important;
+  }
+
+  .figan-service-cta{
+    font-size:.72rem!important;
+  }
+}
