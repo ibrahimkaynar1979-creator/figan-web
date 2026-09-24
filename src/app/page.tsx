@@ -71,6 +71,27 @@ export default function Home() {
       </header>
 
       <main id="top">
+
+        <nav className="figan-category-nav" aria-label="Figan yayın hizmetleri">
+          <div className="figan-category-panel">
+            <div className="figan-category-scroller">
+              {[
+                ["E-Kitap", "/figan-hizmet-01-ekitap.webp", "#hizmetler"],
+                ["Sesli Kitap", "/figan-hizmet-02-sesli-kitap.webp", "#hizmetler"],
+                ["Yazar Sitesi", "/figan-hizmet-03-yazar-sitesi.webp", "#yazar-sitesi"],
+                ["Dijital Dağıtım", "/figan-hizmet-05-dijital-dagitim.webp", "#hizmetler"],
+              ].map(([label, image, href]) => (
+                <a className="figan-category-item" href={href} key={label}>
+                  <span className="figan-category-image">
+                    <img src={image} alt="" />
+                  </span>
+                  <span>{label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </nav>
+
         <section className="category-strip">
           <div className="container category-inner">
             <span>Figan Yayınevi</span><i/>
