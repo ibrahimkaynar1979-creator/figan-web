@@ -68,13 +68,12 @@ const services = [
 ];
 
 const process = [
-  ["01","Başvuru & Değerlendirme","Dosyanızı alıyor, yayın hedefinizi ve eserinizi birlikte değerlendiriyoruz."],
-  ["02","Editörlük","Metninizi dil, akış ve yayın standardı açısından güçlendiriyoruz."],
-  ["03","Kapak & Tasarım","Eserinize özgü kapak ve iç sayfa yayın kimliğini oluşturuyoruz."],
-  ["04","Bandrollü Basım & Fizikî Dağıtım","Kitabınızı bandrollü olarak basıma hazırlıyor, fizikî satış ve dağıtım kanallarına taşıyoruz."],
-  ["05","Dijital Yayına Hazırlık","E-kitabınızı ve gerekli dijital dosyaları platformlara uygun biçimde hazırlıyoruz."],
-  ["06","Sesli Kitap & Fi Audio","Eserinizi profesyonel dinleme deneyimine dönüştürüyoruz."],
-  ["07","Yazar Dünyası & Yayın","Yazar sitenizi, dijital dağıtımınızı ve gerekli yabancı dil yayın hazırlıklarını tek yayın dünyasında birleştiriyoruz."],
+  ["01","Başvuru & Değerlendirme","Dosyanızı alıyor, eserinizi ve yayın hedefinizi birlikte değerlendiriyoruz."],
+  ["02","Editörlük","Metni dil, akış ve yayın standardı açısından yayına hazırlıyoruz."],
+  ["03","Kapak & Tasarım","Kapak, iç sayfa ve eserin görsel yayın kimliğini oluşturuyoruz."],
+  ["04","Bandrollü Basım & Fizikî Dağıtım","Kitabınızı bandrollü basıma hazırlıyor, uygun fizikî satış ve dağıtım kanallarına taşıyoruz."],
+  ["05","Dijital Yayına Hazırlık","E-kitap, sesli kitap ve gerekli dijital dosyaları platformlara uygun biçimde hazırlıyoruz."],
+  ["06","Yayın & Yazar Dünyası","Dijital dağıtımınızı, yazar sitenizi ve yayın sonrası görünürlüğünüzü tek yapıda birleştiriyoruz."],
 ] as const;
 
 const authors = [
@@ -85,6 +84,7 @@ const authors = [
     image:"/icimdeki-ibrahim.webp",
     initials:"İK",
     href:"/yazarlar/ibrahim-kaynar",
+    published:true,
   },
   {
     name:"Figen Yavuz",
@@ -93,6 +93,7 @@ const authors = [
     image:null,
     initials:"FY",
     href:"/yazarlar/figen-yavuz",
+    published:false,
   },
 ] as const;
 
@@ -233,7 +234,7 @@ export default function Home() {
                         {service.traits.map((trait) => <li key={trait}>{trait}</li>)}
                       </ul>
                       <p>{service.text}</p>
-                      <span className="figan-service-cta">Bilgi Alın <i>→</i></span>
+                      <span className="figan-service-cta">Hizmeti İnceleyin <i>→</i></span>
                     </div>
                   </a>
                 </article>
@@ -281,18 +282,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="yazar-sitesi" className="section author-site">
+        <section id="yazar-sitesi" className="section author-site author-site-compact">
           <div className="container author-grid">
             <div className="author-copy">
               <p className="eyebrow"><span/>YAZAR SİTESİ</p>
               <h2>Sadece bir sayfa değil.<br/><em>Size ait bir yazar dünyası.</em></h2>
-              <p>Kitaplarınız, hikâyeniz ve okurlarınızla kurduğunuz bağ; sosyal medya akışında kaybolmayan, size ait bir dijital adreste buluşur.</p>
-              <div className="benefit-grid">
-                <div><b>01</b><h3>Kendi dijital adresiniz</h3><p>Yazar kimliğinizi size ait bir alanda kalıcılaştırın.</p></div>
-                <div><b>02</b><h3>Tüm eserleriniz</h3><p>Kitaplarınızı tek bir seçkin vitrinde bir araya getirin.</p></div>
-                <div><b>03</b><h3>Yazılar & etkinlikler</h3><p>Yeni metinlerinizi, buluşmalarınızı ve duyurularınızı paylaşın.</p></div>
-                <div><b>04</b><h3>Okurla doğrudan bağ</h3><p>Okurlarınızın sizi ve eserlerinizi doğrudan keşfetmesini sağlayın.</p></div>
-              </div>
+              <p>Kitaplarınız, biyografiniz ve okurla kurduğunuz bağ size ait kalıcı bir dijital adreste buluşur.</p>
+              <a className="author-site-more" href="/yazar-sitesi">Yazar Sitesini İnceleyin <span>→</span></a>
             </div>
             <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="Fi Yayınevi yazar sitesi örneği"/></div>
           </div>
@@ -309,7 +305,7 @@ export default function Home() {
             </header>
 
             <div className="authors-track" aria-label="Fi yazarları">
-              {authors.map((author)=>(
+              {authors.filter((author)=>author.published).map((author)=>(
                 <article className="author-slide-card" key={author.name}>
                   <div className="author-slide-visual">
                     {author.image ? (
@@ -330,29 +326,26 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="hakkimizda" className="section about-figan">
+        <section id="hakkimizda" className="section about-figan about-fi-manifesto">
           <div className="container">
             <div className="about-figan-card">
               <div className="about-figan-copy">
                 <p className="eyebrow"><span/>Fİ HAKKINDA</p>
                 <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
-                <p>Fi, yazarın yalnızca kitabını değil; editörlükten tasarıma, bandrollü basımdan dijital yayına, sesli kitaptan yazar sitesine kadar bütün yayın yolculuğunu tek çatı altında kurmayı hedefler.</p>
-              </div>
-              <div className="about-figan-points">
-                <article><b>01</b><div><h3>Tek çatı</h3><p>Basılı ve dijital yayın süreçlerini aynı yayın planı içinde bir araya getiririz.</p></div></article>
-                <article><b>02</b><div><h3>Yazar odaklı</h3><p>Eseri kadar yazar kimliğini ve okurla kurduğu bağı da görünür kılan bir yapı kurarız.</p></div></article>
-                <article><b>03</b><div><h3>Çok formatlı yayın</h3><p>Basılı kitap, e-kitap, sesli kitap ve yazar sitesi aynı yayın dünyasının parçaları olarak ilerler.</p></div></article>
+                <p>Fi, bir eseri yalnızca basılacak bir dosya olarak görmez. Metnin editoryal hazırlığından basılı ve dijital yayına, sesli kitaptan yazarın kendi dijital alanına kadar birbirini tamamlayan bir yayın dünyası kurar.</p>
+                <p className="about-fi-note">Yazarın eseri kadar kendi adıyla da kalıcı, görünür ve erişilebilir olmasını önemsiyoruz.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="fi-video" className="section fi-video-placeholder">
-          <div className="container fi-video-card">
-            <p className="eyebrow light"><span/>Fİ’Yİ İZLEYİN</p>
-            <h2>Fi’nin yayın dünyasını<br/><em>videoda keşfedin.</em></h2>
-            <p>Tanıtım videonuz hazır olduğunda bu alan doğrudan videoyu oynatacak şekilde bağlanacak.</p>
-            <div className="fi-video-frame"><span>▶</span></div>
+        <section id="fi-video" className="section fi-video-teaser">
+          <div className="container fi-video-teaser-card">
+            <div>
+              <p className="eyebrow light"><span/>Fİ’Yİ İZLEYİN</p>
+              <h2>Yayın dünyamızı<br/><em>yakında videoda anlatıyoruz.</em></h2>
+            </div>
+            <div className="fi-video-teaser-play" aria-hidden="true"><span>▶</span><small>Tanıtım videosu yakında</small></div>
           </div>
         </section>
 
@@ -376,19 +369,16 @@ export default function Home() {
           <div className="footer-groups">
             <section className="footer-group">
               <h4>Yayın Dünyası</h4>
-              <a href="#hizmetler"><span>✦</span>Basılı Kitap Yayını</a>
-              <a href="#hizmetler"><span>✦</span>E-Kitap</a>
-              <a href="#hizmetler"><span>✦</span>Sesli Kitap</a>
-              <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
-              <a href="#hizmetler"><span>✦</span>Dijital Dağıtım</a>
-              <a href="#hizmetler"><span>✦</span>Yabancı Dil Çeviri</a>
+              <a href="/basili-kitap-yayini"><span>✦</span>Basılı Kitap Yayını</a>
+              <a href="/e-kitap-yayini"><span>✦</span>E-Kitap</a>
+              <a href="/sesli-kitap"><span>✦</span>Sesli Kitap</a>
+              <a href="/yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
+              <a href="/dijital-dagitim"><span>✦</span>Dijital Dağıtım</a>
             </section>
             <section className="footer-group">
               <h4>Fi</h4>
               <a href="#surec"><span>✦</span>Nasıl Çalışıyoruz?</a>
-              <a href="#ekosistem"><span>✦</span>Fi Ekosistemi</a>
-              <a href="#yazarlar"><span>✦</span>Yazar Dünyamız</a>
-              <a href="#yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
+              <a href="#yazarlar"><span>✦</span>Yazarlarımız</a>
               <a href="#hakkimizda"><span>✦</span>Fi Hakkında</a>
               <a href="#basvuru"><span>✦</span>Yazar Başvurusu</a>
             </section>
