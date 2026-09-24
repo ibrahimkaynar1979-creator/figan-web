@@ -22,7 +22,7 @@ const services = [
     traits:["Size Özel","Mobil Uyumlu","Kalıcı Dijital Alan"],
     badge:"Size Özel Dijital Alan",
     text:"Eserlerinizi, biyografinizi ve okurla bağınızı size ait seçkin bir dijital merkezde buluşturuyoruz.",
-    image:"/figan-hizmet-03-yazar-sitesi.webp",
+    image:"/figan-hizmet-yazar-sitesi.webp",
     href:"#yazar-sitesi",
   },
   {
@@ -31,7 +31,7 @@ const services = [
     traits:["EPUB","Mobil Uyumlu","Yayın Hazır"],
     badge:"Her Cihazda Okunsun",
     text:"Eserinizi profesyonel dijital yayına hazırlıyor, tüm cihazlarda okunabilir formata dönüştürüyoruz.",
-    image:"/figan-hizmet-01-ekitap.webp",
+    image:"/figan-hizmet-e-kitap.webp",
     href:"#basvuru",
   },
   {
@@ -40,7 +40,7 @@ const services = [
     traits:["Doğal Ses","Stüdyo Kalitesi","Platform Hazır"],
     badge:"Hikâyeniz Ses Bulsun",
     text:"Metninizi güçlü, doğal ve kaliteli bir dinleme deneyimine dönüştürüyoruz.",
-    image:"/figan-hizmet-02-sesli-kitap.webp",
+    image:"/figan-hizmet-sesli-kitap.webp",
     href:"#basvuru",
   },
   {
@@ -49,7 +49,7 @@ const services = [
     traits:["Kapak Tasarımı","Bandrollü Basım","Fizikî Dağıtım"],
     badge:"Kitabınız Basılsın, Dağıtıma Çıksın",
     text:"Kapak tasarımı, baskı hazırlığı, bandrollü basım ve fizikî dağıtım sürecini birlikte yürütüyor; kitabınızın online kitap satış kanalları ve dağıtım ağlarında yer almasına yönelik yayın sürecini yönetiyoruz.",
-    image:"/ekosistem-kitap.webp",
+    image:"/figan-hizmet-basili-kitap-yayini.webp",
     href:"#basvuru",
   },
   {
@@ -58,7 +58,7 @@ const services = [
     traits:["Türkiye","Global","Tek Noktadan"],
     badge:"Daha Fazla Okura Ulaşın",
     text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.",
-    image:"/figan-hizmet-05-dijital-dagitim.webp",
+    image:"/figan-hizmet-dijital-dagitim.webp",
     href:"#basvuru",
   },
 ];
