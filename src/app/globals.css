@@ -201,3 +201,161 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
   .mobile-dock a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:10px}
   .mobile-dock span{font-size:20px;line-height:1;color:#fff}
 }
+
+
+/* 2026-09-24 — PATILIYOLAR MOBILE SKELETON FOR FIGAN */
+.figan-category-nav{display:none}
+
+@media(max-width:600px){
+  /* Header mirrors Patiliyolar mobile proportions */
+  .site-header .header-inner{
+    height:64px!important;
+    min-height:64px!important;
+    padding:0 14px!important;
+  }
+  .brand img{
+    width:132px!important;
+    max-width:none!important;
+  }
+  .menu-btn{
+    width:40px!important;
+    height:40px!important;
+    border:0!important;
+    border-radius:0!important;
+    gap:5px!important;
+  }
+  .menu-btn span{
+    width:22px!important;
+    height:1.5px!important;
+  }
+
+  /* Patiliyolar-style circular service strip */
+  .figan-category-nav{
+    display:block!important;
+    position:relative!important;
+    z-index:20!important;
+    padding:7px 8px 5px!important;
+    background:var(--cream)!important;
+  }
+  .figan-category-panel{
+    overflow:hidden!important;
+    padding:7px 4px 5px!important;
+    border:1px solid rgba(145,116,83,.16)!important;
+    border-radius:16px!important;
+    background:rgba(255,253,249,.97)!important;
+    box-shadow:0 8px 24px rgba(48,44,41,.045)!important;
+  }
+  .figan-category-scroller{
+    display:grid!important;
+    grid-auto-flow:column!important;
+    grid-auto-columns:calc((100vw - 32px)/4)!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:none!important;
+    scroll-snap-type:x mandatory!important;
+  }
+  .figan-category-scroller::-webkit-scrollbar{display:none!important}
+  .figan-category-item{
+    display:grid!important;
+    grid-template-rows:auto auto!important;
+    justify-items:center!important;
+    gap:5px!important;
+    min-width:0!important;
+    padding:0 2px!important;
+    scroll-snap-align:start!important;
+    font-size:10px!important;
+    line-height:1.05!important;
+    font-weight:700!important;
+    text-align:center!important;
+    color:#49372f!important;
+  }
+  .figan-category-image{
+    position:relative!important;
+    width:64px!important;
+    height:64px!important;
+    overflow:hidden!important;
+    border:3px solid #fff!important;
+    border-radius:50%!important;
+    background:#efe3d4!important;
+    box-shadow:0 0 0 2px rgba(185,152,105,.13),0 6px 16px rgba(48,44,41,.08)!important;
+  }
+  .figan-category-image img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+  }
+
+  /* Patiliyolar hero order: photo first, copy second, CTAs third */
+  .home-hero{
+    padding:0 8px 10px!important;
+    background:var(--cream)!important;
+  }
+  .hero-grid{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto auto auto!important;
+    gap:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    border:1px solid rgba(145,116,83,.14)!important;
+    border-radius:16px!important;
+    background:#fbf8f2!important;
+  }
+  .hero-visual{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:100%!important;
+    margin:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    overflow:hidden!important;
+    background:#eadfce!important;
+  }
+  .hero-visual img{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    object-fit:contain!important;
+  }
+  .hero-copy{
+    grid-column:1!important;
+    grid-row:2!important;
+    padding:18px 18px 10px!important;
+  }
+  .hero-copy .eyebrow{
+    margin-bottom:12px!important;
+    font-size:9px!important;
+  }
+  .hero-copy h1{
+    font-size:48px!important;
+    line-height:.88!important;
+  }
+  .hero-copy h2{
+    font-size:30px!important;
+    margin:14px 0 12px!important;
+  }
+  .hero-lead{
+    font-size:13px!important;
+    line-height:1.55!important;
+  }
+  .hero-actions{
+    grid-column:1!important;
+    grid-row:3!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    margin:0!important;
+    padding:6px 18px 18px!important;
+  }
+  .hero-actions .btn{
+    width:100%!important;
+    min-height:50px!important;
+  }
+
+  /* keep floating contacts clear of bottom nav */
+  .contact-float{
+    right:14px!important;
+    bottom:92px!important;
+  }
+}
