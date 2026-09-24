@@ -23,7 +23,7 @@ const services = [
     traits:["Size Özel","Mobil Uyumlu","Kalıcı Dijital Alan"],
     text:"Eserlerinizi, biyografinizi ve okurla bağınızı size ait seçkin bir dijital merkezde buluşturuyoruz.",
     image:"/figan-hizmet-yazar-sitesi.webp",
-    href:"#yazar-sitesi",
+    href:"/yazar-sitesi",
   },
   {
     no:"02",
@@ -31,7 +31,7 @@ const services = [
     traits:["EPUB","Mobil Uyumlu","Yayın Hazır"],
     text:"Eserinizi profesyonel dijital yayına hazırlıyor, tüm cihazlarda okunabilir formata dönüştürüyoruz.",
     image:"/figan-hizmet-e-kitap.webp",
-    href:"#basvuru",
+    href:"/e-kitap-yayini",
   },
   {
     no:"03",
@@ -39,7 +39,7 @@ const services = [
     traits:["Doğal Ses","Stüdyo Kalitesi","Platform Hazır"],
     text:"Metninizi güçlü, doğal ve kaliteli bir dinleme deneyimine dönüştürüyoruz.",
     image:"/figan-hizmet-sesli-kitap.webp",
-    href:"#basvuru",
+    href:"/sesli-kitap",
   },
   {
     no:"04",
@@ -47,7 +47,7 @@ const services = [
     traits:["Kapak Tasarımı","Bandrollü Basım","Fizikî Dağıtım"],
     text:"Kapak tasarımı, baskı hazırlığı, bandrollü basım ve fizikî dağıtım sürecini birlikte yürütüyor; kitabınızın online kitap satış kanalları ve dağıtım ağlarında yer almasına yönelik yayın sürecini yönetiyoruz.",
     image:"/figan-hizmet-basili-kitap-yayini.webp",
-    href:"#basvuru",
+    href:"/basili-kitap-yayini",
   },
   {
     no:"05",
@@ -55,7 +55,7 @@ const services = [
     traits:["Türkiye","Global","Tek Noktadan"],
     text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.",
     image:"/figan-hizmet-dijital-dagitim.webp",
-    href:"#basvuru",
+    href:"/dijital-dagitim",
   },
   {
     no:"06",
@@ -63,7 +63,7 @@ const services = [
     traits:["Editoryal Çeviri","Yayın Dili","Global Hazırlık"],
     text:"Eserinizi hedef dile yalnızca çevirmiyor; yayın dili, editoryal akış ve uluslararası yayın hazırlığı açısından yeniden ele alıyoruz.",
     image:"/figan-hizmet-04-yabanci-dil.webp",
-    href:"#basvuru",
+    href:"/yabanci-dil-ceviri",
   },
 ];
 
@@ -137,12 +137,12 @@ export default function Home() {
           <div className="figan-category-panel">
             <div className="figan-category-scroller">
               {[
-                ["Basılı Kitap", "/figan-hizmet-basili-kitap-yayini.webp", "#hizmetler"],
-                ["E-Kitap", "/figan-hizmet-e-kitap.webp", "#hizmetler"],
-                ["Sesli Kitap", "/figan-hizmet-sesli-kitap.webp", "#hizmetler"],
-                ["Yabancı Dil", "/figan-hizmet-04-yabanci-dil.webp", "#hizmetler"],
-                ["Yazar Sitesi", "/figan-hizmet-yazar-sitesi.webp", "#yazar-sitesi"],
-                ["Yazarlarımız", "/icimdeki-ibrahim.webp", "#yazarlar"],
+                ["Basılı Kitap", "/figan-hizmet-basili-kitap-yayini.webp", "/basili-kitap-yayini"],
+                ["E-Kitap", "/figan-hizmet-e-kitap.webp", "/e-kitap-yayini"],
+                ["Sesli Kitap", "/figan-hizmet-sesli-kitap.webp", "/sesli-kitap"],
+                ["Yabancı Dil", "/figan-hizmet-04-yabanci-dil.webp", "/yabanci-dil-ceviri"],
+                ["Yazar Sitesi", "/figan-hizmet-yazar-sitesi.webp", "/yazar-sitesi"],
+                ["Yazarlarımız", "/icimdeki-ibrahim.webp", "/yazarlar/ibrahim-kaynar"],
               ].map(([label, image, href]) => (
                 <a className="figan-category-item" href={href} key={label}>
                   <span className="figan-category-image">
