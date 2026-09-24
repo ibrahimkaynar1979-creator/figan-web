@@ -7672,3 +7672,63 @@ button{font:inherit;color:inherit}
     height:36px!important;
   }
 }
+
+
+/* 2026-09-24 — hero full first screen, actions after */
+@media(max-width:520px){
+  header.siteHeader{
+    height:58px!important;
+    min-height:58px!important;
+  }
+
+  /* First mobile viewport: only the complete hero artwork under the header */
+  .hero{
+    height:calc(100svh - 58px)!important;
+    min-height:calc(100svh - 58px)!important;
+    max-height:calc(100svh - 58px)!important;
+    overflow:hidden!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:100%!important;
+    max-height:100%!important;
+    margin:0!important;
+    overflow:hidden!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center top!important;
+  }
+
+  /* CTAs start only after the hero has completely finished */
+  .mobileActionPanel{
+    position:relative!important;
+    z-index:5!important;
+    margin:0!important;
+    padding:14px 12px calc(18px + 76px)!important;
+    background:#f4eee5!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero{
+    height:calc(100svh - 58px)!important;
+    min-height:calc(100svh - 58px)!important;
+    max-height:calc(100svh - 58px)!important;
+  }
+
+  .mobileActionPanel{
+    padding-bottom:calc(16px + 70px)!important;
+  }
+}
