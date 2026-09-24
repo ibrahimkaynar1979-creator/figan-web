@@ -6607,7 +6607,7 @@ button{font:inherit;color:inherit}
     width:100%!important;
     height:auto!important;
     max-width:none!important;
-    margin:0 0 -64px!important;
+    margin:0!important;
     padding:0!important;
     object-fit:contain!important;
     object-position:center top!important;
@@ -6667,10 +6667,6 @@ button{font:inherit;color:inherit}
 }
 
 @media(max-width:390px){
-  .mobileHeroFreshImage{
-    margin-bottom:-58px!important;
-  }
-
   .mobileHeroFreshCopy{
     top:12px!important;
     left:18px!important;
