@@ -5788,3 +5788,29 @@ button{font:inherit;color:inherit}
     margin-top:0!important;
   }
 }
+
+
+/* 2026-09-24 — FINAL mobile hero compact crop */
+@media(max-width:520px){
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    height:570px!important;
+    min-height:570px!important;
+    max-height:570px!important;
+    overflow:hidden!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center top!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    height:525px!important;
+    min-height:525px!important;
+    max-height:525px!important;
+  }
+}
