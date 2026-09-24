@@ -482,3 +482,31 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     margin:0!important;
   }
 }
+
+
+/* 2026-09-24 — CROPPED FIGAN HERO, SHOW FULL ARTWORK */
+@media(max-width:600px){
+  .hero-visual{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    margin:0!important;
+    overflow:hidden!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:#f3e8da!important;
+  }
+
+  .hero-visual img{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    transform:none!important;
+  }
+}
