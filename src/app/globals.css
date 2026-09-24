@@ -510,3 +510,55 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     transform:none!important;
   }
 }
+
+
+/* 2026-09-24 — PATILIYOLAR EXACT FLOATING CONTACT */
+.contact-float{
+  position:fixed!important;
+  right:24px!important;
+  bottom:24px!important;
+  z-index:9999!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:14px!important;
+  align-items:center!important;
+}
+.contact-float a{
+  position:relative!important;
+  width:62px!important;
+  height:62px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:50%!important;
+  color:#fff!important;
+  cursor:pointer!important;
+  transition:transform .25s ease,box-shadow .25s ease!important;
+}
+.contact-float a:hover{transform:translateY(-3px) scale(1.04)!important}
+.contact-float a:active{transform:scale(.97)!important}
+.contact-float .call{
+  background:linear-gradient(145deg,#f0cf7a 0%,#d3a33e 45%,#ad7920 100%)!important;
+  border:2px solid #f6dc91!important;
+  box-shadow:0 8px 24px rgba(120,80,15,.30),inset 0 2px 3px rgba(255,255,255,.55)!important;
+}
+.contact-float .wa{
+  background:#25d366!important;
+  border:2px solid #7ce5a1!important;
+  box-shadow:0 8px 24px rgba(18,120,60,.28),inset 0 2px 3px rgba(255,255,255,.45)!important;
+}
+@media(max-width:768px){
+  .contact-float{
+    right:16px!important;
+    bottom:92px!important;
+    gap:14px!important;
+  }
+  .contact-float a{
+    width:56px!important;
+    height:56px!important;
+  }
+  .contact-float a svg{
+    width:27px!important;
+    height:27px!important;
+  }
+}
