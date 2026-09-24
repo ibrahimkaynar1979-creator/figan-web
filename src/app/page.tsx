@@ -14,11 +14,46 @@ const nav = [
 ] as const;
 
 const services = [
-  { no:"01", title:"E-Kitap", text:"Eserinizi profesyonel dijital yayına hazırlıyor, tüm cihazlarda okunabilir formata dönüştürüyoruz.", image:"/figan-hizmet-01-ekitap.webp" },
-  { no:"02", title:"Sesli Kitap", text:"Metninizi güçlü ve doğal bir dinleme deneyimine dönüştürüyoruz.", image:"/figan-hizmet-02-sesli-kitap.webp" },
-  { no:"03", title:"Yazar Sitesi", text:"Eserlerinizi, biyografinizi ve okur bağınızı tek bir kişisel merkezde buluşturuyoruz.", image:"/figan-hizmet-03-yazar-sitesi.webp" },
-  { no:"04", title:"Yabancı Dil", text:"Profesyonel çeviri ve editoryal uyarlamayla eserinizi farklı dillere hazırlıyoruz.", image:"/figan-hizmet-04-yabanci-dil.webp" },
-  { no:"05", title:"Dijital Dağıtım", text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.", image:"/figan-hizmet-05-dijital-dagitim.webp" },
+  {
+    no:"01",
+    title:"Yazar Sitesi",
+    badge:"Size Özel Dijital Alan",
+    text:"Eserlerinizi, biyografinizi ve okurla bağınızı size ait seçkin bir dijital merkezde buluşturuyoruz.",
+    image:"/figan-hizmet-03-yazar-sitesi.webp",
+    href:"#yazar-sitesi",
+  },
+  {
+    no:"02",
+    title:"E-Kitap",
+    badge:"Her Cihazda Okunsun",
+    text:"Eserinizi profesyonel dijital yayına hazırlıyor, tüm cihazlarda okunabilir formata dönüştürüyoruz.",
+    image:"/figan-hizmet-01-ekitap.webp",
+    href:"#basvuru",
+  },
+  {
+    no:"03",
+    title:"Sesli Kitap",
+    badge:"Hikâyeniz Ses Bulsun",
+    text:"Metninizi güçlü, doğal ve kaliteli bir dinleme deneyimine dönüştürüyoruz.",
+    image:"/figan-hizmet-02-sesli-kitap.webp",
+    href:"#basvuru",
+  },
+  {
+    no:"04",
+    title:"Kitap Kapağı",
+    badge:"İlk Bakışta Fark Yaratın",
+    text:"Eserinizin ruhunu taşıyan, yayın kimliğinizi güçlendiren özgün kapak tasarımları hazırlıyoruz.",
+    image:"/ekosistem-kitap.webp",
+    href:"#basvuru",
+  },
+  {
+    no:"05",
+    title:"Dijital Dağıtım",
+    badge:"Daha Fazla Okura Ulaşın",
+    text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.",
+    image:"/figan-hizmet-05-dijital-dagitim.webp",
+    href:"#basvuru",
+  },
 ];
 
 const process = [
@@ -122,23 +157,35 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="hizmetler" className="section services">
+        <section id="hizmetler" className="section services figan-services-showcase">
           <div className="container">
-            <div className="section-head">
-              <p className="eyebrow"><span/>HİZMETLERİMİZ</p>
-              <h2>Her ihtiyaç için,<br/><em>tek bir yayın dünyasında.</em></h2>
-              <p>Eserinizi en iyi haliyle hazırlıyor, dijital dünyada okuyucuya ulaşacağı bütün parçaları tek çatı altında kuruyoruz.</p>
-            </div>
-            <div className="service-grid">
-              {services.map((s,i)=>(
-                <article className={`service-card ${i%2?"reverse":""}`} key={s.no}>
-                  <div className="service-image"><img src={s.image} alt=""/></div>
-                  <div className="service-copy">
-                    <span className="service-no">{s.no}</span>
-                    <h3>{s.title}</h3>
-                    <p>{s.text}</p>
-                    <a href="#basvuru">Detaylı bilgi <b>→</b></a>
-                  </div>
+            <header className="figan-services-header">
+              <p className="figan-services-eyebrow">HİZMETLERİMİZ</p>
+              <h2>Her biri farklı,<br/>hepsi <strong>aynı yayın dünyasında.</strong></h2>
+              <p className="figan-services-description">
+                Eserinizi yalnızca yayıma hazırlamıyoruz; yazar kimliğinizden dijital dağıtıma kadar bütün yayın dünyasını birlikte kuruyoruz.
+              </p>
+            </header>
+
+            <div className="figan-services-track" aria-label="Figan yayın hizmetleri">
+              {services.map((service) => (
+                <article className="figan-service-card" key={service.no}>
+                  <a className="figan-service-link" href={service.href}>
+                    <div className="figan-service-photo">
+                      <img src={service.image} alt="" />
+                      <span className="figan-service-badge">{service.badge}</span>
+                    </div>
+
+                    <div className="figan-service-content">
+                      <span className="figan-service-emblem" aria-hidden="true">✦</span>
+                      <div className="figan-service-title-row">
+                        <span className="figan-service-no">{service.no}</span>
+                        <h3>{service.title}</h3>
+                      </div>
+                      <p>{service.text}</p>
+                      <span className="figan-service-cta">İnceleyin <i>→</i></span>
+                    </div>
+                  </a>
                 </article>
               ))}
             </div>
