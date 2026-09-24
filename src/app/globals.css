@@ -2371,3 +2371,259 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     line-height:1.6;
   }
 }
+
+
+/* 2026-09-25 - ABOUT / VIDEO / FOOTER REPAIR */
+.about-figan{
+  padding:10px 8px 38px!important;
+  background:#f6f0e7!important;
+}
+.about-figan .container{
+  width:100%!important;
+}
+.about-figan-card{
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:26px;
+  padding:30px 28px;
+  border:1px solid rgba(169,105,52,.18);
+  border-radius:24px;
+  background:linear-gradient(155deg,#fffdf9,#fbf7f0);
+  box-shadow:0 12px 32px rgba(65,48,34,.05);
+}
+.about-figan-copy .eyebrow{
+  margin-bottom:14px!important;
+  font-size:10px!important;
+}
+.about-figan-copy h2{
+  margin:0 0 14px!important;
+  font-family:var(--font-editorial),Georgia,serif!important;
+  font-size:46px!important;
+  line-height:.98!important;
+  font-weight:500!important;
+  letter-spacing:-.045em!important;
+}
+.about-figan-copy h2 em{
+  font-family:var(--font-poetic),Georgia,serif!important;
+  color:#b46543!important;
+  font-weight:400!important;
+}
+.about-figan-copy>p:last-child{
+  margin:0!important;
+  color:#5f5149!important;
+  font-size:14px!important;
+  line-height:1.58!important;
+}
+.about-figan-points{
+  display:grid;
+  gap:10px;
+}
+.about-figan-points article{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  align-items:start;
+  padding:14px 16px;
+  border:1px solid rgba(169,105,52,.12);
+  border-radius:14px;
+  background:rgba(255,255,255,.5);
+}
+.about-figan-points b{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border:1px solid rgba(110,120,69,.28);
+  border-radius:50%;
+  color:#6e7845;
+  font-size:10px;
+}
+.about-figan-points h3{
+  margin:0 0 3px!important;
+  color:#49362e!important;
+  font-family:var(--font-ui),Arial,sans-serif!important;
+  font-size:14px!important;
+  font-weight:800!important;
+}
+.about-figan-points p{
+  margin:0!important;
+  color:#5f5149!important;
+  font-size:12.5px!important;
+  line-height:1.45!important;
+}
+
+.figan-video-placeholder{
+  padding:6px 8px 38px!important;
+  background:#f6f0e7!important;
+}
+.figan-video-card{
+  padding:28px 22px 20px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#4a2a1a,#2b170e);
+  color:#fff;
+}
+.figan-video-card h2{
+  margin:0 0 12px;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:44px;
+  line-height:.98;
+  font-weight:500;
+}
+.figan-video-card h2 em{
+  font-family:var(--font-poetic),Georgia,serif;
+  color:#d9b58c;
+  font-weight:400;
+}
+.figan-video-card>p:last-of-type{
+  margin:0;
+  max-width:620px;
+  color:#ead9c8;
+  font-size:14px;
+  line-height:1.55;
+}
+.figan-video-frame{
+  display:grid;
+  place-items:center;
+  min-height:220px;
+  margin-top:18px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;
+  background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.08),transparent 40%);
+}
+.figan-video-frame span{
+  display:grid;
+  place-items:center;
+  width:66px;
+  height:66px;
+  border-radius:50%;
+  background:#f5eadc;
+  color:#3b2114;
+  font-size:22px;
+}
+
+.naribo-credit{
+  width:100%!important;
+  margin-top:6px!important;
+}
+.naribo-credit img{
+  display:block!important;
+  width:210px!important;
+  max-width:72%!important;
+  height:auto!important;
+  margin:0 auto!important;
+  object-fit:contain!important;
+}
+.footer-address{
+  width:100%!important;
+}
+.footer-address-lines{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+}
+.footer-contact{
+  min-width:0!important;
+}
+.footer-contact a,
+.footer-contact .footer-phone,
+.footer-contact .footer-address{
+  width:100%!important;
+}
+
+@media(max-width:760px){
+  .hero-actions{
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+  }
+  .hero-actions .btn{
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  .about-figan{
+    padding:6px 8px 38px!important;
+  }
+  .about-figan-card{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+    padding:24px 18px 18px!important;
+    border-radius:20px!important;
+  }
+  .about-figan-copy h2{
+    font-size:38px!important;
+    line-height:.98!important;
+  }
+  .about-figan-copy>p:last-child{
+    font-size:14px!important;
+    line-height:1.55!important;
+  }
+  .about-figan-points{
+    gap:8px!important;
+  }
+  .about-figan-points article{
+    grid-template-columns:36px 1fr!important;
+    gap:10px!important;
+    padding:12px 0!important;
+    border-width:1px 0 0!important;
+    border-radius:0!important;
+    background:transparent!important;
+  }
+  .about-figan-points h3{
+    font-size:14px!important;
+  }
+  .about-figan-points p{
+    font-size:12.5px!important;
+  }
+
+  .figan-video-card{
+    padding:24px 18px 18px!important;
+    border-radius:20px!important;
+  }
+  .figan-video-card h2{
+    font-size:38px!important;
+  }
+  .figan-video-card>p:last-of-type{
+    font-size:13.5px!important;
+  }
+  .figan-video-frame{
+    min-height:180px!important;
+  }
+
+  .figan-footer-shell{
+    padding:26px 18px 18px!important;
+  }
+  .footer-groups{
+    gap:12px!important;
+  }
+  .footer-group{
+    min-width:0!important;
+  }
+  .footer-group h4{
+    margin-bottom:7px!important;
+  }
+  .footer-group a,
+  .footer-contact a,
+  .footer-contact .footer-phone,
+  .footer-contact .footer-address{
+    margin-bottom:4px!important;
+    font-size:13px!important;
+    line-height:1.35!important;
+  }
+  .footer-address{
+    align-items:flex-start!important;
+  }
+  .footer-address-lines{
+    display:block!important;
+    line-height:1.45!important;
+  }
+  .footer-signature{
+    margin:14px 0 10px!important;
+  }
+  .naribo-credit img{
+    width:190px!important;
+    max-width:74%!important;
+  }
+}
