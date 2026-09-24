@@ -158,7 +158,7 @@ export default function Home() {
         <section className="home-hero">
           <div className="container hero-grid">
             <div className="hero-copy">
-              <p className="eyebrow"><span/>FIGAN YAYINEVİ</p>
+              <p className="eyebrow"><span/>Fİ YAYINEVİ</p>
               <h1><span>Bir kitap</span><em>yazdınız.</em></h1>
               <h2>Şimdi ona ait bir dünya kuralım.</h2>
               <p className="hero-lead">Editörlükten bandrollü basıma, e-kitaptan sesli kitaba, yazar sitenizden dijital ve fizikî dağıtıma kadar tüm yayın dünyanızı tek çatı altında kuruyoruz.</p>
@@ -168,7 +168,7 @@ export default function Home() {
               </div>
             </div>
             <div className="hero-visual">
-              <img src="/figan-hero-mobile-cropped.webp" alt="Figan yayın dünyası: kitap, Reader, Audio ve yazar sitesi"/>
+              <img src="/figan-hero-mobile-cropped.webp" alt="Fi Yayınevi yayın dünyası: basılı kitap, e-kitap, sesli kitap ve yazar sitesi"/>
             </div>
           </div>
         </section>
@@ -243,7 +243,7 @@ export default function Home() {
             <div className="ecosystem-visual" aria-hidden="true">
               <div className="ecosystem-orbit">
                 <span>Basılı Kitap</span><span>E-Kitap</span><span>Sesli Kitap</span><span>Yazar Sitesi</span><span>Türkiye Dağıtımı</span><span>Global Yayın</span>
-                <strong>Figan</strong>
+                <strong>Fi</strong>
               </div>
             </div>
           </div>
@@ -262,7 +262,7 @@ export default function Home() {
                 <div><b>04</b><h3>Okurla doğrudan bağ</h3><p>Okurlarınızın sizi ve eserlerinizi doğrudan keşfetmesini sağlayın.</p></div>
               </div>
             </div>
-            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="Figan yazar sitesi örneği"/></div>
+            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="Fi Yayınevi yazar sitesi örneği"/></div>
           </div>
         </section>
 
@@ -351,7 +351,7 @@ export default function Home() {
               <a href="#hizmetler"><span>✦</span>Yabancı Dil Çeviri</a>
             </section>
             <section className="footer-group">
-              <h4>Figan</h4>
+              <h4>Fi</h4>
               <a href="#surec"><span>✦</span>Nasıl Çalışıyoruz?</a>
               <a href="#ekosistem"><span>✦</span>Fi Ekosistemi</a>
               <a href="#yazarlar"><span>✦</span>Yazar Dünyamız</a>
