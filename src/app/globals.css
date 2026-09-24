@@ -5983,3 +5983,44 @@ button{font:inherit;color:inherit}
     z-index:2!important;
   }
 }
+
+
+/* 2026-09-24 — RESTORE mobile hero natural composition */
+@media(max-width:520px){
+  .hero{
+    position:relative!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    position:relative!important;
+    inset:auto!important;
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    z-index:auto!important;
+    background:none!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    display:block!important;
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    max-width:none!important;
+    margin:0!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    transform:none!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+  }
+}
