@@ -7389,3 +7389,35 @@ button{font:inherit;color:inherit}
     line-height:1!important;
   }
 }
+
+
+/* Floating contact — Patiliyolar-style */
+.floatingContact{
+  position:fixed;
+  right:18px;
+  bottom:92px;
+  z-index:1200;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.floatingContact a{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  box-shadow:0 8px 22px rgba(31,20,13,.18),0 0 0 3px rgba(255,255,255,.72);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.floatingContact a:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(31,20,13,.23),0 0 0 3px rgba(255,255,255,.8)}
+.floatingContact svg{width:23px;height:23px;display:block;fill:#fff}
+.floatingCall{background:linear-gradient(145deg,#edc65a,#d69b20)}
+.floatingWhatsapp{background:linear-gradient(145deg,#32e884,#12c968)}
+@media(max-width:520px){
+  .floatingContact{right:14px;bottom:82px;gap:10px}
+  .floatingContact a{width:50px;height:50px}
+  .floatingContact svg{width:22px;height:22px}
+}
