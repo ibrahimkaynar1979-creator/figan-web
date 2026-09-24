@@ -1348,3 +1348,19 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     margin:0!important;
   }
 }
+
+
+/* 2026-09-24 — REDUCE HERO TO SERVICES GAP */
+@media(max-width:600px){
+  .home-hero{
+    padding-bottom:4px!important;
+  }
+
+  .figan-services-showcase{
+    padding-top:34px!important;
+  }
+
+  .figan-services-header{
+    margin-top:0!important;
+  }
+}
