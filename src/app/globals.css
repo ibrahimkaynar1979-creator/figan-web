@@ -2745,3 +2745,281 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     line-height:1.45!important;
   }
 }
+
+
+/* 2026-09-25 - FI SEO LANDING / FAQ / PROFILE PAGES */
+.brand-fi,
+.footer-logo-fi{
+  display:inline-flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  text-decoration:none!important;
+  color:#35251f!important;
+}
+.brand-fi-main{
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:42px;
+  font-weight:500;
+  line-height:.72;
+  letter-spacing:-.08em;
+}
+.brand-fi-sub{
+  margin-top:7px;
+  font-family:var(--font-ui),Arial,sans-serif;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.34em;
+}
+.footer-logo-fi .brand-fi-main{font-size:56px}
+.footer-logo-fi .brand-fi-sub{font-size:8px}
+
+.faq-section{background:#f6f0e7!important}
+.faq-panel{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:32px;
+  padding:34px 32px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:24px;
+  background:linear-gradient(155deg,#fffdf9,#fbf7f0);
+}
+.faq-header h2{
+  margin:0;
+  color:#49362e;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:clamp(42px,4vw,60px);
+  font-weight:500;
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+.faq-header h2 em{
+  color:#b46543;
+  font-family:var(--font-poetic),Georgia,serif;
+  font-weight:400;
+}
+.faq-list{display:grid;gap:8px}
+.faq-list details{
+  border:1px solid rgba(169,105,52,.13);
+  border-radius:14px;
+  background:#fffaf5;
+  padding:0 16px;
+}
+.faq-list summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:54px;
+  cursor:pointer;
+  list-style:none;
+  color:#49362e;
+  font-size:13px;
+  font-weight:800;
+}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary span{
+  color:#b46543;
+  font-size:20px;
+  font-weight:400;
+}
+.faq-list details[open] summary span{transform:rotate(45deg)}
+.faq-list details p{
+  margin:0;
+  padding:0 0 16px;
+  color:#5f5149;
+  font-size:13px;
+  line-height:1.55;
+}
+
+.author-slide-link{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-top:14px;
+  color:#b46543;
+  font-size:12px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.seo-service-page,
+.seo-profile-page,
+.seo-book-page{
+  min-height:100vh;
+  background:#f6f0e7;
+}
+.seo-service-hero{
+  padding:110px 18px 38px;
+}
+.seo-service-grid{
+  display:grid;
+  grid-template-columns:1fr .9fr;
+  gap:28px;
+  align-items:stretch;
+  overflow:hidden;
+  padding:30px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:26px;
+  background:#fffdf9;
+}
+.seo-service-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.seo-service-copy h1,
+.seo-profile-card h1,
+.seo-book-copy h1{
+  margin:0 0 16px;
+  color:#49362e;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:clamp(44px,5vw,72px);
+  font-weight:500;
+  line-height:.96;
+  letter-spacing:-.045em;
+}
+.seo-service-lead,
+.seo-profile-lead,
+.seo-book-copy>p{
+  margin:0 0 22px;
+  max-width:680px;
+  color:#5f5149;
+  font-size:15px;
+  line-height:1.65;
+}
+.seo-service-visual{
+  overflow:hidden;
+  min-height:380px;
+  border-radius:20px;
+  background:#eadfd4;
+}
+.seo-service-visual img,
+.seo-book-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.seo-service-detail{padding:0 18px 70px}
+.seo-service-detail-card{
+  padding:30px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:24px;
+  background:#fffaf5;
+}
+.seo-service-detail-card h2{
+  margin:0 0 18px;
+  color:#49362e;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:34px;
+  font-weight:500;
+}
+.seo-service-bullets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seo-service-bullets article{
+  display:grid;
+  grid-template-columns:36px 1fr;
+  gap:10px;
+  align-items:start;
+  padding:16px;
+  border:1px solid rgba(169,105,52,.11);
+  border-radius:14px;
+  background:#fffdf9;
+}
+.seo-service-bullets b{
+  display:grid;
+  place-items:center;
+  width:32px;height:32px;
+  border:1px solid rgba(110,120,69,.28);
+  border-radius:50%;
+  color:#6e7845;
+  font-size:10px;
+}
+.seo-service-bullets p{margin:5px 0 0;color:#5f5149;font-size:13px;line-height:1.5}
+
+.seo-profile-page{padding:120px 18px 70px}
+.seo-profile-card{
+  max-width:860px;
+  padding:36px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:24px;
+  background:#fffdf9;
+}
+.seo-book-page{padding:120px 18px 70px}
+.seo-book-grid{
+  display:grid;
+  grid-template-columns:.72fr 1.28fr;
+  gap:30px;
+  align-items:center;
+  padding:30px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:26px;
+  background:#fffdf9;
+}
+.seo-book-cover{
+  overflow:hidden;
+  aspect-ratio:3/4;
+  border-radius:18px;
+  background:#eadfd4;
+}
+.seo-book-copy h2{
+  margin:-6px 0 18px;
+  color:#b46543;
+  font-family:var(--font-poetic),Georgia,serif;
+  font-size:28px;
+  font-weight:400;
+}
+
+@media(max-width:760px){
+  .brand-fi-main{font-size:38px}
+  .brand-fi-sub{font-size:6.5px}
+  .faq-section{padding:6px 8px 38px!important}
+  .faq-panel{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+    padding:24px 18px!important;
+    border-radius:20px!important;
+  }
+  .faq-header h2{font-size:38px!important}
+  .faq-list summary{font-size:13px!important;line-height:1.35!important}
+  .faq-list details p{font-size:12.5px!important}
+
+  .seo-service-hero{padding:88px 8px 28px}
+  .seo-service-grid{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+    padding:20px 18px!important;
+    border-radius:20px!important;
+  }
+  .seo-service-copy h1,
+  .seo-profile-card h1,
+  .seo-book-copy h1{
+    font-size:40px!important;
+  }
+  .seo-service-lead,
+  .seo-profile-lead,
+  .seo-book-copy>p{
+    font-size:14px!important;
+    line-height:1.56!important;
+  }
+  .seo-service-visual{
+    min-height:0!important;
+    aspect-ratio:4/3!important;
+  }
+  .seo-service-detail{padding:0 8px 44px}
+  .seo-service-detail-card{padding:20px 18px!important;border-radius:20px!important}
+  .seo-service-detail-card h2{font-size:28px!important}
+  .seo-service-bullets{grid-template-columns:1fr!important}
+  .seo-service-bullets p{font-size:12.5px!important}
+
+  .seo-profile-page,
+  .seo-book-page{padding:92px 8px 44px}
+  .seo-profile-card{padding:24px 18px!important;border-radius:20px!important}
+  .seo-book-grid{
+    grid-template-columns:1fr!important;
+    gap:20px!important;
+    padding:20px 18px!important;
+    border-radius:20px!important;
+  }
+}
