@@ -77,6 +77,23 @@ const process = [
   ["07","Yazar Dünyası & Yayın","Yazar sitenizi, dijital dağıtımınızı ve gerekli yabancı dil yayın hazırlıklarını tek yayın dünyasında birleştiriyoruz."],
 ] as const;
 
+const authors = [
+  {
+    name:"İbrahim Kaynar",
+    kicker:"FIGAN YAZARI",
+    description:"“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.",
+    image:"/icimdeki-ibrahim.webp",
+    initials:"İK",
+  },
+  {
+    name:"Figen Yavuz",
+    kicker:"FIGAN YAZARI",
+    description:"Yazar profili ve eserleri eklendikçe bu kart üzerinden Figan yayın dünyasında yerini alacak.",
+    image:null,
+    initials:"FY",
+  },
+] as const;
+
 export default function Home() {
   const [open,setOpen] = useState(false);
   const [scrolled,setScrolled] = useState(false);
@@ -122,10 +139,12 @@ export default function Home() {
           <div className="figan-category-panel">
             <div className="figan-category-scroller">
               {[
-                ["Basılı Yayın", "/figan-hizmet-basili-kitap-yayini.webp", "#hizmetler"],
-                ["Dijital Yayın", "/figan-hizmet-e-kitap.webp", "#hizmetler"],
+                ["Basılı Kitap", "/figan-hizmet-basili-kitap-yayini.webp", "#hizmetler"],
+                ["E-Kitap", "/figan-hizmet-e-kitap.webp", "#hizmetler"],
                 ["Sesli Kitap", "/figan-hizmet-sesli-kitap.webp", "#hizmetler"],
-                ["Yazar Dünyası", "/figan-hizmet-yazar-sitesi.webp", "#yazar-sitesi"],
+                ["Yabancı Dil", "/figan-hizmet-04-yabanci-dil.webp", "#hizmetler"],
+                ["Yazar Sitesi", "/figan-hizmet-yazar-sitesi.webp", "#yazar-sitesi"],
+                ["Yazarlarımız", "/icimdeki-ibrahim.webp", "#yazarlar"],
               ].map(([label, image, href]) => (
                 <a className="figan-category-item" href={href} key={label}>
                   <span className="figan-category-image">
@@ -255,20 +274,27 @@ export default function Home() {
           <div className="container authors-wrap">
             <header className="authors-header">
               <p className="eyebrow"><span/>YAZAR DÜNYAMIZ</p>
-              <h2>Figan’dan bir yazar,<br/><em>bir eser, bir dünya.</em></h2>
-              <p>Yayımladığımız her eseri, yazarının sesi ve kimliğiyle birlikte görünür kılan bir yayın dünyası kuruyoruz.</p>
+              <h2>Figan yazarları,<br/><em>kayan bir yayın vitrini.</em></h2>
+              <p>Yeni yazarlar eklendikçe aynı kart sistemi içinde yan yana yer alacak; mobilde ve masaüstünde yatay kaydırılarak keşfedilebilecek.</p>
             </header>
-            <div className="authors-grid">
-              <article className="author-card">
-                <div className="author-card-visual">
-                  <img src="/icimdeki-ibrahim.webp" alt="İçimdeki İbrahim kitap kapağı"/>
-                </div>
-                <div className="author-card-copy">
-                  <p className="author-card-kicker">FIGAN YAZARI</p>
-                  <h3>İbrahim Kaynar</h3>
-                  <p>“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.</p>
-                </div>
-              </article>
+
+            <div className="authors-track" aria-label="Figan yazarları">
+              {authors.map((author)=>(
+                <article className="author-slide-card" key={author.name}>
+                  <div className="author-slide-visual">
+                    {author.image ? (
+                      <img src={author.image} alt={author.name}/>
+                    ) : (
+                      <div className="author-placeholder" aria-hidden="true">{author.initials}</div>
+                    )}
+                  </div>
+                  <div className="author-slide-copy">
+                    <p className="author-card-kicker">{author.kicker}</p>
+                    <h3>{author.name}</h3>
+                    <p>{author.description}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
