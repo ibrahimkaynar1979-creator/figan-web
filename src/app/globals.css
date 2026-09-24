@@ -6709,3 +6709,24 @@ button{font:inherit;color:inherit}
     padding-bottom:0!important;
   }
 }
+
+
+/* 2026-09-24 — HERO/SERVICES SEAM FINAL */
+@media(max-width:520px){
+  .mobileHeroFresh,
+  .mobileHeroFreshImage{
+    margin-bottom:0!important;
+    padding-bottom:0!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+    padding-top:0!important;
+  }
+
+  .servicesSection>.eyebrow{
+    margin-top:0!important;
+    padding-top:18px!important;
+    margin-bottom:0!important;
+  }
+}
