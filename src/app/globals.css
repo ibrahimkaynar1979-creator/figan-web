@@ -1778,3 +1778,67 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
   .mobile-dock a span{font-size:19px!important}
   body{padding-bottom:70px!important}
 }
+
+
+/* 2026-09-25 - FOOTER CONTACT REFINEMENT */
+.footer-contact a,
+.footer-contact .footer-address{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  margin:0 0 10px!important;
+  color:#51483f!important;
+  font-size:13px!important;
+  line-height:1.4!important;
+}
+.footer-contact a>span,
+.footer-contact .footer-address>span{
+  display:grid!important;
+  place-items:center!important;
+  width:18px!important;
+  min-width:18px!important;
+  color:#bd6847!important;
+  font-size:13px!important;
+}
+.footer-address{
+  margin:0!important;
+}
+.footer-contact a:hover{
+  color:#b46543!important;
+}
+
+@media(max-width:760px){
+  .figan-footer-shell{
+    padding:28px 20px 18px!important;
+  }
+  .footer-logo img{
+    width:150px!important;
+  }
+  .footer-logo-row p{
+    font-size:12.5px!important;
+  }
+  .footer-groups{
+    gap:20px!important;
+  }
+  .footer-group h4{
+    font-size:21px!important;
+  }
+  .footer-group a{
+    font-size:12.5px!important;
+  }
+  .footer-contact a,
+  .footer-contact .footer-address{
+    margin-bottom:8px!important;
+    font-size:12.5px!important;
+    line-height:1.35!important;
+  }
+  .footer-contact a>span,
+  .footer-contact .footer-address>span{
+    width:17px!important;
+    min-width:17px!important;
+    font-size:12px!important;
+  }
+  .footer-signature{
+    margin-top:20px!important;
+  }
+}
