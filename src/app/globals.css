@@ -7217,3 +7217,50 @@ button{font:inherit;color:inherit}
     font-size:9.5px!important;
   }
 }
+
+
+/* 2026-09-24 — MOBILE ACTION CARDS FINAL: TWO LEANING CARDS */
+@media(max-width:520px){
+ .mobileActionPanel{
+   display:grid!important;
+   grid-template-columns:1fr 1fr!important;
+   gap:12px!important;
+   padding:14px 18px 22px!important;
+   overflow:visible!important;
+ }
+ .mobileActionPanel .mobileApplyCta,
+ .mobileActionPanel .mobileWatchCta{
+   display:flex!important;
+   flex-direction:column!important;
+   align-items:flex-start!important;
+   justify-content:space-between!important;
+   gap:0!important;
+   height:94px!important;
+   padding:15px 14px 13px!important;
+   border-radius:18px!important;
+   position:relative!important;
+   overflow:hidden!important;
+ }
+ .mobileActionPanel .mobileApplyCta{transform:rotate(-2deg)!important; transform-origin:bottom right!important;}
+ .mobileActionPanel .mobileWatchCta{transform:rotate(2deg)!important; transform-origin:bottom left!important;}
+ .mobileActionPanel .mobileCtaIcon,
+ .mobileActionPanel .mobilePlay{
+   flex:0 0 28px!important;width:28px!important;height:28px!important;
+ }
+ .mobileActionPanel a>span:nth-child(2),
+ .mobileActionPanel button>span:nth-child(2){
+   flex:none!important;
+   width:100%!important;
+   font-size:12px!important;
+   line-height:1.15!important;
+   white-space:nowrap!important;
+   text-align:left!important;
+ }
+ .mobileActionPanel .mobileCtaArrow{
+   position:absolute!important;
+   right:14px!important;
+   top:15px!important;
+   width:auto!important;
+   font-size:18px!important;
+ }
+}
