@@ -144,10 +144,10 @@ export default function Home() {
         <section className="home-hero">
           <div className="container hero-grid">
             <div className="hero-copy">
-              <p className="eyebrow"><span/>YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
+              <p className="eyebrow"><span/>FIGAN YAYINEVİ</p>
               <h1><span>Bir kitap</span><em>yazdınız.</em></h1>
-              <h2>Şimdi ona ait<br/>bir dünya kuralım.</h2>
-              <p className="hero-lead">E-kitabınız. Sesli kitabınız. Yazar siteniz. Dijital dağıtımınız.<br/><strong>Hepsi tek bir yayın dünyasında.</strong></p>
+              <h2>Şimdi ona ait bir dünya kuralım.</h2>
+              <p className="hero-lead">E-kitabınız, sesli kitabınız, yazar siteniz ve dijital dağıtımınız için tüm süreci tek bir yayın dünyasında bir araya getiriyoruz.</p>
               <div className="hero-actions">
                 <a href="#basvuru" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">Yazar Başvurusu Yap</span><b className="cta-arrow">→</b></a>
                 <button className="btn secondary" type="button"><span className="cta-icon cta-play">▶</span><span className="cta-label">Figan’ı İzleyin</span><b className="cta-arrow">→</b></button>
