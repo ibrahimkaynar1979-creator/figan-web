@@ -669,3 +669,302 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     font-size:13px!important;
   }
 }
+
+
+/* 2026-09-24 — FIGAN SERVICES, PATILIYOLAR CARD SYSTEM */
+.figan-services-showcase{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 72% 11%,rgba(169,105,52,.055),transparent 22rem),
+    #f8f3eb;
+}
+
+.figan-services-header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  max-width:780px;
+  margin:0 auto 36px;
+  text-align:center;
+}
+
+.figan-services-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 0 12px;
+  padding:7px 12px;
+  border:1px solid rgba(169,105,52,.20);
+  border-radius:999px;
+  background:rgba(255,255,255,.58);
+  color:#9b5d2d;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+
+.figan-services-header h2{
+  margin:0;
+  color:#3d2b23;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:clamp(50px,5vw,76px);
+  font-weight:500;
+  line-height:.95;
+  letter-spacing:-.05em;
+}
+
+.figan-services-header h2 strong{
+  color:#a96934;
+  font-weight:500;
+}
+
+.figan-services-description{
+  max-width:650px;
+  margin:16px auto 0;
+  color:#65564e;
+  font-size:15px;
+  line-height:1.65;
+}
+
+.figan-services-track{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
+
+.figan-service-card{
+  position:relative;
+  min-width:0;
+  overflow:visible;
+  border:1px solid rgba(92,61,48,.14);
+  border-radius:22px;
+  background:#fffaf5;
+  box-shadow:0 8px 22px rgba(54,40,29,.045),0 20px 45px rgba(54,40,29,.04);
+  transition:transform .32s ease,box-shadow .32s ease;
+}
+
+.figan-service-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 18px 42px rgba(68,45,33,.13);
+}
+
+.figan-service-link{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  overflow:hidden;
+  border-radius:inherit;
+}
+
+.figan-service-photo{
+  position:relative;
+  aspect-ratio:4 / 5;
+  overflow:hidden;
+  background:#eee3d6;
+}
+
+.figan-service-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .55s ease;
+}
+
+.figan-service-card:hover .figan-service-photo img{
+  transform:scale(1.035);
+}
+
+.figan-service-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  display:inline-flex;
+  align-items:center;
+  max-width:calc(100% - 28px);
+  padding:9px 12px;
+  border:1px solid rgba(255,255,255,.74);
+  border-radius:999px;
+  background:rgba(255,253,249,.92);
+  color:#594237;
+  font-size:11px;
+  font-weight:650;
+  backdrop-filter:blur(12px);
+}
+
+.figan-service-content{
+  position:relative;
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  padding:34px 22px 22px;
+  background:linear-gradient(180deg,rgba(255,253,249,.99),rgba(255,249,243,.96));
+}
+
+.figan-service-emblem{
+  position:absolute;
+  top:0;
+  left:50%;
+  display:grid;
+  place-items:center;
+  width:54px;
+  height:54px;
+  border:1px solid rgba(169,105,52,.22);
+  border-radius:50%;
+  background:#fffaf5;
+  color:#a96934;
+  font-size:22px;
+  box-shadow:0 5px 15px rgba(57,40,28,.08);
+  transform:translate(-50%,-50%);
+}
+
+.figan-service-title-row{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+
+.figan-service-no{
+  color:#a96934;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+
+.figan-service-title-row h3{
+  margin:0;
+  color:#4d392f;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:30px;
+  font-weight:500;
+  line-height:1;
+  letter-spacing:-.035em;
+}
+
+.figan-service-content p{
+  margin:12px 0 0;
+  color:#65564e;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.figan-service-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  width:max-content;
+  margin-top:auto;
+  padding-top:18px;
+  color:#a96934;
+  font-size:12px;
+  font-weight:800;
+}
+
+.figan-service-cta i{
+  font-style:normal;
+  transition:transform .2s ease;
+}
+
+.figan-service-card:hover .figan-service-cta i{
+  transform:translateX(5px);
+}
+
+@media(max-width:1100px){
+  .figan-services-track{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:760px){
+  .figan-services-showcase{
+    padding:58px 0 64px!important;
+  }
+
+  .figan-services-showcase .container{
+    width:100%!important;
+  }
+
+  .figan-services-header{
+    max-width:none;
+    margin:0 auto 26px;
+    padding:0 22px;
+  }
+
+  .figan-services-eyebrow{
+    margin-bottom:10px;
+    font-size:9px;
+  }
+
+  .figan-services-header h2{
+    font-size:42px;
+    line-height:.98;
+  }
+
+  .figan-services-description{
+    margin-top:12px;
+    font-size:14px;
+    line-height:1.55;
+  }
+
+  /* Patiliyolar gibi yatay kart akışı: ilk kart tam, ikinci kart görünür */
+  .figan-services-track{
+    display:flex;
+    gap:12px;
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:0 8px 18px;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .figan-services-track::-webkit-scrollbar{
+    display:none;
+  }
+
+  .figan-service-card{
+    flex:0 0 78vw;
+    max-width:380px;
+    scroll-snap-align:start;
+    border-radius:20px;
+  }
+
+  .figan-service-photo{
+    aspect-ratio:4 / 4.35;
+  }
+
+  .figan-service-badge{
+    top:12px;
+    left:12px;
+    padding:8px 11px;
+    font-size:10px;
+  }
+
+  .figan-service-content{
+    min-height:210px;
+    padding:32px 20px 20px;
+  }
+
+  .figan-service-emblem{
+    width:50px;
+    height:50px;
+    font-size:19px;
+  }
+
+  .figan-service-title-row h3{
+    font-size:28px;
+  }
+
+  .figan-service-content p{
+    font-size:12.5px;
+    line-height:1.55;
+  }
+
+  .figan-service-cta{
+    font-size:11.5px;
+  }
+}
