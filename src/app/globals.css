@@ -968,3 +968,366 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     font-size:11.5px;
   }
 }
+
+
+/* 2026-09-24 — PATILIYOLAR TYPOGRAPHY SYSTEM ACROSS FIGAN */
+
+/* Ortak görsel dil */
+.section-head,
+.figan-services-header,
+.ecosystem-copy,
+.author-copy,
+.final-panel{
+  --figan-card-border:rgba(145,116,83,.16);
+}
+
+.section-head .eyebrow,
+.ecosystem-copy .eyebrow,
+.author-copy .eyebrow,
+.final-panel .eyebrow{
+  width:max-content;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 12px;
+  border:1px solid rgba(169,105,52,.20);
+  border-radius:999px;
+  background:rgba(255,255,255,.58);
+  color:#8f5d31;
+  font-size:10px;
+  line-height:1;
+  letter-spacing:.14em;
+}
+
+.ecosystem-copy .eyebrow,
+.final-panel .eyebrow{
+  border-color:rgba(255,255,255,.24);
+  background:rgba(255,255,255,.08);
+  color:#ead5bd;
+}
+
+.section-head .eyebrow span,
+.ecosystem-copy .eyebrow span,
+.author-copy .eyebrow span,
+.final-panel .eyebrow span{
+  display:none;
+}
+
+/* Ortak başlık oranı */
+.section-head h2,
+.ecosystem-copy h2,
+.author-copy h2,
+.final-panel h2{
+  font-size:clamp(46px,4.4vw,68px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+/* Ortak paragraf oranı */
+.section-head>p:last-child,
+.ecosystem-copy>p,
+.author-copy>p,
+.final-panel>p{
+  font-size:15px;
+  line-height:1.65;
+}
+
+/* Ortak buton oranı */
+.btn,
+.header-cta,
+.mobile-menu-cta{
+  border-radius:999px;
+}
+
+/* Süreç kartlarını da aynı yumuşak kart sistemine bağla */
+.process{
+  background:#f6f0e7;
+}
+.process-card{
+  border:1px solid rgba(145,116,83,.16);
+  background:#fffaf5;
+  box-shadow:0 8px 22px rgba(54,40,29,.045);
+}
+.process-no{
+  background:#c97552;
+}
+
+/* Yazar sitesi alt kartları */
+.benefit-grid{
+  gap:10px;
+  border:0;
+}
+.benefit-grid>div{
+  border:1px solid rgba(145,116,83,.16);
+  border-radius:18px;
+  background:#fffaf5;
+  box-shadow:0 8px 22px rgba(54,40,29,.035);
+}
+
+/* Final CTA da kart diliyle */
+.final-cta{
+  background:#f6f0e7;
+}
+.final-panel{
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 18px 50px rgba(43,23,14,.15);
+}
+
+/* MOBİL — Patiliyolar referansındaki fotoğraf altı metin sistemi */
+@media(max-width:600px){
+  .home-hero{
+    padding:0 8px 14px!important;
+  }
+
+  .hero-grid{
+    border-radius:0 0 18px 18px!important;
+    background:#fbf8f2!important;
+    box-shadow:0 8px 22px rgba(54,40,29,.035)!important;
+  }
+
+  .hero-copy{
+    position:relative!important;
+    padding:22px 20px 12px!important;
+    background:#fbf8f2!important;
+  }
+
+  .hero-copy .eyebrow{
+    width:max-content!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    gap:6px!important;
+    margin:0 0 18px!important;
+    padding:7px 11px!important;
+    border:1px solid rgba(145,116,83,.30)!important;
+    border-radius:999px!important;
+    background:#fffdf8!important;
+    color:#6f654b!important;
+    font-size:9px!important;
+    font-weight:800!important;
+    line-height:1!important;
+    letter-spacing:.12em!important;
+  }
+
+  .hero-copy .eyebrow span{
+    display:block!important;
+    width:8px!important;
+    height:8px!important;
+    border-radius:50%!important;
+    background:#7f8851!important;
+  }
+
+  .hero-copy h1{
+    margin:0!important;
+    color:#3d2d26!important;
+    font-size:46px!important;
+    line-height:.91!important;
+    letter-spacing:-.052em!important;
+  }
+
+  .hero-copy h1 em{
+    color:#c97552!important;
+  }
+
+  .hero-copy h2{
+    margin:10px 0 0!important;
+    color:#3d2d26!important;
+    font-family:var(--font-editorial),Georgia,serif!important;
+    font-size:31px!important;
+    font-weight:500!important;
+    line-height:1.04!important;
+    letter-spacing:-.04em!important;
+  }
+
+  .hero-copy h2::after{
+    content:"";
+    display:block;
+    width:62px;
+    height:1px;
+    margin:16px 0 14px;
+    background:#d7a489;
+  }
+
+  .hero-lead{
+    margin:0!important;
+    max-width:100%!important;
+    color:#5f4d42!important;
+    font-size:15px!important;
+    font-weight:450!important;
+    line-height:1.62!important;
+  }
+
+  .hero-actions{
+    width:100%!important;
+    margin:0!important;
+    padding:8px 12px 20px!important;
+    gap:10px!important;
+    background:#fbf8f2!important;
+  }
+
+  .hero-actions .btn{
+    min-height:50px!important;
+    border-radius:999px!important;
+    font-size:13px!important;
+    font-weight:750!important;
+  }
+
+  .hero-actions .primary{
+    background:#c97552!important;
+    border-color:#c97552!important;
+    color:#fff!important;
+  }
+
+  .hero-actions .secondary{
+    background:transparent!important;
+    border:1.5px solid #d8ad97!important;
+    color:#2e211b!important;
+  }
+
+  .hero-actions .primary .cta-icon{
+    background:rgba(255,255,255,.08)!important;
+    border:1px solid rgba(255,255,255,.42)!important;
+  }
+
+  .hero-actions .secondary .cta-icon{
+    background:#fffaf5!important;
+    border:1px solid rgba(67,45,33,.16)!important;
+  }
+
+  /* Bölüm başlıkları Patiliyolar ölçülerine */
+  .section{
+    padding:58px 0!important;
+  }
+
+  .section-head,
+  .figan-services-header{
+    margin-bottom:26px!important;
+  }
+
+  .section-head .eyebrow,
+  .figan-services-eyebrow,
+  .ecosystem-copy .eyebrow,
+  .author-copy .eyebrow,
+  .final-panel .eyebrow{
+    margin-bottom:12px!important;
+    padding:7px 11px!important;
+    font-size:9px!important;
+  }
+
+  .section-head h2,
+  .figan-services-header h2,
+  .ecosystem-copy h2,
+  .author-copy h2,
+  .final-panel h2{
+    font-size:40px!important;
+    line-height:.99!important;
+    letter-spacing:-.045em!important;
+  }
+
+  .section-head>p:last-child,
+  .figan-services-description,
+  .ecosystem-copy>p,
+  .author-copy>p,
+  .final-panel>p{
+    margin-top:12px!important;
+    font-size:14px!important;
+    line-height:1.58!important;
+  }
+
+  /* Süreç */
+  .process-card{
+    padding:18px!important;
+    border-radius:18px!important;
+  }
+  .process-no{
+    width:40px!important;
+    height:40px!important;
+    flex-basis:40px!important;
+  }
+  .process-card h3{
+    font-size:24px!important;
+  }
+  .process-card p{
+    font-size:12.5px!important;
+    line-height:1.55!important;
+  }
+
+  /* Ekosistem kart gibi */
+  .ecosystem{
+    padding:12px 8px 58px!important;
+    background:#f6f0e7!important;
+  }
+  .ecosystem-grid{
+    width:100%!important;
+    padding:28px 20px 0!important;
+    overflow:hidden!important;
+    border-radius:20px!important;
+    background:linear-gradient(135deg,#2b170e,#3b2114)!important;
+  }
+  .ecosystem-visual{
+    width:calc(100% + 40px)!important;
+    margin:24px -20px 0!important;
+  }
+
+  /* Yazar sitesi */
+  .author-site{
+    padding:58px 8px!important;
+    background:#f6f0e7!important;
+  }
+  .author-grid{
+    width:100%!important;
+    padding:24px 20px 0!important;
+    overflow:hidden!important;
+    border:1px solid rgba(145,116,83,.16)!important;
+    border-radius:20px!important;
+    background:#fffaf5!important;
+  }
+  .benefit-grid{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    margin-top:24px!important;
+  }
+  .benefit-grid>div{
+    padding:16px!important;
+    border-radius:16px!important;
+  }
+  .benefit-grid h3{
+    font-size:22px!important;
+  }
+  .benefit-grid p{
+    font-size:12.5px!important;
+  }
+  .author-visual{
+    width:calc(100% + 40px)!important;
+    margin:24px -20px 0!important;
+  }
+
+  /* Final CTA */
+  .final-cta{
+    padding:8px 8px 58px!important;
+  }
+  .final-panel{
+    width:100%!important;
+    margin:0!important;
+    padding:28px 20px!important;
+    border-radius:20px!important;
+  }
+  .final-panel .btn{
+    min-height:50px!important;
+    margin-top:20px!important;
+    font-size:13px!important;
+  }
+
+  /* Footer yazı oranları */
+  footer{
+    padding-top:52px!important;
+  }
+  footer h4{
+    font-size:10px!important;
+  }
+  footer a,
+  footer span,
+  .footer-brand p{
+    font-size:12px!important;
+    line-height:1.55!important;
+  }
+}
