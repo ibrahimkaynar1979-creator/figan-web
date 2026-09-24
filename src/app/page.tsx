@@ -40,7 +40,7 @@ export default function Home() {
       <section className="mobileHeroFresh" id="top-mobile" aria-label="Figan mobil ana ekran">
         <img
           className="mobileHeroFreshImage"
-          src="/figan-hero-mobile-final.webp"
+          src="/figan-hero-mobile-final_v1.webp"
           alt="Figan dijital yayın ekosistemi: kitap, Reader, Audio ve yazar sitesi"
         />
         <div className="mobileHeroFreshCopy">
