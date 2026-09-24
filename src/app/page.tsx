@@ -232,8 +232,11 @@ export default function Home() {
               <p>Kitabınız farklı biçimlerde yaşar; okunur, dinlenir ve size ait dijital dünyada okurla buluşur.</p>
               <a href="#basvuru" className="btn light-btn">Yayın Dünyamı Kur <b>→</b></a>
             </div>
-            <div className="ecosystem-visual">
-              <img src="/figan-ekosistem-premium.webp" alt="Figan ekosistemi"/>
+            <div className="ecosystem-visual" aria-hidden="true">
+              <div className="ecosystem-orbit">
+                <span>E-Kitap</span><span>Sesli Kitap</span><span>Yazar Sitesi</span><span>Dijital Dağıtım</span>
+                <strong>Figan</strong>
+              </div>
             </div>
           </div>
         </section>
