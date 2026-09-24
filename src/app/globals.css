@@ -1659,3 +1659,20 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     font-size:.68rem!important;
   }
 }
+
+
+/* 2026-09-24 - FIX MOBILE HERO IMAGE TOP CORNERS */
+@media(max-width:600px){
+  .hero-grid{
+    border-radius:16px!important;
+    overflow:hidden!important;
+  }
+  .hero-visual{
+    border-radius:16px 16px 0 0!important;
+    overflow:hidden!important;
+    clip-path:inset(0 round 16px 16px 0 0)!important;
+  }
+  .hero-visual img{
+    border-radius:16px 16px 0 0!important;
+  }
+}
