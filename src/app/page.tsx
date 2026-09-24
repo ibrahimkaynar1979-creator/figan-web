@@ -110,7 +110,7 @@ export default function Home() {
               <p className="eyebrow"><span/>YAZ. YAYINLA. DÜNYAYA ULAŞ.</p>
               <h1><span>Bir kitap</span><em>yazdınız.</em></h1>
               <h2>Şimdi ona ait<br/>bir dünya kuralım.</h2>
-              <p className="hero-lead">E-kitabınız. Sesli kitabınız. Yazar siteniz. Dijital dağıtımınız.<br/>Tek bir yayın dünyasında.</p>
+              <p className="hero-lead">E-kitabınız. Sesli kitabınız. Yazar siteniz. Dijital dağıtımınız.<br/><strong>Hepsi tek bir yayın dünyasında.</strong></p>
               <div className="hero-actions">
                 <a href="#basvuru" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">Yazar Başvurusu Yap</span><b className="cta-arrow">→</b></a>
                 <button className="btn secondary" type="button"><span className="cta-icon cta-play">▶</span><span className="cta-label">Figan’ı İzleyin</span><b className="cta-arrow">→</b></button>
