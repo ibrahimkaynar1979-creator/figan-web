@@ -292,9 +292,10 @@ export default function Home() {
             </section>
             <section className="footer-group footer-contact">
               <h4>Bize Ulaşın</h4>
-              <a href="tel:+905324290290">0 532 429 02 90</a>
-              <a href="mailto:info@figanyayinevi.com">info@figanyayinevi.com</a>
-              <span>İzmir</span>
+              <a href="tel:+905324290290"><span aria-hidden="true">☎</span>0 532 429 02 90</a>
+              <a href="https://wa.me/905324290290?text=Merhaba%2C%20Figan%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span>WhatsApp’tan Yazın</a>
+              <a href="mailto:info@figanyayinevi.com"><span aria-hidden="true">✉</span>info@figanyayinevi.com</a>
+              <p className="footer-address"><span aria-hidden="true">⌖</span>Bayraklı · İzmir</p>
             </section>
           </div>
           <div className="footer-signature"><i/><span>✦</span><i/></div>
