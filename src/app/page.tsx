@@ -193,7 +193,7 @@ export default function Home() {
                         {service.traits.map((trait) => <li key={trait}>{trait}</li>)}
                       </ul>
                       <p>{service.text}</p>
-                      <span className="figan-service-cta">{service.title} Hizmetini İnceleyin <i>→</i></span>
+                      <span className="figan-service-cta">Detayları İnceleyin <i>→</i></span>
                     </div>
                   </a>
                 </article>
