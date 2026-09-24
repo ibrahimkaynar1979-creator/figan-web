@@ -2225,3 +2225,149 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     font-size:10px!important;
   }
 }
+
+
+/* 2026-09-25 - ABOUT + LEGAL PAGES */
+.about-figan{
+  background:#f6f0e7;
+}
+.about-figan-panel{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:36px;
+  align-items:start;
+  padding:42px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:28px;
+  background:linear-gradient(155deg,#fffdf9,#fbf7f0);
+}
+.about-figan-copy h2{
+  margin:0 0 16px;
+  color:#49362e;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:clamp(46px,4.4vw,68px);
+  font-weight:500;
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+.about-figan-copy h2 em{
+  color:#c97552;
+  font-family:var(--font-poetic),Georgia,serif;
+  font-weight:400;
+}
+.about-figan-copy>p:last-child{
+  margin:0;
+  color:#5f5149;
+  font-size:15px;
+  line-height:1.65;
+}
+.about-figan-points{
+  display:grid;
+  gap:10px;
+}
+.about-figan-points article{
+  padding:18px 20px;
+  border:1px solid rgba(169,105,52,.12);
+  border-radius:16px;
+  background:#fffaf5;
+}
+.about-figan-points b{
+  color:#b46543;
+  font-size:10px;
+  letter-spacing:.14em;
+}
+.about-figan-points h3{
+  margin:6px 0 6px;
+  color:#49362e;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:22px;
+  font-weight:500;
+}
+.about-figan-points p{
+  margin:0;
+  color:#5f5149;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.legal-page{
+  min-height:100vh;
+  padding:120px 20px 70px;
+  background:#f6f0e7;
+  color:#49362e;
+}
+.legal-page-inner{
+  max-width:860px;
+  margin:0 auto;
+  padding:34px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:24px;
+  background:#fffdf9;
+}
+.legal-page a{color:#b46543}
+.legal-page h1{
+  margin:0 0 20px;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:48px;
+  font-weight:500;
+}
+.legal-page h2{
+  margin:28px 0 10px;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:26px;
+  font-weight:500;
+}
+.legal-page p,.legal-page li{
+  font-size:15px;
+  line-height:1.7;
+  color:#5f5149;
+}
+.legal-back{
+  display:inline-flex;
+  margin-bottom:20px;
+  font-size:13px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+@media(max-width:760px){
+  .about-figan{
+    padding:38px 8px!important;
+  }
+  .about-figan-panel{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+    padding:24px 18px!important;
+    border-radius:20px!important;
+  }
+  .about-figan-copy h2{
+    font-size:38px!important;
+  }
+  .about-figan-copy>p:last-child{
+    font-size:14px!important;
+    line-height:1.56!important;
+  }
+  .about-figan-points h3{
+    font-size:18px!important;
+  }
+  .about-figan-points p{
+    font-size:12.5px!important;
+  }
+  .legal-page{
+    padding:94px 10px 40px;
+  }
+  .legal-page-inner{
+    padding:22px 18px;
+    border-radius:18px;
+  }
+  .legal-page h1{
+    font-size:36px;
+  }
+  .legal-page h2{
+    font-size:22px;
+  }
+  .legal-page p,.legal-page li{
+    font-size:14px;
+    line-height:1.6;
+  }
+}
