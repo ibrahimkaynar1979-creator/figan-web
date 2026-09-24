@@ -302,6 +302,11 @@ export default function Home() {
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} Figan Yayınevi. Tüm hakları saklıdır.</p>
             <div className="footer-legal"><span>Gizlilik Politikası</span><i/><span>KVKK</span><i/><span>Kullanım Koşulları</span></div>
+            <div className="naribo-credit" aria-label="Naribo Creative">
+              <span className="naribo-mark">N</span>
+              <span className="naribo-word">NARIBO</span>
+              <span className="naribo-creative">CREATIVE</span>
+            </div>
           </div>
         </div>
       </footer>
