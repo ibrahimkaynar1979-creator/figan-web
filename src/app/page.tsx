@@ -72,11 +72,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mobileHeroShowcase" aria-label="Figan dijital yayın ekosistemi">
-          <img className="mobileShowcaseLaptop" src="/figan-yazar-sitesi-laptop.webp" alt="Figan kişisel yazar sitesi" />
-          <img className="mobileShowcaseReader" src="/ekosistem-reader.webp" alt="Figan Reader e-kitap deneyimi" />
-          <img className="mobileShowcaseAudio" src="/ekosistem-audio-transparent.webp" alt="Figan Audio sesli kitap deneyimi" />
-          <img className="mobileShowcaseBook" src="/ekosistem-kitap.webp" alt="İçimdeki İbrahim kitap mockupı" />
+        <div className="mobileHeroShowcase mobileHeroComposite" aria-label="Figan dijital yayın ekosistemi">
+          <img className="mobileHeroCompositeImage" src="/figan-hero-mobile-final.webp" alt="Figan dijital yayın ekosistemi: kitap, Reader, Audio ve yazar sitesi" />
         </div>
 
         <div className="mobileHeroOffer" aria-label="Ekim ayı özel yayın paketi">
