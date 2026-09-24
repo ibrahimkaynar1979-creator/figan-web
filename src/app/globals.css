@@ -618,3 +618,54 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     min-height:54px!important;
   }
 }
+
+
+/* 2026-09-24 — MATCH PATILIYOLAR MOBILE HERO TYPOGRAPHY */
+@media(max-width:600px){
+  .hero-copy{
+    padding:20px 20px 16px!important;
+  }
+
+  .hero-copy .eyebrow{
+    margin:0 0 14px!important;
+    font-size:9px!important;
+    line-height:1.25!important;
+    letter-spacing:.19em!important;
+  }
+
+  .hero-copy h1{
+    margin:0!important;
+    font-size:42px!important;
+    line-height:.96!important;
+    letter-spacing:-.045em!important;
+  }
+
+  .hero-copy h2{
+    margin:14px 0 12px!important;
+    font-size:26px!important;
+    line-height:1.08!important;
+    letter-spacing:-.035em!important;
+  }
+
+  .hero-lead{
+    margin:0!important;
+    max-width:100%!important;
+    font-size:14px!important;
+    font-weight:450!important;
+    line-height:1.58!important;
+    color:#5a524d!important;
+  }
+
+  .hero-actions{
+    width:calc(100% + 24px)!important;
+    margin:20px -12px 0!important;
+    padding:8px 0 14px!important;
+    gap:9px!important;
+  }
+
+  .hero-actions .btn{
+    width:100%!important;
+    min-height:50px!important;
+    font-size:13px!important;
+  }
+}
