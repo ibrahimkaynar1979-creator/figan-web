@@ -6970,3 +6970,126 @@ button{font:inherit;color:inherit}
     font-size:10px!important;
   }
 }
+
+
+/* 2026-09-24 — PREMIUM MOBILE HERO ACTION CARDS */
+@media(max-width:520px){
+  .mobileActionPanel{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:10px!important;
+    width:100%!important;
+    margin:0!important;
+    padding:12px 14px 16px!important;
+    background:#f4eee5!important;
+    border:0!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta,
+  .mobileActionPanel .mobileWatchCta{
+    display:grid!important;
+    grid-template-columns:32px minmax(0,1fr) 18px!important;
+    align-items:center!important;
+    column-gap:10px!important;
+    width:100%!important;
+    min-width:0!important;
+    height:64px!important;
+    margin:0!important;
+    padding:0 14px 0 12px!important;
+    border-radius:18px!important;
+    text-decoration:none!important;
+    overflow:hidden!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta{
+    background:#2b170f!important;
+    color:#fffaf5!important;
+    border:1px solid #2b170f!important;
+    box-shadow:0 10px 24px rgba(43,23,15,.12)!important;
+  }
+
+  .mobileActionPanel .mobileWatchCta{
+    background:#fffaf4!important;
+    color:#2b170f!important;
+    border:1px solid rgba(43,23,15,.14)!important;
+    box-shadow:0 8px 22px rgba(43,23,15,.05)!important;
+  }
+
+  .mobileActionPanel .mobileCtaIcon,
+  .mobileActionPanel .mobilePlay{
+    display:grid!important;
+    place-items:center!important;
+    width:32px!important;
+    height:32px!important;
+    margin:0!important;
+    border-radius:50%!important;
+    font-size:12px!important;
+    line-height:1!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta .mobileCtaIcon{
+    background:rgba(255,255,255,.12)!important;
+    color:#fffaf5!important;
+    border:1px solid rgba(255,255,255,.22)!important;
+  }
+
+  .mobileActionPanel .mobileWatchCta .mobilePlay{
+    background:#f4eadf!important;
+    color:#2b170f!important;
+    border:1px solid rgba(43,23,15,.12)!important;
+  }
+
+  .mobileActionPanel a > span:nth-child(2),
+  .mobileActionPanel button > span:nth-child(2){
+    display:block!important;
+    min-width:0!important;
+    margin:0!important;
+    overflow:visible!important;
+    white-space:nowrap!important;
+    text-overflow:clip!important;
+    font-size:11px!important;
+    line-height:1.1!important;
+    font-weight:700!important;
+    letter-spacing:-.01em!important;
+  }
+
+  .mobileActionPanel .mobileCtaArrow{
+    display:block!important;
+    justify-self:end!important;
+    margin:0!important;
+    font-size:19px!important;
+    line-height:1!important;
+    font-weight:400!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileActionPanel{
+    gap:8px!important;
+    padding:10px 10px 14px!important;
+  }
+
+  .mobileActionPanel .mobileApplyCta,
+  .mobileActionPanel .mobileWatchCta{
+    grid-template-columns:30px minmax(0,1fr) 16px!important;
+    column-gap:8px!important;
+    height:60px!important;
+    padding:0 11px 0 10px!important;
+    border-radius:16px!important;
+  }
+
+  .mobileActionPanel .mobileCtaIcon,
+  .mobileActionPanel .mobilePlay{
+    width:30px!important;
+    height:30px!important;
+  }
+
+  .mobileActionPanel a > span:nth-child(2),
+  .mobileActionPanel button > span:nth-child(2){
+    font-size:10px!important;
+  }
+
+  .mobileActionPanel .mobileCtaArrow{
+    font-size:17px!important;
+  }
+}
