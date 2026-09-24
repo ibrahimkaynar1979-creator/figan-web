@@ -456,3 +456,29 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     font-weight:400!important;
   }
 }
+
+
+/* 2026-09-24 — HERO IMAGE EXACT COMPACT REFERENCE */
+@media(max-width:600px){
+  /* Üst görsel: kullanıcının referansındaki kompakt Patiliyolar oranı */
+  .hero-visual{
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:489 / 525!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    overflow:hidden!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+
+  .hero-visual img{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    margin:0!important;
+  }
+}
