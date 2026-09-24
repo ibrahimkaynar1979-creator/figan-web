@@ -6584,3 +6584,107 @@ button{font:inherit;color:inherit}
     font-size:12.5px!important;
   }
 }
+
+
+/* 2026-09-24 — MOBILE HERO FINAL POLISH */
+@media(max-width:520px){
+  .mobileHeroFresh{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:#f6eee2!important;
+  }
+
+  .mobileHeroFreshImage{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    height:auto!important;
+    max-width:none!important;
+    margin:0 0 -64px!important;
+    padding:0!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    transform:none!important;
+  }
+
+  .mobileHeroFreshCopy{
+    position:absolute!important;
+    z-index:5!important;
+    top:14px!important;
+    left:20px!important;
+    right:18px!important;
+    margin:0!important;
+    padding:0!important;
+    background:transparent!important;
+  }
+
+  .mobileHeroFreshEyebrow{
+    margin:0 0 7px!important;
+    font-size:9px!important;
+    line-height:1.15!important;
+    letter-spacing:.24em!important;
+  }
+
+  .mobileHeroFreshTitle{
+    margin:0!important;
+    font-size:52px!important;
+    line-height:.84!important;
+    letter-spacing:-.035em!important;
+  }
+
+  .mobileHeroFreshTitle em{
+    margin-top:3px!important;
+  }
+
+  .mobileHeroFreshPoetic{
+    margin:7px 0 0!important;
+    font-size:25px!important;
+    line-height:.98!important;
+  }
+
+  .mobileHeroFreshRule{
+    width:34px!important;
+    margin:11px 0 9px!important;
+  }
+
+  .mobileHeroFreshLead{
+    margin:0!important;
+    max-width:292px!important;
+    font-size:12px!important;
+    line-height:1.34!important;
+  }
+
+  .servicesSection{
+    margin-top:0!important;
+  }
+}
+
+@media(max-width:390px){
+  .mobileHeroFreshImage{
+    margin-bottom:-58px!important;
+  }
+
+  .mobileHeroFreshCopy{
+    top:12px!important;
+    left:18px!important;
+    right:16px!important;
+  }
+
+  .mobileHeroFreshTitle{
+    font-size:48px!important;
+  }
+
+  .mobileHeroFreshPoetic{
+    font-size:23px!important;
+  }
+
+  .mobileHeroFreshLead{
+    font-size:11.5px!important;
+    line-height:1.32!important;
+  }
+}
