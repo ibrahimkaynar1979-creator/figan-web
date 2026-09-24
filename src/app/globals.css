@@ -5593,3 +5593,31 @@ button{font:inherit;color:inherit}
     display:none!important;
   }
 }
+
+
+/* 2026-09-24 — Force final mobile hero artwork */
+@media(max-width:520px){
+  .hero .mobileHeroShowcase.mobileHeroComposite{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    aspect-ratio:2 / 3!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:18px 0 0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background-image:url("/figan-hero-mobile-final.webp")!important;
+    background-size:100% 100%!important;
+    background-position:center top!important;
+    background-repeat:no-repeat!important;
+  }
+
+  .hero .mobileHeroShowcase.mobileHeroComposite .mobileHeroCompositeImage{
+    display:none!important;
+  }
+
+  .hero .mobileHeroOffer{
+    margin-top:0!important;
+  }
+}
