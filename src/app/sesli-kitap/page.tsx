@@ -3,7 +3,7 @@ import SeoServicePage from "../_components/SeoServicePage";
 
 export const metadata: Metadata = {
   title: "Sesli Kitap Yayını",
-  description: "Fi Yayınevi ile seslendirme planı, kayıt, bölümleme, mastering ve platform hazırlığı dahil sesli kitap yayın sürecini yönetin.",
+  description: "22 Yayınevi ile seslendirme planı, kayıt, bölümleme, mastering ve platform hazırlığı dahil sesli kitap yayın sürecini yönetin.",
   alternates:{canonical:"/sesli-kitap"},
 };
 
