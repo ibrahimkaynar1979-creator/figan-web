@@ -5223,3 +5223,33 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     padding-bottom:16px!important;
   }
 }
+
+
+/* 2026-09-25 - INNER PAGE WIDTH + TOP SPACING ALIGNMENT */
+.seo-service-editorial .container{
+  max-width:1120px!important;
+}
+
+@media(max-width:760px){
+  .seo-service-editorial .seo-service-hero{
+    padding-top:10px!important;
+  }
+  .seo-service-editorial .seo-service-hero,
+  .seo-service-editorial .seo-service-scope,
+  .seo-service-editorial .seo-service-audience,
+  .seo-service-editorial .seo-service-note,
+  .seo-service-editorial .seo-service-process,
+  .seo-service-editorial .seo-service-output,
+  .seo-service-editorial .seo-service-faq,
+  .seo-service-editorial .seo-service-final-cta{
+    padding-left:8px!important;
+    padding-right:8px!important;
+  }
+  .seo-service-editorial .container{
+    width:100%!important;
+    max-width:none!important;
+  }
+  .seo-service-nav{
+    margin-bottom:0!important;
+  }
+}
