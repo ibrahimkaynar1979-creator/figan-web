@@ -4263,3 +4263,182 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     aspect-ratio:auto!important;
   }
 }
+
+
+/* 2026-09-25 - FI EDITORIAL SERVICE PAGE */
+.seo-service-editorial .seo-service-hero{
+  padding-bottom:58px;
+}
+.seo-service-editorial .seo-service-grid{
+  grid-template-columns:1.04fr .96fr;
+  gap:54px;
+  overflow:visible;
+  padding:34px 0 0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+.seo-service-editorial .seo-service-copy{
+  padding:28px 0 34px;
+}
+.seo-service-editorial .seo-service-copy h1{
+  max-width:720px;
+  font-size:clamp(52px,5.5vw,82px);
+  line-height:.93;
+}
+.seo-service-editorial .seo-service-lead{
+  max-width:620px;
+  font-size:15.5px;
+  line-height:1.72;
+}
+.seo-service-editorial .seo-service-visual{
+  border-radius:0!important;
+}
+.seo-service-editorial .seo-service-scope,
+.seo-service-editorial .seo-service-combined,
+.seo-service-editorial .seo-service-output,
+.seo-service-editorial .seo-service-faq{
+  padding-top:72px;
+  padding-bottom:72px;
+}
+.seo-service-editorial .seo-service-scope{
+  background:#fffaf4;
+}
+.seo-service-editorial .seo-service-scope-card,
+.seo-service-editorial .seo-service-combined-card,
+.seo-service-editorial .seo-service-output-card,
+.seo-service-editorial .seo-service-faq-card{
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+.seo-service-editorial .seo-service-scope-card h2,
+.seo-service-editorial .seo-service-combined h2,
+.seo-service-editorial .seo-service-output h2,
+.seo-service-editorial .seo-service-faq h2{
+  max-width:760px;
+  font-size:clamp(38px,4vw,58px);
+  line-height:1;
+  letter-spacing:-.035em;
+}
+.seo-service-editorial h2 em{
+  color:#b46543;
+  font-family:var(--font-poetic),Georgia,serif;
+  font-weight:400;
+}
+.seo-service-editorial .seo-service-scope-grid{
+  grid-template-columns:repeat(2,1fr);
+  gap:0;
+  margin-top:34px;
+  border-top:1px solid rgba(169,105,52,.2);
+}
+.seo-service-editorial .seo-service-scope-grid article{
+  min-height:116px;
+  padding:24px 24px 24px 0;
+  border:0;
+  border-bottom:1px solid rgba(169,105,52,.2);
+  border-radius:0;
+  background:transparent;
+}
+.seo-service-editorial .seo-service-scope-grid article:nth-child(odd){
+  padding-right:42px;
+}
+.seo-service-editorial .seo-service-scope-grid article:nth-child(even){
+  padding-left:42px;
+  border-left:1px solid rgba(169,105,52,.2);
+}
+.seo-service-editorial .seo-service-scope-grid b,
+.seo-service-editorial .seo-service-output-list b{
+  border:0;
+  color:#b46543;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:18px;
+}
+.seo-service-editorial .seo-service-scope-grid p,
+.seo-service-editorial .seo-service-output-list p{
+  font-size:14px;
+  line-height:1.6;
+}
+.seo-service-editorial .seo-service-combined-card{
+  grid-template-columns:1fr 1px 1fr;
+  gap:54px;
+}
+.seo-service-editorial .seo-service-combined-col li{
+  margin-bottom:12px;
+  font-size:14px;
+  line-height:1.58;
+}
+.seo-service-editorial .seo-service-output{
+  background:#eee4d7;
+}
+.seo-service-editorial .seo-service-output-card{
+  gap:64px;
+}
+.seo-service-editorial .seo-service-output-list article{
+  padding:17px 0;
+  border-bottom:1px solid rgba(169,105,52,.18);
+  border-radius:0;
+  background:transparent;
+}
+.seo-service-editorial .seo-service-faq-card .faq-list{
+  margin-top:28px;
+}
+.seo-service-editorial .seo-service-final-cta{
+  padding-top:24px;
+}
+
+@media(max-width:760px){
+  .seo-service-editorial .seo-service-hero{
+    padding:78px 16px 34px!important;
+  }
+  .seo-service-editorial .seo-service-grid{
+    gap:22px!important;
+    padding:18px 0 0!important;
+  }
+  .seo-service-editorial .seo-service-copy{
+    padding:8px 0 0;
+  }
+  .seo-service-editorial .seo-service-copy h1{
+    font-size:43px!important;
+    line-height:.94!important;
+  }
+  .seo-service-editorial .seo-service-visual{
+    margin:0 -8px;
+  }
+  .seo-service-editorial .seo-service-scope,
+  .seo-service-editorial .seo-service-combined,
+  .seo-service-editorial .seo-service-output,
+  .seo-service-editorial .seo-service-faq{
+    padding:44px 18px!important;
+  }
+  .seo-service-editorial .seo-service-scope-card h2,
+  .seo-service-editorial .seo-service-combined h2,
+  .seo-service-editorial .seo-service-output h2,
+  .seo-service-editorial .seo-service-faq h2{
+    font-size:34px!important;
+  }
+  .seo-service-editorial .seo-service-scope-grid{
+    grid-template-columns:1fr!important;
+    margin-top:24px!important;
+  }
+  .seo-service-editorial .seo-service-scope-grid article,
+  .seo-service-editorial .seo-service-scope-grid article:nth-child(odd),
+  .seo-service-editorial .seo-service-scope-grid article:nth-child(even){
+    min-height:0!important;
+    padding:17px 0!important;
+    border-left:0!important;
+  }
+  .seo-service-editorial .seo-service-scope-grid p,
+  .seo-service-editorial .seo-service-output-list p{
+    font-size:13px!important;
+  }
+  .seo-service-editorial .seo-service-combined-card{
+    gap:28px!important;
+    padding:0!important;
+  }
+  .seo-service-editorial .seo-service-output-card,
+  .seo-service-editorial .seo-service-faq-card{
+    padding:0!important;
+  }
+}
