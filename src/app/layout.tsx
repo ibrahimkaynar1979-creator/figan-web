@@ -122,6 +122,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         {children}
+
+        <nav className="mobile-dock" aria-label="Mobil alt menü">
+          <a href="/"><span>⌂</span>Ana Sayfa</a>
+          <a href="/#hizmetler"><span>▤</span>Hizmetler</a>
+          <a href="/#yazarlar"><span>✒</span>Yazarlar</a>
+          <a href="/#ekosistem"><span>▱</span>Kitaplar</a>
+          <a href="/#basvuru"><span>○</span>İletişim</a>
+        </nav>
       </body>
     </html>
   );
