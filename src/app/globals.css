@@ -5179,3 +5179,47 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     padding:3px;
   }
 }
+
+
+/* 2026-09-25 - TIGHTER INNER PAGE VERTICAL RHYTHM */
+.seo-service-editorial .seo-service-hero{
+  padding-bottom:14px!important;
+}
+.seo-service-editorial .seo-service-scope,
+.seo-service-editorial .seo-service-audience,
+.seo-service-editorial .seo-service-note,
+.seo-service-editorial .seo-service-process,
+.seo-service-editorial .seo-service-output,
+.seo-service-editorial .seo-service-faq{
+  padding-bottom:14px!important;
+}
+.seo-service-editorial .seo-service-final-cta{
+  padding-bottom:4px!important;
+}
+
+@media(max-width:760px){
+  .seo-service-editorial .seo-service-hero{
+    padding-top:22px!important;
+    padding-bottom:10px!important;
+  }
+  .seo-service-editorial .seo-service-scope,
+  .seo-service-editorial .seo-service-audience,
+  .seo-service-editorial .seo-service-note,
+  .seo-service-editorial .seo-service-process,
+  .seo-service-editorial .seo-service-output,
+  .seo-service-editorial .seo-service-faq{
+    padding-bottom:10px!important;
+  }
+  .seo-service-editorial .seo-service-final-cta{
+    padding-bottom:2px!important;
+  }
+  .seo-service-editorial .seo-service-scope-card,
+  .seo-service-editorial .seo-service-audience-card,
+  .seo-service-editorial .seo-service-note-card,
+  .seo-service-editorial .seo-service-process-card,
+  .seo-service-editorial .seo-service-output-card,
+  .seo-service-editorial .seo-service-faq-card{
+    padding-top:16px!important;
+    padding-bottom:16px!important;
+  }
+}
