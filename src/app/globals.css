@@ -5621,3 +5621,51 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     transform-origin:center!important;
   }
 }
+
+
+/* 2026-09-26 - ILK 22 KURUCU YAZAR PAGE */
+.founder-author-page{background:#f6f0e7;color:#49362e}
+.founder-author-hero{padding:34px 8px 16px}
+.founder-author-section{padding:0 8px 16px}
+.founder-author-final{padding:0 8px 16px}
+.founder-author-hero-card,.founder-author-card{
+  max-width:1120px;margin:0 auto;padding:30px;border:1px solid rgba(169,105,52,.18);border-radius:24px;background:#fffaf4
+}
+.founder-author-hero-card{
+  background:linear-gradient(135deg,#fffaf4 0%,#f6eadc 100%);
+}
+.founder-author-kicker{display:flex;align-items:center;gap:10px;margin:0 0 16px;color:#a85b3b;font-size:10px;font-weight:800;letter-spacing:.22em}
+.founder-author-kicker span{display:block;width:30px;height:1px;background:#c96b47}
+.founder-author-hero-card h1,.founder-author-card h2{
+  margin:0;color:#49362e;font-family:var(--font-editorial),Georgia,serif;font-weight:500;letter-spacing:-.04em
+}
+.founder-author-hero-card h1{font-size:clamp(48px,6vw,78px);line-height:.94}
+.founder-author-hero-card h1 em,.founder-author-card h2 em{font-family:var(--font-poetic),Georgia,serif;color:#c96b47;font-weight:400}
+.founder-author-card h2{font-size:clamp(34px,4vw,54px);line-height:1}
+.founder-author-lead,.founder-author-intro,.founder-author-card>p:last-child{max-width:820px;color:#5f5149;font-size:15px;line-height:1.72}
+.founder-author-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:24px}
+.founder-author-text-link{color:#a85b3b;font-size:12px;font-weight:800}
+.founder-author-benefits,.founder-author-steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.founder-author-benefits article,.founder-author-steps article{
+  display:grid;grid-template-columns:44px 1fr;gap:12px;padding:16px;border:1px solid rgba(169,105,52,.16);border-radius:16px;background:#fffdf9
+}
+.founder-author-benefits article>span,.founder-author-steps article>span{
+  display:grid;place-items:center;width:36px;height:36px;border:1px solid rgba(120,128,82,.28);border-radius:50%;color:#788052;font-size:11px;font-weight:800
+}
+.founder-author-benefits h3,.founder-author-steps h3{margin:0 0 5px;font-family:var(--font-editorial),Georgia,serif;font-size:21px;font-weight:500;color:#49362e}
+.founder-author-benefits p,.founder-author-steps p{margin:0;color:#65564e;font-size:12.5px;line-height:1.55}
+.founder-author-note-card{background:#f1eadc}
+.founder-author-faq{display:grid;gap:8px;margin-top:22px}
+.founder-author-faq details{padding:14px 16px;border:1px solid rgba(169,105,52,.16);border-radius:14px;background:#fffdf9}
+.founder-author-faq summary{cursor:pointer;color:#49362e;font-weight:700;font-size:13px}
+.founder-author-faq p{margin:10px 0 0;color:#65564e;font-size:12.5px;line-height:1.6}
+@media(max-width:760px){
+  .founder-author-hero{padding-top:10px}
+  .founder-author-hero-card,.founder-author-card{padding:18px;border-radius:18px}
+  .founder-author-hero-card h1{font-size:40px}
+  .founder-author-card h2{font-size:31px}
+  .founder-author-lead,.founder-author-intro,.founder-author-card>p:last-child{font-size:12.5px;line-height:1.6}
+  .founder-author-benefits,.founder-author-steps{grid-template-columns:1fr}
+  .founder-author-hero-actions{display:grid;grid-template-columns:1fr}
+  .founder-author-hero-actions .btn{width:100%}
+}
