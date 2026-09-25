@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./FiFooter.module.css";
 
 const whatsappMessage =
-  "Merhaba, Fi Yayınevi web sitenizden geliyorum. Yayıncılık hizmetleriniz hakkında bilgi almak istiyorum.";
+  "Merhaba, 22 Yayınevi web sitenizden geliyorum. Yayıncılık hizmetleriniz hakkında bilgi almak istiyorum.";
 
 const whatsappUrl = `https://wa.me/905532419397?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -17,7 +17,7 @@ const publishingLinks = [
 const fiLinks = [
   { label: "Nasıl Çalışıyoruz?", href: "#surec" },
   { label: "Yazarlarımız", href: "#yazarlar" },
-  { label: "Fi Hakkında", href: "#hakkimizda" },
+  { label: "22 Yayınevi Hakkında", href: "#hakkimizda" },
   { label: "Yazar Başvurusu", href: "#basvuru" },
 ] as const;
 
@@ -41,7 +41,7 @@ export default function FiFooter() {
                 ))}
               </FooterColumn>
 
-              <FooterColumn title="Fi">
+              <FooterColumn title="22 Yayınevi">
                 {fiLinks.map((item) => (
                   <FooterLink key={item.href} href={item.href} label={item.label} />
                 ))}
@@ -68,9 +68,9 @@ export default function FiFooter() {
                   <span>WhatsApp’tan Yazın</span>
                 </a>
 
-                <a href="mailto:info@fiyayinevi.com" className={styles.contactLink}>
+                <a href="mailto:info@22yayinevi.com" className={styles.contactLink}>
                   <span className={styles.contactIcon} aria-hidden="true"><MailIcon /></span>
-                  <span>info@fiyayinevi.com</span>
+                  <span>info@22yayinevi.com</span>
                 </a>
 
                 <p className={styles.location}>
@@ -101,7 +101,7 @@ export default function FiFooter() {
 
             <div className={styles.legalArea}>
               <p className={styles.copyright}>
-                © {new Date().getFullYear()} Fi Yayınevi. Tüm hakları saklıdır.
+                © {new Date().getFullYear()} 22 Yayınevi. Tüm hakları saklıdır.
               </p>
 
               <div className={styles.legalLinks}>
