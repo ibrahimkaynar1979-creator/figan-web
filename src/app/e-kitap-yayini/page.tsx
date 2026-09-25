@@ -10,15 +10,16 @@ export const metadata: Metadata = {
 export default function Page(){
   return (
     <SeoServicePage
+      editorialLayout
       eyebrow="E-KİTAP YAYINI"
-      title="Eserinizi profesyonel e-kitaba dönüştürelim."
-      lead="Metninizi dijital okuma standartlarına göre düzenliyor; EPUB, metadata ve cihaz uyumluluğu kontrolleriyle dağıtıma hazır e-kitap dosyasına dönüştürüyoruz."
+      title="E-kitabınız, yalnızca PDF olmasın. Her ekranda doğru görünsün."
+      lead="Eserinizi dijital okuma standartlarına göre hazırlıyor; EPUB yapısı, kapak, metadata ve cihaz uyumluluğunu birlikte ele alarak platformlara yüklemeye hazır bir yayın paketine dönüştürüyoruz."
       image="/figan-hizmet-e-kitap.webp"
       bullets={[
-        "EPUB dosya yapısı ve yeniden akışkan metin düzeni",
-        "Mobil, tablet ve e-okuyucu cihaz uyumluluğu",
-        "Kitap adı, yazar, açıklama ve metadata hazırlığı",
-        "Dijital platformlara yüklemeye hazır yayın dosyası",
+        "Kaynak dosyanın ve mevcut mizanpajın dijital yayın açısından kontrolü",
+        "EPUB ve yeniden akışkan dijital format yapısının hazırlanması",
+        "Dijital kapak, kitap bilgileri ve metadata düzeninin oluşturulması",
+        "Mobil, tablet ve e-okuyucu kontrolleri tamamlanmış platforma hazır teslim",
       ]}
       audience={[
         "Basılı eserini dijital formatta da yayımlamak isteyen yazarlar",
