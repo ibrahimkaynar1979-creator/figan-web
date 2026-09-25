@@ -5489,3 +5489,22 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     background-color:#3a1d11!important;
   }
 }
+
+
+/* 2026-09-26 - HOMEPAGE ONLY: CTA TO FOOTER TRANSITION */
+@media(max-width:760px){
+  .home-page-main > .final-cta{
+    padding-bottom:16px!important;
+    background:#f6f0e7!important;
+    background-image:none!important;
+  }
+  .home-footer-zone{
+    margin:0!important;
+    padding:0!important;
+    background:#f6f0e7!important;
+  }
+  .home-footer-zone > footer{
+    margin:0!important;
+    background:#f6f0e7!important;
+  }
+}
