@@ -5523,3 +5523,31 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     box-shadow:none!important;
   }
 }
+
+
+/* 2026-09-26 - HOMEPAGE CARD SURFACES MATCH INNER PAGES */
+.home-page-main .figan-service-card,
+.home-page-main .figan-service-content,
+.home-page-main .author-grid,
+.home-page-main .author-slide-card,
+.home-page-main .about-figan-card{
+  background:#fffdf9!important;
+  background-image:none!important;
+}
+
+.home-page-main .process-panel,
+.home-page-main .benefit-grid > div{
+  background:#fffaf4!important;
+  background-image:none!important;
+}
+
+.home-page-main .figan-service-emblem{
+  background:#fffaf4!important;
+}
+
+/* Keep intentional dark editorial cards dark, matching inner-page CTA language */
+.home-page-main .ecosystem-grid,
+.home-page-main .fi-video-teaser-card,
+.home-page-main .final-panel{
+  background:linear-gradient(145deg,#4a2a1a,#2b170e)!important;
+}
