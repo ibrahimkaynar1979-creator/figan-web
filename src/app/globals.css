@@ -3533,3 +3533,29 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     padding-bottom:58px!important;
   }
 }
+
+
+/* 2026-09-25 - FIX MOBILE FOOTER ADDRESS WRAPPING */
+@media(max-width:760px){
+  .footer-contact .footer-address > .footer-address-lines{
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    white-space:normal!important;
+    word-break:normal!important;
+    overflow-wrap:normal!important;
+    font-size:10.5px!important;
+    line-height:1.35!important;
+    color:#51483f!important;
+  }
+  .footer-contact .footer-address > span:first-child{
+    width:14px!important;
+    min-width:14px!important;
+    display:block!important;
+  }
+  .footer-contact .footer-address{
+    grid-template-columns:14px minmax(0,1fr)!important;
+  }
+}
