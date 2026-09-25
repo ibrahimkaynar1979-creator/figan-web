@@ -38,6 +38,8 @@ export default function SeoServicePage({
     { q:"Fiyat nasıl belirleniyor?", a:"Eserin kapsamı, sayfa sayısı, hazırlık ihtiyacı ve seçilen hizmetlere göre değerlendirme sonrasında net teklif oluşturulur." },
   ],
 }: ServicePageProps){
+  const whatsapp = "https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.";
+
   return (
     <main className="seo-service-page">
       <section className="seo-service-hero">
@@ -47,45 +49,57 @@ export default function SeoServicePage({
             <p className="eyebrow"><span/>{eyebrow}</p>
             <h1>{title}</h1>
             <p className="seo-service-lead">{lead}</p>
-            <a className="btn primary" href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer">Bilgi Alın <b>→</b></a>
+            <a className="btn primary" href={whatsapp} target="_blank" rel="noreferrer">Bilgi Alın <b>→</b></a>
           </div>
           <div className="seo-service-visual"><img src={image} alt=""/></div>
         </div>
       </section>
 
-      <section className="seo-service-detail">
-        <div className="container seo-service-detail-card">
+      <section className="seo-service-scope">
+        <div className="container seo-service-scope-card">
+          <p className="eyebrow"><span/>HİZMET KAPSAMI</p>
           <h2>Bu hizmet neleri kapsar?</h2>
-          <div className="seo-service-bullets">
+          <div className="seo-service-scope-grid">
             {bullets.map((item, index)=>(
-              <article key={item}><b>{String(index+1).padStart(2,"0")}</b><p>{item}</p></article>
+              <article key={item}>
+                <b>{String(index+1).padStart(2,"0")}</b>
+                <p>{item}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="seo-service-rich">
-        <div className="container seo-service-rich-grid">
-          <article>
+      <section className="seo-service-combined">
+        <div className="container seo-service-combined-card">
+          <div className="seo-service-combined-col">
             <p className="eyebrow"><span/>KİMLER İÇİN?</p>
             <h2>Bu hizmet size uygun mu?</h2>
             <ul>{audience.map((item)=><li key={item}>{item}</li>)}</ul>
-          </article>
-          <article>
+          </div>
+
+          <div className="seo-service-combined-divider" aria-hidden="true"/>
+
+          <div className="seo-service-combined-col">
             <p className="eyebrow"><span/>SÜREÇ</p>
             <h2>Nasıl ilerliyoruz?</h2>
             <ol>{process.map((item)=><li key={item}>{item}</li>)}</ol>
-          </article>
+          </div>
         </div>
       </section>
 
       <section className="seo-service-output">
         <div className="container seo-service-output-card">
-          <p className="eyebrow"><span/>TESLİM ÇIKTILARI</p>
-          <h2>Süreç sonunda ne elde edersiniz?</h2>
-          <div className="seo-service-output-grid">
+          <div className="seo-service-output-head">
+            <p className="eyebrow"><span/>TESLİM ÇIKTILARI</p>
+            <h2>Süreç sonunda ne elde edersiniz?</h2>
+          </div>
+          <div className="seo-service-output-list">
             {outputs.map((item, index)=>(
-              <article key={item}><b>{String(index+1).padStart(2,"0")}</b><p>{item}</p></article>
+              <article key={item}>
+                <b>{String(index+1).padStart(2,"0")}</b>
+                <p>{item}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -103,6 +117,15 @@ export default function SeoServicePage({
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="seo-service-final-cta">
+        <div className="container seo-service-final-cta-card">
+          <p className="eyebrow light"><span/>YAYIN YOLCULUĞU</p>
+          <h2>Dosyanız hazırsa,<br/><em>birlikte başlayalım.</em></h2>
+          <p>İhtiyacınızı birlikte netleştirelim; size uygun yayın yolunu planlayalım.</p>
+          <a className="btn gold" href={whatsapp} target="_blank" rel="noreferrer">Başvuru Yapın <b>→</b></a>
         </div>
       </section>
     </main>
