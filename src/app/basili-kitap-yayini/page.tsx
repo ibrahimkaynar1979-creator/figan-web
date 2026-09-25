@@ -27,9 +27,9 @@ export default function Page(){
       ]}
       process={[
         "Dosya editoryal ve teknik açıdan incelenir; yayın planı oluşturulur.",
-        "Mevcut mizanpaj kontrol edilir; gerekli editoryal, kapak ve baskı dosyası düzeltmeleri tamamlanır."
-        "Prova onaylanır; ISBN, bandrol ve baskı gereklilikleri tamamlanır."
-        "Onay sonrası kitap basılır ve belirlenen fizikî satış ve dağıtım kanallarına çıkarılır."
+        "Mevcut mizanpaj kontrol edilir; gerekli editoryal, kapak ve baskı dosyası düzeltmeleri tamamlanır.",
+        "Prova onaylanır; ISBN, bandrol ve baskı gereklilikleri tamamlanır.",
+        "Onay sonrası kitap basılır ve belirlenen fizikî satış ve dağıtım kanallarına çıkarılır.",
       ]}
       outputs={[
         "Kontrolleri tamamlanmış iç blok, kapak ve prova dosyaları",
