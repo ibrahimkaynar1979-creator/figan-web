@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./FiFooter.module.css";
 
 const whatsappMessage =
@@ -27,9 +28,8 @@ export default function FiFooter() {
         <div className={styles.panel}>
           <div className={styles.top}>
             <div className={styles.brandArea}>
-              <a href="#top" className={styles.brandLink} aria-label="Fi Yayınevi ana sayfa">
-                <span className={styles.fiLogo}>Fi</span>
-                <span className={styles.fiLogoSub}>YAYINEVİ</span>
+              <a href="#top" className={styles.brandLink} aria-label="22 Yayınevi ana sayfa">
+                <Image src="/22_yayinevi_logo.png" alt="22 Yayınevi" width={360} height={260} className={styles.footerBrandLogo} />
               </a>
               <p className={styles.brandLine}>Bir kitabın ötesinde, size ait bir yayın dünyası.</p>
             </div>
