@@ -254,7 +254,7 @@ export default function SeoServicePage({
           <p className="eyebrow light"><span/>YAYIN YOLCULUĞU</p>
           <h2>Dosyanız hazırsa,<br/><em>birlikte başlayalım.</em></h2>
           <p>İhtiyacınızı birlikte netleştirelim; size uygun yayın yolunu planlayalım.</p>
-          <a className="btn gold" href={whatsapp} target="_blank" rel="noreferrer">Başvuru Yapın <b>→</b></a>
+          <a className="btn gold" href="/kurucu-yazar">İlk 22 Kurucu Yazar Statüsüne Başvur <b>→</b></a>
         </div>
       </section>
     </main>
