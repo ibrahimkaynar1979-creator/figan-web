@@ -375,3 +375,16 @@
     justify-content: flex-start;
   }
 }
+
+
+/* 2026-09-26 - 22 YAYINEVI FOOTER LOGO */
+.footerBrandLogo{
+  display:block;
+  width:150px;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+@media(min-width:701px){
+  .footerBrandLogo{width:180px;}
+}
