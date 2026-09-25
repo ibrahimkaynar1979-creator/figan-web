@@ -14,7 +14,7 @@ const slides = [
   },
   {
     no: "02",
-    kicker: "FİGAN READER",
+    kicker: "22 READER",
     title: "Her yerde\nokunur.",
     body: "E-kitabınız 22 Reader deneyiminde, farklı cihazlarda okurla buluşur.",
     image: "/ekosistem-reader.webp",
@@ -23,7 +23,7 @@ const slides = [
   },
   {
     no: "03",
-    kicker: "FİGAN AUDIO",
+    kicker: "22 AUDIO",
     title: "Hikâyeniz\nses bulur.",
     body: "Sesli kitabınız güçlü bir dinleme deneyimiyle yeni bir hayata kavuşur.",
     image: "/ekosistem-audio-transparent.webp",
@@ -70,7 +70,7 @@ export default function EcosystemSlider() {
   return (
     <section className="ecosystemSection" id="ekosistem">
       <div className="ecosystemIntro">
-        <div className="ecosystemKicker"><span>FİGAN EKOSİSTEMİ</span><i/><b>04</b></div>
+        <div className="ecosystemKicker"><span>22 YAYINEVİ EKOSİSTEMİ</span><i/><b>04</b></div>
         <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
         <p>Kitabınız farklı biçimlerde yaşar; okunur, dinlenir ve size ait dijital dünyada okurla buluşur.</p>
       </div>
