@@ -5365,3 +5365,81 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     display:none!important;
   }
 }
+
+
+/* 2026-09-25 - STRICT HOMEPAGE 10PX CARD STACK */
+@media(max-width:760px){
+  body,
+  main{
+    background:#f6f0e7!important;
+  }
+
+  main > section{
+    margin:0!important;
+    background:#f6f0e7!important;
+    background-image:none!important;
+  }
+
+  main > .home-hero,
+  main > .figan-services-showcase,
+  main > .process,
+  main > .ecosystem,
+  main > .author-site,
+  main > .authors-section,
+  main > .about-fi-manifesto,
+  main > .fi-video-teaser,
+  main > .final-cta{
+    padding:0 8px 10px!important;
+  }
+
+  .figan-services-showcase .container,
+  .process-wrap,
+  .ecosystem-grid,
+  .author-grid,
+  .authors-wrap,
+  .about-fi-manifesto .container,
+  .fi-video-teaser-card,
+  .final-panel{
+    margin-top:0!important;
+    margin-bottom:0!important;
+  }
+
+  .authors-track{
+    margin-bottom:0!important;
+    padding-bottom:0!important;
+  }
+
+  .authors-wrap{
+    padding-bottom:0!important;
+  }
+
+  .about-fi-manifesto .about-figan-card,
+  .process-panel,
+  .author-grid{
+    background:#fffdf9!important;
+    background-image:none!important;
+  }
+
+  .about-fi-manifesto .about-figan-card{
+    box-shadow:none!important;
+  }
+
+  .figan-services-showcase:before,
+  .figan-services-showcase:after,
+  .process:before,
+  .process:after,
+  .ecosystem:before,
+  .ecosystem:after,
+  .author-site:before,
+  .author-site:after,
+  .authors-section:before,
+  .authors-section:after,
+  .about-fi-manifesto:before,
+  .about-fi-manifesto:after,
+  .fi-video-teaser:before,
+  .fi-video-teaser:after,
+  .final-cta:before,
+  .final-cta:after{
+    display:none!important;
+  }
+}
