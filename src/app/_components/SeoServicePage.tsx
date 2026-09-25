@@ -12,6 +12,17 @@ type ServicePageProps = {
   outputs?: string[];
   faqs?: { q: string; a: string }[];
   editorialLayout?: boolean;
+  scopeTitle?: string;
+  scopeAccent?: string;
+  scopeStepTitles?: string[];
+  audienceTitle?: string;
+  audienceAccent?: string;
+  audienceIntro?: string;
+  noteTitle?: string;
+  noteText?: string;
+  processTitle?: string;
+  processStepTitles?: string[];
+  outputTitles?: string[];
 };
 
 export default function SeoServicePage({
@@ -37,6 +48,17 @@ export default function SeoServicePage({
     "Yayın veya dağıtım için uygulanabilir bir sonraki adım planı",
   ],
   editorialLayout = false,
+  scopeTitle = "Bir dosyadan,",
+  scopeAccent = "gerçek bir kitaba.",
+  scopeStepTitles = ["Editoryal Kontrol","Mizanpaj & Kapak","ISBN & Bandrol","Baskı & Dağıtım"],
+  audienceTitle = "Kitabını yalnızca bastırmak değil,",
+  audienceAccent = "yayımlamak isteyenler için.",
+  audienceIntro = "Dosyasını profesyonel yayın standartlarına taşımak, baskıdan dağıtıma kadar bütün süreci tek bir yayın planı içinde yürütmek isteyen yazarlar için.",
+  noteTitle = "Her kitap, kendine ait bir dünya taşır.",
+  noteText = "Bizim için bir kitabı yayımlamak, yalnızca baskıya göndermek değildir. Her eserin kendi tonu, okuru ve yolu vardır. Editoryal özen, estetik tasarım ve doğru dağıtım planıyla kitabınızın bu yolculuğunda yanınızda oluruz.",
+  processTitle = "Yayın yolculuğu nasıl ilerler?",
+  processStepTitles = ["Dosya analizi","Mizanpaj ve kapak","Resmî işlemler","Baskı ve dağıtım"],
+  outputTitles = ["Yayına hazır dosyalar","ISBN ve bandrollü kitap","Dağıtım desteği"],
   faqs = [
     { q:"Süreç nasıl başlıyor?", a:"Önce dosyanızı ve yayın hedefinizi değerlendiriyoruz. Ardından ihtiyacınıza uygun hizmet kapsamı ve yol haritası netleştiriliyor." },
     { q:"Hizmet tek başına alınabilir mi?", a:"Evet. İhtiyacınıza göre tek bir hizmetten yararlanabilir veya birden fazla hizmeti aynı yayın planında birleştirebilirsiniz." },
@@ -82,14 +104,14 @@ export default function SeoServicePage({
       <section className="seo-service-scope">
         <div className="container seo-service-scope-card">
           <p className="eyebrow"><span/>HİZMET KAPSAMI</p>
-          <h2>{editorialLayout ? <>Bir dosyadan, <em>gerçek bir kitaba.</em></> : "Bu hizmet neleri kapsar?"}</h2>
+          <h2>{editorialLayout ? <>{scopeTitle} <em>{scopeAccent}</em></> : "Bu hizmet neleri kapsar?"}</h2>
           <div className="seo-service-scope-grid">
             {bullets.map((item, index)=>(
               <article key={item}>
                 <b>{String(index+1).padStart(2,"0")}</b>
                 {editorialLayout && <span className="seo-service-step-icon" aria-hidden="true">{["✦","◇","◎","↗"][index % 4]}</span>}
                 <div>
-                  {editorialLayout && <h3>{["Editoryal Kontrol","Mizanpaj & Kapak","ISBN & Bandrol","Baskı & Dağıtım"][index] || `Yayın Aşaması ${index+1}`}</h3>}
+                  {editorialLayout && <h3>{scopeStepTitles[index] || `Yayın Aşaması ${index+1}`}</h3>}
                   <p>{item}</p>
                 </div>
               </article>
@@ -103,8 +125,8 @@ export default function SeoServicePage({
           <section className="seo-service-audience">
             <div className="container seo-service-audience-card">
               <p className="eyebrow"><span/>KİMLER İÇİN?</p>
-              <h2>Kitabını yalnızca bastırmak değil,<br/><em>yayımlamak isteyenler için.</em></h2>
-              <p className="seo-service-section-intro">Dosyasını profesyonel yayın standartlarına taşımak, baskıdan dağıtıma kadar bütün süreci tek bir yayın planı içinde yürütmek isteyen yazarlar için.</p>
+              <h2>{audienceTitle}<br/><em>{audienceAccent}</em></h2>
+              <p className="seo-service-section-intro">{audienceIntro}</p>
               <div className="seo-service-fit-box">
                 {audience.map((item)=><p key={item}><span>✓</span>{item}</p>)}
               </div>
@@ -116,8 +138,8 @@ export default function SeoServicePage({
               <div className="seo-service-note-mark">Fi</div>
               <div>
                 <p className="eyebrow"><span/>YAYIN NOTU</p>
-                <h2>Her kitap, kendine ait bir dünya taşır.</h2>
-                <p>Bizim için bir kitabı yayımlamak, yalnızca baskıya göndermek değildir. Her eserin kendi tonu, okuru ve yolu vardır. Editoryal özen, estetik tasarım ve doğru dağıtım planıyla kitabınızın bu yolculuğunda yanınızda oluruz.</p>
+                <h2>{noteTitle}</h2>
+                <p>{noteText}</p>
               </div>
             </div>
           </section>
@@ -125,13 +147,13 @@ export default function SeoServicePage({
           <section className="seo-service-process">
             <div className="container seo-service-process-card">
               <p className="eyebrow"><span/>SÜREÇ</p>
-              <h2>Yayın yolculuğu nasıl ilerler?</h2>
+              <h2>{processTitle}</h2>
               <div className="seo-service-process-list">
                 {process.map((item,index)=>(
                   <article key={item}>
                     <b>{String(index+1).padStart(2,"0")}</b>
                     <div>
-                      <h3>{["Dosya analizi","Mizanpaj ve kapak","Resmî işlemler","Baskı ve dağıtım"][index] || `Yayın adımı ${index+1}`}</h3>
+                      <h3>{processStepTitles[index] || `Yayın adımı ${index+1}`}</h3>
                       <p>{item}</p>
                     </div>
                   </article>
@@ -151,7 +173,7 @@ export default function SeoServicePage({
                   <article key={item}>
                     <b>{["▧","◫","↗"][index] || String(index+1).padStart(2,"0")}</b>
                     <div>
-                      <h3>{["Yayına hazır dosyalar","ISBN ve bandrollü kitap","Dağıtım desteği"][index] || "Yayın çıktısı"}</h3>
+                      <h3>{outputTitles[index] || "Yayın çıktısı"}</h3>
                       <p>{item}</p>
                     </div>
                   </article>
