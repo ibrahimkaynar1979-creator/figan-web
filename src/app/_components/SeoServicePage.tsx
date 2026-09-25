@@ -48,8 +48,7 @@ export default function SeoServicePage({
   return (
     <InnerPageShell>
     <main className={`seo-service-page${editorialLayout ? " seo-service-editorial" : ""}`}>
-      {editorialLayout && (
-        <nav className="seo-service-nav" aria-label="Fi Yayınevi hizmetleri">
+      <nav className="seo-service-nav" aria-label="Fi Yayınevi hizmetleri">
           <div className="seo-service-nav-track">
             {[
               {label:"Basılı Kitap",href:"/basili-kitap-yayini",image:"/figan-hizmet-basili-kitap-yayini.webp"},
@@ -66,7 +65,6 @@ export default function SeoServicePage({
             ))}
           </div>
         </nav>
-      )}
 
       <section className="seo-service-hero">
         <div className="container seo-service-grid">
