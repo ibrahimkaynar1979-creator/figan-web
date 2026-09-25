@@ -10,10 +10,22 @@ export const metadata: Metadata = {
 export default function Page(){
   return (
     <SeoServicePage
+      editorialLayout
       eyebrow="SESLİ KİTAP"
-      title="Hikâyeniz ses bulsun."
-      lead="Eserinizi seslendirme, bölümleme, kayıt düzeni ve mastering adımlarıyla profesyonel bir dinleme deneyimine dönüştürmek için sesli kitap sürecini planlıyoruz."
+      title="Hikâyeniz yalnızca okunsun değil, dinlensin."
+      lead="Metninizi seslendirme yapısına hazırlıyor; anlatım tonu, kayıt düzeni, bölümleme ve mastering süreçlerini birlikte planlayarak profesyonel bir dinleme deneyimine dönüştürüyoruz."
       image="/figan-hizmet-sesli-kitap.webp"
+      scopeTitle="Bir metinden,"
+      scopeAccent="dinlenen bir esere."
+      scopeStepTitles={["Metin Hazırlığı","Anlatım & Ses","Kayıt & Mastering","Platform Teslimi"]}
+      audienceTitle="Eserini yalnızca okutmak değil,"
+      audienceAccent="dinletmek isteyenler için."
+      audienceIntro="Kitabını farklı bir yayın formatında okuruyla buluşturmak, profesyonel ses deneyimi oluşturmak ve sesli kitap platformlarına hazırlanmak isteyen yazarlar için."
+      noteTitle="Sesli kitap, yalnızca metnin okunmuş hâli değildir."
+      noteText="İyi bir sesli kitap; doğru anlatım tonu, bölüm ritmi, temiz kayıt ve dengeli mastering ile metnin duygusunu dinleyiciye taşıyan ayrı bir yayın deneyimidir."
+      processTitle="Sesli kitap yolculuğu nasıl ilerler?"
+      processStepTitles={["Metin analizi","Seslendirme planı","Kayıt ve mastering","Yayın paketi"]}
+      outputTitles={["Bölümlenmiş ses dosyaları","Mastering çıktıları","Platforma hazır ses paketi"]}
       bullets={[
         "Metnin seslendirme ve bölüm yapısına hazırlanması",
         "Anlatım tonu ve seslendirme akışının planlanması",
