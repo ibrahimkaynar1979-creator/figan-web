@@ -3559,3 +3559,84 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     grid-template-columns:14px minmax(0,1fr)!important;
   }
 }
+
+
+/* 2026-09-25 - PATILIYOLAR-LEVEL FOOTER FINISH */
+@media(max-width:760px){
+  .figan-footer-shell{
+    padding:18px 16px 12px!important;
+  }
+  .footer-logo-row p{
+    margin-top:6px!important;
+    font-size:11px!important;
+  }
+  .footer-divider{
+    margin:12px 0 10px!important;
+  }
+  .footer-group h4{
+    font-size:18px!important;
+    margin-bottom:6px!important;
+  }
+  .footer-group a{
+    font-size:10.5px!important;
+    margin-bottom:4px!important;
+  }
+  .footer-contact{
+    row-gap:3px!important;
+  }
+  .footer-contact .footer-phone,
+  .footer-contact a,
+  .footer-contact .footer-address{
+    font-size:10.5px!important;
+  }
+  .footer-contact .footer-phone>span,
+  .footer-contact a>span,
+  .footer-contact .footer-address>span:first-child{
+    color:#c66a48!important;
+    font-size:11px!important;
+  }
+  .footer-bottom{
+    margin-top:8px!important;
+  }
+  .naribo-credit-text{
+    margin-top:6px!important;
+  }
+  .naribo-label{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:8px!important;
+    margin-bottom:4px!important;
+  }
+  .naribo-label i{
+    width:30px!important;
+    height:1px!important;
+    background:rgba(169,105,52,.38)!important;
+  }
+  .naribo-label small{
+    color:#b46543!important;
+    font-size:6px!important;
+    font-weight:800!important;
+    letter-spacing:.22em!important;
+  }
+  .naribo-wordmark{
+    display:flex!important;
+    align-items:baseline!important;
+    justify-content:center!important;
+    gap:5px!important;
+  }
+  .naribo-wordmark span{
+    color:#1fb7e8!important;
+    font-size:16px!important;
+    font-weight:900!important;
+    letter-spacing:-.04em!important;
+    text-transform:lowercase!important;
+  }
+  .naribo-wordmark em{
+    color:#5b5048!important;
+    font-family:var(--font-poetic),Georgia,serif!important;
+    font-size:13px!important;
+    font-style:italic!important;
+    font-weight:400!important;
+  }
+}
