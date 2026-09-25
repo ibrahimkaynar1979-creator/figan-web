@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "İbrahim Kaynar",
-  description: "Fi Yayınevi yazarı İbrahim Kaynar ve İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken kitabı.",
+  description: "22 Yayınevi yazarı İbrahim Kaynar ve İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken kitabı.",
   alternates:{canonical:"/yazarlar/ibrahim-kaynar"},
 };
 
@@ -10,8 +10,8 @@ const personSchema = {
   "@context":"https://schema.org",
   "@type":"Person",
   name:"İbrahim Kaynar",
-  url:"https://www.fiyayinevi.com/yazarlar/ibrahim-kaynar",
-  worksFor:{ "@id":"https://www.fiyayinevi.com/#organization" },
+  url:"https://www.22yayinevi.com/yazarlar/ibrahim-kaynar",
+  worksFor:{ "@id":"https://www.22yayinevi.com/#organization" },
 };
 
 export default function Page(){
@@ -19,7 +19,7 @@ export default function Page(){
     <main className="seo-profile-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(personSchema)}}/>
       <div className="container seo-profile-card">
-        <a className="legal-back" href="/">← Fi Yayınevi</a>
+        <a className="legal-back" href="/">← 22 Yayınevi</a>
         <p className="eyebrow"><span/>Fİ YAZARI</p>
         <h1>İbrahim Kaynar</h1>
         <p className="seo-profile-lead">“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.</p>
