@@ -396,7 +396,8 @@ export default function Home() {
             <p>© {new Date().getFullYear()} Fi Yayınevi. Tüm hakları saklıdır.</p>
             <div className="footer-legal"><a href="/gizlilik">Gizlilik Politikası</a><i/><a href="/kvkk">KVKK</a><i/><a href="/kullanim-kosullari">Kullanım Koşulları</a></div>
             <div className="naribo-credit naribo-credit-text" aria-label="Naribo Creative Agency">
-              <span>NARIBO</span><small>CREATIVE AGENCY</small>
+              <div className="naribo-label"><i></i><small>TASARIM VE YAZILIM</small><i></i></div>
+              <div className="naribo-wordmark"><span>NARIBO</span><em>creative agency</em></div>
             </div>
           </div>
         </div>
