@@ -5562,3 +5562,15 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     background:linear-gradient(135deg,#3a1d11 0%,#512817 56%,#2e160d 100%)!important;
   }
 }
+
+
+/* 2026-09-26 - 22 YAYINEVI IMAGE LOGOS */
+.brand-logo-image img{
+  display:block;
+  width:148px;
+  height:auto;
+  object-fit:contain;
+}
+@media(max-width:760px){
+  .brand-logo-image img{width:122px;}
+}
