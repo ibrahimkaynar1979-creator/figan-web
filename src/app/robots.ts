@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.fiyayinevi.com/sitemap.xml",
-    host: "https://www.fiyayinevi.com",
+    sitemap: "https://www.22yayinevi.com/sitemap.xml",
+    host: "https://www.22yayinevi.com",
   };
 }
