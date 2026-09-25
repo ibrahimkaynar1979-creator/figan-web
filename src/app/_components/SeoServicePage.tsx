@@ -68,7 +68,11 @@ export default function SeoServicePage({
             {bullets.map((item, index)=>(
               <article key={item}>
                 <b>{String(index+1).padStart(2,"0")}</b>
-                <p>{item}</p>
+                {editorialLayout && <span className="seo-service-step-icon" aria-hidden="true">{["✦","◇","◎","↗"][index % 4]}</span>}
+                <div>
+                  {editorialLayout && <h3>{["Editoryal Kontrol","Mizanpaj & Kapak","ISBN & Bandrol","Baskı & Dağıtım"][index] || `Yayın Aşaması ${index+1}`}</h3>}
+                  <p>{item}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -80,7 +84,7 @@ export default function SeoServicePage({
           <div className="seo-service-combined-col">
             <p className="eyebrow"><span/>KİMLER İÇİN?</p>
             <h2>{editorialLayout ? <>Kitabını yalnızca bastırmak değil, <em>yayımlamak isteyenler için.</em></> : "Bu hizmet size uygun mu?"}</h2>
-            <ul>{audience.map((item)=><li key={item}>{item}</li>)}</ul>
+            {editorialLayout ? <div className="seo-service-fit-box">{audience.map((item)=><p key={item}><span>✓</span>{item}</p>)}</div> : <ul>{audience.map((item)=><li key={item}>{item}</li>)}</ul>}
           </div>
 
           <div className="seo-service-combined-divider" aria-hidden="true"/>
@@ -88,10 +92,12 @@ export default function SeoServicePage({
           <div className="seo-service-combined-col">
             <p className="eyebrow"><span/>SÜREÇ</p>
             <h2>{editorialLayout ? "Yayın yolculuğu nasıl ilerler?" : "Nasıl ilerliyoruz?"}</h2>
-            <ol>{process.map((item)=><li key={item}>{item}</li>)}</ol>
+            {editorialLayout ? <div className="seo-service-process-list">{process.map((item,index)=><article key={item}><b>{String(index+1).padStart(2,"0")}</b><p>{item}</p></article>)}</div> : <ol>{process.map((item)=><li key={item}>{item}</li>)}</ol>}
           </div>
         </div>
       </section>
+
+      {editorialLayout && <section className="seo-service-note"><div className="container seo-service-note-card"><div className="seo-service-note-mark">Fi</div><div><p className="eyebrow"><span/>FI YAYIN NOTU</p><h2>İyi bir baskı, iyi hazırlanmış bir yayın dosyasıyla başlar.</h2><p>Kitabın yalnızca matbaadan çıkmasını değil; kapağından iç bloğuna, ISBN ve bandrolünden dağıtım planına kadar bütün ayrıntılarının aynı yayın dili içinde hazırlanmasını önemsiyoruz.</p></div></div></section>}
 
       <section className="seo-service-output">
         <div className="container seo-service-output-card">
