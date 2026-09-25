@@ -112,8 +112,6 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
 .footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:50px}
 .footer-brand img{width:150px;filter:brightness(0) invert(1);opacity:.92}
 .footer-brand p{max-width:280px;line-height:1.6;color:#a99d94}
-footer h4{color:#fff;margin:0 0 18px;font-size:12px;letter-spacing:.16em}
-footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
 .footer-bottom{margin-top:50px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#81756d}
 
 /* floating + dock */
