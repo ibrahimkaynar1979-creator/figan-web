@@ -5489,33 +5489,3 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     background-color:#3a1d11!important;
   }
 }
-
-
-/* 2026-09-25 - FORCE ONE HOMEPAGE CANVAS COLOR */
-@media(max-width:760px){
-  html,
-  body,
-  main,
-  main > section,
-  main > section > .container,
-  .figan-services-showcase,
-  .figan-services-showcase > .container,
-  .process,
-  .process > .container,
-  .ecosystem,
-  .ecosystem > .container,
-  .author-site,
-  .author-site > .container,
-  .authors-section,
-  .authors-section > .container,
-  .about-fi-manifesto,
-  .about-fi-manifesto > .container,
-  .fi-video-teaser,
-  .fi-video-teaser > .container,
-  .final-cta,
-  .final-cta > .container{
-    background:#f6f0e7!important;
-    background-color:#f6f0e7!important;
-    background-image:none!important;
-  }
-}
