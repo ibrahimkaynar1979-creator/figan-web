@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken",
-  description: "İbrahim Kaynar’ın İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken kitabı. Fi Yayınevi.",
+  description: "İbrahim Kaynar’ın İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken kitabı. 22 Yayınevi.",
   alternates:{canonical:"/kitaplar/icimdeki-ibrahim"},
 };
 
@@ -13,11 +13,11 @@ const bookSchema = {
   author:{
     "@type":"Person",
     name:"İbrahim Kaynar",
-    url:"https://www.fiyayinevi.com/yazarlar/ibrahim-kaynar",
+    url:"https://www.22yayinevi.com/yazarlar/ibrahim-kaynar",
   },
-  publisher:{ "@id":"https://www.fiyayinevi.com/#organization" },
+  publisher:{ "@id":"https://www.22yayinevi.com/#organization" },
   inLanguage:"tr",
-  url:"https://www.fiyayinevi.com/kitaplar/icimdeki-ibrahim",
+  url:"https://www.22yayinevi.com/kitaplar/icimdeki-ibrahim",
 };
 
 export default function Page(){
@@ -27,7 +27,7 @@ export default function Page(){
       <div className="container seo-book-grid">
         <div className="seo-book-cover"><img src="/icimdeki-ibrahim.webp" alt="İçimdeki İbrahim kitap kapağı"/></div>
         <div className="seo-book-copy">
-          <a className="legal-back" href="/">← Fi Yayınevi</a>
+          <a className="legal-back" href="/">← 22 Yayınevi</a>
           <p className="eyebrow"><span/>KİTAP</p>
           <h1>İçimdeki İbrahim</h1>
           <h2>Âsaf Hâlet Çelebi’yi Ararken</h2>
