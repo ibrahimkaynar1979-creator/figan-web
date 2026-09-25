@@ -3,7 +3,7 @@ import SeoServicePage from "../_components/SeoServicePage";
 
 export const metadata: Metadata = {
   title: "E-Kitap Yayını",
-  description: "Fi Yayınevi ile EPUB hazırlığı, metadata düzeni, cihaz uyumluluğu ve dijital dağıtıma hazır e-kitap yayın sürecini yönetin.",
+  description: "22 Yayınevi ile EPUB hazırlığı, metadata düzeni, cihaz uyumluluğu ve dijital dağıtıma hazır e-kitap yayın sürecini yönetin.",
   alternates:{canonical:"/e-kitap-yayini"},
 };
 
