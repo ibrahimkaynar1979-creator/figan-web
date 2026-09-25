@@ -16,10 +16,10 @@ const slides = [
     no: "02",
     kicker: "FİGAN READER",
     title: "Her yerde\nokunur.",
-    body: "E-kitabınız Figan Reader deneyiminde, farklı cihazlarda okurla buluşur.",
+    body: "E-kitabınız 22 Reader deneyiminde, farklı cihazlarda okurla buluşur.",
     image: "/ekosistem-reader.webp",
     imageClass: "productReader",
-    alt: "Figan Reader üzerinde İçimdeki İbrahim",
+    alt: "22 Reader üzerinde İçimdeki İbrahim",
   },
   {
     no: "03",
@@ -28,7 +28,7 @@ const slides = [
     body: "Sesli kitabınız güçlü bir dinleme deneyimiyle yeni bir hayata kavuşur.",
     image: "/ekosistem-audio-transparent.webp",
     imageClass: "productAudio",
-    alt: "Figan Audio üzerinde İçimdeki İbrahim",
+    alt: "22 Audio üzerinde İçimdeki İbrahim",
   },
   {
     no: "04",
@@ -37,7 +37,7 @@ const slides = [
     body: "Eserleriniz, biyografiniz ve okurlarınızla bağınız tek bir kişisel adreste buluşur.",
     image: "/figan-yazar-sitesi-laptop.webp",
     imageClass: "productSite",
-    alt: "Figan yazar sitesi laptop görünümü",
+    alt: "22 Yayınevi yazar sitesi laptop görünümü",
   },
 ];
 
