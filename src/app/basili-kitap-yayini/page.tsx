@@ -10,8 +10,9 @@ export const metadata: Metadata = {
 export default function Page(){
   return (
     <SeoServicePage
+      editorialLayout
       eyebrow="BASILI KİTAP YAYINI"
-      title="Kitabınızı basalım ve dağıtıma çıkaralım."
+      title="Kitabınız yalnızca basılmasın. Okuruyla buluşsun."
       lead="Metninizin editoryal hazırlığını ve mevcut mizanpajınızı kontrol ediyor; kapak, ISBN, bandrol, prova, baskı ve fizikî dağıtım sürecini birlikte yürütüyor, kitabınızı satış ve dağıtım kanallarına hazır hâle getiriyoruz."
       image="/figan-hizmet-basili-kitap-yayini.webp"
       bullets={[
