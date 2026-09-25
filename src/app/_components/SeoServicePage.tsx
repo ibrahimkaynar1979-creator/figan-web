@@ -10,6 +10,7 @@ type ServicePageProps = {
   process?: string[];
   outputs?: string[];
   faqs?: { q: string; a: string }[];
+  editorialLayout?: boolean;
 };
 
 export default function SeoServicePage({
@@ -34,6 +35,7 @@ export default function SeoServicePage({
     "Hizmete göre gerekli görsel ve teknik çıktılar",
     "Yayın veya dağıtım için uygulanabilir bir sonraki adım planı",
   ],
+  editorialLayout = false,
   faqs = [
     { q:"Süreç nasıl başlıyor?", a:"Önce dosyanızı ve yayın hedefinizi değerlendiriyoruz. Ardından ihtiyacınıza uygun hizmet kapsamı ve yol haritası netleştiriliyor." },
     { q:"Hizmet tek başına alınabilir mi?", a:"Evet. İhtiyacınıza göre tek bir hizmetten yararlanabilir veya birden fazla hizmeti aynı yayın planında birleştirebilirsiniz." },
@@ -44,7 +46,7 @@ export default function SeoServicePage({
 
   return (
     <InnerPageShell>
-    <main className="seo-service-page">
+    <main className={`seo-service-page${editorialLayout ? " seo-service-editorial" : ""}`}>
       <section className="seo-service-hero">
         <div className="container seo-service-grid">
           <div className="seo-service-copy">
@@ -61,7 +63,7 @@ export default function SeoServicePage({
       <section className="seo-service-scope">
         <div className="container seo-service-scope-card">
           <p className="eyebrow"><span/>HİZMET KAPSAMI</p>
-          <h2>Bu hizmet neleri kapsar?</h2>
+          <h2>{editorialLayout ? <>Bir dosyadan, <em>gerçek bir kitaba.</em></> : "Bu hizmet neleri kapsar?"}</h2>
           <div className="seo-service-scope-grid">
             {bullets.map((item, index)=>(
               <article key={item}>
@@ -77,7 +79,7 @@ export default function SeoServicePage({
         <div className="container seo-service-combined-card">
           <div className="seo-service-combined-col">
             <p className="eyebrow"><span/>KİMLER İÇİN?</p>
-            <h2>Bu hizmet size uygun mu?</h2>
+            <h2>{editorialLayout ? <>Kitabını yalnızca bastırmak değil, <em>yayımlamak isteyenler için.</em></> : "Bu hizmet size uygun mu?"}</h2>
             <ul>{audience.map((item)=><li key={item}>{item}</li>)}</ul>
           </div>
 
@@ -85,7 +87,7 @@ export default function SeoServicePage({
 
           <div className="seo-service-combined-col">
             <p className="eyebrow"><span/>SÜREÇ</p>
-            <h2>Nasıl ilerliyoruz?</h2>
+            <h2>{editorialLayout ? "Yayın yolculuğu nasıl ilerler?" : "Nasıl ilerliyoruz?"}</h2>
             <ol>{process.map((item)=><li key={item}>{item}</li>)}</ol>
           </div>
         </div>
