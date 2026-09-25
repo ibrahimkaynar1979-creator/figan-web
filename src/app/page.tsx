@@ -153,7 +153,7 @@ export default function Home() {
             {nav.map(([label,href])=><a key={href} href={href}>{label}</a>)}
           </nav>
           <div className="header-actions">
-            <a className="header-cta" href="#basvuru">Yazar Başvurusu</a>
+            <a className="header-cta" href="/kurucu-yazar">İlk 22 Kurucu Yazara Başvur</a>
             <button className="menu-btn" aria-label="Menüyü aç" onClick={()=>setOpen(!open)}>
               <span/><span/><span/>
             </button>
@@ -161,7 +161,7 @@ export default function Home() {
         </div>
         <div className={`mobile-menu ${open?"open":""}`}>
           <nav>{nav.map(([label,href])=><a key={href} href={href} onClick={()=>setOpen(false)}>{label}</a>)}</nav>
-          <a href="#basvuru" className="mobile-menu-cta" onClick={()=>setOpen(false)}>Yazar Başvurusu Yap</a>
+          <a href="/kurucu-yazar" className="mobile-menu-cta" onClick={()=>setOpen(false)}>İlk 22 Kurucu Yazara Başvur</a>
         </div>
       </header>
 
@@ -198,7 +198,7 @@ export default function Home() {
               <h2>Şimdi ona ait bir dünya kuralım.</h2>
               <p className="hero-lead">Editörlükten bandrollü basıma, e-kitaptan sesli kitaba, yazar sitenizden dijital ve fizikî dağıtıma kadar tüm yayın dünyanızı tek çatı altında kuruyoruz.</p>
               <div className="hero-actions">
-                <a href="#basvuru" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">Yazar Başvurusu Yap</span><b className="cta-arrow">→</b></a>
+                <a href="/kurucu-yazar" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">İlk 22 Kurucu Yazara Başvur</span><b className="cta-arrow">→</b></a>
                 <a href="#fi-video" className="btn secondary"><span className="cta-icon cta-play">▶</span><span className="cta-label">22’yi İzleyin</span><b className="cta-arrow">→</b></a>
               </div>
             </div>
@@ -356,7 +356,7 @@ export default function Home() {
             <p className="eyebrow light"><span/>YAZAR BAŞVURUSU</p>
             <h2>Bir kitabınız varsa,<br/><em>ona ait dünyayı birlikte kuralım.</em></h2>
             <p>Dosyanızı paylaşın; yayın yolculuğunuzu birlikte planlayalım.</p>
-            <a className="btn gold" href="https://wa.me/905532419397?text=Merhaba%2C%2022%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Başvur <b>→</b></a>
+            <a className="btn gold" href="/kurucu-yazar">İlk 22 Kurucu Yazar Statüsüne Başvur <b>→</b></a>
           </div>
         </section>
       </main>
