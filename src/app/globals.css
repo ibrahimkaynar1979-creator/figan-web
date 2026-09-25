@@ -4237,16 +4237,21 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
 
 
 /* 2026-09-25 - INNER SERVICE HERO IMAGE FIT */
-.seo-service-visual{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  overflow:hidden!important;
-  background:#f4eadf!important;
+.seo-service-grid{
+  align-items:center;
 }
+
+.seo-service-visual{
+  display:block!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  overflow:hidden!important;
+  background:transparent!important;
+}
+
 .seo-service-visual img{
   width:100%!important;
-  height:100%!important;
+  height:auto!important;
   object-fit:contain!important;
   object-position:center!important;
   display:block!important;
@@ -4254,10 +4259,7 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
 
 @media(max-width:760px){
   .seo-service-visual{
-    aspect-ratio:4/3!important;
     min-height:0!important;
-  }
-  .seo-service-visual img{
-    object-fit:contain!important;
+    aspect-ratio:auto!important;
   }
 }
