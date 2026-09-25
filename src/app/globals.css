@@ -5313,3 +5313,15 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     border-radius:20px!important;
   }
 }
+
+
+/* 2026-09-25 - MATCH CTA/FOOTER GAP TO INNER CARD RHYTHM */
+@media(max-width:760px){
+  .seo-service-editorial .seo-service-final-cta{
+    padding-bottom:10px!important;
+  }
+  .seo-service-editorial + .fi-footer-v2,
+  .seo-service-page + .fi-footer-v2{
+    margin-top:0!important;
+  }
+}
