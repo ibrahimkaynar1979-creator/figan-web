@@ -5574,3 +5574,20 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
 @media(max-width:760px){
   .brand-logo-image img{width:122px;}
 }
+
+
+/* 2026-09-26 - AUTHORS CARDS MATCH SERVICE CARD WIDTH */
+@media(max-width:760px){
+  .home-page-main .authors-track{
+    gap:12px!important;
+    margin:0 -8px!important;
+    padding:0 8px 10px!important;
+  }
+  .home-page-main .author-slide-card{
+    flex:0 0 66vw!important;
+    width:66vw!important;
+    max-width:322px!important;
+    min-width:0!important;
+    border-radius:1.35rem!important;
+  }
+}
