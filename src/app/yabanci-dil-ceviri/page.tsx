@@ -3,7 +3,7 @@ import SeoServicePage from "../_components/SeoServicePage";
 
 export const metadata: Metadata = {
   title: "Yabancı Dil Çeviri ve Yayın Hazırlığı",
-  description: "Fi Yayınevi ile editoryal çeviri, terminoloji kontrolü, hedef dilde yayın dili ve yabancı dilde dijital yayın hazırlığını planlayın.",
+  description: "22 Yayınevi ile editoryal çeviri, terminoloji kontrolü, hedef dilde yayın dili ve yabancı dilde dijital yayın hazırlığını planlayın.",
   alternates:{canonical:"/yabanci-dil-ceviri"},
 };
 
