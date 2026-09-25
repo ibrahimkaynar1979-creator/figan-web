@@ -5508,3 +5508,18 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     background:#f6f0e7!important;
   }
 }
+
+
+/* 2026-09-26 - HOMEPAGE MOBILE: REMOVE COLORED CARD SHADOW BANDS */
+@media(max-width:760px){
+  .home-page-main .figan-service-card,
+  .home-page-main .process-panel,
+  .home-page-main .ecosystem-grid,
+  .home-page-main .author-grid,
+  .home-page-main .author-slide-card,
+  .home-page-main .about-figan-card,
+  .home-page-main .fi-video-teaser-card,
+  .home-page-main .final-panel{
+    box-shadow:none!important;
+  }
+}
