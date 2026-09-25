@@ -5443,3 +5443,49 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     display:none!important;
   }
 }
+
+
+/* 2026-09-25 - HOMEPAGE MOBILE SURFACE + BREATHING ROOM */
+@media(max-width:760px){
+  body,
+  main,
+  main > section,
+  .figan-services-showcase,
+  .process,
+  .ecosystem,
+  .author-site,
+  .authors-section,
+  .about-fi-manifesto,
+  .fi-video-teaser,
+  .final-cta{
+    background-color:#f6f0e7!important;
+    background-image:none!important;
+  }
+
+  main > .home-hero,
+  main > .figan-services-showcase,
+  main > .process,
+  main > .ecosystem,
+  main > .author-site,
+  main > .authors-section,
+  main > .about-fi-manifesto,
+  main > .fi-video-teaser,
+  main > .final-cta{
+    padding-left:8px!important;
+    padding-right:8px!important;
+    padding-top:0!important;
+    padding-bottom:16px!important;
+  }
+
+  .about-fi-manifesto .about-figan-card,
+  .process-panel,
+  .author-grid{
+    background:#fffdf9!important;
+  }
+
+  .fi-video-teaser-card,
+  .ecosystem-grid,
+  .final-panel{
+    background-color:#3a1d11!important;
+  }
+}
