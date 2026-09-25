@@ -11,36 +11,36 @@ export default function Page(){
   return (
     <SeoServicePage
       eyebrow="BASILI KİTAP YAYINI"
-      title="Kitabınızı basıma ve dağıtıma hazırlayalım."
-      lead="Metninizin editoryal hazırlığından mizanpaja, kapak tasarımından bandrollü basıma ve fizikî dağıtıma kadar basılı yayın sürecini tek plan içinde yürütüyoruz."
+      title="Kitabınızı basalım ve dağıtıma çıkaralım."
+      lead="Metninizin editoryal hazırlığını ve mevcut mizanpajınızı kontrol ediyor; kapak, ISBN, bandrol, prova, baskı ve fizikî dağıtım sürecini birlikte yürütüyor, kitabınızı satış ve dağıtım kanallarına hazır hâle getiriyoruz."
       image="/figan-hizmet-basili-kitap-yayini.webp"
       bullets={[
-        "Editörlük, redaksiyon ve mizanpaj hazırlığı",
-        "Kapak tasarımı ve baskı öncesi prova kontrolü",
-        "ISBN ve bandrol sürecine uygun yayın hazırlığı",
-        "Baskı adedi planlama, üretim ve fizikî dağıtım hazırlığı",
+        "Editörlük kontrolü ve mevcut mizanpajın baskıya uygunluk kontrolü",
+        "Kapak, prova ve baskı dosyalarının son kontrolü",
+        "ISBN, bandrol ve baskı kayıtlarının yayın sürecine dahil edilmesi",
+        "Baskı, üretim ve kitabın fizikî satış-dağıtım kanallarına çıkarılması",
       ]}
       audience={[
         "İlk kitabını profesyonel standartta yayımlamak isteyen yazarlar",
-        "Mevcut dosyasını kapak, mizanpaj ve baskı açısından yeniden hazırlatmak isteyenler",
-        "Basılı kitabını fizikî satış ve dağıtım kanallarına taşımayı planlayan yazarlar",
+        "Mizanpajı mevcut olup kitabını profesyonel baskı ve dağıtım sürecine taşımak isteyenler",
+        "Kitabını basılı olarak yayımlayıp satış ve dağıtım kanallarında yer almak isteyen yazarlar",
       ]}
       process={[
         "Dosya editoryal ve teknik açıdan incelenir; yayın planı oluşturulur.",
-        "Metin düzenleme, mizanpaj ve kapak çalışmaları tamamlanır.",
-        "Prova dosyası kontrol edilir; baskı, ISBN ve bandrol gereklilikleri planlanır.",
-        "Onay sonrası baskı adedi netleştirilir ve fizikî dağıtım hazırlığı yapılır.",
+        "Mevcut mizanpaj kontrol edilir; gerekli editoryal, kapak ve baskı dosyası düzeltmeleri tamamlanır."
+        "Prova onaylanır; ISBN, bandrol ve baskı gereklilikleri tamamlanır."
+        "Onay sonrası kitap basılır ve belirlenen fizikî satış ve dağıtım kanallarına çıkarılır."
       ]}
       outputs={[
-        "Baskıya hazır iç blok ve kapak dosyaları",
-        "Prova kontrolü tamamlanmış bandrollü basım hazırlığı",
-        "Fizikî satış ve dağıtım süreci için hazırlanmış yayın paketi",
+        "Kontrolleri tamamlanmış iç blok, kapak ve prova dosyaları",
+        "ISBN ve bandrol süreci tamamlanmış basılı kitap",
+        "Satış ve dağıtım kanallarına hazır hâle getirilmiş kitap yayını",
       ]}
       faqs={[
         { q:"Baskı adedi nasıl belirleniyor?", a:"Eserin hedef kitlesi, bütçe, satış planı ve dağıtım hedefi birlikte değerlendirilerek uygun ilk baskı adedi planlanır." },
         { q:"ISBN ve bandrol süreci nasıl ilerliyor?", a:"Eserin yayın bilgileri basım öncesinde düzenlenir; ISBN ve bandrol için gerekli yayın hazırlıkları süreç içinde planlanır." },
-        { q:"Kapak ve mizanpaj hizmete dahil mi?", a:"Seçilen yayın kapsamına göre kapak tasarımı, iç sayfa mizanpajı ve baskı öncesi prova kontrolü aynı yayın planına dahil edilebilir." },
-        { q:"Kitap dağıtıma hazır hale geliyor mu?", a:"Basım sonrası kitabın uygun fizikî satış ve dağıtım kanallarına hazırlanması yayın planının bir parçası olarak ele alınabilir." },
+        { q:"Mizanpajım hazırsa yeniden yapılır mı?", a:"Hayır. Mevcut mizanpajınız baskı standardı açısından kontrol edilir; yalnızca gerekli teknik veya editoryal düzeltmeler yapılır." },
+        { q:"Kitap sadece basılıyor mu, dağıtıma da çıkıyor mu?", a:"Basım tamamlandıktan sonra kitap, yayın planında belirlenen uygun fizikî satış ve dağıtım kanallarına çıkarılacak şekilde hazırlanır ve sürece alınır." },
       ]}
     />
   );
