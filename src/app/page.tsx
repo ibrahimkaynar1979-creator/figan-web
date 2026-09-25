@@ -5,6 +5,7 @@
 // deployment-refresh-2026-09-24
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import FiFooter from "./_components/FiFooter";
 
 const nav = [
@@ -147,7 +148,7 @@ export default function Home() {
     <>
       <header className={`site-header ${scrolled?"is-scrolled":""}`}>
         <div className="container header-inner">
-          <a href="#top" className="brand brand-fi" aria-label="Fi Yayınevi ana sayfa"><span className="brand-fi-main">Fi</span><span className="brand-fi-sub">YAYINEVİ</span></a>
+          <a href="#top" className="brand brand-fi brand-logo-image" aria-label="22 Yayınevi ana sayfa"><Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={420} height={140} priority /></a>
           <nav className="desktop-nav">
             {nav.map(([label,href])=><a key={href} href={href}>{label}</a>)}
           </nav>
