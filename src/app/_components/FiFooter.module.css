@@ -12,10 +12,8 @@
   overflow: hidden;
   border: 1px solid rgba(185, 152, 105, 0.26);
   border-radius: 1.2rem;
-  background: #fffdf9;
-  box-shadow:
-    0 15px 40px rgba(48,44,41,.05),
-    0 4px 14px rgba(48,44,41,.025);
+  background: #fbf8f2;
+  box-shadow: none;
 }
 
 .top {
