@@ -164,7 +164,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main id="top">
+      <main id="top" className="home-page-main">
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
 
         <nav className="figan-category-nav" aria-label="Fi yayın hizmetleri">
@@ -360,7 +360,7 @@ export default function Home() {
         </section>
       </main>
 
-      <FiFooter />
+      <div className="home-footer-zone"><FiFooter /></div>
 
       <div className="contact-float">
         <a className="call" href="tel:+905532419397" aria-label="Fi Yayınevi'ni telefonla ara" title="Telefonla ara">
