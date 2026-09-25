@@ -5253,3 +5253,63 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     margin-bottom:0!important;
   }
 }
+
+
+/* 2026-09-25 - FINAL MOBILE RHYTHM: INNER + HOME */
+@media(max-width:760px){
+  /* Inner service page: CTA should sit close to footer */
+  .seo-service-editorial .seo-service-final-cta{
+    margin:0!important;
+    padding-bottom:0!important;
+  }
+  .seo-service-editorial .seo-service-final-cta-card{
+    padding:20px 18px!important;
+  }
+  .seo-service-page + footer{
+    margin-top:0!important;
+    padding-top:0!important;
+  }
+
+  /* Homepage: consistent compact rhythm */
+  main > .section{
+    padding-top:24px!important;
+    padding-bottom:24px!important;
+  }
+  .figan-services-showcase{
+    padding-top:18px!important;
+    padding-bottom:22px!important;
+  }
+  .process{
+    padding-top:8px!important;
+    padding-bottom:20px!important;
+  }
+  .ecosystem{
+    padding-top:8px!important;
+    padding-bottom:20px!important;
+  }
+  .author-site,
+  .author-site-compact{
+    padding-top:20px!important;
+    padding-bottom:20px!important;
+  }
+  .authors-section{
+    padding-top:20px!important;
+    padding-bottom:20px!important;
+  }
+  .about-fi-manifesto{
+    padding-top:8px!important;
+    padding-bottom:18px!important;
+  }
+  .fi-video-teaser{
+    padding-top:6px!important;
+    padding-bottom:16px!important;
+  }
+  .final-cta{
+    padding-top:8px!important;
+    padding-bottom:8px!important;
+  }
+  .final-panel{
+    padding:20px 18px!important;
+    border-radius:20px!important;
+  }
+}
