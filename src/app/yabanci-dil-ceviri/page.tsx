@@ -10,10 +10,22 @@ export const metadata: Metadata = {
 export default function Page(){
   return (
     <SeoServicePage
+      editorialLayout
       eyebrow="YABANCI DİL"
-      title="Eserinizi yeni dillere açalım."
-      lead="Metninizi yalnızca kelime kelime çevirmek yerine; editoryal akış, terminoloji, hedef dilin doğal kullanımı ve yayın standardı açısından yeniden ele alıyoruz."
+      title="Eseriniz yeni bir dilde de kendi sesini korusun."
+      lead="Metninizi yalnızca çevirmiyor; anlatım tonu, terminoloji, kültürel bağlam ve hedef dilin doğal akışıyla birlikte ele alarak yayıma hazır yeni bir dil sürümüne dönüştürüyoruz."
       image="/figan-hizmet-04-yabanci-dil.webp"
+      scopeTitle="Bir dilden,"
+      scopeAccent="yeni bir okur dünyasına."
+      scopeStepTitles={["Çeviri Planı","Editoryal Çeviri","Dil & Terminoloji","Yayın Hazırlığı"]}
+      audienceTitle="Eserini yalnızca çevirmek değil,"
+      audienceAccent="başka bir dilde yeniden yayımlamak isteyenler için."
+      audienceIntro="Kitabını yeni okurlara açmak, anlatım sesini koruyarak başka bir dilde profesyonel bir yayın sürümü oluşturmak ve dijital yayına hazırlanmak isteyen yazarlar için."
+      noteTitle="İyi çeviri, kelimeleri değil; eserin sesini taşır."
+      noteText="Bir kitabın başka bir dilde aynı etkiyi yaratabilmesi için yalnızca anlamın değil, ritmin, tonun, kavramların ve kültürel bağlamın da korunması gerekir. Çeviriyi yayıncılık sürecinin bir parçası olarak ele alıyoruz."
+      processTitle="Yabancı dil yayın süreci nasıl ilerler?"
+      processStepTitles={["Kaynak metin analizi","Çeviri ve üslup planı","Editoryal dil kontrolü","Yayın dosyası hazırlığı"]}
+      outputTitles={["Editoryal çeviri metni","Tutarlı dil ve terminoloji","Yayına hazır dil paketi"]}
       bullets={[
         "Hedef dil ve yayın amacı için çeviri planlaması",
         "Editoryal çeviri ve doğal yayın dili düzeni",
