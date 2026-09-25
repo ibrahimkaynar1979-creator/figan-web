@@ -10,10 +10,22 @@ export const metadata: Metadata = {
 export default function Page(){
   return (
     <SeoServicePage
+      editorialLayout
       eyebrow="DİJİTAL DAĞITIM"
-      title="Eserinizi daha fazla okura ulaştıralım."
-      lead="Eserinizin yayın dosyalarını, metadata bilgilerini ve platform gerekliliklerini düzenleyerek Türkiye ve uygun global dijital kanallara hazırlanmasını planlıyoruz."
+      title="Kitabınız hazırsa, şimdi doğru kanallarda okuruyla buluşsun."
+      lead="Yayın dosyalarınızı, kapak ve metadata bilgilerinizi platform standartlarına göre düzenliyor; kitabınızın Türkiye ve uygun global dijital kanallara hazırlanmasını tek bir dağıtım planı içinde yürütüyoruz."
       image="/figan-hizmet-dijital-dagitim.webp"
+      scopeTitle="Hazır bir eserden,"
+      scopeAccent="ulaşılabilir bir yayına."
+      scopeStepTitles={["Dosya Kontrolü","Metadata & Kapak","Kanal Planı","Dağıtıma Hazırlık"]}
+      audienceTitle="Kitabını yalnızca yayımlamak değil,"
+      audienceAccent="okuruna ulaştırmak isteyenler için."
+      audienceIntro="Eserini dijital satış ve okuma kanallarına taşımak, yayın bilgilerini doğru yapılandırmak ve yerel ya da global platformlarda görünür hâle getirmek isteyen yazarlar için."
+      noteTitle="Bir kitabın yayımlanması, okura ulaştığında anlam kazanır."
+      noteText="Dijital dağıtım yalnızca bir dosyayı platforma yüklemek değildir. Doğru dosya yapısı, tutarlı metadata, uygun kategori ve kanal seçimi kitabınızın dijital dünyada doğru biçimde yer almasının temelidir."
+      processTitle="Dijital dağıtım nasıl ilerler?"
+      processStepTitles={["Yayın dosyası analizi","Metadata ve kapak hazırlığı","Platform uyumluluğu","Dağıtım paketi"]}
+      outputTitles={["Kontrol edilmiş yayın dosyaları","Hazır metadata paketi","Dağıtıma hazır yayın paketi"]}
       bullets={[
         "Platform standartlarına uygun yayın dosyası kontrolü",
         "Kitap adı, açıklama, kategori ve metadata düzeni",
