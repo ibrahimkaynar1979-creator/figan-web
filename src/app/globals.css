@@ -5095,3 +5095,87 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     grid-template-columns:1fr!important;
   }
 }
+
+
+/* 2026-09-25 - SERVICE CIRCLE NAV */
+.seo-service-nav{
+  max-width:1120px;
+  margin:18px auto 0;
+  padding:10px 14px 8px;
+  border:1px solid rgba(169,105,52,.14);
+  border-radius:20px;
+  background:#fffdf9;
+  box-shadow:0 8px 24px rgba(73,54,46,.035);
+}
+.seo-service-nav-track{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  gap:22px;
+}
+.seo-service-nav-item{
+  flex:0 0 112px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  color:#49362e;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.15;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.seo-service-nav-image{
+  display:block;
+  width:76px;
+  height:76px;
+  padding:4px;
+  overflow:hidden;
+  border:1px solid rgba(169,105,52,.22);
+  border-radius:50%;
+  background:#f8efe3;
+  box-shadow:0 4px 14px rgba(73,54,46,.06);
+  transition:transform .2s ease,border-color .2s ease;
+}
+.seo-service-nav-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+.seo-service-nav-item:hover .seo-service-nav-image{
+  transform:translateY(-2px);
+  border-color:#c96b47;
+}
+@media(max-width:760px){
+  .seo-service-nav{
+    margin:10px 8px 0;
+    padding:9px 8px 8px;
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .seo-service-nav-track{
+    justify-content:flex-start;
+    gap:12px;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+    padding:0 2px 3px;
+  }
+  .seo-service-nav-track::-webkit-scrollbar{display:none}
+  .seo-service-nav-item{
+    flex-basis:78px;
+    gap:5px;
+    font-size:10.5px;
+    scroll-snap-align:start;
+  }
+  .seo-service-nav-image{
+    width:62px;
+    height:62px;
+    padding:3px;
+  }
+}
