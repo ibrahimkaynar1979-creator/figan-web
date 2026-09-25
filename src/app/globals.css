@@ -3270,3 +3270,89 @@ footer a,footer span{display:block;color:#bcaea4;font-size:13px;margin:10px 0}
     grid-template-columns:1fr!important;
   }
 }
+
+
+/* 2026-09-25 - MOBILE POLISH AFTER VISUAL QA */
+@media(max-width:760px){
+  .figan-category-nav{padding-bottom:10px!important}
+
+  .figan-service-content{
+    min-height:230px!important;
+    padding:26px 16px 14px!important;
+  }
+  .figan-service-content>p{
+    -webkit-line-clamp:2!important;
+    margin:10px 0 12px!important;
+  }
+
+  .contact-float{
+    right:9px!important;
+    bottom:80px!important;
+    gap:7px!important;
+  }
+  .contact-float a{
+    width:46px!important;
+    height:46px!important;
+    box-shadow:0 6px 18px rgba(41,28,18,.18)!important;
+  }
+  .contact-float svg{
+    width:20px!important;
+    height:20px!important;
+  }
+
+  .mobile-dock{
+    height:62px!important;
+    padding:6px 6px 5px!important;
+  }
+  .mobile-dock a{
+    font-size:8.5px!important;
+    gap:2px!important;
+  }
+  .mobile-dock a span{
+    font-size:17px!important;
+  }
+  body{padding-bottom:62px!important}
+
+  .figan-footer{
+    padding-bottom:66px!important;
+  }
+  .footer-groups{
+    gap:12px!important;
+  }
+  .footer-contact .footer-address{
+    display:grid!important;
+    grid-template-columns:18px minmax(0,1fr)!important;
+    align-items:start!important;
+    column-gap:9px!important;
+  }
+  .footer-address-lines{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    white-space:normal!important;
+    word-break:keep-all!important;
+    overflow-wrap:normal!important;
+    line-height:1.45!important;
+  }
+
+  .naribo-credit-text{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:1px!important;
+    margin-top:8px!important;
+    color:#4b3b33!important;
+  }
+  .naribo-credit-text span{
+    font-family:var(--font-ui),Arial,sans-serif!important;
+    font-size:16px!important;
+    font-weight:800!important;
+    letter-spacing:.18em!important;
+  }
+  .naribo-credit-text small{
+    font-family:var(--font-ui),Arial,sans-serif!important;
+    font-size:7px!important;
+    font-weight:700!important;
+    letter-spacing:.24em!important;
+  }
+}
