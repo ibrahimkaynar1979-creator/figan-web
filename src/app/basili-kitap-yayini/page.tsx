@@ -3,7 +3,7 @@ import SeoServicePage from "../_components/SeoServicePage";
 
 export const metadata: Metadata = {
   title: "Basılı Kitap Yayını ve Dağıtım",
-  description: "Fi Yayınevi ile editörlük, mizanpaj, kapak tasarımı, ISBN ve bandrol hazırlığı, baskı ve fizikî dağıtım süreçlerini tek yayın planında yönetin.",
+  description: "22 Yayınevi ile editörlük, mizanpaj, kapak tasarımı, ISBN ve bandrol hazırlığı, baskı ve fizikî dağıtım süreçlerini tek yayın planında yönetin.",
   alternates:{canonical:"/basili-kitap-yayini"},
 };
 
