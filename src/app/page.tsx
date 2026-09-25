@@ -359,46 +359,56 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="figan-footer">
-        <div className="container figan-footer-shell">
-          <div className="footer-logo-row">
-            <a href="#top" className="footer-logo footer-logo-fi" aria-label="Fi Yayınevi"><span className="brand-fi-main">Fi</span><span className="brand-fi-sub">YAYINEVİ</span></a>
+      <footer className="fi-footer-v2">
+        <div className="fi-footer-v2-panel">
+          <div className="fi-footer-v2-brand">
+            <a href="#top" aria-label="Fi Yayınevi ana sayfa" className="fi-footer-v2-logo">
+              <span>Fi</span>
+              <small>YAYINEVİ</small>
+            </a>
             <p>Bir kitabın ötesinde, size ait bir yayın dünyası.</p>
           </div>
-          <div className="footer-divider"/>
-          <div className="footer-groups">
-            <section className="footer-group">
-              <h4>Yayın Dünyası</h4>
-              <a href="/basili-kitap-yayini"><span>✦</span>Basılı Kitap Yayını</a>
-              <a href="/e-kitap-yayini"><span>✦</span>E-Kitap</a>
-              <a href="/sesli-kitap"><span>✦</span>Sesli Kitap</a>
-              <a href="/yazar-sitesi"><span>✦</span>Yazar Sitesi</a>
-              <a href="/dijital-dagitim"><span>✦</span>Dijital Dağıtım</a>
+
+          <div className="fi-footer-v2-columns">
+            <section>
+              <h3>Yayın Dünyası</h3>
+              <a href="/basili-kitap-yayini"><i>✦</i>Basılı Kitap Yayını</a>
+              <a href="/e-kitap-yayini"><i>✦</i>E-Kitap</a>
+              <a href="/sesli-kitap"><i>✦</i>Sesli Kitap</a>
+              <a href="/yazar-sitesi"><i>✦</i>Yazar Sitesi</a>
+              <a href="/dijital-dagitim"><i>✦</i>Dijital Dağıtım</a>
             </section>
-            <section className="footer-group">
-              <h4>Fi</h4>
-              <a href="#surec"><span>✦</span>Nasıl Çalışıyoruz?</a>
-              <a href="#yazarlar"><span>✦</span>Yazarlarımız</a>
-              <a href="#hakkimizda"><span>✦</span>Fi Hakkında</a>
-              <a href="#basvuru"><span>✦</span>Yazar Başvurusu</a>
-            </section>
-            <section className="footer-group footer-contact">
-              <h4>Bize Ulaşın</h4>
-              <p className="footer-phone"><span aria-hidden="true">☎</span><strong>Ofis</strong> 0 532 4 290 290</p>
-              <a href="tel:+905532419397"><span aria-hidden="true">☎</span><strong>Mobil</strong> 0 553 241 93 97</a>
-              <a href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span>WhatsApp’tan Yazın</a>
-              <a href="mailto:info@fiyayinevi.com"><span aria-hidden="true">✉</span>info@fiyayinevi.com</a>
-              <p className="footer-address"><span aria-hidden="true">⌖</span><span className="footer-address-lines">Folkart Towers A Kule · Adalet Mah. Manas Blv. No:47/B<br/>Kat:26 D:2601 · Bayraklı / İzmir</span></p>
+
+            <section>
+              <h3>Fi</h3>
+              <a href="#surec"><i>✦</i>Nasıl Çalışıyoruz?</a>
+              <a href="#yazarlar"><i>✦</i>Yazarlarımız</a>
+              <a href="#hakkimizda"><i>✦</i>Fi Hakkında</a>
+              <a href="#basvuru"><i>✦</i>Yazar Başvurusu</a>
             </section>
           </div>
-          <div className="footer-signature"><i/><span>✦</span><i/></div>
-          <div className="footer-bottom">
-            <p>© {new Date().getFullYear()} Fi Yayınevi. Tüm hakları saklıdır.</p>
-            <div className="footer-legal"><a href="/gizlilik">Gizlilik Politikası</a><i/><a href="/kvkk">KVKK</a><i/><a href="/kullanim-kosullari">Kullanım Koşulları</a></div>
-            <div className="naribo-credit naribo-credit-text" aria-label="Naribo Creative Agency">
-              <div className="naribo-label"><i></i><small>TASARIM VE YAZILIM</small><i></i></div>
-              <div className="naribo-wordmark"><span>NARIBO</span><em>creative agency</em></div>
+
+          <section className="fi-footer-v2-contact">
+            <h3>Bize Ulaşın</h3>
+            <div className="fi-footer-v2-contact-grid">
+              <a href="tel:+905324290290"><span>☎</span><b>Ofis</b><em>0 532 4 290 290</em></a>
+              <a href="tel:+905532419397"><span>☎</span><b>Mobil</b><em>0 553 241 93 97</em></a>
+              <a href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span>◉</span><em>WhatsApp’tan Yazın</em></a>
+              <a href="mailto:info@fiyayinevi.com"><span>✉</span><em>info@fiyayinevi.com</em></a>
             </div>
+            <p className="fi-footer-v2-address"><span>⌖</span><em>Folkart Towers A Kule · Adalet Mah. Manas Blv. No:47/B · Kat:26 D:2601 · Bayraklı / İzmir</em></p>
+          </section>
+
+          <div className="fi-footer-v2-divider"><i></i><span>✦</span><i></i></div>
+
+          <div className="fi-footer-v2-naribo">
+            <div className="fi-footer-v2-naribo-label"><i></i><span>TASARIM VE YAZILIM</span><i></i></div>
+            <img src="https://cdn.jsdelivr.net/gh/ibrahimkaynar1979-creator/patiliyolar-web@master/public/logos/naribo-creative-agency.png" alt="Naribo Creative Agency"/>
+          </div>
+
+          <div className="fi-footer-v2-legal">
+            <p>© {new Date().getFullYear()} Fi Yayınevi. Tüm hakları saklıdır.</p>
+            <div><a href="/gizlilik">Gizlilik Politikası</a><i></i><a href="/kvkk">KVKK</a><i></i><a href="/kullanim-kosullari">Kullanım Koşulları</a></div>
           </div>
         </div>
       </footer>
