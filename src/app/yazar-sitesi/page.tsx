@@ -3,7 +3,7 @@ import SeoServicePage from "../_components/SeoServicePage";
 
 export const metadata: Metadata = {
   title: "Yazar Sitesi",
-  description: "Fi Yayınevi ile biyografi, kitap vitrini, yazılar ve duyurular için mobil uyumlu, kalıcı ve profesyonel yazar sitesi oluşturun.",
+  description: "22 Yayınevi ile biyografi, kitap vitrini, yazılar ve duyurular için mobil uyumlu, kalıcı ve profesyonel yazar sitesi oluşturun.",
   alternates:{canonical:"/yazar-sitesi"},
 };
 
