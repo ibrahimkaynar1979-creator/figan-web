@@ -81,7 +81,7 @@ const process = [
 const authors = [
   {
     name:"İbrahim Kaynar",
-    kicker:"Fİ YAZARI",
+    kicker:"22 YAYINEVİ YAZARI",
     description:"“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.",
     image:"/icimdeki-ibrahim-mockup.png",
     initials:"İK",
@@ -90,7 +90,7 @@ const authors = [
   },
   {
     name:"Figen Yavuz",
-    kicker:"Fİ YAZARI",
+    kicker:"22 YAYINEVİ YAZARI",
     description:"22 Yayınevi yazarlarından Figen Yavuz’un eserleri ve yayın yolculuğu bu alanda okurla buluşacak.",
     image:null,
     initials:"FY",
@@ -270,7 +270,7 @@ export default function Home() {
         <section id="ekosistem" className="section ecosystem">
           <div className="container ecosystem-grid">
             <div className="ecosystem-copy">
-              <p className="eyebrow light"><span/>Fİ EKOSİSTEMİ</p>
+              <p className="eyebrow light"><span/>22 YAYINEVİ EKOSİSTEMİ</p>
               <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
               <p>Kitabınız dijitalde ve fizikî dünyada birlikte yaşar; okunur, dinlenir, bandrollü olarak basılır ve uygun dağıtım kanallarıyla okura ulaşır.</p>
               <a href="#basvuru" className="btn light-btn">Yayın Dünyamı Kur <b>→</b></a>
@@ -332,7 +332,7 @@ export default function Home() {
           <div className="container">
             <div className="about-figan-card">
               <div className="about-figan-copy">
-                <p className="eyebrow"><span/>Fİ HAKKINDA</p>
+                <p className="eyebrow"><span/>22 YAYINEVİ HAKKINDA</p>
                 <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
                 <p>22 Yayınevi, bir eseri yalnızca basılacak bir dosya olarak görmez. Metnin editoryal hazırlığından basılı ve dijital yayına, sesli kitaptan yazarın kendi dijital alanına kadar birbirini tamamlayan bir yayın dünyası kurar.</p>
                 <p className="about-fi-note">Yazarın eseri kadar kendi adıyla da kalıcı, görünür ve erişilebilir olmasını önemsiyoruz.</p>
@@ -344,7 +344,7 @@ export default function Home() {
         <section id="fi-video" className="section fi-video-teaser">
           <div className="container fi-video-teaser-card">
             <div>
-              <p className="eyebrow light"><span/>Fİ’Yİ İZLEYİN</p>
+              <p className="eyebrow light"><span/>22 YAYINEVİ’Nİ İZLEYİN</p>
               <h2>Yayın dünyamızı<br/><em>yakında videoda anlatıyoruz.</em></h2>
             </div>
             <div className="fi-video-teaser-play" aria-hidden="true"><span>▶</span><small>Tanıtım videosu yakında</small></div>
