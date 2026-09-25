@@ -81,7 +81,7 @@ const authors = [
     name:"İbrahim Kaynar",
     kicker:"Fİ YAZARI",
     description:"“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.",
-    image:"/icimdeki-ibrahim.webp",
+    image:"/icimdeki-ibrahim-mockup.png",
     initials:"İK",
     href:"/yazarlar/ibrahim-kaynar",
     published:true,
@@ -89,7 +89,7 @@ const authors = [
   {
     name:"Figen Yavuz",
     kicker:"Fİ YAZARI",
-    description:"Yazar profili ve eserleri eklendikçe bu kart üzerinden Fi yayın dünyasında yerini alacak.",
+    description:"Fi Yayınevi yazarlarından Figen Yavuz’un eserleri ve yayın yolculuğu bu alanda okurla buluşacak.",
     image:null,
     initials:"FY",
     href:"/yazarlar/figen-yavuz",
@@ -388,15 +388,15 @@ export default function Home() {
               <a href="tel:+905532419397"><span aria-hidden="true">☎</span><strong>Mobil</strong> 0 553 241 93 97</a>
               <a href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span>WhatsApp’tan Yazın</a>
               <a href="mailto:info@fiyayinevi.com"><span aria-hidden="true">✉</span>info@fiyayinevi.com</a>
-              <p className="footer-address"><span aria-hidden="true">⌖</span><span className="footer-address-lines">Folkart Towers A Kule<br/>Adalet Mah. Manas Blv. No:47/B<br/>Kat:26 D:2601 · Bayraklı / İzmir</span></p>
+              <p className="footer-address"><span aria-hidden="true">⌖</span><span className="footer-address-lines">Folkart Towers A Kule · Adalet Mah. Manas Blv. No:47/B<br/>Kat:26 D:2601 · Bayraklı / İzmir</span></p>
             </section>
           </div>
           <div className="footer-signature"><i/><span>✦</span><i/></div>
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} Fi Yayınevi. Tüm hakları saklıdır.</p>
             <div className="footer-legal"><a href="/gizlilik">Gizlilik Politikası</a><i/><a href="/kvkk">KVKK</a><i/><a href="/kullanim-kosullari">Kullanım Koşulları</a></div>
-            <div className="naribo-credit" aria-label="Naribo Creative Agency">
-              <img src="https://raw.githubusercontent.com/ibrahimkaynar1979-creator/patiliyolar-web/master/public/logos/naribo-creative-agency.png" alt="Naribo Creative Agency"/>
+            <div className="naribo-credit naribo-credit-text" aria-label="Naribo Creative Agency">
+              <span>NARIBO</span><small>CREATIVE AGENCY</small>
             </div>
           </div>
         </div>
