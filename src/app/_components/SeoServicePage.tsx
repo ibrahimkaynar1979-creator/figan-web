@@ -1,3 +1,5 @@
+import InnerPageShell from "./InnerPageShell";
+
 type ServicePageProps = {
   eyebrow: string;
   title: string;
@@ -41,6 +43,7 @@ export default function SeoServicePage({
   const whatsapp = "https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.";
 
   return (
+    <InnerPageShell>
     <main className="seo-service-page">
       <section className="seo-service-hero">
         <div className="container seo-service-grid">
@@ -129,5 +132,6 @@ export default function SeoServicePage({
         </div>
       </section>
     </main>
+    </InnerPageShell>
   );
 }
