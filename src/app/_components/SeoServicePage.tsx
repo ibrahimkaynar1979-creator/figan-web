@@ -65,12 +65,12 @@ export default function SeoServicePage({
     { q:"Fiyat nasıl belirleniyor?", a:"Eserin kapsamı, sayfa sayısı, hazırlık ihtiyacı ve seçilen hizmetlere göre değerlendirme sonrasında net teklif oluşturulur." },
   ],
 }: ServicePageProps){
-  const whatsapp = "https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.";
+  const whatsapp = "https://wa.me/905532419397?text=Merhaba%2C%2022%20Yay%C4%B1nevi%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.";
 
   return (
     <InnerPageShell>
     <main className={`seo-service-page${editorialLayout ? " seo-service-editorial" : ""}`}>
-      <nav className="seo-service-nav" aria-label="Fi Yayınevi hizmetleri">
+      <nav className="seo-service-nav" aria-label="22 Yayınevi hizmetleri">
           <div className="seo-service-nav-track">
             {[
               {label:"Basılı Kitap",href:"/basili-kitap-yayini",image:"/figan-hizmet-basili-kitap-yayini.webp"},
@@ -91,7 +91,7 @@ export default function SeoServicePage({
       <section className="seo-service-hero">
         <div className="container seo-service-grid">
           <div className="seo-service-copy">
-            <a className="legal-back" href="/">← Fi Yayınevi</a>
+            <a className="legal-back" href="/">← 22 Yayınevi</a>
             <p className="eyebrow"><span/>{eyebrow}</p>
             <h1>{title}</h1>
             <p className="seo-service-lead">{lead}</p>
@@ -135,7 +135,7 @@ export default function SeoServicePage({
 
           <section className="seo-service-note">
             <div className="container seo-service-note-card">
-              <div className="seo-service-note-mark">Fi</div>
+              <div className="seo-service-note-mark">22</div>
               <div>
                 <p className="eyebrow"><span/>YAYIN NOTU</p>
                 <h2>{noteTitle}</h2>
