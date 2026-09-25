@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import FiFooter from "./FiFooter";
 import styles from "./InnerPageShell.module.css";
 
@@ -7,9 +8,8 @@ export default function InnerPageShell({ children }: { children: ReactNode }) {
     <>
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <a href="/" className={styles.brand} aria-label="Fi Yayınevi ana sayfa">
-            <span>Fi</span>
-            <small>YAYINEVİ</small>
+          <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
+            <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={420} height={140} priority />
           </a>
 
           <nav className={styles.nav} aria-label="İç sayfa menüsü">
