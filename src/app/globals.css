@@ -5523,3 +5523,42 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     box-shadow:none!important;
   }
 }
+
+
+/* 2026-09-26 - HOMEPAGE EDITORIAL CARD PALETTE FROM INNER PAGES */
+@media(max-width:760px){
+  /* Service copy: same warm ivory family as inner-page hero */
+  .home-page-main .figan-service-card,
+  .home-page-main .figan-service-content{
+    background:#fffaf4!important;
+    background-image:none!important;
+  }
+
+  /* Main editorial cards: same paper tone as inner-page scope/process cards */
+  .home-page-main .process-panel,
+  .home-page-main .author-grid,
+  .home-page-main .author-slide-card{
+    background:#fffaf4!important;
+    background-image:none!important;
+  }
+
+  /* Secondary inset cards: subtly warmer layer, like inner-page mini cards */
+  .home-page-main .benefit-grid > div,
+  .home-page-main .figan-service-emblem{
+    background:#fffdf9!important;
+    background-image:none!important;
+  }
+
+  /* Manifesto/about: use the warmer publication-note accent surface */
+  .home-page-main .about-fi-manifesto .about-figan-card{
+    background:#f1eadc!important;
+    background-image:none!important;
+  }
+
+  /* Preserve the intentional dark editorial rhythm */
+  .home-page-main .ecosystem-grid,
+  .home-page-main .fi-video-teaser-card,
+  .home-page-main .final-panel{
+    background:linear-gradient(135deg,#3a1d11 0%,#512817 56%,#2e160d 100%)!important;
+  }
+}
