@@ -10,10 +10,22 @@ export const metadata: Metadata = {
 export default function Page(){
   return (
     <SeoServicePage
+      editorialLayout
       eyebrow="YAZAR SİTESİ"
-      title="Size ait kalıcı bir yazar dünyası kuralım."
+      title="Kitaplarınızın ötesinde, size ait bir yazar dünyası kuralım."
       lead="Biyografinizi, kitaplarınızı, yazılarınızı ve duyurularınızı sosyal medya akışında kaybolmadan size ait profesyonel ve mobil uyumlu bir dijital adreste buluşturuyoruz."
       image="/figan-hizmet-yazar-sitesi.webp"
+      scopeTitle="Bir profilden,"
+      scopeAccent="kalıcı bir yazar dünyasına."
+      scopeStepTitles={["Yazar Kimliği","Kitap Vitrini","İçerik Alanı","Dijital Merkez"]}
+      audienceTitle="Yalnızca sosyal medyada görünmek değil,"
+      audienceAccent="kendine ait bir adres isteyenler için."
+      audienceIntro="Yazar kimliğini, eserlerini ve güncel içeriklerini tek bir kalıcı dijital merkezde toplamak; okuruyla doğrudan ve profesyonel bir bağ kurmak isteyen yazarlar için."
+      noteTitle="Sosyal medya akıp gider. Yazar sitesi kalır."
+      noteText="Bir yazar sitesi yalnızca biyografi sayfası değildir. Kitaplarınızı, yazılarınızı, etkinliklerinizi ve yayın kimliğinizi size ait bir adreste bir araya getiren; zamanla sizinle birlikte büyüyen dijital yayın alanınızdır."
+      processTitle="Yazar dünyanız nasıl kuruluyor?"
+      processStepTitles={["Kimlik ve içerik analizi","Site mimarisi ve tasarım","İçerik yerleşimi","Yayın ve büyüme"]}
+      outputTitles={["Profesyonel yazar sitesi","Kitap ve içerik vitrini","Büyüyebilir dijital altyapı"]}
       bullets={[
         "Yazar kimliğine özel mobil uyumlu web tasarımı",
         "Biyografi, kitaplar ve eser sayfaları için içerik yapısı",
