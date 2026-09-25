@@ -12,7 +12,7 @@ const nav = [
   ["Ana Sayfa", "#top"],
   ["Hizmetler", "#hizmetler"],
   ["Süreç", "#surec"],
-  ["Fi Ekosistemi", "#ekosistem"],
+  ["22 Ekosistemi", "#ekosistem"],
   ["Yazar Dünyamız", "#yazarlar"],
   ["Yazar Sitesi", "#yazar-sitesi"],
   ["İletişim", "#basvuru"],
@@ -91,7 +91,7 @@ const authors = [
   {
     name:"Figen Yavuz",
     kicker:"Fİ YAZARI",
-    description:"Fi Yayınevi yazarlarından Figen Yavuz’un eserleri ve yayın yolculuğu bu alanda okurla buluşacak.",
+    description:"22 Yayınevi yazarlarından Figen Yavuz’un eserleri ve yayın yolculuğu bu alanda okurla buluşacak.",
     image:null,
     initials:"FY",
     href:"/yazarlar/figen-yavuz",
@@ -102,7 +102,7 @@ const authors = [
 const faqs = [
   {
     q:"Kitap yayınlatmak için ne yapmalıyım?",
-    a:"Dosyanızı Fi Yayınevi ile paylaşmanızın ardından eseriniz ve yayın hedefiniz değerlendirilir; editörlük, tasarım, basılı ve dijital yayın seçenekleri birlikte planlanır.",
+    a:"Dosyanızı 22 Yayınevi ile paylaşmanızın ardından eseriniz ve yayın hedefiniz değerlendirilir; editörlük, tasarım, basılı ve dijital yayın seçenekleri birlikte planlanır.",
   },
   {
     q:"Bandrollü basım ve fizikî dağıtım yapılıyor mu?",
@@ -168,7 +168,7 @@ export default function Home() {
       <main id="top" className="home-page-main">
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
 
-        <nav className="figan-category-nav" aria-label="Fi yayın hizmetleri">
+        <nav className="figan-category-nav" aria-label="22 Yayınevi yayın hizmetleri">
           <div className="figan-category-panel">
             <div className="figan-category-scroller">
               {[
@@ -193,17 +193,17 @@ export default function Home() {
         <section className="home-hero">
           <div className="container hero-grid">
             <div className="hero-copy">
-              <p className="eyebrow"><span/>Fİ YAYINEVİ</p>
+              <p className="eyebrow"><span/>22 YAYINEVİ</p>
               <h1><span>Bir kitap</span><em>yazdınız.</em></h1>
               <h2>Şimdi ona ait bir dünya kuralım.</h2>
               <p className="hero-lead">Editörlükten bandrollü basıma, e-kitaptan sesli kitaba, yazar sitenizden dijital ve fizikî dağıtıma kadar tüm yayın dünyanızı tek çatı altında kuruyoruz.</p>
               <div className="hero-actions">
                 <a href="#basvuru" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">Yazar Başvurusu Yap</span><b className="cta-arrow">→</b></a>
-                <a href="#fi-video" className="btn secondary"><span className="cta-icon cta-play">▶</span><span className="cta-label">Fi’yi İzleyin</span><b className="cta-arrow">→</b></a>
+                <a href="#fi-video" className="btn secondary"><span className="cta-icon cta-play">▶</span><span className="cta-label">22’yi İzleyin</span><b className="cta-arrow">→</b></a>
               </div>
             </div>
             <div className="hero-visual">
-              <img src="/figan-hero-mobile-cropped.webp" alt="Fi Yayınevi yayın dünyası: basılı kitap, e-kitap, sesli kitap ve yazar sitesi"/>
+              <img src="/figan-hero-mobile-cropped.webp" alt="22 Yayınevi yayın dünyası: basılı kitap, e-kitap, sesli kitap ve yazar sitesi"/>
             </div>
           </div>
         </section>
@@ -218,7 +218,7 @@ export default function Home() {
               </p>
             </header>
 
-            <div className="figan-services-track" aria-label="Fi yayın hizmetleri">
+            <div className="figan-services-track" aria-label="22 Yayınevi yayın hizmetleri">
               {services.map((service) => (
                 <article className="figan-service-card" key={service.no}>
                   <a className="figan-service-link" href={service.href}>
@@ -252,7 +252,7 @@ export default function Home() {
                 <p className="process-kicker"><span>✦</span> BİR DOSYA, BİR YOLCULUK</p>
                 <h2>Nasıl çalışıyoruz?</h2>
                 <div className="process-ornament" aria-hidden="true"><span/><i>✦</i></div>
-                <p className="process-intro">Eseriniz, Fi’nin profesyonel yayın süreciyle adım adım hazırlanır; metinden tasarıma, dijital yayından dağıtıma kadar bütün yolculuk tek bir yayın dünyasında ilerler.</p>
+                <p className="process-intro">Eseriniz, 22 Yayınevi’nin profesyonel yayın süreciyle adım adım hazırlanır; metinden tasarıma, dijital yayından dağıtıma kadar bütün yolculuk tek bir yayın dünyasında ilerler.</p>
               </div>
               <div className="process-list">
                 {process.map(([no,title,text])=>(
@@ -278,7 +278,7 @@ export default function Home() {
             <div className="ecosystem-visual" aria-hidden="true">
               <div className="ecosystem-orbit">
                 <span>Basılı Kitap</span><span>E-Kitap</span><span>Sesli Kitap</span><span>Yazar Sitesi</span><span>Türkiye Dağıtımı</span><span>Global Yayın</span>
-                <strong>Fi</strong>
+                <strong>22</strong>
               </div>
             </div>
           </div>
@@ -292,7 +292,7 @@ export default function Home() {
               <p>Kitaplarınız, biyografiniz ve okurla kurduğunuz bağ size ait kalıcı bir dijital adreste buluşur.</p>
               <a className="author-site-more" href="/yazar-sitesi">Yazar Sitesini İnceleyin <span>→</span></a>
             </div>
-            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="Fi Yayınevi yazar sitesi örneği"/></div>
+            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="22 Yayınevi yazar sitesi örneği"/></div>
           </div>
         </section>
 
@@ -302,11 +302,11 @@ export default function Home() {
           <div className="container authors-wrap">
             <header className="authors-header">
               <p className="eyebrow"><span/>YAZAR DÜNYAMIZ</p>
-              <h2>Fi yazarları,<br/><em>bir yayın vitrini.</em></h2>
+              <h2>22 Yayınevi yazarları,<br/><em>bir yayın vitrini.</em></h2>
               <p>Yeni yazarlar eklendikçe aynı kart sistemi içinde yan yana yer alacak ve yayın vitrini büyüyecek.</p>
             </header>
 
-            <div className="authors-track" aria-label="Fi yazarları">
+            <div className="authors-track" aria-label="22 Yayınevi yazarları">
               {authors.filter((author)=>author.published).map((author)=>(
                 <article className="author-slide-card" key={author.name}>
                   <div className="author-slide-visual">
@@ -334,7 +334,7 @@ export default function Home() {
               <div className="about-figan-copy">
                 <p className="eyebrow"><span/>Fİ HAKKINDA</p>
                 <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
-                <p>Fi, bir eseri yalnızca basılacak bir dosya olarak görmez. Metnin editoryal hazırlığından basılı ve dijital yayına, sesli kitaptan yazarın kendi dijital alanına kadar birbirini tamamlayan bir yayın dünyası kurar.</p>
+                <p>22 Yayınevi, bir eseri yalnızca basılacak bir dosya olarak görmez. Metnin editoryal hazırlığından basılı ve dijital yayına, sesli kitaptan yazarın kendi dijital alanına kadar birbirini tamamlayan bir yayın dünyası kurar.</p>
                 <p className="about-fi-note">Yazarın eseri kadar kendi adıyla da kalıcı, görünür ve erişilebilir olmasını önemsiyoruz.</p>
               </div>
             </div>
@@ -356,7 +356,7 @@ export default function Home() {
             <p className="eyebrow light"><span/>YAZAR BAŞVURUSU</p>
             <h2>Bir kitabınız varsa,<br/><em>ona ait dünyayı birlikte kuralım.</em></h2>
             <p>Dosyanızı paylaşın; yayın yolculuğunuzu birlikte planlayalım.</p>
-            <a className="btn gold" href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Başvur <b>→</b></a>
+            <a className="btn gold" href="https://wa.me/905532419397?text=Merhaba%2C%2022%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Başvur <b>→</b></a>
           </div>
         </section>
       </main>
@@ -364,12 +364,12 @@ export default function Home() {
       <div className="home-footer-zone"><FiFooter /></div>
 
       <div className="contact-float">
-        <a className="call" href="tel:+905532419397" aria-label="Fi Yayınevi'ni telefonla ara" title="Telefonla ara">
+        <a className="call" href="tel:+905532419397" aria-label="22 Yayınevi'ni telefonla ara" title="Telefonla ara">
           <svg viewBox="0 0 24 24" width="29" height="29" aria-hidden="true">
             <path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
           </svg>
         </a>
-        <a className="wa" href="https://wa.me/905532419397?text=Merhaba%2C%20Fi%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="Fi Yayınevi ile WhatsApp üzerinden iletişime geçin" title="WhatsApp">
+        <a className="wa" href="https://wa.me/905532419397?text=Merhaba%2C%2022%20Yay%C4%B1nevi%20web%20sitesini%20inceledim.%20Yay%C4%B1nc%C4%B1l%C4%B1k%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="22 Yayınevi ile WhatsApp üzerinden iletişime geçin" title="WhatsApp">
           <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
             <path fill="currentColor" d="M16.04 3C9.39 3 4 8.2 4 14.61c0 2.28.69 4.51 1.99 6.41L4 28l7.23-1.89a12.4 12.4 0 0 0 4.8.96h.01C22.68 27.07 28 21.86 28 15.45 28 9.04 22.68 3 16.04 3Zm0 21.96h-.01a10.25 10.25 0 0 1-4.35-.96l-.31-.15-4.29 1.12 1.15-4.07-.2-.32a9.41 9.41 0 0 1-1.5-5.08c0-5.21 4.38-9.45 9.76-9.45 5.38 0 9.76 4.24 9.76 9.45 0 5.21-4.38 9.46-10.01 9.46Zm5.35-7.07c-.29-.14-1.72-.82-1.99-.91-.27-.1-.47-.14-.67.14-.2.29-.77.91-.94 1.1-.17.19-.35.22-.64.07-.29-.14-1.24-.44-2.36-1.41-.87-.75-1.46-1.67-1.63-1.95-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.51.15-.17.2-.29.29-.48.1-.19.05-.36-.02-.51-.07-.14-.67-1.56-.91-2.14-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.36-.27.29-1.04.98-1.04 2.39 0 1.41 1.07 2.77 1.22 2.96.15.19 2.11 3.12 5.1 4.38.71.29 1.27.46 1.7.59.71.22 1.36.19 1.87.12.57-.08 1.72-.68 1.96-1.34.24-.65.24-1.22.17-1.34-.07-.12-.27-.19-.56-.33Z"/>
           </svg>
