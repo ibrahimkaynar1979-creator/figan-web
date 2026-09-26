@@ -6614,29 +6614,4 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     margin-top:auto!important;
   }
 
-  /* Inner-page hero visuals use a predictable frame without stretching artwork */
-  .seo-service-editorial .seo-service-visual{
-    width:100%!important;
-    min-height:0!important;
-    aspect-ratio:4 / 3!important;
-    background:#eadfcf!important;
-  }
-  .seo-service-editorial .seo-service-visual img{
-    width:100%!important;
-    height:100%!important;
-    object-fit:contain!important;
-    object-position:center!important;
-  }
-
-  /* Featured author/book visuals follow the same editorial image discipline */
-  .author-profile-featured-visual{
-    width:100%!important;
-    aspect-ratio:4 / 3!important;
-  }
-  .author-profile-featured-visual img{
-    width:100%!important;
-    height:100%!important;
-    object-fit:contain!important;
-    object-position:center!important;
-  }
 }
