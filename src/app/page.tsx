@@ -168,25 +168,23 @@ export default function Home() {
       <main id="top" className="home-page-main">
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
 
-        <nav className="figan-category-nav" aria-label="22 Yayınevi yayın hizmetleri">
-          <div className="figan-category-panel">
-            <div className="figan-category-scroller">
-              {[
-                ["Basılı Kitap", "/figan-hizmet-basili-kitap-yayini.webp", "/basili-kitap-yayini"],
-                ["E-Kitap", "/figan-hizmet-e-kitap.webp", "/e-kitap-yayini"],
-                ["Sesli Kitap", "/figan-hizmet-sesli-kitap.webp", "/sesli-kitap"],
-                ["Yabancı Dil", "/figan-hizmet-04-yabanci-dil.webp", "/yabanci-dil-ceviri"],
-                ["Yazar Sitesi", "/figan-hizmet-yazar-sitesi.webp", "/yazar-sitesi"],
-                ["Yazarlarımız", "/icimdeki-ibrahim.webp", "/yazarlar/ibrahim-kaynar"],
-              ].map(([label, image, href]) => (
-                <a className="figan-category-item" href={href} key={label}>
-                  <span className="figan-category-image">
-                    <img src={image} alt="" />
-                  </span>
-                  <span>{label}</span>
-                </a>
-              ))}
-            </div>
+        <nav className="seo-service-nav home-service-reels" aria-label="22 Yayınevi hizmetleri">
+          <div className="seo-service-nav-track">
+            {[
+              {label:"Basılı Kitap",href:"/basili-kitap-yayini",image:"/figan-hizmet-basili-kitap-yayini.webp"},
+              {label:"E-Kitap",href:"/e-kitap-yayini",image:"/figan-hizmet-e-kitap.webp"},
+              {label:"Sesli Kitap",href:"/sesli-kitap",image:"/figan-hizmet-sesli-kitap.webp"},
+              {label:"Yabancı Dil",href:"/yabanci-dil-ceviri",image:"/ekosistem-reader.webp"},
+              {label:"Yazar Sitesi",href:"/yazar-sitesi",image:"/figan-hizmet-yazar-sitesi.webp"},
+              {label:"Dijital Dağıtım",href:"/dijital-dagitim",image:"/figan-hizmet-dijital-dagitim.webp"},
+            ].map((service)=>(
+              <a className="seo-service-nav-item" href={service.href} key={service.href}>
+                <span className="seo-service-nav-image">
+                  <Image src={service.image} alt="" width={120} height={120} sizes="84px"/>
+                </span>
+                <span>{service.label}</span>
+              </a>
+            ))}
           </div>
         </nav>
 
