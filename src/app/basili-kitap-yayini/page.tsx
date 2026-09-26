@@ -4,7 +4,20 @@ import SeoServicePage from "../_components/SeoServicePage";
 export const metadata: Metadata = {
   title: "Basılı Kitap Yayını ve Dağıtım",
   description: "22 Yayınevi ile editörlük, mizanpaj, kapak tasarımı, ISBN ve bandrol hazırlığı, baskı ve fizikî dağıtım süreçlerini tek yayın planında yönetin.",
-  alternates:{canonical:"/basili-kitap-yayini"},
+  alternates: { canonical: "/basili-kitap-yayini" },
+  openGraph: {
+    type: "website",
+    url: "/basili-kitap-yayini",
+    title: "Basılı Kitap Yayını ve Dağıtım | 22 Yayınevi",
+    description: "22 Yayınevi ile editörlük, mizanpaj, kapak tasarımı, ISBN ve bandrol hazırlığı, baskı ve fizikî dağıtım süreçlerini tek yayın planında yönetin.",
+    images: [{ url: "/figan-hizmet-basili-kitap-yayini.webp", alt: "Basılı Kitap Yayını ve Dağıtım" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Basılı Kitap Yayını ve Dağıtım | 22 Yayınevi",
+    description: "22 Yayınevi ile editörlük, mizanpaj, kapak tasarımı, ISBN ve bandrol hazırlığı, baskı ve fizikî dağıtım süreçlerini tek yayın planında yönetin.",
+    images: ["/figan-hizmet-basili-kitap-yayini.webp"],
+  },
 };
 
 export default function Page(){
