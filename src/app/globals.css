@@ -6466,3 +6466,105 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     border-radius:12px!important;
   }
 }
+
+
+/* 2026-09-26 - STAGE 5 MOBILE SPACING SYSTEM LOCK */
+@media(max-width:760px){
+  /* One mobile gutter across homepage and inner editorial pages */
+  .home-page-main > .home-hero,
+  .home-page-main > .figan-services-showcase,
+  .home-page-main > .process,
+  .home-page-main > .ecosystem,
+  .home-page-main > .author-site,
+  .home-page-main > .founder-home-section,
+  .home-page-main > .authors-section,
+  .home-page-main > .about-fi-manifesto,
+  .home-page-main > .fi-video-teaser,
+  .home-page-main > .final-cta,
+  .seo-service-editorial .seo-service-hero,
+  .seo-service-editorial .seo-service-scope,
+  .seo-service-editorial .seo-service-audience,
+  .seo-service-editorial .seo-service-note,
+  .seo-service-editorial .seo-service-process,
+  .seo-service-editorial .seo-service-output,
+  .seo-service-editorial .seo-service-faq,
+  .seo-service-editorial .seo-service-final-cta,
+  .publishing-areas-page .publishing-areas-hero,
+  .publishing-areas-page .publishing-areas-section,
+  .author-profile-section{
+    padding-left:8px!important;
+    padding-right:8px!important;
+  }
+
+  /* Standard 10px vertical rhythm between cards */
+  .home-page-main > .home-hero,
+  .home-page-main > .figan-services-showcase,
+  .home-page-main > .process,
+  .home-page-main > .ecosystem,
+  .home-page-main > .author-site,
+  .home-page-main > .founder-home-section,
+  .home-page-main > .authors-section,
+  .home-page-main > .about-fi-manifesto,
+  .home-page-main > .fi-video-teaser,
+  .home-page-main > .final-cta,
+  .seo-service-editorial .seo-service-hero,
+  .seo-service-editorial .seo-service-scope,
+  .seo-service-editorial .seo-service-audience,
+  .seo-service-editorial .seo-service-note,
+  .seo-service-editorial .seo-service-process,
+  .seo-service-editorial .seo-service-output,
+  .seo-service-editorial .seo-service-faq,
+  .seo-service-editorial .seo-service-final-cta,
+  .publishing-areas-page .publishing-areas-hero,
+  .publishing-areas-page .publishing-areas-section,
+  .author-profile-section{
+    padding-top:0!important;
+    padding-bottom:10px!important;
+    margin-top:0!important;
+    margin-bottom:0!important;
+  }
+
+  /* First content card sits consistently below reels */
+  .home-page-main > .home-hero,
+  .seo-service-editorial .seo-service-hero,
+  .publishing-areas-page .publishing-areas-hero{
+    padding-top:10px!important;
+  }
+
+  /* Inner editorial card padding/radius standard */
+  .seo-service-editorial .seo-service-copy,
+  .seo-service-editorial .seo-service-scope-card,
+  .seo-service-editorial .seo-service-audience-card,
+  .seo-service-editorial .seo-service-note-card,
+  .seo-service-editorial .seo-service-process-card,
+  .seo-service-editorial .seo-service-output-card,
+  .seo-service-editorial .seo-service-faq-card,
+  .author-profile-standard-card,
+  .publishing-areas-page .publishing-areas-card,
+  .publishing-areas-page .publishing-areas-hero-card{
+    padding:18px!important;
+    border-radius:20px!important;
+  }
+
+  /* Remove accidental extra spacing inside scroll/card wrappers */
+  .home-page-main .process-wrap,
+  .home-page-main .authors-wrap,
+  .home-page-main .about-fi-manifesto .container,
+  .home-page-main .ecosystem-grid,
+  .home-page-main .author-grid,
+  .home-page-main .fi-video-teaser-card,
+  .home-page-main .final-panel{
+    margin-top:0!important;
+    margin-bottom:0!important;
+  }
+
+  .home-page-main .home-service-reels{
+    margin-bottom:0!important;
+  }
+
+  .author-profile-last-section,
+  .seo-service-editorial .seo-service-final-cta,
+  .home-page-main > .final-cta{
+    padding-bottom:10px!important;
+  }
+}
