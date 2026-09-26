@@ -73,7 +73,7 @@
 @media(max-width:760px){
   .headerInner{
     width:calc(100% - 1rem);
-    min-height:64px;
+    min-height:68px;
     grid-template-columns:auto 1fr;
     gap:14px;
   }
