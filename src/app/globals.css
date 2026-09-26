@@ -5669,3 +5669,36 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
   .founder-author-hero-actions{display:grid;grid-template-columns:1fr}
   .founder-author-hero-actions .btn{width:100%}
 }
+
+
+/* 2026-09-26 - HOMEPAGE KURUCU YAZAR FEATURE */
+.founder-home-section{padding-top:18px!important;padding-bottom:18px!important}
+.founder-home-card{
+  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+  padding:28px 30px;border:1px solid rgba(169,105,52,.18);border-radius:24px;
+  background:#fffaf4;
+}
+.founder-home-copy h2{
+  margin:0;color:#49362e;font-family:var(--font-editorial),Georgia,serif;
+  font-size:clamp(38px,4.8vw,62px);font-weight:500;line-height:.98;letter-spacing:-.04em
+}
+.founder-home-copy h2 em{font-family:var(--font-poetic),Georgia,serif;color:#c96b47;font-weight:400}
+.founder-home-copy>p{max-width:760px;margin:16px 0 0;color:#5f5149;font-size:14px;line-height:1.7}
+.founder-home-points{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 20px}
+.founder-home-points span{padding:8px 10px;border:1px solid rgba(169,105,52,.16);border-radius:999px;background:#fffdf9;color:#6a584f;font-size:10.5px;font-weight:700}
+.founder-home-number{
+  min-width:180px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:1px solid rgba(169,105,52,.18);border-radius:50%;background:#f1eadc;color:#49362e;text-align:center
+}
+.founder-home-number strong{font-family:var(--font-editorial),Georgia,serif;font-size:78px;font-weight:500;line-height:.8}
+.founder-home-number span{margin-top:12px;font-size:10px;font-weight:800;letter-spacing:.18em;line-height:1.35}
+@media(max-width:760px){
+  .founder-home-section{padding:8px 8px 18px!important}
+  .founder-home-card{grid-template-columns:1fr;padding:20px 18px;border-radius:20px}
+  .founder-home-copy h2{font-size:34px}
+  .founder-home-copy>p{font-size:12.5px;line-height:1.6}
+  .founder-home-points{display:grid;gap:6px}
+  .founder-home-points span{border-radius:12px;font-size:10px}
+  .founder-home-number{min-width:0;width:132px;justify-self:end}
+  .founder-home-number strong{font-size:58px}
+}
