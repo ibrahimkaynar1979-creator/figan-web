@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PublishingReels from "../../_components/PublishingReels";
 
 export const metadata: Metadata = {
   title: "Figen Yavuz",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page(){
   return (
-    <main className="seo-profile-page">
+    <main className="seo-profile-page">\n      <PublishingReels />
       <div className="container seo-profile-card">
         <a className="legal-back" href="/">← 22 Yayınevi</a>
         <p className="eyebrow"><span/>Fİ YAZARI</p>
