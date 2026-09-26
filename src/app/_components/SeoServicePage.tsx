@@ -81,7 +81,7 @@ export default function SeoServicePage({
             <p className="seo-service-lead">{lead}</p>
             <a className="btn primary" href={whatsapp} target="_blank" rel="noreferrer">Bilgi Alın <b>→</b></a>
           </div>
-          <div className="seo-service-visual"><Image src={image} alt="" width={1200} height={900} priority sizes="(max-width: 760px) 100vw, 46vw"/></div>
+          <div className="seo-service-visual"><Image src={image} alt="" width={1200} height={900} priority sizes="(max-width: 760px) calc(100vw - 16px), 46vw"/></div>
         </div>
       </section>
 
