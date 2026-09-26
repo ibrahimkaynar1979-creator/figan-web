@@ -77,9 +77,11 @@ export default function Page() {
                 “Arayışın Yolculuğu” ile insanın kendine, hayata ve varoluşa dair
                 içsel yolculuğuna eşlik eden bir eser dünyası kuruyor.
               </p>
-              <a className="btn primary" href="/#basvuru">
-                Yazar Dünyasını Keşfedin <b>→</b>
-              </a>
+              <div className="author-content-actions" aria-label="Figen Yavuz yayın içerikleri">
+                <a href="/yazar-sitesi"><span>↗</span><b>Web Sitesi</b></a>
+                <a href="/e-kitap-yayini"><span>▤</span><b>E-Kitap</b></a>
+                <a href="/sesli-kitap"><span>◉</span><b>Sesli Kitap</b></a>
+              </div>
             </div>
 
             <div className="seo-service-visual">
