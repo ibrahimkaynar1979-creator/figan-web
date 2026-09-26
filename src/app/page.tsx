@@ -32,7 +32,7 @@ const services = [
   {
     no:"02",
     title:"E-Kitap",
-    traits:["EPUB","Mobil Uyumlu","Yayın Hazır"],
+    traits:["EPUB","Mobil Uyumlu","Yayına Hazır"],
     text:"Eserinizi profesyonel dijital yayına hazırlıyor, tüm cihazlarda okunabilir formata dönüştürüyoruz.",
     image:"/figan-hizmet-e-kitap.webp",
     href:"/e-kitap-yayini",
@@ -40,7 +40,7 @@ const services = [
   {
     no:"03",
     title:"Sesli Kitap",
-    traits:["Doğal Ses","Stüdyo Kalitesi","Platform Hazır"],
+    traits:["Doğal Ses","Stüdyo Kalitesi","Platformlara Hazır"],
     text:"Metninizi güçlü, doğal ve kaliteli bir dinleme deneyimine dönüştürüyoruz.",
     image:"/figan-hizmet-sesli-kitap.webp",
     href:"/sesli-kitap",
@@ -49,14 +49,14 @@ const services = [
     no:"04",
     title:"Basılı Kitap Yayını & Dağıtım",
     traits:["Kapak Tasarımı","Bandrollü Basım","Fizikî Dağıtım"],
-    text:"Kapak tasarımı, baskı hazırlığı, bandrollü basım ve fizikî dağıtım sürecini birlikte yürütüyor; kitabınızın online kitap satış kanalları ve dağıtım ağlarında yer almasına yönelik yayın sürecini yönetiyoruz.",
+    text:"Kapak tasarımı, baskı hazırlığı, bandrollü basım ve fizikî dağıtım sürecini birlikte yürütüyor; kitabınızın çevrim içi kitap satış kanalları ve dağıtım ağlarında yer almasına yönelik yayın sürecini yönetiyoruz.",
     image:"/figan-hizmet-basili-kitap-yayini.webp",
     href:"/basili-kitap-yayini",
   },
   {
     no:"05",
     title:"Dijital Dağıtım",
-    traits:["Türkiye","Global","Tek Noktadan"],
+    traits:["Türkiye","Uluslararası","Tek Noktadan"],
     text:"Eserinizi Türkiye’de ve dünyada uygun dijital yayın kanallarına taşıyoruz.",
     image:"/figan-hizmet-dijital-dagitim.webp",
     href:"/dijital-dagitim",
@@ -64,7 +64,7 @@ const services = [
   {
     no:"06",
     title:"Çeviri",
-    traits:["Editoryal Çeviri","Yayın Dili","Global Hazırlık"],
+    traits:["Editoryal Çeviri","Yayın Dili","Uluslararası Hazırlık"],
     text:"Eserinizi hedef dile yalnızca çevirmiyor; yayın dili, editoryal akış ve uluslararası yayın hazırlığı açısından yeniden ele alıyoruz.",
     image:"/figan-hizmet-04-yabanci-dil.webp",
     href:"/yabanci-dil-ceviri",
@@ -72,12 +72,12 @@ const services = [
 ];
 
 const process = [
-  ["01","Başvuru & Değerlendirme","Dosyanızı alıyor, eserinizi ve yayın hedefinizi birlikte değerlendiriyoruz."],
+  ["01","Başvuru ve Değerlendirme","Dosyanızı alıyor, eserinizi ve yayın hedefinizi birlikte değerlendiriyoruz."],
   ["02","Editörlük","Metni dil, akış ve yayın standardı açısından yayına hazırlıyoruz."],
-  ["03","Kapak & Tasarım","Kapak, iç sayfa ve eserin görsel yayın kimliğini oluşturuyoruz."],
-  ["04","Bandrollü Basım & Fizikî Dağıtım","Kitabınızı bandrollü basıma hazırlıyor, uygun fizikî satış ve dağıtım kanallarına taşıyoruz."],
+  ["03","Kapak ve Tasarım","Kapak, iç sayfa ve eserin görsel yayın kimliğini oluşturuyoruz."],
+  ["04","Bandrollü Basım ve Fizikî Dağıtım","Kitabınızı bandrollü basıma hazırlıyor, uygun fizikî satış ve dağıtım kanallarına taşıyoruz."],
   ["05","Dijital Yayına Hazırlık","E-kitap, sesli kitap ve gerekli dijital dosyaları platformlara uygun biçimde hazırlıyoruz."],
-  ["06","Yayın & Yazar Dünyası","Dijital dağıtımınızı, yazar sitenizi ve yayın sonrası görünürlüğünüzü tek yapıda birleştiriyoruz."],
+  ["06","Yayın ve Yazar Dünyası","Dijital dağıtımınızı, yazar sitenizi ve yayın sonrası görünürlüğünüzü tek yapıda birleştiriyoruz."],
 ] as const;
 
 const authors = [
