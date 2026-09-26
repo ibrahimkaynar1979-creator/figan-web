@@ -4,7 +4,20 @@ import SeoServicePage from "../_components/SeoServicePage";
 export const metadata: Metadata = {
   title: "Dijital Kitap Dağıtımı",
   description: "22 Yayınevi ile e-kitabınızı metadata, platform gereklilikleri ve yayın dosyalarıyla dijital dağıtım kanallarına hazırlayın.",
-  alternates:{canonical:"/dijital-dagitim"},
+  alternates: { canonical: "/dijital-dagitim" },
+  openGraph: {
+    type: "website",
+    url: "/dijital-dagitim",
+    title: "Dijital Kitap Dağıtımı | 22 Yayınevi",
+    description: "22 Yayınevi ile e-kitabınızı metadata, platform gereklilikleri ve yayın dosyalarıyla dijital dağıtım kanallarına hazırlayın.",
+    images: [{ url: "/figan-hizmet-dijital-dagitim.webp", alt: "Dijital Kitap Dağıtımı" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dijital Kitap Dağıtımı | 22 Yayınevi",
+    description: "22 Yayınevi ile e-kitabınızı metadata, platform gereklilikleri ve yayın dosyalarıyla dijital dağıtım kanallarına hazırlayın.",
+    images: ["/figan-hizmet-dijital-dagitim.webp"],
+  },
 };
 
 export default function Page(){
