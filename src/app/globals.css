@@ -5848,3 +5848,27 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     border-radius:20px!important;
   }
 }
+
+
+/* 2026-09-26 - FIX PUBLISHING AREAS NESTED CONTAINER WIDTH */
+.publishing-areas-page .container{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+@media(max-width:760px){
+  .publishing-areas-page .publishing-areas-hero,
+  .publishing-areas-page .publishing-areas-section{
+    padding-left:8px!important;
+    padding-right:8px!important;
+  }
+  .publishing-areas-page .publishing-areas-card,
+  .publishing-areas-page .publishing-areas-hero-card{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:18px!important;
+    border-radius:20px!important;
+  }
+}
