@@ -70,23 +70,7 @@ export default function SeoServicePage({
   return (
     <InnerPageShell>
     <main className={`seo-service-page${editorialLayout ? " seo-service-editorial" : ""}`}>
-      <nav className="seo-service-nav" aria-label="22 Yayınevi hizmetleri">
-          <div className="seo-service-nav-track">
-            {[
-              {label:"Basılı Kitap",href:"/basili-kitap-yayini",image:"/figan-hizmet-basili-kitap-yayini.webp"},
-              {label:"E-Kitap",href:"/e-kitap-yayini",image:"/figan-hizmet-e-kitap.webp"},
-              {label:"Sesli Kitap",href:"/sesli-kitap",image:"/figan-hizmet-sesli-kitap.webp"},
-              {label:"Yabancı Dil",href:"/yabanci-dil-ceviri",image:"/ekosistem-reader.webp"},
-              {label:"Yazar Sitesi",href:"/yazar-sitesi",image:"/figan-hizmet-yazar-sitesi.webp"},
-              {label:"Dijital Dağıtım",href:"/dijital-dagitim",image:"/figan-hizmet-dijital-dagitim.webp"},
-            ].map((service)=>(
-              <a className="seo-service-nav-item" href={service.href} key={service.href}>
-                <span className="seo-service-nav-image"><Image src={service.image} alt="" width={120} height={120} sizes="84px"/></span>
-                <span>{service.label}</span>
-              </a>
-            ))}
-          </div>
-        </nav>
+      
 
       <section className="seo-service-hero">
         <div className="container seo-service-grid">
