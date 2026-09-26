@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import SeoServicePage from "../_components/SeoServicePage";
 
 export const metadata: Metadata = {
-  title: "Yabancı Dile Çeviri ve Yayın Hazırlığı",
+  title: "Kitap Çevirisi ve Yayın Hazırlığı",
   description: "22 Yayınevi ile editoryal çeviri, terminoloji kontrolü, hedef dilde yayın dili ve yabancı dilde dijital yayın hazırlığını planlayın.",
   alternates: { canonical: "/yabanci-dil-ceviri" },
   openGraph: {
     type: "website",
     url: "/yabanci-dil-ceviri",
-    title: "Yabancı Dile Çeviri ve Yayın Hazırlığı | 22 Yayınevi",
+    title: "Kitap Çevirisi ve Yayın Hazırlığı | 22 Yayınevi",
     description: "22 Yayınevi ile editoryal çeviri, terminoloji kontrolü, hedef dilde yayın dili ve yabancı dilde dijital yayın hazırlığını planlayın.",
-    images: [{ url: "/figan-hizmet-04-yabanci-dil.webp", alt: "Yabancı Dile Çeviri ve Yayın Hazırlığı" }],
+    images: [{ url: "/figan-hizmet-04-yabanci-dil.webp", alt: "Kitap Çevirisi ve Yayın Hazırlığı" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yabancı Dile Çeviri ve Yayın Hazırlığı | 22 Yayınevi",
+    title: "Kitap Çevirisi ve Yayın Hazırlığı | 22 Yayınevi",
     description: "22 Yayınevi ile editoryal çeviri, terminoloji kontrolü, hedef dilde yayın dili ve yabancı dilde dijital yayın hazırlığını planlayın.",
     images: ["/figan-hizmet-04-yabanci-dil.webp"],
   },
@@ -24,7 +24,7 @@ export default function Page(){
   return (
     <SeoServicePage
       editorialLayout
-      eyebrow="YABANCI DİL"
+      eyebrow="ÇEVİRİ"
       title="Eseriniz yeni bir dilde de kendi sesini korusun."
       lead="Metninizi yalnızca çevirmiyor; anlatım tonu, terminoloji, kültürel bağlam ve hedef dilin doğal akışıyla birlikte ele alarak yayıma hazır yeni bir dil sürümüne dönüştürüyoruz."
       image="/figan-hizmet-04-yabanci-dil.webp"
@@ -36,7 +36,7 @@ export default function Page(){
       audienceIntro="Kitabını yeni okurlara açmak, anlatım sesini koruyarak başka bir dilde profesyonel bir yayın sürümü oluşturmak ve dijital yayına hazırlanmak isteyen yazarlar için."
       noteTitle="İyi çeviri, kelimeleri değil; eserin sesini taşır."
       noteText="Bir kitabın başka bir dilde aynı etkiyi yaratabilmesi için yalnızca anlamın değil, ritmin, tonun, kavramların ve kültürel bağlamın da korunması gerekir. Çeviriyi yayıncılık sürecinin bir parçası olarak ele alıyoruz."
-      processTitle="Yabancı dil yayın süreci nasıl ilerler?"
+      processTitle="Çeviri ve yayın süreci nasıl ilerler?"
       processStepTitles={["Kaynak metin analizi","Çeviri ve üslup planı","Editoryal dil kontrolü","Yayın dosyası hazırlığı"]}
       outputTitles={["Editoryal çeviri metni","Tutarlı dil ve terminoloji","Yayına hazır dil paketi"]}
       bullets={[
