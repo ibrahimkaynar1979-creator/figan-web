@@ -155,7 +155,7 @@ export default function Home() {
             {nav.map(([label,href])=><a key={href} href={href}>{label}</a>)}
           </nav>
           <div className="header-actions">
-            <a className="header-cta" href="/kurucu-yazar">İlk 22 Kurucu Yazara Başvur</a>
+            <a className="header-cta" href="/kurucu-yazar">İlk 22’ye Başvur</a>
             <button className="menu-btn" aria-label="Menüyü aç" onClick={()=>setOpen(!open)}>
               <span/><span/><span/>
             </button>
@@ -163,7 +163,7 @@ export default function Home() {
         </div>
         <div className={`mobile-menu ${open?"open":""}`}>
           <nav>{nav.map(([label,href])=><a key={href} href={href} onClick={()=>setOpen(false)}>{label}</a>)}</nav>
-          <a href="/kurucu-yazar" className="mobile-menu-cta" onClick={()=>setOpen(false)}>İlk 22 Kurucu Yazara Başvur</a>
+          <a href="/kurucu-yazar" className="mobile-menu-cta" onClick={()=>setOpen(false)}>İlk 22’ye Başvur</a>
         </div>
       </header>
 
@@ -180,7 +180,7 @@ export default function Home() {
               <h2>Şimdi ona ait bir dünya kuralım.</h2>
               <p className="hero-lead">Editörlükten bandrollü basıma, e-kitaptan sesli kitaba, yazar sitenizden dijital ve fizikî dağıtıma kadar tüm yayın dünyanızı tek çatı altında kuruyoruz.</p>
               <div className="hero-actions">
-                <a href="/kurucu-yazar" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">İlk 22 Kurucu Yazara Başvur</span><b className="cta-arrow">→</b></a>
+                <a href="/kurucu-yazar" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">İlk 22’ye Başvur</span><b className="cta-arrow">→</b></a>
                 <a href="#fi-video" className="btn secondary"><span className="cta-icon cta-play">▶</span><span className="cta-label">22’yi İzleyin</span><b className="cta-arrow">→</b></a>
               </div>
             </div>
@@ -244,7 +244,7 @@ export default function Home() {
                   </article>
                 ))}
               </div>
-              <a href="#basvuru" className="process-cta"><span>Yayın Yolculuğunu Başlat</span><b>→</b></a>
+              <a href="/kurucu-yazar" className="process-cta"><span>İlk 22’ye Başvur</span><b>→</b></a>
             </div>
           </div>
         </section>
@@ -255,7 +255,7 @@ export default function Home() {
               <p className="eyebrow light"><span/>22 YAYINEVİ EKOSİSTEMİ</p>
               <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
               <p>Kitabınız dijitalde ve fizikî dünyada birlikte yaşar; okunur, dinlenir, bandrollü olarak basılır ve uygun dağıtım kanallarıyla okura ulaşır.</p>
-              <a href="#basvuru" className="btn light-btn">Yayın Dünyamı Kur <b>→</b></a>
+              <a href="/kurucu-yazar" className="btn light-btn">Kurucu Yazar Statüsünü İncele <b>→</b></a>
             </div>
             <div className="ecosystem-visual" aria-hidden="true">
               <div className="ecosystem-orbit">
@@ -363,10 +363,10 @@ export default function Home() {
 
         <section id="basvuru" className="section final-cta">
           <div className="container final-panel">
-            <p className="eyebrow light"><span/>YAZAR BAŞVURUSU</p>
+            <p className="eyebrow light"><span/>İLK 22 KURUCU YAZAR</p>
             <h2>Bir kitabınız varsa,<br/><em>ona ait dünyayı birlikte kuralım.</em></h2>
             <p>Dosyanızı paylaşın; yayın yolculuğunuzu birlikte planlayalım.</p>
-            <a className="btn gold" href="/kurucu-yazar">İlk 22 Kurucu Yazar Statüsüne Başvur <b>→</b></a>
+            <a className="btn gold" href="/kurucu-yazar">İlk 22 Kurucu Yazar Başvurusu <b>→</b></a>
           </div>
         </section>
       </main>
