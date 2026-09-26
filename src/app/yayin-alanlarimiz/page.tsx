@@ -4,21 +4,21 @@ import InnerPageShell from "../_components/InnerPageShell";
 export const metadata: Metadata = {
   title: "Yayın Alanlarımız",
   description:
-    "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dahil yayın alanlarını keşfedin.",
+    "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dâhil yayın alanlarını keşfedin.",
   alternates: { canonical: "/yayin-alanlarimiz" },
   openGraph: {
     type: "website",
     url: "/yayin-alanlarimiz",
     title: "Yayın Alanlarımız | 22 Yayınevi",
     description:
-      "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dahil yayın alanlarını keşfedin.",
+      "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dâhil yayın alanlarını keşfedin.",
     images: [{ url: "/22_yayinevi_logo.png", alt: "Yayın Alanlarımız | 22 Yayınevi" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Yayın Alanlarımız | 22 Yayınevi",
     description:
-      "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dahil yayın alanlarını keşfedin.",
+      "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dâhil yayın alanlarını keşfedin.",
     images: ["/22_yayinevi_logo.png"],
   },
 };
@@ -134,7 +134,7 @@ export default function YayinAlanlarimizPage() {
               <p className="eyebrow"><span/>FİGEN YAVUZ SEÇKİSİ</p>
               <h2>Özel bir editoryal <em>seçki.</em></h2>
               <p>
-                Bu özel yayın alanında yayımlanacak eserlerin bir bölümü, <strong>Figen Yavuz&apos;un editoryal ilgisi ve seçkisiyle</strong> 22 Yayınevi kataloğuna dahil edilir.
+                Bu özel yayın alanında yayımlanacak eserlerin bir bölümü, <strong>Figen Yavuz&apos;un editoryal ilgisi ve seçkisiyle</strong> 22 Yayınevi kataloğuna dâhil edilir.
               </p>
               <p>
                 Böylece 22 Yayınevi&apos;nin genel yayın çizgisinin yanında; spiritüel, mistik ve ezoterik dünyaya ayrılmış, zaman içinde kendi yazarlarını ve okur kitlesini oluşturabilecek özel bir yayın koleksiyonu geliştirmeyi hedefliyoruz.
