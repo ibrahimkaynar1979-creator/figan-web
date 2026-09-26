@@ -177,6 +177,7 @@ export default function Home() {
               {label:"Yabancı Dil",href:"/yabanci-dil-ceviri",image:"/ekosistem-reader.webp"},
               {label:"Yazar Sitesi",href:"/yazar-sitesi",image:"/figan-hizmet-yazar-sitesi.webp"},
               {label:"Dijital Dağıtım",href:"/dijital-dagitim",image:"/figan-hizmet-dijital-dagitim.webp"},
+              {label:"İlk 22 Kurucu Yazar",href:"/kurucu-yazar",image:"/22_yayinevi_logo.png"},
             ].map((service)=>(
               <a className="seo-service-nav-item" href={service.href} key={service.href}>
                 <span className="seo-service-nav-image">
@@ -295,6 +296,34 @@ export default function Home() {
         </section>
 
         
+
+        <section className="section founder-home-section">
+          <div className="container">
+            <div className="founder-home-card">
+              <div className="founder-home-copy">
+                <p className="eyebrow"><span/>İLK 22 KURUCU YAZAR</p>
+                <h2>İlk 22 yazar,<br/><em>kuruluş hikâyemizin bir parçası.</em></h2>
+                <p>
+                  22 Yayınevi’nin ilk 22 yazarı; numaralı Kurucu Yazar vitrini,
+                  yayın hayatı boyunca sonraki yayıncılık hizmetlerinde %50 avantaj
+                  ve sonradan satın alınamayacak özel bir statü kazanır.
+                </p>
+                <div className="founder-home-points">
+                  <span>01–22 numaralı kalıcı vitrin</span>
+                  <span>Yayın hayatı boyunca %50 hizmet avantajı</span>
+                  <span>Sonradan satın alınamayan sınırlı statü</span>
+                </div>
+                <a className="btn primary founder-home-cta" href="/kurucu-yazar">
+                  Kurucu Yazar Statüsünü İncele <b>→</b>
+                </a>
+              </div>
+              <div className="founder-home-number" aria-hidden="true">
+                <strong>22</strong>
+                <span>KURUCU<br/>YAZAR</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section id="yazarlar" className="section authors-section">
           <div className="container authors-wrap">
