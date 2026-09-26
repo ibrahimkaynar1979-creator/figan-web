@@ -87,7 +87,7 @@ export default function Page() {
                 alt="Figen Yavuz - Arayışın Yolculuğu kitap mockup"
                 width={1200}
                 height={900}
-                sizes="(max-width: 760px) 100vw, 46vw"
+                sizes="(max-width: 760px) calc(100vw - 16px), 46vw"
                 priority
               />
             </div>
@@ -132,7 +132,7 @@ export default function Page() {
                 alt="Arayışın Yolculuğu kitap mockup"
                 width={900}
                 height={1100}
-                sizes="(max-width: 760px) 100vw, 38vw"
+                sizes="(max-width: 760px) calc(100vw - 52px), 38vw"
               />
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function Page() {
                     alt="Arayışın Yolculuğu"
                     width={260}
                     height={320}
-                    sizes="110px"
+                    sizes="(max-width: 760px) calc(100vw - 44px), 110px"
                   />
                 </div>
                 <div className="author-profile-book-info">
