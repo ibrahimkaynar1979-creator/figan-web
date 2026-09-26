@@ -1,6 +1,7 @@
+import PublishingReels from "../_components/PublishingReels";
 export default function KullanimKosullariPage(){
   return (
-    <main className="legal-page">
+    <main className="legal-page">\n      <PublishingReels />
       <div className="legal-page-inner">
         <a className="legal-back" href="/">← Ana sayfaya dön</a>
         <h1>Kullanım Koşulları</h1>
