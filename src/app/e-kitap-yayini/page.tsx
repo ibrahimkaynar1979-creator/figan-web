@@ -4,7 +4,20 @@ import SeoServicePage from "../_components/SeoServicePage";
 export const metadata: Metadata = {
   title: "E-Kitap Yayını",
   description: "22 Yayınevi ile EPUB hazırlığı, metadata düzeni, cihaz uyumluluğu ve dijital dağıtıma hazır e-kitap yayın sürecini yönetin.",
-  alternates:{canonical:"/e-kitap-yayini"},
+  alternates: { canonical: "/e-kitap-yayini" },
+  openGraph: {
+    type: "website",
+    url: "/e-kitap-yayini",
+    title: "E-Kitap Yayını | 22 Yayınevi",
+    description: "22 Yayınevi ile EPUB hazırlığı, metadata düzeni, cihaz uyumluluğu ve dijital dağıtıma hazır e-kitap yayın sürecini yönetin.",
+    images: [{ url: "/figan-hizmet-e-kitap.webp", alt: "E-Kitap Yayını" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "E-Kitap Yayını | 22 Yayınevi",
+    description: "22 Yayınevi ile EPUB hazırlığı, metadata düzeni, cihaz uyumluluğu ve dijital dağıtıma hazır e-kitap yayın sürecini yönetin.",
+    images: ["/figan-hizmet-e-kitap.webp"],
+  },
 };
 
 export default function Page(){
