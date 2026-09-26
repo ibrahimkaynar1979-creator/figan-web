@@ -139,7 +139,7 @@ export default function YayinAlanlarimizPage() {
               <p>
                 Böylece 22 Yayınevi&apos;nin genel yayın çizgisinin yanında; spiritüel, mistik ve ezoterik dünyaya ayrılmış, zaman içinde kendi yazarlarını ve okur kitlesini oluşturabilecek özel bir yayın koleksiyonu geliştirmeyi hedefliyoruz.
               </p>
-              <a className="btn primary" href="/kurucu-yazar">Yazar Başvurusu Yap <b>→</b></a>
+              <a className="btn primary" href="/kurucu-yazar">İlk 22 Kurucu Yazar Başvurusu <b>→</b></a>
             </div>
           </div>
         </section>
