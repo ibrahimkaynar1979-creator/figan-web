@@ -42,22 +42,6 @@
   text-decoration: none;
 }
 
-.fiLogo {
-  font-family: var(--font-editorial), Georgia, serif;
-  font-size: 3.35rem;
-  font-weight: 500;
-  line-height: .78;
-  letter-spacing: -.06em;
-}
-
-.fiLogoSub {
-  margin-top: .52rem;
-  font-family: var(--font-ui), Arial, sans-serif;
-  font-size: .48rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: .34em;
-}
 
 .brandLine {
   margin: .62rem 0 0;
