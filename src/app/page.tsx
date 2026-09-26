@@ -185,7 +185,7 @@ export default function Home() {
               </div>
             </div>
             <div className="hero-visual">
-              <img src="/figan-hero-mobile-cropped.webp" alt="22 Yayınevi yayın dünyası: basılı kitap, e-kitap, sesli kitap ve yazar sitesi"/>
+              <img src="/figan-hero-mobile-cropped.webp" alt="22 Yayınevi yayın dünyası: basılı kitap, e-kitap, sesli kitap ve yazar sitesi" fetchPriority="high" decoding="async"/>
             </div>
           </div>
         </section>
@@ -205,7 +205,7 @@ export default function Home() {
                 <article className="figan-service-card" key={service.no}>
                   <a className="figan-service-link" href={service.href}>
                     <div className="figan-service-photo">
-                      <img src={service.image} alt="" />
+                      <img src={service.image} alt="" loading="lazy" decoding="async" />
                     </div>
 
                     <div className="figan-service-content">
@@ -274,7 +274,7 @@ export default function Home() {
               <p>Kitaplarınız, biyografiniz ve okurla kurduğunuz bağ size ait kalıcı bir dijital adreste buluşur.</p>
               <a className="author-site-more" href="/yazar-sitesi">Yazar Sitesini İnceleyin <span>→</span></a>
             </div>
-            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="22 Yayınevi yazar sitesi örneği"/></div>
+            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="22 Yayınevi yazar sitesi örneği" loading="lazy" decoding="async"/></div>
           </div>
         </section>
 
@@ -321,7 +321,7 @@ export default function Home() {
                 <article className="author-slide-card" key={author.name}>
                   <div className="author-slide-visual">
                     {author.image ? (
-                      <img src={author.image} alt={author.name}/>
+                      <img src={author.image} alt={author.name} loading="lazy" decoding="async"/>
                     ) : (
                       <div className="author-placeholder" aria-hidden="true">{author.initials}</div>
                     )}
