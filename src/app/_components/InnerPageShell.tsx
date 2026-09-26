@@ -14,6 +14,7 @@ export default function InnerPageShell({ children }: { children: ReactNode }) {
 
           <nav className={styles.nav} aria-label="İç sayfa menüsü">
             <a href="/#hizmetler">Hizmetler</a>
+            <a href="/yayin-alanlarimiz">Yayın Alanlarımız</a>
             <a href="/#surec">Süreç</a>
             <a href="/#yazarlar">Yazarlar</a>
             <a href="/#basvuru">İletişim</a>
