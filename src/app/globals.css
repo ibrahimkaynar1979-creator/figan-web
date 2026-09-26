@@ -5904,3 +5904,77 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     margin-bottom:10px!important;
   }
 }
+
+
+/* 2026-09-26 - AUTHOR CARDS EXACTLY MATCH SERVICE CARD PROPORTIONS */
+.home-page-main .authors-track{
+  gap:18px!important;
+}
+.home-page-main .author-slide-card{
+  flex:0 0 calc((100% - 36px)/3)!important;
+  width:calc((100% - 36px)/3)!important;
+  max-width:none!important;
+  min-width:0!important;
+  border-radius:1.35rem!important;
+  border:1px solid rgba(107,73,57,.16)!important;
+  background:#fffaf5!important;
+  overflow:hidden!important;
+}
+.home-page-main .author-slide-visual{
+  min-height:31rem!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+}
+.home-page-main .author-slide-copy{
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:260px!important;
+  padding:30px 18px 16px!important;
+  background:#fffaf4!important;
+}
+.home-page-main .author-slide-link{
+  margin-top:auto!important;
+}
+
+@media(max-width:1100px) and (min-width:761px){
+  .home-page-main .author-slide-card{
+    flex-basis:calc((100% - 18px)/2)!important;
+    width:calc((100% - 18px)/2)!important;
+  }
+}
+
+@media(max-width:760px){
+  .home-page-main .authors-track{
+    gap:12px!important;
+    margin:0 -8px!important;
+    padding:0 8px 10px!important;
+  }
+  .home-page-main .author-slide-card{
+    flex:0 0 66vw!important;
+    width:66vw!important;
+    max-width:322px!important;
+    min-width:0!important;
+    border-radius:1.35rem!important;
+  }
+  .home-page-main .author-slide-visual{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:320 / 345!important;
+  }
+  .home-page-main .author-slide-copy{
+    min-height:230px!important;
+    padding:26px 16px 14px!important;
+  }
+  .home-page-main .author-slide-copy h3{
+    font-size:24px!important;
+  }
+  .home-page-main .author-slide-copy>p:last-of-type{
+    display:-webkit-box!important;
+    overflow:hidden!important;
+    -webkit-box-orient:vertical!important;
+    -webkit-line-clamp:2!important;
+    margin:10px 0 12px!important;
+    font-size:11.5px!important;
+    line-height:1.5!important;
+  }
+}
