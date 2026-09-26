@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import SeoServicePage from "../_components/SeoServicePage";
 
 export const metadata: Metadata = {
-  title: "Yabancı Dil Çeviri ve Yayın Hazırlığı",
+  title: "Yabancı Dile Çeviri ve Yayın Hazırlığı",
   description: "22 Yayınevi ile editoryal çeviri, terminoloji kontrolü, hedef dilde yayın dili ve yabancı dilde dijital yayın hazırlığını planlayın.",
   alternates: { canonical: "/yabanci-dil-ceviri" },
   openGraph: {
     type: "website",
     url: "/yabanci-dil-ceviri",
-    title: "Yabancı Dil Çeviri ve Yayın Hazırlığı | 22 Yayınevi",
+    title: "Yabancı Dile Çeviri ve Yayın Hazırlığı | 22 Yayınevi",
     description: "22 Yayınevi ile editoryal çeviri, terminoloji kontrolü, hedef dilde yayın dili ve yabancı dilde dijital yayın hazırlığını planlayın.",
-    images: [{ url: "/figan-hizmet-04-yabanci-dil.webp", alt: "Yabancı Dil Çeviri ve Yayın Hazırlığı" }],
+    images: [{ url: "/figan-hizmet-04-yabanci-dil.webp", alt: "Yabancı Dile Çeviri ve Yayın Hazırlığı" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yabancı Dil Çeviri ve Yayın Hazırlığı | 22 Yayınevi",
+    title: "Yabancı Dile Çeviri ve Yayın Hazırlığı | 22 Yayınevi",
     description: "22 Yayınevi ile editoryal çeviri, terminoloji kontrolü, hedef dilde yayın dili ve yabancı dilde dijital yayın hazırlığını planlayın.",
     images: ["/figan-hizmet-04-yabanci-dil.webp"],
   },
