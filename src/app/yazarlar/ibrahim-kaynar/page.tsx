@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PublishingReels from "../../_components/PublishingReels";
 
 export const metadata: Metadata = {
   title: "İbrahim Kaynar",
@@ -16,7 +17,7 @@ const personSchema = {
 
 export default function Page(){
   return (
-    <main className="seo-profile-page">
+    <main className="seo-profile-page">\n      <PublishingReels />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(personSchema)}}/>
       <div className="container seo-profile-card">
         <a className="legal-back" href="/">← 22 Yayınevi</a>
