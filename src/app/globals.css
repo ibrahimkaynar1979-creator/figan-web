@@ -5738,3 +5738,83 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
   .publishing-areas-grid h3,.publishing-special-grid h3{font-size:22px}
   .publishing-areas-curation .btn{width:100%}
 }
+
+
+/* 2026-09-26 - PUBLISHING AREAS PREMIUM PROPORTIONS */
+.publishing-areas-section{
+  padding:52px 0 58px!important;
+}
+.publishing-areas-card{
+  padding:34px 32px 32px!important;
+  border-radius:24px!important;
+}
+.publishing-areas-card .eyebrow{
+  margin-bottom:14px!important;
+  font-size:9px!important;
+  letter-spacing:.22em!important;
+}
+.publishing-areas-card h1,
+.publishing-areas-card h2{
+  max-width:760px!important;
+  margin:0!important;
+  font-size:clamp(44px,4.8vw,64px)!important;
+  line-height:.96!important;
+  letter-spacing:-.045em!important;
+}
+.publishing-areas-card h1 em,
+.publishing-areas-card h2 em{
+  display:block!important;
+  margin-top:5px!important;
+}
+.publishing-areas-lead,
+.publishing-areas-special>p,
+.publishing-areas-curation>p{
+  max-width:700px!important;
+  margin-top:20px!important;
+  font-size:14px!important;
+  line-height:1.65!important;
+}
+.publishing-areas-grid,
+.publishing-special-grid{
+  margin-top:28px!important;
+  gap:12px!important;
+}
+
+@media(max-width:760px){
+  .publishing-areas-hero{
+    padding:30px 8px 38px!important;
+  }
+  .publishing-areas-section{
+    padding:30px 8px 38px!important;
+  }
+  .publishing-areas-card{
+    padding:24px 18px 22px!important;
+    border-radius:20px!important;
+  }
+  .publishing-areas-card .eyebrow{
+    margin-bottom:11px!important;
+    font-size:8px!important;
+  }
+  .publishing-areas-card h1,
+  .publishing-areas-card h2{
+    font-size:39px!important;
+    line-height:.96!important;
+    letter-spacing:-.04em!important;
+  }
+  .publishing-areas-card h1 em,
+  .publishing-areas-card h2 em{
+    margin-top:4px!important;
+  }
+  .publishing-areas-lead,
+  .publishing-areas-special>p,
+  .publishing-areas-curation>p{
+    margin-top:15px!important;
+    font-size:12.5px!important;
+    line-height:1.55!important;
+  }
+  .publishing-areas-grid,
+  .publishing-special-grid{
+    margin-top:20px!important;
+    gap:10px!important;
+  }
+}
