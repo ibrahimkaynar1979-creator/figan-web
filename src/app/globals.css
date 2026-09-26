@@ -6039,3 +6039,44 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
   .author-profile-book-title{font-size:24px;}
   .author-profile-visual{order:-1;}
 }
+
+
+/* 2026-09-26 - AUTHOR CONTENT ACTIONS */
+.author-content-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:20px 0 22px;
+}
+.author-content-actions a{
+  min-height:42px;
+  padding:0 14px;
+  border:1px solid rgba(169,105,52,.2);
+  border-radius:999px;
+  background:#fffaf4;
+  color:#49362e;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:700;
+}
+.author-content-actions a span{
+  color:#c96b47;
+  font-size:13px;
+  line-height:1;
+}
+@media(max-width:760px){
+  .author-content-actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin:16px 0 18px;
+  }
+  .author-content-actions a{
+    min-width:0;
+    padding:0 8px;
+    justify-content:center;
+    font-size:10.5px;
+  }
+}
