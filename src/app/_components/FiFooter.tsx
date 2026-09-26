@@ -31,7 +31,7 @@ export default function FiFooter() {
           <div className={styles.top}>
             <div className={styles.brandArea}>
               <a href="/" className={styles.brandLink} aria-label="22 Yayınevi ana sayfa">
-                <Image src="/22_yayinevi_logo.png" alt="22 Yayınevi" width={360} height={260} sizes="(max-width: 700px) 150px, 180px" className={styles.footerBrandLogo} />
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={260} sizes="(max-width: 700px) 150px, 180px" className={styles.footerBrandLogo} />
               </a>
               <p className={styles.brandLine}>Bir kitabın ötesinde, size ait bir yayın dünyası.</p>
             </div>
