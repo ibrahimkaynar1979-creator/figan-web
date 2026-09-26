@@ -178,6 +178,7 @@ export default function Home() {
               {label:"Yabancı Dil",href:"/yabanci-dil-ceviri",image:"/ekosistem-reader.webp"},
               {label:"Yazar Sitesi",href:"/yazar-sitesi",image:"/figan-hizmet-yazar-sitesi.webp"},
               {label:"Dijital Dağıtım",href:"/dijital-dagitim",image:"/figan-hizmet-dijital-dagitim.webp"},
+              {label:"Yayın Alanlarımız",href:"/yayin-alanlarimiz",image:"/22_yayinevi_logo.png"},
               {label:"İlk 22 Kurucu Yazar",href:"/kurucu-yazar",image:"/22_yayinevi_logo.png"},
             ].map((service)=>(
               <a className="seo-service-nav-item" href={service.href} key={service.href}>
