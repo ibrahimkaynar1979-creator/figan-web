@@ -84,7 +84,7 @@ export default function EcosystemSlider() {
         </div>
 
         <div className="ecosystemProductStage" aria-live="polite">
-          <img key={slide.image} className={slide.imageClass} src={slide.image} alt={slide.alt} />
+          <img key={slide.image} className={slide.imageClass} src={slide.image} alt={slide.alt} loading="lazy" decoding="async" />
         </div>
 
         <button className="sliderArrow sliderPrev" type="button" onClick={() => go(-1)} aria-label="Önceki ürün">←</button>
