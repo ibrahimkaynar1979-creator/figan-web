@@ -63,7 +63,7 @@ export default function Page(){
       ]}
       faqs={[
         { q:"Yazar sitesinde hangi sayfalar olabilir?", a:"Biyografi, kitaplar, eser detayları, yazılar, etkinlikler, basın/duyurular ve iletişim gibi bölümler ihtiyaca göre oluşturulabilir." },
-        { q:"Site telefonda düzgün çalışır mı?", a:"Evet. Tasarım mobil, tablet ve masaüstü ekranlarda kullanılabilecek responsive yapı ile hazırlanır." },
+        { q:"Site telefonda düzgün çalışır mı?", a:"Evet. Tasarım mobil, tablet ve masaüstü ekranlarda kullanılabilecek mobil, tablet ve masaüstü ekranlara uyumlu bir yapı ile hazırlanır." },
         { q:"Yeni kitap çıktığında siteye eklenebilir mi?", a:"Evet. Yapı yeni eserlerin, yazıların ve duyuruların zaman içinde eklenebilmesine uygun olarak kurulabilir." },
         { q:"Sosyal medya varken neden ayrıca yazar sitesi gerekir?", a:"Yazar sitesi size ait kalıcı bir dijital merkez oluşturur; içerikleriniz bir sosyal ağın akışına veya algoritmasına bağlı kalmadan tek adreste toplanır." },
       ]}
