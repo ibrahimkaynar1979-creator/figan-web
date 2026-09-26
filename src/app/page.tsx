@@ -80,7 +80,17 @@ const process = [
   ["06","Yayın ve Yazar Dünyası","Dijital dağıtımınızı, yazar sitenizi ve yayın sonrası görünürlüğünüzü tek yapıda birleştiriyoruz."],
 ] as const;
 
-const authors = [
+type AuthorCard = {
+  name: string;
+  kicker: string;
+  description: string;
+  image: string | null;
+  initials: string;
+  href: string;
+  published: boolean;
+};
+
+const authors: readonly AuthorCard[] = [
   {
     name:"Figen Yavuz",
     kicker:"22 YAYINEVİ YAZARI",
@@ -99,7 +109,7 @@ const authors = [
     href:"/yazarlar/ibrahim-kaynar",
     published:true,
   },
-] as const;
+];
 
 const faqs = [
   {
