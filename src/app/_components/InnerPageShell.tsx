@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import FiFooter from "./FiFooter";
+import PublishingReels from "./PublishingReels";
 import styles from "./InnerPageShell.module.css";
 
 export default function InnerPageShell({ children }: { children: ReactNode }) {
@@ -24,6 +25,7 @@ export default function InnerPageShell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
+      <PublishingReels />
       {children}
 
       <FiFooter />
