@@ -2511,6 +2511,16 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
   background:#fffaf5;
   box-shadow:0 12px 28px rgba(54,40,29,.05);
 }
+.author-slide-card-hit{
+  display:block;
+  height:100%;
+  color:inherit;
+  text-decoration:none;
+}
+.author-slide-card-hit:focus-visible{
+  outline:2px solid #b46543;
+  outline-offset:3px;
+}
 .author-slide-visual{
   aspect-ratio:4/3;
   overflow:hidden;
