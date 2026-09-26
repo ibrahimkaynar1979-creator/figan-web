@@ -102,3 +102,30 @@
 @media(max-width:760px){
   .brand img{width:122px;}
 }
+
+
+/* 2026-09-26 - STAGE 7 INNER HEADER MICRO POLISH */
+.brand img,
+.nav a,
+.cta{
+  transition:opacity .2s ease, color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.brand:hover img{
+  opacity:.9;
+}
+.nav a:hover{
+  color:#3a1d11;
+}
+.cta:hover{
+  background:#4a2516;
+  transform:translateY(-1px);
+}
+.brand:focus-visible,
+.nav a:focus-visible,
+.cta:focus-visible{
+  outline:2px solid rgba(201,107,71,.55);
+  outline-offset:4px;
+}
+@media(max-width:760px){
+  .cta:hover{transform:none;}
+}
