@@ -12,12 +12,13 @@ const publishingLinks = [
   { label: "Sesli Kitap", href: "/sesli-kitap" },
   { label: "Yazar Sitesi", href: "/yazar-sitesi" },
   { label: "Dijital Dağıtım", href: "/dijital-dagitim" },
+  { label: "Çeviri", href: "/yabanci-dil-ceviri" },
 ] as const;
 
 const fiLinks = [
-  { label: "Nasıl Çalışıyoruz?", href: "#surec" },
-  { label: "Yazarlarımız", href: "#yazarlar" },
-  { label: "22 Yayınevi Hakkında", href: "#hakkimizda" },
+  { label: "Nasıl Çalışıyoruz?", href: "/#surec" },
+  { label: "Yazarlarımız", href: "/#yazarlar" },
+  { label: "22 Yayınevi Hakkında", href: "/#hakkimizda" },
   { label: "Yayın Alanlarımız", href: "/yayin-alanlarimiz" },
   { label: "İlk 22’ye Başvur", href: "/kurucu-yazar" },
 ] as const;
@@ -29,7 +30,7 @@ export default function FiFooter() {
         <div className={styles.panel}>
           <div className={styles.top}>
             <div className={styles.brandArea}>
-              <a href="#top" className={styles.brandLink} aria-label="22 Yayınevi ana sayfa">
+              <a href="/" className={styles.brandLink} aria-label="22 Yayınevi ana sayfa">
                 <Image src="/22_yayinevi_logo.png" alt="22 Yayınevi" width={360} height={260} className={styles.footerBrandLogo} />
               </a>
               <p className={styles.brandLine}>Bir kitabın ötesinde, size ait bir yayın dünyası.</p>
