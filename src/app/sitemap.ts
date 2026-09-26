@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/yabanci-dil-ceviri`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/yayin-alanlarimiz`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/kurucu-yazar`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/yazarlar/figen-yavuz`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/yazarlar/ibrahim-kaynar`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/kitaplar/icimdeki-ibrahim`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/gizlilik`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
