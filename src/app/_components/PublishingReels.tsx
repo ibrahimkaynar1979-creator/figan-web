@@ -18,7 +18,7 @@ export default function PublishingReels({ home = false }: { home?: boolean }) {
         {reels.map((item)=>(
           <a className="seo-service-nav-item" href={item.href} key={item.href}>
             <span className="seo-service-nav-image">
-              <Image src={item.image} alt="" width={120} height={120} sizes="84px"/>
+              <Image src={item.image} alt="" width={120} height={120} sizes="(max-width: 760px) 62px, 84px"/>
             </span>
             <span>{item.label}</span>
           </a>
