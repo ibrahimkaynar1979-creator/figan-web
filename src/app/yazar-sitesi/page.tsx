@@ -54,7 +54,7 @@ export default function Page(){
         "Yazar kimliği, eserler ve içerik ihtiyaçları birlikte belirlenir.",
         "Site haritası, sayfa yapısı ve görsel yayın dili oluşturulur.",
         "Biyografi, kitaplar ve içerikler mobil uyumlu sayfalara yerleştirilir.",
-        "Son kontroller sonrası site yayına alınır ve yeni içerik eklemeye hazır hale getirilir.",
+        "Son kontroller sonrası site yayına alınır ve yeni içerik eklemeye hazır hâle getirilir.",
       ]}
       outputs={[
         "Mobil uyumlu profesyonel yazar sitesi",
