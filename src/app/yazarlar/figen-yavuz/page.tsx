@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import InnerPageShell from "../../_components/InnerPageShell";
-import PublishingReels from "../../_components/PublishingReels";
 
 export const metadata: Metadata = {
   title: "Figen Yavuz",
@@ -64,8 +63,6 @@ export default function Page() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(bookSchema) }}
         />
 
-        <PublishingReels />
-
         <section className="seo-service-hero">
           <div className="container seo-service-grid">
             <div className="seo-service-copy">
@@ -77,10 +74,10 @@ export default function Page() {
                 “Arayışın Yolculuğu” ile insanın kendine, hayata ve varoluşa dair
                 içsel yolculuğuna eşlik eden bir eser dünyası kuruyor.
               </p>
-              <div className="author-content-actions" aria-label="Figen Yavuz yayın içerikleri">
-                <a href="/yazar-sitesi"><span>↗</span><b>Web Sitesi</b></a>
-                <a href="/e-kitap-yayini"><span>▤</span><b>E-Kitap</b></a>
-                <a href="/sesli-kitap"><span>◉</span><b>Sesli Kitap</b></a>
+              <div className="author-content-actions author-content-actions-stacked" aria-label="Figen Yavuz yayın içerikleri">
+                <a className="author-action-website" href="/yazar-sitesi"><span>↗</span><b>Web Sitesini İncele</b><i>→</i></a>
+                <a className="author-action-ebook" href="/e-kitap-yayini"><span>▤</span><b>E-Kitabını Oku</b><i>→</i></a>
+                <a className="author-action-audio" href="/sesli-kitap"><span>◉</span><b>Sesli Kitabını Dinle</b><i>→</i></a>
               </div>
             </div>
 
