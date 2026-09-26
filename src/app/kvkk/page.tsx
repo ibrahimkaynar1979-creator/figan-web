@@ -1,6 +1,7 @@
+import PublishingReels from "../_components/PublishingReels";
 export default function KvkkPage(){
   return (
-    <main className="legal-page">
+    <main className="legal-page">\n      <PublishingReels />
       <div className="legal-page-inner">
         <a className="legal-back" href="/">← Ana sayfaya dön</a>
         <h1>KVKK Aydınlatma</h1>
