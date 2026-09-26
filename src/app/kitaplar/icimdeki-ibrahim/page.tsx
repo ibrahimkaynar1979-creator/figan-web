@@ -26,7 +26,7 @@ export default function Page(){
     <main className="seo-book-page">\n      <PublishingReels />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(bookSchema)}}/>
       <div className="container seo-book-grid">
-        <div className="seo-book-cover"><img src="/icimdeki-ibrahim.webp" alt="İçimdeki İbrahim kitap kapağı"/></div>
+        <div className="seo-book-cover"><img src="/icimdeki-ibrahim.webp" alt="İçimdeki İbrahim kitap kapağı" fetchPriority="high" decoding="async"/></div>
         <div className="seo-book-copy">
           <a className="legal-back" href="/">← 22 Yayınevi</a>
           <p className="eyebrow"><span/>KİTAP</p>
