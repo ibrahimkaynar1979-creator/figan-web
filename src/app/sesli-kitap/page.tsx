@@ -4,7 +4,20 @@ import SeoServicePage from "../_components/SeoServicePage";
 export const metadata: Metadata = {
   title: "Sesli Kitap Yayını",
   description: "22 Yayınevi ile seslendirme planı, kayıt, bölümleme, mastering ve platform hazırlığı dahil sesli kitap yayın sürecini yönetin.",
-  alternates:{canonical:"/sesli-kitap"},
+  alternates: { canonical: "/sesli-kitap" },
+  openGraph: {
+    type: "website",
+    url: "/sesli-kitap",
+    title: "Sesli Kitap Yayını | 22 Yayınevi",
+    description: "22 Yayınevi ile seslendirme planı, kayıt, bölümleme, mastering ve platform hazırlığı dahil sesli kitap yayın sürecini yönetin.",
+    images: [{ url: "/figan-hizmet-sesli-kitap.webp", alt: "Sesli Kitap Yayını" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sesli Kitap Yayını | 22 Yayınevi",
+    description: "22 Yayınevi ile seslendirme planı, kayıt, bölümleme, mastering ve platform hazırlığı dahil sesli kitap yayın sürecini yönetin.",
+    images: ["/figan-hizmet-sesli-kitap.webp"],
+  },
 };
 
 export default function Page(){
