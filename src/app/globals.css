@@ -6417,3 +6417,52 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     gap:8px!important;
   }
 }
+
+
+/* 2026-09-26 - FIX MOBILE AUTHOR BOOK CARD PROPORTIONS */
+@media(max-width:760px){
+  .author-profile-book-card-rich{
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+    padding:14px!important;
+  }
+  .author-profile-book-thumb{
+    width:100%!important;
+    min-height:0!important;
+    aspect-ratio:16/10!important;
+    border-radius:14px!important;
+    background:#f1eadc!important;
+  }
+  .author-profile-book-thumb img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+  .author-profile-book-info{
+    width:100%!important;
+  }
+  .author-profile-book-topline{
+    margin-bottom:10px!important;
+  }
+  .author-profile-book-info h3{
+    font-size:20px!important;
+    line-height:1.08!important;
+  }
+  .author-profile-book-info>p{
+    font-size:12px!important;
+    line-height:1.5!important;
+  }
+  .author-profile-book-meta{
+    margin-top:10px!important;
+  }
+  .author-profile-book-actions{
+    margin-top:12px!important;
+    gap:8px!important;
+  }
+  .author-profile-book-actions a{
+    min-height:44px!important;
+    padding:0 14px!important;
+    border-radius:12px!important;
+  }
+}
