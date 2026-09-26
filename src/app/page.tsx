@@ -82,21 +82,21 @@ const process = [
 
 const authors = [
   {
+    name:"Figen Yavuz",
+    kicker:"22 YAYINEVİ YAZARI",
+    description:"“Arayışın Yolculuğu” ile insanın kendine, hayata ve varoluşa dair içsel yolculuğuna eşlik eden bir eser.",
+    image:"/figen-yavuz-arayisin-yolculugu-mockup.webp",
+    initials:"FY",
+    href:"/yazarlar/figen-yavuz",
+    published:true,
+  },
+  {
     name:"İbrahim Kaynar",
     kicker:"22 YAYINEVİ YAZARI",
     description:"“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.",
     image:"/icimdeki-ibrahim-mockup.png",
     initials:"İK",
     href:"/yazarlar/ibrahim-kaynar",
-    published:true,
-  },
-  {
-    name:"Figen Yavuz",
-    kicker:"22 YAYINEVİ YAZARI",
-    description:"22 Yayınevi yazarlarından Figen Yavuz’un eserleri ve yayın yolculuğu bu alanda okurla buluşacak.",
-    image:null,
-    initials:"FY",
-    href:"/yazarlar/figen-yavuz",
     published:true,
   },
 ] as const;
@@ -330,7 +330,7 @@ export default function Home() {
                     <p className="author-card-kicker">{author.kicker}</p>
                     <h3>{author.name}</h3>
                     <p>{author.description}</p>
-                    <a className="author-slide-link" href={author.href}>Profili Gör <span>→</span></a>
+                    <a className="author-slide-link" href={author.href}>Yazarı Gör <span>→</span></a>
                   </div>
                 </article>
               ))}
