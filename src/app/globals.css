@@ -6615,3 +6615,33 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
   }
 
 }
+
+
+/* 2026-09-26 - STAGE 7 HEADER MICRO POLISH */
+.site-header .brand-logo-image img,
+.site-header .header-cta,
+.site-header .desktop-nav a{
+  transition:opacity .2s ease, color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.site-header .brand-logo-image:hover img{
+  opacity:.9;
+}
+.site-header .header-cta:hover{
+  background:#4a2516;
+  transform:translateY(-1px);
+}
+.site-header .desktop-nav a:hover{
+  color:#3a1d11;
+}
+.site-header .brand-logo-image:focus-visible,
+.site-header .header-cta:focus-visible,
+.site-header .desktop-nav a:focus-visible,
+.site-header .menu-btn:focus-visible{
+  outline:2px solid rgba(201,107,71,.55);
+  outline-offset:4px;
+}
+@media(max-width:760px){
+  .site-header .header-cta:hover{
+    transform:none;
+  }
+}
