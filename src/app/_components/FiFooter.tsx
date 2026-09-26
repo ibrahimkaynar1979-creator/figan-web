@@ -18,6 +18,7 @@ const fiLinks = [
   { label: "Nasıl Çalışıyoruz?", href: "#surec" },
   { label: "Yazarlarımız", href: "#yazarlar" },
   { label: "22 Yayınevi Hakkında", href: "#hakkimizda" },
+  { label: "Yayın Alanlarımız", href: "/yayin-alanlarimiz" },
   { label: "Yazar Başvurusu", href: "#basvuru" },
 ] as const;
 
