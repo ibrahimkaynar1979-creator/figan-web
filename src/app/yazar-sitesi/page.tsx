@@ -4,7 +4,20 @@ import SeoServicePage from "../_components/SeoServicePage";
 export const metadata: Metadata = {
   title: "Yazar Sitesi",
   description: "22 Yayınevi ile biyografi, kitap vitrini, yazılar ve duyurular için mobil uyumlu, kalıcı ve profesyonel yazar sitesi oluşturun.",
-  alternates:{canonical:"/yazar-sitesi"},
+  alternates: { canonical: "/yazar-sitesi" },
+  openGraph: {
+    type: "website",
+    url: "/yazar-sitesi",
+    title: "Yazar Sitesi | 22 Yayınevi",
+    description: "22 Yayınevi ile biyografi, kitap vitrini, yazılar ve duyurular için mobil uyumlu, kalıcı ve profesyonel yazar sitesi oluşturun.",
+    images: [{ url: "/figan-hizmet-yazar-sitesi.webp", alt: "Yazar Sitesi" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yazar Sitesi | 22 Yayınevi",
+    description: "22 Yayınevi ile biyografi, kitap vitrini, yazılar ve duyurular için mobil uyumlu, kalıcı ve profesyonel yazar sitesi oluşturun.",
+    images: ["/figan-hizmet-yazar-sitesi.webp"],
+  },
 };
 
 export default function Page(){
