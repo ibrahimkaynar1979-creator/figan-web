@@ -54,7 +54,7 @@ const bookSchema = {
 export default function Page() {
   return (
     <InnerPageShell>
-      <main className="seo-profile-page author-profile-editorial">
+      <main className="seo-service-page seo-service-editorial">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -66,35 +66,32 @@ export default function Page() {
 
         <PublishingReels />
 
-        <section className="container author-profile-card">
-          <div className="author-profile-copy">
-            <a className="legal-back" href="/">← 22 Yayınevi</a>
-            <p className="eyebrow"><span />22 YAYINEVİ YAZARI</p>
-            <h1>Figen Yavuz</h1>
-            <p className="author-profile-book-title">Arayışın Yolculuğu</p>
-            <p className="seo-profile-lead">
-              “Arayışın Yolculuğu” ile insanın kendine, hayata ve varoluşa dair
-              içsel yolculuğuna eşlik eden bir eser dünyası kuruyor.
-            </p>
-            <p className="author-profile-body">
-              Figen Yavuz&apos;un yazar profili; kitabını, yayın yolculuğunu ve
-              22 Yayınevi çatısı altında gelişen yayın dünyasını tek bir kalıcı
-              alanda bir araya getirir.
-            </p>
-            <a className="btn primary" href="/#basvuru">
-              Yazar Dünyasını Keşfedin <b>→</b>
-            </a>
-          </div>
+        <section className="seo-service-hero">
+          <div className="container seo-service-grid">
+            <div className="seo-service-copy">
+              <a className="legal-back" href="/">← 22 Yayınevi</a>
+              <p className="eyebrow"><span />22 YAYINEVİ YAZARI</p>
+              <h1>Figen Yavuz</h1>
+              <p className="author-profile-book-title">Arayışın Yolculuğu</p>
+              <p className="seo-service-lead">
+                “Arayışın Yolculuğu” ile insanın kendine, hayata ve varoluşa dair
+                içsel yolculuğuna eşlik eden bir eser dünyası kuruyor.
+              </p>
+              <a className="btn primary" href="/#basvuru">
+                Yazar Dünyasını Keşfedin <b>→</b>
+              </a>
+            </div>
 
-          <div className="author-profile-visual">
-            <Image
-              src="/figen-yavuz-arayisin-yolculugu-mockup.webp"
-              alt="Figen Yavuz - Arayışın Yolculuğu kitap mockup"
-              width={900}
-              height={1100}
-              sizes="(max-width: 760px) 100vw, 42vw"
-              priority
-            />
+            <div className="seo-service-visual">
+              <Image
+                src="/figen-yavuz-arayisin-yolculugu-mockup.webp"
+                alt="Figen Yavuz - Arayışın Yolculuğu kitap mockup"
+                width={1200}
+                height={900}
+                sizes="(max-width: 760px) 100vw, 46vw"
+                priority
+              />
+            </div>
           </div>
         </section>
       </main>
