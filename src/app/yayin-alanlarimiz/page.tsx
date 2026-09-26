@@ -2,9 +2,25 @@ import type { Metadata } from "next";
 import InnerPageShell from "../_components/InnerPageShell";
 
 export const metadata: Metadata = {
-  title: "Yayın Alanlarımız | 22 Yayınevi",
+  title: "Yayın Alanlarımız",
   description:
     "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dahil yayın alanlarını keşfedin.",
+  alternates: { canonical: "/yayin-alanlarimiz" },
+  openGraph: {
+    type: "website",
+    url: "/yayin-alanlarimiz",
+    title: "Yayın Alanlarımız | 22 Yayınevi",
+    description:
+      "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dahil yayın alanlarını keşfedin.",
+    images: [{ url: "/22_yayinevi_logo.png", alt: "Yayın Alanlarımız | 22 Yayınevi" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yayın Alanlarımız | 22 Yayınevi",
+    description:
+      "22 Yayınevi'nin edebiyat, düşünce, tarih, sanat, çocuk ve gençlik, akademik yayınlar ile spiritüel, mistik ve ezoterik çalışmalar dahil yayın alanlarını keşfedin.",
+    images: ["/22_yayinevi_logo.png"],
+  },
 };
 
 const areas = [
