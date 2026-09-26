@@ -143,11 +143,31 @@ export default function Page() {
             <p className="eyebrow"><span />ESERLERİ</p>
             <h2>Yayınlanan ve hazırlanan<br /><em>eser dünyası.</em></h2>
             <div className="author-profile-books-grid">
-              <article>
-                <span className="author-profile-book-no">01</span>
-                <div>
+              <article className="author-profile-book-card-rich">
+                <div className="author-profile-book-thumb">
+                  <Image
+                    src="/figen-yavuz-arayisin-yolculugu-mockup.webp"
+                    alt="Arayışın Yolculuğu"
+                    width={260}
+                    height={320}
+                    sizes="110px"
+                  />
+                </div>
+                <div className="author-profile-book-info">
+                  <div className="author-profile-book-topline">
+                    <span className="author-profile-book-no">01</span>
+                    <span className="author-profile-book-state">22 Yayınevi</span>
+                  </div>
                   <h3>Arayışın Yolculuğu</h3>
                   <p>İçsel yolculuk, anlam arayışı ve kişisel dönüşüm ekseninde ilerleyen eser.</p>
+                  <div className="author-profile-book-meta">
+                    <span>İçsel Yolculuk</span>
+                    <span>Basılı + Dijital</span>
+                  </div>
+                  <div className="author-profile-book-actions">
+                    <a href="/e-kitap-yayini">E-Kitabını Oku <b>→</b></a>
+                    <a href="/sesli-kitap">Sesli Kitabını Dinle <b>→</b></a>
+                  </div>
                 </div>
               </article>
             </div>
@@ -176,9 +196,13 @@ export default function Page() {
             <h2>Metin başka bir sesle,<br /><em>yeni bir hayata kavuşur.</em></h2>
             <p>
               “Arayışın Yolculuğu”nun sesli kitap sürümü profesyonel bir seslendirme ile
-              hazırlanır. Seslendiren bilgisi ve dinleme bağlantısı yayın hazır olduğunda
-              bu alanda yer alacaktır.
+              hazırlanıyor. Seslendiren kişi ve dinleme bağlantısı yayın hazır olduğunda
+              bu alanda yer alacak.
             </p>
+            <div className="author-profile-audio-meta">
+              <span><b>Durum</b> Hazırlanıyor</span>
+              <span><b>Seslendiren</b> Yakında açıklanacak</span>
+            </div>
             <a className="btn primary" href="/sesli-kitap">Sesli Kitap Sürecini İncele <b>→</b></a>
           </div>
         </section>
