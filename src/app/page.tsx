@@ -11,6 +11,7 @@ import FiFooter from "./_components/FiFooter";
 const nav = [
   ["Ana Sayfa", "#top"],
   ["Hizmetler", "#hizmetler"],
+  ["Yayın Alanlarımız", "/yayin-alanlarimiz"],
   ["Süreç", "#surec"],
   ["22 Ekosistemi", "#ekosistem"],
   ["Yazar Dünyamız", "#yazarlar"],
