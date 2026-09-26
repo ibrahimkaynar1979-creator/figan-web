@@ -388,3 +388,31 @@
 @media(min-width:701px){
   .footerBrandLogo{width:180px;}
 }
+
+
+/* 2026-09-26 - STAGE 7 FOOTER MICRO POLISH */
+.footerBrandLogo,
+.footerLink,
+.contactLink,
+.legalLinks a{
+  transition:opacity .2s ease, color .2s ease;
+}
+.brandLink:hover .footerBrandLogo{
+  opacity:.9;
+}
+.footerLink:hover,
+.contactLink:hover,
+.legalLinks a:hover{
+  color:#3a1d11;
+}
+.footerLink:hover .fiBullet,
+.contactLink:hover .contactIcon{
+  color:#c66f4f;
+}
+.brandLink:focus-visible,
+.footerLink:focus-visible,
+.contactLink:focus-visible,
+.legalLinks a:focus-visible{
+  outline:2px solid rgba(201,107,71,.5);
+  outline-offset:3px;
+}
