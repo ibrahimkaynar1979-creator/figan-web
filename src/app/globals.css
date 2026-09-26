@@ -5978,3 +5978,64 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     line-height:1.5!important;
   }
 }
+
+
+/* 2026-09-26 - FIGEN YAVUZ AUTHOR PROFILE */
+.author-profile-editorial{
+  padding-top:0!important;
+}
+.author-profile-card{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+  gap:42px;
+  align-items:center;
+  padding:36px;
+  border:1px solid rgba(169,105,52,.16);
+  border-radius:26px;
+  background:#fffdf9;
+}
+.author-profile-copy h1{
+  margin:0 0 10px;
+  color:#49362e;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:clamp(48px,5vw,76px);
+  font-weight:500;
+  line-height:.95;
+  letter-spacing:-.045em;
+}
+.author-profile-book-title{
+  margin:0 0 18px;
+  color:#b46543;
+  font-family:var(--font-poetic),Georgia,serif;
+  font-size:28px;
+  line-height:1.2;
+}
+.author-profile-body{
+  max-width:650px;
+  margin:0 0 24px;
+  color:#5f5149;
+  font-size:14px;
+  line-height:1.7;
+}
+.author-profile-visual{
+  overflow:hidden;
+  border-radius:22px;
+  background:#f1eadc;
+}
+.author-profile-visual img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+@media(max-width:760px){
+  .author-profile-card{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:22px 18px;
+    border-radius:20px;
+  }
+  .author-profile-copy h1{font-size:42px;}
+  .author-profile-book-title{font-size:24px;}
+  .author-profile-visual{order:-1;}
+}
