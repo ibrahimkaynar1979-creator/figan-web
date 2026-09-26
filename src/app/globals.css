@@ -5893,3 +5893,14 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     padding-bottom:10px!important;
   }
 }
+
+
+/* 2026-09-26 - SEPARATE HOMEPAGE REELS FROM HERO */
+.home-page-main .home-service-reels{
+  margin-bottom:14px!important;
+}
+@media(max-width:760px){
+  .home-page-main .home-service-reels{
+    margin-bottom:10px!important;
+  }
+}
