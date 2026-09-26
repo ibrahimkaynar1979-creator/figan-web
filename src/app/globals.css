@@ -6320,3 +6320,100 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     gap:7px!important;
   }
 }
+
+
+/* 2026-09-26 - RICH AUTHOR BOOK CARD + AUDIO META */
+.author-profile-book-card-rich{
+  grid-template-columns:112px 1fr!important;
+  gap:18px!important;
+  align-items:stretch!important;
+}
+.author-profile-book-thumb{
+  overflow:hidden;
+  border-radius:12px;
+  background:#f1eadc;
+}
+.author-profile-book-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.author-profile-book-info{
+  min-width:0;
+}
+.author-profile-book-topline{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:8px;
+}
+.author-profile-book-state{
+  padding:5px 8px;
+  border-radius:999px;
+  background:#f1eadc;
+  color:#6d5b50;
+  font-size:9.5px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.author-profile-book-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:10px;
+}
+.author-profile-book-meta span{
+  padding:6px 9px;
+  border-radius:999px;
+  background:#fffaf4;
+  border:1px solid rgba(169,105,52,.14);
+  color:#6b5a50;
+  font-size:10px;
+  font-weight:700;
+}
+.author-profile-audio-meta{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  max-width:720px;
+  margin:0 0 20px;
+}
+.author-profile-audio-meta span{
+  padding:12px 14px;
+  border:1px solid rgba(120,128,82,.18);
+  border-radius:12px;
+  background:rgba(255,255,255,.55);
+  color:#5d6048;
+  font-size:11px;
+  line-height:1.45;
+}
+.author-profile-audio-meta b{
+  display:block;
+  margin-bottom:2px;
+  color:#49362e;
+  font-size:9px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+@media(max-width:760px){
+  .author-profile-book-card-rich{
+    grid-template-columns:82px 1fr!important;
+    gap:12px!important;
+    padding:12px!important;
+  }
+  .author-profile-book-thumb{
+    min-height:116px;
+  }
+  .author-profile-book-info h3{
+    font-size:18px!important;
+  }
+  .author-profile-book-actions{
+    grid-template-columns:1fr!important;
+  }
+  .author-profile-audio-meta{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+}
