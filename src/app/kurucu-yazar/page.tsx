@@ -2,9 +2,25 @@ import type { Metadata } from "next";
 import InnerPageShell from "../_components/InnerPageShell";
 
 export const metadata: Metadata = {
-  title: "İlk 22 Kurucu Yazar Statüsü | 22 Yayınevi",
+  title: "İlk 22 Kurucu Yazar Statüsü",
   description:
     "22 Yayınevi'nin ilk 22 yazarı için oluşturulan Kurucu Yazar Statüsü; kalıcı kurucu yazar vitrini, gelecek hizmetlerde %50 avantaj ve sınırlı kontenjan yapısıyla özel bir yayın modeli sunar.",
+  alternates: { canonical: "/kurucu-yazar" },
+  openGraph: {
+    type: "website",
+    url: "/kurucu-yazar",
+    title: "İlk 22 Kurucu Yazar Statüsü | 22 Yayınevi",
+    description:
+      "22 Yayınevi'nin ilk 22 yazarı için oluşturulan Kurucu Yazar Statüsü; kalıcı kurucu yazar vitrini, gelecek hizmetlerde %50 avantaj ve sınırlı kontenjan yapısıyla özel bir yayın modeli sunar.",
+    images: [{ url: "/22_yayinevi_logo.png", alt: "İlk 22 Kurucu Yazar Statüsü | 22 Yayınevi" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "İlk 22 Kurucu Yazar Statüsü | 22 Yayınevi",
+    description:
+      "22 Yayınevi'nin ilk 22 yazarı için oluşturulan Kurucu Yazar Statüsü; kalıcı kurucu yazar vitrini, gelecek hizmetlerde %50 avantaj ve sınırlı kontenjan yapısıyla özel bir yayın modeli sunar.",
+    images: ["/22_yayinevi_logo.png"],
+  },
 };
 
 const whatsapp =
