@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     default: "22 Yayınevi | Basılı Kitap, E-Kitap, Sesli Kitap ve Yazar Sitesi",
     template: "%s | 22 Yayınevi",
   },
-  description: "22 Yayınevi; editörlük, kapak ve tasarım, bandrollü basım, fizikî ve dijital dağıtım, e-kitap, sesli kitap, yabancı dil çeviri ve yazar sitesi hizmetlerini tek yayın dünyasında buluşturur.",
+  description: "22 Yayınevi; editörlük, kapak ve tasarım, bandrollü basım, fizikî ve dijital dağıtım, e-kitap, sesli kitap, yabancı dile çeviri ve yazar sitesi hizmetlerini tek yayın dünyasında buluşturur.",
   keywords: [
     "22 Yayınevi",
     "kitap yayınlama",
