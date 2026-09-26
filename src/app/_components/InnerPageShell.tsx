@@ -20,7 +20,7 @@ export default function InnerPageShell({ children }: { children: ReactNode }) {
             <a href="/#basvuru">İletişim</a>
           </nav>
 
-          <a href="/#basvuru" className={styles.cta}>Yazar Başvurusu</a>
+          <a href="/kurucu-yazar" className={styles.cta}>İlk 22’ye Başvur</a>
         </div>
       </header>
 
