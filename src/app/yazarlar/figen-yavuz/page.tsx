@@ -93,6 +93,95 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <section className="author-profile-section">
+          <div className="container author-profile-standard-card">
+            <p className="eyebrow"><span />YAZAR HAKKINDA</p>
+            <h2>Bir arayışın peşinde,<br /><em>içe doğru bir yolculuk.</em></h2>
+            <div className="author-profile-prose">
+              <p>
+                Figen Yavuz, insanın kendisiyle, hayatla ve varoluşla kurduğu bağı merkeze alan
+                metinlere ilgi duyan bir yazar ve 22 Yayınevi&apos;nin kurucusudur.
+              </p>
+              <p>
+                Yazı dünyasında içsel yolculuk, farkındalık, sezgi ve insanın anlam arayışı gibi
+                temalar öne çıkar. “Arayışın Yolculuğu” bu çizginin merkezindeki eseridir.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="author-profile-section">
+          <div className="container author-profile-standard-card author-profile-featured-book">
+            <div className="author-profile-featured-copy">
+              <p className="eyebrow"><span />ÖNE ÇIKAN ESER</p>
+              <h2>Arayışın<br /><em>Yolculuğu</em></h2>
+              <p>
+                İnsanın dışarıda aradığı cevaplardan kendi iç dünyasına uzanan bir yolculuk.
+                Eser; kendini tanıma, anlam arayışı ve dönüşüm düşüncesi etrafında şekillenen
+                bir okuma deneyimi sunuyor.
+              </p>
+              <div className="author-profile-book-actions">
+                <a href="/e-kitap-yayini">E-Kitabını Oku <b>→</b></a>
+                <a href="/sesli-kitap">Sesli Kitabını Dinle <b>→</b></a>
+              </div>
+            </div>
+            <div className="author-profile-featured-visual">
+              <Image
+                src="/figen-yavuz-arayisin-yolculugu-mockup.webp"
+                alt="Arayışın Yolculuğu kitap mockup"
+                width={900}
+                height={1100}
+                sizes="(max-width: 760px) 100vw, 38vw"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="author-profile-section">
+          <div className="container author-profile-standard-card">
+            <p className="eyebrow"><span />ESERLERİ</p>
+            <h2>Yayınlanan ve hazırlanan<br /><em>eser dünyası.</em></h2>
+            <div className="author-profile-books-grid">
+              <article>
+                <span className="author-profile-book-no">01</span>
+                <div>
+                  <h3>Arayışın Yolculuğu</h3>
+                  <p>İçsel yolculuk, anlam arayışı ve kişisel dönüşüm ekseninde ilerleyen eser.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="author-profile-section">
+          <div className="container author-profile-standard-card author-profile-themes-card">
+            <p className="eyebrow"><span />YAZARLIK TEMALARI</p>
+            <h2>Figen Yavuz&apos;un<br /><em>yayın dünyası.</em></h2>
+            <div className="author-profile-themes">
+              <span>İçsel Yolculuk</span>
+              <span>Varoluş</span>
+              <span>Farkındalık</span>
+              <span>Sezgi</span>
+              <span>Spiritüel Arayış</span>
+              <span>Mistik Düşünce</span>
+              <span>Kişisel Dönüşüm</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="author-profile-section author-profile-last-section">
+          <div className="container author-profile-standard-card author-profile-audio-card">
+            <p className="eyebrow"><span />SESLİ KİTAP</p>
+            <h2>Metin başka bir sesle,<br /><em>yeni bir hayata kavuşur.</em></h2>
+            <p>
+              “Arayışın Yolculuğu”nun sesli kitap sürümü profesyonel bir seslendirme ile
+              hazırlanır. Seslendiren bilgisi ve dinleme bağlantısı yayın hazır olduğunda
+              bu alanda yer alacaktır.
+            </p>
+            <a className="btn primary" href="/sesli-kitap">Sesli Kitap Sürecini İncele <b>→</b></a>
+          </div>
+        </section>
       </main>
     </InnerPageShell>
   );
