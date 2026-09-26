@@ -63,7 +63,7 @@ const services = [
   },
   {
     no:"06",
-    title:"Yabancı Dil Çeviri",
+    title:"Yabancı Dile Çeviri",
     traits:["Editoryal Çeviri","Yayın Dili","Global Hazırlık"],
     text:"Eserinizi hedef dile yalnızca çevirmiyor; yayın dili, editoryal akış ve uluslararası yayın hazırlığı açısından yeniden ele alıyoruz.",
     image:"/figan-hizmet-04-yabanci-dil.webp",
