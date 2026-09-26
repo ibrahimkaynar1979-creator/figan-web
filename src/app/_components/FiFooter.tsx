@@ -19,7 +19,7 @@ const fiLinks = [
   { label: "Yazarlarımız", href: "#yazarlar" },
   { label: "22 Yayınevi Hakkında", href: "#hakkimizda" },
   { label: "Yayın Alanlarımız", href: "/yayin-alanlarimiz" },
-  { label: "Yazar Başvurusu", href: "#basvuru" },
+  { label: "İlk 22’ye Başvur", href: "/kurucu-yazar" },
 ] as const;
 
 export default function FiFooter() {
