@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import InnerPageShell from "../_components/InnerPageShell";
 
 export const metadata: Metadata = {
@@ -39,16 +40,35 @@ export default function YayinAlanlarimizPage() {
   return (
     <InnerPageShell>
       <main className="publishing-areas-page">
+        <nav className="seo-service-nav" aria-label="22 Yayınevi hizmetleri">
+          <div className="seo-service-nav-track">
+            {[
+              {label:"Basılı Kitap",href:"/basili-kitap-yayini",image:"/figan-hizmet-basili-kitap-yayini.webp"},
+              {label:"E-Kitap",href:"/e-kitap-yayini",image:"/figan-hizmet-e-kitap.webp"},
+              {label:"Sesli Kitap",href:"/sesli-kitap",image:"/figan-hizmet-sesli-kitap.webp"},
+              {label:"Yabancı Dil",href:"/yabanci-dil-ceviri",image:"/ekosistem-reader.webp"},
+              {label:"Yazar Sitesi",href:"/yazar-sitesi",image:"/figan-hizmet-yazar-sitesi.webp"},
+              {label:"Dijital Dağıtım",href:"/dijital-dagitim",image:"/figan-hizmet-dijital-dagitim.webp"},
+            ].map((service)=>(
+              <a className="seo-service-nav-item" href={service.href} key={service.href}>
+                <span className="seo-service-nav-image">
+                  <Image src={service.image} alt="" width={120} height={120} sizes="84px"/>
+                </span>
+                <span>{service.label}</span>
+              </a>
+            ))}
+          </div>
+        </nav>
         <section className="publishing-areas-hero">
           <div className="container">
             <div className="publishing-areas-card publishing-areas-hero-card">
               <p className="eyebrow"><span/>YAYIN ALANLARIMIZ</p>
               <h1>Geniş bir yayın dünyası,<br/><em>seçici bir editoryal çizgi.</em></h1>
               <p className="publishing-areas-lead">
-                <strong>22 Yayınevi</strong>; edebiyattan düşünceye, sanattan tarihe uzanan geniş bir yayın yelpazesinde özgün, nitelikli ve kalıcı eserleri okurla buluşturmayı amaçlar.
+                <strong>22 Yayınevi</strong>; edebiyattan düşünceye, sanattan tarihe, kişisel anlatılardan araştırma ve inceleme eserlerine uzanan geniş bir yayın yelpazesinde özgün, nitelikli ve kalıcı eserleri okurla buluşturmayı amaçlar.
               </p>
               <p className="publishing-areas-lead">
-                Yayın çizgimiz; edebî eserlerin yanı sıra insanı, toplumu, kültürü, düşünceyi ve yaşamı farklı yönleriyle ele alan özgün çalışmalara açıktır.
+                Yayın çizgimiz, insanı ve yaşamı farklı yönleriyle ele alan özgün çalışmalara açıktır. Bu yaklaşım içinde, kurucumuz <strong>Figen Yavuz&apos;un</strong> uzun yıllardır ilgi duyduğu spiritüel, mistik ve ezoterik alanlar, <strong>Figen Yavuz Özel Seçkisi</strong> başlığı altında yayınevimizin özel yayın alanlarından birini oluşturur.
               </p>
             </div>
           </div>
