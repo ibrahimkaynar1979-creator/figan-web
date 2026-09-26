@@ -329,19 +329,25 @@ export default function Home() {
             <div className="authors-track" aria-label="22 Yayınevi yazarları">
               {authors.filter((author)=>author.published).map((author)=>(
                 <article className="author-slide-card" key={author.name}>
-                  <div className="author-slide-visual">
-                    {author.image ? (
-                      <img src={author.image} alt={author.name} loading="lazy" decoding="async"/>
-                    ) : (
-                      <div className="author-placeholder" aria-hidden="true">{author.initials}</div>
-                    )}
-                  </div>
-                  <div className="author-slide-copy">
-                    <p className="author-card-kicker">{author.kicker}</p>
-                    <h3>{author.name}</h3>
-                    <p>{author.description}</p>
-                    <a className="author-slide-link" href={author.href}>Yazarı Gör <span>→</span></a>
-                  </div>
+                  <a
+                    className="author-slide-card-hit"
+                    href={author.href}
+                    aria-label={`${author.name} yazar sayfasını görüntüle`}
+                  >
+                    <div className="author-slide-visual">
+                      {author.image ? (
+                        <img src={author.image} alt={author.name} loading="lazy" decoding="async"/>
+                      ) : (
+                        <div className="author-placeholder" aria-hidden="true">{author.initials}</div>
+                      )}
+                    </div>
+                    <div className="author-slide-copy">
+                      <p className="author-card-kicker">{author.kicker}</p>
+                      <h3>{author.name}</h3>
+                      <p>{author.description}</p>
+                      <span className="author-slide-link">Yazarı Gör <span>→</span></span>
+                    </div>
+                  </a>
                 </article>
               ))}
             </div>
