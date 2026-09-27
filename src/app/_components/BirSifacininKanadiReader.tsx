@@ -66,11 +66,23 @@ export default function BirSifacininKanadiReader() {
     }
     try {
       const saved = JSON.parse(raw);
-      if (typeof saved.index === "number" && saved.index >= -1 && saved.index < sections.length) setIndex(saved.index);
-      if (typeof saved.readerPage === "number" && saved.readerPage >= 0) {
-        pendingReaderPage.current = Math.floor(saved.readerPage);
-        readerPageRef.current = Math.floor(saved.readerPage);
-        setReaderPage(Math.floor(saved.readerPage));
+      const savedIndex =
+        typeof saved.lastReadingIndex === "number"
+          ? saved.lastReadingIndex
+          : saved.index;
+      const savedPage =
+        typeof saved.lastReaderPage === "number"
+          ? saved.lastReaderPage
+          : saved.readerPage;
+
+      if (typeof savedIndex === "number" && savedIndex >= 0 && savedIndex < sections.length) {
+        setIndex(savedIndex);
+      }
+      if (typeof savedPage === "number" && savedPage >= 0) {
+        const restoredPage = Math.floor(savedPage);
+        pendingReaderPage.current = restoredPage;
+        readerPageRef.current = restoredPage;
+        setReaderPage(restoredPage);
       }
       if (["light","cream","dark"].includes(saved.theme)) setTheme(saved.theme);
       if (typeof saved.fontSize === "number") setFontSize(saved.fontSize);
@@ -88,9 +100,59 @@ export default function BirSifacininKanadiReader() {
 
   useEffect(() => {
     if (!storageReady) return;
-    localStorage.setItem(STORAGE, JSON.stringify({ index, readerPage, theme, fontSize, lineHeight, pageMargin, bookmarks, notes }));
+
+    let previous: Record<string, unknown> = {};
+    try {
+      previous = JSON.parse(localStorage.getItem(STORAGE) || "{}");
+    } catch {}
+
+    const next = {
+      ...previous,
+      index,
+      readerPage,
+      theme,
+      fontSize,
+      lineHeight,
+      pageMargin,
+      bookmarks,
+      notes,
+      ...(index >= 0
+        ? { lastReadingIndex: index, lastReaderPage: readerPage }
+        : {}),
+    };
+
+    localStorage.setItem(STORAGE, JSON.stringify(next));
     setDraft(index >= 0 ? notes[index] || "" : "");
   }, [storageReady, index, readerPage, theme, fontSize, lineHeight, pageMargin, bookmarks, notes]);
+
+  useEffect(() => {
+    if (!storageReady) return;
+
+    const saveExactPosition = () => {
+      let previous: Record<string, unknown> = {};
+      try {
+        previous = JSON.parse(localStorage.getItem(STORAGE) || "{}");
+      } catch {}
+
+      const exactPage = readerPageRef.current;
+      const next = {
+        ...previous,
+        index,
+        readerPage: exactPage,
+        ...(index >= 0
+          ? { lastReadingIndex: index, lastReaderPage: exactPage }
+          : {}),
+      };
+      localStorage.setItem(STORAGE, JSON.stringify(next));
+    };
+
+    window.addEventListener("pagehide", saveExactPosition);
+    window.addEventListener("beforeunload", saveExactPosition);
+    return () => {
+      window.removeEventListener("pagehide", saveExactPosition);
+      window.removeEventListener("beforeunload", saveExactPosition);
+    };
+  }, [storageReady, index]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
