@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { uploadPresigned } from "@vercel/blob/client";
 import styles from "./upload.module.css";
 
@@ -12,6 +12,60 @@ export default function AudiobookUploadPage() {
   const [status,setStatus] = useState<"idle"|"uploading"|"done"|"error">("idle");
   const [message,setMessage] = useState("");
   const [url,setUrl] = useState("");
+  const [authChecked,setAuthChecked] = useState(false);
+  const [authenticated,setAuthenticated] = useState(false);
+  const [pin,setPin] = useState("");
+  const [authMessage,setAuthMessage] = useState("");
+  const [verified,setVerified] = useState(false);
+
+  useEffect(()=>{
+    void fetch("/api/sesli-kitap/auth",{cache:"no-store"})
+      .then((response)=>response.json())
+      .then((data)=>{
+        setAuthenticated(Boolean(data?.authenticated));
+        setAuthChecked(true);
+      })
+      .catch(()=>{
+        setAuthenticated(false);
+        setAuthChecked(true);
+      });
+  },[]);
+
+  async function login(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setAuthMessage("");
+    const response=await fetch("/api/sesli-kitap/auth",{
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({pin}),
+    });
+    const data=await response.json().catch(()=>null);
+    if(!response.ok){
+      setAuthMessage(data?.error || "Giriş yapılamadı.");
+      return;
+    }
+    setAuthenticated(true);
+    setPin("");
+  }
+
+  async function verifyPublishedAudio(expectedUrl:string) {
+    try{
+      const response=await fetch("/api/sesli-kitap/current",{cache:"no-store"});
+      const data=await response.json();
+      const ok=Boolean(
+        response.ok &&
+        data?.ready &&
+        typeof data.url==="string" &&
+        data.url &&
+        (data.pathname==="audiobooks/bir-sifacinin-kanadi/master.mp3" || data.url===expectedUrl)
+      );
+      setVerified(ok);
+      return ok;
+    }catch{
+      setVerified(false);
+      return false;
+    }
+  }
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,6 +81,7 @@ export default function AudiobookUploadPage() {
     setProgress(0);
     setMessage("");
     setUrl("");
+    setVerified(false);
 
     try {
       const blob = await uploadPresigned(TARGET_PATH,file,{
@@ -37,8 +92,13 @@ export default function AudiobookUploadPage() {
       });
 
       setUrl(blob.url);
+      const ok=await verifyPublishedAudio(blob.url);
       setStatus("done");
-      setMessage("Master ses dosyası başarıyla yüklendi. Player artık bu dosyayı kullanabilir.");
+      setMessage(
+        ok
+          ? "Master ses dosyası yüklendi ve player kaynağı doğrulandı."
+          : "Dosya yüklendi; player kaynağı henüz doğrulanamadı."
+      );
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Yükleme sırasında hata oluştu.");
@@ -46,6 +106,36 @@ export default function AudiobookUploadPage() {
   }
 
   const size = file ? (file.size / 1024 / 1024).toFixed(1) : null;
+
+  if(!authChecked){
+    return <main className={styles.page}><section className={styles.card}><div className={styles.authBox}>Yönetim paneli hazırlanıyor…</div></section></main>;
+  }
+
+  if(!authenticated){
+    return (
+      <main className={styles.page}>
+        <section className={styles.card}>
+          <div className={styles.authBox}>
+            <span>22 YAYINEVİ</span>
+            <h1>Sesli Kitap Yönetimi</h1>
+            <p>Master ses dosyasını değiştirmek için yönetici girişi gereklidir.</p>
+            <form onSubmit={login}>
+              <input
+                type="password"
+                inputMode="numeric"
+                autoComplete="current-password"
+                placeholder="Yönetici PIN"
+                value={pin}
+                onChange={(event)=>setPin(event.target.value)}
+              />
+              <button type="submit">Giriş Yap</button>
+            </form>
+            {authMessage && <small>{authMessage}</small>}
+          </div>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className={styles.page}>
@@ -104,8 +194,8 @@ export default function AudiobookUploadPage() {
 
           {url && (
             <div className={styles.result}>
-              <span>Yayın URL'si</span>
-              <a href={url} target="_blank" rel="noreferrer">{url}</a>
+              <span>YAYIN DURUMU</span>
+              <b>{verified ? "✓ Player kaynağı doğrulandı" : "Kontrol bekliyor"}</b>
             </div>
           )}
 
