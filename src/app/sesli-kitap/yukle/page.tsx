@@ -17,6 +17,12 @@ export default function AudiobookUploadPage() {
   const [pin,setPin] = useState("");
   const [authMessage,setAuthMessage] = useState("");
   const [verified,setVerified] = useState(false);
+  const [masterStatus,setMasterStatus] = useState<{
+    ready:boolean;
+    size?:number;
+    uploadedAt?:string;
+    source?:string;
+  } | null>(null);
 
   useEffect(()=>{
     void fetch("/api/sesli-kitap/auth",{cache:"no-store"})
@@ -30,6 +36,19 @@ export default function AudiobookUploadPage() {
         setAuthChecked(true);
       });
   },[]);
+
+  useEffect(()=>{
+    if(!authenticated) return;
+    void fetch("/api/sesli-kitap/current",{cache:"no-store"})
+      .then((response)=>response.json())
+      .then((data)=>setMasterStatus({
+        ready:Boolean(data?.ready),
+        size:typeof data?.size==="number" ? data.size : undefined,
+        uploadedAt:typeof data?.uploadedAt==="string" ? data.uploadedAt : undefined,
+        source:typeof data?.source==="string" ? data.source : undefined,
+      }))
+      .catch(()=>setMasterStatus({ready:false}));
+  },[authenticated]);
 
   async function login(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -100,6 +119,16 @@ export default function AudiobookUploadPage() {
 
       setUrl(blob.url);
       const ok=await verifyPublishedAudio(blob.url);
+      if(ok){
+        const response=await fetch("/api/sesli-kitap/current",{cache:"no-store"});
+        const data=await response.json().catch(()=>null);
+        setMasterStatus({
+          ready:Boolean(data?.ready),
+          size:typeof data?.size==="number" ? data.size : file.size,
+          uploadedAt:typeof data?.uploadedAt==="string" ? data.uploadedAt : new Date().toISOString(),
+          source:typeof data?.source==="string" ? data.source : "blob",
+        });
+      }
       setStatus("done");
       setMessage(
         ok
@@ -169,6 +198,22 @@ export default function AudiobookUploadPage() {
             <code>{TARGET_PATH}</code>
             <p>Web player tek master MP3 kullanır. Bölüm geçişleri dosyanın içindeki zaman işaretlerinden yapılır.</p>
           </div>
+        </div>
+
+        <div className={styles.masterState}>
+          <div>
+            <span>MEVCUT MASTER</span>
+            <strong>{masterStatus?.ready ? "Yayına hazır" : "Kontrol ediliyor"}</strong>
+          </div>
+          <div>
+            <span>BOYUT</span>
+            <strong>{masterStatus?.size ? `${(masterStatus.size/1024/1024).toFixed(1)} MB` : "—"}</strong>
+          </div>
+          <div>
+            <span>SON YÜKLEME</span>
+            <strong>{masterStatus?.uploadedAt ? new Date(masterStatus.uploadedAt).toLocaleString("tr-TR") : "—"}</strong>
+          </div>
+          <a href="/dinle/bir-sifacinin-kanadi" target="_blank" rel="noreferrer">Player'ı Aç →</a>
         </div>
 
         <form onSubmit={onSubmit} className={styles.form}>
