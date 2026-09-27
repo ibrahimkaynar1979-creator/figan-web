@@ -241,10 +241,17 @@
     border-top:0;
     background:var(--surface);
     box-shadow:none;
-    transition:opacity .22s ease;
+    transition:opacity .22s ease, padding .18s ease, background .18s ease;
   }
-  .reader[data-reading="true"][data-chrome="hidden"] .progressArea{opacity:1;pointer-events:auto}
-  .reader[data-reading="true"][data-chrome="hidden"] .progressMeta{opacity:0;pointer-events:none}
+  .reader[data-reading="true"][data-chrome="hidden"] .progressArea{
+    opacity:1;
+    pointer-events:auto;
+    padding:0 2px;
+    background:transparent;
+  }
+  .reader[data-reading="true"][data-chrome="hidden"] .progressMeta{
+    display:none;
+  }
   .reader[data-reading="true"] .progressMeta{transition:opacity .18s ease}
   .reader[data-reading="true"] .progressArea input{
     width:100%;
