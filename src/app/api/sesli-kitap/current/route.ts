@@ -1,7 +1,7 @@
 import { list } from "@vercel/blob";
 
 const PREFIX = "audiobooks/bir-sifacinin-kanadi/";
-const PUBLIC_FALLBACK_URL = "https://edmrsvk0wqr0t0cr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
+const PUBLIC_FALLBACK_URL = "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
 
 export async function GET() {
   try {
