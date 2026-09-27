@@ -47,6 +47,11 @@ export default function BirSifacininKanadiReader() {
   const [pageMargin, setPageMargin] = useState(24);
 
   useEffect(() => {
+    document.body.classList.add("reader-route");
+    return () => document.body.classList.remove("reader-route");
+  }, []);
+
+  useEffect(() => {
     const raw = localStorage.getItem(STORAGE);
     if (!raw) return;
     try {
