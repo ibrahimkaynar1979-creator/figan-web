@@ -237,3 +237,11 @@
   .bookActions{max-width:520px}
   .formatRail{margin:30px -7vw 0}
 }
+
+
+/* Author world is intentionally immersive; hide the global publisher mobile dock here. */
+.authorWorld :global(.mobile-dock){display:none!important}
+@media(max-width:600px){
+  :global(body){padding-bottom:0!important}
+  .authorWorld :global(.mobile-dock){display:none!important}
+}
