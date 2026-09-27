@@ -9,6 +9,7 @@ const FALLBACK_AUDIO =
   process.env.NEXT_PUBLIC_BIR_SIFACININ_KANADI_AUDIO_URL ||
   "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
 const BOOK_DURATION = 8477.232;
+const PROGRESS_KEY = "22y-bir-sifacinin-kanadi-progress";
 // deploy-refresh: audiobook upload flow + Blob auto-connect
 
 const chapters: Chapter[] = [
@@ -111,6 +112,7 @@ const formatTime = (seconds: number) => {
 
 export default function BirSifacininKanadiPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const lastSavedSecondRef = useRef(-1);
   const [chapterIndex,setChapterIndex] = useState(0);
   const [playing,setPlaying] = useState(false);
   const [currentTime,setCurrentTime] = useState(0);
@@ -153,14 +155,17 @@ export default function BirSifacininKanadiPlayer() {
   },[]);
 
   useEffect(()=>{
-    const saved=window.localStorage.getItem("22y-bir-sifacinin-kanadi-progress");
+    const saved=window.localStorage.getItem(PROGRESS_KEY);
     if(!saved) return;
     try{
-      const parsed=JSON.parse(saved) as {currentTime?:number};
+      const parsed=JSON.parse(saved) as {currentTime?:number;rate?:number};
       if(typeof parsed.currentTime==="number" && parsed.currentTime>=0){
         setCurrentTime(parsed.currentTime);
         const idx=[...chapters].reverse().findIndex((item)=>parsed.currentTime!>=item.start);
         if(idx>=0) setChapterIndex(chapters.length-1-idx);
+      }
+      if(typeof parsed.rate==="number" && [0.75,1,1.25,1.5,1.75,2].includes(parsed.rate)){
+        setRate(parsed.rate);
       }
     }catch{}
   },[]);
@@ -169,9 +174,24 @@ export default function BirSifacininKanadiPlayer() {
     const audio=audioRef.current;
     if(!audio) return;
     const restore=()=>{
-      if(currentTime>0 && currentTime<audio.duration) audio.currentTime=currentTime;
-      audio.playbackRate=rate;
-      setDuration(audio.duration || BOOK_DURATION);
+      let resumeAt=0;
+      let savedRate=1;
+      try{
+        const saved=window.localStorage.getItem(PROGRESS_KEY);
+        if(saved){
+          const parsed=JSON.parse(saved) as {currentTime?:number;rate?:number};
+          if(typeof parsed.currentTime==="number" && parsed.currentTime>=0) resumeAt=parsed.currentTime;
+          if(typeof parsed.rate==="number" && [0.75,1,1.25,1.5,1.75,2].includes(parsed.rate)) savedRate=parsed.rate;
+        }
+      }catch{}
+      const actualDuration=audio.duration || BOOK_DURATION;
+      if(resumeAt>0 && resumeAt<actualDuration-1){
+        audio.currentTime=resumeAt;
+        setCurrentTime(resumeAt);
+      }
+      audio.playbackRate=savedRate;
+      setRate(savedRate);
+      setDuration(actualDuration);
     };
     audio.addEventListener("loadedmetadata",restore,{once:true});
     return()=>audio.removeEventListener("loadedmetadata",restore);
@@ -179,10 +199,12 @@ export default function BirSifacininKanadiPlayer() {
 
   useEffect(()=>{
     const timer=window.setInterval(()=>{
-      window.localStorage.setItem("22y-bir-sifacinin-kanadi-progress",JSON.stringify({currentTime}));
+      try{
+        window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime,rate,updatedAt:Date.now()}));
+      }catch{}
     },4000);
     return()=>window.clearInterval(timer);
-  },[currentTime]);
+  },[currentTime,rate]);
 
   useEffect(()=>{
     const index=Math.max(0,chapters.findIndex((item,i)=>{
@@ -240,6 +262,9 @@ export default function BirSifacininKanadiPlayer() {
     const next=order[(order.indexOf(rate)+1)%order.length];
     setRate(next);
     if(audioRef.current) audioRef.current.playbackRate=next;
+    try{
+      window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime,rate:next,updatedAt:Date.now()}));
+    }catch{}
   };
 
   const selectChapter=(index:number)=>{
@@ -264,8 +289,38 @@ export default function BirSifacininKanadiPlayer() {
         ref={audioRef}
         src={audioSrc}
         preload="metadata"
-        onTimeUpdate={(e)=>setCurrentTime(e.currentTarget.currentTime)}
-        onLoadedMetadata={(e)=>{setDuration(e.currentTarget.duration||BOOK_DURATION);e.currentTarget.playbackRate=rate;}}
+        onTimeUpdate={(e)=>{
+          const next=e.currentTarget.currentTime;
+          setCurrentTime(next);
+          const wholeSecond=Math.floor(next);
+          if(wholeSecond!==lastSavedSecondRef.current && wholeSecond%4===0){
+            lastSavedSecondRef.current=wholeSecond;
+            try{
+              window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:next,rate,updatedAt:Date.now()}));
+            }catch{}
+          }
+        }}
+        onLoadedMetadata={(e)=>{
+          const audio=e.currentTarget;
+          const actualDuration=audio.duration||BOOK_DURATION;
+          setDuration(actualDuration);
+          let resumeAt=0;
+          let savedRate=rate;
+          try{
+            const saved=window.localStorage.getItem(PROGRESS_KEY);
+            if(saved){
+              const parsed=JSON.parse(saved) as {currentTime?:number;rate?:number};
+              if(typeof parsed.currentTime==="number" && parsed.currentTime>=0) resumeAt=parsed.currentTime;
+              if(typeof parsed.rate==="number" && [0.75,1,1.25,1.5,1.75,2].includes(parsed.rate)) savedRate=parsed.rate;
+            }
+          }catch{}
+          if(resumeAt>0 && resumeAt<actualDuration-1){
+            audio.currentTime=resumeAt;
+            setCurrentTime(resumeAt);
+          }
+          audio.playbackRate=savedRate;
+          setRate(savedRate);
+        }}
         onPlay={()=>{setPlaying(true);setAudioError(false);}}
         onPause={()=>setPlaying(false)}
         onCanPlay={()=>setAudioError(false)}
@@ -351,7 +406,23 @@ export default function BirSifacininKanadiPlayer() {
             </button>
           </div>
 
-          {audioError && <div className={styles.audioNotice}>Ses kaynağına erişilemiyor. Lütfen tekrar deneyin.</div>}
+          {audioError && (
+            <div className={styles.audioNotice}>
+              <span>Ses yüklenemedi.</span>
+              <button
+                type="button"
+                onClick={()=>{
+                  const audio=audioRef.current;
+                  if(!audio) return;
+                  setAudioError(false);
+                  audio.load();
+                  void audio.play().then(()=>setPlaying(true)).catch(()=>setAudioError(true));
+                }}
+              >
+                Tekrar dene
+              </button>
+            </div>
+          )}
 
           <div className={styles.tools}>
             <button onClick={changeRate}><b>{rate}x</b><span>Hız</span></button>
