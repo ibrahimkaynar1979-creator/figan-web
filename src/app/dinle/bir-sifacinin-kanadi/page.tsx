@@ -215,7 +215,7 @@ export default function BirSifacininKanadiPlayer() {
   },[sleepMinutes]);
 
   useEffect(()=>{
-    if(!("mediaSession" in navigator)) return;
+    if(!("mediaSession" in navigator) || !("MediaMetadata" in window)) return;
 
     navigator.mediaSession.metadata=new MediaMetadata({
       title: chapter.title,
