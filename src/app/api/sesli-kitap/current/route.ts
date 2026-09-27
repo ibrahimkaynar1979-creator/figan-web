@@ -16,7 +16,7 @@ export async function GET() {
         url: PUBLIC_FALLBACK_URL,
         pathname: PREFIX + "master.mp3",
         source: "public-fallback",
-      });
+      }, { headers: { "cache-control": "no-store" } });
     }
 
     return Response.json({
@@ -25,7 +25,8 @@ export async function GET() {
       pathname: preferred.pathname,
       size: preferred.size,
       uploadedAt: preferred.uploadedAt,
-    });
+      source: "blob",
+    }, { headers: { "cache-control": "no-store" } });
   } catch (error) {
     return Response.json({
       ready: true,
@@ -33,6 +34,6 @@ export async function GET() {
       pathname: PREFIX + "master.mp3",
       source: "public-fallback",
       warning: error instanceof Error ? error.message : "Blob listesi okunamadı.",
-    });
+    }, { headers: { "cache-control": "no-store" } });
   }
 }
