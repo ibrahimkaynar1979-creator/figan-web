@@ -474,3 +474,16 @@
   .reader[data-reading="false"] .coverReaderBrand strong{font-size:28px}
   .reader[data-reading="false"] .coverReaderBrand span{font-size:12px}
 }
+
+
+/* Cover screen final visual balance */
+@media(max-width:520px){
+  .reader[data-reading="false"] .readingArea{padding:8px 16px 8px}
+  .reader[data-reading="false"] .coverHero{width:min(84vw,360px)}
+  .reader[data-reading="false"] .coverHero img{max-height:min(54dvh,455px)}
+  .reader[data-reading="false"] .coverAuthor{margin-top:8px;font-size:27px}
+  .reader[data-reading="false"] .coverPublisher{margin-top:4px}
+  .reader[data-reading="false"] .coverScreen .startButton{margin-top:13px;width:min(78vw,372px)}
+  .reader[data-reading="false"] .coverStats{margin-top:13px}
+  .reader[data-reading="false"] .coverReaderBrand{margin-top:12px;padding-top:10px}
+}
