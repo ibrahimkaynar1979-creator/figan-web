@@ -162,6 +162,8 @@
     height:100dvh;
     min-height:0;
     display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:1fr;
     place-items:center;
     overflow:hidden;
     background:#eee8df;
