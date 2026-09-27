@@ -1,0 +1,2 @@
+import p00 from "./p00"; import p01 from "./p01"; import p02 from "./p02"; import p03 from "./p03"; import p04 from "./p04"; import p05 from "./p05"; import p06 from "./p06"; import p07 from "./p07"; import p08 from "./p08"; import p09 from "./p09"; import p10 from "./p10"; import p11 from "./p11"; import p12 from "./p12";
+export const birSifacininKanadiSections = [...p00,...p01,...p02,...p03,...p04,...p05,...p06,...p07,...p08,...p09,...p10,...p11,...p12] as {title:string; paragraphs:readonly string[]}[];
