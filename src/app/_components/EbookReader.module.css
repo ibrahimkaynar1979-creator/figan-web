@@ -678,3 +678,133 @@
     color:#756b60;
   }
 }
+
+
+/* HOTFIX — full viewport mobile cover, remove ratio-clipping */
+@media(max-width:520px){
+  .reader[data-reading="false"]{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    padding:6px!important;
+    display:block!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+    background:#eee8df!important;
+  }
+
+  .reader[data-reading="false"] .stage{
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    min-height:0!important;
+    aspect-ratio:auto!important;
+    margin:0!important;
+    display:grid!important;
+    grid-template-rows:76px minmax(0,1fr)!important;
+    border-radius:30px!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+    background:#fbf7ef!important;
+  }
+
+  .reader[data-reading="false"] .topbar{
+    width:100%!important;
+    height:76px!important;
+    padding:0 28px!important;
+    box-sizing:border-box!important;
+  }
+
+  .reader[data-reading="false"] .coverTopLogo{
+    width:138px!important;
+    flex:0 0 138px!important;
+    overflow:visible!important;
+  }
+
+  .reader[data-reading="false"] .coverTopLogo img{
+    width:138px!important;
+    height:auto!important;
+    max-width:none!important;
+    object-fit:contain!important;
+  }
+
+  .reader[data-reading="false"] .readingArea{
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    padding:10px 18px 10px!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+  }
+
+  .reader[data-reading="false"] .coverScreen{
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+  }
+
+  .reader[data-reading="false"] .coverHero{
+    width:clamp(270px,69vw,340px)!important;
+    height:auto!important;
+    max-width:calc(100vw - 54px)!important;
+    margin:18px auto 0!important;
+    flex:0 0 auto!important;
+    align-self:center!important;
+  }
+
+  .reader[data-reading="false"] .coverHero img{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    max-width:100%!important;
+    max-height:455px!important;
+    margin:0 auto!important;
+    object-fit:contain!important;
+  }
+
+  .reader[data-reading="false"] .coverAuthor{
+    margin:14px 0 0!important;
+    font-size:31px!important;
+    line-height:1!important;
+    text-align:center!important;
+  }
+
+  .reader[data-reading="false"] .coverPublisher{
+    margin:7px 0 0!important;
+    font-size:16px!important;
+    line-height:1.1!important;
+    text-align:center!important;
+  }
+
+  .reader[data-reading="false"] .coverScreen .startButton{
+    width:clamp(300px,66vw,330px)!important;
+    max-width:calc(100vw - 72px)!important;
+    min-width:0!important;
+    height:58px!important;
+    margin:20px auto 0!important;
+    padding:0 24px!important;
+    align-self:center!important;
+    box-sizing:border-box!important;
+  }
+
+  .reader[data-reading="false"] .coverStats{
+    margin:20px auto 0!important;
+    align-self:center!important;
+  }
+
+  .reader[data-reading="false"] .coverReaderBrand{
+    width:min(82%,400px)!important;
+    margin:20px auto 0!important;
+    padding-top:15px!important;
+    align-self:center!important;
+  }
+}
