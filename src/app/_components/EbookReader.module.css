@@ -74,6 +74,12 @@
 .toc button b{font-weight:400;color:var(--muted)}
 .toc .currentToc{background:var(--accent-soft);border-radius:8px;border-bottom-color:transparent}
 
+.bookmarkPanel{display:grid;gap:10px}
+.bookmarkList{display:grid;border-top:1px solid var(--line)}
+.bookmarkList button{border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);padding:14px 4px;text-align:left;display:grid;gap:4px;cursor:pointer}
+.bookmarkList button:hover{background:var(--accent-soft)}
+.bookmarkList b{font-size:14px;font-weight:600}
+.bookmarkList span{font-size:12px;color:var(--muted)}
 .searchPanel{display:grid;gap:12px}
 .searchBox{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:0 12px}
 .searchBox>span{color:var(--muted);font-size:21px}
