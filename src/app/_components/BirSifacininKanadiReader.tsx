@@ -22,6 +22,7 @@ import p15 from "../_data/bskPlain/p15";
 import p16 from "../_data/bskPlain/p16";
 
 type Theme = "light" | "cream" | "dark";
+type ReaderFont = "serif" | "sans" | "modern";
 type Panel = "toc" | "appearance" | "notes" | null;
 type Section = { title: string; paragraphs: readonly string[] };
 
@@ -38,6 +39,7 @@ export default function BirSifacininKanadiReader() {
   const [index, setIndex] = useState(-1);
   const [theme, setTheme] = useState<Theme>("cream");
   const [fontSize, setFontSize] = useState(22);
+  const [readerFont, setReaderFont] = useState<ReaderFont>("serif");
   const [panel, setPanel] = useState<Panel>(null);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [notes, setNotes] = useState<Record<number, string>>({});
@@ -86,6 +88,7 @@ export default function BirSifacininKanadiReader() {
       }
       if (["light","cream","dark"].includes(saved.theme)) setTheme(saved.theme);
       if (typeof saved.fontSize === "number") setFontSize(saved.fontSize);
+      if (["serif","sans","modern"].includes(saved.readerFont)) setReaderFont(saved.readerFont);
       if (typeof saved.lineHeight === "number") setLineHeight(saved.lineHeight);
       if (typeof saved.pageMargin === "number") setPageMargin(saved.pageMargin);
       if (Array.isArray(saved.bookmarks)) setBookmarks(saved.bookmarks);
@@ -112,6 +115,7 @@ export default function BirSifacininKanadiReader() {
       readerPage,
       theme,
       fontSize,
+      readerFont,
       lineHeight,
       pageMargin,
       bookmarks,
@@ -123,7 +127,7 @@ export default function BirSifacininKanadiReader() {
 
     localStorage.setItem(STORAGE, JSON.stringify(next));
     setDraft(index >= 0 ? notes[index] || "" : "");
-  }, [storageReady, index, readerPage, theme, fontSize, lineHeight, pageMargin, bookmarks, notes]);
+  }, [storageReady, index, readerPage, theme, fontSize, readerFont, lineHeight, pageMargin, bookmarks, notes]);
 
   useEffect(() => {
     if (!storageReady) return;
@@ -315,6 +319,12 @@ export default function BirSifacininKanadiReader() {
       data-chrome={chromeVisible ? "visible" : "hidden"}
       style={{
         "--reader-font-size": fontSize + "px",
+        "--reader-font-family":
+          readerFont === "sans"
+            ? 'Inter, Arial, Helvetica, sans-serif'
+            : readerFont === "modern"
+              ? '"Trebuchet MS", "Avenir Next", Arial, sans-serif'
+              : 'Georgia, "Times New Roman", serif',
         "--reader-line-height": String(lineHeight),
         "--reader-page-margin": pageMargin + "px",
       } as CSSProperties}
@@ -465,9 +475,27 @@ export default function BirSifacininKanadiReader() {
               </div>
               <label>Yazı Tipi</label>
               <div className={styles.fontFamilyRow}>
-                <button className={styles.selected}>Aa<span>Serif</span></button>
-                <button>Aa<span>Sans</span></button>
-                <button>Aa<span>Modern</span></button>
+                <button
+                  className={readerFont === "serif" ? styles.selected : ""}
+                  onClick={() => setReaderFont("serif")}
+                  aria-pressed={readerFont === "serif"}
+                >
+                  Aa<span>Serif</span>
+                </button>
+                <button
+                  className={readerFont === "sans" ? styles.selected : ""}
+                  onClick={() => setReaderFont("sans")}
+                  aria-pressed={readerFont === "sans"}
+                >
+                  Aa<span>Sans</span>
+                </button>
+                <button
+                  className={readerFont === "modern" ? styles.selected : ""}
+                  onClick={() => setReaderFont("modern")}
+                  aria-pressed={readerFont === "modern"}
+                >
+                  Aa<span>Modern</span>
+                </button>
               </div>
               <label htmlFor="bsk-font">Yazı Boyutu</label>
               <div className={styles.fontRow}><span>A</span><input id="bsk-font" type="range" min="17" max="30" value={fontSize} onChange={e => setFontSize(Number(e.target.value))}/><span>A</span></div>
