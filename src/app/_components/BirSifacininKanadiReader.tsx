@@ -42,6 +42,9 @@ export default function BirSifacininKanadiReader() {
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [notes, setNotes] = useState<Record<number, string>>({});
   const [draft, setDraft] = useState("");
+  const [chromeVisible, setChromeVisible] = useState(true);
+  const [lineHeight, setLineHeight] = useState(1.68);
+  const [pageMargin, setPageMargin] = useState(24);
 
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE);
@@ -51,15 +54,17 @@ export default function BirSifacininKanadiReader() {
       if (typeof saved.index === "number" && saved.index >= -1 && saved.index < sections.length) setIndex(saved.index);
       if (["light","cream","dark"].includes(saved.theme)) setTheme(saved.theme);
       if (typeof saved.fontSize === "number") setFontSize(saved.fontSize);
+      if (typeof saved.lineHeight === "number") setLineHeight(saved.lineHeight);
+      if (typeof saved.pageMargin === "number") setPageMargin(saved.pageMargin);
       if (Array.isArray(saved.bookmarks)) setBookmarks(saved.bookmarks);
       if (saved.notes && typeof saved.notes === "object") setNotes(saved.notes);
     } catch {}
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE, JSON.stringify({ index, theme, fontSize, bookmarks, notes }));
+    localStorage.setItem(STORAGE, JSON.stringify({ index, theme, fontSize, lineHeight, pageMargin, bookmarks, notes }));
     setDraft(index >= 0 ? notes[index] || "" : "");
-  }, [index, theme, fontSize, bookmarks, notes]);
+  }, [index, theme, fontSize, lineHeight, pageMargin, bookmarks, notes]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -71,6 +76,12 @@ export default function BirSifacininKanadiReader() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    if (index < 0 || panel) return;
+    const t = window.setTimeout(() => setChromeVisible(false), 2600);
+    return () => window.clearTimeout(t);
+  }, [index, panel, chromeVisible]);
+
   const current = index >= 0 ? sections[index] : null;
   const progress = useMemo(() => index < 0 ? 0 : Math.round(((index + 1) / sections.length) * 100), [index]);
   const bookmarked = index >= 0 && bookmarks.includes(index);
@@ -78,6 +89,7 @@ export default function BirSifacininKanadiReader() {
   const go = (next: number) => {
     setIndex(Math.max(-1, Math.min(sections.length - 1, next)));
     setPanel(null);
+    setChromeVisible(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -96,8 +108,22 @@ export default function BirSifacininKanadiReader() {
     });
   };
 
+  const revealChrome = () => {
+    if (index >= 0) setChromeVisible(v => !v);
+  };
+
   return (
-    <main className={styles.reader} data-theme={theme} style={{ "--reader-font-size": fontSize + "px" } as CSSProperties}>
+    <main
+      className={styles.reader}
+      data-theme={theme}
+      data-reading={index >= 0 ? "true" : "false"}
+      data-chrome={chromeVisible ? "visible" : "hidden"}
+      style={{
+        "--reader-font-size": fontSize + "px",
+        "--reader-line-height": String(lineHeight),
+        "--reader-page-margin": pageMargin + "px",
+      } as CSSProperties}
+    >
       <aside className={styles.sidebar}>
         <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
           <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={236} priority />
@@ -116,8 +142,8 @@ export default function BirSifacininKanadiReader() {
         <a className={styles.backToBook} href="/yazarlar/figen-yavuz">← Figen Yavuz sayfasına dön</a>
       </aside>
 
-      <section className={styles.stage}>
-        <header className={styles.topbar}>
+      <section className={styles.stage} onClick={revealChrome}>
+        <header className={styles.topbar} onClick={e => e.stopPropagation()}>
           <div className={styles.mobileBrand}>
             <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
           </div>
@@ -147,7 +173,12 @@ export default function BirSifacininKanadiReader() {
               />
               <h1 style={{ marginTop:28 }}>Bir Şifacının Kanadı</h1>
               <p style={{ color:"var(--muted)", marginTop:8 }}>Figen Yavuz · 22 Yayınevi</p>
-              <button onClick={() => go(0)} style={{ marginTop:18, border:0, borderRadius:999, padding:"12px 22px", background:"var(--text)", color:"var(--surface)", cursor:"pointer", font:"inherit" }}>Okumaya Başla →</button>
+              <button onClick={(e) => { e.stopPropagation(); go(0); }} className={styles.startButton}>Okumaya Başla →</button>
+              <div className={styles.coverMeta}>
+                <span><b>83</b>Bölüm</span>
+                <span><b>~5 saat</b>Yaklaşık</span>
+                <span><b>{Object.keys(notes).length}</b>Not</span>
+              </div>
             </div>
           ) : (
             <div className={styles.textWrap}>
@@ -160,10 +191,10 @@ export default function BirSifacininKanadiReader() {
             </div>
           )}
 
-          <button className={styles.prev} onClick={() => go(index - 1)} disabled={index === -1} aria-label="Önceki">‹</button>
-          <button className={styles.next} onClick={() => go(index + 1)} disabled={index === sections.length - 1} aria-label="Sonraki">›</button>
+          <button className={styles.prev} onClick={(e) => { e.stopPropagation(); go(index - 1); }} disabled={index === -1} aria-label="Önceki">‹</button>
+          <button className={styles.next} onClick={(e) => { e.stopPropagation(); go(index + 1); }} disabled={index === sections.length - 1} aria-label="Sonraki">›</button>
 
-          <footer className={styles.progressArea}>
+          <footer className={styles.progressArea} onClick={e => e.stopPropagation()}>
             <input type="range" min="-1" max={sections.length - 1} value={index} onChange={e => go(Number(e.target.value))} aria-label="Okuma ilerlemesi" />
             <div className={styles.progressMeta}>
               <span>{index < 0 ? "Kapak" : (index + 1) + " / " + sections.length}</span>
@@ -172,7 +203,7 @@ export default function BirSifacininKanadiReader() {
           </footer>
         </article>
 
-        <nav className={styles.mobileNav}>
+        <nav className={styles.mobileNav} onClick={e => e.stopPropagation()}>
           <button onClick={() => setPanel(panel === "toc" ? null : "toc")}><span>☰</span>İçindekiler</button>
           <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")}><span>☼</span>Görünüm</button>
           <button onClick={() => setPanel(panel === "notes" ? null : "notes")}><span>▤</span>Notlarım</button>
@@ -198,8 +229,18 @@ export default function BirSifacininKanadiReader() {
                 <button className={theme === "cream" ? styles.selected : ""} onClick={() => setTheme("cream")}><i className={styles.creamSwatch}/>Krem</button>
                 <button className={theme === "dark" ? styles.selected : ""} onClick={() => setTheme("dark")}><i className={styles.darkSwatch}/>Koyu</button>
               </div>
+              <label>Yazı Tipi</label>
+              <div className={styles.fontFamilyRow}>
+                <button className={styles.selected}>Aa<span>Serif</span></button>
+                <button>Aa<span>Sans</span></button>
+                <button>Aa<span>Modern</span></button>
+              </div>
               <label htmlFor="bsk-font">Yazı Boyutu</label>
               <div className={styles.fontRow}><span>A</span><input id="bsk-font" type="range" min="17" max="30" value={fontSize} onChange={e => setFontSize(Number(e.target.value))}/><span>A</span></div>
+              <label>Satır Aralığı</label>
+              <div className={styles.fontRow}><span>−</span><input type="range" min="1.45" max="1.95" step="0.05" value={lineHeight} onChange={e => setLineHeight(Number(e.target.value))}/><span>+</span></div>
+              <label>Kenar Boşluğu</label>
+              <div className={styles.fontRow}><span>−</span><input type="range" min="16" max="44" step="2" value={pageMargin} onChange={e => setPageMargin(Number(e.target.value))}/><span>+</span></div>
             </div>}
             {panel === "notes" && <div className={styles.notes}>
               {index < 0 ? <p>Not eklemek için bir bölüme geçin.</p> : <>
