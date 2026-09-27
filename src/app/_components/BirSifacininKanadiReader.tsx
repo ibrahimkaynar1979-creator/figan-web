@@ -27,6 +27,8 @@ type TextAlign = "left" | "justify";
 type Panel = "toc" | "appearance" | "notes" | "search" | "bookmarks" | null;
 type Section = { title: string; paragraphs: readonly string[] };
 type ReaderBookmark = { index: number; page: number };
+type ReaderUnderline = { id: string; index: number; paragraph: number; start: number; end: number };
+type PendingUnderline = { paragraph: number; start: number; end: number; x: number; y: number };
 
 const sections: Section[] = [
   ...p00, ...p01, ...p02, ...p03, ...p04, ...p05, ...p06,
@@ -51,6 +53,9 @@ export default function BirSifacininKanadiReader() {
   const [panel, setPanel] = useState<Panel>(null);
   const [bookmarks, setBookmarks] = useState<ReaderBookmark[]>([]);
   const [notes, setNotes] = useState<Record<string, string>>({});
+  const [underlines, setUnderlines] = useState<ReaderUnderline[]>([]);
+  const [pendingUnderline, setPendingUnderline] = useState<PendingUnderline | null>(null);
+  const [activeUnderlineId, setActiveUnderlineId] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [chromeVisible, setChromeVisible] = useState(true);
@@ -135,6 +140,20 @@ export default function BirSifacininKanadiReader() {
         });
         setNotes(migratedNotes);
       }
+      if (Array.isArray(saved.underlines)) {
+        const safeUnderlines = saved.underlines.filter((item: unknown): item is ReaderUnderline => {
+          if (!item || typeof item !== "object") return false;
+          const value = item as Partial<ReaderUnderline>;
+          return (
+            typeof value.id === "string" &&
+            typeof value.index === "number" &&
+            typeof value.paragraph === "number" &&
+            typeof value.start === "number" &&
+            typeof value.end === "number"
+          );
+        });
+        setUnderlines(safeUnderlines);
+      }
     } catch {}
     setStorageReady(true);
   }, []);
@@ -166,6 +185,7 @@ export default function BirSifacininKanadiReader() {
       pageMargin,
       bookmarks,
       notes,
+      underlines,
       ...(index >= 0
         ? { lastReadingIndex: index, lastReaderPage: readerPage }
         : {}),
@@ -174,7 +194,7 @@ export default function BirSifacininKanadiReader() {
     localStorage.setItem(STORAGE, JSON.stringify(next));
     const noteKey = index >= 0 ? index + ":" + readerPage : "";
     setDraft(noteKey ? notes[noteKey] || "" : "");
-  }, [storageReady, index, readerPage, theme, fontSize, readerFont, textAlign, lineHeight, pageMargin, bookmarks, notes]);
+  }, [storageReady, index, readerPage, theme, fontSize, readerFont, textAlign, lineHeight, pageMargin, bookmarks, notes, underlines]);
 
   useEffect(() => {
     if (!storageReady) return;
@@ -450,6 +470,126 @@ export default function BirSifacininKanadiReader() {
     });
   };
 
+  const getOffsetWithin = (root: HTMLElement, node: Node, offset: number) => {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let total = 0;
+    let current = walker.nextNode();
+    while (current) {
+      if (current === node) return total + offset;
+      total += current.textContent?.length || 0;
+      current = walker.nextNode();
+    }
+    return total;
+  };
+
+  const captureUnderlineSelection = () => {
+    if (index < 0) return;
+    window.setTimeout(() => {
+      const selection = window.getSelection();
+      if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+        setPendingUnderline(null);
+        return;
+      }
+
+      const range = selection.getRangeAt(0);
+      const startEl = range.startContainer.nodeType === Node.TEXT_NODE
+        ? range.startContainer.parentElement
+        : range.startContainer as HTMLElement;
+      const endEl = range.endContainer.nodeType === Node.TEXT_NODE
+        ? range.endContainer.parentElement
+        : range.endContainer as HTMLElement;
+
+      const startParagraph = startEl?.closest?.("p[data-reader-paragraph]") as HTMLElement | null;
+      const endParagraph = endEl?.closest?.("p[data-reader-paragraph]") as HTMLElement | null;
+      if (!startParagraph || !endParagraph || startParagraph !== endParagraph) {
+        setPendingUnderline(null);
+        return;
+      }
+
+      const paragraph = Number(startParagraph.dataset.readerParagraph);
+      const start = getOffsetWithin(startParagraph, range.startContainer, range.startOffset);
+      const end = getOffsetWithin(startParagraph, range.endContainer, range.endOffset);
+      if (!Number.isFinite(paragraph) || end <= start) {
+        setPendingUnderline(null);
+        return;
+      }
+
+      const rect = range.getBoundingClientRect();
+      setActiveUnderlineId(null);
+      setPendingUnderline({
+        paragraph,
+        start,
+        end,
+        x: Math.min(window.innerWidth - 84, Math.max(84, rect.left + rect.width / 2)),
+        y: Math.max(58, rect.top - 12),
+      });
+    }, 0);
+  };
+
+  const addUnderline = () => {
+    if (index < 0 || !pendingUnderline) return;
+    const nextUnderline: ReaderUnderline = {
+      id: index + "-" + pendingUnderline.paragraph + "-" + pendingUnderline.start + "-" + pendingUnderline.end + "-" + Date.now(),
+      index,
+      paragraph: pendingUnderline.paragraph,
+      start: pendingUnderline.start,
+      end: pendingUnderline.end,
+    };
+
+    setUnderlines(prev => {
+      const overlaps = prev.some(mark =>
+        mark.index === nextUnderline.index &&
+        mark.paragraph === nextUnderline.paragraph &&
+        Math.max(mark.start, nextUnderline.start) < Math.min(mark.end, nextUnderline.end)
+      );
+      return overlaps ? prev : [...prev, nextUnderline];
+    });
+
+    window.getSelection()?.removeAllRanges();
+    setPendingUnderline(null);
+  };
+
+  const removeUnderline = (id: string) => {
+    setUnderlines(prev => prev.filter(mark => mark.id !== id));
+    setActiveUnderlineId(null);
+  };
+
+  const renderParagraph = (text: string, paragraph: number) => {
+    if (index < 0) return text;
+    const marks = underlines
+      .filter(mark => mark.index === index && mark.paragraph === paragraph)
+      .sort((a, b) => a.start - b.start);
+
+    if (marks.length === 0) return text;
+
+    const parts: React.ReactNode[] = [];
+    let cursor = 0;
+    marks.forEach(mark => {
+      const start = Math.max(cursor, Math.min(text.length, mark.start));
+      const end = Math.max(start, Math.min(text.length, mark.end));
+      if (start > cursor) parts.push(text.slice(cursor, start));
+      if (end > start) {
+        parts.push(
+          <span
+            key={mark.id}
+            className={styles.readerUnderline}
+            onClick={(e) => {
+              e.stopPropagation();
+              setPendingUnderline(null);
+              setActiveUnderlineId(mark.id);
+            }}
+            title="Alt çizgiyi sil"
+          >
+            {text.slice(start, end)}
+          </span>
+        );
+      }
+      cursor = Math.max(cursor, end);
+    });
+    if (cursor < text.length) parts.push(text.slice(cursor));
+    return parts;
+  };
+
   const openCover = () => {
     if (index >= 0) {
       setResumePosition({ index, page: readerPageRef.current });
@@ -624,12 +764,16 @@ export default function BirSifacininKanadiReader() {
               <div className={styles.rule} />
               <div
                 className={styles.prose}
+                onMouseUp={captureUnderlineSelection}
+                onTouchEnd={captureUnderlineSelection}
                 style={{
                   fontFamily: READER_FONTS[readerFont],
                   textAlign: textAlign === "justify" ? "justify" : "left",
                 }}
               >
-                {current?.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+                {current?.paragraphs.map((p, i) => (
+                  <p key={i} data-reader-paragraph={i}>{renderParagraph(p, i)}</p>
+                ))}
               </div>
             </div>
           )}
@@ -664,6 +808,26 @@ export default function BirSifacininKanadiReader() {
           <button onClick={() => setPanel(panel === "notes" ? null : "notes")}><span>▤</span>Notlarım</button>
         </nav>}
       </section>
+
+      {pendingUnderline && (
+        <div
+          className={styles.selectionToolbar}
+          style={{ left: pendingUnderline.x, top: pendingUnderline.y }}
+          onMouseDown={e => e.preventDefault()}
+          onClick={e => e.stopPropagation()}
+        >
+          <button type="button" onClick={addUnderline}>Altını çiz</button>
+          <button type="button" aria-label="Seçimi kapat" onClick={() => { window.getSelection()?.removeAllRanges(); setPendingUnderline(null); }}>×</button>
+        </div>
+      )}
+
+      {activeUnderlineId && (
+        <div className={styles.underlineToolbar} onClick={e => e.stopPropagation()}>
+          <span>Altı çizili metin</span>
+          <button type="button" onClick={() => removeUnderline(activeUnderlineId)}>Sil</button>
+          <button type="button" aria-label="Kapat" onClick={() => setActiveUnderlineId(null)}>×</button>
+        </div>
+      )}
 
       {panel && (
         <>
