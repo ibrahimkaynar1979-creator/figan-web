@@ -231,12 +231,12 @@
 
   .reader[data-reading="true"] .progressArea{
     position:absolute;
-    left:16px;
-    right:16px;
+    left:12px;
+    right:12px;
     bottom:8px;
     width:auto;
     margin:0;
-    padding:6px 2px 2px;
+    padding:4px 0 2px;
     z-index:20;
     border-top:0;
     background:var(--surface);
@@ -246,7 +246,7 @@
   .reader[data-reading="true"][data-chrome="hidden"] .progressArea{
     opacity:1;
     pointer-events:auto;
-    padding:0 2px;
+    padding:0;
     background:transparent;
   }
   .reader[data-reading="true"][data-chrome="hidden"] .progressMeta{
@@ -255,7 +255,7 @@
   .reader[data-reading="true"] .progressMeta{transition:opacity .18s ease}
   .reader[data-reading="true"] .progressArea input{
     width:100%;
-    height:14px;
+    height:12px;
     margin:0;
     padding:0;
     appearance:none;
@@ -264,29 +264,29 @@
     cursor:pointer;
   }
   .reader[data-reading="true"] .progressArea input::-webkit-slider-runnable-track{
-    height:5px;
+    height:4px;
     border-radius:999px;
     background:#d8cdbf;
   }
   .reader[data-reading="true"] .progressArea input::-webkit-slider-thumb{
     appearance:none;
     -webkit-appearance:none;
-    width:16px;
-    height:16px;
-    margin-top:-5.5px;
+    width:14px;
+    height:14px;
+    margin-top:-5px;
     border:0;
     border-radius:50%;
     background:#b27b31;
     box-shadow:none;
   }
   .reader[data-reading="true"] .progressArea input::-moz-range-track{
-    height:5px;
+    height:4px;
     border-radius:999px;
     background:#d8cdbf;
   }
   .reader[data-reading="true"] .progressArea input::-moz-range-thumb{
-    width:16px;
-    height:16px;
+    width:14px;
+    height:14px;
     border:0;
     border-radius:50%;
     background:#b27b31;
@@ -295,27 +295,27 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:10px;
-    margin-top:3px;
-    font-size:11px;
+    gap:8px;
+    margin-top:2px;
+    font-size:10px;
     line-height:1;
     color:#6f655a;
   }
   .reader[data-reading="true"] .progressMeta span{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:6px;
     white-space:nowrap;
   }
   .reader[data-reading="true"] .progressMeta i{
     display:inline-block;
     width:1px;
-    height:14px;
-    margin:0 2px;
+    height:12px;
+    margin:0 1px;
     background:#b68649;
     vertical-align:middle;
   }
-  .reader[data-reading="true"] .progressMeta span:last-child{font-size:11px}
+  .reader[data-reading="true"] .progressMeta span:last-child{font-size:10px}
 
   .reader[data-reading="true"] .mobileNav{display:none!important}
   .reader[data-reading="true"] .panel{left:10px;right:10px;bottom:10px;top:auto;width:auto;max-height:78dvh;border-radius:22px;padding:20px}
