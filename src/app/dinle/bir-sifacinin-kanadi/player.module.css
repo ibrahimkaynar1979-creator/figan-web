@@ -2,9 +2,9 @@
   --bg:#eee8df;
   --surface:#fbf7ef;
   --text:#171512;
-  --muted:#4f463f;
-  --line:#d8c7b4;
-  --accent:#9a5a12;
+  --muted:#5f554c;
+  --line:#dfd1bf;
+  --accent:#9a5c12;
   position:fixed;
   inset:0;
   width:100vw;
@@ -119,17 +119,16 @@
   flex:0 0 auto;
 }
 .listeningLabel span{
-  font:700 10px/1 var(--font-ui),Arial,sans-serif;
-  letter-spacing:.17em;
+  font:700 9px/1 var(--font-ui),Arial,sans-serif;
+  letter-spacing:.20em;
   text-transform:uppercase;
-  color:#95550c;
 }
 .waveIcon{
-  width:25px;
-  height:20px;
+  width:26px;
+  height:22px;
   fill:none;
-  stroke:#95550c;
-  stroke-width:2.15;
+  stroke:currentColor;
+  stroke-width:2.35;
   stroke-linecap:round;
 }
 
@@ -137,7 +136,7 @@
   margin:6px 0 2px;
   font-family:var(--font-editorial),Georgia,serif;
   font-size:31px;
-  line-height:1;
+  line-height:.98;
   font-weight:600;
   color:#1b140f;
   letter-spacing:-.01em;
@@ -146,10 +145,10 @@
 
 .bookMeta{
   margin:0;
-  color:#4f463f;
+  color:#5f554c;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:13.5px;
-  line-height:1.15;
+  font-size:13px;
+  line-height:1.05;
   font-weight:600;
   flex:0 0 auto;
 }
@@ -177,9 +176,6 @@
   stroke-width:1.25;
   stroke-linecap:round;
   stroke-linejoin:round;
-  position:relative;
-  z-index:1;
-  transform:translateX(1px);
 }
 
 .nowPlaying{
@@ -188,31 +184,30 @@
   flex:0 0 auto;
 }
 .nowPlaying>span{
-  font:700 9.5px/1 var(--font-ui),Arial,sans-serif;
-  letter-spacing:.18em;
-  color:#95550c;
+  font:700 9px/1 var(--font-ui),Arial,sans-serif;
+  letter-spacing:.22em;
+  color:var(--accent);
 }
 .nowPlaying h2{
   max-width:100%;
   margin:5px auto 2px;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:20px;
-  line-height:1.06;
+  font-size:21px;
+  line-height:1;
   font-weight:600;
   color:#231a14;
   letter-spacing:-.01em;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
+  white-space:nowrap;
   overflow:hidden;
+  text-overflow:ellipsis;
 }
 .nowPlaying p{
   margin:0;
-  color:#554b43;
+  color:var(--muted);
   font-family:var(--font-editorial),Georgia,serif;
   font-size:12.5px;
-  line-height:1.1;
-  font-weight:600;
+  line-height:1;
+  font-weight:500;
 }
 
 .progressWrap{
@@ -250,12 +245,11 @@
 .timeRow{
   display:flex;
   justify-content:space-between;
-  margin-top:7px;
-  color:#4c423a;
+  margin-top:6px;
+  color:#574d44;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:12.5px;
+  font-size:12px;
   line-height:1;
-  font-weight:600;
 }
 
 .transport{
@@ -270,76 +264,48 @@
 }
 .seekButton{
   position:relative;
-  width:50px;
-  height:50px;
+  width:52px;
+  height:52px;
   border:0;
   background:transparent;
   color:#98570c;
   cursor:pointer;
 }
 .seekButton svg{
-  width:50px;
-  height:50px;
+  width:52px;
+  height:52px;
   fill:none;
-  stroke:#9a5a12;
-  stroke-width:2.25;
+  stroke:currentColor;
+  stroke-width:2;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 .seekButton small{
   position:absolute;
-  inset:18px 0 auto;
-  font:700 13px/1 var(--font-ui),Arial,sans-serif;
-  color:#3b2a1d;
-  letter-spacing:-.02em;
+  inset:20px 0 auto;
+  font:700 12px/1 var(--font-ui),Arial,sans-serif;
+  color:#4a321f;
 }
 .play{
-  position:relative;
-  width:80px;
-  height:80px;
+  width:68px;
+  height:68px;
   display:grid;
   place-items:center;
   border-radius:50%;
-  background:
-    radial-gradient(circle at 36% 28%,#4a3422 0%,#2d1f14 32%,#1b130e 68%,#100b08 100%);
+  background:#1d1712;
   color:#d99a45;
-  border:1.5px solid #ba7a2d;
-  box-shadow:
-    0 12px 24px rgba(37,24,13,.22),
-    0 2px 0 rgba(255,255,255,.18) inset,
-    0 -7px 12px rgba(0,0,0,.28) inset,
-    0 0 0 2px rgba(183,120,45,.14);
+  border:1.5px solid #a96920;
+  box-shadow:0 8px 22px rgba(31,21,12,.14),0 0 0 2px rgba(183,120,45,.10);
   cursor:pointer;
-  isolation:isolate;
 }
-.play::before{
-  content:"";
-  position:absolute;
-  inset:5px;
-  border-radius:50%;
-  background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,0) 42%);
-  pointer-events:none;
-  z-index:0;
-}
-.play::after{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius:50%;
-  box-shadow:0 0 0 1px rgba(255,207,124,.18) inset;
-  pointer-events:none;
-  z-index:0;
-}
-.playGlyph{
+.play svg{
   width:25px;
   height:25px;
-  fill:#e2ad59;
-  stroke:#e2ad59;
-  stroke-width:2.1;
+  fill:currentColor;
+  stroke:currentColor;
+  stroke-width:2.2;
   stroke-linecap:round;
   stroke-linejoin:round;
-  filter:drop-shadow(0 1px 0 rgba(255,255,255,.16));
-  transform:translateX(1px);
 }
 
 .audioNotice{
@@ -369,7 +335,7 @@
   align-items:center;
   justify-content:center;
   gap:6px;
-  font:600 11.5px/1.05 var(--font-ui),Arial,sans-serif;
+  font:600 11px/1 var(--font-ui),Arial,sans-serif;
 }
 .tools>*+*:before{
   content:"";
@@ -381,15 +347,15 @@
   background:var(--line);
 }
 .tools b{
-  font:600 22px/1 var(--font-editorial),Georgia,serif;
+  font:600 23px/1 var(--font-editorial),Georgia,serif;
   color:#8d5411;
 }
 .tools svg{
-  width:24px;
-  height:24px;
+  width:25px;
+  height:25px;
   fill:none;
-  stroke:#8f5716;
-  stroke-width:2.05;
+  stroke:#8d5411;
+  stroke-width:2;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
@@ -425,8 +391,8 @@
 }
 .chapterStrip strong{
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:14.5px;
-  font-weight:600;
+  font-size:15px;
+  font-weight:500;
   line-height:1;
   white-space:nowrap;
   overflow:hidden;
@@ -438,7 +404,7 @@
   background:transparent;
   color:#8d571d;
   cursor:pointer;
-  font:600 10.5px/1 var(--font-ui),Arial,sans-serif;
+  font:700 10.5px/1 var(--font-ui),Arial,sans-serif;
 }
 
 .drawer{position:fixed;inset:0;z-index:50;pointer-events:none;visibility:hidden}
@@ -494,15 +460,15 @@
   .coverHero img{transform:none}
   .listeningLabel{margin-top:5px}
   .content>h1{font-size:28px;margin-top:3px}
-  .bookMeta{font-size:12.25px}
+  .bookMeta{font-size:12px}
   .divider{height:12px;margin-top:3px}
-  .nowPlaying h2{font-size:18px;margin-top:3px}
-  .nowPlaying p{font-size:11.5px}
+  .nowPlaying h2{font-size:18.5px;margin-top:3px}
+  .nowPlaying p{font-size:11px}
   .progressWrap{margin-top:6px}
-  .transport{height:66px}
-  .play{width:70px;height:70px}
-  .tools{height:54px}
-  .chapterStrip{height:54px;margin-top:5px}
+  .transport{height:64px}
+  .play{width:64px;height:64px}
+  .tools{height:52px}
+  .chapterStrip{height:52px;margin-top:5px}
 }
 
 @media(max-width:380px){
