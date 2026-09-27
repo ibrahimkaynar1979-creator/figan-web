@@ -3,8 +3,13 @@ import {
   handleUploadPresigned,
   type HandleUploadPresignedBody,
 } from "@vercel/blob/client";
+import { isAudiobookAdmin } from "@/lib/audiobookAuth";
 
 export async function POST(request: Request) {
+  if (!isAudiobookAdmin(request)) {
+    return Response.json({ error: "Yetkisiz işlem." }, { status: 401 });
+  }
+
   const body = (await request.json()) as HandleUploadPresignedBody;
 
   try {
@@ -12,8 +17,8 @@ export async function POST(request: Request) {
       request,
       body,
       getSignedToken: async (pathname) => {
-        if (!pathname.endsWith(".mp3")) {
-          throw new Error("Sadece MP3 dosyası yüklenebilir.");
+        if (pathname !== "audiobooks/bir-sifacinin-kanadi/master.mp3") {
+          throw new Error("Geçersiz ses dosyası yolu.");
         }
 
         const token = await issueSignedToken({
@@ -50,6 +55,6 @@ export async function POST(request: Request) {
         ? { name: error.name, message: error.message, stack: error.stack }
         : { message: String(error) };
     console.error("Audiobook Blob presigned upload error:", details);
-    return Response.json({ error: details.message, details }, { status: 400 });
+    return Response.json({ error: details.message }, { status: 400 });
   }
 }
