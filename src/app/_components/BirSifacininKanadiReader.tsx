@@ -315,16 +315,11 @@ export default function BirSifacininKanadiReader() {
     <main
       className={styles.reader}
       data-theme={theme}
+      data-font={readerFont}
       data-reading={index >= 0 ? "true" : "false"}
       data-chrome={chromeVisible ? "visible" : "hidden"}
       style={{
         "--reader-font-size": fontSize + "px",
-        "--reader-font-family":
-          readerFont === "sans"
-            ? 'Inter, Arial, Helvetica, sans-serif'
-            : readerFont === "modern"
-              ? '"Trebuchet MS", "Avenir Next", Arial, sans-serif'
-              : 'Georgia, "Times New Roman", serif',
         "--reader-line-height": String(lineHeight),
         "--reader-page-margin": pageMargin + "px",
       } as CSSProperties}
@@ -476,21 +471,27 @@ export default function BirSifacininKanadiReader() {
               <label>Yazı Tipi</label>
               <div className={styles.fontFamilyRow}>
                 <button
+                  type="button"
                   className={readerFont === "serif" ? styles.selected : ""}
+                  data-selected={readerFont === "serif" ? "true" : "false"}
                   onClick={() => setReaderFont("serif")}
                   aria-pressed={readerFont === "serif"}
                 >
                   Aa<span>Serif</span>
                 </button>
                 <button
+                  type="button"
                   className={readerFont === "sans" ? styles.selected : ""}
+                  data-selected={readerFont === "sans" ? "true" : "false"}
                   onClick={() => setReaderFont("sans")}
                   aria-pressed={readerFont === "sans"}
                 >
                   Aa<span>Sans</span>
                 </button>
                 <button
+                  type="button"
                   className={readerFont === "modern" ? styles.selected : ""}
+                  data-selected={readerFont === "modern" ? "true" : "false"}
                   onClick={() => setReaderFont("modern")}
                   aria-pressed={readerFont === "modern"}
                 >
