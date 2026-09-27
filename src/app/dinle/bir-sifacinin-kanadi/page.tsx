@@ -240,6 +240,63 @@ export default function BirSifacininKanadiPlayer() {
     return()=>window.clearInterval(timer);
   },[sleepMinutes]);
 
+  useEffect(()=>{
+    if(!("mediaSession" in navigator)) return;
+
+    navigator.mediaSession.metadata=new MediaMetadata({
+      title: chapter.title,
+      artist: "Figen Yavuz",
+      album: "Bir Şifacının Kanadı",
+      artwork: [
+        { src: "/bir_sifaci_png.png", sizes: "512x512", type: "image/png" },
+      ],
+    });
+
+    const safeSet=(action: MediaSessionAction, handler: MediaSessionActionHandler | null)=>{
+      try{ navigator.mediaSession.setActionHandler(action,handler); }catch{}
+    };
+
+    safeSet("play",()=>{ void audioRef.current?.play(); });
+    safeSet("pause",()=>{ audioRef.current?.pause(); });
+    safeSet("seekbackward",(details)=>{
+      const audio=audioRef.current;
+      if(!audio) return;
+      audio.currentTime=Math.max(0,audio.currentTime-(details.seekOffset ?? 15));
+    });
+    safeSet("seekforward",(details)=>{
+      const audio=audioRef.current;
+      if(!audio) return;
+      audio.currentTime=Math.min(audio.duration||BOOK_DURATION,audio.currentTime+(details.seekOffset ?? 15));
+    });
+    safeSet("seekto",(details)=>{
+      const audio=audioRef.current;
+      if(!audio || typeof details.seekTime!=="number") return;
+      if(details.fastSeek && "fastSeek" in audio) audio.fastSeek(details.seekTime);
+      else audio.currentTime=details.seekTime;
+    });
+
+    return()=>{
+      safeSet("play",null);
+      safeSet("pause",null);
+      safeSet("seekbackward",null);
+      safeSet("seekforward",null);
+      safeSet("seekto",null);
+    };
+  },[chapter.title]);
+
+  useEffect(()=>{
+    if(!("mediaSession" in navigator)) return;
+    const audio=audioRef.current;
+    if(!audio || !Number.isFinite(duration) || duration<=0) return;
+    try{
+      navigator.mediaSession.setPositionState({
+        duration,
+        playbackRate:audio.playbackRate||1,
+        position:Math.min(currentTime,duration),
+      });
+    }catch{}
+  },[currentTime,duration,rate]);
+
   const progress=duration>0?Math.min(100,(currentTime/duration)*100):0;
   const sleepLabel=useMemo(()=>{
     if(sleepLeft===null) return "Uyku";
