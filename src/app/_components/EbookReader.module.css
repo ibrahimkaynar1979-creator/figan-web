@@ -333,3 +333,56 @@
   .reader[data-reading="false"] .coverReaderBrand strong{font-size:30px}
   .reader[data-reading="false"] .coverReaderBrand span{font-size:13px;letter-spacing:.24em}
 }
+
+
+/* Final proportion pass against approved cover reference */
+@media(max-width:520px){
+  .reader[data-reading="false"] .topbar{
+    height:76px;
+    padding:0 28px;
+  }
+  .reader[data-reading="false"] .stage{
+    grid-template-rows:76px minmax(0,1fr);
+  }
+  .reader[data-reading="false"] .readingArea{
+    height:calc(100dvh - 88px);
+    padding:12px 18px 10px;
+  }
+  .reader[data-reading="false"] .coverScreen{
+    padding:0 0 14px;
+  }
+  .reader[data-reading="false"] .coverHero{
+    width:min(80vw,340px);
+    max-height:none;
+  }
+  .reader[data-reading="false"] .coverHero img{
+    width:100%;
+    max-height:none;
+  }
+  .reader[data-reading="false"] .coverAuthor{
+    margin-top:12px;
+    font-size:28px;
+  }
+  .reader[data-reading="false"] .coverPublisher{
+    margin-top:5px;
+    font-size:14px;
+  }
+  .reader[data-reading="false"] .coverScreen .startButton{
+    width:min(76vw,360px);
+    margin-top:17px;
+    padding:15px 24px;
+    font-size:18px;
+  }
+  .reader[data-reading="false"] .coverStats{
+    margin-top:19px;
+  }
+  .reader[data-reading="false"] .coverStats span{
+    padding:0 11px;
+    font-size:12px;
+  }
+  .reader[data-reading="false"] .coverReaderBrand{
+    margin-top:17px;
+    padding-top:13px;
+    width:min(84vw,400px);
+  }
+}
