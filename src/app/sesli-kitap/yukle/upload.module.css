@@ -123,3 +123,41 @@
 }
 .authBox small{display:block;margin-top:12px;color:#8b332c;font-size:11px}
 .result b{display:block;font-size:12px;color:#355035}
+
+.masterState{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.4fr auto;
+  gap:1px;
+  margin:0 0 18px;
+  border:1px solid #ddcfbf;
+  border-radius:16px;
+  overflow:hidden;
+  background:#ddcfbf;
+}
+.masterState>div,.masterState>a{
+  min-height:64px;
+  padding:11px 13px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:#fffaf4;
+  text-decoration:none;
+}
+.masterState span{
+  margin-bottom:6px;
+  color:#9a642d;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
+.masterState strong{font-size:11px;font-weight:700;color:#302219}
+.masterState>a{
+  align-items:center;
+  color:#75450f;
+  font-size:10px;
+  font-weight:800;
+}
+@media(max-width:600px){
+  .masterState{grid-template-columns:1fr 1fr}
+  .masterState>a{min-height:50px}
+}
