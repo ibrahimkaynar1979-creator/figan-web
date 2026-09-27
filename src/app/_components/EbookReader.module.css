@@ -216,6 +216,7 @@
     overflow-y:hidden;
     scroll-snap-type:x mandatory;
     scroll-behavior:smooth;
+    touch-action:pan-y pinch-zoom;
     scrollbar-width:none;
     column-gap:0;
     column-fill:auto;
