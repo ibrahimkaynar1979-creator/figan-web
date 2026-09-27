@@ -23,6 +23,12 @@ export default function AudiobookUploadPage() {
     uploadedAt?:string;
     source?:string;
   } | null>(null);
+  const [healthStatus,setHealthStatus] = useState<{
+    ok:boolean;
+    contentType?:string | null;
+    contentLength?:number;
+    acceptRanges?:string | null;
+  } | null>(null);
 
   useEffect(()=>{
     void fetch("/api/sesli-kitap/auth",{cache:"no-store"})
@@ -39,15 +45,31 @@ export default function AudiobookUploadPage() {
 
   useEffect(()=>{
     if(!authenticated) return;
-    void fetch("/api/sesli-kitap/current",{cache:"no-store"})
-      .then((response)=>response.json())
-      .then((data)=>setMasterStatus({
-        ready:Boolean(data?.ready),
-        size:typeof data?.size==="number" ? data.size : undefined,
-        uploadedAt:typeof data?.uploadedAt==="string" ? data.uploadedAt : undefined,
-        source:typeof data?.source==="string" ? data.source : undefined,
-      }))
-      .catch(()=>setMasterStatus({ready:false}));
+    void Promise.all([
+      fetch("/api/sesli-kitap/current",{cache:"no-store"}).then((response)=>response.json()),
+      fetch("/api/sesli-kitap/health",{cache:"no-store"}).then(async(response)=>({
+        ok:response.ok,
+        data:await response.json().catch(()=>null),
+      })),
+    ])
+      .then(([current,health])=>{
+        setMasterStatus({
+          ready:Boolean(current?.ready),
+          size:typeof current?.size==="number" ? current.size : undefined,
+          uploadedAt:typeof current?.uploadedAt==="string" ? current.uploadedAt : undefined,
+          source:typeof current?.source==="string" ? current.source : undefined,
+        });
+        setHealthStatus({
+          ok:Boolean(health.ok && health.data?.ok),
+          contentType:typeof health.data?.contentType==="string" ? health.data.contentType : null,
+          contentLength:typeof health.data?.contentLength==="number" ? health.data.contentLength : undefined,
+          acceptRanges:typeof health.data?.acceptRanges==="string" ? health.data.acceptRanges : null,
+        });
+      })
+      .catch(()=>{
+        setMasterStatus({ready:false});
+        setHealthStatus({ok:false});
+      });
   },[authenticated]);
 
   async function login(event: FormEvent<HTMLFormElement>) {
@@ -69,19 +91,31 @@ export default function AudiobookUploadPage() {
 
   async function verifyPublishedAudio(expectedUrl:string) {
     try{
-      const response=await fetch("/api/sesli-kitap/current",{cache:"no-store"});
-      const data=await response.json();
-      const ok=Boolean(
-        response.ok &&
+      const [currentResponse,healthResponse]=await Promise.all([
+        fetch("/api/sesli-kitap/current",{cache:"no-store"}),
+        fetch("/api/sesli-kitap/health",{cache:"no-store"}),
+      ]);
+      const data=await currentResponse.json();
+      const health=await healthResponse.json().catch(()=>null);
+      const currentOk=Boolean(
+        currentResponse.ok &&
         data?.ready &&
         typeof data.url==="string" &&
         data.url &&
         (data.pathname==="audiobooks/bir-sifacinin-kanadi/master.mp3" || data.url===expectedUrl)
       );
+      const ok=Boolean(currentOk && healthResponse.ok && health?.ok);
       setVerified(ok);
+      setHealthStatus({
+        ok,
+        contentType:typeof health?.contentType==="string" ? health.contentType : null,
+        contentLength:typeof health?.contentLength==="number" ? health.contentLength : undefined,
+        acceptRanges:typeof health?.acceptRanges==="string" ? health.acceptRanges : null,
+      });
       return ok;
     }catch{
       setVerified(false);
+      setHealthStatus({ok:false});
       return false;
     }
   }
@@ -203,7 +237,7 @@ export default function AudiobookUploadPage() {
         <div className={styles.masterState}>
           <div>
             <span>MEVCUT MASTER</span>
-            <strong>{masterStatus?.ready ? "Yayına hazır" : "Kontrol ediliyor"}</strong>
+            <strong>{masterStatus?.ready && healthStatus?.ok ? "Yayına hazır" : masterStatus?.ready ? "Kaynak kontrolü" : "Kontrol ediliyor"}</strong>
           </div>
           <div>
             <span>BOYUT</span>
@@ -214,6 +248,10 @@ export default function AudiobookUploadPage() {
             <strong>{masterStatus?.uploadedAt ? new Date(masterStatus.uploadedAt).toLocaleString("tr-TR") : "—"}</strong>
           </div>
           <a href="/dinle/bir-sifacinin-kanadi" target="_blank" rel="noreferrer">Player'ı Aç →</a>
+          <div>
+            <span>SES KONTROLÜ</span>
+            <strong>{healthStatus?.ok ? "✓ Erişilebilir" : "—"}</strong>
+          </div>
         </div>
 
         <form onSubmit={onSubmit} className={styles.form}>
