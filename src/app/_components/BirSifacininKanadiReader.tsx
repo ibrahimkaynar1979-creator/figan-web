@@ -48,6 +48,7 @@ export default function BirSifacininKanadiReader() {
   const [readerPage, setReaderPage] = useState(0);
   const [readerPageCount, setReaderPageCount] = useState(1);
   const textWrapRef = useRef<HTMLDivElement | null>(null);
+  const pendingReaderEdge = useRef<"start" | "end" | null>(null);
 
   useEffect(() => {
     document.body.classList.add("reader-route");
@@ -114,12 +115,19 @@ export default function BirSifacininKanadiReader() {
       const width = Math.max(1, el.clientWidth);
       const pages = Math.max(1, Math.ceil(el.scrollWidth / width));
       setReaderPageCount(pages);
-      const page = Math.min(pages - 1, Math.max(0, Math.round(el.scrollLeft / width)));
-      setReaderPage(page);
-    };
 
-    el.scrollLeft = 0;
-    setReaderPage(0);
+      if (pendingReaderEdge.current === "end") {
+        const lastPage = pages - 1;
+        el.scrollLeft = lastPage * width;
+        setReaderPage(lastPage);
+        pendingReaderEdge.current = null;
+        return;
+      }
+
+      el.scrollLeft = 0;
+      setReaderPage(0);
+      pendingReaderEdge.current = null;
+    };
     const raf = requestAnimationFrame(measure);
     const ro = new ResizeObserver(() => requestAnimationFrame(measure));
     ro.observe(el);
@@ -144,6 +152,7 @@ export default function BirSifacininKanadiReader() {
         return;
       }
       if (index < sections.length - 1) {
+        pendingReaderEdge.current = "start";
         go(index + 1);
         window.setTimeout(() => setChromeVisible(false), 0);
       }
@@ -158,6 +167,7 @@ export default function BirSifacininKanadiReader() {
       return;
     }
     if (index > 0) {
+      pendingReaderEdge.current = "end";
       go(index - 1);
       window.setTimeout(() => setChromeVisible(false), 0);
     }
