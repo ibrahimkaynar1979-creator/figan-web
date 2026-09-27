@@ -366,10 +366,6 @@ export default function BirSifacininKanadiPlayer() {
               </svg>
               <span>Bölümler</span>
             </button>
-            <a href={audioSrc} download>
-              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5v16M10.5 16 16 21.5 21.5 16M8 26h16" /></svg>
-              <span>İndir</span>
-            </a>
           </div>
 
           <div className={styles.chapterStrip}>
