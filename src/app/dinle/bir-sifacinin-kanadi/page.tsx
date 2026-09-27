@@ -5,7 +5,7 @@ import styles from "./player.module.css";
 
 type Chapter = { id: number; title: string; start: number };
 
-const MASTER_AUDIO =
+const FALLBACK_AUDIO =
   process.env.NEXT_PUBLIC_BIR_SIFACININ_KANADI_AUDIO_URL ||
   "/audio/bir-sifacinin-kanadi/Bir-Sifacinin-Kanadi-Elif-Web-64kbps.mp3";
 const BOOK_DURATION = 8477.232;
@@ -119,10 +119,22 @@ export default function BirSifacininKanadiPlayer() {
   const [sleepMinutes,setSleepMinutes] = useState<number | null>(null);
   const [sleepLeft,setSleepLeft] = useState<number | null>(null);
   const [audioError,setAudioError] = useState(false);
+  const [audioSrc,setAudioSrc] = useState(FALLBACK_AUDIO);
 
   const chapter = chapters[chapterIndex];
   const chapterEnd = chapters[chapterIndex + 1]?.start ?? duration;
   const chapterDuration = Math.max(0,chapterEnd - chapter.start);
+
+  useEffect(()=>{
+    void fetch("/api/sesli-kitap/current",{cache:"no-store"})
+      .then((response)=>response.ok?response.json():null)
+      .then((data)=>{
+        if(data?.ready && typeof data.url==="string" && data.url){
+          setAudioSrc(data.url);
+        }
+      })
+      .catch(()=>{});
+  },[]);
 
   useEffect(()=>{
     const saved=window.localStorage.getItem("22y-bir-sifacinin-kanadi-progress");
@@ -226,7 +238,7 @@ export default function BirSifacininKanadiPlayer() {
     <main className={styles.page}>
       <audio
         ref={audioRef}
-        src={MASTER_AUDIO}
+        src={audioSrc}
         preload="metadata"
         onTimeUpdate={(e)=>setCurrentTime(e.currentTarget.currentTime)}
         onLoadedMetadata={(e)=>{setDuration(e.currentTarget.duration||BOOK_DURATION);e.currentTarget.playbackRate=rate;}}
@@ -291,7 +303,7 @@ export default function BirSifacininKanadiPlayer() {
             <button onClick={changeRate}><b>{rate}x</b><span>Hız</span></button>
             <button onClick={cycleSleep}><b>☾</b><span>{sleepLabel}</span></button>
             <button onClick={()=>setChaptersOpen(true)}><b>☷</b><span>Bölümler</span></button>
-            <a href={MASTER_AUDIO} download><b>⇩</b><span>İndir</span></a>
+            <a href={audioSrc} download><b>⇩</b><span>İndir</span></a>
           </div>
 
           <div className={styles.chapterStrip}>
