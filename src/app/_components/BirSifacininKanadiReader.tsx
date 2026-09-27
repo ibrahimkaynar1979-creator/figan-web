@@ -155,16 +155,6 @@ export default function BirSifacininKanadiReader() {
   }, [storageReady, index]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") setIndex(v => Math.min(sections.length - 1, v + 1));
-      if (e.key === "ArrowLeft") setIndex(v => Math.max(-1, v - 1));
-      if (e.key === "Escape") setPanel(null);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-
-  useEffect(() => {
     if (index < 0 || panel) return;
     const t = window.setTimeout(() => setChromeVisible(false), 2600);
     return () => window.clearTimeout(t);
@@ -267,6 +257,36 @@ export default function BirSifacininKanadiReader() {
       window.setTimeout(() => setChromeVisible(false), 0);
     }
   };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      const isTyping =
+        target?.tagName === "INPUT" ||
+        target?.tagName === "TEXTAREA" ||
+        target?.isContentEditable;
+
+      if (e.key === "Escape") {
+        setPanel(null);
+        return;
+      }
+
+      if (isTyping || panel || index < 0) return;
+
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        turnReaderPage(1);
+      }
+
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        turnReaderPage(-1);
+      }
+    };
+
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [index, panel, readerPage, readerPageCount]);
 
   const toggleBookmark = () => {
     if (index < 0) return;
