@@ -350,7 +350,29 @@
 }
 
 .audioNotice{
-  display:none;
+  width:100%;
+  min-height:34px;
+  margin:2px 0 4px;
+  padding:7px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:1px solid #e3d6c6;
+  border-radius:12px;
+  background:#fff8ef;
+  color:#5a4431;
+  box-sizing:border-box;
+  font:600 11px/1.2 var(--font-ui),Arial,sans-serif;
+}
+.audioNotice button{
+  border:0;
+  border-radius:999px;
+  padding:6px 10px;
+  background:#2a1b12;
+  color:#fffaf4;
+  cursor:pointer;
+  font:700 10px/1 var(--font-ui),Arial,sans-serif;
 }
 
 .tools{
