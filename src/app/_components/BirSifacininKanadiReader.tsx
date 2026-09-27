@@ -16,6 +16,10 @@ import p09 from "../_data/bskPlain/p09";
 import p10 from "../_data/bskPlain/p10";
 import p11 from "../_data/bskPlain/p11";
 import p12 from "../_data/bskPlain/p12";
+import p13 from "../_data/bskPlain/p13";
+import p14 from "../_data/bskPlain/p14";
+import p15 from "../_data/bskPlain/p15";
+import p16 from "../_data/bskPlain/p16";
 
 type Theme = "light" | "cream" | "dark";
 type Panel = "toc" | "appearance" | "notes" | null;
@@ -24,7 +28,9 @@ type Section = { title: string; paragraphs: readonly string[] };
 const sections: Section[] = [
   ...p00, ...p01, ...p02, ...p03, ...p04, ...p05, ...p06,
   ...p07, ...p08, ...p09, ...p10, ...p11, ...p12,
-];
+  ...p13, ...p14, ...p15, ...p16,
+].filter(section => !["DEĞİŞİM", "ERDEM YOLCULUĞU"].includes(section.title))
+ .map(section => section.title === "KAZANMAK DA VAR KAYBETMEK DE." ? { ...section, title: "KAZANMAK DA VAR KAYBETMEK" } : section);
 
 const STORAGE = "22reader-bir-sifacinin-kanadi";
 
