@@ -6322,3 +6322,9 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
 body:has(.author-platform-shell){padding-bottom:0!important}
 body:has(.author-platform-shell) .mobile-dock{display:none!important}
 body:has(.author-platform-shell) .contact-float{display:none!important}
+
+
+/* 22 Reader route isolation */
+body.reader-route{padding-bottom:0!important;overflow:hidden}
+body.reader-route .mobile-dock{display:none!important}
+body.reader-route .contact-float{display:none!important}
