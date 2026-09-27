@@ -37,6 +37,7 @@
 .chapterMini{display:flex;align-items:center;gap:16px;font-size:14px;color:var(--muted)}
 .chapterMini a{color:var(--text);text-decoration:none;font-size:24px}
 .chapterMini button{border:0;background:transparent;color:var(--text);font:24px/1 Georgia,serif;padding:0;cursor:pointer}
+.chapterMini button:disabled{opacity:.25;cursor:default}
 .tools{display:flex;align-items:center;gap:4px}
 .tools button{width:42px;height:42px;border:0;background:transparent;color:var(--text);font:500 20px Georgia,serif;border-radius:999px;cursor:pointer}
 .tools button:hover,.tools .active{background:var(--accent-soft);color:var(--accent)}
@@ -119,6 +120,7 @@
 .savedNotes span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--muted)}
 
 .startButton{border:0;border-radius:999px;background:var(--text);color:var(--surface);cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center}
+.startOverButton{border:0;background:transparent;color:var(--muted);font:13px/1.2 Arial,sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:8px}
 .coverTopLogo{display:none}
 .coverMenuButton{display:none}
 .coverScreen{width:min(760px,100%);margin:0 auto;display:flex;flex-direction:column;align-items:center}
@@ -366,17 +368,21 @@
   .reader[data-reading="true"] .mobileNav{display:none!important}
   .reader[data-reading="true"] .panel{left:10px;right:10px;bottom:10px;top:auto;width:auto;max-height:78dvh;border-radius:22px;padding:20px}
   .reader[data-reading="true"] .panel[data-panel="appearance"]{
-    top:18px;
-    bottom:18px;
-    max-height:none;
+    top:auto;
+    bottom:12px;
+    height:min(56dvh,500px);
+    max-height:min(56dvh,500px);
     overflow:hidden;
     display:flex;
     flex-direction:column;
-    padding:18px 20px 16px;
+    padding:14px 18px 12px;
   }
   .reader[data-reading="true"] .panel[data-panel="appearance"] .panelHead{
     flex:0 0 auto;
-    margin-bottom:10px;
+    margin-bottom:6px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .panelHead h3{
+    font-size:23px;
   }
   .reader[data-reading="true"] .panel[data-panel="appearance"] .appearance{
     flex:1 1 auto;
@@ -384,30 +390,37 @@
     display:grid;
     grid-template-rows:auto auto auto auto auto auto auto auto auto auto;
     align-content:space-between;
-    gap:6px;
+    gap:3px;
     overflow:hidden;
   }
   .reader[data-reading="true"] .panel[data-panel="appearance"] .appearance>label{
-    margin-top:2px;
-    font-size:13px;
+    margin-top:0;
+    font-size:12px;
+    line-height:1.1;
   }
   .reader[data-reading="true"] .panel[data-panel="appearance"] .themeRow button{
-    padding:8px 6px;
-    gap:4px;
+    padding:5px 6px;
+    gap:2px;
+    min-height:48px;
   }
   .reader[data-reading="true"] .panel[data-panel="appearance"] .themeRow i{
-    width:28px;
-    height:28px;
+    width:22px;
+    height:22px;
   }
   .reader[data-reading="true"] .panel[data-panel="appearance"] .fontFamilyRow button{
-    padding:8px 6px;
-    font-size:21px;
+    padding:5px 6px;
+    font-size:19px;
+    min-height:44px;
   }
   .reader[data-reading="true"] .panel[data-panel="appearance"] .alignRow button{
-    padding:8px 6px;
+    padding:5px 6px;
+    min-height:40px;
   }
   .reader[data-reading="true"] .panel[data-panel="appearance"] .fontRow{
-    min-height:30px;
+    min-height:24px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .fontRow span:last-child{
+    font-size:20px;
   }
   .reader[data-reading="true"] .backdrop{z-index:30}
   .reader[data-reading="true"] .panel{z-index:31}
