@@ -70,6 +70,9 @@
 .panelHead h3{font-size:25px;font-weight:500;margin:0}
 .panelHead button{border:0;background:transparent;font-size:27px;color:var(--text);cursor:pointer}
 .toc{display:grid}
+.tocQuickActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.tocQuickActions button{border:1px solid var(--line)!important;border-radius:10px!important;background:var(--accent-soft)!important;padding:11px 10px!important;display:flex!important;align-items:center;justify-content:space-between;gap:8px}
+.tocQuickActions button b{color:var(--accent)!important;font-weight:600!important}
 .toc button{border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font:inherit;display:flex;justify-content:space-between;text-align:left;padding:15px 8px;cursor:pointer;gap:20px}
 .toc button b{font-weight:400;color:var(--muted)}
 .toc .currentToc{background:var(--accent-soft);border-radius:8px;border-bottom-color:transparent}
