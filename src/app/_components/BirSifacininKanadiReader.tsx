@@ -140,10 +140,13 @@ export default function BirSifacininKanadiReader() {
         const nextPage = page + 1;
         el.scrollTo({ left: nextPage * width, behavior: "smooth" });
         setReaderPage(nextPage);
-        setChromeVisible(true);
+        setChromeVisible(false);
         return;
       }
-      if (index < sections.length - 1) go(index + 1);
+      if (index < sections.length - 1) {
+        go(index + 1);
+        window.setTimeout(() => setChromeVisible(false), 0);
+      }
       return;
     }
 
@@ -151,10 +154,13 @@ export default function BirSifacininKanadiReader() {
       const prevPage = page - 1;
       el.scrollTo({ left: prevPage * width, behavior: "smooth" });
       setReaderPage(prevPage);
-      setChromeVisible(true);
+      setChromeVisible(false);
       return;
     }
-    if (index > 0) go(index - 1);
+    if (index > 0) {
+      go(index - 1);
+      window.setTimeout(() => setChromeVisible(false), 0);
+    }
   };
 
   const toggleBookmark = () => {
