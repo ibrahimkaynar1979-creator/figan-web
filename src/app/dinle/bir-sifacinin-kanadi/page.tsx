@@ -198,12 +198,23 @@ export default function BirSifacininKanadiPlayer() {
   },[]);
 
   useEffect(()=>{
-    const timer=window.setInterval(()=>{
+    const persist=()=>{
       try{
-        window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime,rate,updatedAt:Date.now()}));
+        const liveTime=audioRef.current?.currentTime ?? currentTime;
+        const liveRate=audioRef.current?.playbackRate ?? rate;
+        window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:liveTime,rate:liveRate,updatedAt:Date.now()}));
       }catch{}
-    },4000);
-    return()=>window.clearInterval(timer);
+    };
+    const timer=window.setInterval(persist,4000);
+    const onVisibility=()=>{ if(document.visibilityState==="hidden") persist(); };
+    window.addEventListener("pagehide",persist);
+    document.addEventListener("visibilitychange",onVisibility);
+    return()=>{
+      persist();
+      window.clearInterval(timer);
+      window.removeEventListener("pagehide",persist);
+      document.removeEventListener("visibilitychange",onVisibility);
+    };
   },[currentTime,rate]);
 
   useEffect(()=>{
@@ -254,7 +265,12 @@ export default function BirSifacininKanadiPlayer() {
   const seekBy=(amount:number)=>{
     const audio=audioRef.current;
     if(!audio) return;
-    audio.currentTime=Math.max(0,Math.min(audio.duration||BOOK_DURATION,audio.currentTime+amount));
+    const next=Math.max(0,Math.min(audio.duration||BOOK_DURATION,audio.currentTime+amount));
+    audio.currentTime=next;
+    setCurrentTime(next);
+    try{
+      window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:next,rate:audio.playbackRate,updatedAt:Date.now()}));
+    }catch{}
   };
 
   const changeRate=()=>{
@@ -274,6 +290,9 @@ export default function BirSifacininKanadiPlayer() {
     audio.currentTime=target;
     setCurrentTime(target);
     setChapterIndex(index);
+    try{
+      window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:target,rate:audio.playbackRate,updatedAt:Date.now()}));
+    }catch{}
     setChaptersOpen(false);
     void audio.play().then(()=>setPlaying(true)).catch(()=>setAudioError(true));
   };
@@ -322,7 +341,16 @@ export default function BirSifacininKanadiPlayer() {
           setRate(savedRate);
         }}
         onPlay={()=>{setPlaying(true);setAudioError(false);}}
-        onPause={()=>setPlaying(false)}
+        onPause={(e)=>{
+          setPlaying(false);
+          try{
+            window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({
+              currentTime:e.currentTarget.currentTime,
+              rate:e.currentTarget.playbackRate,
+              updatedAt:Date.now(),
+            }));
+          }catch{}
+        }}
         onCanPlay={()=>setAudioError(false)}
         onEnded={()=>setPlaying(false)}
         onError={()=>{setAudioError(true);setPlaying(false);}}
@@ -376,6 +404,13 @@ export default function BirSifacininKanadiPlayer() {
                 const value=Number(e.target.value);
                 if(audioRef.current) audioRef.current.currentTime=value;
                 setCurrentTime(value);
+                try{
+                  window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({
+                    currentTime:value,
+                    rate:audioRef.current?.playbackRate ?? rate,
+                    updatedAt:Date.now(),
+                  }));
+                }catch{}
               }}
               style={{"--progress":`${progress}%`} as React.CSSProperties}
             />
