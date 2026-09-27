@@ -915,3 +915,73 @@
     -webkit-overflow-scrolling:touch;
   }
 }
+
+
+/* Reader TOC: restore flowing mobile panel and keep chapter numbers aligned */
+.tocList{
+  display:grid;
+  min-height:0;
+  overflow:visible;
+  padding-right:0;
+}
+
+.toc button{
+  width:100%;
+  box-sizing:border-box;
+  align-items:flex-start;
+}
+
+.toc button > span{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+.toc button > b{
+  flex:0 0 auto;
+  margin-left:auto;
+  text-align:right;
+  min-width:28px;
+}
+
+.toc .currentToc{
+  background:var(--accent-soft);
+  border-radius:8px;
+  border-bottom-color:transparent;
+}
+
+.tocStatus{
+  display:block;
+  margin-top:4px;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:600;
+}
+
+@media (max-width: 900px){
+  .panel[data-panel="toc"]{
+    top:92px;
+    left:auto;
+    right:14px;
+    bottom:auto;
+    width:calc(100vw - 28px);
+    height:auto;
+    max-height:calc(100svh - 108px);
+    overflow:auto;
+    display:block;
+    padding:18px;
+  }
+
+  .panel[data-panel="toc"] .toc{
+    display:grid;
+    overflow:visible;
+  }
+
+  .panel[data-panel="toc"] .tocQuickActions{
+    grid-template-columns:1fr;
+  }
+
+  .panel[data-panel="toc"] .tocList{
+    overflow:visible;
+    padding-right:0;
+  }
+}
