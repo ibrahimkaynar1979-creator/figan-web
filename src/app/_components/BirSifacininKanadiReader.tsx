@@ -253,6 +253,12 @@ export default function BirSifacininKanadiReader() {
     return `~ ${hours} sa ${remainingMinutes} dk`;
   }, [totalReadingMinutes]);
 
+  const progress = useMemo(() => {
+    if (index < 0) return 0;
+    const withinSection = readerPageCount > 0 ? (readerPage + 1) / readerPageCount : 1;
+    return Math.min(100, Math.round(((index + withinSection) / sections.length) * 100));
+  }, [index, readerPage, readerPageCount]);
+
   const remainingReadingTime = useMemo(() => {
     if (index < 0) return "";
     const remainingMinutes = Math.max(
@@ -267,11 +273,6 @@ export default function BirSifacininKanadiReader() {
       ? `~ ${hours} saat kaldı`
       : `~ ${hours} sa ${minutes} dk kaldı`;
   }, [index, progress, totalReadingMinutes]);
-  const progress = useMemo(() => {
-    if (index < 0) return 0;
-    const withinSection = readerPageCount > 0 ? (readerPage + 1) / readerPageCount : 1;
-    return Math.min(100, Math.round(((index + withinSection) / sections.length) * 100));
-  }, [index, readerPage, readerPageCount]);
 
   const progressSliderValue = useMemo(() => {
     if (index < 0) return 0;
