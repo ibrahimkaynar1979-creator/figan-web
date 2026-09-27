@@ -71,6 +71,7 @@ export default function BirSifacininKanadiReader() {
   const pendingReaderPage = useRef<number | null>(null);
   const pendingReaderFraction = useRef<number | null>(null);
   const readerPageRef = useRef(0);
+  const swipeStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
 
   useEffect(() => {
     document.body.classList.add("reader-route");
@@ -363,6 +364,47 @@ export default function BirSifacininKanadiReader() {
       ro.disconnect();
     };
   }, [index, fontSize, lineHeight, pageMargin]);
+
+  const handleReaderTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length !== 1) {
+      swipeStartRef.current = null;
+      return;
+    }
+    const touch = e.touches[0];
+    swipeStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+      time: Date.now(),
+    };
+  };
+
+  const handleReaderTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    const start = swipeStartRef.current;
+    swipeStartRef.current = null;
+    if (!start || e.changedTouches.length !== 1) return;
+
+    const selection = window.getSelection();
+    if (selection && !selection.isCollapsed) return;
+
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+    const elapsed = Math.max(1, Date.now() - start.time);
+    const absX = Math.abs(dx);
+    const absY = Math.abs(dy);
+    const velocity = absX / elapsed;
+
+    const isHorizontal = absX > 48 && absX > absY * 1.35;
+    const isFastFlick = absX > 32 && velocity > 0.38 && absX > absY * 1.2;
+    if (!isHorizontal && !isFastFlick) return;
+
+    setPendingUnderline(null);
+    setActiveUnderline(null);
+    window.getSelection()?.removeAllRanges();
+
+    if (dx < 0) turnReaderPage(1);
+    else turnReaderPage(-1);
+  };
 
   const turnReaderPage = (direction: -1 | 1) => {
     const el = textWrapRef.current;
@@ -788,6 +830,8 @@ export default function BirSifacininKanadiReader() {
             <div
               ref={textWrapRef}
               className={styles.textWrap}
+              onTouchStart={handleReaderTouchStart}
+              onTouchEnd={handleReaderTouchEnd}
               onScroll={(e) => {
                 const el = e.currentTarget;
                 const width = Math.max(1, el.clientWidth);
