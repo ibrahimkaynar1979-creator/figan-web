@@ -24,10 +24,10 @@ import p16 from "../_data/bskPlain/p16";
 type Theme = "light" | "cream" | "dark";
 type ReaderFont = "serif" | "sans" | "modern";
 type TextAlign = "left" | "justify";
-type Panel = "toc" | "appearance" | "notes" | "search" | "bookmarks" | null;
+type Panel = "toc" | "appearance" | "notes" | "search" | "bookmarks" | "underlines" | null;
 type Section = { title: string; paragraphs: readonly string[] };
 type ReaderBookmark = { index: number; page: number };
-type ReaderUnderline = { id: string; index: number; paragraph: number; start: number; end: number };
+type ReaderUnderline = { id: string; index: number; paragraph: number; start: number; end: number; page?: number };
 type PendingUnderline = { segments: Omit<ReaderUnderline, "id">[]; x: number; y: number };
 type ActiveUnderline = { id: string; x: number; y: number };
 
@@ -557,7 +557,7 @@ export default function BirSifacininKanadiReader() {
           mark.paragraph === segment.paragraph &&
           Math.max(mark.start, segment.start) < Math.min(mark.end, segment.end)
         ))
-        .map(segment => ({ ...segment, id: underlineId }));
+        .map(segment => ({ ...segment, id: underlineId, page: readerPage }));
 
       return additions.length ? [...prev, ...additions] : prev;
     });
@@ -670,6 +670,7 @@ export default function BirSifacininKanadiReader() {
           <button onClick={() => setPanel(panel === "notes" ? null : "notes")}><span>▤</span> Notlarım</button>
           <button onClick={() => setPanel(panel === "search" ? null : "search")}><span>⌕</span> Kitapta Ara</button>
           <button onClick={() => setPanel(panel === "bookmarks" ? null : "bookmarks")}><span>★</span> Yer İşaretlerim</button>
+          <button onClick={() => setPanel(panel === "underlines" ? null : "underlines")}><span>＿</span> Altı Çizilenler</button>
           <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")}><span>◐</span> Görünüm</button>
         </nav>
         <a className={styles.backToBook} href="/yazarlar/figen-yavuz">← Figen Yavuz sayfasına dön</a>
@@ -864,7 +865,7 @@ export default function BirSifacininKanadiReader() {
           <button className={styles.backdrop} onClick={() => setPanel(null)} aria-label="Paneli kapat" />
           <aside className={styles.panel} data-panel={panel ?? undefined}>
             <div className={styles.panelHead}>
-              <h3>{panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : panel === "search" ? "Kitapta Ara" : panel === "bookmarks" ? "Yer İşaretlerim" : "Notlarım"}</h3>
+              <h3>{panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : panel === "search" ? "Kitapta Ara" : panel === "bookmarks" ? "Yer İşaretlerim" : panel === "underlines" ? "Altı Çizilenler" : "Notlarım"}</h3>
               <button onClick={() => setPanel(null)}>×</button>
             </div>
             {panel === "toc" && <div className={styles.toc}>
@@ -876,6 +877,10 @@ export default function BirSifacininKanadiReader() {
                 <button type="button" onClick={() => setPanel("notes")}>
                   <span>▤ Notlarım</span>
                   <b>{Object.keys(notes).length}</b>
+                </button>
+                <button type="button" onClick={() => setPanel("underlines")}>
+                  <span>＿ Altı Çizilenler</span>
+                  <b>{new Set(underlines.map(mark => mark.id)).size}</b>
                 </button>
               </div>
               <button onClick={() => go(-1)}><span>Kapak</span><b>00</b></button>
@@ -907,6 +912,58 @@ export default function BirSifacininKanadiReader() {
                         <span>Sayfa {mark.page + 1}</span>
                       </button>
                     ))}
+                </div>
+              )}
+            </div>}
+            {panel === "underlines" && <div className={styles.underlinePanel}>
+              {underlines.length === 0 ? (
+                <p className={styles.searchHint}>Henüz altı çizilmiş bir metin yok.</p>
+              ) : (
+                <div className={styles.underlineList}>
+                  {Array.from(new Set(underlines.map(mark => mark.id))).map(id => {
+                    const group = underlines
+                      .filter(mark => mark.id === id)
+                      .sort((a, b) => a.paragraph - b.paragraph || a.start - b.start);
+                    const first = group[0];
+                    if (!first) return null;
+                    const excerpt = group
+                      .map(mark => (sections[mark.index]?.paragraphs[mark.paragraph] || "").slice(mark.start, mark.end))
+                      .join(" ")
+                      .replace(/\s+/g, " ")
+                      .trim();
+                    const targetPage = Math.max(0, first.page ?? 0);
+
+                    return (
+                      <div className={styles.underlineItem} key={id}>
+                        <button
+                          type="button"
+                          className={styles.underlineJump}
+                          onClick={() => {
+                            pendingReaderEdge.current = null;
+                            pendingReaderFraction.current = null;
+                            pendingReaderPage.current = targetPage;
+                            readerPageRef.current = targetPage;
+                            setReaderPage(targetPage);
+                            setIndex(first.index);
+                            setPanel(null);
+                            setChromeVisible(true);
+                          }}
+                        >
+                          <b>{String(first.index + 1).padStart(2, "0")} · {sections[first.index]?.title}</b>
+                          <span>{first.page == null ? "Bölüme git" : "Sayfa " + (targetPage + 1)}</span>
+                          <em>“{excerpt.length > 170 ? excerpt.slice(0, 170) + "…" : excerpt}”</em>
+                        </button>
+                        <button
+                          type="button"
+                          className={styles.underlineDelete}
+                          onClick={() => removeUnderline(id)}
+                          aria-label="Altı çizili metni sil"
+                        >
+                          Sil
+                        </button>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>}
