@@ -233,6 +233,20 @@ export default function BirSifacininKanadiReader() {
   }, [index, panel, chromeVisible]);
 
   const current = index >= 0 ? sections[index] : null;
+  const readingTime = useMemo(() => {
+    const wordCount = sections.reduce((total, section) => {
+      const sectionText = [section.title, ...section.paragraphs].join(" ");
+      const words = sectionText.trim().split(/\s+/).filter(Boolean).length;
+      return total + words;
+    }, 0);
+    const minutes = Math.max(1, Math.ceil(wordCount / 200));
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+
+    if (hours === 0) return `~ ${minutes} dk`;
+    if (remainingMinutes === 0) return `~ ${hours} saat`;
+    return `~ ${hours} sa ${remainingMinutes} dk`;
+  }, []);
   const progress = useMemo(() => {
     if (index < 0) return 0;
     const withinSection = readerPageCount > 0 ? (readerPage + 1) / readerPageCount : 1;
@@ -759,7 +773,7 @@ export default function BirSifacininKanadiReader() {
                   <i aria-hidden="true">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/></svg>
                   </i>
-                  <b>~ 5 saat</b>
+                  <b>{readingTime}</b>
                 </span>
                 <span>
                   <i aria-hidden="true">
