@@ -808,3 +808,102 @@
     align-self:center!important;
   }
 }
+
+
+/* FINAL COVER TUNING — approved reference targets */
+@media(max-width:520px){
+  .reader[data-reading="false"] .coverHero{
+    width:clamp(285px,72vw,350px)!important;
+    max-width:calc(100vw - 50px)!important;
+    margin-top:16px!important;
+  }
+
+  .reader[data-reading="false"] .coverAuthor{
+    margin-top:18px!important;
+    font-size:32px!important;
+    font-weight:400!important;
+    letter-spacing:-.01em!important;
+  }
+
+  .reader[data-reading="false"] .coverPublisher{
+    margin-top:7px!important;
+    font-size:16px!important;
+    color:#81766a!important;
+  }
+
+  .reader[data-reading="false"] .coverScreen .startButton{
+    width:min(68vw,334px)!important;
+    max-width:calc(100vw - 78px)!important;
+    height:60px!important;
+    margin-top:23px!important;
+    padding:0 28px!important;
+    font-size:21px!important;
+    font-weight:400!important;
+    letter-spacing:-.01em!important;
+    gap:20px!important;
+  }
+
+  .reader[data-reading="false"] .coverScreen .startButton span{
+    font-size:25px!important;
+    margin-left:3px!important;
+  }
+
+  .reader[data-reading="false"] .coverStats{
+    margin-top:25px!important;
+  }
+
+  .reader[data-reading="false"] .coverStats span{
+    min-height:28px!important;
+    padding:0 14px!important;
+    gap:8px!important;
+    font-size:14px!important;
+    color:#6f655a!important;
+  }
+
+  .reader[data-reading="false"] .coverStats span+span{
+    border-left:1px solid #d0c1b0!important;
+  }
+
+  .reader[data-reading="false"] .coverStats i{
+    width:22px!important;
+    height:22px!important;
+    display:grid!important;
+    place-items:center!important;
+    color:#a66f28!important;
+    font-size:0!important;
+  }
+
+  .reader[data-reading="false"] .coverStats i svg{
+    width:22px!important;
+    height:22px!important;
+    fill:none!important;
+    stroke:currentColor!important;
+    stroke-width:1.7!important;
+    stroke-linecap:round!important;
+    stroke-linejoin:round!important;
+  }
+
+  .reader[data-reading="false"] .coverStats b{
+    font-weight:400!important;
+    font-size:14px!important;
+  }
+
+  .reader[data-reading="false"] .coverReaderBrand{
+    width:min(84%,405px)!important;
+    margin-top:24px!important;
+    padding-top:17px!important;
+    border-top:1px solid #d5c8b9!important;
+  }
+
+  .reader[data-reading="false"] .coverReaderBrand strong{
+    font-size:44px!important;
+    line-height:.9!important;
+    color:#a8793f!important;
+  }
+
+  .reader[data-reading="false"] .coverReaderBrand span{
+    font-size:15px!important;
+    letter-spacing:.23em!important;
+    color:#756b60!important;
+  }
+}
