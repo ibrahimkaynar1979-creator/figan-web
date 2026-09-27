@@ -358,7 +358,7 @@
   height:56px;
   margin-top:auto;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
   flex:0 0 auto;
