@@ -23,7 +23,7 @@ import p16 from "../_data/bskPlain/p16";
 
 type Theme = "light" | "cream" | "dark";
 type ReaderFont = "serif" | "sans" | "modern";
-type Panel = "toc" | "appearance" | "notes" | null;
+type Panel = "toc" | "appearance" | "notes" | "search" | null;
 type Section = { title: string; paragraphs: readonly string[] };
 
 const sections: Section[] = [
@@ -49,6 +49,7 @@ export default function BirSifacininKanadiReader() {
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [notes, setNotes] = useState<Record<number, string>>({});
   const [draft, setDraft] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [chromeVisible, setChromeVisible] = useState(true);
   const [lineHeight, setLineHeight] = useState(1.68);
   const [pageMargin, setPageMargin] = useState(24);
@@ -183,6 +184,39 @@ export default function BirSifacininKanadiReader() {
       readerPageCount > 1 ? readerPage / (readerPageCount - 1) : 0;
     return Math.round(((index + withinSection) / Math.max(1, sections.length - 1)) * 1000);
   }, [index, readerPage, readerPageCount]);
+
+  const searchResults = useMemo(() => {
+    const q = searchQuery.trim().toLocaleLowerCase("tr-TR");
+    if (q.length < 2) return [];
+
+    return sections.flatMap((section, sectionIndex) => {
+      const titleMatch = section.title.toLocaleLowerCase("tr-TR").includes(q);
+      const paragraphIndex = section.paragraphs.findIndex(p =>
+        p.toLocaleLowerCase("tr-TR").includes(q)
+      );
+
+      if (!titleMatch && paragraphIndex === -1) return [];
+
+      const source = titleMatch
+        ? section.title
+        : section.paragraphs[paragraphIndex] || "";
+
+      const lower = source.toLocaleLowerCase("tr-TR");
+      const hit = lower.indexOf(q);
+      const start = Math.max(0, hit - 55);
+      const end = Math.min(source.length, hit + q.length + 85);
+      const snippet =
+        (start > 0 ? "…" : "") +
+        source.slice(start, end).trim() +
+        (end < source.length ? "…" : "");
+
+      return [{
+        sectionIndex,
+        title: section.title,
+        snippet,
+      }];
+    }).slice(0, 60);
+  }, [searchQuery]);
 
   const bookmarked = index >= 0 && bookmarks.includes(index);
 
@@ -401,6 +435,7 @@ export default function BirSifacininKanadiReader() {
         <nav className={styles.sideNav}>
           <button onClick={() => setPanel(panel === "toc" ? null : "toc")}><span>☰</span> İçindekiler</button>
           <button onClick={() => setPanel(panel === "notes" ? null : "notes")}><span>▤</span> Notlarım</button>
+          <button onClick={() => setPanel(panel === "search" ? null : "search")}><span>⌕</span> Kitapta Ara</button>
           <button onClick={toggleBookmark} disabled={index < 0}><span>{bookmarked ? "★" : "☆"}</span> Yer İşareti</button>
           <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")}><span>◐</span> Görünüm</button>
         </nav>
@@ -426,6 +461,7 @@ export default function BirSifacininKanadiReader() {
                 <span>{current?.title}</span>
               </div>
               <div className={styles.tools}>
+                <button onClick={() => setPanel(panel === "search" ? null : "search")} aria-label="Kitapta ara">⌕</button>
                 <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")} aria-label="Yazı ve görünüm">Aa</button>
                 <button onClick={() => setTheme(theme === "dark" ? "cream" : "dark")} aria-label="Tema değiştir">☼</button>
                 <button onClick={toggleBookmark} className={bookmarked ? styles.active : ""} aria-label="Yer işareti">{bookmarked ? "★" : "☆"}</button>
@@ -518,6 +554,7 @@ export default function BirSifacininKanadiReader() {
 
         {index >= 0 && <nav className={styles.mobileNav} onClick={e => e.stopPropagation()}>
           <button onClick={() => setPanel(panel === "toc" ? null : "toc")}><span>☰</span>İçindekiler</button>
+          <button onClick={() => setPanel(panel === "search" ? null : "search")}><span>⌕</span>Ara</button>
           <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")}><span>☼</span>Görünüm</button>
           <button onClick={() => setPanel(panel === "notes" ? null : "notes")}><span>▤</span>Notlarım</button>
         </nav>}
@@ -528,12 +565,51 @@ export default function BirSifacininKanadiReader() {
           <button className={styles.backdrop} onClick={() => setPanel(null)} aria-label="Paneli kapat" />
           <aside className={styles.panel}>
             <div className={styles.panelHead}>
-              <h3>{panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : "Notlarım"}</h3>
+              <h3>{panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : panel === "search" ? "Kitapta Ara" : "Notlarım"}</h3>
               <button onClick={() => setPanel(null)}>×</button>
             </div>
             {panel === "toc" && <div className={styles.toc}>
               <button onClick={() => go(-1)}><span>Kapak</span><b>00</b></button>
               {sections.map((s, i) => <button key={s.title + i} className={index === i ? styles.currentToc : ""} onClick={() => go(i)}><span>{s.title}</span><b>{String(i + 1).padStart(2,"0")}</b></button>)}
+            </div>}
+            {panel === "search" && <div className={styles.searchPanel}>
+              <div className={styles.searchBox}>
+                <span aria-hidden="true">⌕</span>
+                <input
+                  autoFocus
+                  type="search"
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  placeholder="Kelime veya ifade ara…"
+                  aria-label="Kitapta ara"
+                />
+                {searchQuery && <button type="button" onClick={() => setSearchQuery("")} aria-label="Aramayı temizle">×</button>}
+              </div>
+
+              {searchQuery.trim().length < 2 ? (
+                <p className={styles.searchHint}>Aramak için en az 2 karakter yazın.</p>
+              ) : searchResults.length === 0 ? (
+                <p className={styles.searchHint}>Sonuç bulunamadı.</p>
+              ) : (
+                <>
+                  <p className={styles.searchCount}>{searchResults.length} sonuç</p>
+                  <div className={styles.searchResults}>
+                    {searchResults.map(result => (
+                      <button
+                        key={result.sectionIndex + "-" + result.title}
+                        type="button"
+                        onClick={() => {
+                          pendingReaderPage.current = 0;
+                          go(result.sectionIndex);
+                        }}
+                      >
+                        <b>{String(result.sectionIndex + 1).padStart(2, "0")} · {result.title}</b>
+                        <span>{result.snippet}</span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>}
             {panel === "appearance" && <div className={styles.appearance}>
               <label>Tema</label>
