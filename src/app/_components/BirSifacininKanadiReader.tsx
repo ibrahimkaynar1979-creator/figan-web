@@ -665,6 +665,16 @@ export default function BirSifacininKanadiReader() {
               <button onClick={() => setPanel(null)}>×</button>
             </div>
             {panel === "toc" && <div className={styles.toc}>
+              <div className={styles.tocQuickActions}>
+                <button type="button" onClick={() => setPanel("bookmarks")}>
+                  <span>★ Yer İşaretlerim</span>
+                  <b>{bookmarks.length}</b>
+                </button>
+                <button type="button" onClick={() => setPanel("notes")}>
+                  <span>▤ Notlarım</span>
+                  <b>{Object.keys(notes).length}</b>
+                </button>
+              </div>
               <button onClick={() => go(-1)}><span>Kapak</span><b>00</b></button>
               {sections.map((s, i) => <button key={s.title + i} className={index === i ? styles.currentToc : ""} onClick={() => go(i)}><span>{s.title}</span><b>{String(i + 1).padStart(2,"0")}</b></button>)}
             </div>}
