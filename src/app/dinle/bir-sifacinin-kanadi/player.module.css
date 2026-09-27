@@ -75,7 +75,7 @@
   width:100%;
   height:100%;
   min-height:0;
-  padding:10px 26px 12px;
+  padding:12px 26px 10px;
   position:relative;
   display:flex;
   flex-direction:column;
@@ -89,28 +89,28 @@
 }
 
 .coverHero{
-  width:252px;
-  height:268px;
-  max-width:70%;
+  width:228px;
+  height:auto;
+  max-width:66%;
   margin:0 auto;
   display:grid;
   place-items:center;
-  flex:0 0 268px;
-  overflow:visible;
+  flex:0 0 auto;
+  overflow:hidden;
   filter:drop-shadow(0 14px 24px rgba(54,36,20,.16));
 }
 .coverHero img{
   display:block;
-  width:auto;
+  width:100%;
   max-width:100%;
-  height:100%;
+  height:auto;
   object-fit:contain;
-  transform:scale(1.08);
+  transform:none;
   transform-origin:center center;
 }
 
 .listeningLabel{
-  margin-top:8px;
+  margin-top:7px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -135,7 +135,7 @@
 .content>h1{
   margin:6px 0 2px;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:31px;
+  font-size:27px;
   line-height:.98;
   font-weight:600;
   letter-spacing:-.02em;
@@ -146,7 +146,7 @@
   margin:0;
   color:#75695e;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:12.5px;
+  font-size:11px;
   line-height:1.05;
   font-weight:500;
   flex:0 0 auto;
@@ -154,8 +154,8 @@
 
 .divider{
   width:100%;
-  height:16px;
-  margin:4px 0 0;
+  height:14px;
+  margin:4px 0 1px;
   display:flex;
   align-items:center;
   gap:12px;
@@ -191,7 +191,7 @@
   max-width:100%;
   margin:5px auto 2px;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:20px;
+  font-size:22px;
   line-height:1;
   font-weight:600;
   letter-spacing:-.01em;
@@ -210,7 +210,7 @@
 
 .progressWrap{
   width:100%;
-  margin-top:8px;
+  margin-top:9px;
   flex:0 0 auto;
 }
 .range{
@@ -252,7 +252,7 @@
 
 .transport{
   width:100%;
-  height:74px;
+  height:70px;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -285,8 +285,8 @@
   color:#5b3d22;
 }
 .play{
-  width:72px;
-  height:72px;
+  width:68px;
+  height:68px;
   display:grid;
   place-items:center;
   border-radius:50%;
@@ -307,24 +307,13 @@
 }
 
 .audioNotice{
-  position:absolute;
-  left:26px;
-  right:26px;
-  bottom:142px;
-  z-index:4;
-  width:auto;
-  margin:0;
-  padding:7px 10px;
-  border-radius:12px;
-  background:#f4e7dc;
-  color:#7a3e30;
-  font:10px/1.2 var(--font-ui),Arial,sans-serif;
-  box-sizing:border-box;
+  display:none;
 }
 
 .tools{
   width:100%;
-  height:58px;
+  height:56px;
+  margin-top:auto;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   border-top:1px solid var(--line);
@@ -371,8 +360,8 @@
 
 .chapterStrip{
   width:100%;
-  height:58px;
-  margin-top:7px;
+  height:56px;
+  margin-top:6px;
   padding:10px 15px;
   border:1px solid #e3d6c6;
   border-radius:17px;
@@ -400,7 +389,7 @@
 }
 .chapterStrip strong{
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:14px;
+  font-size:13.5px;
   font-weight:500;
   line-height:1;
   white-space:nowrap;
@@ -464,20 +453,20 @@
 .chapterPlay{width:28px;height:28px;border:1px solid #bca995;border-radius:50%;display:grid;place-items:center;font:700 9px/1 var(--font-ui),Arial,sans-serif;color:#8b571e}
 
 @media(max-height:780px){
-  .content{padding-top:8px;padding-bottom:9px}
-  .coverHero{height:242px;flex-basis:242px;width:232px}
-  .coverHero img{transform:scale(1.06)}
-  .listeningLabel{margin-top:6px}
-  .content>h1{font-size:29px;margin-top:3px}
-  .bookMeta{font-size:11.5px}
-  .divider{height:14px;margin-top:3px}
-  .nowPlaying h2{font-size:18px;margin-top:3px}
-  .nowPlaying p{font-size:10.5px}
+  .content{padding-top:8px;padding-bottom:8px}
+  .coverHero{width:205px;max-width:61%}
+  .coverHero img{transform:none}
+  .listeningLabel{margin-top:5px}
+  .content>h1{font-size:25px;margin-top:3px}
+  .bookMeta{font-size:10.5px}
+  .divider{height:12px;margin-top:3px}
+  .nowPlaying h2{font-size:19px;margin-top:3px}
+  .nowPlaying p{font-size:10px}
   .progressWrap{margin-top:6px}
-  .transport{height:66px}
-  .play{width:66px;height:66px}
-  .tools{height:54px}
-  .chapterStrip{height:54px;margin-top:5px}
+  .transport{height:64px}
+  .play{width:64px;height:64px}
+  .tools{height:52px}
+  .chapterStrip{height:52px;margin-top:5px}
 }
 
 @media(max-width:380px){
@@ -485,6 +474,6 @@
   .topbar{padding:0 20px}
   .logo{width:138px;flex-basis:138px}
   .content{padding-left:22px;padding-right:22px}
-  .coverHero{width:260px}
+  .coverHero{width:210px;max-width:64%}
 }
 
