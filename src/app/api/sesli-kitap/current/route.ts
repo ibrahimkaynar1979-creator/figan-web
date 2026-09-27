@@ -1,6 +1,7 @@
 import { list } from "@vercel/blob";
 
 const PREFIX = "audiobooks/bir-sifacinin-kanadi/";
+const PUBLIC_FALLBACK_URL = "https://edmrsvk0wqr0t0cr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
 
 export async function GET() {
   try {
@@ -10,7 +11,12 @@ export async function GET() {
       blobs.find((blob) => blob.pathname.endsWith(".mp3"));
 
     if (!preferred) {
-      return Response.json({ ready: false, url: null });
+      return Response.json({
+        ready: true,
+        url: PUBLIC_FALLBACK_URL,
+        pathname: PREFIX + "master.mp3",
+        source: "public-fallback",
+      });
     }
 
     return Response.json({
@@ -21,13 +27,12 @@ export async function GET() {
       uploadedAt: preferred.uploadedAt,
     });
   } catch (error) {
-    return Response.json(
-      {
-        ready: false,
-        url: null,
-        error: error instanceof Error ? error.message : "Ses dosyası okunamadı.",
-      },
-      { status: 503 },
-    );
+    return Response.json({
+      ready: true,
+      url: PUBLIC_FALLBACK_URL,
+      pathname: PREFIX + "master.mp3",
+      source: "public-fallback",
+      warning: error instanceof Error ? error.message : "Blob listesi okunamadı.",
+    });
   }
 }
