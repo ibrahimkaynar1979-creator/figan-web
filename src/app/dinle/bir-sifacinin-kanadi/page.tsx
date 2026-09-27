@@ -274,6 +274,24 @@ export default function BirSifacininKanadiPlayer() {
       if(details.fastSeek && "fastSeek" in audio) audio.fastSeek(details.seekTime);
       else audio.currentTime=details.seekTime;
     });
+    safeSet("previoustrack",()=>{
+      const audio=audioRef.current;
+      if(!audio) return;
+      const previousIndex=Math.max(0,chapterIndex-1);
+      const target=chapters[previousIndex].start;
+      audio.currentTime=target;
+      setCurrentTime(target);
+      setChapterIndex(previousIndex);
+    });
+    safeSet("nexttrack",()=>{
+      const audio=audioRef.current;
+      if(!audio) return;
+      const nextIndex=Math.min(chapters.length-1,chapterIndex+1);
+      const target=chapters[nextIndex].start;
+      audio.currentTime=target;
+      setCurrentTime(target);
+      setChapterIndex(nextIndex);
+    });
 
     return()=>{
       safeSet("play",null);
@@ -281,8 +299,10 @@ export default function BirSifacininKanadiPlayer() {
       safeSet("seekbackward",null);
       safeSet("seekforward",null);
       safeSet("seekto",null);
+      safeSet("previoustrack",null);
+      safeSet("nexttrack",null);
     };
-  },[chapter.title]);
+  },[chapter.title,chapterIndex]);
 
   useEffect(()=>{
     if(!("mediaSession" in navigator)) return;
@@ -409,7 +429,13 @@ export default function BirSifacininKanadiPlayer() {
           }catch{}
         }}
         onCanPlay={()=>setAudioError(false)}
-        onEnded={()=>setPlaying(false)}
+        onEnded={(e)=>{
+          setPlaying(false);
+          e.currentTarget.currentTime=0;
+          setCurrentTime(0);
+          setChapterIndex(0);
+          try{ window.localStorage.removeItem(PROGRESS_KEY); }catch{}
+        }}
         onError={()=>{setAudioError(true);setPlaying(false);}}
       />
 
