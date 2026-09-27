@@ -71,9 +71,16 @@ export default function AudiobookUploadPage() {
     event.preventDefault();
     if (!file) return;
 
-    if (file.type && !["audio/mpeg","audio/mp3"].includes(file.type)) {
+    const isMp3Name=file.name.toLowerCase().endsWith(".mp3");
+    const isMp3Type=!file.type || ["audio/mpeg","audio/mp3"].includes(file.type);
+    if (!isMp3Name || !isMp3Type) {
       setStatus("error");
-      setMessage("Lütfen MP3 dosyasını seçin.");
+      setMessage("Lütfen geçerli bir MP3 dosyası seçin.");
+      return;
+    }
+    if (file.size > 120 * 1024 * 1024) {
+      setStatus("error");
+      setMessage("MP3 dosyası 120 MB sınırını aşıyor.");
       return;
     }
 
