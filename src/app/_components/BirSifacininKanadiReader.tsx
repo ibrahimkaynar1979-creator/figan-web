@@ -47,8 +47,11 @@ export default function BirSifacininKanadiReader() {
   const [pageMargin, setPageMargin] = useState(24);
   const [readerPage, setReaderPage] = useState(0);
   const [readerPageCount, setReaderPageCount] = useState(1);
+  const [storageReady, setStorageReady] = useState(false);
   const textWrapRef = useRef<HTMLDivElement | null>(null);
   const pendingReaderEdge = useRef<"start" | "end" | null>(null);
+  const pendingReaderPage = useRef<number | null>(null);
+  const readerPageRef = useRef(0);
 
   useEffect(() => {
     document.body.classList.add("reader-route");
@@ -57,10 +60,18 @@ export default function BirSifacininKanadiReader() {
 
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE);
-    if (!raw) return;
+    if (!raw) {
+      setStorageReady(true);
+      return;
+    }
     try {
       const saved = JSON.parse(raw);
       if (typeof saved.index === "number" && saved.index >= -1 && saved.index < sections.length) setIndex(saved.index);
+      if (typeof saved.readerPage === "number" && saved.readerPage >= 0) {
+        pendingReaderPage.current = Math.floor(saved.readerPage);
+        readerPageRef.current = Math.floor(saved.readerPage);
+        setReaderPage(Math.floor(saved.readerPage));
+      }
       if (["light","cream","dark"].includes(saved.theme)) setTheme(saved.theme);
       if (typeof saved.fontSize === "number") setFontSize(saved.fontSize);
       if (typeof saved.lineHeight === "number") setLineHeight(saved.lineHeight);
@@ -68,12 +79,18 @@ export default function BirSifacininKanadiReader() {
       if (Array.isArray(saved.bookmarks)) setBookmarks(saved.bookmarks);
       if (saved.notes && typeof saved.notes === "object") setNotes(saved.notes);
     } catch {}
+    setStorageReady(true);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE, JSON.stringify({ index, theme, fontSize, lineHeight, pageMargin, bookmarks, notes }));
+    readerPageRef.current = readerPage;
+  }, [readerPage]);
+
+  useEffect(() => {
+    if (!storageReady) return;
+    localStorage.setItem(STORAGE, JSON.stringify({ index, readerPage, theme, fontSize, lineHeight, pageMargin, bookmarks, notes }));
     setDraft(index >= 0 ? notes[index] || "" : "");
-  }, [index, theme, fontSize, lineHeight, pageMargin, bookmarks, notes]);
+  }, [storageReady, index, readerPage, theme, fontSize, lineHeight, pageMargin, bookmarks, notes]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -100,7 +117,9 @@ export default function BirSifacininKanadiReader() {
   const bookmarked = index >= 0 && bookmarks.includes(index);
 
   const go = (next: number) => {
-    setIndex(Math.max(-1, Math.min(sections.length - 1, next)));
+    const target = Math.max(-1, Math.min(sections.length - 1, next));
+    if (target !== index && pendingReaderEdge.current === null) pendingReaderPage.current = 0;
+    setIndex(target);
     setPanel(null);
     setChromeVisible(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -120,13 +139,27 @@ export default function BirSifacininKanadiReader() {
         const lastPage = pages - 1;
         el.scrollLeft = lastPage * width;
         setReaderPage(lastPage);
+        readerPageRef.current = lastPage;
         pendingReaderEdge.current = null;
+        pendingReaderPage.current = null;
         return;
       }
 
-      el.scrollLeft = 0;
-      setReaderPage(0);
-      pendingReaderEdge.current = null;
+      if (pendingReaderEdge.current === "start") {
+        el.scrollLeft = 0;
+        setReaderPage(0);
+        readerPageRef.current = 0;
+        pendingReaderEdge.current = null;
+        pendingReaderPage.current = null;
+        return;
+      }
+
+      const requestedPage = pendingReaderPage.current ?? readerPageRef.current;
+      const targetPage = Math.min(pages - 1, Math.max(0, requestedPage));
+      el.scrollLeft = targetPage * width;
+      setReaderPage(targetPage);
+      readerPageRef.current = targetPage;
+      pendingReaderPage.current = null;
     };
     const raf = requestAnimationFrame(measure);
     const ro = new ResizeObserver(() => requestAnimationFrame(measure));
