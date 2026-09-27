@@ -29,8 +29,13 @@ export async function POST(request: Request) {
 
     return Response.json(response);
   } catch (error) {
+    const details =
+      error instanceof Error
+        ? { name: error.name, message: error.message, stack: error.stack }
+        : { message: String(error) };
+    console.error("Audiobook Blob upload token error:", details);
     return Response.json(
-      { error: error instanceof Error ? error.message : "Yükleme başlatılamadı." },
+      { error: details.message, details },
       { status: 400 },
     );
   }
