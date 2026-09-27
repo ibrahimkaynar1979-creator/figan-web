@@ -58,6 +58,7 @@ export default function BirSifacininKanadiReader() {
   const textWrapRef = useRef<HTMLDivElement | null>(null);
   const pendingReaderEdge = useRef<"start" | "end" | null>(null);
   const pendingReaderPage = useRef<number | null>(null);
+  const pendingReaderFraction = useRef<number | null>(null);
   const readerPageRef = useRef(0);
 
   useEffect(() => {
@@ -175,6 +176,14 @@ export default function BirSifacininKanadiReader() {
     const withinSection = readerPageCount > 0 ? (readerPage + 1) / readerPageCount : 1;
     return Math.min(100, Math.round(((index + withinSection) / sections.length) * 100));
   }, [index, readerPage, readerPageCount]);
+
+  const progressSliderValue = useMemo(() => {
+    if (index < 0) return 0;
+    const withinSection =
+      readerPageCount > 1 ? readerPage / (readerPageCount - 1) : 0;
+    return Math.round(((index + withinSection) / Math.max(1, sections.length - 1)) * 1000);
+  }, [index, readerPage, readerPageCount]);
+
   const bookmarked = index >= 0 && bookmarks.includes(index);
 
   const go = (next: number) => {
@@ -211,6 +220,19 @@ export default function BirSifacininKanadiReader() {
         setReaderPage(0);
         readerPageRef.current = 0;
         pendingReaderEdge.current = null;
+        pendingReaderPage.current = null;
+        return;
+      }
+
+      if (pendingReaderFraction.current !== null) {
+        const targetPage = Math.min(
+          pages - 1,
+          Math.max(0, Math.round(pendingReaderFraction.current * Math.max(0, pages - 1)))
+        );
+        el.scrollLeft = targetPage * width;
+        setReaderPage(targetPage);
+        readerPageRef.current = targetPage;
+        pendingReaderFraction.current = null;
         pendingReaderPage.current = null;
         return;
       }
@@ -296,6 +318,40 @@ export default function BirSifacininKanadiReader() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [index, panel, readerPage, readerPageCount]);
+
+  const seekReaderPosition = (sliderValue: number) => {
+    if (index < 0) return;
+
+    const normalized = Math.min(1, Math.max(0, sliderValue / 1000));
+    const bookPosition = normalized * Math.max(1, sections.length - 1);
+    const targetIndex = Math.min(
+      sections.length - 1,
+      Math.max(0, Math.floor(bookPosition))
+    );
+    const fraction = Math.min(1, Math.max(0, bookPosition - targetIndex));
+
+    setPanel(null);
+    setChromeVisible(true);
+
+    if (targetIndex === index) {
+      const el = textWrapRef.current;
+      if (!el) return;
+      const width = Math.max(1, el.clientWidth);
+      const targetPage = Math.min(
+        readerPageCount - 1,
+        Math.max(0, Math.round(fraction * Math.max(0, readerPageCount - 1)))
+      );
+      el.scrollTo({ left: targetPage * width, behavior: "auto" });
+      setReaderPage(targetPage);
+      readerPageRef.current = targetPage;
+      return;
+    }
+
+    pendingReaderEdge.current = null;
+    pendingReaderPage.current = null;
+    pendingReaderFraction.current = fraction;
+    setIndex(targetIndex);
+  };
 
   const toggleBookmark = () => {
     if (index < 0) return;
@@ -442,7 +498,16 @@ export default function BirSifacininKanadiReader() {
             <button className={styles.next} onClick={(e) => { e.stopPropagation(); turnReaderPage(1); }} disabled={index === sections.length - 1 && readerPage === readerPageCount - 1} aria-label="Sonraki sayfa">›</button>
 
             <footer className={styles.progressArea} onClick={e => e.stopPropagation()}>
-              <input type="range" min="0" max={sections.length - 1} value={index} onChange={e => go(Number(e.target.value))} aria-label="Okuma ilerlemesi" />
+              <input
+                type="range"
+                min="0"
+                max="1000"
+                step="1"
+                value={progressSliderValue}
+                onChange={e => seekReaderPosition(Number(e.target.value))}
+                aria-label="Okuma ilerlemesi"
+                aria-valuetext={`% ${progress} — Bölüm ${index + 1}, Sayfa ${readerPage + 1}/${readerPageCount}`}
+              />
               <div className={styles.progressMeta}>
                 <span>{index + 1} / {sections.length} <i /> Sayfa {readerPage + 1}/{readerPageCount}</span>
                 <span>% {progress} <i /> 22 Reader</span>
