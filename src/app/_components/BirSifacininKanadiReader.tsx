@@ -134,7 +134,7 @@ export default function BirSifacininKanadiReader() {
           <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={236} priority />
         </a>
         <div className={styles.cover}>
-          <Image src="/figen-yavuz-arayisin-yolculugu-mockup.webp" alt="Bir Şifacının Kanadı - Figen Yavuz" width={320} height={440} priority />
+          <Image src="/bir_sifaci_png.png" alt="Bir Şifacının Kanadı - Figen Yavuz" width={320} height={440} priority />
         </div>
         <h2>Bir Şifacının Kanadı</h2>
         <p>Figen Yavuz</p>
@@ -168,7 +168,7 @@ export default function BirSifacininKanadiReader() {
           {index === -1 ? (
             <div className={styles.textWrap} style={{ alignItems:"center" }}>
               <Image
-                src="/figen-yavuz-arayisin-yolculugu-mockup.webp"
+                src="/bir_sifaci_png.png"
                 alt="Bir Şifacının Kanadı - Figen Yavuz"
                 width={720}
                 height={900}
