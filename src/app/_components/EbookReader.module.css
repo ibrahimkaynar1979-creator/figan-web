@@ -233,7 +233,7 @@
     height:100%;
     min-height:0;
     margin:0;
-    padding:26px 0 15px;
+    padding:12px 0 12px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -256,6 +256,8 @@
     width:100%;
     height:auto;
     object-fit:contain;
+    transform:scale(1.08);
+    transform-origin:center bottom;
   }
 
   .reader[data-reading="false"] .coverAuthor{
@@ -303,7 +305,7 @@
   }
 
   .reader[data-reading="false"] .coverStats{
-    margin:25px auto 0;
+    margin:19px auto 0;
     align-self:center;
     display:grid;
     grid-template-columns:repeat(3,auto);
@@ -365,7 +367,7 @@
   }
 
   .reader[data-reading="false"] .coverReaderBrand strong{
-    font-size:42px;
+    font-size:40px;
     line-height:.9;
     color:#a8793f;
     font-style:italic;
