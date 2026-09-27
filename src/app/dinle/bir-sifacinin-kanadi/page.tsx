@@ -7,7 +7,7 @@ type Chapter = { id: number; title: string; start: number };
 
 const FALLBACK_AUDIO =
   process.env.NEXT_PUBLIC_BIR_SIFACININ_KANADI_AUDIO_URL ||
-  "https://edmrsvk0wqr0t0cr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
+  "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
 const BOOK_DURATION = 8477.232;
 // deploy-refresh: audiobook upload flow + Blob auto-connect
 
