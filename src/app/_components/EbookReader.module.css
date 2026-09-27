@@ -127,8 +127,7 @@
     width:100%;
     height:100%;
     min-height:0;
-    display:grid;
-    grid-template-rows:64px minmax(0,1fr);
+    display:block;
     position:relative;
     overflow:hidden;
     border-radius:28px;
@@ -137,8 +136,8 @@
   }
 
   .reader[data-reading="true"] .topbar{
-    position:relative;
-    left:auto;right:auto;top:auto;
+    position:absolute;
+    left:0;right:0;top:0;
     height:64px;
     padding:0 16px;
     border-bottom:1px solid var(--line);
@@ -161,7 +160,7 @@
     width:100%;
     height:100%;
     min-height:0;
-    padding:18px var(--reader-page-margin) 88px;
+    padding:22px var(--reader-page-margin) 22px;
     overflow:hidden;
     box-sizing:border-box;
     background:var(--surface);
@@ -189,8 +188,7 @@
   .reader[data-reading="true"] .textWrap::-webkit-scrollbar{display:none}
   .reader[data-reading="true"] .chapter,
   .reader[data-reading="true"] .textWrap h1,
-  .reader[data-reading="true"] .rule,
-  .reader[data-reading="true"] .prose{break-inside:avoid-column}
+  .reader[data-reading="true"] .rule{break-inside:avoid-column}
 
   .reader[data-reading="true"] .chapter{
     text-align:center;
@@ -220,8 +218,8 @@
   .reader[data-reading="true"] .prev,
   .reader[data-reading="true"] .next{
     position:absolute;
-    top:64px;
-    bottom:48px;
+    top:0;
+    bottom:0;
     width:24%;
     height:auto;
     transform:none;
@@ -241,7 +239,8 @@
     padding:14px 0 4px;
     z-index:20;
     border-top:1px solid #d8ccbd;
-    background:var(--surface);
+    background:color-mix(in srgb,var(--surface) 96%,transparent);
+    box-shadow:0 -10px 24px rgba(70,45,20,.04);
     transition:opacity .22s ease;
   }
   .reader[data-reading="true"][data-chrome="hidden"] .progressArea{opacity:0;pointer-events:none}
