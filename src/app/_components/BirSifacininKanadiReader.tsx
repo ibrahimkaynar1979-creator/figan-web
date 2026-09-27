@@ -192,9 +192,24 @@ export default function BirSifacininKanadiReader() {
               <div className={styles.coverPublisher}>22 Yayınevi</div>
               <button onClick={(e) => { e.stopPropagation(); go(0); }} className={styles.startButton}>Okumaya Başla <span>→</span></button>
               <div className={styles.coverStats}>
-                <span><i>▱</i><b>{sections.length} bölüm</b></span>
-                <span><i>◷</i><b>~ 5 saat</b></span>
-                <span><i>▤</i><b>EPUB</b></span>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M3.5 5.5c2.8-.7 5.5-.2 8 1.5v12c-2.5-1.7-5.2-2.2-8-1.5z"/><path d="M20.5 5.5c-2.8-.7-5.5-.2-8 1.5v12c2.5-1.7 5.2-2.2 8-1.5z"/></svg>
+                  </i>
+                  <b>{sections.length} bölüm</b>
+                </span>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/></svg>
+                  </i>
+                  <b>~ 5 saat</b>
+                </span>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6.5 3.5h7l4 4v13h-11z"/><path d="M13.5 3.5v4h4"/><path d="M9 12h6M9 15h6"/></svg>
+                  </i>
+                  <b>EPUB</b>
+                </span>
               </div>
               <div className={styles.coverReaderBrand}><strong>22</strong><span>Reader</span></div>
             </div>
