@@ -2,9 +2,9 @@
   --bg:#eee8df;
   --surface:#fbf7ef;
   --text:#171512;
-  --muted:#51473f;
+  --muted:#4d443d;
   --line:#d8c8b6;
-  --accent:#995810;
+  --accent:#96550d;
   position:fixed;
   inset:0;
   width:100vw;
@@ -119,10 +119,10 @@
   flex:0 0 auto;
 }
 .listeningLabel span{
-  font:700 9.5px/1 var(--font-ui),Arial,sans-serif;
-  letter-spacing:.18em;
+  font:700 10px/1 var(--font-ui),Arial,sans-serif;
+  letter-spacing:.17em;
   text-transform:uppercase;
-  color:#95550c;
+  color:#8f500b;
 }
 .waveIcon{
   width:26px;
@@ -146,10 +146,10 @@
 
 .bookMeta{
   margin:0;
-  color:#51473f;
+  color:#51483f;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:13.25px;
-  line-height:1.05;
+  font-size:13.5px;
+  line-height:1.15;
   font-weight:600;
   flex:0 0 auto;
 }
@@ -185,9 +185,9 @@
   flex:0 0 auto;
 }
 .nowPlaying>span{
-  font:700 9px/1 var(--font-ui),Arial,sans-serif;
-  letter-spacing:.19em;
-  color:#95550c;
+  font:700 9.5px/1 var(--font-ui),Arial,sans-serif;
+  letter-spacing:.18em;
+  color:#8f500b;
 }
 .nowPlaying h2{
   max-width:100%;
@@ -231,12 +231,12 @@
   width:19px;
   height:19px;
   border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#c68735 0%,#a86618 48%,#8f500d 100%);
-  border:1px solid rgba(126,72,12,.38);
+  background:radial-gradient(circle at 34% 28%,#d39a4a 0%,#ad6d1d 48%,#8d4e0c 100%);
+  border:1px solid rgba(122,70,13,.42);
   box-shadow:
     0 0 0 3px #f7efe3,
-    0 3px 8px rgba(83,49,18,.20),
-    inset 0 1px 0 rgba(255,255,255,.32);
+    0 4px 9px rgba(83,49,18,.22),
+    inset 0 1.5px 0 rgba(255,255,255,.36);
   cursor:pointer;
 }
 .range::-moz-range-thumb{
@@ -271,26 +271,26 @@
 }
 .seekButton{
   position:relative;
-  width:52px;
-  height:52px;
+  width:50px;
+  height:50px;
   border:0;
   background:transparent;
   color:#95550c;
   cursor:pointer;
 }
 .seekButton svg{
-  width:52px;
-  height:52px;
+  width:50px;
+  height:50px;
   fill:none;
   stroke:currentColor;
-  stroke-width:2.1;
+  stroke-width:2.15;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 .seekButton small{
   position:absolute;
-  inset:20px 0 auto;
-  font:700 12.5px/1 var(--font-ui),Arial,sans-serif;
+  inset:18.5px 0 auto;
+  font:700 12px/1 var(--font-ui),Arial,sans-serif;
   color:#3f2b1e;
 }
 .play{
@@ -301,14 +301,15 @@
   place-items:center;
   border-radius:50%;
   background:
-    radial-gradient(circle at 36% 30%,#4a3422 0%,#2d1f14 34%,#1c140f 69%,#100b08 100%);
-  color:#e0a64e;
-  border:1.5px solid #b77627;
+    radial-gradient(circle at 35% 27%,#5a4029 0%,#332216 31%,#201610 66%,#100b08 100%);
+  color:#e3ad57;
+  border:1.5px solid #bc7b2c;
   box-shadow:
-    0 10px 20px rgba(37,24,13,.22),
-    inset 0 2px 0 rgba(255,255,255,.18),
-    inset 0 -6px 10px rgba(0,0,0,.28),
-    0 0 0 2px rgba(183,120,45,.12);
+    0 11px 22px rgba(35,22,12,.24),
+    0 3px 8px rgba(74,45,19,.14),
+    inset 0 2px 0 rgba(255,255,255,.20),
+    inset 0 -7px 11px rgba(0,0,0,.30),
+    0 0 0 2px rgba(188,123,44,.13);
   cursor:pointer;
   isolation:isolate;
 }
@@ -317,15 +318,17 @@
   position:absolute;
   inset:5px;
   border-radius:50%;
-  background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,0) 44%);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,0) 42%),
+    radial-gradient(circle at 38% 30%,rgba(255,213,145,.10),transparent 48%);
   pointer-events:none;
   z-index:0;
 }
 .play svg{
   width:24px;
   height:24px;
-  fill:#e1aa55;
-  stroke:#e1aa55;
+  fill:#e6b25d;
+  stroke:#e6b25d;
   stroke-width:2.05;
   stroke-linecap:round;
   stroke-linejoin:round;
@@ -352,7 +355,7 @@
 .tools button,.tools a{
   position:relative;
   height:100%;
-  color:#4f3c2d;
+  color:#493a2f;
   background:transparent;
   border:0;
   text-decoration:none;
@@ -362,7 +365,7 @@
   align-items:center;
   justify-content:center;
   gap:6px;
-  font:600 11.25px/1 var(--font-ui),Arial,sans-serif;
+  font:600 11.5px/1.05 var(--font-ui),Arial,sans-serif;
 }
 .tools>*+*:before{
   content:"";
@@ -382,7 +385,7 @@
   height:25px;
   fill:none;
   stroke:#8f5716;
-  stroke-width:1.95;
+  stroke-width:1.9;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
@@ -429,7 +432,7 @@
   flex:0 0 auto;
   border:0;
   background:transparent;
-  color:#8d571d;
+  color:#845015;
   cursor:pointer;
   font:600 10.5px/1 var(--font-ui),Arial,sans-serif;
 }
