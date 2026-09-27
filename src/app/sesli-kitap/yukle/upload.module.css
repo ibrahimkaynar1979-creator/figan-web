@@ -1,0 +1,102 @@
+.page{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:48px 20px;
+  background:
+    radial-gradient(circle at 18% 8%,rgba(175,127,77,.18),transparent 34%),
+    linear-gradient(135deg,#faf5ed 0%,#eee1d1 100%);
+  color:#1b1511;
+  font-family:var(--font-ui),Arial,sans-serif;
+}
+.card{
+  width:min(760px,100%);
+  border:1px solid rgba(74,50,32,.15);
+  border-radius:34px;
+  background:rgba(255,252,247,.82);
+  box-shadow:0 30px 90px rgba(67,45,28,.14);
+  padding:38px;
+  backdrop-filter:blur(18px);
+}
+.brand{display:inline-flex;flex-direction:column;align-items:center;line-height:1}
+.brand span{font-family:var(--font-editorial),Georgia,serif;font-size:44px;letter-spacing:-.05em}
+.brand small{font-size:8px;letter-spacing:.24em;font-weight:800}
+.heading{margin:30px 0 28px}
+.heading p{margin:0 0 9px;font-size:9px;letter-spacing:.22em;font-weight:800;color:#a36c37}
+.heading h1{font-family:var(--font-editorial),Georgia,serif;font-size:46px;line-height:1;margin:0 0 10px;font-weight:500;letter-spacing:-.03em}
+.heading span{font-size:13px;color:#76695f}
+.bookRow{
+  display:grid;
+  grid-template-columns:116px 1fr;
+  gap:24px;
+  align-items:center;
+  margin-bottom:28px;
+  padding:20px;
+  border-radius:22px;
+  background:#f2e7d8;
+}
+.cover{
+  aspect-ratio:.68;
+  padding:16px 12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  text-align:center;
+  border-radius:3px 8px 8px 3px;
+  background:linear-gradient(145deg,#fffaf0,#dbc29e);
+  box-shadow:0 12px 28px rgba(66,44,28,.18);
+  font-family:var(--font-editorial),Georgia,serif;
+}
+.cover small{font:700 6px/1 var(--font-ui),Arial,sans-serif;letter-spacing:.13em}
+.cover strong{font-size:19px;line-height:.92;font-weight:500}
+.cover span{font:700 6px/1 var(--font-ui),Arial,sans-serif;letter-spacing:.16em}
+.bookRow>div:last-child{min-width:0}
+.bookRow b{display:block;font-size:11px;margin-bottom:8px}
+.bookRow code{display:block;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.68);font-size:11px;overflow:auto}
+.bookRow p{font-size:12px;line-height:1.55;color:#6d6258;margin:10px 0 0}
+.form{display:grid;gap:16px}
+.drop{
+  min-height:188px;
+  border:1.5px dashed #bca78f;
+  border-radius:24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  cursor:pointer;
+  background:#fffaf4;
+  transition:.2s;
+}
+.drop:hover{border-color:#83542e;background:#fff}
+.drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.uploadIcon{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#231811;color:#fff;font-size:23px}
+.drop strong{font-size:15px}
+.drop small{color:#897a6d;font-size:11px}
+.progressArea{padding:16px 18px;border-radius:16px;background:#eee3d5}
+.progressTop{display:flex;justify-content:space-between;font-size:11px;margin-bottom:10px}
+.progress{height:7px;border-radius:999px;background:#d3c3b1;overflow:hidden}
+.progress i{display:block;height:100%;background:#2a1a11;border-radius:inherit;transition:width .2s}
+.progressArea small{display:block;margin-top:8px;color:#776a5f;font-size:10px}
+.success,.error{padding:13px 15px;border-radius:14px;font-size:12px;line-height:1.5}
+.success{background:#e9f1e7;color:#355035}
+.error{background:#f6e5e1;color:#7a332a}
+.result{padding:14px;border-radius:14px;border:1px solid #dacbbb;background:#fff}
+.result span{display:block;font-size:9px;font-weight:800;letter-spacing:.12em;color:#8d6a49;margin-bottom:5px}
+.result a{font-size:11px;word-break:break-all;text-decoration:underline}
+.form>button{
+  min-height:54px;border:0;border-radius:999px;background:#21160f;color:#fff;
+  font-weight:800;font-size:12px;cursor:pointer;
+}
+.form>button:disabled{opacity:.4;cursor:not-allowed}
+.footer{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:26px;border-radius:14px;overflow:hidden;background:#d8cabc}
+.footer span{background:#f2e8dc;padding:12px 6px;text-align:center;font-size:10px;font-weight:700}
+@media(max-width:600px){
+  .page{padding:0;background:#f4eadf}
+  .card{min-height:100vh;border:0;border-radius:0;padding:26px 18px;box-shadow:none}
+  .heading h1{font-size:38px}
+  .bookRow{grid-template-columns:90px 1fr;padding:15px;gap:15px}
+  .drop{min-height:170px}
+  .footer{grid-template-columns:1fr 1fr}
+}
