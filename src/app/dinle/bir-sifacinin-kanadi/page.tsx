@@ -1,4 +1,4 @@
-"use client";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./player.module.css";
@@ -127,12 +127,15 @@ export default function BirSifacininKanadiPlayer() {
   const chapterDuration = Math.max(0,chapterEnd - chapter.start);
 
   useEffect(()=>{
+    document.body.classList.add("reader-route");
+    return()=>document.body.classList.remove("reader-route");
+  },[]);
+
+  useEffect(()=>{
     void fetch("/api/sesli-kitap/current",{cache:"no-store"})
       .then((response)=>response.ok?response.json():null)
       .then((data)=>{
-        if(data?.ready && typeof data.url==="string" && data.url){
-          setAudioSrc(data.url);
-        }
+        if(data?.ready && typeof data.url==="string" && data.url) setAudioSrc(data.url);
       })
       .catch(()=>{});
   },[]);
@@ -247,31 +250,27 @@ export default function BirSifacininKanadiPlayer() {
         onError={()=>{setAudioError(true);setPlaying(false);}}
       />
 
-      <header className={styles.topbar}>
-        <a className={styles.brand} href="/" aria-label="22 Yayınevi ana sayfa">
-          <span className={styles.brand22}>22</span><span>YAYINEVİ</span>
-        </a>
-        <div className={styles.bookMetaTop}><span>SESLİ KİTAP</span><b>Bir Şifacının Kanadı</b></div>
-        <a className={styles.closeLink} href="/sesli-kitap" aria-label="Sesli kitap sayfasına dön">×</a>
-      </header>
+      <section className={styles.stage}>
+        <header className={styles.topbar}>
+          <a href="/" className={styles.logo} aria-label="22 Yayınevi ana sayfa">
+            <img src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" />
+          </a>
+          <button className={styles.menuButton} onClick={()=>setChaptersOpen(true)} aria-label="Bölümler">⋮</button>
+        </header>
 
-      <section className={styles.shell}>
-        <div className={styles.coverPanel}>
-          <div className={styles.cover}>
-            <span className={styles.coverAuthor}>FİGEN YAVUZ</span>
-            <div className={styles.wingMark}>✦</div>
-            <h1>Bir<br/>Şifacının<br/>Kanadı</h1>
-            <p>İnsanın Kendine<br/>Dönüş Yolculuğu</p>
-            <span className={styles.coverPublisher}>22 YAYINEVİ</span>
+        <div className={styles.content}>
+          <div className={styles.coverHero}>
+            <img src="/bir_sifaci_png.png" alt="Bir Şifacının Kanadı - Figen Yavuz" />
           </div>
-          <div className={styles.desktopBookInfo}>
-            <p>Şimdi dinliyorsunuz</p><h2>Bir Şifacının Kanadı</h2><span>Figen Yavuz · Elif sesi · {formatTime(duration)}</span>
-          </div>
-        </div>
 
-        <div className={styles.playerPanel}>
+          <div className={styles.listeningLabel}><span aria-hidden="true">▥</span> ŞİMDİ DİNLİYORSUNUZ</div>
+          <h1>Bir Şifacının Kanadı</h1>
+          <p className={styles.bookMeta}>Figen Yavuz · Elif sesi · {formatTime(duration)}</p>
+
+          <div className={styles.divider}><i /></div>
+
           <div className={styles.nowPlaying}>
-            <span className={styles.kicker}>BİR ŞİFACININ KANADI</span>
+            <span>BİR ŞİFACININ KANADI</span>
             <h2>{chapter.id}. Bölüm — {chapter.title}</h2>
             <p>{formatTime(chapterDuration)} · Figen Yavuz</p>
           </div>
@@ -280,7 +279,10 @@ export default function BirSifacininKanadiPlayer() {
             <input
               className={styles.range}
               aria-label="Dinleme konumu"
-              type="range" min="0" max={duration||BOOK_DURATION} step="0.1"
+              type="range"
+              min="0"
+              max={duration||BOOK_DURATION}
+              step="0.1"
               value={Math.min(currentTime,duration||BOOK_DURATION)}
               onChange={(e)=>{
                 const value=Number(e.target.value);
@@ -293,12 +295,12 @@ export default function BirSifacininKanadiPlayer() {
           </div>
 
           <div className={styles.transport}>
-            <button onClick={()=>seekBy(-15)} aria-label="15 saniye geri"><span className={styles.jump}>↶</span><small>15</small></button>
+            <button onClick={()=>seekBy(-15)} aria-label="15 saniye geri"><span>↶</span><small>15</small></button>
             <button className={styles.play} onClick={togglePlay} aria-label={playing?"Duraklat":"Oynat"}>{playing?"Ⅱ":"▶"}</button>
-            <button onClick={()=>seekBy(15)} aria-label="15 saniye ileri"><span className={styles.jump}>↷</span><small>15</small></button>
+            <button onClick={()=>seekBy(15)} aria-label="15 saniye ileri"><span>↷</span><small>15</small></button>
           </div>
 
-          {audioError && <div className={styles.audioNotice}>Player ve 85 bölüm işaretçisi hazır. Ses kaynağı henüz bu ortamda yayınlanmadı; master MP3 URL’si bağlandığında doğrudan burada çalacak.</div>}
+          {audioError && <div className={styles.audioNotice}>Ses kaynağına erişilemiyor. Lütfen tekrar deneyin.</div>}
 
           <div className={styles.tools}>
             <button onClick={changeRate}><b>{rate}x</b><span>Hız</span></button>
@@ -315,14 +317,14 @@ export default function BirSifacininKanadiPlayer() {
       </section>
 
       <aside className={`${styles.drawer} ${chaptersOpen?styles.drawerOpen:""}`} aria-hidden={!chaptersOpen}>
-        <button className={styles.drawerBackdrop} aria-label="Bölümleri kapat" onClick={()=>setChaptersOpen(false)}/>
+        <button className={styles.drawerBackdrop} aria-label="Bölümleri kapat" onClick={()=>setChaptersOpen(false)} />
         <div className={styles.drawerPanel}>
           <div className={styles.drawerHead}>
             <div><span>22 YAYINEVİ</span><h2>Bölümler</h2></div>
             <button onClick={()=>setChaptersOpen(false)} aria-label="Kapat">×</button>
           </div>
           <div className={styles.drawerBook}>
-            <div className={styles.miniCover}>22</div>
+            <img src="/bir_sifaci_png.png" alt="" />
             <div><strong>Bir Şifacının Kanadı</strong><span>Figen Yavuz</span><small>{chapters.length} bölüm · {formatTime(duration)}</small></div>
           </div>
           <div className={styles.chapterList}>
