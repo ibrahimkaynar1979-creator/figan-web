@@ -6316,3 +6316,9 @@ footer{background:#17100c;color:#d8cec6;padding:74px 0 110px}
     transform:none;
   }
 }
+
+
+/* AUTHOR PLATFORM ISOLATION */
+body:has(.author-platform-shell){padding-bottom:0!important}
+body:has(.author-platform-shell) .mobile-dock{display:none!important}
+body:has(.author-platform-shell) .contact-float{display:none!important}
