@@ -325,6 +325,33 @@ export default function BirSifacininKanadiReader() {
       .filter(({ section }) => section.title.toLocaleLowerCase("tr-TR").includes(q));
   }, [tocQuery]);
 
+  const tocGroups = useMemo(() => {
+    const groupSize = 20;
+    const groups: Array<{
+      start: number;
+      end: number;
+      label: string;
+      items: typeof filteredTocSections;
+    }> = [];
+
+    for (let start = 0; start < sections.length; start += groupSize) {
+      const end = Math.min(sections.length - 1, start + groupSize - 1);
+      const items = filteredTocSections.filter(
+        item => item.sectionIndex >= start && item.sectionIndex <= end
+      );
+      if (!items.length) continue;
+
+      groups.push({
+        start,
+        end,
+        label: `Bölümler ${String(start + 1).padStart(2, "0")}–${String(end + 1).padStart(2, "0")}`,
+        items,
+      });
+    }
+
+    return groups;
+  }, [filteredTocSections]);
+
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLocaleLowerCase("tr-TR");
     if (q.length < 2) return [];
@@ -1084,18 +1111,32 @@ export default function BirSifacininKanadiReader() {
                 {filteredTocSections.length === 0 ? (
                   <p className={styles.searchHint}>Bölüm bulunamadı.</p>
                 ) : (
-                  filteredTocSections.map(({ section, sectionIndex }) => (
-                    <button
-                      key={section.title + sectionIndex}
-                      className={index === sectionIndex ? styles.currentToc : ""}
-                      onClick={() => go(sectionIndex)}
+                  tocGroups.map(group => (
+                    <details
+                      key={group.label}
+                      className={styles.tocGroup}
+                      open={!!tocQuery || (index >= group.start && index <= group.end)}
                     >
-                      <span>
-                        {section.title}
-                        {index === sectionIndex && <small className={styles.tocStatus}>Şu an buradasın</small>}
-                      </span>
-                      <b>{String(sectionIndex + 1).padStart(2,"0")}</b>
-                    </button>
+                      <summary>
+                        <span>{group.label}</span>
+                        <b>{group.items.length}</b>
+                      </summary>
+                      <div className={styles.tocGroupItems}>
+                        {group.items.map(({ section, sectionIndex }) => (
+                          <button
+                            key={section.title + sectionIndex}
+                            className={index === sectionIndex ? styles.currentToc : ""}
+                            onClick={() => go(sectionIndex)}
+                          >
+                            <span>
+                              {section.title}
+                              {index === sectionIndex && <small className={styles.tocStatus}>Şu an buradasın</small>}
+                            </span>
+                            <b>{String(sectionIndex + 1).padStart(2,"0")}</b>
+                          </button>
+                        ))}
+                      </div>
+                    </details>
                   ))
                 )}
               </div>
