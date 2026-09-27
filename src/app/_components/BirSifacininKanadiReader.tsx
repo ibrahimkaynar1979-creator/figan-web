@@ -59,6 +59,7 @@ export default function BirSifacininKanadiReader() {
   const [activeUnderline, setActiveUnderline] = useState<ActiveUnderline | null>(null);
   const [draft, setDraft] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [tocQuery, setTocQuery] = useState("");
   const [chromeVisible, setChromeVisible] = useState(true);
   const [lineHeight, setLineHeight] = useState(1.68);
   const [pageMargin, setPageMargin] = useState(24);
@@ -280,6 +281,14 @@ export default function BirSifacininKanadiReader() {
       readerPageCount > 1 ? readerPage / (readerPageCount - 1) : 0;
     return Math.round(((index + withinSection) / Math.max(1, sections.length - 1)) * 1000);
   }, [index, readerPage, readerPageCount]);
+
+  const filteredTocSections = useMemo(() => {
+    const q = tocQuery.trim().toLocaleLowerCase("tr-TR");
+    if (!q) return sections.map((section, sectionIndex) => ({ section, sectionIndex }));
+    return sections
+      .map((section, sectionIndex) => ({ section, sectionIndex }))
+      .filter(({ section }) => section.title.toLocaleLowerCase("tr-TR").includes(q));
+  }, [tocQuery]);
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLocaleLowerCase("tr-TR");
@@ -1019,8 +1028,40 @@ export default function BirSifacininKanadiReader() {
                   <b>{new Set(underlines.map(mark => mark.id)).size}</b>
                 </button>
               </div>
-              <button onClick={() => go(-1)}><span>Kapak</span><b>00</b></button>
-              {sections.map((s, i) => <button key={s.title + i} className={index === i ? styles.currentToc : ""} onClick={() => go(i)}><span>{s.title}</span><b>{String(i + 1).padStart(2,"0")}</b></button>)}
+
+              <div className={styles.tocSearch}>
+                <span aria-hidden="true">⌕</span>
+                <input
+                  type="search"
+                  value={tocQuery}
+                  onChange={e => setTocQuery(e.target.value)}
+                  placeholder="Bölüm ara…"
+                  aria-label="İçindekilerde bölüm ara"
+                />
+                {tocQuery && (
+                  <button type="button" onClick={() => setTocQuery("")} aria-label="Bölüm aramasını temizle">×</button>
+                )}
+              </div>
+
+              {!tocQuery && <button onClick={() => go(-1)}><span>Kapak</span><b>00</b></button>}
+
+              {filteredTocSections.length === 0 ? (
+                <p className={styles.searchHint}>Bölüm bulunamadı.</p>
+              ) : (
+                filteredTocSections.map(({ section, sectionIndex }) => (
+                  <button
+                    key={section.title + sectionIndex}
+                    className={index === sectionIndex ? styles.currentToc : ""}
+                    onClick={() => go(sectionIndex)}
+                  >
+                    <span>
+                      {section.title}
+                      {index === sectionIndex && <small className={styles.tocStatus}>Şu an buradasın</small>}
+                    </span>
+                    <b>{String(sectionIndex + 1).padStart(2,"0")}</b>
+                  </button>
+                ))
+              )}
             </div>}
             {panel === "bookmarks" && <div className={styles.bookmarkPanel}>
               {bookmarks.length === 0 ? (
