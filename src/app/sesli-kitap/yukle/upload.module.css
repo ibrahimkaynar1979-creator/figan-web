@@ -100,3 +100,26 @@
   .drop{min-height:170px}
   .footer{grid-template-columns:1fr 1fr}
 }
+
+.authBox{
+  max-width:460px;
+  margin:70px auto;
+  padding:34px;
+  border:1px solid #ddcfbf;
+  border-radius:24px;
+  background:#fffaf4;
+  text-align:center;
+}
+.authBox>span{font-size:9px;font-weight:800;letter-spacing:.2em;color:#9a642d}
+.authBox h1{margin:10px 0 8px;font-family:var(--font-editorial),Georgia,serif;font-size:36px;font-weight:500}
+.authBox p{margin:0 auto 22px;max-width:360px;color:#74675c;font-size:12px;line-height:1.5}
+.authBox form{display:grid;gap:10px}
+.authBox input{
+  min-height:48px;border:1px solid #d4c3b0;border-radius:12px;background:#fff;padding:0 14px;
+  text-align:center;font-size:18px;letter-spacing:.14em;outline:none
+}
+.authBox form button{
+  min-height:48px;border:0;border-radius:999px;background:#21160f;color:#fff;font-weight:800;cursor:pointer
+}
+.authBox small{display:block;margin-top:12px;color:#8b332c;font-size:11px}
+.result b{display:block;font-size:12px;color:#355035}
