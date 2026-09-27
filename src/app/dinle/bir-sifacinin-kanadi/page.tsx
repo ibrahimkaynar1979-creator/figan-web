@@ -5,7 +5,9 @@ import styles from "./player.module.css";
 
 type Chapter = { id: number; title: string; start: number };
 
-const MASTER_AUDIO = "/audio/bir-sifacinin-kanadi/Bir-Sifacinin-Kanadi-Elif-Web-64kbps.mp3";
+const MASTER_AUDIO =
+  process.env.NEXT_PUBLIC_BIR_SIFACININ_KANADI_AUDIO_URL ||
+  "/audio/bir-sifacinin-kanadi/Bir-Sifacinin-Kanadi-Elif-Web-64kbps.mp3";
 const BOOK_DURATION = 8477.232;
 
 const chapters: Chapter[] = [
@@ -283,7 +285,7 @@ export default function BirSifacininKanadiPlayer() {
             <button onClick={()=>seekBy(15)} aria-label="15 saniye ileri"><span className={styles.jump}>↷</span><small>15</small></button>
           </div>
 
-          {audioError && <div className={styles.audioNotice}>Player ve 85 bölüm işaretçisi hazır. Master MP3 web depolamasına bağlandığında ses doğrudan burada çalacak.</div>}
+          {audioError && <div className={styles.audioNotice}>Player ve 85 bölüm işaretçisi hazır. Ses kaynağı henüz bu ortamda yayınlanmadı; master MP3 URL’si bağlandığında doğrudan burada çalacak.</div>}
 
           <div className={styles.tools}>
             <button onClick={changeRate}><b>{rate}x</b><span>Hız</span></button>
