@@ -26,6 +26,7 @@ type ReaderFont = "serif" | "sans" | "modern";
 type TextAlign = "left" | "justify";
 type Panel = "toc" | "appearance" | "notes" | "search" | null;
 type Section = { title: string; paragraphs: readonly string[] };
+type ReaderBookmark = { index: number; page: number };
 
 const sections: Section[] = [
   ...p00, ...p01, ...p02, ...p03, ...p04, ...p05, ...p06,
@@ -48,7 +49,7 @@ export default function BirSifacininKanadiReader() {
   const [readerFont, setReaderFont] = useState<ReaderFont>("serif");
   const [textAlign, setTextAlign] = useState<TextAlign>("left");
   const [panel, setPanel] = useState<Panel>(null);
-  const [bookmarks, setBookmarks] = useState<number[]>([]);
+  const [bookmarks, setBookmarks] = useState<ReaderBookmark[]>([]);
   const [notes, setNotes] = useState<Record<number, string>>({});
   const [draft, setDraft] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -106,7 +107,26 @@ export default function BirSifacininKanadiReader() {
       if (["left","justify"].includes(saved.textAlign)) setTextAlign(saved.textAlign);
       if (typeof saved.lineHeight === "number") setLineHeight(saved.lineHeight);
       if (typeof saved.pageMargin === "number") setPageMargin(saved.pageMargin);
-      if (Array.isArray(saved.bookmarks)) setBookmarks(saved.bookmarks);
+      if (Array.isArray(saved.bookmarks)) {
+        const migratedBookmarks: ReaderBookmark[] = saved.bookmarks
+          .map((item: unknown) => {
+            if (typeof item === "number") return { index: item, page: 0 };
+            if (
+              item &&
+              typeof item === "object" &&
+              typeof (item as { index?: unknown }).index === "number" &&
+              typeof (item as { page?: unknown }).page === "number"
+            ) {
+              return {
+                index: Math.floor((item as { index: number }).index),
+                page: Math.max(0, Math.floor((item as { page: number }).page)),
+              };
+            }
+            return null;
+          })
+          .filter((item: ReaderBookmark | null): item is ReaderBookmark => item !== null);
+        setBookmarks(migratedBookmarks);
+      }
       if (saved.notes && typeof saved.notes === "object") setNotes(saved.notes);
     } catch {}
     setStorageReady(true);
@@ -230,7 +250,9 @@ export default function BirSifacininKanadiReader() {
     }).slice(0, 60);
   }, [searchQuery]);
 
-  const bookmarked = index >= 0 && bookmarks.includes(index);
+  const bookmarked =
+    index >= 0 &&
+    bookmarks.some(mark => mark.index === index && mark.page === readerPage);
 
   const go = (next: number) => {
     const target = Math.max(-1, Math.min(sections.length - 1, next));
@@ -401,7 +423,12 @@ export default function BirSifacininKanadiReader() {
 
   const toggleBookmark = () => {
     if (index < 0) return;
-    setBookmarks(prev => bookmarked ? prev.filter(v => v !== index) : [...prev, index]);
+    const currentMark = { index, page: readerPage };
+    setBookmarks(prev =>
+      bookmarked
+        ? prev.filter(mark => !(mark.index === currentMark.index && mark.page === currentMark.page))
+        : [...prev, currentMark]
+    );
   };
 
   const saveNote = () => {
