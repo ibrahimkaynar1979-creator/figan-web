@@ -131,12 +131,15 @@ export default function BirSifacininKanadiPlayer() {
     const dock = document.querySelector<HTMLElement>(".mobile-dock");
     const previousDockDisplay = dock?.style.display ?? "";
     const previousPaddingBottom = document.body.style.paddingBottom;
+    const previousOverflow = document.body.style.overflow;
     if(dock) dock.style.display = "none";
     document.body.style.paddingBottom = "0";
+    document.body.style.overflow = "hidden";
     return()=>{
       document.body.classList.remove("reader-route");
       if(dock) dock.style.display = previousDockDisplay;
       document.body.style.paddingBottom = previousPaddingBottom;
+      document.body.style.overflow = previousOverflow;
     };
   },[]);
 
