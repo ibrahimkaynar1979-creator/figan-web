@@ -487,3 +487,194 @@
   .reader[data-reading="false"] .coverStats{margin-top:13px}
   .reader[data-reading="false"] .coverReaderBrand{margin-top:12px;padding-top:10px}
 }
+
+
+/* REFERENCE LOCK v1 — 489x828 master composition */
+@media(max-width:520px){
+  .reader[data-reading="false"]{
+    position:fixed;
+    inset:0;
+    display:grid;
+    place-items:center;
+    width:100vw;
+    height:100dvh;
+    min-height:0;
+    padding:0;
+    overflow:hidden;
+    background:#eee8df;
+  }
+
+  .reader[data-reading="false"] .stage{
+    width:min(100vw,calc(100dvh * 489 / 828));
+    height:min(100dvh,calc(100vw * 828 / 489));
+    min-height:0;
+    aspect-ratio:489/828;
+    display:grid;
+    grid-template-rows:76px minmax(0,1fr);
+    overflow:hidden;
+    border-radius:30px;
+    background:#fbf7ef;
+    box-shadow:0 10px 30px rgba(66,43,20,.08);
+  }
+
+  .reader[data-reading="false"] .topbar{
+    position:relative;
+    height:76px;
+    padding:0 28px;
+    border-bottom:1px solid #ded2c3;
+    background:#fbf7ef;
+    backdrop-filter:none;
+    box-sizing:border-box;
+  }
+
+  .reader[data-reading="false"] .coverTopLogo{
+    width:138px;
+    display:block;
+  }
+  .reader[data-reading="false"] .coverTopLogo img{
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:contain;
+  }
+
+  .reader[data-reading="false"] .coverMenuButton{
+    display:block;
+    width:32px;
+    height:46px;
+    margin-left:auto;
+    border:0;
+    background:transparent;
+    color:#171512;
+    font:32px/1 Arial,sans-serif;
+    cursor:pointer;
+    transform:translateY(-1px);
+  }
+
+  .reader[data-reading="false"] .readingArea{
+    min-height:0;
+    height:auto;
+    padding:0;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 22%,rgba(255,255,255,.42),transparent 42%),
+      linear-gradient(180deg,#fbf7ef 0%,#faf5ec 100%);
+  }
+
+  .reader[data-reading="false"] .coverScreen{
+    width:100%;
+    height:100%;
+    min-height:0;
+    padding:18px 0 14px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow:hidden;
+  }
+
+  .reader[data-reading="false"] .coverHero{
+    width:66%;
+    max-width:none;
+    height:auto;
+    flex:0 0 auto;
+    display:block;
+    filter:drop-shadow(0 14px 24px rgba(54,36,20,.16));
+  }
+  .reader[data-reading="false"] .coverHero img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-width:none;
+    max-height:none;
+    object-fit:contain;
+  }
+
+  .reader[data-reading="false"] .coverAuthor{
+    margin-top:14px;
+    font-size:31px;
+    line-height:1;
+    font-weight:400;
+    color:#171512;
+  }
+
+  .reader[data-reading="false"] .coverPublisher{
+    margin-top:7px;
+    font-size:16px;
+    line-height:1.1;
+    color:#82776b;
+  }
+
+  .reader[data-reading="false"] .coverScreen .startButton{
+    width:64%;
+    min-width:0;
+    max-width:none;
+    height:58px;
+    margin-top:20px;
+    padding:0 24px;
+    border-radius:999px;
+    font-size:20px;
+    line-height:1;
+    font-weight:400;
+    gap:18px;
+    box-shadow:0 10px 28px rgba(20,15,10,.12);
+  }
+  .reader[data-reading="false"] .coverScreen .startButton span{
+    font-size:24px;
+    transform:translateY(-1px);
+  }
+
+  .reader[data-reading="false"] .coverStats{
+    width:auto;
+    margin-top:22px;
+    display:grid;
+    grid-template-columns:repeat(3,auto);
+    align-items:center;
+    justify-content:center;
+  }
+  .reader[data-reading="false"] .coverStats span{
+    min-height:24px;
+    padding:0 15px;
+    gap:8px;
+    display:flex;
+    align-items:center;
+    font-size:14px;
+    color:#6f655a;
+  }
+  .reader[data-reading="false"] .coverStats span+span{
+    border-left:1px solid #d6c8b8;
+  }
+  .reader[data-reading="false"] .coverStats i{
+    font-size:21px;
+    line-height:1;
+    color:#a66f28;
+  }
+  .reader[data-reading="false"] .coverStats b{
+    font-weight:400;
+  }
+
+  .reader[data-reading="false"] .coverReaderBrand{
+    width:82%;
+    margin-top:22px;
+    padding-top:16px;
+    padding-bottom:2px;
+    border-top:1px solid #d9cdbd;
+    display:flex;
+    justify-content:center;
+    align-items:baseline;
+    gap:10px;
+  }
+  .reader[data-reading="false"] .coverReaderBrand strong{
+    font-size:43px;
+    line-height:.9;
+    font-style:italic;
+    font-weight:400;
+    color:#a8793f;
+  }
+  .reader[data-reading="false"] .coverReaderBrand span{
+    font-size:15px;
+    line-height:1;
+    letter-spacing:.22em;
+    color:#756b60;
+  }
+}
