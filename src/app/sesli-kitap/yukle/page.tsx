@@ -25,6 +25,7 @@ export default function AudiobookUploadPage() {
   } | null>(null);
   const [healthStatus,setHealthStatus] = useState<{
     ok:boolean;
+    streaming?:boolean;
     contentType?:string | null;
     contentLength?:number;
     acceptRanges?:string | null;
@@ -61,6 +62,7 @@ export default function AudiobookUploadPage() {
         });
         setHealthStatus({
           ok:Boolean(health.ok && health.data?.ok),
+          streaming:Boolean(health.data?.streaming),
           contentType:typeof health.data?.contentType==="string" ? health.data.contentType : null,
           contentLength:typeof health.data?.contentLength==="number" ? health.data.contentLength : undefined,
           acceptRanges:typeof health.data?.acceptRanges==="string" ? health.data.acceptRanges : null,
@@ -108,6 +110,7 @@ export default function AudiobookUploadPage() {
       setVerified(ok);
       setHealthStatus({
         ok,
+        streaming:Boolean(health?.streaming),
         contentType:typeof health?.contentType==="string" ? health.contentType : null,
         contentLength:typeof health?.contentLength==="number" ? health.contentLength : undefined,
         acceptRanges:typeof health?.acceptRanges==="string" ? health.acceptRanges : null,
@@ -118,6 +121,13 @@ export default function AudiobookUploadPage() {
       setHealthStatus({ok:false});
       return false;
     }
+  }
+
+  async function logout() {
+    await fetch("/api/sesli-kitap/auth",{method:"DELETE"}).catch(()=>null);
+    setAuthenticated(false);
+    setPin("");
+    setAuthMessage("");
   }
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -210,10 +220,13 @@ export default function AudiobookUploadPage() {
   return (
     <main className={styles.page}>
       <section className={styles.card}>
-        <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
-          <span>22</span>
-          <small>YAYINEVİ</small>
-        </a>
+        <div className={styles.adminTop}>
+          <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
+            <span>22</span>
+            <small>YAYINEVİ</small>
+          </a>
+          <button type="button" onClick={logout}>Çıkış</button>
+        </div>
 
         <div className={styles.heading}>
           <p>SESLİ KİTAP YÖNETİMİ</p>
@@ -251,6 +264,14 @@ export default function AudiobookUploadPage() {
           <div>
             <span>SES KONTROLÜ</span>
             <strong>{healthStatus?.ok ? "✓ Erişilebilir" : "—"}</strong>
+          </div>
+          <div>
+            <span>AKIŞ DESTEĞİ</span>
+            <strong>{healthStatus?.streaming ? "✓ Byte-range" : healthStatus?.ok ? "Temel erişim" : "—"}</strong>
+          </div>
+          <div>
+            <span>KAYNAK</span>
+            <strong>{masterStatus?.source === "blob" ? "Vercel Blob" : masterStatus?.source === "public-fallback" ? "Public fallback" : "—"}</strong>
           </div>
         </div>
 
