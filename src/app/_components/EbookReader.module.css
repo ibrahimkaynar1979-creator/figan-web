@@ -243,3 +243,93 @@
   .reader[data-reading="false"] .coverReaderBrand strong{font-size:32px}
   .reader[data-reading="false"] .coverReaderBrand span{font-size:14px}
 }
+
+
+/* Pixel-match refinement for approved cover mockup */
+@media(max-width:520px){
+  .reader[data-reading="false"]{
+    background:#eee7dd;
+    padding:6px;
+  }
+  .reader[data-reading="false"] .stage{
+    width:100%;
+    height:calc(100dvh - 12px);
+    min-height:calc(100dvh - 12px);
+    border-radius:28px;
+    overflow:hidden;
+    background:var(--surface);
+    box-shadow:0 10px 30px rgba(70,45,20,.08);
+    grid-template-rows:82px minmax(0,1fr);
+  }
+  .reader[data-reading="false"] .topbar{
+    height:82px;
+    padding:0 30px;
+    border-bottom:1px solid #dfd3c4;
+  }
+  .reader[data-reading="false"] .coverTopLogo{width:138px}
+  .reader[data-reading="false"] .coverMenuButton{
+    font-size:34px;
+    width:34px;
+    height:48px;
+    transform:translateY(-1px);
+  }
+  .reader[data-reading="false"] .readingArea{
+    height:calc(100dvh - 94px);
+    padding:26px 22px 16px;
+    overflow:auto;
+    background:
+      radial-gradient(circle at 50% 24%,rgba(255,255,255,.42),transparent 40%),
+      linear-gradient(180deg,#fbf7ef 0%,#faf5ec 100%);
+  }
+  .reader[data-reading="false"] .coverScreen{
+    width:100%;
+    padding:0 0 22px;
+  }
+  .reader[data-reading="false"] .coverHero{
+    width:min(72vw,305px);
+    max-height:none;
+    filter:drop-shadow(0 14px 22px rgba(54,36,20,.18));
+  }
+  .reader[data-reading="false"] .coverHero img{
+    width:100%;
+    height:auto;
+    max-height:none;
+  }
+  .reader[data-reading="false"] .coverAuthor{
+    margin-top:18px;
+    font-size:26px;
+    line-height:1.06;
+  }
+  .reader[data-reading="false"] .coverPublisher{
+    margin-top:8px;
+    font-size:14px;
+  }
+  .reader[data-reading="false"] .coverScreen .startButton{
+    min-width:0;
+    width:min(66vw,330px);
+    margin-top:20px;
+    padding:15px 22px;
+    font-size:17px;
+    border-radius:999px;
+    gap:16px;
+  }
+  .reader[data-reading="false"] .coverScreen .startButton span{font-size:23px}
+  .reader[data-reading="false"] .coverStats{
+    margin-top:24px;
+    grid-template-columns:repeat(3,auto);
+    width:auto;
+  }
+  .reader[data-reading="false"] .coverStats span{
+    padding:0 12px;
+    gap:7px;
+    font-size:12px;
+  }
+  .reader[data-reading="false"] .coverStats i{font-size:18px}
+  .reader[data-reading="false"] .coverReaderBrand{
+    margin-top:22px;
+    padding-top:15px;
+    width:min(82vw,390px);
+  }
+  .reader[data-reading="false"] .coverReaderBrand strong{font-size:30px}
+  .reader[data-reading="false"] .coverReaderBrand span{font-size:13px;letter-spacing:.24em}
+}
