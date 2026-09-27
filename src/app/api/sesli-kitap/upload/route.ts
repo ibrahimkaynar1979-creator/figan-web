@@ -1,25 +1,41 @@
-import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
+import { issueSignedToken } from "@vercel/blob";
+import {
+  handleUploadPresigned,
+  type HandleUploadPresignedBody,
+} from "@vercel/blob/client";
 
 export async function POST(request: Request) {
-  const body = (await request.json()) as HandleUploadBody;
+  const body = (await request.json()) as HandleUploadPresignedBody;
 
   try {
-    const response = await handleUpload({
+    const response = await handleUploadPresigned({
       request,
       body,
-      onBeforeGenerateToken: async (pathname) => {
+      getSignedToken: async (pathname) => {
         if (!pathname.endsWith(".mp3")) {
           throw new Error("Sadece MP3 dosyası yüklenebilir.");
         }
 
-        return {
+        const token = await issueSignedToken({
+          pathname,
+          operations: ["put"],
           allowedContentTypes: ["audio/mpeg"],
           maximumSizeInBytes: 120 * 1024 * 1024,
-          addRandomSuffix: false,
-          tokenPayload: JSON.stringify({
-            book: "bir-sifacinin-kanadi",
-            type: "master-audio",
-          }),
+          storeId: process.env.BLOB_STORE_ID,
+        });
+
+        return {
+          token,
+          urlOptions: {
+            allowedContentTypes: ["audio/mpeg"],
+            maximumSizeInBytes: 120 * 1024 * 1024,
+            addRandomSuffix: false,
+            allowOverwrite: true,
+            tokenPayload: JSON.stringify({
+              book: "bir-sifacinin-kanadi",
+              type: "master-audio",
+            }),
+          },
         };
       },
       onUploadCompleted: async ({ blob }) => {
@@ -33,10 +49,7 @@ export async function POST(request: Request) {
       error instanceof Error
         ? { name: error.name, message: error.message, stack: error.stack }
         : { message: String(error) };
-    console.error("Audiobook Blob upload token error:", details);
-    return Response.json(
-      { error: details.message, details },
-      { status: 400 },
-    );
+    console.error("Audiobook Blob presigned upload error:", details);
+    return Response.json({ error: details.message, details }, { status: 400 });
   }
 }
