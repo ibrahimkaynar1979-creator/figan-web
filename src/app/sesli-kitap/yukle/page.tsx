@@ -92,35 +92,39 @@ export default function AudiobookUploadPage() {
   }
 
   async function verifyPublishedAudio(expectedUrl:string) {
-    try{
-      const [currentResponse,healthResponse]=await Promise.all([
-        fetch("/api/sesli-kitap/current",{cache:"no-store"}),
-        fetch("/api/sesli-kitap/health",{cache:"no-store"}),
-      ]);
-      const data=await currentResponse.json();
-      const health=await healthResponse.json().catch(()=>null);
-      const currentOk=Boolean(
-        currentResponse.ok &&
-        data?.ready &&
-        typeof data.url==="string" &&
-        data.url &&
-        (data.pathname==="audiobooks/bir-sifacinin-kanadi/master.mp3" || data.url===expectedUrl)
-      );
-      const ok=Boolean(currentOk && healthResponse.ok && health?.ok);
-      setVerified(ok);
-      setHealthStatus({
-        ok,
-        streaming:Boolean(health?.streaming),
-        contentType:typeof health?.contentType==="string" ? health.contentType : null,
-        contentLength:typeof health?.contentLength==="number" ? health.contentLength : undefined,
-        acceptRanges:typeof health?.acceptRanges==="string" ? health.acceptRanges : null,
-      });
-      return ok;
-    }catch{
-      setVerified(false);
-      setHealthStatus({ok:false});
-      return false;
+    for(let attempt=0;attempt<5;attempt+=1){
+      try{
+        const [currentResponse,healthResponse]=await Promise.all([
+          fetch("/api/sesli-kitap/current",{cache:"no-store"}),
+          fetch("/api/sesli-kitap/health",{cache:"no-store"}),
+        ]);
+        const data=await currentResponse.json();
+        const health=await healthResponse.json().catch(()=>null);
+        const currentOk=Boolean(
+          currentResponse.ok &&
+          data?.ready &&
+          typeof data.url==="string" &&
+          data.url &&
+          (data.pathname==="audiobooks/bir-sifacinin-kanadi/master.mp3" || data.url===expectedUrl)
+        );
+        const ok=Boolean(currentOk && healthResponse.ok && health?.ok);
+        setHealthStatus({
+          ok,
+          streaming:Boolean(health?.streaming),
+          contentType:typeof health?.contentType==="string" ? health.contentType : null,
+          contentLength:typeof health?.contentLength==="number" ? health.contentLength : undefined,
+          acceptRanges:typeof health?.acceptRanges==="string" ? health.acceptRanges : null,
+        });
+        if(ok){
+          setVerified(true);
+          return true;
+        }
+      }catch{}
+      if(attempt<4) await new Promise((resolve)=>window.setTimeout(resolve,700));
     }
+    setVerified(false);
+    setHealthStatus({ok:false});
+    return false;
   }
 
   async function logout() {
