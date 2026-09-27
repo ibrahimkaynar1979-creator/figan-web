@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import styles from "./EbookReader.module.css";
 
 type ReaderTheme = "light" | "cream" | "dark";
@@ -136,7 +136,7 @@ export default function EbookReader() {
   };
 
   return (
-    <main className={styles.reader} data-theme={theme} style={{ "--reader-font-size": fontSize + "px" } as React.CSSProperties}>
+    <main className={styles.reader} data-theme={theme} style={{ "--reader-font-size": fontSize + "px" } as CSSProperties}>
       <aside className={styles.sidebar}>
         <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
           <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={236} priority />
