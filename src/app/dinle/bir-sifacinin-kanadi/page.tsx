@@ -128,7 +128,16 @@ export default function BirSifacininKanadiPlayer() {
 
   useEffect(()=>{
     document.body.classList.add("reader-route");
-    return()=>document.body.classList.remove("reader-route");
+    const dock = document.querySelector<HTMLElement>(".mobile-dock");
+    const previousDockDisplay = dock?.style.display ?? "";
+    const previousPaddingBottom = document.body.style.paddingBottom;
+    if(dock) dock.style.display = "none";
+    document.body.style.paddingBottom = "0";
+    return()=>{
+      document.body.classList.remove("reader-route");
+      if(dock) dock.style.display = previousDockDisplay;
+      document.body.style.paddingBottom = previousPaddingBottom;
+    };
   },[]);
 
   useEffect(()=>{
@@ -253,14 +262,14 @@ export default function BirSifacininKanadiPlayer() {
       <section className={styles.stage}>
         <header className={styles.topbar}>
           <a href="/" className={styles.logo} aria-label="22 Yayınevi ana sayfa">
-            <img src="/22-yayinevi-logo.webp" alt="22 Yayınevi" />
+            <img src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" />
           </a>
           <button className={styles.menuButton} onClick={()=>setChaptersOpen(true)} aria-label="Bölümler">⋮</button>
         </header>
 
         <div className={styles.content}>
           <div className={styles.coverHero}>
-            <img src="/bsk-player-cover.webp" alt="Bir Şifacının Kanadı - Figen Yavuz" />
+            <img src="/bir_sifaci_png.png" alt="Bir Şifacının Kanadı - Figen Yavuz" />
           </div>
 
           <div className={styles.listeningLabel}><span aria-hidden="true">▥</span> ŞİMDİ DİNLİYORSUNUZ</div>
@@ -324,7 +333,7 @@ export default function BirSifacininKanadiPlayer() {
             <button onClick={()=>setChaptersOpen(false)} aria-label="Kapat">×</button>
           </div>
           <div className={styles.drawerBook}>
-            <img src="/bsk-player-cover.webp" alt="" />
+            <img src="/bir_sifaci_png.png" alt="" />
             <div><strong>Bir Şifacının Kanadı</strong><span>Figen Yavuz</span><small>{chapters.length} bölüm · {formatTime(duration)}</small></div>
           </div>
           <div className={styles.chapterList}>
