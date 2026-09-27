@@ -235,20 +235,38 @@ export default function BirSifacininKanadiReader() {
   }, [index, panel, chromeVisible]);
 
   const current = index >= 0 ? sections[index] : null;
-  const readingTime = useMemo(() => {
+  const totalReadingMinutes = useMemo(() => {
     const wordCount = sections.reduce((total, section) => {
       const sectionText = [section.title, ...section.paragraphs].join(" ");
       const words = sectionText.trim().split(/\s+/).filter(Boolean).length;
       return total + words;
     }, 0);
-    const minutes = Math.max(1, Math.ceil(wordCount / 200));
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
+    return Math.max(1, Math.ceil(wordCount / 200));
+  }, []);
 
-    if (hours === 0) return `~ ${minutes} dk`;
+  const readingTime = useMemo(() => {
+    const hours = Math.floor(totalReadingMinutes / 60);
+    const remainingMinutes = totalReadingMinutes % 60;
+
+    if (hours === 0) return `~ ${totalReadingMinutes} dk`;
     if (remainingMinutes === 0) return `~ ${hours} saat`;
     return `~ ${hours} sa ${remainingMinutes} dk`;
-  }, []);
+  }, [totalReadingMinutes]);
+
+  const remainingReadingTime = useMemo(() => {
+    if (index < 0) return "";
+    const remainingMinutes = Math.max(
+      0,
+      Math.ceil(totalReadingMinutes * Math.max(0, 1 - progress / 100))
+    );
+    if (remainingMinutes <= 1) return "< 1 dk kaldı";
+    if (remainingMinutes < 60) return `~ ${remainingMinutes} dk kaldı`;
+    const hours = Math.floor(remainingMinutes / 60);
+    const minutes = remainingMinutes % 60;
+    return minutes === 0
+      ? `~ ${hours} saat kaldı`
+      : `~ ${hours} sa ${minutes} dk kaldı`;
+  }, [index, progress, totalReadingMinutes]);
   const progress = useMemo(() => {
     if (index < 0) return 0;
     const withinSection = readerPageCount > 0 ? (readerPage + 1) / readerPageCount : 1;
@@ -928,7 +946,7 @@ export default function BirSifacininKanadiReader() {
               />
               <div className={styles.progressMeta}>
                 <span>{index + 1} / {sections.length} <i /> Sayfa {readerPage + 1}/{readerPageCount}</span>
-                <span>% {progress} <i /> 22 Reader</span>
+                <span>{remainingReadingTime} <i /> % {progress} <i /> 22 Reader</span>
               </div>
             </footer>
           </>}
