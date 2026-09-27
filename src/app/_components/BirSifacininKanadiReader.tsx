@@ -24,7 +24,7 @@ import p16 from "../_data/bskPlain/p16";
 type Theme = "light" | "cream" | "dark";
 type ReaderFont = "serif" | "sans" | "modern";
 type TextAlign = "left" | "justify";
-type Panel = "toc" | "appearance" | "notes" | "search" | null;
+type Panel = "toc" | "appearance" | "notes" | "search" | "bookmarks" | null;
 type Section = { title: string; paragraphs: readonly string[] };
 type ReaderBookmark = { index: number; page: number };
 
@@ -499,7 +499,7 @@ export default function BirSifacininKanadiReader() {
           <button onClick={() => setPanel(panel === "toc" ? null : "toc")}><span>☰</span> İçindekiler</button>
           <button onClick={() => setPanel(panel === "notes" ? null : "notes")}><span>▤</span> Notlarım</button>
           <button onClick={() => setPanel(panel === "search" ? null : "search")}><span>⌕</span> Kitapta Ara</button>
-          <button onClick={toggleBookmark} disabled={index < 0}><span>{bookmarked ? "★" : "☆"}</span> Yer İşareti</button>
+          <button onClick={() => setPanel(panel === "bookmarks" ? null : "bookmarks")}><span>★</span> Yer İşaretlerim</button>
           <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")}><span>◐</span> Görünüm</button>
         </nav>
         <a className={styles.backToBook} href="/yazarlar/figen-yavuz">← Figen Yavuz sayfasına dön</a>
@@ -661,12 +661,41 @@ export default function BirSifacininKanadiReader() {
           <button className={styles.backdrop} onClick={() => setPanel(null)} aria-label="Paneli kapat" />
           <aside className={styles.panel} data-panel={panel ?? undefined}>
             <div className={styles.panelHead}>
-              <h3>{panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : panel === "search" ? "Kitapta Ara" : "Notlarım"}</h3>
+              <h3>{panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : panel === "search" ? "Kitapta Ara" : panel === "bookmarks" ? "Yer İşaretlerim" : "Notlarım"}</h3>
               <button onClick={() => setPanel(null)}>×</button>
             </div>
             {panel === "toc" && <div className={styles.toc}>
               <button onClick={() => go(-1)}><span>Kapak</span><b>00</b></button>
               {sections.map((s, i) => <button key={s.title + i} className={index === i ? styles.currentToc : ""} onClick={() => go(i)}><span>{s.title}</span><b>{String(i + 1).padStart(2,"0")}</b></button>)}
+            </div>}
+            {panel === "bookmarks" && <div className={styles.bookmarkPanel}>
+              {bookmarks.length === 0 ? (
+                <p className={styles.searchHint}>Henüz yer işareti eklemediniz.</p>
+              ) : (
+                <div className={styles.bookmarkList}>
+                  {[...bookmarks]
+                    .sort((a, b) => a.index - b.index || a.page - b.page)
+                    .map((mark, i) => (
+                      <button
+                        key={mark.index + "-" + mark.page + "-" + i}
+                        type="button"
+                        onClick={() => {
+                          pendingReaderEdge.current = null;
+                          pendingReaderFraction.current = null;
+                          pendingReaderPage.current = mark.page;
+                          readerPageRef.current = mark.page;
+                          setReaderPage(mark.page);
+                          setIndex(mark.index);
+                          setPanel(null);
+                          setChromeVisible(true);
+                        }}
+                      >
+                        <b>{String(mark.index + 1).padStart(2, "0")} · {sections[mark.index]?.title}</b>
+                        <span>Sayfa {mark.page + 1}</span>
+                      </button>
+                    ))}
+                </div>
+              )}
             </div>}
             {panel === "search" && <div className={styles.searchPanel}>
               <div className={styles.searchBox}>
