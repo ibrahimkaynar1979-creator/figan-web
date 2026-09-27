@@ -13,10 +13,9 @@ export async function POST(request: Request) {
         }
 
         return {
-          allowedContentTypes: ["audio/mpeg", "audio/mp3"],
+          allowedContentTypes: ["audio/mpeg"],
           maximumSizeInBytes: 120 * 1024 * 1024,
           addRandomSuffix: false,
-          allowOverwrite: true,
           tokenPayload: JSON.stringify({
             book: "bir-sifacinin-kanadi",
             type: "master-audio",
