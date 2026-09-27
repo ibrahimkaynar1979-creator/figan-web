@@ -104,9 +104,8 @@
 .coverStats i{display:grid;place-items:center;color:var(--accent)}
 .coverStats i svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
 .coverStats b{font-weight:400}
-.coverReaderBrand{border-top:1px solid var(--line);display:flex;justify-content:center;align-items:baseline;color:var(--accent)}
-.coverReaderBrand strong{font-style:italic;font-weight:400}
-.coverReaderBrand span{color:var(--muted)}
+.coverReaderBrand{border-top:1px solid var(--line);display:flex;justify-content:center;align-items:center;color:var(--accent)}
+.coverReaderBrand img{display:block;width:auto;height:auto;max-width:100%;object-fit:contain}
 
 @media(max-width:900px){
   .reader{display:block}
@@ -363,24 +362,16 @@
     border-top:1px solid #d5c8b9;
     display:flex;
     justify-content:center;
-    align-items:baseline;
-    gap:10px;
+    align-items:center;
     flex:0 0 auto;
   }
 
-  .reader[data-reading="false"] .coverReaderBrand strong{
-    font-size:40px;
-    line-height:.9;
-    color:#a8793f;
-    font-style:italic;
-    font-weight:400;
-  }
-
-  .reader[data-reading="false"] .coverReaderBrand span{
-    font-size:15px;
-    line-height:1;
-    letter-spacing:.23em;
-    color:#756b60;
+  .reader[data-reading="false"] .coverReaderBrand img{
+    display:block;
+    width:min(190px,58%);
+    height:auto;
+    max-height:44px;
+    object-fit:contain;
   }
 
   .reader[data-reading="true"] .chapterMini span{
