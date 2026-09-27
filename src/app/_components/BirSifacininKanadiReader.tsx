@@ -34,6 +34,11 @@ const sections: Section[] = [
  .map(section => section.title === "KAZANMAK DA VAR KAYBETMEK DE." ? { ...section, title: "KAZANMAK DA VAR KAYBETMEK" } : section);
 
 const STORAGE = "22reader-bir-sifacinin-kanadi";
+const READER_FONTS: Record<ReaderFont, string> = {
+  serif: 'Georgia, "Times New Roman", serif',
+  sans: 'Arial, Helvetica, sans-serif',
+  modern: '"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif',
+};
 
 export default function BirSifacininKanadiReader() {
   const [index, setIndex] = useState(-1);
@@ -307,6 +312,10 @@ export default function BirSifacininKanadiReader() {
     });
   };
 
+  const selectReaderFont = (font: ReaderFont) => {
+    setReaderFont(font);
+  };
+
   const revealChrome = () => {
     if (index >= 0) setChromeVisible(v => !v);
   };
@@ -422,7 +431,7 @@ export default function BirSifacininKanadiReader() {
               <p className={styles.chapter}>BİR ŞİFACININ KANADI</p>
               <h1>{current?.title}</h1>
               <div className={styles.rule} />
-              <div className={styles.prose}>
+              <div className={styles.prose} style={{ fontFamily: READER_FONTS[readerFont] }}>
                 {current?.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
               </div>
             </div>
@@ -468,13 +477,14 @@ export default function BirSifacininKanadiReader() {
                 <button className={theme === "cream" ? styles.selected : ""} onClick={() => setTheme("cream")}><i className={styles.creamSwatch}/>Krem</button>
                 <button className={theme === "dark" ? styles.selected : ""} onClick={() => setTheme("dark")}><i className={styles.darkSwatch}/>Koyu</button>
               </div>
-              <label>Yazı Tipi</label>
+              <label>Yazı Tipi <strong style={{ marginLeft: 8, color: "var(--accent)", fontWeight: 500 }}>({readerFont === "serif" ? "Serif" : readerFont === "sans" ? "Sans" : "Modern"})</strong></label>
               <div className={styles.fontFamilyRow}>
                 <button
                   type="button"
                   className={readerFont === "serif" ? styles.selected : ""}
                   data-selected={readerFont === "serif" ? "true" : "false"}
-                  onClick={() => setReaderFont("serif")}
+                  onPointerDown={(e) => { e.stopPropagation(); selectReaderFont("serif"); }}
+                  onClick={(e) => { e.stopPropagation(); selectReaderFont("serif"); }}
                   aria-pressed={readerFont === "serif"}
                 >
                   Aa<span>Serif</span>
@@ -483,7 +493,8 @@ export default function BirSifacininKanadiReader() {
                   type="button"
                   className={readerFont === "sans" ? styles.selected : ""}
                   data-selected={readerFont === "sans" ? "true" : "false"}
-                  onClick={() => setReaderFont("sans")}
+                  onPointerDown={(e) => { e.stopPropagation(); selectReaderFont("sans"); }}
+                  onClick={(e) => { e.stopPropagation(); selectReaderFont("sans"); }}
                   aria-pressed={readerFont === "sans"}
                 >
                   Aa<span>Sans</span>
@@ -492,7 +503,8 @@ export default function BirSifacininKanadiReader() {
                   type="button"
                   className={readerFont === "modern" ? styles.selected : ""}
                   data-selected={readerFont === "modern" ? "true" : "false"}
-                  onClick={() => setReaderFont("modern")}
+                  onPointerDown={(e) => { e.stopPropagation(); selectReaderFont("modern"); }}
+                  onClick={(e) => { e.stopPropagation(); selectReaderFont("modern"); }}
                   aria-pressed={readerFont === "modern"}
                 >
                   Aa<span>Modern</span>
