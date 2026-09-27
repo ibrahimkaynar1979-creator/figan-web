@@ -236,14 +236,27 @@ export default function BirSifacininKanadiReader() {
   }, [index, panel, chromeVisible]);
 
   const current = index >= 0 ? sections[index] : null;
-  const totalReadingMinutes = useMemo(() => {
-    const wordCount = sections.reduce((total, section) => {
-      const sectionText = [section.title, ...section.paragraphs].join(" ");
-      const words = sectionText.trim().split(/\s+/).filter(Boolean).length;
-      return total + words;
-    }, 0);
-    return Math.max(1, Math.ceil(wordCount / 200));
-  }, []);
+  const sectionWordCounts = useMemo(
+    () =>
+      sections.map(section =>
+        [section.title, ...section.paragraphs]
+          .join(" ")
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean).length
+      ),
+    []
+  );
+
+  const totalWordCount = useMemo(
+    () => sectionWordCounts.reduce((sum, count) => sum + count, 0),
+    [sectionWordCounts]
+  );
+
+  const totalReadingMinutes = useMemo(
+    () => Math.max(1, Math.ceil(totalWordCount / 200)),
+    [totalWordCount]
+  );
 
   const readingTime = useMemo(() => {
     const hours = Math.floor(totalReadingMinutes / 60);
@@ -255,32 +268,47 @@ export default function BirSifacininKanadiReader() {
   }, [totalReadingMinutes]);
 
   const readingFraction = useMemo(() => {
-    if (index < 0) return 0;
+    if (index < 0 || totalWordCount <= 0) return 0;
+
+    const wordsBefore = sectionWordCounts
+      .slice(0, index)
+      .reduce((sum, count) => sum + count, 0);
+
+    const currentSectionWords = sectionWordCounts[index] || 0;
     const withinSection =
       readerPageCount > 0 ? (readerPage + 1) / readerPageCount : 1;
-    return Math.min(1, Math.max(0, (index + withinSection) / sections.length));
-  }, [index, readerPage, readerPageCount]);
+
+    const wordsRead =
+      wordsBefore + currentSectionWords * Math.min(1, Math.max(0, withinSection));
+
+    return Math.min(1, Math.max(0, wordsRead / totalWordCount));
+  }, [index, readerPage, readerPageCount, sectionWordCounts, totalWordCount]);
 
   const progress = useMemo(
-    () => Math.round(readingFraction * 100),
+    () => Number((readingFraction * 100).toFixed(1)),
     [readingFraction]
   );
 
   const remainingReadingTime = useMemo(() => {
     if (index < 0) return "";
-    const remainingMinutes = Math.max(
+
+    const remainingWords = Math.max(
       0,
-      Math.ceil(totalReadingMinutes * (1 - readingFraction))
+      Math.round(totalWordCount * (1 - readingFraction))
     );
+    const remainingMinutes =
+      remainingWords === 0 ? 0 : Math.max(1, Math.ceil(remainingWords / 200));
+
     if (remainingMinutes <= 0) return "Tamamlandı";
     if (remainingMinutes === 1) return "~ 1 dk kaldı";
     if (remainingMinutes < 60) return `~ ${remainingMinutes} dk kaldı`;
+
     const hours = Math.floor(remainingMinutes / 60);
     const minutes = remainingMinutes % 60;
     return minutes === 0
       ? `~ ${hours} saat kaldı`
       : `~ ${hours} sa ${minutes} dk kaldı`;
-  }, [index, readingFraction, totalReadingMinutes]);
+  }, [index, readingFraction, totalWordCount]);
 
   const progressSliderValue = useMemo(() => {
     if (index < 0) return 0;
