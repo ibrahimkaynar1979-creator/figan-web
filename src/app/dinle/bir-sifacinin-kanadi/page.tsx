@@ -319,8 +319,8 @@ export default function BirSifacininKanadiPlayer() {
           <div className={styles.transport}>
             <button className={styles.seekButton} onClick={()=>seekBy(-15)} aria-label="15 saniye geri">
               <svg viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M16.2 10.4H8.7V2.9" />
-                <path d="M9.1 10.8A17.6 17.6 0 1 1 6.7 31.8" />
+                <path d="M15.6 10.6H8.9V3.9" />
+                <path d="M9.6 11A16.8 16.8 0 1 1 7.9 31" />
               </svg>
               <small>15</small>
             </button>
@@ -333,8 +333,8 @@ export default function BirSifacininKanadiPlayer() {
             </button>
             <button className={styles.seekButton} onClick={()=>seekBy(15)} aria-label="15 saniye ileri">
               <svg viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M31.8 10.4h7.5V2.9" />
-                <path d="M38.9 10.8A17.6 17.6 0 1 0 41.3 31.8" />
+                <path d="M32.4 10.6h6.7V3.9" />
+                <path d="M38.4 11A16.8 16.8 0 1 0 40.1 31" />
               </svg>
               <small>15</small>
             </button>
@@ -349,7 +349,10 @@ export default function BirSifacininKanadiPlayer() {
               <span>{sleepLabel}</span>
             </button>
             <button onClick={()=>setChaptersOpen(true)}>
-              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 9h14M10 16h14M10 23h14" /><circle cx="6" cy="9" r="1.2"/><circle cx="6" cy="16" r="1.2"/><circle cx="6" cy="23" r="1.2"/></svg>
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M7 8.5h4.5M14.5 8.5H25M7 16h4.5M14.5 16H25M7 23.5h4.5M14.5 23.5H25" />
+                <path d="M9.2 6.8v3.4M9.2 14.3v3.4M9.2 21.8v3.4" />
+              </svg>
               <span>Bölümler</span>
             </button>
             <a href={audioSrc} download>
