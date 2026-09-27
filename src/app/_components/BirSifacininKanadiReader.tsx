@@ -461,7 +461,21 @@ export default function BirSifacininKanadiReader() {
                 <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
               </div>
               <div className={styles.chapterMini}>
-                <button type="button" onClick={() => go(-1)} aria-label="Kitap kapağına dön">←</button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (readerPage > 0) {
+                      turnReaderPage(-1);
+                    } else if (index > 0) {
+                      pendingReaderEdge.current = "end";
+                      go(index - 1);
+                    }
+                  }}
+                  disabled={index === 0 && readerPage === 0}
+                  aria-label="Önceki sayfa veya bölüm"
+                >
+                  ←
+                </button>
                 <span>{current?.title}</span>
               </div>
               <div className={styles.tools}>
