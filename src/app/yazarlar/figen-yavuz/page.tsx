@@ -76,7 +76,7 @@ export default function Page() {
               </p>
               <div className="author-content-actions author-content-actions-stacked" aria-label="Figen Yavuz yayın içerikleri">
                 <a className="author-action-website" href="/yazar-sitesi"><span>↗</span><b>Web Sitesini İncele</b><i>→</i></a>
-                <a className="author-action-ebook" href="/e-kitap-yayini"><span>▤</span><b>E-Kitabını Oku</b><i>→</i></a>
+                <a className="author-action-ebook" href="/oku/bir-sifacinin-kanadi"><span>▤</span><b>22 Reader’da Oku</b><i>→</i></a>
                 <a className="author-action-audio" href="/sesli-kitap"><span>◉</span><b>Sesli Kitabını Dinle</b><i>→</i></a>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function Page() {
                 bir okuma deneyimi sunuyor.
               </p>
               <div className="author-profile-book-actions">
-                <a href="/e-kitap-yayini">E-Kitabını Oku <b>→</b></a>
+                <a href="/oku/bir-sifacinin-kanadi">22 Reader’da Oku <b>→</b></a>
                 <a href="/sesli-kitap">Sesli Kitabını Dinle <b>→</b></a>
               </div>
             </div>
@@ -165,7 +165,7 @@ export default function Page() {
                     <span>Basılı + Dijital</span>
                   </div>
                   <div className="author-profile-book-actions">
-                    <a href="/e-kitap-yayini">E-Kitabını Oku <b>→</b></a>
+                    <a href="/oku/bir-sifacinin-kanadi">22 Reader’da Oku <b>→</b></a>
                     <a href="/sesli-kitap">Sesli Kitabını Dinle <b>→</b></a>
                   </div>
                 </div>
