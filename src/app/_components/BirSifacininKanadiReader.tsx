@@ -50,7 +50,7 @@ export default function BirSifacininKanadiReader() {
   const [textAlign, setTextAlign] = useState<TextAlign>("left");
   const [panel, setPanel] = useState<Panel>(null);
   const [bookmarks, setBookmarks] = useState<ReaderBookmark[]>([]);
-  const [notes, setNotes] = useState<Record<number, string>>({});
+  const [notes, setNotes] = useState<Record<string, string>>({});
   const [draft, setDraft] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [chromeVisible, setChromeVisible] = useState(true);
@@ -127,7 +127,14 @@ export default function BirSifacininKanadiReader() {
           .filter((item: ReaderBookmark | null): item is ReaderBookmark => item !== null);
         setBookmarks(migratedBookmarks);
       }
-      if (saved.notes && typeof saved.notes === "object") setNotes(saved.notes);
+      if (saved.notes && typeof saved.notes === "object") {
+        const migratedNotes: Record<string, string> = {};
+        Object.entries(saved.notes as Record<string, unknown>).forEach(([key, value]) => {
+          if (typeof value !== "string") return;
+          migratedNotes[key.includes(":") ? key : key + ":0"] = value;
+        });
+        setNotes(migratedNotes);
+      }
     } catch {}
     setStorageReady(true);
   }, []);
@@ -165,7 +172,8 @@ export default function BirSifacininKanadiReader() {
     };
 
     localStorage.setItem(STORAGE, JSON.stringify(next));
-    setDraft(index >= 0 ? notes[index] || "" : "");
+    const noteKey = index >= 0 ? index + ":" + readerPage : "";
+    setDraft(noteKey ? notes[noteKey] || "" : "");
   }, [storageReady, index, readerPage, theme, fontSize, readerFont, textAlign, lineHeight, pageMargin, bookmarks, notes]);
 
   useEffect(() => {
@@ -433,10 +441,11 @@ export default function BirSifacininKanadiReader() {
 
   const saveNote = () => {
     if (index < 0) return;
+    const noteKey = index + ":" + readerPage;
     setNotes(prev => {
       const next = { ...prev };
-      if (draft.trim()) next[index] = draft.trim();
-      else delete next[index];
+      if (draft.trim()) next[noteKey] = draft.trim();
+      else delete next[noteKey];
       return next;
     });
   };
@@ -816,11 +825,38 @@ export default function BirSifacininKanadiReader() {
             </div>}
             {panel === "notes" && <div className={styles.notes}>
               {index < 0 ? <p>Not eklemek için bir bölüme geçin.</p> : <>
-                <p>{index + 1}. bölüm için not</p>
-                <textarea value={draft} onChange={e => setDraft(e.target.value)} placeholder="Bu bölümle ilgili notunuzu yazın…" />
+                <p>{index + 1}. bölüm · Sayfa {readerPage + 1} için not</p>
+                <textarea value={draft} onChange={e => setDraft(e.target.value)} placeholder="Bu sayfayla ilgili notunuzu yazın…" />
                 <button className={styles.saveNote} onClick={saveNote}>Notu Kaydet</button>
                 <div className={styles.savedNotes}>
-                  {Object.entries(notes).filter(([,v]) => v.trim()).map(([k,v]) => <button key={k} onClick={() => go(Number(k))}><b>{Number(k)+1}. bölüm</b><span>{v}</span></button>)}
+                  {Object.entries(notes)
+                    .filter(([,v]) => v.trim())
+                    .sort(([a],[b]) => {
+                      const [ai, ap] = a.split(":").map(Number);
+                      const [bi, bp] = b.split(":").map(Number);
+                      return ai - bi || ap - bp;
+                    })
+                    .map(([k,v]) => {
+                      const [noteIndex, notePage] = k.split(":").map(Number);
+                      return (
+                        <button
+                          key={k}
+                          onClick={() => {
+                            pendingReaderEdge.current = null;
+                            pendingReaderFraction.current = null;
+                            pendingReaderPage.current = notePage;
+                            readerPageRef.current = notePage;
+                            setReaderPage(notePage);
+                            setIndex(noteIndex);
+                            setPanel(null);
+                            setChromeVisible(true);
+                          }}
+                        >
+                          <b>{noteIndex + 1}. bölüm · Sayfa {notePage + 1}</b>
+                          <span>{v}</span>
+                        </button>
+                      );
+                    })}
                 </div>
               </>}
             </div>}
