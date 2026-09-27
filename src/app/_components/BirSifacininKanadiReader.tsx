@@ -58,6 +58,7 @@ export default function BirSifacininKanadiReader() {
   const [readerPage, setReaderPage] = useState(0);
   const [readerPageCount, setReaderPageCount] = useState(1);
   const [storageReady, setStorageReady] = useState(false);
+  const [resumePosition, setResumePosition] = useState<{ index: number; page: number } | null>(null);
   const textWrapRef = useRef<HTMLDivElement | null>(null);
   const pendingReaderEdge = useRef<"start" | "end" | null>(null);
   const pendingReaderPage = useRef<number | null>(null);
@@ -88,6 +89,10 @@ export default function BirSifacininKanadiReader() {
 
       if (typeof savedIndex === "number" && savedIndex >= 0 && savedIndex < sections.length) {
         setIndex(savedIndex);
+        setResumePosition({
+          index: savedIndex,
+          page: typeof savedPage === "number" && savedPage >= 0 ? Math.floor(savedPage) : 0,
+        });
       }
       if (typeof savedPage === "number" && savedPage >= 0) {
         const restoredPage = Math.floor(savedPage);
@@ -109,7 +114,10 @@ export default function BirSifacininKanadiReader() {
 
   useEffect(() => {
     readerPageRef.current = readerPage;
-  }, [readerPage]);
+    if (index >= 0) {
+      setResumePosition({ index, page: readerPage });
+    }
+  }, [index, readerPage]);
 
   useEffect(() => {
     if (!storageReady) return;
@@ -406,6 +414,30 @@ export default function BirSifacininKanadiReader() {
     });
   };
 
+  const openCover = () => {
+    if (index >= 0) {
+      setResumePosition({ index, page: readerPageRef.current });
+    }
+    setPanel(null);
+    setChromeVisible(true);
+    setIndex(-1);
+  };
+
+  const resumeReading = () => {
+    if (!resumePosition) {
+      go(0);
+      return;
+    }
+    pendingReaderEdge.current = null;
+    pendingReaderFraction.current = null;
+    pendingReaderPage.current = resumePosition.page;
+    readerPageRef.current = resumePosition.page;
+    setReaderPage(resumePosition.page);
+    setIndex(resumePosition.index);
+    setPanel(null);
+    setChromeVisible(true);
+  };
+
   const selectReaderFont = (font: ReaderFont) => {
     setReaderFont(font);
   };
@@ -476,6 +508,14 @@ export default function BirSifacininKanadiReader() {
                 >
                   ←
                 </button>
+                <button
+                  type="button"
+                  onClick={openCover}
+                  aria-label="Kitap kapağına dön"
+                  title="Kitap kapağı"
+                >
+                  ⌂
+                </button>
                 <span>{current?.title}</span>
               </div>
               <div className={styles.tools}>
@@ -504,7 +544,27 @@ export default function BirSifacininKanadiReader() {
               </div>
               <div className={styles.coverAuthor}>Figen Yavuz</div>
               <div className={styles.coverPublisher}>22 Yayınevi</div>
-              <button onClick={(e) => { e.stopPropagation(); go(0); }} className={styles.startButton}>Okumaya Başla <span>→</span></button>
+              <button
+                onClick={(e) => { e.stopPropagation(); resumeReading(); }}
+                className={styles.startButton}
+              >
+                {resumePosition ? "Kaldığın Yere Dön" : "Okumaya Başla"} <span>→</span>
+              </button>
+              {resumePosition && (
+                <button
+                  type="button"
+                  className={styles.startOverButton}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    pendingReaderPage.current = 0;
+                    readerPageRef.current = 0;
+                    setReaderPage(0);
+                    go(0);
+                  }}
+                >
+                  Baştan başla
+                </button>
+              )}
               <div className={styles.coverStats}>
                 <span>
                   <i aria-hidden="true">
