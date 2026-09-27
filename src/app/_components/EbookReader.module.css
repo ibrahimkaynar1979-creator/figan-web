@@ -365,6 +365,50 @@
 
   .reader[data-reading="true"] .mobileNav{display:none!important}
   .reader[data-reading="true"] .panel{left:10px;right:10px;bottom:10px;top:auto;width:auto;max-height:78dvh;border-radius:22px;padding:20px}
+  .reader[data-reading="true"] .panel[data-panel="appearance"]{
+    top:18px;
+    bottom:18px;
+    max-height:none;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    padding:18px 20px 16px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .panelHead{
+    flex:0 0 auto;
+    margin-bottom:10px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .appearance{
+    flex:1 1 auto;
+    min-height:0;
+    display:grid;
+    grid-template-rows:auto auto auto auto auto auto auto auto auto auto;
+    align-content:space-between;
+    gap:6px;
+    overflow:hidden;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .appearance>label{
+    margin-top:2px;
+    font-size:13px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .themeRow button{
+    padding:8px 6px;
+    gap:4px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .themeRow i{
+    width:28px;
+    height:28px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .fontFamilyRow button{
+    padding:8px 6px;
+    font-size:21px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .alignRow button{
+    padding:8px 6px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .fontRow{
+    min-height:30px;
+  }
   .reader[data-reading="true"] .backdrop{z-index:30}
   .reader[data-reading="true"] .panel{z-index:31}
 }
