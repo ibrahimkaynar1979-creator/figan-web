@@ -23,6 +23,7 @@ import p16 from "../_data/bskPlain/p16";
 
 type Theme = "light" | "cream" | "dark";
 type ReaderFont = "serif" | "sans" | "modern";
+type TextAlign = "left" | "justify";
 type Panel = "toc" | "appearance" | "notes" | "search" | null;
 type Section = { title: string; paragraphs: readonly string[] };
 
@@ -45,6 +46,7 @@ export default function BirSifacininKanadiReader() {
   const [theme, setTheme] = useState<Theme>("cream");
   const [fontSize, setFontSize] = useState(22);
   const [readerFont, setReaderFont] = useState<ReaderFont>("serif");
+  const [textAlign, setTextAlign] = useState<TextAlign>("left");
   const [panel, setPanel] = useState<Panel>(null);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [notes, setNotes] = useState<Record<number, string>>({});
@@ -96,6 +98,7 @@ export default function BirSifacininKanadiReader() {
       if (["light","cream","dark"].includes(saved.theme)) setTheme(saved.theme);
       if (typeof saved.fontSize === "number") setFontSize(saved.fontSize);
       if (["serif","sans","modern"].includes(saved.readerFont)) setReaderFont(saved.readerFont);
+      if (["left","justify"].includes(saved.textAlign)) setTextAlign(saved.textAlign);
       if (typeof saved.lineHeight === "number") setLineHeight(saved.lineHeight);
       if (typeof saved.pageMargin === "number") setPageMargin(saved.pageMargin);
       if (Array.isArray(saved.bookmarks)) setBookmarks(saved.bookmarks);
@@ -123,6 +126,7 @@ export default function BirSifacininKanadiReader() {
       theme,
       fontSize,
       readerFont,
+      textAlign,
       lineHeight,
       pageMargin,
       bookmarks,
@@ -134,7 +138,7 @@ export default function BirSifacininKanadiReader() {
 
     localStorage.setItem(STORAGE, JSON.stringify(next));
     setDraft(index >= 0 ? notes[index] || "" : "");
-  }, [storageReady, index, readerPage, theme, fontSize, readerFont, lineHeight, pageMargin, bookmarks, notes]);
+  }, [storageReady, index, readerPage, theme, fontSize, readerFont, textAlign, lineHeight, pageMargin, bookmarks, notes]);
 
   useEffect(() => {
     if (!storageReady) return;
@@ -457,7 +461,7 @@ export default function BirSifacininKanadiReader() {
                 <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
               </div>
               <div className={styles.chapterMini}>
-                <a href="/yazarlar/figen-yavuz" aria-label="Figen Yavuz sayfasına dön">←</a>
+                <button type="button" onClick={() => go(-1)} aria-label="Kitap kapağına dön">←</button>
                 <span>{current?.title}</span>
               </div>
               <div className={styles.tools}>
@@ -523,7 +527,13 @@ export default function BirSifacininKanadiReader() {
               <p className={styles.chapter}>BİR ŞİFACININ KANADI</p>
               <h1>{current?.title}</h1>
               <div className={styles.rule} />
-              <div className={styles.prose} style={{ fontFamily: READER_FONTS[readerFont] }}>
+              <div
+                className={styles.prose}
+                style={{
+                  fontFamily: READER_FONTS[readerFont],
+                  textAlign: textAlign === "justify" ? "justify" : "left",
+                }}
+              >
                 {current?.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
               </div>
             </div>
@@ -649,6 +659,27 @@ export default function BirSifacininKanadiReader() {
                   aria-pressed={readerFont === "modern"}
                 >
                   Aa<span>Modern</span>
+                </button>
+              </div>
+              <label>Paragraf Hizalama</label>
+              <div className={styles.alignRow}>
+                <button
+                  type="button"
+                  className={textAlign === "left" ? styles.selected : ""}
+                  aria-pressed={textAlign === "left"}
+                  onClick={() => setTextAlign("left")}
+                >
+                  <span className={styles.alignIcon}>☰</span>
+                  <small>Sola Yaslı</small>
+                </button>
+                <button
+                  type="button"
+                  className={textAlign === "justify" ? styles.selected : ""}
+                  aria-pressed={textAlign === "justify"}
+                  onClick={() => setTextAlign("justify")}
+                >
+                  <span className={styles.justifyIcon}>☰</span>
+                  <small>İki Yana Yaslı</small>
                 </button>
               </div>
               <label htmlFor="bsk-font">Yazı Boyutu</label>
