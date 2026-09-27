@@ -1043,25 +1043,27 @@ export default function BirSifacininKanadiReader() {
                 )}
               </div>
 
-              {!tocQuery && <button onClick={() => go(-1)}><span>Kapak</span><b>00</b></button>}
+              <div className={styles.tocList}>
+                {!tocQuery && <button onClick={() => go(-1)}><span>Kapak</span><b>00</b></button>}
 
-              {filteredTocSections.length === 0 ? (
-                <p className={styles.searchHint}>Bölüm bulunamadı.</p>
-              ) : (
-                filteredTocSections.map(({ section, sectionIndex }) => (
-                  <button
-                    key={section.title + sectionIndex}
-                    className={index === sectionIndex ? styles.currentToc : ""}
-                    onClick={() => go(sectionIndex)}
-                  >
-                    <span>
-                      {section.title}
-                      {index === sectionIndex && <small className={styles.tocStatus}>Şu an buradasın</small>}
-                    </span>
-                    <b>{String(sectionIndex + 1).padStart(2,"0")}</b>
-                  </button>
-                ))
-              )}
+                {filteredTocSections.length === 0 ? (
+                  <p className={styles.searchHint}>Bölüm bulunamadı.</p>
+                ) : (
+                  filteredTocSections.map(({ section, sectionIndex }) => (
+                    <button
+                      key={section.title + sectionIndex}
+                      className={index === sectionIndex ? styles.currentToc : ""}
+                      onClick={() => go(sectionIndex)}
+                    >
+                      <span>
+                        {section.title}
+                        {index === sectionIndex && <small className={styles.tocStatus}>Şu an buradasın</small>}
+                      </span>
+                      <b>{String(sectionIndex + 1).padStart(2,"0")}</b>
+                    </button>
+                  ))
+                )}
+              </div>
             </div>}
             {panel === "bookmarks" && <div className={styles.bookmarkPanel}>
               {bookmarks.length === 0 ? (
