@@ -196,23 +196,25 @@ export default function BirSifacininKanadiReader() {
             </div>
           )}
 
-          <button className={styles.prev} onClick={(e) => { e.stopPropagation(); go(index - 1); }} disabled={index === -1} aria-label="Önceki">‹</button>
-          <button className={styles.next} onClick={(e) => { e.stopPropagation(); go(index + 1); }} disabled={index === sections.length - 1} aria-label="Sonraki">›</button>
+          {index >= 0 && <>
+            <button className={styles.prev} onClick={(e) => { e.stopPropagation(); go(index - 1); }} aria-label="Önceki">‹</button>
+            <button className={styles.next} onClick={(e) => { e.stopPropagation(); go(index + 1); }} disabled={index === sections.length - 1} aria-label="Sonraki">›</button>
 
-          <footer className={styles.progressArea} onClick={e => e.stopPropagation()}>
-            <input type="range" min="-1" max={sections.length - 1} value={index} onChange={e => go(Number(e.target.value))} aria-label="Okuma ilerlemesi" />
-            <div className={styles.progressMeta}>
-              <span>{index < 0 ? "Kapak" : (index + 1) + " / " + sections.length}</span>
-              <span>% {progress} <i /> 22 Reader</span>
-            </div>
-          </footer>
+            <footer className={styles.progressArea} onClick={e => e.stopPropagation()}>
+              <input type="range" min="0" max={sections.length - 1} value={index} onChange={e => go(Number(e.target.value))} aria-label="Okuma ilerlemesi" />
+              <div className={styles.progressMeta}>
+                <span>{index + 1} / {sections.length}</span>
+                <span>% {progress} <i /> 22 Reader</span>
+              </div>
+            </footer>
+          </>}
         </article>
 
-        <nav className={styles.mobileNav} onClick={e => e.stopPropagation()}>
+        {index >= 0 && <nav className={styles.mobileNav} onClick={e => e.stopPropagation()}>
           <button onClick={() => setPanel(panel === "toc" ? null : "toc")}><span>☰</span>İçindekiler</button>
           <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")}><span>☼</span>Görünüm</button>
           <button onClick={() => setPanel(panel === "notes" ? null : "notes")}><span>▤</span>Notlarım</button>
-        </nav>
+        </nav>}
       </section>
 
       {panel && (
