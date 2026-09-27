@@ -234,28 +234,37 @@
     left:12px;
     right:12px;
     bottom:8px;
-    width:auto;
+    height:46px;
     margin:0;
-    padding:4px 0 2px;
+    padding:5px 12px 4px;
     z-index:20;
-    border-top:0;
-    background:var(--surface);
-    box-shadow:none;
-    transition:opacity .22s ease, padding .18s ease, background .18s ease;
+    display:grid;
+    grid-template-rows:14px 16px;
+    align-content:center;
+    box-sizing:border-box;
+    border:1px solid rgba(182,134,73,.18);
+    border-radius:999px;
+    background:color-mix(in srgb,var(--surface) 97%,#fff 3%);
+    box-shadow:0 4px 14px rgba(70,45,20,.06);
+    overflow:hidden;
+    transition:opacity .22s ease, transform .22s ease;
   }
+
   .reader[data-reading="true"][data-chrome="hidden"] .progressArea{
-    opacity:1;
-    pointer-events:auto;
-    padding:0;
+    height:14px;
+    padding:0 8px;
+    border-color:transparent;
     background:transparent;
+    box-shadow:none;
   }
+
   .reader[data-reading="true"][data-chrome="hidden"] .progressMeta{
     display:none;
   }
-  .reader[data-reading="true"] .progressMeta{transition:opacity .18s ease}
+
   .reader[data-reading="true"] .progressArea input{
     width:100%;
-    height:12px;
+    height:14px;
     margin:0;
     padding:0;
     appearance:none;
@@ -263,11 +272,13 @@
     background:transparent;
     cursor:pointer;
   }
+
   .reader[data-reading="true"] .progressArea input::-webkit-slider-runnable-track{
     height:4px;
     border-radius:999px;
     background:#d8cdbf;
   }
+
   .reader[data-reading="true"] .progressArea input::-webkit-slider-thumb{
     appearance:none;
     -webkit-appearance:none;
@@ -279,11 +290,13 @@
     background:#b27b31;
     box-shadow:none;
   }
+
   .reader[data-reading="true"] .progressArea input::-moz-range-track{
     height:4px;
     border-radius:999px;
     background:#d8cdbf;
   }
+
   .reader[data-reading="true"] .progressArea input::-moz-range-thumb{
     width:14px;
     height:14px;
@@ -291,30 +304,34 @@
     border-radius:50%;
     background:#b27b31;
   }
+
   .reader[data-reading="true"] .progressMeta{
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:8px;
-    margin-top:2px;
+    margin:0;
     font-size:10px;
     line-height:1;
     color:#6f655a;
   }
+
   .reader[data-reading="true"] .progressMeta span{
     display:flex;
     align-items:center;
     gap:6px;
     white-space:nowrap;
   }
+
   .reader[data-reading="true"] .progressMeta i{
     display:inline-block;
     width:1px;
-    height:12px;
+    height:11px;
     margin:0 1px;
     background:#b68649;
     vertical-align:middle;
   }
+
   .reader[data-reading="true"] .progressMeta span:last-child{font-size:10px}
 
   .reader[data-reading="true"] .mobileNav{display:none!important}
