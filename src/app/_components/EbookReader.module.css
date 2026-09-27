@@ -307,7 +307,7 @@
   }
 
   .reader[data-reading="false"] .coverStats{
-    margin:19px auto 0;
+    margin:15px auto 0;
     align-self:center;
     display:grid;
     grid-template-columns:repeat(3,auto);
@@ -356,8 +356,8 @@
   .reader[data-reading="false"] .coverReaderBrand{
     width:370px;
     max-width:82%;
-    margin:21px auto 0;
-    padding-top:17px;
+    margin:11px auto 0;
+    padding-top:12px;
     padding-bottom:0;
     align-self:center;
     border-top:1px solid #d5c8b9;
