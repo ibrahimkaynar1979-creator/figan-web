@@ -7,7 +7,7 @@ type Chapter = { id: number; title: string; start: number };
 
 const FALLBACK_AUDIO =
   process.env.NEXT_PUBLIC_BIR_SIFACININ_KANADI_AUDIO_URL ||
-  "/audio/bir-sifacinin-kanadi/Bir-Sifacinin-Kanadi-Elif-Web-64kbps.mp3";
+  "https://edmrsvk0wqr0t0cr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
 const BOOK_DURATION = 8477.232;
 // deploy-refresh: audiobook upload flow + Blob auto-connect
 
@@ -218,7 +218,15 @@ export default function BirSifacininKanadiPlayer() {
     if(!audio) return;
     setAudioError(false);
     if(playing){audio.pause();setPlaying(false);return;}
-    try{await audio.play();setPlaying(true);}catch{setAudioError(true);setPlaying(false);}
+    try{
+      if(audio.readyState===0) audio.load();
+      await audio.play();
+      setPlaying(true);
+    }catch(error){
+      console.error("Audiobook play error:",error);
+      setAudioError(true);
+      setPlaying(false);
+    }
   };
 
   const seekBy=(amount:number)=>{
@@ -258,6 +266,9 @@ export default function BirSifacininKanadiPlayer() {
         preload="metadata"
         onTimeUpdate={(e)=>setCurrentTime(e.currentTarget.currentTime)}
         onLoadedMetadata={(e)=>{setDuration(e.currentTarget.duration||BOOK_DURATION);e.currentTarget.playbackRate=rate;}}
+        onPlay={()=>{setPlaying(true);setAudioError(false);}}
+        onPause={()=>setPlaying(false)}
+        onCanPlay={()=>setAudioError(false)}
         onEnded={()=>setPlaying(false)}
         onError={()=>{setAudioError(true);setPlaying(false);}}
       />
