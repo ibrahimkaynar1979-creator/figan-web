@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import styles from "./EbookReader.module.css";
 import p00 from "../_data/bskPlain/p00";
 import p01 from "../_data/bskPlain/p01";
@@ -45,6 +45,9 @@ export default function BirSifacininKanadiReader() {
   const [chromeVisible, setChromeVisible] = useState(true);
   const [lineHeight, setLineHeight] = useState(1.68);
   const [pageMargin, setPageMargin] = useState(24);
+  const [readerPage, setReaderPage] = useState(0);
+  const [readerPageCount, setReaderPageCount] = useState(1);
+  const textWrapRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     document.body.classList.add("reader-route");
@@ -88,7 +91,11 @@ export default function BirSifacininKanadiReader() {
   }, [index, panel, chromeVisible]);
 
   const current = index >= 0 ? sections[index] : null;
-  const progress = useMemo(() => index < 0 ? 0 : Math.round(((index + 1) / sections.length) * 100), [index]);
+  const progress = useMemo(() => {
+    if (index < 0) return 0;
+    const withinSection = readerPageCount > 0 ? (readerPage + 1) / readerPageCount : 1;
+    return Math.min(100, Math.round(((index + withinSection) / sections.length) * 100));
+  }, [index, readerPage, readerPageCount]);
   const bookmarked = index >= 0 && bookmarks.includes(index);
 
   const go = (next: number) => {
@@ -96,6 +103,58 @@ export default function BirSifacininKanadiReader() {
     setPanel(null);
     setChromeVisible(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (index < 0) return;
+    const el = textWrapRef.current;
+    if (!el) return;
+
+    const measure = () => {
+      const width = Math.max(1, el.clientWidth);
+      const pages = Math.max(1, Math.ceil(el.scrollWidth / width));
+      setReaderPageCount(pages);
+      const page = Math.min(pages - 1, Math.max(0, Math.round(el.scrollLeft / width)));
+      setReaderPage(page);
+    };
+
+    el.scrollLeft = 0;
+    setReaderPage(0);
+    const raf = requestAnimationFrame(measure);
+    const ro = new ResizeObserver(() => requestAnimationFrame(measure));
+    ro.observe(el);
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+    };
+  }, [index, fontSize, lineHeight, pageMargin]);
+
+  const turnReaderPage = (direction: -1 | 1) => {
+    const el = textWrapRef.current;
+    if (!el || index < 0) return;
+    const width = Math.max(1, el.clientWidth);
+    const page = Math.min(readerPageCount - 1, Math.max(0, Math.round(el.scrollLeft / width)));
+
+    if (direction === 1) {
+      if (page < readerPageCount - 1) {
+        const nextPage = page + 1;
+        el.scrollTo({ left: nextPage * width, behavior: "smooth" });
+        setReaderPage(nextPage);
+        setChromeVisible(true);
+        return;
+      }
+      if (index < sections.length - 1) go(index + 1);
+      return;
+    }
+
+    if (page > 0) {
+      const prevPage = page - 1;
+      el.scrollTo({ left: prevPage * width, behavior: "smooth" });
+      setReaderPage(prevPage);
+      setChromeVisible(true);
+      return;
+    }
+    if (index > 0) go(index - 1);
   };
 
   const toggleBookmark = () => {
@@ -214,7 +273,16 @@ export default function BirSifacininKanadiReader() {
               <div className={styles.coverReaderBrand}><Image src="/22_reader_logo.png" alt="22 Reader" width={520} height={170} priority /></div>
             </div>
           ) : (
-            <div className={styles.textWrap}>
+            <div
+              ref={textWrapRef}
+              className={styles.textWrap}
+              onScroll={(e) => {
+                const el = e.currentTarget;
+                const width = Math.max(1, el.clientWidth);
+                setReaderPage(Math.min(readerPageCount - 1, Math.max(0, Math.round(el.scrollLeft / width))));
+              }}
+              style={{ columnWidth: textWrapRef.current?.clientWidth ? textWrapRef.current.clientWidth + "px" : undefined }}
+            >
               <p className={styles.chapter}>BİR ŞİFACININ KANADI</p>
               <h1>{current?.title}</h1>
               <div className={styles.rule} />
@@ -225,13 +293,13 @@ export default function BirSifacininKanadiReader() {
           )}
 
           {index >= 0 && <>
-            <button className={styles.prev} onClick={(e) => { e.stopPropagation(); go(index - 1); }} aria-label="Önceki">‹</button>
-            <button className={styles.next} onClick={(e) => { e.stopPropagation(); go(index + 1); }} disabled={index === sections.length - 1} aria-label="Sonraki">›</button>
+            <button className={styles.prev} onClick={(e) => { e.stopPropagation(); turnReaderPage(-1); }} aria-label="Önceki sayfa">‹</button>
+            <button className={styles.next} onClick={(e) => { e.stopPropagation(); turnReaderPage(1); }} disabled={index === sections.length - 1 && readerPage === readerPageCount - 1} aria-label="Sonraki sayfa">›</button>
 
             <footer className={styles.progressArea} onClick={e => e.stopPropagation()}>
               <input type="range" min="0" max={sections.length - 1} value={index} onChange={e => go(Number(e.target.value))} aria-label="Okuma ilerlemesi" />
               <div className={styles.progressMeta}>
-                <span>{index + 1} / {sections.length}</span>
+                <span>{index + 1} / {sections.length} <i /> Sayfa {readerPage + 1}/{readerPageCount}</span>
                 <span>% {progress} <i /> 22 Reader</span>
               </div>
             </footer>
