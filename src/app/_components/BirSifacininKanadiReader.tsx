@@ -457,14 +457,33 @@ export default function BirSifacininKanadiReader() {
 
       if (isTyping || panel || index < 0) return;
 
-      if (e.key === "ArrowRight") {
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
         e.preventDefault();
         turnReaderPage(1);
       }
 
-      if (e.key === "ArrowLeft") {
+      if (e.key === "ArrowLeft" || e.key === "PageUp") {
         e.preventDefault();
         turnReaderPage(-1);
+      }
+
+      if (e.key === "Home") {
+        e.preventDefault();
+        const el = textWrapRef.current;
+        if (!el) return;
+        el.scrollTo({ left: 0, behavior: "auto" });
+        setReaderPage(0);
+        readerPageRef.current = 0;
+      }
+
+      if (e.key === "End") {
+        e.preventDefault();
+        const el = textWrapRef.current;
+        if (!el) return;
+        const lastPage = Math.max(0, readerPageCount - 1);
+        el.scrollTo({ left: lastPage * Math.max(1, el.clientWidth), behavior: "auto" });
+        setReaderPage(lastPage);
+        readerPageRef.current = lastPage;
       }
     };
 
@@ -712,6 +731,11 @@ export default function BirSifacininKanadiReader() {
         "--reader-page-margin": pageMargin + "px",
       } as CSSProperties}
     >
+      <div className={styles.srOnly} aria-live="polite" aria-atomic="true">
+        {index >= 0 && current
+          ? `${current.title}. Sayfa ${readerPage + 1} / ${readerPageCount}. Kitap yüzde ${progress} tamamlandı.`
+          : "Bir Şifacının Kanadı kitap kapağı"}
+      </div>
       <aside className={styles.sidebar}>
         <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
           <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={236} priority />
@@ -783,7 +807,10 @@ export default function BirSifacininKanadiReader() {
           )}
         </header>
 
-        <article className={styles.readingArea}>
+        <article
+          className={styles.readingArea}
+          aria-label={index >= 0 && current ? `${current.title} okuma alanı` : "Kitap kapağı"}
+        >
           {index === -1 ? (
             <div className={styles.coverScreen}>
               <div className={styles.coverHero}>
@@ -921,7 +948,13 @@ export default function BirSifacininKanadiReader() {
       {panel && (
         <>
           <button className={styles.backdrop} onClick={() => setPanel(null)} aria-label="Paneli kapat" />
-          <aside className={styles.panel} data-panel={panel ?? undefined}>
+          <aside
+            className={styles.panel}
+            data-panel={panel ?? undefined}
+            role="dialog"
+            aria-modal="true"
+            aria-label={panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : panel === "search" ? "Kitapta ara" : panel === "bookmarks" ? "Yer işaretlerim" : panel === "underlines" ? "Altı çizilenler" : "Notlarım"}
+          >
             <div className={styles.panelHead}>
               <h3>{panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : panel === "search" ? "Kitapta Ara" : panel === "bookmarks" ? "Yer İşaretlerim" : panel === "underlines" ? "Altı Çizilenler" : "Notlarım"}</h3>
               <button onClick={() => setPanel(null)}>×</button>
