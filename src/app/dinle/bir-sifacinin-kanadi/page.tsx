@@ -275,11 +275,21 @@ export default function BirSifacininKanadiPlayer() {
             <img src="/bir_sifaci_png.png" alt="Bir Şifacının Kanadı - Figen Yavuz" />
           </div>
 
-          <div className={styles.listeningLabel}><span aria-hidden="true">▥</span> ŞİMDİ DİNLİYORSUNUZ</div>
+          <div className={styles.listeningLabel}>
+            <svg className={styles.waveIcon} viewBox="0 0 28 22" aria-hidden="true">
+              <path d="M2 8v6M6 5v12M10 2v18M14 7v8M18 4v14M22 6v10M26 9v4" />
+            </svg>
+            <span>ŞİMDİ DİNLİYORSUNUZ</span>
+          </div>
           <h1>Bir Şifacının Kanadı</h1>
           <p className={styles.bookMeta}>Figen Yavuz · Elif sesi · {formatTime(duration)}</p>
 
-          <div className={styles.divider}><i /></div>
+          <div className={styles.divider}>
+            <svg className={styles.ornament} viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10 2.5c1.2 3 2.8 4.9 5.7 6.1-2.9 1.2-4.5 3.1-5.7 6.1-1.2-3-2.8-4.9-5.7-6.1C7.2 7.4 8.8 5.5 10 2.5Z" />
+              <path d="M10 8.6v8.2M7.2 11.6c1.3.2 2.3.9 2.8 2 .5-1.1 1.5-1.8 2.8-2" />
+            </svg>
+          </div>
 
           <div className={styles.nowPlaying}>
             <span>BİR ŞİFACININ KANADI</span>
@@ -307,18 +317,45 @@ export default function BirSifacininKanadiPlayer() {
           </div>
 
           <div className={styles.transport}>
-            <button onClick={()=>seekBy(-15)} aria-label="15 saniye geri"><span>↶</span><small>15</small></button>
-            <button className={styles.play} onClick={togglePlay} aria-label={playing?"Duraklat":"Oynat"}>{playing?"Ⅱ":"▶"}</button>
-            <button onClick={()=>seekBy(15)} aria-label="15 saniye ileri"><span>↷</span><small>15</small></button>
+            <button className={styles.seekButton} onClick={()=>seekBy(-15)} aria-label="15 saniye geri">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M16.5 12.5H9v-7.5" />
+                <path d="M9.5 12.2A17 17 0 1 1 7 30" />
+              </svg>
+              <small>15</small>
+            </button>
+            <button className={styles.play} onClick={togglePlay} aria-label={playing?"Duraklat":"Oynat"}>
+              {playing ? (
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 8v16M22 8v16" /></svg>
+              ) : (
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 7.5 24 16 11 24.5Z" /></svg>
+              )}
+            </button>
+            <button className={styles.seekButton} onClick={()=>seekBy(15)} aria-label="15 saniye ileri">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M31.5 12.5H39v-7.5" />
+                <path d="M38.5 12.2A17 17 0 1 0 41 30" />
+              </svg>
+              <small>15</small>
+            </button>
           </div>
 
           {audioError && <div className={styles.audioNotice}>Ses kaynağına erişilemiyor. Lütfen tekrar deneyin.</div>}
 
           <div className={styles.tools}>
             <button onClick={changeRate}><b>{rate}x</b><span>Hız</span></button>
-            <button onClick={cycleSleep}><b>☾</b><span>{sleepLabel}</span></button>
-            <button onClick={()=>setChaptersOpen(true)}><b>☷</b><span>Bölümler</span></button>
-            <a href={audioSrc} download><b>⇩</b><span>İndir</span></a>
+            <button onClick={cycleSleep}>
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M23.5 22.5A10.8 10.8 0 0 1 10 9a10 10 0 1 0 13.5 13.5Z" /></svg>
+              <span>{sleepLabel}</span>
+            </button>
+            <button onClick={()=>setChaptersOpen(true)}>
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 9h14M10 16h14M10 23h14" /><circle cx="6" cy="9" r="1.2"/><circle cx="6" cy="16" r="1.2"/><circle cx="6" cy="23" r="1.2"/></svg>
+              <span>Bölümler</span>
+            </button>
+            <a href={audioSrc} download>
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5v16M10.5 16 16 21.5 21.5 16M8 26h16" /></svg>
+              <span>İndir</span>
+            </a>
           </div>
 
           <div className={styles.chapterStrip}>
