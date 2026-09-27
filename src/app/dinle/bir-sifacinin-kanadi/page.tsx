@@ -9,6 +9,7 @@ const FALLBACK_AUDIO =
   process.env.NEXT_PUBLIC_BIR_SIFACININ_KANADI_AUDIO_URL ||
   "/audio/bir-sifacinin-kanadi/Bir-Sifacinin-Kanadi-Elif-Web-64kbps.mp3";
 const BOOK_DURATION = 8477.232;
+// deploy-refresh: audiobook upload flow + Blob auto-connect
 
 const chapters: Chapter[] = [
   [1,"ARAYIŞIN YOLCULUĞU",0.0],
