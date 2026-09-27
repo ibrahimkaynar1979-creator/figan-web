@@ -319,22 +319,22 @@ export default function BirSifacininKanadiPlayer() {
           <div className={styles.transport}>
             <button className={styles.seekButton} onClick={()=>seekBy(-15)} aria-label="15 saniye geri">
               <svg viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M16.5 10.5H8.5V2.5" />
-                <path d="M9.1 10.7A18 18 0 1 1 7 31.8" />
+                <path d="M16.5 12.5H9v-7.5" />
+                <path d="M9.5 12.2A17 17 0 1 1 7 30" />
               </svg>
               <small>15</small>
             </button>
             <button className={styles.play} onClick={togglePlay} aria-label={playing?"Duraklat":"Oynat"}>
               {playing ? (
-                <svg className={styles.playGlyph} viewBox="0 0 32 32" aria-hidden="true"><path d="M10 8v16M22 8v16" /></svg>
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 8v16M22 8v16" /></svg>
               ) : (
-                <svg className={styles.playGlyph} viewBox="0 0 32 32" aria-hidden="true"><path d="M11 7.5 24 16 11 24.5Z" /></svg>
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 7.5 24 16 11 24.5Z" /></svg>
               )}
             </button>
             <button className={styles.seekButton} onClick={()=>seekBy(15)} aria-label="15 saniye ileri">
               <svg viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M31.5 10.5h8V2.5" />
-                <path d="M38.9 10.7A18 18 0 1 0 41 31.8" />
+                <path d="M31.5 12.5H39v-7.5" />
+                <path d="M38.5 12.2A17 17 0 1 0 41 30" />
               </svg>
               <small>15</small>
             </button>
