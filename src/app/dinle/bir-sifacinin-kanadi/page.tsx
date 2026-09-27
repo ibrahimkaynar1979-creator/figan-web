@@ -9,6 +9,12 @@ const FALLBACK_AUDIO =
   process.env.NEXT_PUBLIC_BIR_SIFACININ_KANADI_AUDIO_URL ||
   "/audio/bir-sifacinin-kanadi/Bir-Sifacinin-Kanadi-Elif-Web-64kbps.mp3";
 const BOOK_DURATION = 8477.232;
+const PROGRESS_KEY = "22y-bir-sifacinin-kanadi-progress";
+type SavedProgress = {
+  currentTime?: number;
+  rate?: number;
+  updatedAt?: number;
+};
 // deploy-refresh: audiobook upload flow + Blob auto-connect
 
 const chapters: Chapter[] = [
@@ -111,6 +117,8 @@ const formatTime = (seconds: number) => {
 
 export default function BirSifacininKanadiPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const lastKnownTimeRef = useRef(0);
+  const rateRef = useRef(1);
   const [chapterIndex,setChapterIndex] = useState(0);
   const [playing,setPlaying] = useState(false);
   const [currentTime,setCurrentTime] = useState(0);
@@ -153,36 +161,58 @@ export default function BirSifacininKanadiPlayer() {
   },[]);
 
   useEffect(()=>{
-    const saved=window.localStorage.getItem("22y-bir-sifacinin-kanadi-progress");
-    if(!saved) return;
     try{
-      const parsed=JSON.parse(saved) as {currentTime?:number};
-      if(typeof parsed.currentTime==="number" && parsed.currentTime>=0){
-        setCurrentTime(parsed.currentTime);
-        const idx=[...chapters].reverse().findIndex((item)=>parsed.currentTime!>=item.start);
-        if(idx>=0) setChapterIndex(chapters.length-1-idx);
-      }
+      const saved=window.localStorage.getItem(PROGRESS_KEY);
+      if(!saved) return;
+
+      const parsed=JSON.parse(saved) as SavedProgress;
+      const savedTime =
+        typeof parsed.currentTime==="number" && Number.isFinite(parsed.currentTime)
+          ? Math.max(0,Math.min(parsed.currentTime,BOOK_DURATION))
+          : 0;
+      const savedRate =
+        typeof parsed.rate==="number" && [0.75,1,1.25,1.5,1.75,2].includes(parsed.rate)
+          ? parsed.rate
+          : 1;
+
+      lastKnownTimeRef.current=savedTime;
+      rateRef.current=savedRate;
+      setCurrentTime(savedTime);
+      setRate(savedRate);
+
+      const idx=[...chapters].reverse().findIndex((item)=>savedTime>=item.start);
+      if(idx>=0) setChapterIndex(chapters.length-1-idx);
     }catch{}
   },[]);
 
   useEffect(()=>{
-    const audio=audioRef.current;
-    if(!audio) return;
-    const restore=()=>{
-      if(currentTime>0 && currentTime<audio.duration) audio.currentTime=currentTime;
-      audio.playbackRate=rate;
-      setDuration(audio.duration || BOOK_DURATION);
+    const persist=()=>{
+      try{
+        window.localStorage.setItem(
+          PROGRESS_KEY,
+          JSON.stringify({
+            currentTime:lastKnownTimeRef.current,
+            rate:rateRef.current,
+            updatedAt:Date.now(),
+          } satisfies SavedProgress),
+        );
+      }catch{}
     };
-    audio.addEventListener("loadedmetadata",restore,{once:true});
-    return()=>audio.removeEventListener("loadedmetadata",restore);
-  },[]);
 
-  useEffect(()=>{
-    const timer=window.setInterval(()=>{
-      window.localStorage.setItem("22y-bir-sifacinin-kanadi-progress",JSON.stringify({currentTime}));
-    },4000);
-    return()=>window.clearInterval(timer);
-  },[currentTime]);
+    const timer=window.setInterval(persist,4000);
+    const onVisibility=()=>{
+      if(document.visibilityState==="hidden") persist();
+    };
+    window.addEventListener("pagehide",persist);
+    document.addEventListener("visibilitychange",onVisibility);
+
+    return()=>{
+      persist();
+      window.clearInterval(timer);
+      window.removeEventListener("pagehide",persist);
+      document.removeEventListener("visibilitychange",onVisibility);
+    };
+  },[]);
 
   useEffect(()=>{
     const index=Math.max(0,chapters.findIndex((item,i)=>{
@@ -224,12 +254,16 @@ export default function BirSifacininKanadiPlayer() {
   const seekBy=(amount:number)=>{
     const audio=audioRef.current;
     if(!audio) return;
-    audio.currentTime=Math.max(0,Math.min(audio.duration||BOOK_DURATION,audio.currentTime+amount));
+    const next=Math.max(0,Math.min(audio.duration||BOOK_DURATION,audio.currentTime+amount));
+    audio.currentTime=next;
+    lastKnownTimeRef.current=next;
+    setCurrentTime(next);
   };
 
   const changeRate=()=>{
     const order=[1,1.25,1.5,1.75,2,0.75];
     const next=order[(order.indexOf(rate)+1)%order.length];
+    rateRef.current=next;
     setRate(next);
     if(audioRef.current) audioRef.current.playbackRate=next;
   };
@@ -239,6 +273,7 @@ export default function BirSifacininKanadiPlayer() {
     if(!audio) return;
     const target=chapters[index].start;
     audio.currentTime=target;
+    lastKnownTimeRef.current=target;
     setCurrentTime(target);
     setChapterIndex(index);
     setChaptersOpen(false);
@@ -256,8 +291,23 @@ export default function BirSifacininKanadiPlayer() {
         ref={audioRef}
         src={audioSrc}
         preload="metadata"
-        onTimeUpdate={(e)=>setCurrentTime(e.currentTarget.currentTime)}
-        onLoadedMetadata={(e)=>{setDuration(e.currentTarget.duration||BOOK_DURATION);e.currentTarget.playbackRate=rate;}}
+        onTimeUpdate={(e)=>{
+          const next=e.currentTarget.currentTime;
+          lastKnownTimeRef.current=next;
+          setCurrentTime(next);
+        }}
+        onLoadedMetadata={(e)=>{
+          const audio=e.currentTarget;
+          const nextDuration=audio.duration||BOOK_DURATION;
+          setDuration(nextDuration);
+          audio.playbackRate=rateRef.current;
+
+          const resumeAt=Math.max(0,Math.min(lastKnownTimeRef.current,nextDuration));
+          if(resumeAt>0 && resumeAt<nextDuration-1){
+            audio.currentTime=resumeAt;
+            setCurrentTime(resumeAt);
+          }
+        }}
         onEnded={()=>setPlaying(false)}
         onError={()=>{setAudioError(true);setPlaying(false);}}
       />
@@ -309,6 +359,7 @@ export default function BirSifacininKanadiPlayer() {
               onChange={(e)=>{
                 const value=Number(e.target.value);
                 if(audioRef.current) audioRef.current.currentTime=value;
+                lastKnownTimeRef.current=value;
                 setCurrentTime(value);
               }}
               style={{"--progress":`${progress}%`} as React.CSSProperties}
