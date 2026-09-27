@@ -111,42 +111,144 @@
   .reader{display:block}
   .sidebar{display:none}
 
-  .reader[data-reading="true"]{height:100dvh;min-height:100dvh;overflow:hidden}
-  .reader[data-reading="true"] .stage{height:100dvh;min-height:100dvh;display:block;position:relative}
+  .reader[data-reading="true"]{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100dvh;
+    min-height:0;
+    padding:8px;
+    box-sizing:border-box;
+    overflow:hidden;
+    background:#eee8df;
+  }
+
+  .reader[data-reading="true"] .stage{
+    width:100%;
+    height:100%;
+    min-height:0;
+    display:grid;
+    grid-template-rows:64px minmax(0,1fr);
+    position:relative;
+    overflow:hidden;
+    border-radius:28px;
+    background:var(--surface);
+    box-shadow:0 10px 30px rgba(66,43,20,.08);
+  }
+
   .reader[data-reading="true"] .topbar{
-    position:fixed;left:0;right:0;top:0;height:calc(54px + env(safe-area-inset-top));
-    padding:env(safe-area-inset-top) 16px 0;border-bottom:0;
-    background:color-mix(in srgb,var(--surface) 94%,transparent);
-    backdrop-filter:blur(18px);z-index:20;transition:opacity .22s ease,transform .22s ease;
+    position:relative;
+    left:auto;right:auto;top:auto;
+    height:64px;
+    padding:0 16px;
+    border-bottom:1px solid var(--line);
+    background:color-mix(in srgb,var(--surface) 96%,transparent);
+    backdrop-filter:none;
+    z-index:20;
+    transition:opacity .22s ease;
   }
-  .reader[data-reading="true"][data-chrome="hidden"] .topbar{opacity:0;transform:translateY(-100%);pointer-events:none}
+
+  .reader[data-reading="true"][data-chrome="hidden"] .topbar{opacity:0;pointer-events:none}
   .reader[data-reading="true"] .mobileBrand{display:none}
-  .reader[data-reading="true"] .chapterMini{display:flex;position:static;transform:none;max-width:56%;font-size:12px}
+  .reader[data-reading="true"] .chapterMini{display:flex;position:static;transform:none;max-width:52%;font-size:12px}
   .reader[data-reading="true"] .chapterMini a{display:block;font-size:24px}
+  .reader[data-reading="true"] .tools{gap:0}
+  .reader[data-reading="true"] .tools button{width:38px;height:38px;font-size:18px}
   .reader[data-reading="true"] .tools button:nth-child(2){display:none}
+
   .reader[data-reading="true"] .readingArea{
-    height:100dvh;min-height:100dvh;padding:calc(env(safe-area-inset-top) + 26px) var(--reader-page-margin) calc(env(safe-area-inset-bottom) + 28px);
-    overflow:auto;overscroll-behavior:contain;
+    position:relative;
+    width:100%;
+    height:100%;
+    min-height:0;
+    padding:18px var(--reader-page-margin) 58px;
+    overflow:hidden;
+    box-sizing:border-box;
+    background:var(--surface);
   }
-  .reader[data-reading="true"] .textWrap{min-height:calc(100dvh - 54px);justify-content:flex-start;padding:70px 0 82px}
-  .reader[data-reading="true"] .chapter{font-size:12px;letter-spacing:.14em;margin-top:0}
-  .reader[data-reading="true"] .textWrap h1{font-size:clamp(27px,8vw,34px);line-height:1.12;margin-top:4px}
-  .reader[data-reading="true"] .rule{margin:16px auto 28px}
-  .reader[data-reading="true"] .prose{font-size:var(--reader-font-size);line-height:var(--reader-line-height);max-width:none;width:100%}
-  .reader[data-reading="true"] .prose p{margin-bottom:1.05em}
-  .reader[data-reading="true"] .prev,.reader[data-reading="true"] .next{position:fixed;top:50%;height:48vh;width:22vw;opacity:0;z-index:6}
+
+  .reader[data-reading="true"] .textWrap{
+    width:100%;
+    height:100%;
+    min-height:0;
+    max-width:none;
+    margin:0;
+    padding:0;
+    display:block;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+    column-gap:0;
+    column-fill:auto;
+    column-width:calc(100vw - (2 * var(--reader-page-margin)) - 16px);
+    box-sizing:border-box;
+  }
+
+  .reader[data-reading="true"] .textWrap::-webkit-scrollbar{display:none}
+  .reader[data-reading="true"] .chapter,
+  .reader[data-reading="true"] .textWrap h1,
+  .reader[data-reading="true"] .rule,
+  .reader[data-reading="true"] .prose{break-inside:avoid-column}
+
+  .reader[data-reading="true"] .chapter{
+    text-align:center;
+    font-size:11px;
+    letter-spacing:.14em;
+    margin:10px 0 10px;
+    color:var(--muted);
+  }
+
+  .reader[data-reading="true"] .textWrap h1{
+    text-align:center;
+    font-size:clamp(26px,7vw,32px);
+    line-height:1.12;
+    margin:0;
+    font-weight:500;
+  }
+
+  .reader[data-reading="true"] .rule{margin:14px auto 24px}
+  .reader[data-reading="true"] .prose{
+    font-size:clamp(18px,var(--reader-font-size),22px);
+    line-height:var(--reader-line-height);
+    max-width:none;
+    width:auto;
+  }
+  .reader[data-reading="true"] .prose p{margin:0 0 1em}
+
+  .reader[data-reading="true"] .prev,
+  .reader[data-reading="true"] .next{
+    position:absolute;
+    top:64px;
+    bottom:48px;
+    width:24%;
+    height:auto;
+    transform:none;
+    opacity:0;
+    z-index:6;
+  }
   .reader[data-reading="true"] .prev{left:0}
   .reader[data-reading="true"] .next{right:0}
+
   .reader[data-reading="true"] .progressArea{
-    position:fixed;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 8px);width:auto;margin:0;
-    padding:8px 0 0;z-index:20;transition:opacity .22s ease,transform .22s ease;
+    position:absolute;
+    left:18px;
+    right:18px;
+    bottom:12px;
+    width:auto;
+    margin:0;
+    padding:0;
+    z-index:20;
+    transition:opacity .22s ease;
   }
-  .reader[data-reading="true"][data-chrome="hidden"] .progressArea{opacity:0;transform:translateY(120%);pointer-events:none}
-  .reader[data-reading="true"] .progressArea input{height:3px}
-  .reader[data-reading="true"] .progressMeta{font-size:11px;margin-top:4px}
+  .reader[data-reading="true"][data-chrome="hidden"] .progressArea{opacity:0;pointer-events:none}
+  .reader[data-reading="true"] .progressArea input{width:100%;height:2px;accent-color:var(--accent)}
+  .reader[data-reading="true"] .progressMeta{font-size:11px;margin-top:3px}
   .reader[data-reading="true"] .progressMeta span:last-child{font-size:11px}
+
   .reader[data-reading="true"] .mobileNav{display:none!important}
-  .reader[data-reading="true"] .panel{left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 10px);top:auto;width:auto;max-height:78dvh;border-radius:22px;padding:20px}
+  .reader[data-reading="true"] .panel{left:10px;right:10px;bottom:10px;top:auto;width:auto;max-height:78dvh;border-radius:22px;padding:20px}
   .reader[data-reading="true"] .backdrop{z-index:30}
   .reader[data-reading="true"] .panel{z-index:31}
 }
