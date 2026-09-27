@@ -149,41 +149,54 @@ export default function BirSifacininKanadiReader() {
 
       <section className={styles.stage} onClick={revealChrome}>
         <header className={styles.topbar} onClick={e => e.stopPropagation()}>
-          <div className={styles.mobileBrand}>
-            <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
-          </div>
-          <div className={styles.chapterMini}>
-            <a href="/yazarlar/figen-yavuz" aria-label="Figen Yavuz sayfasına dön">←</a>
-            <span>{current ? current.title : "Bir Şifacının Kanadı — Figen Yavuz"}</span>
-          </div>
-          <div className={styles.tools}>
-            <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")} aria-label="Yazı ve görünüm">Aa</button>
-            <button onClick={() => setTheme(theme === "dark" ? "cream" : "dark")} aria-label="Tema değiştir">☼</button>
-            <button onClick={toggleBookmark} disabled={index < 0} className={bookmarked ? styles.active : ""} aria-label="Yer işareti">{bookmarked ? "★" : "☆"}</button>
-            <button onClick={() => setPanel(panel === "toc" ? null : "toc")} aria-label="İçindekiler">☰</button>
-          </div>
+          {index === -1 ? (
+            <>
+              <div className={styles.coverTopLogo}>
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={300} height={190} priority />
+              </div>
+              <button className={styles.coverMenuButton} onClick={() => setPanel("toc")} aria-label="Menü">⋮</button>
+            </>
+          ) : (
+            <>
+              <div className={styles.mobileBrand}>
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
+              </div>
+              <div className={styles.chapterMini}>
+                <a href="/yazarlar/figen-yavuz" aria-label="Figen Yavuz sayfasına dön">←</a>
+                <span>{current?.title}</span>
+              </div>
+              <div className={styles.tools}>
+                <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")} aria-label="Yazı ve görünüm">Aa</button>
+                <button onClick={() => setTheme(theme === "dark" ? "cream" : "dark")} aria-label="Tema değiştir">☼</button>
+                <button onClick={toggleBookmark} className={bookmarked ? styles.active : ""} aria-label="Yer işareti">{bookmarked ? "★" : "☆"}</button>
+                <button onClick={() => setPanel(panel === "toc" ? null : "toc")} aria-label="İçindekiler">☰</button>
+              </div>
+            </>
+          )}
         </header>
 
         <article className={styles.readingArea}>
           {index === -1 ? (
-            <div className={styles.textWrap} style={{ alignItems:"center" }}>
-              <Image
-                src="/bir_sifaci_png.png"
-                alt="Bir Şifacının Kanadı - Figen Yavuz"
-                width={720}
-                height={900}
-                sizes="(max-width: 900px) 76vw, 520px"
-                priority
-                style={{ width:"min(520px,80vw)", height:"auto", objectFit:"contain" }}
-              />
-              <h1 style={{ marginTop:28 }}>Bir Şifacının Kanadı</h1>
-              <p style={{ color:"var(--muted)", marginTop:8 }}>Figen Yavuz · 22 Yayınevi</p>
-              <button onClick={(e) => { e.stopPropagation(); go(0); }} className={styles.startButton}>Okumaya Başla →</button>
-              <div className={styles.coverMeta}>
-                <span><b>83</b>Bölüm</span>
-                <span><b>~5 saat</b>Yaklaşık</span>
-                <span><b>{Object.keys(notes).length}</b>Not</span>
+            <div className={styles.coverScreen}>
+              <div className={styles.coverHero}>
+                <Image
+                  src="/bir_sifaci_png.png"
+                  alt="Bir Şifacının Kanadı - Figen Yavuz"
+                  width={720}
+                  height={900}
+                  sizes="(max-width: 900px) 86vw, 520px"
+                  priority
+                />
               </div>
+              <div className={styles.coverAuthor}>Figen Yavuz</div>
+              <div className={styles.coverPublisher}>22 Yayınevi</div>
+              <button onClick={(e) => { e.stopPropagation(); go(0); }} className={styles.startButton}>Okumaya Başla <span>→</span></button>
+              <div className={styles.coverStats}>
+                <span><i>▱</i><b>{sections.length} bölüm</b></span>
+                <span><i>◷</i><b>~ 5 saat</b></span>
+                <span><i>▤</i><b>EPUB</b></span>
+              </div>
+              <div className={styles.coverReaderBrand}><strong>22</strong><span>Reader</span></div>
             </div>
           ) : (
             <div className={styles.textWrap}>
