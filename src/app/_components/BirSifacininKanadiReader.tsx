@@ -70,6 +70,7 @@ export default function BirSifacininKanadiReader() {
   const pendingReaderEdge = useRef<"start" | "end" | null>(null);
   const pendingReaderPage = useRef<number | null>(null);
   const pendingReaderFraction = useRef<number | null>(null);
+  const pendingSearchParagraph = useRef<number | null>(null);
   const readerPageRef = useRef(0);
   const swipeStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
 
@@ -288,6 +289,7 @@ export default function BirSifacininKanadiReader() {
 
       return [{
         sectionIndex,
+        paragraphIndex: titleMatch ? null : paragraphIndex,
         title: section.title,
         snippet,
       }];
@@ -347,6 +349,30 @@ export default function BirSifacininKanadiReader() {
         pendingReaderFraction.current = null;
         pendingReaderPage.current = null;
         return;
+      }
+
+      if (pendingSearchParagraph.current !== null) {
+        const paragraph = el.querySelector(
+          `p[data-reader-paragraph="${pendingSearchParagraph.current}"]`
+        ) as HTMLElement | null;
+
+        if (paragraph) {
+          const elRect = el.getBoundingClientRect();
+          const pRect = paragraph.getBoundingClientRect();
+          const absoluteLeft = el.scrollLeft + (pRect.left - elRect.left);
+          const targetPage = Math.min(
+            pages - 1,
+            Math.max(0, Math.floor((absoluteLeft + 2) / width))
+          );
+          el.scrollLeft = targetPage * width;
+          setReaderPage(targetPage);
+          readerPageRef.current = targetPage;
+          pendingSearchParagraph.current = null;
+          pendingReaderPage.current = null;
+          return;
+        }
+
+        pendingSearchParagraph.current = null;
       }
 
       const requestedPage = pendingReaderPage.current ?? readerPageRef.current;
@@ -1085,8 +1111,43 @@ export default function BirSifacininKanadiReader() {
                         key={result.sectionIndex + "-" + result.title}
                         type="button"
                         onClick={() => {
+                          pendingReaderEdge.current = null;
+                          pendingReaderFraction.current = null;
+                          pendingSearchParagraph.current = result.paragraphIndex;
+
+                          if (result.sectionIndex === index) {
+                            const el = textWrapRef.current;
+                            const paragraph = result.paragraphIndex === null
+                              ? null
+                              : el?.querySelector(
+                                  `p[data-reader-paragraph="${result.paragraphIndex}"]`
+                                ) as HTMLElement | null;
+
+                            if (el && paragraph) {
+                              const width = Math.max(1, el.clientWidth);
+                              const elRect = el.getBoundingClientRect();
+                              const pRect = paragraph.getBoundingClientRect();
+                              const absoluteLeft = el.scrollLeft + (pRect.left - elRect.left);
+                              const targetPage = Math.min(
+                                readerPageCount - 1,
+                                Math.max(0, Math.floor((absoluteLeft + 2) / width))
+                              );
+                              el.scrollTo({ left: targetPage * width, behavior: "auto" });
+                              setReaderPage(targetPage);
+                              readerPageRef.current = targetPage;
+                              pendingSearchParagraph.current = null;
+                            } else {
+                              pendingReaderPage.current = 0;
+                            }
+                            setPanel(null);
+                            setChromeVisible(true);
+                            return;
+                          }
+
                           pendingReaderPage.current = 0;
-                          go(result.sectionIndex);
+                          setIndex(result.sectionIndex);
+                          setPanel(null);
+                          setChromeVisible(true);
                         }}
                       >
                         <b>{String(result.sectionIndex + 1).padStart(2, "0")} · {result.title}</b>
