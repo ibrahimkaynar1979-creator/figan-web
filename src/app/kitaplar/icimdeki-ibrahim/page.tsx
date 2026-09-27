@@ -45,7 +45,7 @@ export default function Page(){
           <h1>İçimdeki İbrahim</h1>
           <h2>Âsaf Hâlet Çelebi’yi Ararken</h2>
           <p>İbrahim Kaynar’ın şiir, hafıza ve edebiyatın izinde kişisel bir yolculuğa dönüştürdüğü eser.</p>
-          <a className="btn primary" href="/yazarlar/ibrahim-kaynar">Yazarı Görün <b>→</b></a>
+          <div style={{display:"flex",gap:"12px",flexWrap:"wrap"}}><a className="btn primary" href="/oku/icimdeki-ibrahim">22 Reader’da Oku <b>→</b></a><a className="btn secondary" href="/yazarlar/ibrahim-kaynar">Yazarı Görün <b>→</b></a></div>
         </div>
       </div>
     </main>
