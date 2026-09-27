@@ -851,3 +851,67 @@
   font-weight:500;
   letter-spacing:.02em;
 }
+
+
+.tocList{
+  min-height:0;
+  overflow:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:color-mix(in srgb,var(--accent) 55%,transparent) transparent;
+  padding-right:4px;
+}
+
+.tocList::-webkit-scrollbar{width:5px}
+.tocList::-webkit-scrollbar-track{background:transparent}
+.tocList::-webkit-scrollbar-thumb{
+  background:color-mix(in srgb,var(--accent) 50%,transparent);
+  border-radius:999px;
+}
+
+@media (max-width: 900px){
+  .panel[data-panel="toc"]{
+    top:auto;
+    left:14px;
+    right:14px;
+    bottom:12px;
+    width:auto;
+    height:min(78dvh,680px);
+    max-height:min(78dvh,680px);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    padding:18px 18px 14px;
+  }
+
+  .panel[data-panel="toc"] .panelHead{
+    flex:0 0 auto;
+    margin-bottom:14px;
+  }
+
+  .panel[data-panel="toc"] .toc{
+    min-height:0;
+    flex:1;
+    display:grid;
+    grid-template-rows:auto auto minmax(0,1fr);
+    overflow:hidden;
+  }
+
+  .panel[data-panel="toc"] .tocQuickActions{
+    grid-template-columns:1fr;
+    flex:0 0 auto;
+  }
+
+  .panel[data-panel="toc"] .tocSearch{
+    flex:0 0 auto;
+    margin-bottom:8px;
+  }
+
+  .panel[data-panel="toc"] .tocList{
+    min-height:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding-right:3px;
+    -webkit-overflow-scrolling:touch;
+  }
+}
