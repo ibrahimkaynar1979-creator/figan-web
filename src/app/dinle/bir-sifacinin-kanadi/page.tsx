@@ -319,8 +319,8 @@ export default function BirSifacininKanadiPlayer() {
           <div className={styles.transport}>
             <button className={styles.seekButton} onClick={()=>seekBy(-15)} aria-label="15 saniye geri">
               <svg viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M16 11H8.5V3.5" />
-                <path d="M9.4 11.2A17.3 17.3 0 1 1 7.2 31.3" />
+                <path d="M15.8 10.8H8.8V3.8" />
+                <path d="M9.5 11.1A16.9 16.9 0 1 1 7.6 31.1" />
               </svg>
               <small>15</small>
             </button>
@@ -333,8 +333,8 @@ export default function BirSifacininKanadiPlayer() {
             </button>
             <button className={styles.seekButton} onClick={()=>seekBy(15)} aria-label="15 saniye ileri">
               <svg viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M32 11h7.5V3.5" />
-                <path d="M38.6 11.2A17.3 17.3 0 1 0 40.8 31.3" />
+                <path d="M32.2 10.8h7V3.8" />
+                <path d="M38.5 11.1A16.9 16.9 0 1 0 40.4 31.1" />
               </svg>
               <small>15</small>
             </button>
