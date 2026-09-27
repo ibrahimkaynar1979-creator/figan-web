@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import styles from "./EbookReader.module.css";
 import p00 from "../_data/bskPlain/p00";
 import p01 from "../_data/bskPlain/p01";
@@ -562,7 +562,7 @@ export default function BirSifacininKanadiReader() {
 
     if (marks.length === 0) return text;
 
-    const parts: React.ReactNode[] = [];
+    const parts: ReactNode[] = [];
     let cursor = 0;
     marks.forEach(mark => {
       const start = Math.max(cursor, Math.min(text.length, mark.start));
