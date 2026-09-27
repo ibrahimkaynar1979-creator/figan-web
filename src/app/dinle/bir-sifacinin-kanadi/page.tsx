@@ -171,37 +171,11 @@ export default function BirSifacininKanadiPlayer() {
   },[]);
 
   useEffect(()=>{
-    const audio=audioRef.current;
-    if(!audio) return;
-    const restore=()=>{
-      let resumeAt=0;
-      let savedRate=1;
-      try{
-        const saved=window.localStorage.getItem(PROGRESS_KEY);
-        if(saved){
-          const parsed=JSON.parse(saved) as {currentTime?:number;rate?:number};
-          if(typeof parsed.currentTime==="number" && parsed.currentTime>=0) resumeAt=parsed.currentTime;
-          if(typeof parsed.rate==="number" && [0.75,1,1.25,1.5,1.75,2].includes(parsed.rate)) savedRate=parsed.rate;
-        }
-      }catch{}
-      const actualDuration=audio.duration || BOOK_DURATION;
-      if(resumeAt>0 && resumeAt<actualDuration-1){
-        audio.currentTime=resumeAt;
-        setCurrentTime(resumeAt);
-      }
-      audio.playbackRate=savedRate;
-      setRate(savedRate);
-      setDuration(actualDuration);
-    };
-    audio.addEventListener("loadedmetadata",restore,{once:true});
-    return()=>audio.removeEventListener("loadedmetadata",restore);
-  },[]);
-
-  useEffect(()=>{
     const persist=()=>{
       try{
-        const liveTime=audioRef.current?.currentTime ?? currentTime;
-        const liveRate=audioRef.current?.playbackRate ?? rate;
+        const audio=audioRef.current;
+        const liveTime=audio?.currentTime ?? 0;
+        const liveRate=audio?.playbackRate ?? 1;
         window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:liveTime,rate:liveRate,updatedAt:Date.now()}));
       }catch{}
     };
@@ -215,7 +189,7 @@ export default function BirSifacininKanadiPlayer() {
       window.removeEventListener("pagehide",persist);
       document.removeEventListener("visibilitychange",onVisibility);
     };
-  },[currentTime,rate]);
+  },[]);
 
   useEffect(()=>{
     const index=Math.max(0,chapters.findIndex((item,i)=>{
