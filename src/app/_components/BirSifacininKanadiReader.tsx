@@ -28,7 +28,8 @@ type Panel = "toc" | "appearance" | "notes" | "search" | "bookmarks" | null;
 type Section = { title: string; paragraphs: readonly string[] };
 type ReaderBookmark = { index: number; page: number };
 type ReaderUnderline = { id: string; index: number; paragraph: number; start: number; end: number };
-type PendingUnderline = { paragraph: number; start: number; end: number; x: number; y: number };
+type PendingUnderline = { segments: Omit<ReaderUnderline, "id">[]; x: number; y: number };
+type ActiveUnderline = { id: string; x: number; y: number };
 
 const sections: Section[] = [
   ...p00, ...p01, ...p02, ...p03, ...p04, ...p05, ...p06,
@@ -55,7 +56,7 @@ export default function BirSifacininKanadiReader() {
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [underlines, setUnderlines] = useState<ReaderUnderline[]>([]);
   const [pendingUnderline, setPendingUnderline] = useState<PendingUnderline | null>(null);
-  const [activeUnderlineId, setActiveUnderlineId] = useState<string | null>(null);
+  const [activeUnderline, setActiveUnderline] = useState<ActiveUnderline | null>(null);
   const [draft, setDraft] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [chromeVisible, setChromeVisible] = useState(true);
@@ -486,7 +487,7 @@ export default function BirSifacininKanadiReader() {
     if (index < 0) return;
     window.setTimeout(() => {
       const selection = window.getSelection();
-      if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+      if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !current) {
         setPendingUnderline(null);
         return;
       }
@@ -501,25 +502,44 @@ export default function BirSifacininKanadiReader() {
 
       const startParagraph = startEl?.closest?.("p[data-reader-paragraph]") as HTMLElement | null;
       const endParagraph = endEl?.closest?.("p[data-reader-paragraph]") as HTMLElement | null;
-      if (!startParagraph || !endParagraph || startParagraph !== endParagraph) {
+      if (!startParagraph || !endParagraph) {
         setPendingUnderline(null);
         return;
       }
 
-      const paragraph = Number(startParagraph.dataset.readerParagraph);
-      const start = getOffsetWithin(startParagraph, range.startContainer, range.startOffset);
-      const end = getOffsetWithin(startParagraph, range.endContainer, range.endOffset);
-      if (!Number.isFinite(paragraph) || end <= start) {
+      const startParagraphIndex = Number(startParagraph.dataset.readerParagraph);
+      const endParagraphIndex = Number(endParagraph.dataset.readerParagraph);
+      if (
+        !Number.isFinite(startParagraphIndex) ||
+        !Number.isFinite(endParagraphIndex) ||
+        startParagraphIndex > endParagraphIndex
+      ) {
+        setPendingUnderline(null);
+        return;
+      }
+
+      const startOffset = getOffsetWithin(startParagraph, range.startContainer, range.startOffset);
+      const endOffset = getOffsetWithin(endParagraph, range.endContainer, range.endOffset);
+      const segments: Omit<ReaderUnderline, "id">[] = [];
+
+      for (let paragraph = startParagraphIndex; paragraph <= endParagraphIndex; paragraph += 1) {
+        const text = current.paragraphs[paragraph] || "";
+        const start = paragraph === startParagraphIndex ? Math.max(0, startOffset) : 0;
+        const end = paragraph === endParagraphIndex ? Math.min(text.length, endOffset) : text.length;
+        if (end > start) {
+          segments.push({ index, paragraph, start, end });
+        }
+      }
+
+      if (segments.length === 0) {
         setPendingUnderline(null);
         return;
       }
 
       const rect = range.getBoundingClientRect();
-      setActiveUnderlineId(null);
+      setActiveUnderline(null);
       setPendingUnderline({
-        paragraph,
-        start,
-        end,
+        segments,
         x: Math.min(window.innerWidth - 84, Math.max(84, rect.left + rect.width / 2)),
         y: Math.max(58, rect.top - 12),
       });
@@ -528,21 +548,18 @@ export default function BirSifacininKanadiReader() {
 
   const addUnderline = () => {
     if (index < 0 || !pendingUnderline) return;
-    const nextUnderline: ReaderUnderline = {
-      id: index + "-" + pendingUnderline.paragraph + "-" + pendingUnderline.start + "-" + pendingUnderline.end + "-" + Date.now(),
-      index,
-      paragraph: pendingUnderline.paragraph,
-      start: pendingUnderline.start,
-      end: pendingUnderline.end,
-    };
+    const underlineId = index + "-" + Date.now();
 
     setUnderlines(prev => {
-      const overlaps = prev.some(mark =>
-        mark.index === nextUnderline.index &&
-        mark.paragraph === nextUnderline.paragraph &&
-        Math.max(mark.start, nextUnderline.start) < Math.min(mark.end, nextUnderline.end)
-      );
-      return overlaps ? prev : [...prev, nextUnderline];
+      const additions = pendingUnderline.segments
+        .filter(segment => !prev.some(mark =>
+          mark.index === segment.index &&
+          mark.paragraph === segment.paragraph &&
+          Math.max(mark.start, segment.start) < Math.min(mark.end, segment.end)
+        ))
+        .map(segment => ({ ...segment, id: underlineId }));
+
+      return additions.length ? [...prev, ...additions] : prev;
     });
 
     window.getSelection()?.removeAllRanges();
@@ -551,7 +568,7 @@ export default function BirSifacininKanadiReader() {
 
   const removeUnderline = (id: string) => {
     setUnderlines(prev => prev.filter(mark => mark.id !== id));
-    setActiveUnderlineId(null);
+    setActiveUnderline(null);
   };
 
   const renderParagraph = (text: string, paragraph: number) => {
@@ -564,19 +581,23 @@ export default function BirSifacininKanadiReader() {
 
     const parts: ReactNode[] = [];
     let cursor = 0;
-    marks.forEach(mark => {
+    marks.forEach((mark, markIndex) => {
       const start = Math.max(cursor, Math.min(text.length, mark.start));
       const end = Math.max(start, Math.min(text.length, mark.end));
       if (start > cursor) parts.push(text.slice(cursor, start));
       if (end > start) {
         parts.push(
           <span
-            key={mark.id}
+            key={mark.id + "-" + paragraph + "-" + markIndex}
             className={styles.readerUnderline}
             onClick={(e) => {
               e.stopPropagation();
               setPendingUnderline(null);
-              setActiveUnderlineId(mark.id);
+              setActiveUnderline({
+                id: mark.id,
+                x: Math.min(window.innerWidth - 70, Math.max(70, e.clientX)),
+                y: Math.max(58, e.clientY - 10),
+              });
             }}
             title="Alt çizgiyi sil"
           >
@@ -809,23 +830,32 @@ export default function BirSifacininKanadiReader() {
         </nav>}
       </section>
 
-      {pendingUnderline && (
+      {(pendingUnderline || activeUnderline) && (
         <div
           className={styles.selectionToolbar}
-          style={{ left: pendingUnderline.x, top: pendingUnderline.y }}
+          style={{
+            left: pendingUnderline?.x ?? activeUnderline?.x,
+            top: pendingUnderline?.y ?? activeUnderline?.y,
+          }}
           onMouseDown={e => e.preventDefault()}
           onClick={e => e.stopPropagation()}
         >
-          <button type="button" onClick={addUnderline}>Altını çiz</button>
-          <button type="button" aria-label="Seçimi kapat" onClick={() => { window.getSelection()?.removeAllRanges(); setPendingUnderline(null); }}>×</button>
-        </div>
-      )}
-
-      {activeUnderlineId && (
-        <div className={styles.underlineToolbar} onClick={e => e.stopPropagation()}>
-          <span>Altı çizili metin</span>
-          <button type="button" onClick={() => removeUnderline(activeUnderlineId)}>Sil</button>
-          <button type="button" aria-label="Kapat" onClick={() => setActiveUnderlineId(null)}>×</button>
+          {pendingUnderline ? (
+            <button type="button" onClick={addUnderline}>Altını çiz</button>
+          ) : activeUnderline ? (
+            <button type="button" onClick={() => removeUnderline(activeUnderline.id)}>Sil</button>
+          ) : null}
+          <button
+            type="button"
+            aria-label="Kapat"
+            onClick={() => {
+              window.getSelection()?.removeAllRanges();
+              setPendingUnderline(null);
+              setActiveUnderline(null);
+            }}
+          >
+            ×
+          </button>
         </div>
       )}
 
