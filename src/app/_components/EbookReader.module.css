@@ -120,7 +120,6 @@
 .savedNotes span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--muted)}
 
 .startButton{border:0;border-radius:999px;background:var(--text);color:var(--surface);cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center}
-.startOverButton{border:0;background:transparent;color:var(--muted);font:13px/1.2 Arial,sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:8px}
 .coverTopLogo{display:none}
 .coverMenuButton{display:none}
 .coverScreen{width:min(760px,100%);margin:0 auto;display:flex;flex-direction:column;align-items:center}
