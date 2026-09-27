@@ -239,8 +239,8 @@
     padding:14px 0 4px;
     z-index:20;
     border-top:1px solid #d8ccbd;
-    background:color-mix(in srgb,var(--surface) 96%,transparent);
-    box-shadow:0 -10px 24px rgba(70,45,20,.04);
+    background:var(--surface);
+    box-shadow:none;
     transition:opacity .22s ease;
   }
   .reader[data-reading="true"][data-chrome="hidden"] .progressArea{opacity:0;pointer-events:none}
