@@ -548,23 +548,8 @@ export default function BirSifacininKanadiReader() {
                 onClick={(e) => { e.stopPropagation(); resumeReading(); }}
                 className={styles.startButton}
               >
-                {resumePosition ? "Kaldığın Yere Dön" : "Okumaya Başla"} <span>→</span>
+                Okumaya Başla <span>→</span>
               </button>
-              {resumePosition && (
-                <button
-                  type="button"
-                  className={styles.startOverButton}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    pendingReaderPage.current = 0;
-                    readerPageRef.current = 0;
-                    setReaderPage(0);
-                    go(0);
-                  }}
-                >
-                  Baştan başla
-                </button>
-              )}
               <div className={styles.coverStats}>
                 <span>
                   <i aria-hidden="true">
