@@ -587,7 +587,7 @@ export default function BirSifacininKanadiReader() {
       {panel && (
         <>
           <button className={styles.backdrop} onClick={() => setPanel(null)} aria-label="Paneli kapat" />
-          <aside className={styles.panel}>
+          <aside className={styles.panel} data-panel={panel ?? undefined}>
             <div className={styles.panelHead}>
               <h3>{panel === "toc" ? "İçindekiler" : panel === "appearance" ? "Görünüm" : panel === "search" ? "Kitapta Ara" : "Notlarım"}</h3>
               <button onClick={() => setPanel(null)}>×</button>
