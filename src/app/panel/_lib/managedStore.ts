@@ -25,7 +25,9 @@ export type ManagedBook = {
   language: string;
   status: "Yayında" | "Taslak";
   epubName?: string;
+  epubUrl?: string;
   coverName?: string;
+  coverUrl?: string;
   readerHref: string;
   format: string;
   chapterCount?: number;
@@ -91,7 +93,9 @@ function mapBookFromApi(input: any): ManagedBook {
     language: input.language || "Türkçe",
     status: input.status === "Yayında" ? "Yayında" : "Taslak",
     epubName: input.epubFilename ?? input.epubName ?? undefined,
+    epubUrl: input.epubUrl ?? undefined,
     coverName: input.coverUrl ?? input.coverName ?? undefined,
+    coverUrl: input.coverUrl ?? undefined,
     readerHref: input.readerHref || `/oku/${input.slug}`,
     format: input.format || "EPUB 3",
     chapterCount: Number(input.chapterCount ?? 0),
@@ -109,8 +113,8 @@ function mapBookToApi(book: ManagedBook) {
     status: book.status,
     readerHref: book.readerHref,
     format: book.format,
-    coverUrl: book.coverName || null,
-    epubUrl: null,
+    coverUrl: book.coverUrl || book.coverName || null,
+    epubUrl: book.epubUrl || null,
     epubFilename: book.epubName || null,
     chapterCount: Number(book.chapterCount ?? 0),
     metadata: {
