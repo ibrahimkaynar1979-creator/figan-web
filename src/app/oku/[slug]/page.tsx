@@ -6,6 +6,11 @@ export const dynamic = "force-dynamic";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+
+  if (slug === "blop-test") {
+    notFound();
+  }
+
   const repository = getPanelRepository();
   const books = await repository.listBooks();
   const book = books.find(item => item.slug === slug);
