@@ -3,23 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import styles from "./EbookReader.module.css";
-import p00 from "../_data/bskPlain/p00";
-import p01 from "../_data/bskPlain/p01";
-import p02 from "../_data/bskPlain/p02";
-import p03 from "../_data/bskPlain/p03";
-import p04 from "../_data/bskPlain/p04";
-import p05 from "../_data/bskPlain/p05";
-import p06 from "../_data/bskPlain/p06";
-import p07 from "../_data/bskPlain/p07";
-import p08 from "../_data/bskPlain/p08";
-import p09 from "../_data/bskPlain/p09";
-import p10 from "../_data/bskPlain/p10";
-import p11 from "../_data/bskPlain/p11";
-import p12 from "../_data/bskPlain/p12";
-import p13 from "../_data/bskPlain/p13";
-import p14 from "../_data/bskPlain/p14";
-import p15 from "../_data/bskPlain/p15";
-import p16 from "../_data/bskPlain/p16";
+import { bskLegacyReaderSections } from "../_data/bskEpub/sections";
 
 type Theme = "light" | "cream" | "dark";
 type ReaderFont = "serif" | "sans" | "modern";
@@ -31,12 +15,11 @@ type ReaderUnderline = { id: string; index: number; paragraph: number; start: nu
 type PendingUnderline = { segments: Omit<ReaderUnderline, "id">[]; x: number; y: number };
 type ActiveUnderline = { id: string; x: number; y: number };
 
-const sections: Section[] = [
-  ...p00, ...p01, ...p02, ...p03, ...p04, ...p05, ...p06,
-  ...p07, ...p08, ...p09, ...p10, ...p11, ...p12,
-  ...p13, ...p14, ...p15, ...p16,
-].filter(section => !["DEĞİŞİM", "ERDEM YOLCULUĞU"].includes(section.title))
- .map(section => section.title === "KAZANMAK DA VAR KAYBETMEK DE." ? { ...section, title: "KAZANMAK DA VAR KAYBETMEK" } : section);
+const sections: Section[] = bskLegacyReaderSections.map(section =>
+  section.title === "KAZANMAK DA VAR KAYBETMEK DE."
+    ? { ...section, title: "KAZANMAK DA VAR KAYBETMEK" }
+    : section
+);
 
 const STORAGE = "22reader-bir-sifacinin-kanadi";
 const READER_FONTS: Record<ReaderFont, string> = {
