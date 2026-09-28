@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const palettes = ["turquoise","coral","graphite","navy","olive","amber"] as const;
 type Palette = (typeof palettes)[number];
