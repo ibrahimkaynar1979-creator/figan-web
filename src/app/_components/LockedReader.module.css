@@ -37,6 +37,8 @@
 .topbar{height:74px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(16px);z-index:3}
 .chapterMini{display:flex;align-items:center;gap:16px;font-size:14px;color:var(--muted)}
 .chapterMini a{color:var(--text);text-decoration:none;font-size:24px}
+.chapterMini button{border:0;background:transparent;color:var(--text);font:24px/1 Georgia,serif;padding:0;cursor:pointer}
+.chapterMini button:disabled{opacity:.25;cursor:default}
 .tools{display:flex;align-items:center;gap:4px}
 .tools button{width:42px;height:42px;border:0;background:transparent;color:var(--text);font:500 20px Georgia,serif;border-radius:999px;cursor:pointer}
 .tools button:hover,.tools .active{background:var(--accent-soft);color:var(--accent)}
@@ -152,9 +154,10 @@
   .reader[data-reading="true"] .mobileBrand{display:none}
   .reader[data-reading="true"] .chapterMini{display:flex;position:static;transform:none;max-width:52%;font-size:12px}
   .reader[data-reading="true"] .chapterMini a{display:block;font-size:24px}
+  .reader[data-reading="true"] .chapterMini button{display:block;font-size:24px}
   .reader[data-reading="true"] .tools{gap:0}
   .reader[data-reading="true"] .tools button{width:38px;height:38px;font-size:18px}
-  .reader[data-reading="true"] .tools button:nth-child(2){display:none}
+  .reader[data-reading="true"] .tools button:nth-child(3){display:none}
 
   .reader[data-reading="true"] .readingArea{
     position:relative;
@@ -338,6 +341,63 @@
 
   .reader[data-reading="true"] .mobileNav{display:none!important}
   .reader[data-reading="true"] .panel{left:10px;right:10px;bottom:10px;top:auto;width:auto;max-height:78dvh;border-radius:22px;padding:20px}
+
+  .reader[data-reading="true"] .panel[data-panel="appearance"]{
+    top:auto;
+    bottom:12px;
+    height:min(56dvh,500px);
+    max-height:min(56dvh,500px);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    padding:14px 18px 12px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .panelHead{
+    flex:0 0 auto;
+    margin-bottom:6px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .panelHead h3{
+    font-size:23px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .appearance{
+    flex:1 1 auto;
+    min-height:0;
+    display:grid;
+    grid-template-rows:auto auto auto auto auto auto auto auto auto auto;
+    align-content:space-between;
+    gap:3px;
+    overflow:hidden;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .appearance>label{
+    margin-top:0;
+    font-size:12px;
+    line-height:1.1;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .themeRow button{
+    padding:5px 6px;
+    gap:2px;
+    min-height:48px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .themeRow i{
+    width:22px;
+    height:22px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .fontFamilyRow button{
+    padding:5px 6px;
+    font-size:19px;
+    min-height:44px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .alignRow button{
+    padding:5px 6px;
+    min-height:40px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .fontRow{
+    min-height:24px;
+  }
+  .reader[data-reading="true"] .panel[data-panel="appearance"] .fontRow span:last-child{
+    font-size:20px;
+  }
+
   .reader[data-reading="true"] .backdrop{z-index:30}
   .reader[data-reading="true"] .panel{z-index:31}
 }
