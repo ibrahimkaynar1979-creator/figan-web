@@ -219,9 +219,9 @@ export default function BirSifacininKanadiPlayer() {
     if(!("mediaSession" in navigator) || !("MediaMetadata" in window)) return;
 
     navigator.mediaSession.metadata=new MediaMetadata({
-      title: chapter.title,
+      title: "Bir Şifacının Kanadı",
       artist: "Figen Yavuz",
-      album: "Bir Şifacının Kanadı",
+      album: `${chapter.id}. Bölüm · ${chapter.title}`,
       artwork: [
         { src: "/bir_sifaci_png.png", sizes: "512x512", type: "image/png" },
       ],
