@@ -255,3 +255,67 @@
   }
   .currentTitle{font-size:19px}
 }
+
+
+.chapterEditor{
+  display:grid;
+  gap:10px;
+  padding:16px;
+  border:1px solid #ddcfbf;
+  border-radius:18px;
+  background:#fffaf4;
+}
+.chapterEditorHead{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-end;
+}
+.chapterEditorHead>div{
+  display:grid;
+  gap:3px;
+}
+.chapterEditorHead span{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#9a642d;
+}
+.chapterEditorHead strong{
+  font-size:12px;
+  color:#49362e;
+}
+.chapterEditorHead small{
+  color:#8a7b6d;
+  font-size:10px;
+}
+.chapterEditor textarea{
+  width:100%;
+  resize:vertical;
+  min-height:150px;
+  padding:12px 13px;
+  border:1px solid #d8c9b8;
+  border-radius:12px;
+  background:#fffdf9;
+  color:#1b1511;
+  outline:none;
+  font:500 12px/1.55 var(--font-ui),Arial,sans-serif;
+}
+.chapterEditor textarea:focus{
+  border-color:#936137;
+  box-shadow:0 0 0 3px rgba(147,97,55,.08);
+}
+.chapterEditor p{
+  margin:0;
+  color:#76695f;
+  font-size:10.5px;
+  line-height:1.45;
+}
+@media(max-width:600px){
+  .chapterEditorHead{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:5px;
+  }
+}
