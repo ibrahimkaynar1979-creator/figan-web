@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./ReaderPanel.module.css";
-import { getManagedBooks } from "../_lib/managedStore";
+import { listManagedBooks } from "../_lib/managedStore";
 
 const books = [
   {
@@ -57,7 +57,9 @@ export default function ReaderPanelPage() {
 
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
-    setManagedBooks(getManagedBooks() as typeof books);
+    void listManagedBooks().then(({ items }) => {
+      setManagedBooks(items as typeof books);
+    });
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
 
