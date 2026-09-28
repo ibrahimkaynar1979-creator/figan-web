@@ -1,36 +1,72 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { upload } from "@vercel/blob/client";
 import styles from "./upload.module.css";
 
-const TARGET_PATH = "audiobooks/bir-sifacinin-kanadi/master.mp3";
+type CurrentBook = {
+  ready?: boolean;
+  slug?: string;
+  title?: string;
+  author?: string;
+  voice?: string;
+  coverUrl?: string;
+  audioUrl?: string;
+  url?: string;
+  duration?: number;
+  size?: number;
+  uploadedAt?: string;
+  source?: string;
+};
+
+const formatTime = (seconds?: number) => {
+  if (!seconds || !Number.isFinite(seconds)) return "—";
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+  return h > 0
+    ? `${h}:${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`
+    : `${m}:${s.toString().padStart(2,"0")}`;
+};
+
+const slugify = (value:string) =>
+  value
+    .replace(/İ/g,"I")
+    .replace(/ı/g,"i")
+    .replace(/Ş/g,"S")
+    .replace(/ş/g,"s")
+    .replace(/Ğ/g,"G")
+    .replace(/ğ/g,"g")
+    .replace(/Ü/g,"U")
+    .replace(/ü/g,"u")
+    .replace(/Ö/g,"O")
+    .replace(/ö/g,"o")
+    .replace(/Ç/g,"C")
+    .replace(/ç/g,"c")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-+|-+$/g,"");
 
 export default function AudiobookUploadPage() {
-  const [file,setFile] = useState<File | null>(null);
+  const [audioFile,setAudioFile] = useState<File | null>(null);
+  const [coverFile,setCoverFile] = useState<File | null>(null);
+  const [coverPreview,setCoverPreview] = useState("");
+  const [detectedDuration,setDetectedDuration] = useState<number | undefined>();
+  const [title,setTitle] = useState("");
+  const [author,setAuthor] = useState("");
+  const [voice,setVoice] = useState("");
   const [progress,setProgress] = useState(0);
   const [status,setStatus] = useState<"idle"|"uploading"|"done"|"error">("idle");
   const [message,setMessage] = useState("");
-  const [url,setUrl] = useState("");
   const [authChecked,setAuthChecked] = useState(false);
   const [authenticated,setAuthenticated] = useState(false);
   const [pin,setPin] = useState("");
   const [authMessage,setAuthMessage] = useState("");
-  const [verified,setVerified] = useState(false);
-  const [masterStatus,setMasterStatus] = useState<{
-    ready:boolean;
-    size?:number;
-    uploadedAt?:string;
-    source?:string;
-  } | null>(null);
-  const [healthStatus,setHealthStatus] = useState<{
-    ok:boolean;
-    streaming?:boolean;
-    contentType?:string | null;
-    contentLength?:number;
-    totalSize?:number;
-    acceptRanges?:string | null;
-  } | null>(null);
+  const [current,setCurrent] = useState<CurrentBook | null>(null);
+  const [healthStatus,setHealthStatus] = useState<{ok:boolean;streaming?:boolean;totalSize?:number} | null>(null);
+
+  const slug=useMemo(()=>slugify(title),[title]);
 
   useEffect(()=>{
     void fetch("/api/sesli-kitap/auth",{cache:"no-store"})
@@ -53,28 +89,49 @@ export default function AudiobookUploadPage() {
         ok:response.ok,
         data:await response.json().catch(()=>null),
       })),
-    ])
-      .then(([current,health])=>{
-        setMasterStatus({
-          ready:Boolean(current?.ready),
-          size:typeof current?.size==="number" ? current.size : undefined,
-          uploadedAt:typeof current?.uploadedAt==="string" ? current.uploadedAt : undefined,
-          source:typeof current?.source==="string" ? current.source : undefined,
-        });
-        setHealthStatus({
-          ok:Boolean(health.ok && health.data?.ok),
-          streaming:Boolean(health.data?.streaming),
-          contentType:typeof health.data?.contentType==="string" ? health.data.contentType : null,
-          contentLength:typeof health.data?.contentLength==="number" ? health.data.contentLength : undefined,
-          totalSize:typeof health.data?.totalSize==="number" ? health.data.totalSize : undefined,
-          acceptRanges:typeof health.data?.acceptRanges==="string" ? health.data.acceptRanges : null,
-        });
-      })
-      .catch(()=>{
-        setMasterStatus({ready:false});
-        setHealthStatus({ok:false});
+    ]).then(([book,health])=>{
+      setCurrent(book);
+      setTitle(typeof book?.title==="string" ? book.title : "");
+      setAuthor(typeof book?.author==="string" ? book.author : "");
+      setVoice(typeof book?.voice==="string" ? book.voice : "");
+      setHealthStatus({
+        ok:Boolean(health.ok && health.data?.ok),
+        streaming:Boolean(health.data?.streaming),
+        totalSize:typeof health.data?.totalSize==="number" ? health.data.totalSize : undefined,
       });
+    }).catch(()=>{
+      setCurrent(null);
+      setHealthStatus({ok:false});
+    });
   },[authenticated]);
+
+  useEffect(()=>{
+    if(!coverFile){
+      setCoverPreview("");
+      return;
+    }
+    const url=URL.createObjectURL(coverFile);
+    setCoverPreview(url);
+    return()=>URL.revokeObjectURL(url);
+  },[coverFile]);
+
+  function inspectAudio(file:File | null){
+    setAudioFile(file);
+    setDetectedDuration(undefined);
+    setStatus("idle");
+    setMessage("");
+    if(!file) return;
+
+    const url=URL.createObjectURL(file);
+    const audio=document.createElement("audio");
+    audio.preload="metadata";
+    audio.src=url;
+    audio.onloadedmetadata=()=>{
+      if(Number.isFinite(audio.duration)) setDetectedDuration(audio.duration);
+      URL.revokeObjectURL(url);
+    };
+    audio.onerror=()=>URL.revokeObjectURL(url);
+  }
 
   async function login(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -93,43 +150,6 @@ export default function AudiobookUploadPage() {
     setPin("");
   }
 
-  async function verifyPublishedAudio(expectedUrl:string) {
-    for(let attempt=0;attempt<5;attempt+=1){
-      try{
-        const [currentResponse,healthResponse]=await Promise.all([
-          fetch("/api/sesli-kitap/current",{cache:"no-store"}),
-          fetch("/api/sesli-kitap/health",{cache:"no-store"}),
-        ]);
-        const data=await currentResponse.json();
-        const health=await healthResponse.json().catch(()=>null);
-        const currentOk=Boolean(
-          currentResponse.ok &&
-          data?.ready &&
-          typeof data.url==="string" &&
-          data.url &&
-          (data.pathname==="audiobooks/bir-sifacinin-kanadi/master.mp3" || data.url===expectedUrl)
-        );
-        const ok=Boolean(currentOk && healthResponse.ok && health?.ok);
-        setHealthStatus({
-          ok,
-          streaming:Boolean(health?.streaming),
-          contentType:typeof health?.contentType==="string" ? health.contentType : null,
-          contentLength:typeof health?.contentLength==="number" ? health.contentLength : undefined,
-          totalSize:typeof health?.totalSize==="number" ? health.totalSize : undefined,
-          acceptRanges:typeof health?.acceptRanges==="string" ? health.acceptRanges : null,
-        });
-        if(ok){
-          setVerified(true);
-          return true;
-        }
-      }catch{}
-      if(attempt<4) await new Promise((resolve)=>window.setTimeout(resolve,700));
-    }
-    setVerified(false);
-    setHealthStatus({ok:false});
-    return false;
-  }
-
   async function logout() {
     await fetch("/api/sesli-kitap/auth",{method:"DELETE"}).catch(()=>null);
     setAuthenticated(false);
@@ -139,60 +159,100 @@ export default function AudiobookUploadPage() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!file) return;
 
-    const isMp3Name=file.name.toLowerCase().endsWith(".mp3");
-    const isMp3Type=!file.type || ["audio/mpeg","audio/mp3"].includes(file.type);
-    if (!isMp3Name || !isMp3Type) {
+    if(!title.trim() || !author.trim() || !slug){
+      setStatus("error");
+      setMessage("Kitap adı ve yazar adı zorunludur.");
+      return;
+    }
+    if(!audioFile || !coverFile){
+      setStatus("error");
+      setMessage("MP3 dosyası ve kapak görseli birlikte seçilmelidir.");
+      return;
+    }
+
+    const isMp3=audioFile.name.toLowerCase().endsWith(".mp3") &&
+      (!audioFile.type || ["audio/mpeg","audio/mp3"].includes(audioFile.type));
+    if(!isMp3){
       setStatus("error");
       setMessage("Lütfen geçerli bir MP3 dosyası seçin.");
       return;
     }
-    if (file.size > 120 * 1024 * 1024) {
+    if(audioFile.size>120*1024*1024){
       setStatus("error");
       setMessage("MP3 dosyası 120 MB sınırını aşıyor.");
+      return;
+    }
+    if(coverFile.size>10*1024*1024 || !["image/png","image/jpeg","image/webp"].includes(coverFile.type)){
+      setStatus("error");
+      setMessage("Kapak PNG, JPG veya WebP olmalı ve 10 MB'ı aşmamalıdır.");
       return;
     }
 
     setStatus("uploading");
     setProgress(0);
     setMessage("");
-    setUrl("");
-    setVerified(false);
 
-    try {
-      const blob = await upload(TARGET_PATH,file,{
+    try{
+      const audioPath=`audiobooks/${slug}/master.mp3`;
+      const ext=coverFile.type==="image/png" ? "png" : coverFile.type==="image/webp" ? "webp" : "jpg";
+      const coverPath=`audiobooks/${slug}/cover.${ext}`;
+
+      const audioBlob=await upload(audioPath,audioFile,{
         access:"public",
         handleUploadUrl:"/api/sesli-kitap/upload",
         multipart:true,
-        onUploadProgress:(event)=>setProgress(Math.round(event.percentage)),
+        onUploadProgress:(event)=>setProgress(Math.round(event.percentage*0.8)),
       });
 
-      setUrl(blob.url);
-      const ok=await verifyPublishedAudio(blob.url);
-      if(ok){
-        const response=await fetch("/api/sesli-kitap/current",{cache:"no-store"});
-        const data=await response.json().catch(()=>null);
-        setMasterStatus({
-          ready:Boolean(data?.ready),
-          size:typeof data?.size==="number" ? data.size : file.size,
-          uploadedAt:typeof data?.uploadedAt==="string" ? data.uploadedAt : new Date().toISOString(),
-          source:typeof data?.source==="string" ? data.source : "blob",
-        });
-      }
-      setStatus("done");
-      setMessage(
-        ok
-          ? "Master ses dosyası yüklendi ve player kaynağı doğrulandı."
-          : "Dosya yüklendi; player kaynağı henüz doğrulanamadı."
+      const coverBlob=await upload(coverPath,coverFile,{
+        access:"public",
+        handleUploadUrl:"/api/sesli-kitap/upload",
+        onUploadProgress:(event)=>setProgress(80+Math.round(event.percentage*0.12)),
+      });
+
+      const manifest={
+        version:1 as const,
+        slug,
+        title:title.trim(),
+        author:author.trim(),
+        voice:voice.trim() || undefined,
+        coverUrl:coverBlob.url,
+        audioUrl:audioBlob.url,
+        duration:detectedDuration,
+        chapters:[{id:1,title:"Kitabın Tamamı",start:0}],
+        updatedAt:new Date().toISOString(),
+      };
+
+      const manifestFile=new File(
+        [JSON.stringify(manifest)],
+        "active.json",
+        {type:"application/json"},
       );
-    } catch (error) {
+
+      await upload("audiobooks/active.json",manifestFile,{
+        access:"public",
+        handleUploadUrl:"/api/sesli-kitap/upload",
+        onUploadProgress:(event)=>setProgress(92+Math.round(event.percentage*0.08)),
+      });
+
+      setProgress(100);
+      setCurrent({
+        ready:true,
+        ...manifest,
+        url:audioBlob.url,
+        size:audioFile.size,
+        uploadedAt:manifest.updatedAt,
+        source:"active-manifest",
+      });
+      setHealthStatus({ok:true,totalSize:audioFile.size});
+      setStatus("done");
+      setMessage("Sesli kitap yayınlandı. Player artık bu kitap, kapak ve MP3 ile çalışacak.");
+    }catch(error){
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Yükleme sırasında hata oluştu.");
     }
   }
-
-  const size = file ? (file.size / 1024 / 1024).toFixed(1) : null;
 
   if(!authChecked){
     return <main className={styles.page}><section className={styles.card}><div className={styles.authBox}>Yönetim paneli hazırlanıyor…</div></section></main>;
@@ -205,7 +265,7 @@ export default function AudiobookUploadPage() {
           <div className={styles.authBox}>
             <span>22 YAYINEVİ</span>
             <h1>Sesli Kitap Yönetimi</h1>
-            <p>Master ses dosyasını değiştirmek için yönetici girişi gereklidir.</p>
+            <p>Sesli kitap yayınlamak için yönetici girişi gereklidir.</p>
             <form onSubmit={login}>
               <input
                 type="password"
@@ -224,6 +284,9 @@ export default function AudiobookUploadPage() {
     );
   }
 
+  const currentSize=current?.size || healthStatus?.totalSize;
+  const displayCover=coverPreview || current?.coverUrl || "/bir_sifaci_png.png";
+
   return (
     <main className={styles.page}>
       <section className={styles.card}>
@@ -237,96 +300,99 @@ export default function AudiobookUploadPage() {
 
         <div className={styles.heading}>
           <p>SESLİ KİTAP YÖNETİMİ</p>
-          <h1>Bir Şifacının Kanadı</h1>
-          <span>Figen Yavuz · Master MP3 yükleme</span>
+          <h1>{title || "Yeni Sesli Kitap"}</h1>
+          <span>Kapak, kitap bilgileri ve master MP3 tek panelden yayınlanır.</span>
         </div>
 
         <div className={styles.bookRow}>
-          <div className={styles.cover}>
-            <small>FİGEN YAVUZ</small>
-            <strong>Bir<br/>Şifacının<br/>Kanadı</strong>
-            <span>22 YAYINEVİ</span>
+          <div className={styles.coverPreview}>
+            <img src={displayCover} alt="" />
           </div>
           <div>
-            <b>Hedef dosya</b>
-            <code>{TARGET_PATH}</code>
-            <p>Web player tek master MP3 kullanır. Bölüm geçişleri dosyanın içindeki zaman işaretlerinden yapılır.</p>
+            <b>Aktif player</b>
+            <strong className={styles.currentTitle}>{current?.title || "Henüz yayın yok"}</strong>
+            <p>{current?.author || "Yazar bilgisi yok"}{current?.voice ? ` · ${current.voice} sesi` : ""}</p>
+            <a href="/dinle/bir-sifacinin-kanadi" target="_blank" rel="noreferrer">Player'ı Aç →</a>
           </div>
         </div>
 
         <div className={styles.masterState}>
-          <div>
-            <span>MEVCUT MASTER</span>
-            <strong>{masterStatus?.ready && healthStatus?.ok ? "Yayına hazır" : masterStatus?.ready ? "Kaynak kontrolü" : "Kontrol ediliyor"}</strong>
-          </div>
-          <div>
-            <span>BOYUT</span>
-            <strong>{(masterStatus?.size || healthStatus?.totalSize) ? `${((masterStatus?.size || healthStatus?.totalSize || 0)/1024/1024).toFixed(1)} MB` : "—"}</strong>
-          </div>
-          <div>
-            <span>SON YÜKLEME</span>
-            <strong>{masterStatus?.uploadedAt ? new Date(masterStatus.uploadedAt).toLocaleString("tr-TR") : "—"}</strong>
-          </div>
-          <a href="/dinle/bir-sifacinin-kanadi" target="_blank" rel="noreferrer">Player'ı Aç →</a>
-          <div>
-            <span>SES KONTROLÜ</span>
-            <strong>{healthStatus?.ok ? "✓ Erişilebilir" : "—"}</strong>
-          </div>
-          <div>
-            <span>AKIŞ DESTEĞİ</span>
-            <strong>{healthStatus?.streaming ? "✓ Byte-range" : healthStatus?.ok ? "Temel erişim" : "—"}</strong>
-          </div>
-          <div>
-            <span>KAYNAK</span>
-            <strong>{masterStatus?.source === "blob" ? "Vercel Blob" : masterStatus?.source === "public-fallback" ? "Public fallback" : "—"}</strong>
-          </div>
+          <div><span>DURUM</span><strong>{current?.ready ? "Yayına hazır" : "Hazırlanıyor"}</strong></div>
+          <div><span>SÜRE</span><strong>{formatTime(detectedDuration || current?.duration)}</strong></div>
+          <div><span>BOYUT</span><strong>{currentSize ? `${(currentSize/1024/1024).toFixed(1)} MB` : "—"}</strong></div>
+          <div><span>SES KONTROLÜ</span><strong>{healthStatus?.ok ? "✓ Erişilebilir" : "—"}</strong></div>
+          <div><span>AKIŞ</span><strong>{healthStatus?.streaming ? "✓ Byte-range" : healthStatus?.ok ? "Hazır" : "—"}</strong></div>
+          <div><span>KAYNAK</span><strong>{current?.source==="active-manifest" ? "Aktif yayın" : current?.source==="blob" ? "Vercel Blob" : "Fallback"}</strong></div>
         </div>
 
         <form onSubmit={onSubmit} className={styles.form}>
-          <label className={styles.drop}>
-            <input
-              type="file"
-              accept=".mp3,audio/mpeg"
-              onChange={(event)=>{
-                const next=event.target.files?.[0] ?? null;
-                setFile(next);
-                setStatus("idle");
-                setProgress(0);
-                setMessage("");
-              }}
-            />
-            <span className={styles.uploadIcon}>↑</span>
-            <strong>{file ? file.name : "Master MP3 dosyasını seçin"}</strong>
-            <small>{file ? `${size} MB` : "MP3 · en fazla 120 MB"}</small>
-          </label>
+          <div className={styles.metaGrid}>
+            <label>
+              <span>Kitap adı</span>
+              <input value={title} onChange={(e)=>setTitle(e.target.value)} placeholder="Kitabın adı" />
+            </label>
+            <label>
+              <span>Yazar</span>
+              <input value={author} onChange={(e)=>setAuthor(e.target.value)} placeholder="Yazar adı" />
+            </label>
+            <label>
+              <span>Seslendiren</span>
+              <input value={voice} onChange={(e)=>setVoice(e.target.value)} placeholder="Örn. Elif" />
+            </label>
+            <label>
+              <span>Yayın kodu</span>
+              <input value={slug} readOnly />
+            </label>
+          </div>
 
-          {status === "uploading" && (
+          <div className={styles.fileGrid}>
+            <label className={styles.drop}>
+              <input
+                type="file"
+                accept=".mp3,audio/mpeg"
+                onChange={(event)=>inspectAudio(event.target.files?.[0] ?? null)}
+              />
+              <span className={styles.uploadIcon}>♪</span>
+              <strong>{audioFile ? audioFile.name : "Master MP3 seçin"}</strong>
+              <small>{audioFile ? `${(audioFile.size/1024/1024).toFixed(1)} MB · ${formatTime(detectedDuration)}` : "MP3 · en fazla 120 MB"}</small>
+            </label>
+
+            <label className={styles.drop}>
+              <input
+                type="file"
+                accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp"
+                onChange={(event)=>{
+                  setCoverFile(event.target.files?.[0] ?? null);
+                  setStatus("idle");
+                  setMessage("");
+                }}
+              />
+              <span className={styles.uploadIcon}>▣</span>
+              <strong>{coverFile ? coverFile.name : "Kapak görselini seçin"}</strong>
+              <small>PNG · JPG · WebP · en fazla 10 MB</small>
+            </label>
+          </div>
+
+          {status==="uploading" && (
             <div className={styles.progressArea}>
-              <div className={styles.progressTop}><span>Yükleniyor</span><b>{progress}%</b></div>
+              <div className={styles.progressTop}><span>Kitap yayınlanıyor</span><b>{progress}%</b></div>
               <div className={styles.progress}><i style={{width:`${progress}%`}} /></div>
-              <small>Tarayıcıyı kapatmayın. Dosya doğrudan Vercel Blob'a yükleniyor.</small>
+              <small>Önce MP3, sonra kapak ve yayın bilgileri kaydediliyor.</small>
             </div>
           )}
 
-          {message && <div className={status === "done" ? styles.success : styles.error}>{message}</div>}
+          {message && <div className={status==="done" ? styles.success : styles.error}>{message}</div>}
 
-          {url && (
-            <div className={styles.result}>
-              <span>YAYIN DURUMU</span>
-              <b>{verified ? "✓ Player kaynağı doğrulandı" : "Kontrol bekliyor"}</b>
-            </div>
-          )}
-
-          <button type="submit" disabled={!file || status === "uploading"}>
-            {status === "uploading" ? "Yükleniyor…" : "Ses Dosyasını Yükle"}
+          <button type="submit" disabled={status==="uploading"}>
+            {status==="uploading" ? "Yayınlanıyor…" : "Sesli Kitabı Yayınla"}
           </button>
         </form>
 
         <div className={styles.footer}>
-          <span>2:21:17</span>
-          <span>85 bölüm</span>
-          <span>64 kbps</span>
-          <span>Web master</span>
+          <span>{formatTime(detectedDuration || current?.duration)}</span>
+          <span>{current?.title || "Aktif kitap"}</span>
+          <span>{current?.author || "22 Yayınevi"}</span>
+          <span>Dinamik player</span>
         </div>
       </section>
     </main>
