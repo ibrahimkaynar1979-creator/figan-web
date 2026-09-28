@@ -468,3 +468,69 @@
 @media(max-width:600px){
   .page{display:block;padding:0;background:#f4eadf}
 }
+
+
+/* Publishing OS universal theme coverage — Audiobook */
+.page{
+  background:var(--po-bg)!important;
+  color:var(--po-text)!important;
+  font-family:var(--po-font-ui)!important;
+}
+.sidebar{
+  background:linear-gradient(180deg,var(--po-nav-bg),var(--po-nav-bg-2))!important;
+  color:var(--po-nav-text)!important;
+  border-color:var(--po-border)!important;
+  box-shadow:8px 0 26px color-mix(in srgb,var(--po-text) 7%,transparent)!important;
+}
+.brand,.readerMark,.sidebarFoot{border-color:var(--po-border)!important}
+.brand img,.readerMark img{filter:none!important;opacity:1!important}
+.sidebar nav a,.nav a,.nav button{color:var(--po-nav-muted)!important}
+.sidebar nav a:hover,.sidebar nav .active,.nav a:hover,.nav .active,.nav button:hover,.nav button.active{
+  background:linear-gradient(145deg,var(--po-surface),var(--po-surface-soft))!important;
+  color:var(--po-text)!important;
+  border-color:var(--po-border)!important;
+  box-shadow:var(--po-shadow-card)!important;
+}
+.workspace{background:transparent!important}
+.topbar h1,.intro h2,.sectionHead h3,.card h3,.addCard h3,.sectionTitle h2,.heading h1,.currentTitle,.catalogHead strong{
+  color:var(--po-text)!important;
+}
+.topbar h1,.sectionTitle h2,.heading h1,.currentTitle,.catalogHead strong{
+  font-family:var(--po-font-ui)!important;
+  font-weight:750!important;
+}
+.topbar>div>span,.kicker,.eyebrow,.intro>div>span,.sectionHead>div>span,.guideKicker,.addKicker,.linksLabel,.sectionTitle b,.heading p,.authBox>span,.masterState span,.chapterEditorHead span,.catalogHead span{
+  color:var(--po-brand)!important;
+}
+.intro,.connectionGuide,.stats article,.bookCard,.addCard,.card,.authBox,.bookRow,.drop,.progressArea,.result,.masterState,.chapterEditor,.catalogItem,.catalogEmpty,.search,.librarySearch,.preview{
+  background:linear-gradient(145deg,var(--po-surface),var(--po-surface-soft))!important;
+  border-color:var(--po-border)!important;
+  box-shadow:var(--po-shadow-card)!important;
+  color:var(--po-text)!important;
+}
+.intro>p,.addCard p,.card p,.subtitle,.guideGrid p,.linksBox>a,.linksBox>div,.authBox p,.bookRow p,.drop small,.progressArea small,.chapterEditor p,.catalogItem>div span,.catalogItem>div small,.catalogEmpty{
+  color:var(--po-text-secondary)!important;
+}
+.fields input,.fields select,.fields textarea,.metaGrid input,.chapterEditor textarea,.authBox input{
+  background:var(--po-surface)!important;
+  color:var(--po-text)!important;
+  border-color:var(--po-border)!important;
+  font-family:var(--po-font-ui)!important;
+}
+.fields label>span,.metaGrid span{color:var(--po-text)!important}
+.fields small,.metaGrid input[readonly]{color:var(--po-text-secondary)!important}
+.fields input:focus,.fields select:focus,.fields textarea:focus,.metaGrid input:focus,.chapterEditor textarea:focus{
+  border-color:var(--po-brand)!important;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--po-brand) 12%,transparent)!important;
+}
+.newButton,.actions a:last-child,.actions button,.form>button,.authBox form button,.adminActions button:first-child,.detail-actions .primary{
+  background:linear-gradient(135deg,var(--po-brand),color-mix(in srgb,var(--po-brand) 78%,#0b7f8b))!important;
+  color:var(--po-brand-contrast)!important;
+  border-color:transparent!important;
+  box-shadow:0 8px 18px color-mix(in srgb,var(--po-brand) 24%,transparent)!important;
+}
+.actions a,.adminActions button,.adminActions a,.topbar>a{
+  border-color:var(--po-border)!important;
+  background:var(--po-surface)!important;
+  color:var(--po-text)!important;
+}
