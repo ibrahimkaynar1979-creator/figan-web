@@ -5,6 +5,7 @@ import { upload } from "@vercel/blob/client";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./ReaderBookForm.module.css";
 import PublicationPreviewDock from "../../_components/PublicationPreviewDock";
+import ThemeSwitcher from "../../_components/ThemeSwitcher";
 import {
   getPanelPersistenceStatus,
   listManagedAuthors,
@@ -320,6 +321,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
             <p>Bir kitabın editoryal hazırlıktan Reader, sesli kitap ve dağıtıma uzanan bütün yayın yaşam döngüsünü tek projede yönetin.</p>
           </div>
           <div className={styles.topActions}>
+            <ThemeSwitcher />
             {lastSavedHref ? (
               <a className={styles.previewButton} href={lastSavedHref} target="_blank" rel="noreferrer">
                 Reader'ı Aç ↗
