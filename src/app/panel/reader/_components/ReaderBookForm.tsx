@@ -520,8 +520,10 @@ export default function ReaderBookForm({ mode, initial }: Props) {
             author={author?.name || ""}
             coverSrc={coverSource}
             status={status}
-            chapterLabel={hasEpub ? "EPUB bağlı" : "… bölüm"}
-            readingTimeLabel={hasEpub ? "otomatik" : "…"}
+            publicationHref={slug ? readerHref : undefined}
+            sourceReady={hasEpub}
+            chapterLabel={hasEpub ? "EPUB bağlı" : "EPUB bekleniyor"}
+            readingTimeLabel={hasEpub ? "otomatik" : "bekliyor"}
           />
         </div>
       </section>
