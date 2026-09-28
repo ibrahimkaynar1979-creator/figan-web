@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./NewAuthor.module.css";
-
-const STORAGE = "22reader-panel-authors";
+import { saveManagedAuthor, type ManagedAuthor } from "../../_lib/managedStore";
 
 const slugify = (value: string) =>
   value.toLocaleLowerCase("tr-TR")
@@ -33,11 +32,10 @@ export default function NewAuthorPage() {
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    const item = {name,slug,href,role,bio,domain,status,instagram,website,photoName,source:"panel" as const};
-    let current:any[] = [];
-    try { current = JSON.parse(localStorage.getItem(STORAGE) || "[]"); } catch {}
-    const next = [...current.filter(author => author.slug !== slug), item];
-    localStorage.setItem(STORAGE, JSON.stringify(next));
+    const item: ManagedAuthor = {
+      name, slug, href, role, bio, domain, status, instagram, website, photoName, source: "panel"
+    };
+    saveManagedAuthor(item);
     setSaved(true);
     window.setTimeout(()=>setSaved(false),2500);
   };
