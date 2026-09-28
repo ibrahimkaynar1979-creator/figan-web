@@ -5,6 +5,7 @@ import { upload } from "@vercel/blob/client";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./ReaderBookForm.module.css";
 import PublicationPreviewDock from "../../_components/PublicationPreviewDock";
+import PanelSidebar from "../../_components/PanelSidebar";
 import {
   getPanelPersistenceStatus,
   listManagedAuthors,
@@ -275,42 +276,16 @@ export default function ReaderBookForm({ mode, initial }: Props) {
 
   return (
     <main className={styles.page}>
-      <aside className={styles.sidebar}>
-        <a href="/panel/reader" className={styles.brand}>
-          <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={330} height={210} priority />
-        </a>
-        <div className={styles.readerMark}>
-          <Image src="/22_reader_logo.png" alt="22 Reader" width={360} height={118} priority />
-        </div>
-
-        <nav>
-          <span className={styles.navGroup}>YAYIN MERKEZİ</span>
-          <a href="/panel/reader">▣ Yayın Projeleri</a>
-          <a className={styles.active} href={mode === "new" ? "/panel/reader/yeni" : readerHref}>
-            ＋ {mode === "new" ? "Yeni Yayın Projesi" : "Projeyi Düzenle"}
-          </a>
-          <a href="/panel/yazarlar">✒ Yazarlar</a>
-          <a href="/panel/sesli-kitap">♪ Sesli Kitaplar</a>
-          <span className={styles.navGroup}>ÜRETİM</span>
-          <a className={styles.futureLink} href="#uretim">✦ Üretim Merkezi <small>yakında</small></a>
-          <a className={styles.futureLink} href="#dagitim">◇ Dijital Dağıtım <small>yakında</small></a>
-          <a className={styles.futureLink} href="#analitik">⌁ Analitik <small>yakında</small></a>
-        </nav>
-
-        <div className={styles.systemBox}>
-          <span>SİSTEM DURUMU</span>
-          <div>
-            <i className={systemState?.databaseConfigured ? styles.okDot : styles.waitDot} />
-            <b>Neon</b>
-            <small>{systemState === null ? "Kontrol" : systemState.databaseConfigured ? "Bağlı" : "Eksik"}</small>
+      <PanelSidebar
+        active="new"
+        footer={
+          <div className={styles.systemBox}>
+            <span>SİSTEM DURUMU</span>
+            <div><i className={systemState?.databaseConfigured ? styles.okDot : styles.waitDot} /><b>Neon</b><small>{systemState === null ? "Kontrol" : systemState.databaseConfigured ? "Bağlı" : "Eksik"}</small></div>
+            <div><i className={systemState?.blobConfigured ? styles.okDot : styles.waitDot} /><b>Blob</b><small>{systemState === null ? "Kontrol" : systemState.blobConfigured ? "Bağlı" : "Eksik"}</small></div>
           </div>
-          <div>
-            <i className={systemState?.blobConfigured ? styles.okDot : styles.waitDot} />
-            <b>Blob</b>
-            <small>{systemState === null ? "Kontrol" : systemState.blobConfigured ? "Bağlı" : "Eksik"}</small>
-          </div>
-        </div>
-      </aside>
+        }
+      />
 
       <section className={styles.workspace}>
         <header className={styles.topbar}>
