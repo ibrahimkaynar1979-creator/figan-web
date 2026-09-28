@@ -949,3 +949,13 @@
 .futureGrid b{font-size:9.5px!important}
 .readySummary span{font-size:10px!important}
 .actions a,.actions button{font-size:12.5px!important}
+
+/* Publishing OS typography family lock */
+.page,.workspace,.card,.form,.dock{font-family:var(--po-font-ui)!important}
+.topbar h1,.heading h1{font-family:var(--po-font-ui)!important;font-weight:750!important;letter-spacing:-.025em!important;color:var(--po-text)!important}
+.intro h2,.intro h2 em,.sectionHead h3,.connectionGuide h3,.bookCard h4,.addCard h3,.addCard h4,.card h3,.detailHead strong,.readerBody h3,.audioBody h3{
+  font-family:var(--po-font-editorial)!important;
+}
+.sectionTitle h2,.pipelineHead strong,.futureGrid strong,.catalogHead strong,.currentTitle{
+  font-family:var(--po-font-ui)!important;font-weight:700!important;
+}
