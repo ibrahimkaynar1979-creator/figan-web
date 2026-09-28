@@ -7,6 +7,7 @@ import { isAudiobookAdmin } from "@/lib/audiobookAuth";
 const AUDIO_PATH = /^audiobooks\/[a-z0-9-]+\/master\.mp3$/;
 const COVER_PATH = /^audiobooks\/[a-z0-9-]+\/cover\.(png|jpe?g|webp)$/;
 const ACTIVE_MANIFEST_PATH = "audiobooks/active.json";
+const BOOK_MANIFEST_PATH = /^audiobooks\/[a-z0-9-]+\/manifest\.json$/;
 
 export async function POST(request: Request) {
   if (!isAudiobookAdmin(request)) {
@@ -40,13 +41,16 @@ export async function POST(request: Request) {
           };
         }
 
-        if (pathname === ACTIVE_MANIFEST_PATH) {
+        if (pathname === ACTIVE_MANIFEST_PATH || BOOK_MANIFEST_PATH.test(pathname)) {
           return {
             allowedContentTypes: ["application/json"],
             maximumSizeInBytes: 256 * 1024,
             addRandomSuffix: false,
             allowOverwrite: true,
-            tokenPayload: JSON.stringify({ type: "audiobook-manifest" }),
+            tokenPayload: JSON.stringify({
+              type: pathname === ACTIVE_MANIFEST_PATH ? "audiobook-active-manifest" : "audiobook-book-manifest",
+              pathname,
+            }),
           };
         }
 
