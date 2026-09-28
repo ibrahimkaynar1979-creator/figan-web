@@ -46,3 +46,23 @@
  .sidebar nav a:nth-of-type(n+5){display:none}
  .icon{width:22px;height:22px}
 }
+
+.themeArea{
+  margin-top:auto;
+  padding:14px 10px 12px;
+  border-top:1px solid var(--po-border);
+  display:grid;
+  gap:8px;
+}
+.themeArea>span{
+  color:var(--po-text-muted);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.themeArea>div{width:100%}
+.themeArea button:first-child{width:100%;justify-content:flex-start}
+.footer{margin-top:0}
+@media(max-width:820px){
+  .themeArea{display:none}
+}
