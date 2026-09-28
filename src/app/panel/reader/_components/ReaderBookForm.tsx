@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./ReaderBookForm.module.css";
-import { getManagedAuthors, saveManagedBook, type ManagedBook } from "../../_lib/managedStore";
+import { listManagedAuthors, saveManagedBook, type ManagedBook } from "../../_lib/managedStore";
 
 type Props = {
   mode: "new" | "edit";
@@ -53,16 +53,18 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
 
-    const panelAuthors: AuthorOption[] = getManagedAuthors().map(item => ({
-      name: item.name,
-      slug: item.slug,
-      href: item.href || `/yazarlar/${item.slug}`,
-    }));
-    const merged = [...BUILT_IN_AUTHORS];
-    panelAuthors.forEach(item => {
-      if (!merged.some(existing => existing.slug === item.slug)) merged.push(item);
+    void listManagedAuthors().then(({ items }) => {
+      const panelAuthors: AuthorOption[] = items.map(item => ({
+        name: item.name,
+        slug: item.slug,
+        href: item.href || `/yazarlar/${item.slug}`,
+      }));
+      const merged = [...BUILT_IN_AUTHORS];
+      panelAuthors.forEach(item => {
+        if (!merged.some(existing => existing.slug === item.slug)) merged.push(item);
+      });
+      setAuthorOptions(merged);
     });
-    setAuthorOptions(merged);
 
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
@@ -75,7 +77,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
     if (mode === "new") setSlug(slugify(value));
   };
 
-  const submit = (event: FormEvent) => {
+  const submit = async (event: FormEvent) => {
     event.preventDefault();
     const payload: ManagedBook = {
       title,
@@ -93,7 +95,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
       updatedAt: new Date().toISOString(),
     };
 
-    saveManagedBook(payload, mode === "edit" ? initial?.slug : undefined);
+    await saveManagedBook(payload, mode === "edit" ? initial?.slug : undefined);
     setSaved(true);
     window.setTimeout(() => setSaved(false), 2600);
   };
