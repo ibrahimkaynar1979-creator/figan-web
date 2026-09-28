@@ -19,6 +19,16 @@ export type AudiobookManifest = {
   updatedAt?: string;
 };
 
+export type CurrentAudiobookResult = AudiobookManifest & {
+  ready: true;
+  url?: string;
+  pathname: string;
+  size?: number;
+  uploadedAt?: string;
+  source: "active-manifest" | "blob" | "public-fallback";
+  warning?: string;
+};
+
 const PREFIX = "audiobooks/bir-sifacinin-kanadi/";
 const PUBLIC_AUDIO_FALLBACK =
   "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
@@ -66,13 +76,15 @@ async function readActiveManifest() {
   }
 }
 
-export async function getCurrentAudiobook() {
+export async function getCurrentAudiobook(): Promise<CurrentAudiobookResult> {
   const active = await readActiveManifest();
   if (active) {
     return {
       ready: true,
       ...active,
+      url: active.audioUrl,
       pathname: `audiobooks/${active.slug}/master.mp3`,
+      uploadedAt: active.updatedAt,
       source: "active-manifest",
     };
   }
