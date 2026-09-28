@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { authors as builtInAuthors } from "../../_data/authors";
 import styles from "./AuthorsPanel.module.css";
+import PanelSidebar from "../_components/PanelSidebar";
 import { listManagedAuthors, type ManagedAuthor as StoredAuthor } from "../_lib/managedStore";
 
 type ManagedAuthor = {
@@ -57,19 +58,7 @@ export default function AuthorsPanelPage() {
 
   return (
     <main className={styles.page}>
-      <aside className={styles.sidebar}>
-        <a href="/panel/reader" className={styles.brand}>
-          <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={330} height={210} priority />
-        </a>
-        <div className={styles.readerMark}>
-          <Image src="/22_reader_logo.png" alt="22 Reader" width={360} height={118} priority />
-        </div>
-        <nav>
-          <a href="/panel/reader">▦ Kitaplar</a>
-          <a className={styles.active} href="/panel/yazarlar">✒ Yazarlar</a>
-          <a href="/panel/yazarlar/yeni">＋ Yeni Yazar</a>
-        </nav>
-      </aside>
+      <PanelSidebar active="authors" />
 
       <section className={styles.workspace}>
         <header className={styles.topbar}>
