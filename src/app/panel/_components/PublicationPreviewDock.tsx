@@ -91,29 +91,73 @@ export default function PublicationPreviewDock({
             </div>
           </div>
         ) : (
-          <div className={styles.audioDevice}>
-            <header>
+          <div className={styles.audioDeviceLocked}>
+            <header className={styles.audioLockedTopbar}>
               <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
-              <span>•••</span>
+              <button type="button" aria-label="Bölümler">⋮</button>
             </header>
-            <div className={styles.audioBody}>
-              <div className={styles.audioCover}><img src={cover} alt="" /></div>
-              <small>ŞİMDİ DİNLİYORSUNUZ</small>
-              <h3>{safeTitle}</h3>
-              <p>{safeAuthor}{voice ? ` · ${voice} sesi` : ""}</p>
-              <div className={styles.chapterCard}>
-                <span>{subtitle || safeTitle}</span>
-                <b>1. Bölüm</b>
-                <small>{audioDuration}</small>
+
+            <div className={styles.audioLockedContent}>
+              <div className={styles.audioLockedCover}><img src={cover} alt="" /></div>
+
+              <div className={styles.audioLockedListening}>
+                <svg viewBox="0 0 28 22" aria-hidden="true">
+                  <path d="M2 8v6M6 5v12M10 2v18M14 7v8M18 4v14M22 6v10M26 9v4" />
+                </svg>
+                <span>ŞİMDİ DİNLİYORSUNUZ</span>
               </div>
-              <div className={styles.progress}><i /><span>0:00</span><span>-{audioDuration}</span></div>
-              <div className={styles.transport}>
-                <button type="button">↶<small>15</small></button>
-                <button type="button" className={styles.play}>▶</button>
-                <button type="button">↷<small>15</small></button>
+
+              <h3 className={styles.audioLockedTitle}>{safeTitle}</h3>
+              <p className={styles.audioLockedMeta}>
+                {safeAuthor}{voice ? ` · ${voice} sesi` : ""}{audioDuration !== "—" ? ` · ${audioDuration}` : ""}
+              </p>
+
+              <div className={styles.audioLockedDivider}><i>✦</i></div>
+
+              <div className={styles.audioLockedNow}>
+                <span>{safeTitle.toLocaleUpperCase("tr-TR")}</span>
+                <strong>1. Bölüm — {subtitle || "Kitabın Tamamı"}</strong>
+                <small>{audioDuration} · {safeAuthor}</small>
               </div>
-              <div className={styles.audioTools}>
-                <span><b>1X</b>Hız</span><span><b>☾</b>Uyku</span><span><b>☷</b>Bölümler</span><span><b>⇩</b>İndir</span>
+
+              <div className={styles.audioLockedProgress}>
+                <div><i /></div>
+                <p><span>0:00</span><span>-{audioDuration}</span></p>
+              </div>
+
+              <div className={styles.audioLockedTransport}>
+                <button type="button" aria-label="15 saniye geri">
+                  <svg viewBox="0 0 48 48" aria-hidden="true">
+                    <path d="M15.6 10.6H8.9V3.9" /><path d="M9.6 11A16.8 16.8 0 1 1 7.9 31" />
+                  </svg>
+                  <small>15</small>
+                </button>
+                <button type="button" className={styles.audioLockedPlay} aria-label="Oynat">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 7.5 24 16 11 24.5Z" /></svg>
+                </button>
+                <button type="button" aria-label="15 saniye ileri">
+                  <svg viewBox="0 0 48 48" aria-hidden="true">
+                    <path d="M32.4 10.6h6.7V3.9" /><path d="M38.4 11A16.8 16.8 0 1 0 40.1 31" />
+                  </svg>
+                  <small>15</small>
+                </button>
+              </div>
+
+              <div className={styles.audioLockedTools}>
+                <span><b>1x</b><small>Hız</small></span>
+                <span>
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M23.5 22.5A10.8 10.8 0 0 1 10 9a10 10 0 1 0 13.5 13.5Z" /></svg>
+                  <small>Uyku</small>
+                </span>
+                <span>
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 8.5h4.5M14.5 8.5H25M7 16h4.5M14.5 16H25M7 23.5h4.5M14.5 23.5H25" /></svg>
+                  <small>Bölümler</small>
+                </span>
+              </div>
+
+              <div className={styles.audioLockedChapter}>
+                <div><span>BÖLÜM 1</span><strong>{subtitle || "Kitabın Tamamı"}</strong></div>
+                <b>Tüm bölümler →</b>
               </div>
             </div>
           </div>
