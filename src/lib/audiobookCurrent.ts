@@ -57,7 +57,7 @@ function isManifest(value: unknown): value is AudiobookManifest {
 
 async function readActiveManifest() {
   try {
-    const response = await fetch(ACTIVE_MANIFEST_URL, { cache: "no-store" });
+    const response = await fetch(`${ACTIVE_MANIFEST_URL}?v=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) return null;
     const data = (await response.json()) as unknown;
     return isManifest(data) ? data : null;
