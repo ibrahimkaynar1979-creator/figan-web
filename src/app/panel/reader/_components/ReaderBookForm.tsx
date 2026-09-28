@@ -128,6 +128,17 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   const infraReady = systemState?.databaseConfigured !== false && systemState?.blobConfigured !== false;
   const canSave = requiredReady && infraReady && !saving;
 
+  const projectStages = [
+    { label: "Dosya", state: title.trim() ? "active" : "waiting", note: title.trim() ? "Proje açık" : "Başlangıç" },
+    { label: "Editoryal", state: "planned", note: "Sonraki sürüm" },
+    { label: "Kapak", state: hasCover ? "done" : "waiting", note: hasCover ? "Hazır" : "Bekliyor" },
+    { label: "EPUB", state: hasEpub ? "done" : "waiting", note: hasEpub ? "Hazır" : "Bekliyor" },
+    { label: "Reader", state: saved ? "done" : hasEpub ? "active" : "waiting", note: saved ? "Bağlı" : "Hazırlanıyor" },
+    { label: "Sesli Kitap", state: "planned", note: "Modül hazır" },
+    { label: "Dağıtım", state: "planned", note: "Planlandı" },
+    { label: "Yayında", state: status === "Yayında" && saved ? "done" : "waiting", note: status === "Yayında" && saved ? "Yayında" : "Bekliyor" },
+  ] as const;
+
   const onTitleChange = (value: string) => {
     setTitle(value);
     if (mode === "new") setSlug(slugify(value));
@@ -273,12 +284,17 @@ export default function ReaderBookForm({ mode, initial }: Props) {
         </div>
 
         <nav>
-          <a href="/panel/reader">← Kitaplar</a>
-          <a href="/panel/yazarlar">✒ Yazarlar</a>
-          <a href="/panel/sesli-kitap">♪ Sesli Kitap</a>
+          <span className={styles.navGroup}>YAYIN MERKEZİ</span>
+          <a href="/panel/reader">▣ Yayın Projeleri</a>
           <a className={styles.active} href={mode === "new" ? "/panel/reader/yeni" : readerHref}>
-            ＋ {mode === "new" ? "Yeni Kitap" : "Kitabı Düzenle"}
+            ＋ {mode === "new" ? "Yeni Yayın Projesi" : "Projeyi Düzenle"}
           </a>
+          <a href="/panel/yazarlar">✒ Yazarlar</a>
+          <a href="/panel/sesli-kitap">♪ Sesli Kitaplar</a>
+          <span className={styles.navGroup}>ÜRETİM</span>
+          <a className={styles.futureLink} href="#uretim">✦ Üretim Merkezi <small>yakında</small></a>
+          <a className={styles.futureLink} href="#dagitim">◇ Dijital Dağıtım <small>yakında</small></a>
+          <a className={styles.futureLink} href="#analitik">⌁ Analitik <small>yakında</small></a>
         </nav>
 
         <div className={styles.systemBox}>
@@ -299,9 +315,9 @@ export default function ReaderBookForm({ mode, initial }: Props) {
       <section className={styles.workspace}>
         <header className={styles.topbar}>
           <div>
-            <span>22 READER · YAYIN YÖNETİMİ</span>
-            <h1>{mode === "new" ? "Yeni kitap yükle" : title || "Kitabı düzenle"}</h1>
-            <p>Kitap bilgilerini girin, kapağı ve EPUB'ı yükleyin; sağdaki önizlemeden yayını kontrol edin.</p>
+            <span>22 PUBLISHING OS · YAYIN PROJESİ</span>
+            <h1>{mode === "new" ? "Yeni yayın projesi" : title || "Yayın projesi"}</h1>
+            <p>Bir kitabın editoryal hazırlıktan Reader, sesli kitap ve dağıtıma uzanan bütün yayın yaşam döngüsünü tek projede yönetin.</p>
           </div>
           <div className={styles.topActions}>
             {lastSavedHref ? (
@@ -315,15 +331,39 @@ export default function ReaderBookForm({ mode, initial }: Props) {
           </div>
         </header>
 
+        <section className={styles.pipeline} aria-label="Yayın üretim hattı">
+          <div className={styles.pipelineHead}>
+            <div>
+              <span>YAYIN ÜRETİM HATTI</span>
+              <strong>{title.trim() || "Yeni proje"}</strong>
+            </div>
+            <b>v1 · Modüler</b>
+          </div>
+          <div className={styles.stageRail}>
+            {projectStages.map((stage, index) => (
+              <div
+                key={stage.label}
+                className={`${styles.stage} ${styles[`stage_${stage.state}`] || ""}`}
+              >
+                <i>{stage.state === "done" ? "✓" : String(index + 1).padStart(2, "0")}</i>
+                <div>
+                  <strong>{stage.label}</strong>
+                  <small>{stage.note}</small>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <div className={styles.editorLayout}>
           <form className={styles.form} onSubmit={submit}>
             <section className={styles.mainCard}>
               <div className={styles.sectionTitle}>
                 <span>01</span>
                 <div>
-                  <b>KİTAP BİLGİLERİ</b>
-                  <h2>Yayın kimliği</h2>
-                  <p>Reader ve yazar sayfasında gösterilecek temel bilgiler.</p>
+                  <b>PROJE KİMLİĞİ</b>
+                  <h2>Kitap ve yayın bilgileri</h2>
+                  <p>Bu proje Reader, sesli kitap, dağıtım ve gelecekteki üretim araçlarının ortak kaynağıdır.</p>
                 </div>
               </div>
 
@@ -411,8 +451,8 @@ export default function ReaderBookForm({ mode, initial }: Props) {
                 <span>02</span>
                 <div>
                   <b>DOSYALAR</b>
-                  <h2>Kapak ve EPUB</h2>
-                  <p>Seçtiğiniz dosyalar kaydettiğinizde Vercel Blob'a yüklenir.</p>
+                  <h2>Üretim kaynakları</h2>
+                  <p>Bugün kapak ve EPUB yüklenir; sonraki sürümlerde bu dosyalar panel içinde üretilebilecek.</p>
                 </div>
               </div>
 
@@ -451,9 +491,26 @@ export default function ReaderBookForm({ mode, initial }: Props) {
               </div>
             </section>
 
-            <section className={styles.connectionCard}>
+            <section className={styles.futureCard} id="uretim">
               <div className={styles.sectionTitle}>
                 <span>03</span>
+                <div>
+                  <b>ÜRETİM MERKEZİ</b>
+                  <h2>Bugün yükle, yarın panelde üret</h2>
+                  <p>Bu alan gelecekte editoryal düzenleme, redaksiyon, EPUB üretimi ve sesli kitap üretimini aynı proje içinde çalıştıracak.</p>
+                </div>
+              </div>
+              <div className={styles.futureGrid}>
+                <div><i>✦</i><strong>Editoryal Düzenleme</strong><span>Metni analiz et, düzenle, sürümle</span><b>Planlandı</b></div>
+                <div><i>✓</i><strong>Redaksiyon & Kontrol</strong><span>Yazım, tutarlılık ve son okuma akışı</span><b>Planlandı</b></div>
+                <div><i>E</i><strong>EPUB Üret</strong><span>Dosyadan EPUB 3 oluştur ve doğrula</span><b>Sonraki sürüm</b></div>
+                <div><i>♪</i><strong>Sesli Kitap Üret</strong><span>Ses seç, bölümle, master MP3 hazırla</span><b>Modül hazır</b></div>
+              </div>
+            </section>
+
+            <section className={styles.connectionCard}>
+              <div className={styles.sectionTitle}>
+                <span>04</span>
                 <div>
                   <b>YAYIN KONTROLÜ</b>
                   <h2>Bağlantılar</h2>
