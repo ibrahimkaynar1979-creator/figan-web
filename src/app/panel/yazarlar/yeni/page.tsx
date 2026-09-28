@@ -30,12 +30,12 @@ export default function NewAuthorPage() {
 
   const href = useMemo(()=>`/yazarlar/${slug || "yazar-slug"}`,[slug]);
 
-  const submit = (event: FormEvent) => {
+  const submit = async (event: FormEvent) => {
     event.preventDefault();
     const item: ManagedAuthor = {
       name, slug, href, role, bio, domain, status, instagram, website, photoName, source: "panel"
     };
-    saveManagedAuthor(item);
+    await saveManagedAuthor(item);
     setSaved(true);
     window.setTimeout(()=>setSaved(false),2500);
   };
