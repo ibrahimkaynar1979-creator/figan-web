@@ -319,3 +319,135 @@
     gap:5px;
   }
 }
+
+
+.adminActions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.adminActions button{
+  min-height:38px;
+  padding:0 13px;
+  border:1px solid #d8c9b8;
+  border-radius:999px;
+  background:#fffaf4;
+  color:#49362e;
+  cursor:pointer;
+  font-size:10px;
+  font-weight:800;
+}
+.adminActions button:first-child{
+  background:#231811;
+  border-color:#231811;
+  color:#fff;
+}
+
+.catalogSection{
+  margin-top:26px;
+  padding-top:22px;
+  border-top:1px solid #ddcfbf;
+}
+.catalogHead{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+.catalogHead>div{
+  display:grid;
+  gap:4px;
+}
+.catalogHead span{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.14em;
+  color:#9a642d;
+}
+.catalogHead strong{
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:24px;
+  font-weight:500;
+}
+.catalogList{
+  display:grid;
+  gap:8px;
+}
+.catalogItem{
+  display:grid;
+  grid-template-columns:54px 1fr auto;
+  gap:12px;
+  align-items:center;
+  min-height:72px;
+  padding:9px 11px;
+  border:1px solid #e2d5c6;
+  border-radius:14px;
+  background:#fffaf4;
+}
+.catalogItem img{
+  width:54px;
+  height:54px;
+  object-fit:cover;
+  border-radius:8px;
+  background:#eee2d2;
+}
+.catalogItem>div{
+  min-width:0;
+  display:grid;
+  gap:3px;
+}
+.catalogItem>div strong{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:17px;
+  font-weight:500;
+}
+.catalogItem>div span{
+  color:#6f6258;
+  font-size:11px;
+}
+.catalogItem>div small{
+  color:#918174;
+  font-size:9.5px;
+}
+.catalogItem>b{
+  color:#7b4a1c;
+  font-size:10px;
+  white-space:nowrap;
+}
+.catalogEmpty{
+  padding:16px;
+  border:1px dashed #d8c9b8;
+  border-radius:14px;
+  color:#7f7165;
+  background:#fffdf9;
+  font-size:11px;
+  text-align:center;
+}
+
+@media(max-width:600px){
+  .adminTop{
+    align-items:flex-start;
+  }
+  .adminActions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .adminActions button{
+    min-height:34px;
+    padding:0 10px;
+  }
+  .catalogItem{
+    grid-template-columns:48px 1fr;
+  }
+  .catalogItem img{
+    width:48px;
+    height:48px;
+  }
+  .catalogItem>b{
+    grid-column:2;
+    justify-self:start;
+  }
+}
