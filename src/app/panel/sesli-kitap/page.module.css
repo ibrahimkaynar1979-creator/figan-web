@@ -329,7 +329,7 @@
   align-items:center;
   gap:8px;
 }
-.adminActions button{
+.adminActions button,.adminActions a{
   min-height:38px;
   padding:0 13px;
   border:1px solid #d8c9b8;
@@ -339,6 +339,10 @@
   cursor:pointer;
   font-size:10px;
   font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
 }
 .adminActions button:first-child{
   background:#231811;
