@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 import styles from "./PanelSidebar.module.css";
-import ThemeSwitcher from "./ThemeSwitcher";
 
 type IconName = "projects"|"new"|"authors"|"audio"|"production"|"distribution"|"analytics"|"reader";
 
@@ -54,11 +53,6 @@ export default function PanelSidebar({ active="projects", footer }: Props) {
         <Item href="/panel/reader/yeni#dagitim" icon="distribution" label="Dijital Dağıtım" badge="Yakında" active={active==="distribution"} />
         <Item href="/panel/reader/yeni#analitik" icon="analytics" label="Analitik" badge="Yakında" active={active==="analytics"} />
       </nav>
-
-      <div className={styles.themeArea}>
-        <span>TEMA</span>
-        <ThemeSwitcher />
-      </div>
 
       <div className={styles.footer}>
         {footer ?? <>
