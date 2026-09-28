@@ -257,3 +257,34 @@
 .sectionTitle h2,.pipelineHead strong,.futureGrid strong,.catalogHead strong,.currentTitle{
   font-family:var(--po-font-ui)!important;font-weight:700!important;
 }
+
+/* FINAL INSPECTOR THEME OVERRIDE */
+.dock{
+  background:var(--po-surface)!important;
+  border-color:var(--po-border)!important;
+  box-shadow:var(--po-shadow-card)!important;
+}
+.dockHead,.detailPanel,.checks div{
+  background:var(--po-surface)!important;
+  border-color:var(--po-border)!important;
+}
+.tabs,.deviceStage{
+  background:var(--po-surface-soft)!important;
+  border-color:var(--po-border)!important;
+}
+.tabs .active{
+  background:var(--po-brand)!important;
+  color:var(--po-brand-contrast)!important;
+  box-shadow:none!important;
+}
+.readerDevice,.audioDevice,.metaList>div,.readiness>div{
+  background:var(--po-surface)!important;
+  border-color:var(--po-border)!important;
+  box-shadow:none!important;
+}
+.chapterCard{background:var(--po-brand-soft)!important}
+.openPublication{
+  background:var(--po-brand)!important;
+  color:var(--po-brand-contrast)!important;
+  box-shadow:none!important;
+}
