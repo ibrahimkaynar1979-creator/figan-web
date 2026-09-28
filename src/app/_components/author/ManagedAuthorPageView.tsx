@@ -44,24 +44,25 @@ export default function ManagedAuthorPageView({
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    try {
-      const authors = JSON.parse(localStorage.getItem(AUTHOR_STORAGE) || "[]");
-      if (Array.isArray(authors)) {
-        const found = authors.find((item: ManagedAuthor) => item?.slug === slug);
-        if (found) setManagedAuthor(found);
-      }
-    } catch {}
+    let cancelled = false;
 
-    try {
-      const books = JSON.parse(localStorage.getItem(BOOK_STORAGE) || "[]");
-      if (Array.isArray(books)) {
+    void Promise.all([listManagedAuthors(), listManagedBooks()])
+      .then(([authorsResult, booksResult]) => {
+        if (cancelled) return;
+
+        const found = authorsResult.items.find(item => item.slug === slug) ?? null;
+        setManagedAuthor(found);
         setManagedBooks(
-          books.filter((item: ManagedBook) => item?.authorSlug === slug && item?.status !== "Taslak")
+          booksResult.items.filter(item => item.authorSlug === slug && item.status !== "Taslak")
         );
-      }
-    } catch {}
+      })
+      .finally(() => {
+        if (!cancelled) setReady(true);
+      });
 
-    setReady(true);
+    return () => {
+      cancelled = true;
+    };
   }, [slug]);
 
   const author = useMemo<AuthorProfile | null>(() => {
