@@ -6,6 +6,19 @@ import styles from "./upload.module.css";
 
 type Chapter = { id:number; title:string; start:number };
 
+type CatalogBook = {
+  version:1;
+  slug:string;
+  title:string;
+  author:string;
+  voice?:string;
+  coverUrl:string;
+  audioUrl:string;
+  duration?:number;
+  chapters?:Chapter[];
+  updatedAt?:string;
+};
+
 type CurrentBook = {
   ready?: boolean;
   slug?: string;
@@ -98,6 +111,7 @@ export default function AudiobookUploadPage() {
   const [pin,setPin] = useState("");
   const [authMessage,setAuthMessage] = useState("");
   const [current,setCurrent] = useState<CurrentBook | null>(null);
+  const [catalog,setCatalog] = useState<CatalogBook[]>([]);
   const [healthStatus,setHealthStatus] = useState<{ok:boolean;streaming?:boolean;totalSize?:number} | null>(null);
 
   const slug=useMemo(()=>slugify(title),[title]);
@@ -124,7 +138,8 @@ export default function AudiobookUploadPage() {
         ok:response.ok,
         data:await response.json().catch(()=>null),
       })),
-    ]).then(([book,health])=>{
+      fetch("/api/sesli-kitap/catalog",{cache:"no-store"}).then((response)=>response.json()).catch(()=>({books:[]})),
+    ]).then(([book,health,catalogData])=>{
       setCurrent(book);
       setTitle(typeof book?.title==="string" ? book.title : "");
       setAuthor(typeof book?.author==="string" ? book.author : "");
@@ -138,6 +153,7 @@ export default function AudiobookUploadPage() {
       }else{
         setChapterText("");
       }
+      setCatalog(Array.isArray(catalogData?.books) ? catalogData.books : []);
       setHealthStatus({
         ok:Boolean(health.ok && health.data?.ok),
         streaming:Boolean(health.data?.streaming),
@@ -199,6 +215,20 @@ export default function AudiobookUploadPage() {
     setAuthenticated(false);
     setPin("");
     setAuthMessage("");
+  }
+
+  function startNewBook() {
+    setTitle("");
+    setAuthor("");
+    setVoice("");
+    setChapterText("");
+    setAudioFile(null);
+    setCoverFile(null);
+    setCoverPreview("");
+    setDetectedDuration(undefined);
+    setStatus("idle");
+    setMessage("");
+    setProgress(0);
   }
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -285,7 +315,24 @@ export default function AudiobookUploadPage() {
       await upload(`audiobooks/${slug}/manifest.json`,bookManifestFile,{
         access:"public",
         handleUploadUrl:"/api/sesli-kitap/upload",
-        onUploadProgress:(event)=>setProgress(92+Math.round(event.percentage*0.04)),
+        onUploadProgress:(event)=>setProgress(92+Math.round(event.percentage*0.02)),
+      });
+
+      const nextCatalog=[
+        ...catalog.filter((item)=>item.slug!==slug),
+        manifest,
+      ].sort((a,b)=>(b.updatedAt || "").localeCompare(a.updatedAt || ""));
+
+      const catalogFile=new File(
+        [JSON.stringify(nextCatalog)],
+        "catalog.json",
+        {type:"application/json"},
+      );
+
+      await upload("audiobooks/catalog.json",catalogFile,{
+        access:"public",
+        handleUploadUrl:"/api/sesli-kitap/upload",
+        onUploadProgress:(event)=>setProgress(94+Math.round(event.percentage*0.02)),
       });
 
       await upload("audiobooks/active.json",manifestFile,{
@@ -303,6 +350,7 @@ export default function AudiobookUploadPage() {
         uploadedAt:manifest.updatedAt,
         source:"active-manifest",
       });
+      setCatalog(nextCatalog);
       setHealthStatus({ok:true,totalSize:audioFile.size});
       setStatus("done");
       setMessage(`Sesli kitap yayınlandı. Kalıcı player adresi: /dinle/${slug}`);
@@ -353,7 +401,10 @@ export default function AudiobookUploadPage() {
             <span>22</span>
             <small>YAYINEVİ</small>
           </a>
-          <button type="button" onClick={logout}>Çıkış</button>
+          <div className={styles.adminActions}>
+            <button type="button" onClick={startNewBook}>+ Yeni Kitap</button>
+            <button type="button" onClick={logout}>Çıkış</button>
+          </div>
         </div>
 
         <div className={styles.heading}>
@@ -462,6 +513,30 @@ export default function AudiobookUploadPage() {
             {status==="uploading" ? "Yayınlanıyor…" : "Sesli Kitabı Yayınla"}
           </button>
         </form>
+
+        <div className={styles.catalogSection}>
+          <div className={styles.catalogHead}>
+            <div>
+              <span>YAYINLANAN SESLİ KİTAPLAR</span>
+              <strong>{catalog.length} kitap</strong>
+            </div>
+          </div>
+          <div className={styles.catalogList}>
+            {catalog.length ? catalog.map((item)=>(
+              <a key={item.slug} href={`/dinle/${item.slug}`} target="_blank" rel="noreferrer" className={styles.catalogItem}>
+                <img src={item.coverUrl} alt="" />
+                <div>
+                  <strong>{item.title}</strong>
+                  <span>{item.author}{item.voice ? ` · ${item.voice}` : ""}</span>
+                  <small>{formatTime(item.duration)} · {item.chapters?.length || 1} bölüm</small>
+                </div>
+                <b>Dinle →</b>
+              </a>
+            )) : (
+              <div className={styles.catalogEmpty}>İlk sesli kitabınızı yayınladığınızda burada görünecek.</div>
+            )}
+          </div>
+        </div>
 
         <div className={styles.footer}>
           <span>{formatTime(detectedDuration || current?.duration)}</span>
