@@ -3,39 +3,39 @@
    Tenant branding should override only the --po-brand-* and --po-radius-* layer. */
 
 .publishing-os{
-  --po-font-ui:var(--font-ui),Arial,sans-serif;
+  --po-font-ui:var(--font-panel-ui),Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --po-font-editorial:var(--font-editorial),Georgia,serif;
   --po-font-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
 
-  --po-bg:#F4F3F0;
+  --po-bg:#F7FBFD;
   --po-surface:#FFFFFF;
-  --po-surface-soft:#FAF8F5;
-  --po-surface-raised:#FFFFFF;
+  --po-surface-soft:#F4F9FC;
+  --po-surface-raised:#FBFEFF;
 
-  --po-text:#191715;
-  --po-text-secondary:#69635D;
-  --po-text-muted:#8C847D;
+  --po-text:#17385E;
+  --po-text-secondary:#5F7892;
+  --po-text-muted:#8292A6;
 
-  --po-border:#DDD8D1;
-  --po-border-soft:#ECE8E3;
+  --po-border:#D7EAF0;
+  --po-border-soft:#E7F1F5;
 
-  --po-brand:#8F5D35;
-  --po-brand-soft:#F1E7DC;
+  --po-brand:#12B8C4;
+  --po-brand-soft:#E8F8FA;
   --po-brand-contrast:#FFFFFF;
 
-  --po-success:#397552;
-  --po-success-soft:#E5F0E8;
-  --po-warning:#A66C25;
-  --po-warning-soft:#F6ECDD;
-  --po-danger:#A9483D;
-  --po-danger-soft:#F5E4E1;
-  --po-info:#426B8A;
-  --po-info-soft:#E5EDF3;
+  --po-success:#16834C;
+  --po-success-soft:#DFF6E8;
+  --po-warning:#A76C09;
+  --po-warning-soft:#FFEDCA;
+  --po-danger:#E53358;
+  --po-danger-soft:#FFE1E8;
+  --po-info:#2870C0;
+  --po-info-soft:#DCEEFF;
 
-  --po-nav-bg:#17120F;
-  --po-nav-bg-2:#21150F;
-  --po-nav-text:#F3EFEA;
-  --po-nav-muted:#B9ADA4;
+  --po-nav-bg:#EEF7FB;
+  --po-nav-bg-2:#E7F2F8;
+  --po-nav-text:#17385E;
+  --po-nav-muted:#5F7892;
 
   --po-radius-card:16px;
   --po-radius-control:9px;
@@ -51,8 +51,8 @@
   --po-space-12:48px;
   --po-space-16:64px;
 
-  --po-shadow-card:0 8px 24px rgba(49,38,28,.04);
-  --po-shadow-float:0 16px 40px rgba(37,28,21,.12);
+  --po-shadow-card:0 8px 18px rgba(43,73,98,.10),0 2px 5px rgba(43,73,98,.05),inset 0 1px 0 rgba(255,255,255,.96);
+  --po-shadow-float:0 14px 30px rgba(43,73,98,.14),0 3px 8px rgba(43,73,98,.06);
 
   min-height:100vh;
   background:var(--po-bg);
