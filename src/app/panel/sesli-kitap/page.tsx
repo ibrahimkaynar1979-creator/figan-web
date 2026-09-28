@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { upload } from "@vercel/blob/client";
 import styles from "./page.module.css";
 import PublicationPreviewDock from "../_components/PublicationPreviewDock";
+import PanelSidebar from "../_components/PanelSidebar";
 
 type Chapter = { id:number; title:string; start:number };
 
@@ -396,6 +397,7 @@ export default function AudiobookUploadPage() {
 
   return (
     <main className={styles.page}>
+      <PanelSidebar active="audio" />
       <section className={styles.card}>
         <div className={styles.adminTop}>
           <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
