@@ -32,13 +32,16 @@ async function resolveAudioSource() {
 }
 
 export async function GET() {
-  try {
-    const current = await resolveAudioSource();
+  const current = await resolveAudioSource();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
 
+  try {
     const probe = await fetch(current.url, {
       method: "GET",
       headers: { Range: "bytes=0-0" },
       cache: "no-store",
+      signal: controller.signal,
     });
 
     await probe.body?.cancel().catch(() => undefined);
@@ -77,17 +80,26 @@ export async function GET() {
       },
     );
   } catch (error) {
+    const aborted =
+      error instanceof Error &&
+      (error.name === "AbortError" || error.name === "TimeoutError");
+
     return Response.json(
       {
         ok: false,
         reachable: false,
         streaming: false,
-        reason:
-          error instanceof Error
+        pathname: current.pathname,
+        source: current.source,
+        reason: aborted
+          ? "Ses kaynağı kontrolü 5 saniyede yanıt vermedi."
+          : error instanceof Error
             ? error.message
             : "Ses kaynağı kontrol edilemedi.",
       },
       { status: 503, headers: { "cache-control": "no-store" } },
     );
+  } finally {
+    clearTimeout(timeout);
   }
 }
