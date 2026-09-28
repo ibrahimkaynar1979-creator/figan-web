@@ -32,7 +32,7 @@ export default function ReaderPanelPage() {
 
   const allBooks = useMemo(() => {
     const merged = [...books];
-    managedBooks.forEach(book => {
+    managedBooks.filter(book => book.slug !== "blop-test").forEach(book => {
       const index = merged.findIndex(item => item.slug === book.slug);
       if (index >= 0) merged[index] = { ...merged[index], ...book };
       else merged.push(book);
@@ -96,6 +96,7 @@ export default function ReaderPanelPage() {
         <nav className={styles.nav} aria-label="Reader yönetim menüsü">
           <button className={filter === "all" ? styles.active : ""} type="button" onClick={() => setFilter("all")}><span>▦</span> Kitaplar</button>
           <a href="/panel/reader/yeni"><span>＋</span> Yeni Kitap</a>
+          <a href="/oku" target="_blank" rel="noreferrer"><span>◫</span> Reader Tasarım Alanı</a>
           <a href="/panel/yazarlar"><span>✒</span> Yazarlar</a>
           <button className={filter === "draft" ? styles.active : ""} type="button" onClick={() => setFilter("draft")}><span>◌</span> Taslaklar</button>
           <button className={filter === "published" ? styles.active : ""} type="button" onClick={() => setFilter("published")}><span>⌁</span> Yayındakiler</button>
