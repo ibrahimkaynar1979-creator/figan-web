@@ -974,7 +974,7 @@ export default function BirSifacininKanadiReader() {
                   <b>EPUB</b>
                 </span>
               </div>
-              <div className={styles.coverReaderBrand}><Image src="/22_reader_logo.webp" alt="22 Reader" width={520} height={170} priority /></div>
+              <div className={styles.coverReaderBrand}><Image src="/22_reader_logo.png" alt="22 Reader" width={520} height={170} priority /></div>
             </div>
           ) : (
             <div
