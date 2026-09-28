@@ -25,14 +25,16 @@ export default function ThemeSwitcher() {
   );
 
   useEffect(() => {
-    const root = document.querySelector<HTMLElement>(".publishing-os");
     const saved = window.localStorage.getItem("publishing-os-palette") as ThemeId | null;
     const next = themes.some(theme => theme.id === saved) ? saved! : "turquoise";
     setThemeId(next);
-    if (root) {
-      root.dataset.theme = "light";
-      root.dataset.palette = next;
-    }
+
+    const sync = (event: Event) => {
+      const incoming = (event as CustomEvent<ThemeId>).detail;
+      if (themes.some(theme => theme.id === incoming)) setThemeId(incoming);
+    };
+    window.addEventListener("publishing-os-palette-change", sync);
+    return () => window.removeEventListener("publishing-os-palette-change", sync);
   }, []);
 
   useEffect(() => {
@@ -44,13 +46,9 @@ export default function ThemeSwitcher() {
   }, []);
 
   const chooseTheme = (next: ThemeId) => {
-    const root = document.querySelector<HTMLElement>(".publishing-os");
     setThemeId(next);
     window.localStorage.setItem("publishing-os-palette", next);
-    if (root) {
-      root.dataset.theme = "light";
-      root.dataset.palette = next;
-    }
+    window.dispatchEvent(new CustomEvent("publishing-os-palette-change", { detail: next }));
     setOpen(false);
   };
 
