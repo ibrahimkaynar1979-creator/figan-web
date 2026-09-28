@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./ReaderPanel.module.css";
+import { getManagedBooks } from "../_lib/managedStore";
 
 const books = [
   {
@@ -22,8 +23,6 @@ const books = [
     readerHref: "/oku/bir-sifacinin-kanadi",
   },
 ];
-
-const BOOK_STORAGE = "22reader-panel-books";
 
 export default function ReaderPanelPage() {
   const [filter, setFilter] = useState<"all" | "draft" | "published">("all");
@@ -58,10 +57,7 @@ export default function ReaderPanelPage() {
 
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
-    try {
-      const parsed = JSON.parse(localStorage.getItem(BOOK_STORAGE) || "[]");
-      if (Array.isArray(parsed)) setManagedBooks(parsed);
-    } catch {}
+    setManagedBooks(getManagedBooks() as typeof books);
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
 
