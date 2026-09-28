@@ -564,7 +564,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
               <div>
                 <a href="/panel/reader">Vazgeç</a>
                 <button type="submit" disabled={!canSave}>
-                  {saving ? "Yükleniyor ve kaydediliyor…" : saved ? "Kaydedildi ✓" : "Kitabı Kaydet"}
+                  {saving ? "Yükleniyor ve kaydediliyor…" : saved ? "Proje Kaydedildi ✓" : "Projeyi Kaydet"}
                 </button>
               </div>
             </footer>
