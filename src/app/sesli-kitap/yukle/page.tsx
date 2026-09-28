@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { uploadPresigned } from "@vercel/blob/client";
+import { upload } from "@vercel/blob/client";
 import styles from "./upload.module.css";
 
 const TARGET_PATH = "audiobooks/bir-sifacinin-kanadi/master.mp3";
@@ -161,7 +161,7 @@ export default function AudiobookUploadPage() {
     setVerified(false);
 
     try {
-      const blob = await uploadPresigned(TARGET_PATH,file,{
+      const blob = await upload(TARGET_PATH,file,{
         access:"public",
         handleUploadUrl:"/api/sesli-kitap/upload",
         multipart:true,
