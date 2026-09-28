@@ -1035,3 +1035,84 @@
   color:var(--po-brand-contrast)!important;
   box-shadow:none!important;
 }
+
+/* Header controls + system status refinement */
+.topActions{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+}
+.topActions>a{
+  min-height:40px!important;
+  padding:0 13px!important;
+  border-radius:11px!important;
+  background:var(--po-surface)!important;
+  color:var(--po-text)!important;
+  border:1px solid var(--po-border)!important;
+  box-shadow:0 4px 12px color-mix(in srgb,var(--po-text) 7%,transparent)!important;
+  font-size:12px!important;
+  font-weight:700!important;
+}
+.draftBadge{
+  min-height:40px!important;
+  padding:0 12px!important;
+  border-radius:11px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  background:var(--po-warning-soft)!important;
+  color:var(--po-warning)!important;
+  border:1px solid color-mix(in srgb,var(--po-warning) 28%,var(--po-border))!important;
+  box-shadow:none!important;
+  font-size:11px!important;
+  font-weight:750!important;
+  letter-spacing:.04em!important;
+}
+.systemBox{
+  width:100%;
+  box-sizing:border-box;
+  display:grid!important;
+  gap:8px!important;
+  padding:0!important;
+  border:0!important;
+}
+.systemBox>span{
+  display:block!important;
+  margin-bottom:2px!important;
+  color:var(--po-text-muted)!important;
+  font-size:9px!important;
+  font-weight:800!important;
+  letter-spacing:.13em!important;
+  white-space:nowrap!important;
+}
+.systemBox>div{
+  min-height:30px!important;
+  padding:0 8px!important;
+  display:grid!important;
+  grid-template-columns:8px minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:8px!important;
+  border:1px solid var(--po-border)!important;
+  border-radius:9px!important;
+  background:color-mix(in srgb,var(--po-surface) 78%,transparent)!important;
+  color:var(--po-text)!important;
+  font-size:10.5px!important;
+}
+.systemBox>div b{
+  font-size:10.5px!important;
+  font-weight:700!important;
+}
+.systemBox>div small{
+  color:var(--po-success)!important;
+  font-size:8.5px!important;
+  font-weight:800!important;
+  text-transform:uppercase!important;
+  letter-spacing:.05em!important;
+}
+.okDot,.waitDot{
+  width:7px!important;
+  height:7px!important;
+  border-radius:50%!important;
+  box-shadow:none!important;
+}
+.okDot{background:var(--po-success)!important}
+.waitDot{background:var(--po-warning)!important}
