@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 import styles from "./PanelSidebar.module.css";
+import { BRAND_ASSETS } from "../../../lib/brandAssets";
 
 type IconName = "projects"|"new"|"authors"|"audio"|"production"|"distribution"|"analytics"|"reader";
 
@@ -35,10 +36,10 @@ export default function PanelSidebar({ active="projects", footer }: Props) {
   return (
     <aside className={styles.sidebar}>
       <a href="/panel/reader" className={styles.brand}>
-        <Image src="/22_yayinevi_logo_1.webp" alt="22 Yayınevi" width={330} height={210} priority />
+        <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={330} height={210} priority />
       </a>
       <div className={styles.readerMark}>
-        <Image src="/22_reader_logo.webp" alt="22 Reader" width={360} height={118} priority />
+        <Image src={BRAND_ASSETS.readerLogo} alt="22 Reader" width={360} height={118} priority />
       </div>
 
       <nav aria-label="Publishing OS menüsü">
