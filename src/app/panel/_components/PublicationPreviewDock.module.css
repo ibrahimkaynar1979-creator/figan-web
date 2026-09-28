@@ -1,0 +1,57 @@
+.dock{
+  position:sticky;
+  top:24px;
+  align-self:start;
+  min-width:0;
+  border:1px solid #dacdbf;
+  border-radius:24px;
+  background:#fffaf4;
+  box-shadow:0 18px 46px rgba(52,33,20,.08);
+  overflow:hidden;
+}
+.dockHead{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;border-bottom:1px solid #e4d9cc}
+.dockHead>div{display:grid;gap:4px}
+.dockHead span{font-size:8px;letter-spacing:.18em;font-weight:800;color:#a16b3d}
+.dockHead strong{font:500 20px/1.05 var(--font-editorial),Georgia,serif}
+.dockHead>b{padding:6px 9px;border-radius:999px;background:#f0e3d4;color:#835326;font-size:8px;letter-spacing:.08em;text-transform:uppercase}
+.tabs{display:grid;grid-template-columns:1fr 1fr;padding:8px;background:#f5ecdf;border-bottom:1px solid #e4d9cc}
+.tabs button{min-height:36px;border:0;border-radius:9px;background:transparent;color:#75665b;font-size:10px;font-weight:800;cursor:pointer}
+.tabs .active{background:#2a190f;color:#fff;box-shadow:0 5px 14px rgba(45,27,16,.14)}
+.deviceStage{padding:18px;background:linear-gradient(180deg,#f5ede3 0%,#eee3d7 100%)}
+.readerDevice,.audioDevice{width:min(340px,100%);margin:0 auto;border-radius:24px;background:#fbf7ef;box-shadow:0 15px 34px rgba(58,38,22,.13);overflow:hidden;border:1px solid #e5d9cb}
+.readerDevice>header,.audioDevice>header{height:50px;padding:0 16px;border-bottom:1px solid #ded2c3;display:flex;align-items:center;justify-content:space-between}
+.readerDevice>header img,.audioDevice>header img{width:92px;height:auto;object-fit:contain}
+.readerDevice>header span,.audioDevice>header span{font-size:18px;letter-spacing:.08em}
+.readerBody{padding:19px 16px 16px;text-align:center}
+.readerCover{height:260px;display:flex;align-items:center;justify-content:center;margin-bottom:13px}
+.readerCover img{max-width:100%;max-height:100%;display:block;object-fit:contain;filter:drop-shadow(0 12px 19px rgba(56,37,20,.18))}
+.readerBody h3{margin:0;font:500 23px/1 var(--font-editorial),Georgia,serif}
+.readerBody>p{margin:6px 0 14px;color:#81766a;font:12px Georgia,serif}
+.readerBody>button{width:78%;height:46px;border:0;border-radius:999px;background:#171411;color:#fff;font:500 15px Georgia,serif}
+.readerBody>button span{margin-left:15px}
+.readerStats{display:grid;grid-template-columns:repeat(3,auto);justify-content:center;gap:0;margin-top:9px;color:#6f655a;font:10px Georgia,serif}
+.readerStats span{padding:0 8px;border-right:1px solid #d0c1b0}
+.readerStats span:last-child{border-right:0}
+.readerBrand{width:80%;margin:9px auto 0;padding-top:8px;border-top:1px solid #d5c8b9}
+.readerBrand img{width:118px;height:auto}
+.audioBody{padding:18px;text-align:center}
+.audioCover{height:220px;display:grid;place-items:center;margin:0 auto 13px}
+.audioCover img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 11px 18px rgba(56,37,20,.16))}
+.audioBody>small{font-size:7px;letter-spacing:.16em;color:#a16b3d;font-weight:800}
+.audioBody h3{margin:6px 0 4px;font:500 23px/1 var(--font-editorial),Georgia,serif}
+.audioBody>p{margin:0 0 13px;color:#7c6f65;font-size:10px}
+.chapterCard{padding:10px 12px;border-radius:12px;background:#f0e4d5;text-align:left;display:grid;gap:3px}
+.chapterCard span{font-size:8px;color:#8e6c4c}.chapterCard b{font:500 14px Georgia,serif}.chapterCard small{font-size:8px;color:#8b7d72}
+.progress{display:grid;grid-template-columns:1fr auto auto;gap:7px;align-items:center;margin:13px 0 8px;font-size:8px;color:#8c7d70}
+.progress:before{content:"";grid-column:1/-1;height:3px;border-radius:999px;background:linear-gradient(90deg,#a66f28 16%,#d8ccbd 16%)}
+.progress i{display:none}
+.transport{display:flex;align-items:center;justify-content:center;gap:28px;margin:5px 0 13px}
+.transport button{border:0;background:transparent;font-size:18px}.transport button small{font-size:7px}
+.transport .play{width:48px;height:48px;border-radius:50%;background:#21160f;color:#fff;font-size:16px}
+.audioTools{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #dfd2c4;padding-top:10px}
+.audioTools span{display:grid;gap:2px;font-size:7px;color:#7b6e62}.audioTools b{font-size:11px;color:#2b1c14}
+.checks{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#dfd3c7;border-top:1px solid #dfd3c7}
+.checks div{padding:11px;background:#fffaf4;display:grid;gap:3px}
+.checks span{font-size:7px;letter-spacing:.1em;color:#9b7a5c;text-transform:uppercase}
+.checks b{font-size:9px;color:#49362e}
+@media(max-width:1080px){.dock{position:relative;top:auto}.deviceStage{padding:14px}}
