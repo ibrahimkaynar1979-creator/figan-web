@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import styles from "../../yeni/NewAuthor.module.css";
-import { getManagedAuthors, saveManagedAuthor, type ManagedAuthor } from "../../../_lib/managedStore";
+import { listManagedAuthors, saveManagedAuthor, type ManagedAuthor } from "../../../_lib/managedStore";
 
 
 const slugify = (value: string) =>
@@ -32,35 +32,37 @@ export default function EditAuthorPage() {
   useEffect(()=>{
     document.body.classList.add("reader-admin-route");
 
-    const author = getManagedAuthors().find((item: ManagedAuthor) => item.slug === originalSlug);
+    void listManagedAuthors().then(({ items }) => {
+      const author = items.find((item: ManagedAuthor) => item.slug === originalSlug);
 
-    if (!author) {
-      setFound(false);
-    } else {
-      setName(author.name || "");
-      setSlug(author.slug || originalSlug);
-      setRole(author.role || "Yazar");
-      setBio(author.bio || "");
-      setDomain(author.domain || "");
-      setStatus(author.status || "Taslak");
-      setInstagram(author.instagram || "");
-      setWebsite(author.website || "");
-      setPhotoName(author.photoName || "");
-    }
+      if (!author) {
+        setFound(false);
+      } else {
+        setName(author.name || "");
+        setSlug(author.slug || originalSlug);
+        setRole(author.role || "Yazar");
+        setBio(author.bio || "");
+        setDomain(author.domain || "");
+        setStatus(author.status || "Taslak");
+        setInstagram(author.instagram || "");
+        setWebsite(author.website || "");
+        setPhotoName(author.photoName || "");
+      }
+    });
 
     return ()=>document.body.classList.remove("reader-admin-route");
   },[originalSlug]);
 
   const href = useMemo(()=>`/yazarlar/${slug || "yazar-slug"}`,[slug]);
 
-  const submit = (event: FormEvent) => {
+  const submit = async (event: FormEvent) => {
     event.preventDefault();
 
     const item: ManagedAuthor = {
       name,slug,href,role,bio,domain,status,instagram,website,photoName,source:"panel"
     };
 
-    saveManagedAuthor(item, originalSlug);
+    await saveManagedAuthor(item, originalSlug);
     setSaved(true);
     window.setTimeout(()=>setSaved(false),2500);
   };
