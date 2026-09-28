@@ -1,24 +1,39 @@
-const CURRENT_ENDPOINT = "/api/sesli-kitap/current";
+import { list } from "@vercel/blob";
 
-export async function GET(request: Request) {
+const PREFIX = "audiobooks/bir-sifacinin-kanadi/";
+const PUBLIC_FALLBACK_URL =
+  "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
+
+async function resolveAudioSource() {
   try {
-    const origin = new URL(request.url).origin;
-    const currentResponse = await fetch(origin + CURRENT_ENDPOINT, { cache: "no-store" });
-    const current = await currentResponse.json().catch(() => null) as {
-      ready?: boolean;
-      url?: string;
-      pathname?: string;
-      size?: number;
-      uploadedAt?: string;
-      source?: string;
-    } | null;
+    const { blobs } = await list({ prefix: PREFIX, limit: 20 });
+    const preferred =
+      blobs.find((blob) => blob.pathname === PREFIX + "master.mp3") ??
+      blobs.find((blob) => blob.pathname.endsWith(".mp3"));
 
-    if (!currentResponse.ok || !current?.ready || !current.url) {
-      return Response.json(
-        { ok: false, reason: "Ses kaynağı hazır değil." },
-        { status: 503, headers: { "cache-control": "no-store" } },
-      );
+    if (preferred) {
+      return {
+        url: preferred.url,
+        pathname: preferred.pathname,
+        uploadedAt: preferred.uploadedAt,
+        source: "blob",
+      };
     }
+  } catch {
+    // Local development may not have Blob credentials. Public fallback is intentional.
+  }
+
+  return {
+    url: PUBLIC_FALLBACK_URL,
+    pathname: PREFIX + "master.mp3",
+    uploadedAt: undefined,
+    source: "public-fallback",
+  };
+}
+
+export async function GET() {
+  try {
+    const current = await resolveAudioSource();
 
     const probe = await fetch(current.url, {
       method: "GET",
@@ -26,7 +41,6 @@ export async function GET(request: Request) {
       cache: "no-store",
     });
 
-    // We only request one byte. Cancel the body immediately after headers arrive.
     await probe.body?.cancel().catch(() => undefined);
 
     const contentType = probe.headers.get("content-type");
@@ -34,8 +48,12 @@ export async function GET(request: Request) {
     const contentRange = probe.headers.get("content-range");
     const acceptRanges = probe.headers.get("accept-ranges");
     const urlLooksLikeMp3 = current.url.toLowerCase().includes(".mp3");
-    const audioTypeOk = Boolean(contentType?.toLowerCase().includes("audio")) || urlLooksLikeMp3;
-    const rangeOk = probe.status === 206 || Boolean(contentRange) || acceptRanges === "bytes";
+    const audioTypeOk =
+      Boolean(contentType?.toLowerCase().includes("audio")) || urlLooksLikeMp3;
+    const rangeOk =
+      probe.status === 206 ||
+      Boolean(contentRange) ||
+      acceptRanges?.toLowerCase() === "bytes";
     const reachable = probe.ok || probe.status === 206;
     const ok = reachable && audioTypeOk;
 
@@ -64,7 +82,10 @@ export async function GET(request: Request) {
         ok: false,
         reachable: false,
         streaming: false,
-        reason: error instanceof Error ? error.message : "Ses kaynağı kontrol edilemedi.",
+        reason:
+          error instanceof Error
+            ? error.message
+            : "Ses kaynağı kontrol edilemedi.",
       },
       { status: 503, headers: { "cache-control": "no-store" } },
     );
