@@ -105,3 +105,51 @@
 @media(max-width:1080px){
   .detailPanel{padding:14px}
 }
+
+/* Inspector readability */
+.dockHead{padding:18px 19px}
+.dockHead span{
+  font-size:10px;
+  letter-spacing:.13em;
+  font-weight:750;
+}
+.dockHead strong{
+  font-size:23px;
+  line-height:1.12;
+}
+.dockHead>b{
+  font-size:10px;
+  font-weight:700;
+}
+.tabs button{
+  min-height:40px;
+  font-size:12px;
+  font-weight:700;
+}
+.checks span{font-size:9px}
+.checks b{font-size:11px}
+.detailHead span{font-size:9px}
+.detailHead strong{font-size:20px}
+.detailHead>b{font-size:9px}
+.metaList>div{
+  grid-template-columns:92px minmax(0,1fr);
+  min-height:42px;
+  padding:0 12px;
+}
+.metaList dt{
+  font-size:10px;
+  font-weight:700;
+  color:#756b64;
+}
+.metaList dd{
+  font-size:12px;
+  font-weight:600;
+}
+.readiness>div{min-height:42px}
+.readiness i{font-size:10px}
+.readiness span{font-size:11px}
+.readiness b{font-size:10px}
+.openPublication{min-height:50px}
+.openPublication small{font-size:9px}
+.openPublication code{font-size:11px}
+.openPublication>b{font-size:11px}
