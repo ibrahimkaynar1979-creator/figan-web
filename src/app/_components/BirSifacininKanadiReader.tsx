@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import styles from "./EbookReader.module.css";
-import { bskLegacyReaderSections } from "../_data/bskEpub/sections";
+import { bskEpubSections, legacyReaderIndexToEpubIndex } from "../_data/bskEpub/sections";
 
 type Theme = "light" | "cream" | "dark";
 type ReaderFont = "serif" | "sans" | "modern";
@@ -15,13 +15,14 @@ type ReaderUnderline = { id: string; index: number; paragraph: number; start: nu
 type PendingUnderline = { segments: Omit<ReaderUnderline, "id">[]; x: number; y: number };
 type ActiveUnderline = { id: string; x: number; y: number };
 
-const sections: Section[] = bskLegacyReaderSections.map(section =>
+const sections: Section[] = bskEpubSections.map(section =>
   section.title === "KAZANMAK DA VAR KAYBETMEK DE."
     ? { ...section, title: "KAZANMAK DA VAR KAYBETMEK" }
     : section
 );
 
 const STORAGE = "22reader-bir-sifacinin-kanadi";
+const EPUB_STRUCTURE_VERSION = 2;
 const READER_FONTS: Record<ReaderFont, string> = {
   serif: 'Georgia, "Times New Roman", serif',
   sans: 'Arial, Helvetica, sans-serif',
@@ -71,10 +72,18 @@ export default function BirSifacininKanadiReader() {
     }
     try {
       const saved = JSON.parse(raw);
-      const savedIndex =
+      const needsEpubIndexMigration = saved.epubStructureVersion !== EPUB_STRUCTURE_VERSION;
+      const migrateIndex = (value: number) =>
+        needsEpubIndexMigration ? legacyReaderIndexToEpubIndex(value) : value;
+
+      const rawSavedIndex =
         typeof saved.lastReadingIndex === "number"
           ? saved.lastReadingIndex
           : saved.index;
+      const savedIndex =
+        typeof rawSavedIndex === "number" && rawSavedIndex >= 0
+          ? migrateIndex(Math.floor(rawSavedIndex))
+          : rawSavedIndex;
       const savedPage =
         typeof saved.lastReaderPage === "number"
           ? saved.lastReaderPage
@@ -102,7 +111,9 @@ export default function BirSifacininKanadiReader() {
       if (Array.isArray(saved.bookmarks)) {
         const migratedBookmarks: ReaderBookmark[] = saved.bookmarks
           .map((item: unknown) => {
-            if (typeof item === "number") return { index: item, page: 0 };
+            if (typeof item === "number") {
+              return { index: migrateIndex(Math.floor(item)), page: 0 };
+            }
             if (
               item &&
               typeof item === "object" &&
@@ -110,7 +121,7 @@ export default function BirSifacininKanadiReader() {
               typeof (item as { page?: unknown }).page === "number"
             ) {
               return {
-                index: Math.floor((item as { index: number }).index),
+                index: migrateIndex(Math.floor((item as { index: number }).index)),
                 page: Math.max(0, Math.floor((item as { page: number }).page)),
               };
             }
@@ -123,22 +134,33 @@ export default function BirSifacininKanadiReader() {
         const migratedNotes: Record<string, string> = {};
         Object.entries(saved.notes as Record<string, unknown>).forEach(([key, value]) => {
           if (typeof value !== "string") return;
-          migratedNotes[key.includes(":") ? key : key + ":0"] = value;
+          const [rawIndex, rawPage = "0"] = key.split(":");
+          const parsedIndex = Number(rawIndex);
+          const parsedPage = Number(rawPage);
+          if (!Number.isFinite(parsedIndex)) return;
+          const migratedIndex = migrateIndex(Math.max(0, Math.floor(parsedIndex)));
+          const migratedPage = Number.isFinite(parsedPage) ? Math.max(0, Math.floor(parsedPage)) : 0;
+          migratedNotes[`${migratedIndex}:${migratedPage}`] = value;
         });
         setNotes(migratedNotes);
       }
       if (Array.isArray(saved.underlines)) {
-        const safeUnderlines = saved.underlines.filter((item: unknown): item is ReaderUnderline => {
-          if (!item || typeof item !== "object") return false;
-          const value = item as Partial<ReaderUnderline>;
-          return (
-            typeof value.id === "string" &&
-            typeof value.index === "number" &&
-            typeof value.paragraph === "number" &&
-            typeof value.start === "number" &&
-            typeof value.end === "number"
-          );
-        });
+        const safeUnderlines = saved.underlines
+          .filter((item: unknown): item is ReaderUnderline => {
+            if (!item || typeof item !== "object") return false;
+            const value = item as Partial<ReaderUnderline>;
+            return (
+              typeof value.id === "string" &&
+              typeof value.index === "number" &&
+              typeof value.paragraph === "number" &&
+              typeof value.start === "number" &&
+              typeof value.end === "number"
+            );
+          })
+          .map((item: ReaderUnderline) => ({
+            ...item,
+            index: migrateIndex(Math.max(0, Math.floor(item.index))),
+          }));
         setUnderlines(safeUnderlines);
       }
     } catch {}
@@ -173,6 +195,7 @@ export default function BirSifacininKanadiReader() {
       bookmarks,
       notes,
       underlines,
+      epubStructureVersion: EPUB_STRUCTURE_VERSION,
       ...(index >= 0
         ? { lastReadingIndex: index, lastReaderPage: readerPage }
         : {}),
@@ -197,6 +220,7 @@ export default function BirSifacininKanadiReader() {
         ...previous,
         index,
         readerPage: exactPage,
+        epubStructureVersion: EPUB_STRUCTURE_VERSION,
         ...(index >= 0
           ? { lastReadingIndex: index, lastReaderPage: exactPage }
           : {}),
