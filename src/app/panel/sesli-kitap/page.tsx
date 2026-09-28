@@ -403,6 +403,7 @@ export default function AudiobookUploadPage() {
             <small>YAYINEVİ</small>
           </a>
           <div className={styles.adminActions}>
+            <a href="/panel/reader">22 Reader</a>
             <button type="button" onClick={startNewBook}>+ Yeni Kitap</button>
             <button type="button" onClick={logout}>Çıkış</button>
           </div>
