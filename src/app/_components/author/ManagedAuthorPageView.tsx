@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import AuthorPageView from "./AuthorPageView";
 import type { AuthorBook, AuthorProfile } from "../../_data/authors";
-import { getManagedAuthors, getManagedBooks, type ManagedAuthor, type ManagedBook } from "../../panel/_lib/managedStore";
+import { listManagedAuthors, listManagedBooks, type ManagedAuthor, type ManagedBook } from "../../panel/_lib/managedStore";
 
 
 
