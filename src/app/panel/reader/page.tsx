@@ -8,12 +8,18 @@ const books = [
   {
     title: "Bir Şifacının Kanadı",
     author: "Figen Yavuz",
+    authorSlug: "figen-yavuz",
+    authorHref: "/yazarlar/figen-yavuz",
+    subtitle: "İnsanın Kendine Dönüş Yolculuğu",
+    slug: "bir-sifacinin-kanadi",
     cover: "/bir_sifaci_png.png",
     status: "Yayında",
     chapters: 85,
-    format: "EPUB",
+    format: "EPUB 3",
+    language: "Türkçe",
+    publisher: "22 Yayınevi",
     updated: "Bugün",
-    href: "/oku/bir-sifacinin-kanadi",
+    readerHref: "/oku/bir-sifacinin-kanadi",
   },
 ];
 
@@ -71,6 +77,19 @@ export default function ReaderPanelPage() {
           </p>
         </section>
 
+        <section className={styles.connectionGuide}>
+          <div>
+            <span className={styles.guideKicker}>KİTAP BAĞLANTILARI</span>
+            <h3>Bir kitap hangi alanlara bağlanmalı?</h3>
+          </div>
+          <div className={styles.guideGrid}>
+            <article><b>01</b><strong>Yazar</strong><p>Kitap, daha önce oluşturduğunuz yazar profiline bağlanır. Karttaki yazar adı doğrudan o profile gider.</p></article>
+            <article><b>02</b><strong>Reader adresi</strong><p>Her kitap için benzersiz bir <code>/oku/kitap-slug</code> adresi oluşur.</p></article>
+            <article><b>03</b><strong>EPUB + Kapak</strong><p>Yayın kaynağı EPUB dosyasıdır; kapak Reader ve kitap kartlarında kullanılır.</p></article>
+            <article><b>04</b><strong>Yayın durumu</strong><p>Taslak, önizleme veya yayında durumuyla hangi kitabın görünür olacağı yönetilir.</p></article>
+          </div>
+        </section>
+
         <section className={styles.stats} aria-label="Reader özeti">
           <article><b>{books.length}</b><span>Toplam Kitap</span></article>
           <article><b>{books.filter(book => book.status === "Yayında").length}</b><span>Yayında</span></article>
@@ -107,19 +126,36 @@ export default function ReaderPanelPage() {
                 </div>
 
                 <h4>{book.title}</h4>
-                <p className={styles.author}>{book.author}</p>
+                <a className={styles.author} href={book.authorHref}>{book.author} <span>↗</span></a>
+                <p className={styles.subtitle}>{book.subtitle}</p>
 
                 <div className={styles.meta}>
                   <span><b>{book.chapters}</b> bölüm</span>
                   <i />
                   <span>{book.format}</span>
                   <i />
-                  <span>Türkçe</span>
+                  <span>{book.language}</span>
+                </div>
+
+                <div className={styles.linksBox}>
+                  <span className={styles.linksLabel}>BAĞLANTILAR</span>
+                  <a href={book.authorHref}>
+                    <span>Yazar Profili</span>
+                    <code>{book.authorHref}</code>
+                  </a>
+                  <a href={book.readerHref} target="_blank" rel="noreferrer">
+                    <span>Reader Adresi</span>
+                    <code>{book.readerHref}</code>
+                  </a>
+                  <div>
+                    <span>Kitap Slug</span>
+                    <code>{book.slug}</code>
+                  </div>
                 </div>
 
                 <div className={styles.cardActions}>
-                  <a href={book.href} target="_blank" rel="noreferrer">Önizle <span>↗</span></a>
-                  <a href="/panel/reader/yeni">Düzenle <span>→</span></a>
+                  <a href={book.readerHref} target="_blank" rel="noreferrer">Reader&apos;ı Aç <span>↗</span></a>
+                  <a href="/panel/reader/yeni">Kitabı Düzenle <span>→</span></a>
                 </div>
               </div>
             </article>
