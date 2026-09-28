@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./ReaderPanel.module.css";
+import PanelSidebar from "../_components/PanelSidebar";
 import { listManagedBooks } from "../_lib/managedStore";
 
 const normalizeCoverSrc = (value?: string | null) => {
@@ -91,30 +92,7 @@ export default function ReaderPanelPage() {
 
   return (
     <main className={styles.page}>
-      <aside className={styles.sidebar}>
-        <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
-          <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={330} height={210} priority />
-        </a>
-
-        <div className={styles.readerMark}>
-          <Image src="/22_reader_logo.png" alt="22 Reader" width={360} height={118} priority />
-        </div>
-
-        <nav className={styles.nav} aria-label="Reader yönetim menüsü">
-          <button className={filter === "all" ? styles.active : ""} type="button" onClick={() => setFilter("all")}><span>▦</span> Kitaplar</button>
-          <a href="/panel/reader/yeni"><span>＋</span> Yeni Kitap</a>
-          <a href="/oku" target="_blank" rel="noreferrer"><span>◫</span> Reader Tasarım Alanı</a>
-          <a href="/panel/yazarlar"><span>✒</span> Yazarlar</a>
-          <a href="/panel/sesli-kitap"><span>♪</span> Sesli Kitap</a>
-          <button className={filter === "draft" ? styles.active : ""} type="button" onClick={() => setFilter("draft")}><span>◌</span> Taslaklar</button>
-          <button className={filter === "published" ? styles.active : ""} type="button" onClick={() => setFilter("published")}><span>⌁</span> Yayındakiler</button>
-        </nav>
-
-        <div className={styles.sidebarFoot}>
-          <span>22 READER</span>
-          <p>Dijital yayın yönetimi</p>
-        </div>
-      </aside>
+      <PanelSidebar active="projects" />
 
       <section className={styles.workspace}>
         <header className={styles.topbar}>
