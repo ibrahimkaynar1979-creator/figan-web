@@ -75,7 +75,7 @@ export const authors: AuthorProfile[] = [
         audioUrl: "/sesli-kitap",
         sampleUrl: "/oku/bir-sifacinin-kanadi",
         reader: {
-          chapterCount: 83,
+          chapterCount: 85,
           estimatedReadTime: "~ 5 saat",
           format: "EPUB",
         },
