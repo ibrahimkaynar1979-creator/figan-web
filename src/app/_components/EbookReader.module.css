@@ -1187,29 +1187,3 @@
     font-size:16px;
   }
 }
-
-.readerLogoLockup{
-  display:flex;
-  align-items:baseline;
-  justify-content:center;
-  gap:14px;
-  color:var(--accent);
-  white-space:nowrap;
-}
-.readerLogoLockup strong{
-  font-family:var(--font-poetic),Georgia,serif;
-  font-size:52px;
-  line-height:.8;
-  font-weight:500;
-  letter-spacing:-.08em;
-}
-.readerLogoLockup span{
-  font-family:var(--font-editorial),Georgia,serif;
-  font-size:20px;
-  letter-spacing:.3em;
-  color:var(--muted);
-}
-@media(max-width:520px){
-  .readerLogoLockup strong{font-size:40px}
-  .readerLogoLockup span{font-size:15px}
-}
