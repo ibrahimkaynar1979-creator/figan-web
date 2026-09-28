@@ -14,6 +14,8 @@ type Props = {
   voice?: string;
   audioDuration?: string;
   status?: string;
+  publicationHref?: string;
+  sourceReady?: boolean;
   onModeChange?: (mode: "reader" | "audio") => void;
 };
 
@@ -28,6 +30,8 @@ export default function PublicationPreviewDock({
   voice,
   audioDuration = "—",
   status = "Taslak",
+  publicationHref,
+  sourceReady = false,
   onModeChange,
 }: Props) {
   const safeTitle = title.trim() || "Kitap adı";
@@ -118,8 +122,39 @@ export default function PublicationPreviewDock({
       <div className={styles.checks}>
         <div><span>Kapak</span><b>{coverSrc ? "Hazır" : "Bekliyor"}</b></div>
         <div><span>Yazar</span><b>{author.trim() ? "Bağlı" : "Bekliyor"}</b></div>
-        <div><span>{activeMode === "reader" ? "EPUB" : "MP3"}</span><b>Önizleme</b></div>
+        <div><span>{activeMode === "reader" ? "EPUB" : "MP3"}</span><b>{sourceReady ? "Hazır" : "Bekliyor"}</b></div>
       </div>
+
+      <section className={styles.detailPanel}>
+        <div className={styles.detailHead}>
+          <div>
+            <span>YAYIN ÖZETİ</span>
+            <strong>{safeTitle}</strong>
+          </div>
+          <b>{status}</b>
+        </div>
+
+        <dl className={styles.metaList}>
+          <div><dt>Yazar</dt><dd>{safeAuthor}</dd></div>
+          {subtitle ? <div><dt>Alt başlık</dt><dd>{subtitle}</dd></div> : null}
+          <div><dt>Format</dt><dd>{activeMode === "reader" ? "EPUB · 22 Reader" : "MP3 · Sesli Kitap"}</dd></div>
+          <div><dt>İçerik</dt><dd>{activeMode === "reader" ? chapterLabel : audioDuration}</dd></div>
+          <div><dt>Durum</dt><dd>{status}</dd></div>
+        </dl>
+
+        <div className={styles.readiness}>
+          <div className={coverSrc ? styles.done : ""}><i>{coverSrc ? "✓" : "1"}</i><span>Kapak görseli</span><b>{coverSrc ? "Hazır" : "Eksik"}</b></div>
+          <div className={author.trim() ? styles.done : ""}><i>{author.trim() ? "✓" : "2"}</i><span>Yazar bağlantısı</span><b>{author.trim() ? "Hazır" : "Eksik"}</b></div>
+          <div className={sourceReady ? styles.done : ""}><i>{sourceReady ? "✓" : "3"}</i><span>{activeMode === "reader" ? "EPUB kaynağı" : "MP3 kaynağı"}</span><b>{sourceReady ? "Hazır" : "Eksik"}</b></div>
+        </div>
+
+        {publicationHref ? (
+          <a className={styles.openPublication} href={publicationHref} target="_blank" rel="noreferrer">
+            <span><small>YAYIN ADRESİ</small><code>{publicationHref}</code></span>
+            <b>Önizle ↗</b>
+          </a>
+        ) : null}
+      </section>
     </aside>
   );
 }
