@@ -542,3 +542,44 @@
   .coverHero{width:210px;max-width:64%}
 }
 
+
+
+/* Mobile touch interaction hardening */
+@media (hover:none) and (pointer:coarse){
+  .topbar,
+  .content,
+  .transport,
+  .tools,
+  .chapterStrip{
+    position:relative;
+    z-index:2;
+  }
+
+  .menuButton,
+  .seekButton,
+  .play,
+  .tools button,
+  .chapterStrip button,
+  .range{
+    pointer-events:auto;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .menuButton,
+  .seekButton,
+  .play,
+  .tools button,
+  .chapterStrip button{
+    user-select:none;
+    -webkit-user-select:none;
+  }
+
+  .drawer:not(.drawerOpen){
+    display:none;
+  }
+
+  .drawerOpen{
+    display:block;
+  }
+}
