@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import AuthorPageView from "../../_components/author/AuthorPageView";
+import ManagedAuthorPageView from "../../_components/author/ManagedAuthorPageView";
 import { getAuthor } from "../../_data/authors";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -8,7 +7,13 @@ type PageProps = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const author = getAuthor(slug);
-  if (!author) return {};
+  if (!author) {
+    return {
+      title: "Yazar",
+      alternates: { canonical: `/yazarlar/${slug}` },
+    };
+  }
+
   const featured = author.books.find((book) => book.featured) ?? author.books[0];
   return {
     title: author.name,
@@ -19,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
-  const author = getAuthor(slug);
-  if (!author) notFound();
-  return <AuthorPageView author={author} />;
+  const author = getAuthor(slug) ?? null;
+
+  return <ManagedAuthorPageView slug={slug} initialAuthor={author} />;
 }
