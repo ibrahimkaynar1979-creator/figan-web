@@ -22,6 +22,8 @@ export type BookRecord = {
   title: string;
   subtitle?: string | null;
   authorSlug: string;
+  author?: string;
+  authorHref?: string;
   language: string;
   status: PanelPublicationStatus;
   readerHref: string;
