@@ -87,8 +87,6 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
   }, [storageKey]);
 
   useEffect(() => {
-    if (!started) return;
-
     let cancelled = false;
 
     const boot = async () => {
@@ -96,7 +94,7 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
       setReady(false);
       try {
         await loadEpubJs();
-        if (cancelled || !viewerRef.current || !window.ePub) return;
+        if (cancelled || !window.ePub) return;
 
         const book = window.ePub(epubUrl);
         bookRef.current = book;
@@ -120,6 +118,12 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
             setReadingMinutes(Math.max(1, Math.ceil(totalWords / 200)));
           }
         } catch {}
+
+        if (!started) {
+          return;
+        }
+
+        if (!viewerRef.current) return;
 
         const rendition = book.renderTo(viewerRef.current, {
           width: "100%",
@@ -260,12 +264,22 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
         <article className={styles.readingArea}>
           {!started ? (
             <div className={styles.coverScreen}>
-              <div className={styles.coverHero}>
+              <div
+                className={styles.coverHero}
+                style={{ height: "min(54dvh, 430px)", maxHeight: "430px" }}
+              >
                 {coverUrl && (
                   <img
                     src={coverUrl}
                     alt={title + " - " + (author || "22 Yayınevi")}
-                    style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxHeight: "100%",
+                      objectFit: "contain",
+                      objectPosition: "center",
+                      transform: "none",
+                    }}
                   />
                 )}
               </div>
