@@ -19,9 +19,13 @@ type Props = {
   };
 };
 
-const authorOptions = [
+type AuthorOption = { name: string; slug: string; href: string };
+
+const BUILT_IN_AUTHORS: AuthorOption[] = [
   { name: "Figen Yavuz", slug: "figen-yavuz", href: "/yazarlar/figen-yavuz" },
 ];
+
+const AUTHOR_STORAGE = "22reader-panel-authors";
 
 const slugify = (value: string) =>
   value
@@ -45,9 +49,29 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   const [epubName, setEpubName] = useState(mode === "edit" ? "Bir_Sifacinin_Kanadi_Figen_Yavuz_22_Yayinevi.epub" : "");
   const [coverName, setCoverName] = useState(mode === "edit" ? "bir_sifaci_png.png" : "");
   const [saved, setSaved] = useState(false);
+  const [authorOptions, setAuthorOptions] = useState<AuthorOption[]>(BUILT_IN_AUTHORS);
 
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
+
+    try {
+      const parsed = JSON.parse(localStorage.getItem(AUTHOR_STORAGE) || "[]");
+      if (Array.isArray(parsed)) {
+        const panelAuthors: AuthorOption[] = parsed
+          .filter(item => item && typeof item.name === "string" && typeof item.slug === "string")
+          .map(item => ({
+            name: item.name,
+            slug: item.slug,
+            href: typeof item.href === "string" ? item.href : `/yazarlar/${item.slug}`,
+          }));
+        const merged = [...BUILT_IN_AUTHORS];
+        panelAuthors.forEach(item => {
+          if (!merged.some(existing => existing.slug === item.slug)) merged.push(item);
+        });
+        setAuthorOptions(merged);
+      }
+    } catch {}
+
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
 
@@ -89,6 +113,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
         </div>
         <nav>
           <a href="/panel/reader">← Kitaplara Dön</a>
+          <a href="/panel/yazarlar">✒ Yazarlar</a>
           <a className={styles.active} href={mode === "new" ? "/panel/reader/yeni" : `/panel/reader/${slug}/duzenle`}>
             {mode === "new" ? "Yeni Kitap" : "Kitabı Düzenle"}
           </a>
@@ -127,7 +152,10 @@ export default function ReaderBookForm({ mode, initial }: Props) {
                 <select value={authorSlug} onChange={e => setAuthorSlug(e.target.value)}>
                   {authorOptions.map(item => <option key={item.slug} value={item.slug}>{item.name}</option>)}
                 </select>
-                <small>Seçilen yazar: <a href={author.href}>{author.href}</a></small>
+                <small>
+                  Seçilen yazar: <a href={author.href}>{author.href}</a>
+                  {" · "}<a href="/panel/yazarlar/yeni">Yeni yazar oluştur</a>
+                </small>
               </label>
               <label>
                 <span>Kitap Slug</span>
