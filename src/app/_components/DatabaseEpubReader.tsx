@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import styles from "./EbookReader.module.css";
 
@@ -68,6 +69,7 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
   const [progress, setProgress] = useState(0);
   const [bookmarked, setBookmarked] = useState(false);
   const [note, setNote] = useState("");
+  const [readingMinutes, setReadingMinutes] = useState<number | null>(null);
 
   const storageKey = `22reader-dynamic-${slug}`;
   const flatToc = useMemo(() => flattenToc(toc), [toc]);
@@ -102,6 +104,22 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
 
         const navigation = await book.loaded.navigation;
         if (!cancelled) setToc(navigation?.toc || []);
+
+        try {
+          const spineItems = book.spine?.spineItems || [];
+          let totalWords = 0;
+          for (const section of spineItems) {
+            try {
+              const doc = await section.load(book.load.bind(book));
+              const text = doc?.body?.textContent || doc?.documentElement?.textContent || "";
+              totalWords += text.trim().split(/\s+/).filter(Boolean).length;
+              section.unload?.();
+            } catch {}
+          }
+          if (!cancelled && totalWords > 0) {
+            setReadingMinutes(Math.max(1, Math.ceil(totalWords / 200)));
+          }
+        } catch {}
 
         const rendition = book.renderTo(viewerRef.current, {
           width: "100%",
@@ -167,6 +185,15 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
     localStorage.setItem(storageKey, JSON.stringify({ theme, fontSize, bookmarked, note }));
   }, [storageKey, theme, fontSize, bookmarked, note]);
 
+  const readingTime = useMemo(() => {
+    if (!readingMinutes) return "~ hesaplanıyor";
+    const hours = Math.floor(readingMinutes / 60);
+    const minutes = readingMinutes % 60;
+    if (hours === 0) return `~ ${readingMinutes} dk`;
+    if (minutes === 0) return `~ ${hours} saat`;
+    return `~ ${hours} sa ${minutes} dk`;
+  }, [readingMinutes]);
+
   const goTo = async (item: TocItem) => {
     if (!item.href || !renditionRef.current) return;
     await renditionRef.current.display(item.href);
@@ -209,8 +236,10 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
         <header className={styles.topbar}>
           {!started ? (
             <>
-              <div className={styles.coverTopLogo} style={{ fontSize: 15, letterSpacing: ".14em" }}>22 YAYINEVİ</div>
-              <button type="button" className={styles.coverMenuButton} onClick={() => setPanel("toc")}>☰</button>
+              <div className={styles.coverTopLogo}>
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={300} height={190} priority />
+              </div>
+              <button type="button" className={styles.coverMenuButton} onClick={() => setPanel("toc")} aria-label="Menü">⋮</button>
             </>
           ) : (
             <>
@@ -230,23 +259,44 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
 
         <article className={styles.readingArea}>
           {!started ? (
-            <div className={styles.dynamicCoverScreen}>
-              {coverUrl && (
-                <div className={styles.dynamicCoverHero}>
-                  <img src={coverUrl} alt={title} />
-                </div>
-              )}
-              <h1 className={styles.dynamicCoverAuthor}>{author || "22 Yayınevi"}</h1>
-              <p className={styles.dynamicCoverPublisher}>22 Yayınevi</p>
-              <button type="button" className={styles.dynamicCoverButton} onClick={() => setStarted(true)}>
+            <div className={styles.coverScreen}>
+              <div className={styles.coverHero}>
+                {coverUrl && (
+                  <img
+                    src={coverUrl}
+                    alt={title + " - " + (author || "22 Yayınevi")}
+                    style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
+                  />
+                )}
+              </div>
+              <div className={styles.coverAuthor}>{author || "22 Yayınevi"}</div>
+              <div className={styles.coverPublisher}>22 Yayınevi</div>
+              <button type="button" className={styles.startButton} onClick={() => setStarted(true)}>
                 Okumaya Başla <span>→</span>
               </button>
-              <div className={styles.dynamicCoverStats}>
-                <span><i>▤</i><b>{flatToc.length || "—"} bölüm</b></span>
-                <span><i>◷</i><b>~ EPUB</b></span>
-                <span><i>▱</i><b>EPUB</b></span>
+              <div className={styles.coverStats}>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M3.5 5.5c2.8-.7 5.5-.2 8 1.5v12c-2.5-1.7-5.2-2.2-8-1.5z"/><path d="M20.5 5.5c-2.8-.7-5.5-.2-8 1.5v12c2.5-1.7 5.2-2.2 8-1.5z"/></svg>
+                  </i>
+                  <b>{flatToc.length || "—"} bölüm</b>
+                </span>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/></svg>
+                  </i>
+                  <b>{readingTime}</b>
+                </span>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6.5 3.5h7l4 4v13h-11z"/><path d="M13.5 3.5v4h4"/><path d="M9 12h6M9 15h6"/></svg>
+                  </i>
+                  <b>EPUB</b>
+                </span>
               </div>
-              <div className={styles.dynamicReaderBrand}>22 Reader</div>
+              <div className={styles.coverReaderBrand}>
+                <Image src="/22_reader_logo.png" alt="22 Reader" width={520} height={170} priority />
+              </div>
             </div>
           ) : (
             <>
