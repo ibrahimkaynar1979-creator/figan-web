@@ -191,8 +191,8 @@ export default function ReaderPanelPage() {
           {visibleBooks.map(book => (
             <article className={styles.bookCard} key={book.title}>
               <div className={styles.coverWrap}>
-                <Image
-                  src={book.cover}
+                <img
+                  src={normalizeCoverSrc(book.cover)}
                   alt={book.title}
                   width={420}
                   height={600}
