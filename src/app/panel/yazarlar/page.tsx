@@ -32,7 +32,7 @@ export default function AuthorsPanelPage() {
   }, []);
 
   const authors = useMemo<ManagedAuthor[]>(() => {
-    const base = builtInAuthors.map(author => ({
+    const base: ManagedAuthor[] = builtInAuthors.map(author => ({
       name: author.name,
       slug: author.slug,
       href: `/yazarlar/${author.slug}`,
