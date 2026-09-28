@@ -58,7 +58,26 @@ export default function ReaderPanelPage() {
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
     void listManagedBooks().then(({ items }) => {
-      setManagedBooks(items as typeof books);
+      setManagedBooks(
+        items.map(book => ({
+          title: book.title,
+          author: book.author || "",
+          authorSlug: book.authorSlug,
+          authorHref: book.authorHref || `/yazarlar/${book.authorSlug}`,
+          subtitle: book.subtitle || "",
+          slug: book.slug,
+          cover: book.coverName || "/bir_sifaci_png.png",
+          status: book.status,
+          chapters: Number(book.chapterCount ?? 0),
+          format: book.format || "EPUB 3",
+          language: book.language || "Türkçe",
+          publisher: "22 Yayınevi",
+          updated: book.updatedAt
+            ? new Date(book.updatedAt).toLocaleDateString("tr-TR")
+            : "Bugün",
+          readerHref: book.readerHref || `/oku/${book.slug}`,
+        }))
+      );
     });
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
