@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { authors as builtInAuthors } from "../../_data/authors";
 import styles from "./AuthorsPanel.module.css";
+import { getManagedAuthors, type ManagedAuthor as StoredAuthor } from "../_lib/managedStore";
 
 type ManagedAuthor = {
   name: string;
@@ -16,18 +17,15 @@ type ManagedAuthor = {
   source: "site" | "panel";
 };
 
-const STORAGE = "22reader-panel-authors";
-
 export default function AuthorsPanelPage() {
   const [savedAuthors, setSavedAuthors] = useState<ManagedAuthor[]>([]);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
-    try {
-      const parsed = JSON.parse(localStorage.getItem(STORAGE) || "[]");
-      if (Array.isArray(parsed)) setSavedAuthors(parsed);
-    } catch {}
+    setSavedAuthors(
+      getManagedAuthors().map((author: StoredAuthor) => ({ ...author, source: "panel" as const }))
+    );
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
 
