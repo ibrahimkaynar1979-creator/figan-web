@@ -322,6 +322,7 @@ export default function BirSifacininKanadiPlayer() {
     const audio=audioRef.current;
     if(!audio) return;
     const next=Math.max(0,Math.min(audio.duration||BOOK_DURATION,audio.currentTime+amount));
+    pendingResumeRef.current=next;
     audio.currentTime=next;
     setCurrentTime(next);
     try{
@@ -343,6 +344,7 @@ export default function BirSifacininKanadiPlayer() {
     const audio=audioRef.current;
     if(!audio) return;
     const target=chapters[index].start;
+    pendingResumeRef.current=target;
     audio.currentTime=target;
     setCurrentTime(target);
     setChapterIndex(index);
@@ -366,6 +368,7 @@ export default function BirSifacininKanadiPlayer() {
         preload="metadata"
         onTimeUpdate={(e)=>{
           const next=e.currentTarget.currentTime;
+          pendingResumeRef.current=next;
           setCurrentTime(next);
           const wholeSecond=Math.floor(next);
           if(wholeSecond!==lastSavedSecondRef.current && wholeSecond%4===0){
@@ -473,6 +476,7 @@ export default function BirSifacininKanadiPlayer() {
               value={Math.min(currentTime,duration||BOOK_DURATION)}
               onChange={(e)=>{
                 const value=Number(e.target.value);
+                pendingResumeRef.current=value;
                 if(audioRef.current) audioRef.current.currentTime=value;
                 setCurrentTime(value);
                 try{
