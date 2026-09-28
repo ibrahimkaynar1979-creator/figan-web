@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ThemeSwitcher from "./ThemeSwitcher";
 
 const palettes = ["turquoise","coral","graphite","navy","olive","amber"] as const;
 type Palette = (typeof palettes)[number];
@@ -38,7 +37,6 @@ export default function PanelThemeRoot({ children }: { children: React.ReactNode
   return (
     <div className="publishing-os" data-palette={palette} data-tenant-theme="publisher">
       {children}
-      <div className="publishing-os-theme-dock"><ThemeSwitcher /></div>
     </div>
   );
 }
