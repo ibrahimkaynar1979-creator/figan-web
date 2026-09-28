@@ -13,17 +13,16 @@ import type { AuthorProfile } from "../../_data/authors";
 
 export default function AuthorPageView({ author }: { author: AuthorProfile }) {
   const featuredBook = author.books.find((book) => book.featured) ?? author.books[0];
-  if (!featuredBook) return null;
 
   return (
     <main className={`author-platform-shell ${styles.platform}`}>
       <AuthorHero author={author} />
-      <FeaturedBook book={featuredBook} />
-      <ReaderShowcase author={author} book={featuredBook} />
-      <AudioShowcase author={author} book={featuredBook} />
+      {featuredBook && <FeaturedBook book={featuredBook} />}
+      {featuredBook && <ReaderShowcase author={author} book={featuredBook} />}
+      {featuredBook?.audioUrl && <AudioShowcase author={author} book={featuredBook} />}
       <AuthorIntro author={author} />
       <AuthorArticles author={author} />
-      <AuthorLibrary author={author} />
+      {author.books.length > 0 && <AuthorLibrary author={author} />}
       <AuthorEvents author={author} />
       <AuthorNewsletter />
       <AuthorFooter author={author} />
