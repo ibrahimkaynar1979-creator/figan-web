@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import styles from "./ReaderPanel.module.css";
 
 const books = [
@@ -24,6 +24,25 @@ const books = [
 ];
 
 export default function ReaderPanelPage() {
+  const [filter, setFilter] = useState<"all" | "draft" | "published">("all");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const visibleBooks = useMemo(() => {
+    const q = query.trim().toLocaleLowerCase("tr-TR");
+    return books.filter(book => {
+      const statusMatch =
+        filter === "all" ||
+        (filter === "published" && book.status === "Yayında") ||
+        (filter === "draft" && book.status === "Taslak");
+      const queryMatch =
+        !q ||
+        [book.title, book.author, book.subtitle, book.slug]
+          .some(value => value.toLocaleLowerCase("tr-TR").includes(q));
+      return statusMatch && queryMatch;
+    });
+  }, [filter, query]);
+
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
     return () => document.body.classList.remove("reader-admin-route");
@@ -41,10 +60,10 @@ export default function ReaderPanelPage() {
         </div>
 
         <nav className={styles.nav} aria-label="Reader yönetim menüsü">
-          <a className={styles.active} href="/panel/reader"><span>▦</span> Kitaplar</a>
+          <button className={filter === "all" ? styles.active : ""} type="button" onClick={() => setFilter("all")}><span>▦</span> Kitaplar</button>
           <a href="/panel/reader/yeni"><span>＋</span> Yeni Kitap</a>
-          <a href="/panel/reader"><span>◌</span> Taslaklar</a>
-          <a href="/panel/reader"><span>⌁</span> Yayındakiler</a>
+          <button className={filter === "draft" ? styles.active : ""} type="button" onClick={() => setFilter("draft")}><span>◌</span> Taslaklar</button>
+          <button className={filter === "published" ? styles.active : ""} type="button" onClick={() => setFilter("published")}><span>⌁</span> Yayındakiler</button>
         </nav>
 
         <div className={styles.sidebarFoot}>
@@ -100,13 +119,33 @@ export default function ReaderPanelPage() {
         <div className={styles.sectionHead}>
           <div>
             <span>KÜTÜPHANE</span>
-            <h3>Reader Kitapları</h3>
+            <h3>{filter === "draft" ? "Taslak Kitaplar" : filter === "published" ? "Yayındaki Kitaplar" : "Reader Kitapları"}</h3>
           </div>
-          <button type="button" aria-label="Kitaplarda ara">⌕</button>
+          <button
+            type="button"
+            aria-label="Kitaplarda ara"
+            aria-pressed={searchOpen}
+            onClick={() => setSearchOpen(value => !value)}
+          >⌕</button>
         </div>
 
+        {searchOpen && (
+          <div className={styles.librarySearch}>
+            <span>⌕</span>
+            <input
+              autoFocus
+              type="search"
+              value={query}
+              onChange={event => setQuery(event.target.value)}
+              placeholder="Kitap, yazar veya slug ara…"
+              aria-label="Kitaplarda ara"
+            />
+            {query && <button type="button" onClick={() => setQuery("")} aria-label="Aramayı temizle">×</button>}
+          </div>
+        )}
+
         <section className={styles.grid}>
-          {books.map(book => (
+          {visibleBooks.map(book => (
             <article className={styles.bookCard} key={book.title}>
               <div className={styles.coverWrap}>
                 <Image
@@ -155,11 +194,20 @@ export default function ReaderPanelPage() {
 
                 <div className={styles.cardActions}>
                   <a href={book.readerHref} target="_blank" rel="noreferrer">Reader&apos;ı Aç <span>↗</span></a>
-                  <a href="/panel/reader/yeni">Kitabı Düzenle <span>→</span></a>
+                  <a href={`/panel/reader/${book.slug}/duzenle`}>Kitabı Düzenle <span>→</span></a>
                 </div>
               </div>
             </article>
           ))}
+
+          {visibleBooks.length === 0 && (
+            <div className={styles.emptyState}>
+              <span>22 READER</span>
+              <h4>Bu görünümde kitap yok.</h4>
+              <p>Filtreyi değiştirebilir veya yeni bir kitap oluşturabilirsiniz.</p>
+              <button type="button" onClick={() => { setFilter("all"); setQuery(""); }}>Tüm kitapları göster</button>
+            </div>
+          )}
 
           <a className={styles.addCard} href="/panel/reader/yeni">
             <span className={styles.addIcon}>＋</span>
