@@ -1,43 +1,21 @@
-import { list } from "@vercel/blob";
-
-const PREFIX = "audiobooks/bir-sifacinin-kanadi/";
-const PUBLIC_FALLBACK_URL =
-  "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
-
-async function resolveAudioSource() {
-  try {
-    const { blobs } = await list({ prefix: PREFIX, limit: 20 });
-    const preferred =
-      blobs.find((blob) => blob.pathname === PREFIX + "master.mp3") ??
-      blobs.find((blob) => blob.pathname.endsWith(".mp3"));
-
-    if (preferred) {
-      return {
-        url: preferred.url,
-        pathname: preferred.pathname,
-        uploadedAt: preferred.uploadedAt,
-        source: "blob",
-      };
-    }
-  } catch {
-    // Local development may not have Blob credentials. Public fallback is intentional.
-  }
-
-  return {
-    url: PUBLIC_FALLBACK_URL,
-    pathname: PREFIX + "master.mp3",
-    uploadedAt: undefined,
-    source: "public-fallback",
-  };
-}
+import { getCurrentAudiobook } from "@/lib/audiobookCurrent";
 
 export async function GET() {
-  const current = await resolveAudioSource();
+  const current = await getCurrentAudiobook();
+  const url = current.audioUrl || current.url;
+
+  if (!url) {
+    return Response.json(
+      { ok: false, reachable: false, streaming: false, reason: "Ses kaynağı bulunamadı." },
+      { status: 503, headers: { "cache-control": "no-store" } },
+    );
+  }
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
 
   try {
-    const probe = await fetch(current.url, {
+    const probe = await fetch(url, {
       method: "GET",
       headers: { Range: "bytes=0-0" },
       cache: "no-store",
@@ -52,10 +30,10 @@ export async function GET() {
     const acceptRanges = probe.headers.get("accept-ranges");
     const totalSizeMatch = contentRange?.match(/\/(\d+)$/);
     const totalSize = totalSizeMatch ? Number(totalSizeMatch[1]) : undefined;
-    const urlLooksLikeMp3 = current.url.toLowerCase().includes(".mp3");
     const audioTypeOk =
-      Boolean(contentType?.toLowerCase().includes("audio")) || urlLooksLikeMp3;
-    const rangeOk =
+      Boolean(contentType?.toLowerCase().includes("audio")) ||
+      url.toLowerCase().includes(".mp3");
+    const streaming =
       probe.status === 206 ||
       Boolean(contentRange) ||
       acceptRanges?.toLowerCase() === "bytes";
@@ -66,7 +44,7 @@ export async function GET() {
       {
         ok,
         reachable,
-        streaming: rangeOk,
+        streaming,
         status: probe.status,
         contentType,
         contentLength,
@@ -76,6 +54,8 @@ export async function GET() {
         pathname: current.pathname,
         uploadedAt: current.uploadedAt,
         source: current.source,
+        slug: current.slug,
+        title: current.title,
       },
       {
         status: ok ? 200 : 503,
