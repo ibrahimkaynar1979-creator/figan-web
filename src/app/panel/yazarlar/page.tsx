@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { authors as builtInAuthors } from "../../_data/authors";
 import styles from "./AuthorsPanel.module.css";
-import { getManagedAuthors, type ManagedAuthor as StoredAuthor } from "../_lib/managedStore";
+import { listManagedAuthors, type ManagedAuthor as StoredAuthor } from "../_lib/managedStore";
 
 type ManagedAuthor = {
   name: string;
@@ -23,9 +23,11 @@ export default function AuthorsPanelPage() {
 
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
-    setSavedAuthors(
-      getManagedAuthors().map((author: StoredAuthor) => ({ ...author, source: "panel" as const }))
-    );
+    void listManagedAuthors().then(({ items }) => {
+      setSavedAuthors(
+        items.map((author: StoredAuthor) => ({ ...author, source: "panel" as const }))
+      );
+    });
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
 
