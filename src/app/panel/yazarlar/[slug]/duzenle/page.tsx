@@ -4,22 +4,8 @@ import Image from "next/image";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import styles from "../../yeni/NewAuthor.module.css";
+import { getManagedAuthors, saveManagedAuthor, type ManagedAuthor } from "../../../_lib/managedStore";
 
-const STORAGE = "22reader-panel-authors";
-
-type ManagedAuthor = {
-  name: string;
-  slug: string;
-  href: string;
-  role: string;
-  bio?: string;
-  domain?: string;
-  status: "Taslak" | "Yayında";
-  instagram?: string;
-  website?: string;
-  photoName?: string;
-  source: "panel";
-};
 
 const slugify = (value: string) =>
   value.toLocaleLowerCase("tr-TR")
@@ -46,25 +32,20 @@ export default function EditAuthorPage() {
   useEffect(()=>{
     document.body.classList.add("reader-admin-route");
 
-    try {
-      const parsed = JSON.parse(localStorage.getItem(STORAGE) || "[]");
-      const author = Array.isArray(parsed) ? parsed.find((item: ManagedAuthor) => item?.slug === originalSlug) : null;
+    const author = getManagedAuthors().find((item: ManagedAuthor) => item.slug === originalSlug);
 
-      if (!author) {
-        setFound(false);
-      } else {
-        setName(author.name || "");
-        setSlug(author.slug || originalSlug);
-        setRole(author.role || "Yazar");
-        setBio(author.bio || "");
-        setDomain(author.domain || "");
-        setStatus(author.status || "Taslak");
-        setInstagram(author.instagram || "");
-        setWebsite(author.website || "");
-        setPhotoName(author.photoName || "");
-      }
-    } catch {
+    if (!author) {
       setFound(false);
+    } else {
+      setName(author.name || "");
+      setSlug(author.slug || originalSlug);
+      setRole(author.role || "Yazar");
+      setBio(author.bio || "");
+      setDomain(author.domain || "");
+      setStatus(author.status || "Taslak");
+      setInstagram(author.instagram || "");
+      setWebsite(author.website || "");
+      setPhotoName(author.photoName || "");
     }
 
     return ()=>document.body.classList.remove("reader-admin-route");
@@ -79,14 +60,7 @@ export default function EditAuthorPage() {
       name,slug,href,role,bio,domain,status,instagram,website,photoName,source:"panel"
     };
 
-    let current: ManagedAuthor[] = [];
-    try {
-      const parsed = JSON.parse(localStorage.getItem(STORAGE) || "[]");
-      if (Array.isArray(parsed)) current = parsed;
-    } catch {}
-
-    const next = [...current.filter(author => author.slug !== originalSlug && author.slug !== slug), item];
-    localStorage.setItem(STORAGE, JSON.stringify(next));
+    saveManagedAuthor(item, originalSlug);
     setSaved(true);
     window.setTimeout(()=>setSaved(false),2500);
   };
