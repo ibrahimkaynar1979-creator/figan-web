@@ -72,6 +72,8 @@ const READER_FONTS: Record<ReaderFont, string> = {
 
 export default function LockedManagedReader({ book }: { book: LockedReaderBook }) {
   const [sections, setSections] = useState<Section[]>([]);
+  const [chapterCount, setChapterCount] = useState(0);
+  const [estimatedWordCount, setEstimatedWordCount] = useState(0);
   const [epubLoadError, setEpubLoadError] = useState("");
   const bookTitle = book.title;
   const bookAuthor = book.author;
@@ -118,46 +120,51 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
     const load = async () => {
       try {
         setEpubLoadError("");
+        setSections([]);
+        setChapterCount(0);
+        setEstimatedWordCount(0);
+
         await loadManagedEpubJs();
         if (cancelled || !window.ePub) return;
 
-        epubBook = window.ePub(book.epubUrl);
+        epubBook = window.ePub(book.epubUrl, { openAs: "epub" });
         await epubBook.ready;
 
-        const navigation = await epubBook.loaded.navigation;
+        const navigation = await epubBook.loaded.navigation.catch(() => ({ toc: [] }));
         const labels = new Map<string,string>();
         const walk = (items: any[]) => {
           items.forEach(item => {
-            if (item?.href && item?.label) labels.set(String(item.href).split("#")[0], String(item.label).trim());
+            if (item?.href && item?.label) {
+              labels.set(String(item.href).split("#")[0], String(item.label).replace(/\s+/g, " ").trim());
+            }
             if (Array.isArray(item?.subitems)) walk(item.subitems);
           });
         };
         walk(Array.isArray(navigation?.toc) ? navigation.toc : []);
 
         const parsed: Section[] = [];
-        const spineItems = epubBook.spine?.spineItems || [];
+        let words = 0;
+        const spineItems = Array.from(epubBook.spine?.spineItems || []);
 
         for (let i = 0; i < spineItems.length; i += 1) {
-          const spineItem = spineItems[i];
+          if (cancelled) break;
+          const spineItem: any = spineItems[i];
+
           try {
             const loaded = await spineItem.load(epubBook.load.bind(epubBook));
-
             const root =
               loaded && typeof loaded.querySelectorAll === "function"
                 ? loaded
                 : spineItem.document && typeof spineItem.document.querySelectorAll === "function"
                   ? spineItem.document
-                  : spineItem.contents &&
-                      typeof spineItem.contents.querySelectorAll === "function"
-                    ? spineItem.contents
-                    : loaded?.ownerDocument &&
-                        typeof loaded.ownerDocument.querySelectorAll === "function"
-                      ? loaded.ownerDocument
-                      : null;
+                  : loaded?.ownerDocument &&
+                      typeof loaded.ownerDocument.querySelectorAll === "function"
+                    ? loaded.ownerDocument
+                    : null;
 
             const href = String(spineItem.href || "").split("#")[0];
             const title =
-              root?.querySelector?.("h1,h2,h3")?.textContent?.trim() ||
+              root?.querySelector?.("h1,h2,h3")?.textContent?.replace(/\s+/g, " ").trim() ||
               labels.get(href) ||
               `Bölüm ${i + 1}`;
 
@@ -166,28 +173,38 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
               .filter((text: string) => text.length > 0);
 
             if (paragraphs.length === 0) {
-              paragraphs = Array.from(root?.querySelectorAll?.("div,section,article,li") || [])
-                .map((node: any) => String(node.textContent || "").replace(/\s+/g, " ").trim())
-                .filter((text: string) => text.length >= 20);
-            }
-
-            if (paragraphs.length === 0) {
-              const body =
-                root?.querySelector?.("body") ||
-                (root?.body ?? null);
-              const bodyText = String(body?.textContent || root?.textContent || loaded?.textContent || "")
+              const body = root?.querySelector?.("body") || root?.body || root;
+              const bodyText = String(body?.textContent || "")
                 .replace(/\s+/g, " ")
                 .trim();
               if (bodyText) paragraphs = [bodyText];
             }
 
-            if (paragraphs.length > 0) parsed.push({ title, paragraphs });
-            spineItem.unload?.();
-          } catch {}
+            if (paragraphs.length > 0) {
+              const section: Section = { title, paragraphs };
+              parsed.push(section);
+              words += [title, ...paragraphs]
+                .join(" ")
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean).length;
+            }
+          } catch {
+            // Ignore non-text spine resources and continue with the rest of the book.
+          } finally {
+            try { spineItem.unload?.(); } catch {}
+          }
+
+          // Give the browser a chance to release detached XHTML documents on long books.
+          if (i > 0 && i % 8 === 0) {
+            await new Promise(resolve => window.setTimeout(resolve, 0));
+          }
         }
 
         if (!cancelled) {
           setSections(parsed);
+          setChapterCount(parsed.length);
+          setEstimatedWordCount(words);
           if (parsed.length === 0) setEpubLoadError("EPUB içeriği okunamadı.");
         }
       } catch (error) {
@@ -397,8 +414,8 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
   );
 
   const totalWordCount = useMemo(
-    () => sectionWordCounts.reduce((sum, count) => sum + count, 0),
-    [sectionWordCounts]
+    () => estimatedWordCount || sectionWordCounts.reduce((sum, count) => sum + count, 0),
+    [estimatedWordCount, sectionWordCounts]
   );
 
   const totalReadingMinutes = useMemo(
@@ -1097,13 +1114,13 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
                   <i aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M3.5 5.5c2.8-.7 5.5-.2 8 1.5v12c-2.5-1.7-5.2-2.2-8-1.5z"/><path d="M20.5 5.5c-2.8-.7-5.5-.2-8 1.5v12c2.5-1.7 5.2-2.2 8-1.5z"/></svg>
                   </i>
-                  <b>{sections.length > 0 ? `${sections.length} bölüm` : "… bölüm"}</b>
+                  <b>{chapterCount > 0 ? `${chapterCount} bölüm` : "… bölüm"}</b>
                 </span>
                 <span>
                   <i aria-hidden="true">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/></svg>
                   </i>
-                  <b>{sections.length > 0 ? readingTime : "…"}</b>
+                  <b>{chapterCount > 0 ? readingTime : "…"}</b>
                 </span>
                 <span>
                   <i aria-hidden="true">
