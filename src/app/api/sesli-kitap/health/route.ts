@@ -50,6 +50,8 @@ export async function GET() {
     const contentLength = Number(probe.headers.get("content-length") || 0);
     const contentRange = probe.headers.get("content-range");
     const acceptRanges = probe.headers.get("accept-ranges");
+    const totalSizeMatch = contentRange?.match(/\/(\d+)$/);
+    const totalSize = totalSizeMatch ? Number(totalSizeMatch[1]) : undefined;
     const urlLooksLikeMp3 = current.url.toLowerCase().includes(".mp3");
     const audioTypeOk =
       Boolean(contentType?.toLowerCase().includes("audio")) || urlLooksLikeMp3;
@@ -70,6 +72,7 @@ export async function GET() {
         contentLength,
         contentRange,
         acceptRanges,
+        totalSize,
         pathname: current.pathname,
         uploadedAt: current.uploadedAt,
         source: current.source,
