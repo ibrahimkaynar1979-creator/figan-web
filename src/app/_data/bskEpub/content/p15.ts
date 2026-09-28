@@ -1,0 +1,37 @@
+export default [
+  {
+    "title": "MASALARIM VAR BENİM",
+    "paragraphs": [
+      "İçimde çiçekler var benim, bir küçük kız çocuğunun avucundaki papatyalar gibi, Gözümde kahve ela ağaçların rengi, Tenimde baharın esintisi, Dünyadayım ama dünyalı değilim; çok başka yerlerden çok haber, dinlemek isteyenlere masallar getirdim."
+    ],
+    "epubHref": "text/section-077.xhtml"
+  },
+  {
+    "title": "BİRİNİN FELAKETİ BİRİNİN MUCİZESİ",
+    "paragraphs": [
+      "Bazen mucizeler bana gelir mi dersin? Hatta her anın mucize olduğunu unutarak, o zaten sende hiç yokmuş gibi istersin. Mucize deyince herkes için en güzeli sanırsın, yanılırsın Tıpkı senin evinin bir zamanlar bir başkasının yolu olduğu gibi, Bugün birinin başlangıcı bir diğerinin sonu gibi, son görünüp başka bir başlangıç gibi, Mesela bir geminin mutfağında ölmeyi bekleyen ıstakozlar için de Titanik’in batması mucizeydi. Ama battı. Birinin felaketi öbürünün mucizesi. İçimde kuytu köşelerde kalmış kadim bir his; yürüdüğüm her yol, döndüğüm her köşe, başımı kaldırıp baktığım gökyüzünden tut ve ormanlar, çiçekler böcekler ve tüm gülümseyen çehreler hepsi bana beni hatırlatan bir kitap veriyor elime. Uzun uzun romanlar ama açıp kapağını baktığımda her birinin başka başka ve bilmediğim dillerde yazıldığı. Hem yürüyüp hem açıp sayfalarını anlamaya çalıştığım, ama ancak yolda yürürken yorumlayabildiğim sırlar. İnsanın kendini keşfetmesinin bir ömre dahi sığmayacağını bildiren kadim bir sır bu bizdeki, kara kutumuzun daha doğuştan kırılıp atıldığı ve vazifenin o kutuyu tekrardan sezgilerimiz ile hatırlayıp oluşturmamız gerektiği bir hayat bizimki. Yürüdükçe ayağımıza takılan taşlar, bacağımıza dolanan çalılar, kadir kıymet bilmeyen, yalandan ilişkiler, mangalda kül bırakmayan arkadaşlar, yalandan âşıklar, laf ile peynir gemisinde turistik gezi düzenleyenler. Aslında hepsi sana seni ve yerini öğretenler ve bize hayatı gösterenler. Kadim bir bilgi aslında tüm bunlar, bizi hakikate götüren gerçekler. Bazen takılmış maskeler bizi saf ve salt yalnızlığın temizliğine itenler. Ne mutlu ki var gören gözler. İçimizde yatan aşk ile eşleşemeyen ve okuyup anlamaya çalıştığımız yüzlere yansıyan anlamsız ifadeler, hiçbiri birbiri ile örtüşmeyen hâller, aklı başka ruhu başka çelişenler işte tam olarak sana dur deyip rotanı değiştirtenler sayelerinde yaşadığın uyanışlar. Ah iyi ki, İyi ki’ler. Kimse kendi yansıması ile aydınlanmaz. Nasıl ki bir yaprak ancak güneş vurduğunda yansımasını görüyorsa, İnsan da insan ile kendini görür."
+    ],
+    "epubHref": "text/section-078.xhtml"
+  },
+  {
+    "title": "YOLUM SENDİN",
+    "paragraphs": [
+      "Yola girmeden yolumun çıkmaz olduğunu öğreten yine yolumun kendisi oldu. Ama her tünelin de bir çıkışı olduğunu bana gösteren ışık oldu. Seni sevmeden önce sevdanın en güzeli olduğunu öğreten bana varlığın oldu. İnsan varlığını bilmediğinin yokluğunu bilmezmiş ya, sen gelmeden önce bilmezdim, gül olduğumu. Diken sanırdım hırçın sızılarımda hep kendimi. Meğer yar bana kök olup yol almış, can suyu olup güllerimi açtırmış."
+    ],
+    "epubHref": "text/section-079.xhtml"
+  },
+  {
+    "title": "İHTİŞAMLI BİR YARIN İÇİN",
+    "paragraphs": [
+      "İhtişamlı bir yarın için, bugün amansızca bir kurtarıcıyı beklemek nafile. Sıkıştığın kuyudan çıkmak için sana bir halat atılmasını beklemek nafile; dişin, tırnağın varken tırmanmaya, canın varken savaşmaya mecbursun. Herkes kendi yolundan kendisi mesul ya, Her koyunun kendi bacağını çektiği bu düzende, omurgası sağlam, rüştünü ispat etmiş bir davan varsa içinde, “Demir leblebi,” der, korkarlar senden. Sözün baş yarar, varlığın vazgeçilmez ama taşınmazsın, ağır gelirsin bazılarına. Yine de erozyona uğramamış ilişkiler istersin, içinde az da olsa insanın olduğu. Çünkü insan insana gerek, Bu da öğretilmiş çaresizliğe bir örnektir. E biliyoruz az çok kuralları, sessiz ve anarşist çığlıkların sesini bastırsak da. Ve bilmek gerek, ölmeden ölmeyi. Mesela kasların gelişiminde kas liflerinde mikro düzeyde hasar ve uyum süreçleri olduğu gibi… İşte bu ruh için de geçerli. Kırılıyorsak katılıktan kurtulup yumuşamamız gerek. Kendini korumak için inşa ettiğin kabuğun neden var olduğunu önce bir sormak gerek. Lakin şunu öğrendim, insanın ait hissettiği yer, kendini değerli hissettiği yerdir. Kendini ifade etmek zorunda olmadığı, doğru anlaşıldığı ve kabuklar örüp korunmak zorunda olmadığı yer. İnsanın yarasını, yarasından geçmiş olana bile göstermeye çekindiği bu düzende; doğru ve güzel kalmak için direnmek gerek. Ne acıdır ki doğrular doğru kalmak için paralanırken, yanlışlar ortada doğruyuz diye zil takıp oynarlar. Hiç düşündünüz mü? İçgüdüsel olarak ruhumuzun kendini koruma hâli ve kabuk oluşturması neden olur? Belli ki ters giden bir şeyler ve gerçek olmayan sahte hâllerin rüzgârı var. Sana uyarılar gelir ama biz illaki canımız acıyıncaya kadar direnir dururuz orada, çok sonra anlarız bunu. Sonra bir bakarız nereye gelmişiz. Dibine gelmişiz cennetin, dışarıda cehennemi yaşayanlar seni içindeki cennete gönderenler olabiliyor bazen. Sağ olsunlar. Lakin, O dışarısı ait olduğun yer miydi? Kaç kurtar kendini. Yerin su gibi berrak ve saf mı? Ancak su gibi olduğumuzda şekle giriyor, mukadderatı idrak ediyoruz. Ve ancak yeniden doğmak için kendimizde bazı şeyleri ölüme terk ediyoruz. Çünkü aslında biliyoruz ihtişamlı bir yarın için amansızca beklenen o kurtarıcı yalnızca insanın içinde yatan o omurgalı davaydı. Sırf başkalarını memnun etmek için maskeler takıp, olduğun hâlden çıkmak kendine yaptığın büyük bir kalleşlik değil midir? Başkalarında var olmak için kendini terk etmek değil midir? Olduğun gibi olduğunda seni kabul etmeyeceklerini düşündüren bir çevre ile bir olmak insanın içinde kazdığı yalnızlık çukuruna kendini atması demek değil midir? Bir insanın uyumlu olması onun ait olduğu yerde olduğu anlamına gelmez. Bir insanın seçici olması da onun yalnız olduğu anlamına gelmez. Konuştuğun dilin anlaşılmıyor olması o lisanın yeryüzünde olmadığı anlamına hiç gelmez. Elması kuyumcu anlar, kömürü ateşi körükleyen. Nasıl ki çiçek doğru yerde açarsa, İnsan da kendinden olanlarla var olur. Bastırılan duyguların bazen daha güçlü biçimde geri döndüğünü hissederiz. Tıpkı bir kıvılcımın kocaman yangınlara yol açtığı gibi. O yüzden bizi rahatsız eden duyguları bastırmak yerine onlar ile yüzleşip barışmayı denememiz gerekir. Zira o ateş ya içimizi yakar ya da öğrendiklerimiz yolumuza ışık tutar."
+    ],
+    "epubHref": "text/section-080.xhtml"
+  },
+  {
+    "title": "İNANDIĞIN KADAR VARSIN, İNANDIĞIN KADAR YAŞARSIN",
+    "paragraphs": [
+      "Dünya nasıl inanmak istiyorsan öyle bir yerdir. Senin hayatın yalnızca senin baktığın pencerenin açısından gördüğün bir manzaradır. Ve aşk, ve dostluk ve değerler senin içinde yaşattığın, beslediğin ve büyüttüğün kadardır. Herkesin maviyi aynı biçimde deneyimlediğini varsaymak yanıltıcı olabilir. Mümkünlükler dünyasında olasılıklar bütünü içinde yüzen küçük sandallar gibiyiz. Mekânını değiştir havan değişsin. Duygunu değiştir, Düşüncen değişsin, Düşünceni değiştir alışkanlığın değişsin, Sonra tahammül ettiklerine bak ve bir yerden başla onları da değiştir Sonra bir bakmışsın, çevren ve içinde olduğun alan değişmiş; Kendine geldiğini hissettiğin an doğru yerdesindir. Sen daha iyisindir. Ve sen neysen kaderin de senin eserindir."
+    ],
+    "epubHref": "text/section-081.xhtml"
+  }
+] as const;
