@@ -230,19 +230,23 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
 
         <article className={styles.readingArea}>
           {!started ? (
-            <div className={styles.coverScreen}>
-              {coverUrl && <div className={styles.coverHero}><img src={coverUrl} alt={title} /></div>}
-              <h1 className={styles.coverAuthor}>{author || "22 Yayınevi"}</h1>
-              <p className={styles.coverPublisher}>{subtitle || "22 Yayınevi"}</p>
-              <button type="button" className={styles.startButton} onClick={() => setStarted(true)}>
+            <div className={styles.dynamicCoverScreen}>
+              {coverUrl && (
+                <div className={styles.dynamicCoverHero}>
+                  <img src={coverUrl} alt={title} />
+                </div>
+              )}
+              <h1 className={styles.dynamicCoverAuthor}>{author || "22 Yayınevi"}</h1>
+              <p className={styles.dynamicCoverPublisher}>22 Yayınevi</p>
+              <button type="button" className={styles.dynamicCoverButton} onClick={() => setStarted(true)}>
                 Okumaya Başla <span>→</span>
               </button>
-              <div className={styles.coverStats}>
-                <span><i>☰</i><b>{flatToc.length || "—"} bölüm</b></span>
-                <span><i>◷</i><b>EPUB 3</b></span>
-                <span><i>◐</i><b>22 Reader</b></span>
+              <div className={styles.dynamicCoverStats}>
+                <span><i>▤</i><b>{flatToc.length || "—"} bölüm</b></span>
+                <span><i>◷</i><b>~ EPUB</b></span>
+                <span><i>▱</i><b>EPUB</b></span>
               </div>
-              <div className={styles.coverReaderBrand} style={{ fontSize: 14, letterSpacing: ".18em" }}>22 READER</div>
+              <div className={styles.dynamicReaderBrand}>22 Reader</div>
             </div>
           ) : (
             <>
