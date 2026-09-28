@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { upload } from "@vercel/blob/client";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./NewAuthor.module.css";
 import { saveManagedAuthor, type ManagedAuthor } from "../../_lib/managedStore";
@@ -21,6 +22,9 @@ export default function NewAuthorPage() {
   const [instagram,setInstagram] = useState("");
   const [website,setWebsite] = useState("");
   const [photoName,setPhotoName] = useState("");
+  const [photoFile,setPhotoFile] = useState<File | null>(null);
+  const [saving,setSaving] = useState(false);
+  const [saveError,setSaveError] = useState("");
   const [saved,setSaved] = useState(false);
 
   useEffect(()=>{
@@ -32,12 +36,37 @@ export default function NewAuthorPage() {
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
-    const item: ManagedAuthor = {
-      name, slug, href, role, bio, domain, status, instagram, website, photoName, source: "panel"
-    };
-    await saveManagedAuthor(item);
-    setSaved(true);
-    window.setTimeout(()=>setSaved(false),2500);
+    setSaving(true);
+    setSaveError("");
+    try {
+      let nextPhoto = photoName;
+      if (photoFile) {
+        const extension = photoFile.name.split(".").pop() || "webp";
+        const blob = await upload(
+          `22-authors/${slug}/profile-${Date.now()}.${extension}`,
+          photoFile,
+          {
+            access: "public",
+            handleUploadUrl: "/api/blob/upload",
+            contentType: photoFile.type || "image/webp",
+          }
+        );
+        nextPhoto = blob.url;
+        setPhotoName(blob.url);
+      }
+
+      const item: ManagedAuthor = {
+        name, slug, href, role, bio, domain, status, instagram, website, photoName: nextPhoto, source: "panel"
+      };
+      const result = await saveManagedAuthor(item);
+      if (result.mode !== "database") throw new Error("Yazar veritabanına kaydedilemedi.");
+      setSaved(true);
+      window.setTimeout(()=>setSaved(false),2500);
+    } catch (error) {
+      setSaveError(error instanceof Error ? error.message : "Yazar kaydedilemedi.");
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -64,7 +93,7 @@ export default function NewAuthorPage() {
               <label><span>Alan Adı</span><input value={domain} onChange={e=>setDomain(e.target.value)} placeholder="ornek.com" /></label>
               <label className={styles.wide}><span>Kısa Biyografi</span><textarea value={bio} onChange={e=>setBio(e.target.value)} placeholder="Yazarın kısa biyografisi..." /></label>
               <label><span>Yayın Durumu</span><select value={status} onChange={e=>setStatus(e.target.value as "Taslak"|"Yayında")}><option>Taslak</option><option>Yayında</option></select></label>
-              <label><span>Profil Fotoğrafı</span><input type="file" accept="image/png,image/jpeg,image/webp" onChange={e=>setPhotoName(e.target.files?.[0]?.name || "")} /><small>{photoName || "Henüz dosya seçilmedi"}</small></label>
+              <label><span>Profil Fotoğrafı</span><input type="file" accept="image/png,image/jpeg,image/webp" onChange={e=>{const file=e.target.files?.[0] ?? null;setPhotoFile(file);setPhotoName(file?.name || "");}} /><small>{photoName || "Henüz dosya seçilmedi"}</small></label>
             </div>
           </section>
 
@@ -77,7 +106,8 @@ export default function NewAuthorPage() {
             <div className={styles.preview}><span>Profil URL</span><code>{href}</code><b>Otomatik</b></div>
           </section>
 
-          <footer className={styles.actions}><a href="/panel/yazarlar">Vazgeç</a><button type="submit">{saved ? "Kaydedildi ✓" : "Yazarı Kaydet"}</button></footer>
+          {saveError && <p role="alert" style={{color:"#9f2f24"}}>{saveError}</p>}
+          <footer className={styles.actions}><a href="/panel/yazarlar">Vazgeç</a><button type="submit" disabled={saving}>{saving ? "Yükleniyor..." : saved ? "Kaydedildi ✓" : "Yazarı Kaydet"}</button></footer>
         </form>
       </section>
     </main>
