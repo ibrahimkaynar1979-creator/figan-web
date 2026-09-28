@@ -184,6 +184,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
         <nav>
           <a href="/panel/reader">← Kitaplara Dön</a>
           <a href="/panel/yazarlar">✒ Yazarlar</a>
+          <a href="/panel/sesli-kitap">♪ Sesli Kitap</a>
           <a className={styles.active} href={mode === "new" ? "/panel/reader/yeni" : `/panel/reader/${slug}/duzenle`}>
             {mode === "new" ? "Yeni Kitap" : "Kitabı Düzenle"}
           </a>
