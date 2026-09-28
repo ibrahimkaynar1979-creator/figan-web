@@ -276,10 +276,22 @@ export default function AudiobookUploadPage() {
         {type:"application/json"},
       );
 
+      const bookManifestFile=new File(
+        [JSON.stringify(manifest)],
+        "manifest.json",
+        {type:"application/json"},
+      );
+
+      await upload(`audiobooks/${slug}/manifest.json`,bookManifestFile,{
+        access:"public",
+        handleUploadUrl:"/api/sesli-kitap/upload",
+        onUploadProgress:(event)=>setProgress(92+Math.round(event.percentage*0.04)),
+      });
+
       await upload("audiobooks/active.json",manifestFile,{
         access:"public",
         handleUploadUrl:"/api/sesli-kitap/upload",
-        onUploadProgress:(event)=>setProgress(92+Math.round(event.percentage*0.08)),
+        onUploadProgress:(event)=>setProgress(96+Math.round(event.percentage*0.04)),
       });
 
       setProgress(100);
@@ -293,7 +305,7 @@ export default function AudiobookUploadPage() {
       });
       setHealthStatus({ok:true,totalSize:audioFile.size});
       setStatus("done");
-      setMessage("Sesli kitap yayınlandı. Player artık bu kitap, kapak ve MP3 ile çalışacak.");
+      setMessage("Sesli kitap yayınlandı. Aynı player tasarımı bu kitap, kapak, süre ve bölümlerle çalışacak.");
     }catch(error){
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Yükleme sırasında hata oluştu.");
@@ -347,7 +359,7 @@ export default function AudiobookUploadPage() {
         <div className={styles.heading}>
           <p>SESLİ KİTAP YÖNETİMİ</p>
           <h1>{title || "Yeni Sesli Kitap"}</h1>
-          <span>Kapak, kitap bilgileri ve master MP3 tek panelden yayınlanır.</span>
+          <span>Kapak, kitap bilgileri, bölümler ve master MP3 tek panelden yayınlanır. Player tasarımı sabit kalır.</span>
         </div>
 
         <div className={styles.bookRow}>
@@ -358,7 +370,7 @@ export default function AudiobookUploadPage() {
             <b>Aktif player</b>
             <strong className={styles.currentTitle}>{current?.title || "Henüz yayın yok"}</strong>
             <p>{current?.author || "Yazar bilgisi yok"}{current?.voice ? ` · ${current.voice} sesi` : ""}</p>
-            <a href="/dinle/bir-sifacinin-kanadi" target="_blank" rel="noreferrer">Player'ı Aç →</a>
+            <a href="/dinle" target="_blank" rel="noreferrer">Player'ı Aç →</a>
           </div>
         </div>
 
