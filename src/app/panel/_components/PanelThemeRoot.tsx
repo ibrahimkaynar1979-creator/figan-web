@@ -1,33 +1,41 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ThemeSwitcher from "./ThemeSwitcher";
 
 const palettes = ["turquoise","coral","graphite","navy","olive","amber"] as const;
 type Palette = (typeof palettes)[number];
+
+const STORAGE_KEY = "publishing-os-palette";
+const EVENT_NAME = "publishing-os-palette-change";
+
+const validPalette = (value: string | null): Palette =>
+  palettes.includes(value as Palette) ? (value as Palette) : "turquoise";
 
 export default function PanelThemeRoot({ children }: { children: React.ReactNode }) {
   const [palette, setPalette] = useState<Palette>("turquoise");
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("publishing-os-palette") as Palette | null;
-    const next = palettes.includes(saved as Palette) ? (saved as Palette) : "turquoise";
-    setPalette(next);
-  }, []);
+    setPalette(validPalette(window.localStorage.getItem(STORAGE_KEY)));
 
-  useEffect(() => {
-    const sync = (event: StorageEvent) => {
-      if (event.key !== "publishing-os-palette") return;
-      const next = palettes.includes(event.newValue as Palette) ? (event.newValue as Palette) : "turquoise";
+    const onPalette = (event: Event) => {
+      const next = validPalette((event as CustomEvent<string>).detail);
       setPalette(next);
     };
-    window.addEventListener("storage", sync);
-    return () => window.removeEventListener("storage", sync);
+
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === STORAGE_KEY) setPalette(validPalette(event.newValue));
+    };
+
+    window.addEventListener(EVENT_NAME, onPalette);
+    window.addEventListener("storage", onStorage);
+    return () => {
+      window.removeEventListener(EVENT_NAME, onPalette);
+      window.removeEventListener("storage", onStorage);
+    };
   }, []);
 
   return (
-    <div className="publishing-os" data-theme="light" data-palette={palette} data-tenant-theme="publisher">
-      <ThemeSwitcher />
+    <div className="publishing-os" data-palette={palette} data-tenant-theme="publisher">
       {children}
     </div>
   );
