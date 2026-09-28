@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./player.module.css";
 
 type Chapter = { id: number; title: string; start: number };
@@ -110,6 +111,7 @@ const formatTime = (seconds: number) => {
 };
 
 export default function BirSifacininKanadiPlayer() {
+  const pathname=usePathname();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const pendingResumeRef = useRef(0);
   const lastSavedSecondRef = useRef(-1);
@@ -155,7 +157,11 @@ export default function BirSifacininKanadiPlayer() {
   },[]);
 
   useEffect(()=>{
-    void fetch("/api/sesli-kitap/current",{cache:"no-store"})
+    const segments=pathname.split("/").filter(Boolean);
+    const slug=segments[0]==="dinle" && segments.length>1 ? segments[1] : "";
+    const endpoint=slug ? `/api/sesli-kitap/${slug}` : "/api/sesli-kitap/current";
+
+    void fetch(endpoint,{cache:"no-store"})
       .then((response)=>response.ok?response.json():null)
       .then((data)=>{
         if(!data?.ready) return;
@@ -189,7 +195,7 @@ export default function BirSifacininKanadiPlayer() {
         pendingResumeRef.current=0;
       })
       .catch(()=>{});
-  },[]);
+  },[pathname]);
 
   useEffect(()=>{
     const saved=window.localStorage.getItem(progressKey);
