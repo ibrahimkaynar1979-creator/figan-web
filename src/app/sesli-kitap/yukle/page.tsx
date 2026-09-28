@@ -4,6 +4,8 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { upload } from "@vercel/blob/client";
 import styles from "./upload.module.css";
 
+type Chapter = { id:number; title:string; start:number };
+
 type CurrentBook = {
   ready?: boolean;
   slug?: string;
@@ -17,6 +19,7 @@ type CurrentBook = {
   size?: number;
   uploadedAt?: string;
   source?: string;
+  chapters?: Chapter[];
 };
 
 const formatTime = (seconds?: number) => {
@@ -27,6 +30,36 @@ const formatTime = (seconds?: number) => {
   return h > 0
     ? `${h}:${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`
     : `${m}:${s.toString().padStart(2,"0")}`;
+};
+
+const parseChapterTime = (value:string) => {
+  const parts=value.trim().split(":").map(Number);
+  if(parts.some((part)=>!Number.isFinite(part))) return null;
+  if(parts.length===2) return parts[0]*60+parts[1];
+  if(parts.length===3) return parts[0]*3600+parts[1]*60+parts[2];
+  if(parts.length===1) return parts[0];
+  return null;
+};
+
+const parseChapters = (value:string): Chapter[] => {
+  const rows=value
+    .split(/\r?\n/)
+    .map((line)=>line.trim())
+    .filter(Boolean);
+
+  const parsed: Chapter[]=[];
+  for(const row of rows){
+    const match=row.match(/^((?:\d+:)?\d{1,2}:\d{2}|\d+(?:\.\d+)?)\s*(?:[-|—–]\s*)?(.+)$/);
+    if(!match) continue;
+    const start=parseChapterTime(match[1]);
+    const title=match[2]?.trim();
+    if(start===null || !title) continue;
+    parsed.push({id:parsed.length+1,title,start});
+  }
+
+  return parsed
+    .sort((a,b)=>a.start-b.start)
+    .map((item,index)=>({...item,id:index+1}));
 };
 
 const slugify = (value:string) =>
@@ -56,6 +89,7 @@ export default function AudiobookUploadPage() {
   const [title,setTitle] = useState("");
   const [author,setAuthor] = useState("");
   const [voice,setVoice] = useState("");
+  const [chapterText,setChapterText] = useState("");
   const [progress,setProgress] = useState(0);
   const [status,setStatus] = useState<"idle"|"uploading"|"done"|"error">("idle");
   const [message,setMessage] = useState("");
@@ -67,6 +101,7 @@ export default function AudiobookUploadPage() {
   const [healthStatus,setHealthStatus] = useState<{ok:boolean;streaming?:boolean;totalSize?:number} | null>(null);
 
   const slug=useMemo(()=>slugify(title),[title]);
+  const parsedChapters=useMemo(()=>parseChapters(chapterText),[chapterText]);
 
   useEffect(()=>{
     void fetch("/api/sesli-kitap/auth",{cache:"no-store"})
@@ -94,6 +129,15 @@ export default function AudiobookUploadPage() {
       setTitle(typeof book?.title==="string" ? book.title : "");
       setAuthor(typeof book?.author==="string" ? book.author : "");
       setVoice(typeof book?.voice==="string" ? book.voice : "");
+      if(Array.isArray(book?.chapters) && book.chapters.length){
+        setChapterText(
+          book.chapters
+            .map((item:Chapter)=>`${formatTime(item.start)} | ${item.title}`)
+            .join("\n")
+        );
+      }else{
+        setChapterText("");
+      }
       setHealthStatus({
         ok:Boolean(health.ok && health.data?.ok),
         streaming:Boolean(health.data?.streaming),
@@ -220,7 +264,9 @@ export default function AudiobookUploadPage() {
         coverUrl:coverBlob.url,
         audioUrl:audioBlob.url,
         duration:detectedDuration,
-        chapters:[{id:1,title:"Kitabın Tamamı",start:0}],
+        chapters:parsedChapters.length
+          ? parsedChapters
+          : [{id:1,title:"Kitabın Tamamı",start:0}],
         updatedAt:new Date().toISOString(),
       };
 
@@ -345,6 +391,23 @@ export default function AudiobookUploadPage() {
             </label>
           </div>
 
+          <div className={styles.chapterEditor}>
+            <div className={styles.chapterEditorHead}>
+              <div>
+                <span>Bölümler</span>
+                <strong>{parsedChapters.length ? `${parsedChapters.length} bölüm hazır` : "Bölüm girilmezse tek parça oynatılır"}</strong>
+              </div>
+              <small>Örnek: 00:00 | Giriş</small>
+            </div>
+            <textarea
+              value={chapterText}
+              onChange={(event)=>setChapterText(event.target.value)}
+              placeholder={"00:00 | Giriş\n03:25 | Birinci Bölüm\n12:40 | İkinci Bölüm"}
+              rows={7}
+            />
+            <p>Her satırda başlangıç zamanı ve bölüm adı yazın. Player'daki Bölümler alanı otomatik oluşur.</p>
+          </div>
+
           <div className={styles.fileGrid}>
             <label className={styles.drop}>
               <input
@@ -390,7 +453,7 @@ export default function AudiobookUploadPage() {
 
         <div className={styles.footer}>
           <span>{formatTime(detectedDuration || current?.duration)}</span>
-          <span>{current?.title || "Aktif kitap"}</span>
+          <span>{parsedChapters.length || current?.chapters?.length || 1} bölüm</span>
           <span>{current?.author || "22 Yayınevi"}</span>
           <span>Dinamik player</span>
         </div>
