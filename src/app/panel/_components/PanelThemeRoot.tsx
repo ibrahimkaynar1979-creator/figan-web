@@ -27,6 +27,7 @@ export default function PanelThemeRoot({ children }: { children: React.ReactNode
 
   return (
     <div className="publishing-os" data-theme="light" data-palette={palette} data-tenant-theme="publisher">
+      <ThemeSwitcher />
       {children}
     </div>
   );
