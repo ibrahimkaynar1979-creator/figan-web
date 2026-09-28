@@ -5,6 +5,13 @@ import { useEffect, useMemo, useState } from "react";
 import styles from "./ReaderPanel.module.css";
 import { listManagedBooks } from "../_lib/managedStore";
 
+const normalizeCoverSrc = (value?: string | null) => {
+  const raw = (value || "").trim();
+  if (!raw) return "/bir_sifaci_png.png";
+  if (/^https?:\/\//i.test(raw) || raw.startsWith("data:") || raw.startsWith("blob:")) return raw;
+  return raw.startsWith("/") ? raw : "/" + raw;
+};
+
 const books = [
   {
     title: "Bir Şifacının Kanadı",
@@ -66,13 +73,7 @@ export default function ReaderPanelPage() {
           authorHref: book.authorHref || `/yazarlar/${book.authorSlug}`,
           subtitle: book.subtitle || "",
           slug: book.slug,
-          cover:
-            book.coverUrl ||
-            (book.coverName
-              ? book.coverName.startsWith("/")
-                ? book.coverName
-                : "/" + book.coverName
-              : "/bir_sifaci_png.png"),
+          cover: normalizeCoverSrc(book.coverUrl || book.coverName),
           status: book.status,
           chapters: Number(book.chapterCount ?? 0),
           format: book.format || "EPUB 3",
