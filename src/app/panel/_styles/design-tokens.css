@@ -1,0 +1,119 @@
+/* 22 Publishing OS Design System v1
+   Shared semantic tokens for every /panel route.
+   Tenant branding should override only the --po-brand-* and --po-radius-* layer. */
+
+.publishing-os{
+  --po-font-ui:var(--font-ui),Arial,sans-serif;
+  --po-font-editorial:var(--font-editorial),Georgia,serif;
+  --po-font-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+
+  --po-bg:#F4F3F0;
+  --po-surface:#FFFFFF;
+  --po-surface-soft:#FAF8F5;
+  --po-surface-raised:#FFFFFF;
+
+  --po-text:#191715;
+  --po-text-secondary:#69635D;
+  --po-text-muted:#8C847D;
+
+  --po-border:#DDD8D1;
+  --po-border-soft:#ECE8E3;
+
+  --po-brand:#8F5D35;
+  --po-brand-soft:#F1E7DC;
+  --po-brand-contrast:#FFFFFF;
+
+  --po-success:#397552;
+  --po-success-soft:#E5F0E8;
+  --po-warning:#A66C25;
+  --po-warning-soft:#F6ECDD;
+  --po-danger:#A9483D;
+  --po-danger-soft:#F5E4E1;
+  --po-info:#426B8A;
+  --po-info-soft:#E5EDF3;
+
+  --po-nav-bg:#17120F;
+  --po-nav-bg-2:#21150F;
+  --po-nav-text:#F3EFEA;
+  --po-nav-muted:#B9ADA4;
+
+  --po-radius-card:16px;
+  --po-radius-control:9px;
+  --po-radius-small:8px;
+  --po-radius-pill:999px;
+
+  --po-space-1:4px;
+  --po-space-2:8px;
+  --po-space-3:12px;
+  --po-space-4:16px;
+  --po-space-6:24px;
+  --po-space-8:32px;
+  --po-space-12:48px;
+  --po-space-16:64px;
+
+  --po-shadow-card:0 8px 24px rgba(49,38,28,.04);
+  --po-shadow-float:0 16px 40px rgba(37,28,21,.12);
+
+  min-height:100vh;
+  background:var(--po-bg);
+  color:var(--po-text);
+  font-family:var(--po-font-ui);
+  color-scheme:light;
+}
+
+.publishing-os[data-theme="dark"]{
+  --po-bg:#11100F;
+  --po-surface:#191715;
+  --po-surface-soft:#201D1A;
+  --po-surface-raised:#24211E;
+
+  --po-text:#F3EFEA;
+  --po-text-secondary:#B9B1A9;
+  --po-text-muted:#8F8780;
+
+  --po-border:#332F2B;
+  --po-border-soft:#282522;
+
+  --po-brand:#C38A58;
+  --po-brand-soft:#33251B;
+  --po-brand-contrast:#17110D;
+
+  --po-success:#71B88B;
+  --po-success-soft:#1C3023;
+  --po-warning:#D3A15F;
+  --po-warning-soft:#34281B;
+  --po-danger:#D57B70;
+  --po-danger-soft:#34211F;
+  --po-info:#7CA8C8;
+  --po-info-soft:#1E2A33;
+
+  --po-nav-bg:#0D0C0B;
+  --po-nav-bg-2:#15120F;
+  --po-nav-text:#F3EFEA;
+  --po-nav-muted:#AAA098;
+
+  --po-shadow-card:0 8px 24px rgba(0,0,0,.14);
+  --po-shadow-float:0 18px 42px rgba(0,0,0,.28);
+
+  color-scheme:dark;
+}
+
+/* White-label hooks. A tenant can override only these variables. */
+.publishing-os[data-tenant-theme="publisher"]{
+  --po-brand:var(--tenant-brand,var(--po-brand));
+  --po-brand-soft:var(--tenant-brand-soft,var(--po-brand-soft));
+  --po-brand-contrast:var(--tenant-brand-contrast,var(--po-brand-contrast));
+  --po-radius-card:var(--tenant-radius-card,16px);
+  --po-radius-control:var(--tenant-radius-control,9px);
+}
+
+/* Global panel typography primitives */
+.publishing-os :where(input,select,textarea,button){font-family:var(--po-font-ui)}
+.publishing-os :where(code,kbd,samp){font-family:var(--po-font-mono)}
+.publishing-os :where(button,a,input,select,textarea):focus-visible{
+  outline:3px solid color-mix(in srgb,var(--po-brand) 22%,transparent);
+  outline-offset:2px;
+}
+
+/* Keep the public-site mobile dock out of admin routes. */
+.publishing-os + .mobile-dock{display:none!important}
