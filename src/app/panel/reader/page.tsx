@@ -23,14 +23,27 @@ const books = [
   },
 ];
 
+const BOOK_STORAGE = "22reader-panel-books";
+
 export default function ReaderPanelPage() {
   const [filter, setFilter] = useState<"all" | "draft" | "published">("all");
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [managedBooks, setManagedBooks] = useState<typeof books>([]);
+
+  const allBooks = useMemo(() => {
+    const merged = [...books];
+    managedBooks.forEach(book => {
+      const index = merged.findIndex(item => item.slug === book.slug);
+      if (index >= 0) merged[index] = { ...merged[index], ...book };
+      else merged.push(book);
+    });
+    return merged;
+  }, [managedBooks]);
 
   const visibleBooks = useMemo(() => {
     const q = query.trim().toLocaleLowerCase("tr-TR");
-    return books.filter(book => {
+    return allBooks.filter(book => {
       const statusMatch =
         filter === "all" ||
         (filter === "published" && book.status === "Yayında") ||
@@ -41,10 +54,14 @@ export default function ReaderPanelPage() {
           .some(value => value.toLocaleLowerCase("tr-TR").includes(q));
       return statusMatch && queryMatch;
     });
-  }, [filter, query]);
+  }, [filter, query, allBooks]);
 
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
+    try {
+      const parsed = JSON.parse(localStorage.getItem(BOOK_STORAGE) || "[]");
+      if (Array.isArray(parsed)) setManagedBooks(parsed);
+    } catch {}
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
 
@@ -111,9 +128,9 @@ export default function ReaderPanelPage() {
         </section>
 
         <section className={styles.stats} aria-label="Reader özeti">
-          <article><b>{books.length}</b><span>Toplam Kitap</span></article>
-          <article><b>{books.filter(book => book.status === "Yayında").length}</b><span>Yayında</span></article>
-          <article><b>85</b><span>Toplam Bölüm</span></article>
+          <article><b>{allBooks.length}</b><span>Toplam Kitap</span></article>
+          <article><b>{allBooks.filter(book => book.status === "Yayında").length}</b><span>Yayında</span></article>
+          <article><b>{allBooks.reduce((sum, book) => sum + (Number(book.chapters) || 0), 0)}</b><span>Toplam Bölüm</span></article>
           <article><b>EPUB 3</b><span>Aktif Format</span></article>
         </section>
 
