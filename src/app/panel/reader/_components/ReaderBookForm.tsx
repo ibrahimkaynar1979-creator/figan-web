@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./ReaderBookForm.module.css";
+import { getManagedAuthors, saveManagedBook, type ManagedBook } from "../../_lib/managedStore";
 
 type Props = {
   mode: "new" | "edit";
@@ -24,9 +25,6 @@ type AuthorOption = { name: string; slug: string; href: string };
 const BUILT_IN_AUTHORS: AuthorOption[] = [
   { name: "Figen Yavuz", slug: "figen-yavuz", href: "/yazarlar/figen-yavuz" },
 ];
-
-const AUTHOR_STORAGE = "22reader-panel-authors";
-const BOOK_STORAGE = "22reader-panel-books";
 
 const slugify = (value: string) =>
   value
@@ -55,23 +53,16 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
 
-    try {
-      const parsed = JSON.parse(localStorage.getItem(AUTHOR_STORAGE) || "[]");
-      if (Array.isArray(parsed)) {
-        const panelAuthors: AuthorOption[] = parsed
-          .filter(item => item && typeof item.name === "string" && typeof item.slug === "string")
-          .map(item => ({
-            name: item.name,
-            slug: item.slug,
-            href: typeof item.href === "string" ? item.href : `/yazarlar/${item.slug}`,
-          }));
-        const merged = [...BUILT_IN_AUTHORS];
-        panelAuthors.forEach(item => {
-          if (!merged.some(existing => existing.slug === item.slug)) merged.push(item);
-        });
-        setAuthorOptions(merged);
-      }
-    } catch {}
+    const panelAuthors: AuthorOption[] = getManagedAuthors().map(item => ({
+      name: item.name,
+      slug: item.slug,
+      href: item.href || `/yazarlar/${item.slug}`,
+    }));
+    const merged = [...BUILT_IN_AUTHORS];
+    panelAuthors.forEach(item => {
+      if (!merged.some(existing => existing.slug === item.slug)) merged.push(item);
+    });
+    setAuthorOptions(merged);
 
     return () => document.body.classList.remove("reader-admin-route");
   }, []);
@@ -86,7 +77,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    const payload = {
+    const payload: ManagedBook = {
       title,
       subtitle,
       author: author.name,
@@ -102,15 +93,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
       updatedAt: new Date().toISOString(),
     };
 
-    let current: typeof payload[] = [];
-    try {
-      const parsed = JSON.parse(localStorage.getItem(BOOK_STORAGE) || "[]");
-      if (Array.isArray(parsed)) current = parsed;
-    } catch {}
-
-    const next = [...current.filter(item => item.slug !== slug), payload];
-    localStorage.setItem(BOOK_STORAGE, JSON.stringify(next));
-    localStorage.setItem(`22reader-panel-draft-${slug || "yeni"}`, JSON.stringify(payload));
+    saveManagedBook(payload, mode === "edit" ? initial?.slug : undefined);
     setSaved(true);
     window.setTimeout(() => setSaved(false), 2600);
   };
