@@ -26,6 +26,7 @@ const BUILT_IN_AUTHORS: AuthorOption[] = [
 ];
 
 const AUTHOR_STORAGE = "22reader-panel-authors";
+const BOOK_STORAGE = "22reader-panel-books";
 
 const slugify = (value: string) =>
   value
@@ -88,15 +89,27 @@ export default function ReaderBookForm({ mode, initial }: Props) {
     const payload = {
       title,
       subtitle,
+      author: author.name,
       authorSlug,
+      authorHref: author.href,
       slug,
       language,
       status,
       epubName,
       coverName,
       readerHref,
+      format: "EPUB 3",
       updatedAt: new Date().toISOString(),
     };
+
+    let current: typeof payload[] = [];
+    try {
+      const parsed = JSON.parse(localStorage.getItem(BOOK_STORAGE) || "[]");
+      if (Array.isArray(parsed)) current = parsed;
+    } catch {}
+
+    const next = [...current.filter(item => item.slug !== slug), payload];
+    localStorage.setItem(BOOK_STORAGE, JSON.stringify(next));
     localStorage.setItem(`22reader-panel-draft-${slug || "yeni"}`, JSON.stringify(payload));
     setSaved(true);
     window.setTimeout(() => setSaved(false), 2600);
