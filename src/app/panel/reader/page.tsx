@@ -62,6 +62,7 @@ export default function ReaderPanelPage() {
         <nav className={styles.nav} aria-label="Reader yönetim menüsü">
           <button className={filter === "all" ? styles.active : ""} type="button" onClick={() => setFilter("all")}><span>▦</span> Kitaplar</button>
           <a href="/panel/reader/yeni"><span>＋</span> Yeni Kitap</a>
+          <a href="/panel/yazarlar"><span>✒</span> Yazarlar</a>
           <button className={filter === "draft" ? styles.active : ""} type="button" onClick={() => setFilter("draft")}><span>◌</span> Taslaklar</button>
           <button className={filter === "published" ? styles.active : ""} type="button" onClick={() => setFilter("published")}><span>⌁</span> Yayındakiler</button>
         </nav>
