@@ -279,11 +279,52 @@ export default function ReaderBookForm({ mode, initial }: Props) {
           <section className={styles.connectionCard}>
             <div className={styles.sectionTitle}>
               <span>04</span>
+              <div><b>READER BAĞLANTISI</b><h2>EPUB’u 22 Reader’a bağla</h2></div>
+            </div>
+
+            <div className={styles.fields}>
+              <label>
+                <span>Reader Sistemi</span>
+                <select value="22-reader" disabled>
+                  <option value="22-reader">22 Reader</option>
+                </select>
+                <small>Bu kitap veritabanındaki EPUB URL’sinden dinamik olarak açılır.</small>
+              </label>
+              <label>
+                <span>Reader Adresi</span>
+                <input value={readerHref} readOnly />
+                <small>
+                  {epubUrl
+                    ? "EPUB bağlı ve Reader hazır."
+                    : epubFile
+                      ? "Kaydettiğinizde EPUB yüklenip Reader’a bağlanacak."
+                      : "Önce bir EPUB dosyası seçin."}
+                </small>
+              </label>
+            </div>
+
+            <div className={styles.connections} style={{ marginTop: 16 }}>
+              <div>
+                <span>EPUB Kaynağı</span>
+                <code>{epubUrl || epubName || "Henüz EPUB seçilmedi"}</code>
+                <b>{epubUrl ? "Bağlı" : epubFile ? "Hazır" : "Bekliyor"}</b>
+              </div>
+              <a href={readerHref} target="_blank" rel="noreferrer">
+                <span>Reader Önizleme</span>
+                <code>{readerHref}</code>
+                <b>↗</b>
+              </a>
+            </div>
+          </section>
+
+          <section className={styles.connectionCard}>
+            <div className={styles.sectionTitle}>
+              <span>05</span>
               <div><b>BAĞLANTILAR</b><h2>Yayın ağı</h2></div>
             </div>
             <div className={styles.connections}>
               <a href={author.href}><span>Yazar Profili</span><code>{author.href}</code><b>↗</b></a>
-              <div><span>Reader Adresi</span><code>{readerHref}</code><b>Hazır</b></div>
+              <div><span>Reader Adresi</span><code>{readerHref}</code><b>{epubUrl ? "Bağlı" : "Hazır"}</b></div>
               <div><span>Yayınevi</span><code>22 Yayınevi</code><b>Sabit</b></div>
             </div>
           </section>
