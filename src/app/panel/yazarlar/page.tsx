@@ -90,7 +90,7 @@ export default function AuthorsPanelPage() {
 
         <div className={styles.search}>
           <span>⌕</span>
-          <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Yazar ara…" />
+          <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Yazar veya kitap ara…" />
         </div>
 
         <section className={styles.grid}>
