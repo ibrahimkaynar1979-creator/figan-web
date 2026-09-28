@@ -144,7 +144,15 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
         for (let i = 0; i < spineItems.length; i += 1) {
           const spineItem = spineItems[i];
           try {
-            const doc = await spineItem.load(epubBook.load.bind(epubBook));
+            const loaded = await spineItem.load(epubBook.load.bind(epubBook));
+            const doc =
+              loaded?.nodeType === 9
+                ? loaded
+                : loaded?.ownerDocument ||
+                  spineItem.document ||
+                  spineItem.contents?.document ||
+                  null;
+
             const href = String(spineItem.href || "").split("#")[0];
             const heading =
               doc?.querySelector?.("h1,h2,h3")?.textContent?.trim() ||
@@ -156,13 +164,11 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
               .filter((text: string) => text.length > 0);
 
             if (paragraphs.length === 0) {
-              const bodyText = String(doc?.body?.textContent || "").replace(/\s+/g, " ").trim();
+              const bodyText = String(doc?.body?.textContent || loaded?.textContent || "").replace(/\s+/g, " ").trim();
               if (bodyText) paragraphs = [bodyText];
             }
 
-            if (paragraphs.length > 0) {
-              parsed.push({ title: heading, paragraphs });
-            }
+            if (paragraphs.length > 0) parsed.push({ title: heading, paragraphs });
             spineItem.unload?.();
           } catch {}
         }
