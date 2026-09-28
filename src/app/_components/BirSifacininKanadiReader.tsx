@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import styles from "./EbookReader.module.css";
-import coverStyles from "./author/AuthorPlatform.module.css";
 import { bskEpubSections, legacyReaderIndexToEpubIndex } from "../_data/bskEpub/sections";
 
 type Theme = "light" | "cream" | "dark";
@@ -16,53 +15,13 @@ type ReaderUnderline = { id: string; index: number; paragraph: number; start: nu
 type PendingUnderline = { segments: Omit<ReaderUnderline, "id">[]; x: number; y: number };
 type ActiveUnderline = { id: string; x: number; y: number };
 
-export type ManagedReaderBook = {
-  slug: string;
-  title: string;
-  author: string;
-  authorHref: string;
-  coverUrl: string;
-  epubUrl: string;
-};
-
-declare global {
-  interface Window {
-    ePub?: (source: string) => any;
-  }
-}
-
-let epubJsLoader: Promise<void> | null = null;
-
-function loadEpubJs() {
-  if (typeof window === "undefined" || window.ePub) return Promise.resolve();
-  if (epubJsLoader) return epubJsLoader;
-
-  epubJsLoader = new Promise<void>((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>("script[data-22-reader-epubjs]");
-    if (existing) {
-      existing.addEventListener("load", () => resolve(), { once: true });
-      existing.addEventListener("error", () => reject(new Error("EPUB motoru yüklenemedi.")), { once: true });
-      return;
-    }
-    const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js";
-    script.async = true;
-    script.setAttribute("data-22-reader-epubjs", "true");
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("EPUB motoru yüklenemedi."));
-    document.head.appendChild(script);
-  });
-
-  return epubJsLoader;
-}
-
-const STATIC_SECTIONS: Section[] = bskEpubSections.map(section =>
+const sections: Section[] = bskEpubSections.map(section =>
   section.title === "KAZANMAK DA VAR KAYBETMEK DE."
     ? { ...section, title: "KAZANMAK DA VAR KAYBETMEK" }
     : section
 );
 
-const STATIC_STORAGE = "22reader-bir-sifacinin-kanadi";
+const STORAGE = "22reader-bir-sifacinin-kanadi";
 const EPUB_STRUCTURE_VERSION = 2;
 const READER_FONTS: Record<ReaderFont, string> = {
   serif: 'Georgia, "Times New Roman", serif',
@@ -70,15 +29,7 @@ const READER_FONTS: Record<ReaderFont, string> = {
   modern: '"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif',
 };
 
-export default function BirSifacininKanadiReader({ book }: { book?: ManagedReaderBook }) {
-  const [managedSections, setManagedSections] = useState<Section[] | null>(book ? [] : null);
-  const [epubLoadError, setEpubLoadError] = useState("");
-  const sections = book ? (managedSections ?? []) : STATIC_SECTIONS;
-  const bookTitle = book?.title || "Bir Şifacının Kanadı";
-  const bookAuthor = book?.author || "Figen Yavuz";
-  const bookCover = book?.coverUrl || "/bir_sifaci_png.png";
-  const authorHref = book?.authorHref || "/yazarlar/figen-yavuz";
-  const storageKey = book ? `22reader-${book.slug}` : STATIC_STORAGE;
+export default function BirSifacininKanadiReader() {
   const [index, setIndex] = useState(-1);
   const [theme, setTheme] = useState<Theme>("cream");
   const [fontSize, setFontSize] = useState(22);
@@ -114,87 +65,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
   }, []);
 
   useEffect(() => {
-    if (!book?.epubUrl) return;
-
-    let cancelled = false;
-    let epubBook: any = null;
-
-    const loadManagedBook = async () => {
-      try {
-        setEpubLoadError("");
-        await loadEpubJs();
-        if (cancelled || !window.ePub) return;
-
-        epubBook = window.ePub(book.epubUrl);
-        await epubBook.ready;
-        const navigation = await epubBook.loaded.navigation;
-        const navItems = Array.isArray(navigation?.toc) ? navigation.toc : [];
-        const navByHref = new Map<string, string>();
-
-        const collectNav = (items: any[]) => {
-          items.forEach(item => {
-            if (item?.href && item?.label) navByHref.set(String(item.href).split("#")[0], String(item.label).trim());
-            if (Array.isArray(item?.subitems)) collectNav(item.subitems);
-          });
-        };
-        collectNav(navItems);
-
-        const parsed: Section[] = [];
-        const spineItems = epubBook.spine?.spineItems || [];
-
-        for (let i = 0; i < spineItems.length; i += 1) {
-          const spineItem = spineItems[i];
-          try {
-            const loaded = await spineItem.load(epubBook.load.bind(epubBook));
-            const doc =
-              loaded?.nodeType === 9
-                ? loaded
-                : loaded?.ownerDocument ||
-                  spineItem.document ||
-                  spineItem.contents?.document ||
-                  null;
-
-            const href = String(spineItem.href || "").split("#")[0];
-            const heading =
-              doc?.querySelector?.("h1,h2,h3")?.textContent?.trim() ||
-              navByHref.get(href) ||
-              `Bölüm ${i + 1}`;
-
-            let paragraphs = Array.from(doc?.querySelectorAll?.("p") || [])
-              .map((node: any) => String(node.textContent || "").replace(/\s+/g, " ").trim())
-              .filter((text: string) => text.length > 0);
-
-            if (paragraphs.length === 0) {
-              const bodyText = String(doc?.body?.textContent || loaded?.textContent || "").replace(/\s+/g, " ").trim();
-              if (bodyText) paragraphs = [bodyText];
-            }
-
-            if (paragraphs.length > 0) parsed.push({ title: heading, paragraphs });
-            spineItem.unload?.();
-          } catch {}
-        }
-
-        if (!cancelled) {
-          setManagedSections(parsed);
-          if (parsed.length === 0) setEpubLoadError("EPUB içeriği okunamadı.");
-        }
-      } catch (error) {
-        if (!cancelled) {
-          setEpubLoadError(error instanceof Error ? error.message : "EPUB yüklenemedi.");
-        }
-      }
-    };
-
-    void loadManagedBook();
-
-    return () => {
-      cancelled = true;
-      try { epubBook?.destroy?.(); } catch {}
-    };
-  }, [book?.epubUrl]);
-
-  useEffect(() => {
-    const raw = localStorage.getItem(storageKey);
+    const raw = localStorage.getItem(STORAGE);
     if (!raw) {
       setStorageReady(true);
       return;
@@ -294,7 +165,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
       }
     } catch {}
     setStorageReady(true);
-  }, [storageKey, sections.length]);
+  }, []);
 
   useEffect(() => {
     readerPageRef.current = readerPage;
@@ -308,7 +179,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
 
     let previous: Record<string, unknown> = {};
     try {
-      previous = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      previous = JSON.parse(localStorage.getItem(STORAGE) || "{}");
     } catch {}
 
     const next = {
@@ -330,7 +201,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
         : {}),
     };
 
-    localStorage.setItem(storageKey, JSON.stringify(next));
+    localStorage.setItem(STORAGE, JSON.stringify(next));
     const noteKey = index >= 0 ? index + ":" + readerPage : "";
     setDraft(noteKey ? notes[noteKey] || "" : "");
   }, [storageReady, index, readerPage, theme, fontSize, readerFont, textAlign, lineHeight, pageMargin, bookmarks, notes, underlines]);
@@ -341,7 +212,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
     const saveExactPosition = () => {
       let previous: Record<string, unknown> = {};
       try {
-        previous = JSON.parse(localStorage.getItem(storageKey) || "{}");
+        previous = JSON.parse(localStorage.getItem(STORAGE) || "{}");
       } catch {}
 
       const exactPage = readerPageRef.current;
@@ -354,7 +225,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
           ? { lastReadingIndex: index, lastReaderPage: exactPage }
           : {}),
       };
-      localStorage.setItem(storageKey, JSON.stringify(next));
+      localStorage.setItem(STORAGE, JSON.stringify(next));
     };
 
     window.addEventListener("pagehide", saveExactPosition);
@@ -986,17 +857,17 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
       <div className={styles.srOnly} aria-live="polite" aria-atomic="true">
         {index >= 0 && current
           ? `${current.title}. Sayfa ${readerPage + 1} / ${readerPageCount}. Kitap yüzde ${progress} tamamlandı.`
-          : `${bookTitle} kitap kapağı`}
+          : "Bir Şifacının Kanadı kitap kapağı"}
       </div>
       <aside className={styles.sidebar}>
         <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
-          <Image src="/22-yayinevi-logo.webp" alt="22 Yayınevi" width={360} height={236} priority />
+          <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={236} priority />
         </a>
         <div className={styles.cover}>
-          <img src={bookCover} alt={`${bookTitle} - ${bookAuthor}`} />
+          <Image src="/bir_sifaci_png.png" alt="Bir Şifacının Kanadı - Figen Yavuz" width={320} height={440} priority />
         </div>
-        <h2>{bookTitle}</h2>
-        <p>{bookAuthor}</p>
+        <h2>Bir Şifacının Kanadı</h2>
+        <p>Figen Yavuz</p>
         <nav className={styles.sideNav}>
           <button onClick={() => setPanel(panel === "toc" ? null : "toc")}><span>☰</span> İçindekiler</button>
           <button onClick={() => setPanel(panel === "notes" ? null : "notes")}><span>▤</span> Notlarım</button>
@@ -1005,30 +876,22 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
           <button onClick={() => setPanel(panel === "underlines" ? null : "underlines")}><span>＿</span> Altı Çizilenler</button>
           <button onClick={() => setPanel(panel === "appearance" ? null : "appearance")}><span>◐</span> Görünüm</button>
         </nav>
-        <a className={styles.backToBook} href={authorHref}>← {bookAuthor} sayfasına dön</a>
+        <a className={styles.backToBook} href="/yazarlar/figen-yavuz">← Figen Yavuz sayfasına dön</a>
       </aside>
 
-      <section
-        className={styles.stage}
-        onClick={revealChrome}
-        style={index === -1 ? { gridTemplateRows: "1fr" } : undefined}
-      >
-        <header
-          className={styles.topbar}
-          onClick={e => e.stopPropagation()}
-          style={index === -1 ? { display: "none" } : undefined}
-        >
+      <section className={styles.stage} onClick={revealChrome}>
+        <header className={styles.topbar} onClick={e => e.stopPropagation()}>
           {index === -1 ? (
             <>
               <div className={styles.coverTopLogo}>
-                <Image src="/22-yayinevi-logo.webp" alt="22 Yayınevi" width={300} height={190} priority />
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={300} height={190} priority />
               </div>
               <button className={styles.coverMenuButton} onClick={() => setPanel("toc")} aria-label="Menü">⋮</button>
             </>
           ) : (
             <>
               <div className={styles.mobileBrand}>
-                <Image src="/22-yayinevi-logo.webp" alt="22 Yayınevi" width={240} height={158} priority />
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
               </div>
               <div className={styles.chapterMini}>
                 <button
@@ -1072,35 +935,47 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
           aria-label={index >= 0 && current ? `${current.title} okuma alanı` : "Kitap kapağı"}
         >
           {index === -1 ? (
-            <section className={coverStyles.readerSection} onClick={e => e.stopPropagation()}>
-              <div className={coverStyles.devicePanel}>
-                <div className={coverStyles.productHeader}>
-                  <a href="/">22 <span>YAYINEVİ</span></a>
-                  <b>•••</b>
-                </div>
-                <div className={coverStyles.readerCover}>
-                  <img src={bookCover} alt={`${bookTitle} - ${bookAuthor}`} />
-                </div>
-                <h2>{bookAuthor}</h2>
-                <p>22 Yayınevi</p>
-                <button
-                  type="button"
-                  className={coverStyles.readerButton}
-                  onClick={(e) => { e.stopPropagation(); resumeReading(); }}
-                  disabled={Boolean(book && sections.length === 0)}
-                  style={{ border: 0, cursor: book && sections.length === 0 ? "wait" : "pointer" }}
-                >
-                  {book && sections.length === 0 ? "EPUB Hazırlanıyor…" : "Okumaya Başla"} <span>→</span>
-                </button>
-                {epubLoadError && <p style={{ color: "#8f3b2e", textAlign: "center", margin: "10px 20px 0" }}>{epubLoadError}</p>}
-                <div className={coverStyles.readerMeta}>
-                  <span>▤ <b>{sections.length} bölüm</b></span>
-                  <span>◷ <b>{readingTime}</b></span>
-                  <span>▱ <b>EPUB</b></span>
-                </div>
-                <div className={coverStyles.readerBrand}><strong>22</strong><span>Reader</span></div>
+            <div className={styles.coverScreen}>
+              <div className={styles.coverHero}>
+                <Image
+                  src="/bir_sifaci_png.png"
+                  alt="Bir Şifacının Kanadı - Figen Yavuz"
+                  width={720}
+                  height={900}
+                  sizes="(max-width: 900px) 86vw, 520px"
+                  priority
+                />
               </div>
-            </section>
+              <div className={styles.coverAuthor}>Figen Yavuz</div>
+              <div className={styles.coverPublisher}>22 Yayınevi</div>
+              <button
+                onClick={(e) => { e.stopPropagation(); resumeReading(); }}
+                className={styles.startButton}
+              >
+                Okumaya Başla <span>→</span>
+              </button>
+              <div className={styles.coverStats}>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M3.5 5.5c2.8-.7 5.5-.2 8 1.5v12c-2.5-1.7-5.2-2.2-8-1.5z"/><path d="M20.5 5.5c-2.8-.7-5.5-.2-8 1.5v12c2.5-1.7 5.2-2.2 8-1.5z"/></svg>
+                  </i>
+                  <b>{sections.length} bölüm</b>
+                </span>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/></svg>
+                  </i>
+                  <b>{readingTime}</b>
+                </span>
+                <span>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6.5 3.5h7l4 4v13h-11z"/><path d="M13.5 3.5v4h4"/><path d="M9 12h6M9 15h6"/></svg>
+                  </i>
+                  <b>EPUB</b>
+                </span>
+              </div>
+              <div className={styles.coverReaderBrand}><Image src="/22_reader_logo.png" alt="22 Reader" width={520} height={170} priority /></div>
+            </div>
           ) : (
             <div
               ref={textWrapRef}
@@ -1114,7 +989,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
               }}
               style={{ columnWidth: textWrapRef.current?.clientWidth ? textWrapRef.current.clientWidth + "px" : undefined }}
             >
-              <p className={styles.chapter}>{bookTitle.toLocaleUpperCase("tr-TR")}</p>
+              <p className={styles.chapter}>BİR ŞİFACININ KANADI</p>
               <h1>{current?.title}</h1>
               <div className={styles.rule} />
               <div
