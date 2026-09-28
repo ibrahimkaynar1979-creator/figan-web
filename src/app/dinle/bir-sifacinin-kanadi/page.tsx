@@ -184,7 +184,6 @@ export default function BirSifacininKanadiPlayer() {
     window.addEventListener("pagehide",persist);
     document.addEventListener("visibilitychange",onVisibility);
     return()=>{
-      persist();
       window.clearInterval(timer);
       window.removeEventListener("pagehide",persist);
       document.removeEventListener("visibilitychange",onVisibility);
