@@ -1,0 +1,23 @@
+.switcher{
+  display:inline-grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  padding:3px;
+  border:1px solid var(--po-border);
+  border-radius:var(--po-radius-pill);
+  background:var(--po-surface-soft);
+}
+.switcher button{
+  min-height:32px;
+  padding:0 11px;
+  border:0;
+  border-radius:var(--po-radius-pill);
+  background:transparent;
+  color:var(--po-text-secondary);
+  font:600 11px/1 var(--po-font-ui);
+  cursor:pointer;
+}
+.switcher .active{
+  background:var(--po-text);
+  color:var(--po-surface);
+}
