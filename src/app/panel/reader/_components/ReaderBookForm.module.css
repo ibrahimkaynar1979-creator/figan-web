@@ -959,3 +959,79 @@
 .sectionTitle h2,.pipelineHead strong,.futureGrid strong,.catalogHead strong,.currentTitle{
   font-family:var(--po-font-ui)!important;font-weight:700!important;
 }
+
+/* FINAL THEME TOKEN OVERRIDE
+   Keep the layout; force every visible project-editor surface to the selected palette. */
+.page{
+  background:var(--po-bg)!important;
+  color:var(--po-text)!important;
+}
+.workspace{background:transparent!important}
+.topbar h1,.topbar p,.sectionTitle h2,.sectionTitle p,.fields label>span,.fields input,.fields select{
+  color:var(--po-text)!important;
+}
+.topbar p,.sectionTitle p,.fields small,.stage small,.futureGrid span{
+  color:var(--po-text-secondary)!important;
+}
+.topbar>div>span,.sectionTitle b,.pipelineHead span,.uploadCard span{
+  color:var(--po-brand)!important;
+}
+.pipeline,.mainCard,.uploadSection,.futureCard,.connectionCard{
+  background:var(--po-surface)!important;
+  border-color:var(--po-border)!important;
+  box-shadow:var(--po-shadow-card)!important;
+}
+.pipelineHead{border-color:var(--po-border)!important}
+.pipelineHead>b,.draftBadge,.futureGrid b{
+  background:var(--po-brand-soft)!important;
+  color:var(--po-brand)!important;
+  border-color:color-mix(in srgb,var(--po-brand) 22%,var(--po-border))!important;
+}
+.stage,.stage:nth-child(even),.stage_planned{
+  background:var(--po-surface-soft)!important;
+  border-color:var(--po-border)!important;
+}
+.stage_active{
+  background:var(--po-brand-soft)!important;
+  box-shadow:inset 0 -3px 0 var(--po-brand)!important;
+}
+.stage_active i,.sectionTitle>span,.uploadIcon{
+  background:var(--po-brand)!important;
+  color:var(--po-brand-contrast)!important;
+  box-shadow:none!important;
+}
+.stage i{
+  background:color-mix(in srgb,var(--po-brand) 8%,var(--po-surface))!important;
+  color:var(--po-text-secondary)!important;
+}
+.stage strong{color:var(--po-text)!important}
+.fields input,.fields select,.slugInput,.uploadCard,.connections>a,.connections>div,.futureGrid>div{
+  background:var(--po-surface-soft)!important;
+  border-color:var(--po-border)!important;
+  color:var(--po-text)!important;
+  box-shadow:none!important;
+}
+.fields input:focus,.fields select:focus,.slugInput:focus-within{
+  border-color:var(--po-brand)!important;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--po-brand) 12%,transparent)!important;
+}
+.uploadCard>b{
+  background:var(--po-brand-soft)!important;
+  color:var(--po-brand)!important;
+  border-color:var(--po-border)!important;
+}
+.actions{
+  background:color-mix(in srgb,var(--po-surface) 94%,transparent)!important;
+  border-color:var(--po-border)!important;
+  box-shadow:var(--po-shadow-float)!important;
+}
+.actions a{
+  background:var(--po-surface)!important;
+  color:var(--po-text)!important;
+  border-color:var(--po-border)!important;
+}
+.actions button{
+  background:var(--po-brand)!important;
+  color:var(--po-brand-contrast)!important;
+  box-shadow:none!important;
+}
