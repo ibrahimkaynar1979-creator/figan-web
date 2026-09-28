@@ -105,6 +105,7 @@ export default function ReaderPanelPage() {
           <a href="/panel/reader/yeni"><span>＋</span> Yeni Kitap</a>
           <a href="/oku" target="_blank" rel="noreferrer"><span>◫</span> Reader Tasarım Alanı</a>
           <a href="/panel/yazarlar"><span>✒</span> Yazarlar</a>
+          <a href="/panel/sesli-kitap"><span>♪</span> Sesli Kitap</a>
           <button className={filter === "draft" ? styles.active : ""} type="button" onClick={() => setFilter("draft")}><span>◌</span> Taslaklar</button>
           <button className={filter === "published" ? styles.active : ""} type="button" onClick={() => setFilter("published")}><span>⌁</span> Yayındakiler</button>
         </nav>
