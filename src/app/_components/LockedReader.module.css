@@ -1,3 +1,4 @@
+.srOnly{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .reader{
   --bg:#f7f2e8;
   --surface:#fbf7ef;
@@ -436,19 +437,22 @@
   .reader[data-reading="false"] .coverHero{
     width:330px;
     max-width:73.2%;
-    height:auto;
+    height:440px;
     margin:0 auto;
     flex:0 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     filter:drop-shadow(0 14px 24px rgba(54,36,20,.16));
   }
 
   .reader[data-reading="false"] .coverHero img{
     display:block;
     width:100%;
-    height:auto;
+    height:100%;
     object-fit:contain;
-    transform:scale(1.08);
-    transform-origin:center bottom;
+    object-position:center;
+    transform:none;
   }
 
   .reader[data-reading="false"] .coverAuthor{
