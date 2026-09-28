@@ -71,6 +71,11 @@ export default function ReaderBookForm({ mode, initial }: Props) {
         if (!merged.some(existing => existing.slug === item.slug)) merged.push(item);
       });
       setAuthorOptions(merged);
+      if (mode === "new" && panelAuthors.length > 0) {
+        setAuthorSlug(current =>
+          panelAuthors.some(item => item.slug === current) ? current : panelAuthors[0].slug
+        );
+      }
     });
 
     return () => document.body.classList.remove("reader-admin-route");
@@ -202,7 +207,11 @@ export default function ReaderBookForm({ mode, initial }: Props) {
               </label>
               <label>
                 <span>Yazar</span>
-                <select value={authorSlug} onChange={e => setAuthorSlug(e.target.value)}>
+                <select
+                  value={authorSlug}
+                  onChange={e => setAuthorSlug(e.target.value)}
+                  disabled={authorOptions.length === 0}
+                >
                   {authorOptions.map(item => <option key={item.slug} value={item.slug}>{item.name}</option>)}
                 </select>
                 <small>
