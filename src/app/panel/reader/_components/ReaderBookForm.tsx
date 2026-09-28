@@ -82,7 +82,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   }, []);
 
   const author = authorOptions.find(item => item.slug === authorSlug) ?? authorOptions[0];
-  const readerHref = useMemo(() => `/oku/${slug || "kitap-slug"}`, [slug]);
+  const readerHref = useMemo(() => slug ? `/oku/${slug}` : "/oku", [slug]);
 
   const onTitleChange = (value: string) => {
     setTitle(value);
