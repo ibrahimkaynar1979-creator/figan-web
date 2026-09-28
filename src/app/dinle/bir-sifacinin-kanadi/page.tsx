@@ -556,8 +556,8 @@ export default function BirSifacininKanadiPlayer() {
             </button>
             <button className={styles.seekButton} onClick={()=>seekBy(15)} aria-label="15 saniye ileri">
               <svg viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M32.4 10.6h6.7V3.9" />
-                <path d="M38.4 11A16.8 16.8 0 1 0 40.1 31" />
+                <path d="M15.6 10.6H8.9V3.9" />
+                <path d="M9.6 11A16.8 16.8 0 1 1 7.9 31" />
               </svg>
               <small>15</small>
             </button>
