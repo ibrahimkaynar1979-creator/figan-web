@@ -203,7 +203,7 @@
   text-overflow:ellipsis;
 }
 .nowPlaying p{
-  margin:0;
+  margin:0 0 2px;
   color:#4f463e;
   font-family:var(--font-editorial),Georgia,serif;
   font-size:14.5px;
@@ -251,12 +251,12 @@
 .timeRow{
   display:flex;
   justify-content:space-between;
-  margin-top:6px;
+  margin-top:8px;
   color:#4f463e;
   font-family:var(--font-editorial),Georgia,serif;
   font-size:13px;
   line-height:1;
-  font-weight:600;
+  font-weight:700;
 }
 
 .transport{
@@ -268,7 +268,7 @@
   gap:34px;
   margin:0;
   flex:0 0 auto;
-  transform:translateY(-6px);
+  transform:translateY(-2px);
 }
 .seekButton{
   position:relative;
@@ -288,6 +288,10 @@
   stroke-linecap:round;
   stroke-linejoin:round;
   transform-origin:50% 50%;
+}
+
+.transport .seekButton:first-child svg{
+  transform:none;
 }
 
 .transport .seekButton:last-child svg{
