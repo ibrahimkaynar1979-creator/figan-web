@@ -130,7 +130,7 @@ export default function BirSifacininKanadiPlayer() {
     title:"Bir Şifacının Kanadı",
     author:"Figen Yavuz",
     voice:"Elif",
-    coverUrl:"/bsk-player-cover.webp",
+    coverUrl:"/bir_sifaci_png.png",
   });
   const [activeChapters,setActiveChapters] = useState<Chapter[]>(chapters);
   const progressKey=useMemo(()=>`22y-audio-progress-${bookMeta.slug}`,[bookMeta.slug]);
@@ -179,10 +179,10 @@ export default function BirSifacininKanadiPlayer() {
           voice:typeof data.voice==="string" ? data.voice : "",
           coverUrl:
             typeof data.slug === "string" && data.slug === "bir-sifacinin-kanadi"
-              ? "/bsk-player-cover.webp"
+              ? "/bir_sifaci_png.png"
               : typeof data.coverUrl === "string" && data.coverUrl
                 ? data.coverUrl
-                : "/bsk-player-cover.webp",
+                : "/bir_sifaci_png.png",
         });
         if(typeof data.duration==="number" && Number.isFinite(data.duration) && data.duration>0){
           setDuration(data.duration);
