@@ -153,3 +153,32 @@
 .openPublication small{font-size:9px}
 .openPublication code{font-size:11px}
 .openPublication>b{font-size:11px}
+
+/* Publishing OS token integration */
+.dock{background:var(--po-surface);border-color:var(--po-border);box-shadow:var(--po-shadow-card);color:var(--po-text)}
+.dockHead{border-color:var(--po-border-soft)}
+.dockHead span,.detailHead span{color:var(--po-brand)}
+.dockHead>b,.detailHead>b{background:var(--po-brand-soft);color:var(--po-brand)}
+.tabs{background:var(--po-surface-soft);border-color:var(--po-border)}
+.tabs button{color:var(--po-text-secondary)}
+.tabs .active{background:var(--po-brand);color:var(--po-brand-contrast)}
+.deviceStage{background:var(--po-surface-soft)}
+.readerDevice,.audioDevice{background:var(--po-surface);border-color:var(--po-border);box-shadow:var(--po-shadow-card)}
+.readerDevice>header,.audioDevice>header,.readerBrand,.audioTools{border-color:var(--po-border)}
+.readerBody>p,.audioBody>p,.readerStats,.chapterCard span,.chapterCard small,.progress,.audioTools span{color:var(--po-text-secondary)}
+.readerBody>button,.transport .play{background:var(--po-text);color:var(--po-surface)}
+.chapterCard{background:var(--po-brand-soft)}
+.checks{background:var(--po-border)}
+.checks div,.detailPanel{background:var(--po-surface)}
+.checks span{color:var(--po-text-muted)}
+.checks b,.detailHead strong,.metaList dd,.readiness span{color:var(--po-text)}
+.metaList{border-color:var(--po-border)}
+.metaList>div{background:var(--po-surface);border-color:var(--po-border-soft)}
+.metaList dt{color:var(--po-text-secondary)}
+.readiness>div{background:var(--po-surface-soft);border-color:var(--po-border)}
+.readiness i{background:var(--po-brand-soft);color:var(--po-brand)}
+.readiness b{color:var(--po-danger)}
+.readiness .done{background:var(--po-success-soft);border-color:color-mix(in srgb,var(--po-success) 35%,var(--po-border))}
+.readiness .done i{background:color-mix(in srgb,var(--po-success) 16%,var(--po-surface));color:var(--po-success)}
+.readiness .done b{color:var(--po-success)}
+.openPublication{background:var(--po-text);color:var(--po-surface);border-color:var(--po-border)}
