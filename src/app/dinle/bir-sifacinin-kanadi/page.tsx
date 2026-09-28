@@ -9,7 +9,6 @@ const FALLBACK_AUDIO =
   process.env.NEXT_PUBLIC_BIR_SIFACININ_KANADI_AUDIO_URL ||
   "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
 const BOOK_DURATION = 8477.232;
-const PROGRESS_KEY = "22y-bir-sifacinin-kanadi-progress";
 // deploy-refresh: audiobook upload flow + Blob auto-connect
 
 const chapters: Chapter[] = [
@@ -124,9 +123,18 @@ export default function BirSifacininKanadiPlayer() {
   const [sleepLeft,setSleepLeft] = useState<number | null>(null);
   const [audioError,setAudioError] = useState(false);
   const [audioSrc,setAudioSrc] = useState(FALLBACK_AUDIO);
+  const [bookMeta,setBookMeta] = useState({
+    slug:"bir-sifacinin-kanadi",
+    title:"Bir Şifacının Kanadı",
+    author:"Figen Yavuz",
+    voice:"Elif",
+    coverUrl:"/bir_sifaci_png.png",
+  });
+  const [activeChapters,setActiveChapters] = useState<Chapter[]>(chapters);
+  const progressKey=useMemo(()=>`22y-audio-progress-${bookMeta.slug}`,[bookMeta.slug]);
 
-  const chapter = chapters[chapterIndex];
-  const chapterEnd = chapters[chapterIndex + 1]?.start ?? duration;
+  const chapter = activeChapters[chapterIndex] ?? activeChapters[0] ?? {id:1,title:"Kitabın Tamamı",start:0};
+  const chapterEnd = activeChapters[chapterIndex + 1]?.start ?? duration;
   const chapterDuration = Math.max(0,chapterEnd - chapter.start);
 
   useEffect(()=>{
@@ -150,27 +158,55 @@ export default function BirSifacininKanadiPlayer() {
     void fetch("/api/sesli-kitap/current",{cache:"no-store"})
       .then((response)=>response.ok?response.json():null)
       .then((data)=>{
-        if(data?.ready && typeof data.url==="string" && data.url) setAudioSrc(data.url);
+        if(!data?.ready) return;
+        const nextAudio=
+          typeof data.audioUrl==="string" && data.audioUrl
+            ? data.audioUrl
+            : typeof data.url==="string" && data.url
+              ? data.url
+              : "";
+        if(nextAudio) setAudioSrc(nextAudio);
+        setBookMeta({
+          slug:typeof data.slug==="string" && data.slug ? data.slug : "bir-sifacinin-kanadi",
+          title:typeof data.title==="string" && data.title ? data.title : "Bir Şifacının Kanadı",
+          author:typeof data.author==="string" && data.author ? data.author : "Figen Yavuz",
+          voice:typeof data.voice==="string" ? data.voice : "",
+          coverUrl:typeof data.coverUrl==="string" && data.coverUrl ? data.coverUrl : "/bir_sifaci_png.png",
+        });
+        if(typeof data.duration==="number" && Number.isFinite(data.duration) && data.duration>0){
+          setDuration(data.duration);
+        }
+        if(Array.isArray(data.chapters) && data.chapters.length){
+          const nextChapters=data.chapters
+            .filter((item:Chapter)=>item && typeof item.id==="number" && typeof item.title==="string" && typeof item.start==="number")
+            .sort((a:Chapter,b:Chapter)=>a.start-b.start);
+          if(nextChapters.length) setActiveChapters(nextChapters);
+        }else if(data.slug && data.slug!=="bir-sifacinin-kanadi"){
+          setActiveChapters([{id:1,title:"Kitabın Tamamı",start:0}]);
+        }
+        setChapterIndex(0);
+        setCurrentTime(0);
+        pendingResumeRef.current=0;
       })
       .catch(()=>{});
   },[]);
 
   useEffect(()=>{
-    const saved=window.localStorage.getItem(PROGRESS_KEY);
+    const saved=window.localStorage.getItem(progressKey);
     if(!saved) return;
     try{
       const parsed=JSON.parse(saved) as {currentTime?:number;rate?:number};
       if(typeof parsed.currentTime==="number" && parsed.currentTime>=0){
         pendingResumeRef.current=parsed.currentTime;
         setCurrentTime(parsed.currentTime);
-        const idx=[...chapters].reverse().findIndex((item)=>parsed.currentTime!>=item.start);
-        if(idx>=0) setChapterIndex(chapters.length-1-idx);
+        const idx=[...activeChapters].reverse().findIndex((item)=>parsed.currentTime!>=item.start);
+        if(idx>=0) setChapterIndex(activeChapters.length-1-idx);
       }
       if(typeof parsed.rate==="number" && [0.75,1,1.25,1.5,1.75,2].includes(parsed.rate)){
         setRate(parsed.rate);
       }
     }catch{}
-  },[]);
+  },[progressKey,activeChapters]);
 
   useEffect(()=>{
     const persist=()=>{
@@ -178,7 +214,7 @@ export default function BirSifacininKanadiPlayer() {
         const audio=audioRef.current;
         const liveTime=audio?.currentTime ?? 0;
         const liveRate=audio?.playbackRate ?? 1;
-        window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:liveTime,rate:liveRate,updatedAt:Date.now()}));
+        window.localStorage.setItem(progressKey,JSON.stringify({currentTime:liveTime,rate:liveRate,updatedAt:Date.now()}));
       }catch{}
     };
     const timer=window.setInterval(persist,4000);
@@ -190,15 +226,15 @@ export default function BirSifacininKanadiPlayer() {
       window.removeEventListener("pagehide",persist);
       document.removeEventListener("visibilitychange",onVisibility);
     };
-  },[]);
+  },[progressKey]);
 
   useEffect(()=>{
-    const index=Math.max(0,chapters.findIndex((item,i)=>{
-      const next=chapters[i+1]?.start ?? Infinity;
+    const index=Math.max(0,activeChapters.findIndex((item,i)=>{
+      const next=activeChapters[i+1]?.start ?? Infinity;
       return currentTime>=item.start && currentTime<next;
     }));
     if(index!==chapterIndex) setChapterIndex(index);
-  },[currentTime,chapterIndex]);
+  },[currentTime,chapterIndex,activeChapters]);
 
   useEffect(()=>{
     if(!sleepMinutes){setSleepLeft(null);return;}
@@ -220,10 +256,10 @@ export default function BirSifacininKanadiPlayer() {
 
     navigator.mediaSession.metadata=new MediaMetadata({
       title: chapter.title,
-      artist: "Bir Şifacının Kanadı · Figen Yavuz",
+      artist: `${bookMeta.title} · ${bookMeta.author}`,
       album: `${chapter.id}. Bölüm`,
       artwork: [
-        { src: "/bir_sifaci_png.png", sizes: "512x512", type: "image/png" },
+        { src: bookMeta.coverUrl },
       ],
     });
 
@@ -253,7 +289,7 @@ export default function BirSifacininKanadiPlayer() {
       const audio=audioRef.current;
       if(!audio) return;
       const previousIndex=Math.max(0,chapterIndex-1);
-      const target=chapters[previousIndex].start;
+      const target=activeChapters[previousIndex].start;
       audio.currentTime=target;
       setCurrentTime(target);
       setChapterIndex(previousIndex);
@@ -261,8 +297,8 @@ export default function BirSifacininKanadiPlayer() {
     safeSet("nexttrack",()=>{
       const audio=audioRef.current;
       if(!audio) return;
-      const nextIndex=Math.min(chapters.length-1,chapterIndex+1);
-      const target=chapters[nextIndex].start;
+      const nextIndex=Math.min(activeChapters.length-1,chapterIndex+1);
+      const target=activeChapters[nextIndex].start;
       audio.currentTime=target;
       setCurrentTime(target);
       setChapterIndex(nextIndex);
@@ -277,7 +313,7 @@ export default function BirSifacininKanadiPlayer() {
       safeSet("previoustrack",null);
       safeSet("nexttrack",null);
     };
-  },[chapter.title,chapterIndex]);
+  },[chapter.title,chapterIndex,bookMeta,activeChapters]);
 
   useEffect(()=>{
     if(!("mediaSession" in navigator)) return;
@@ -326,7 +362,7 @@ export default function BirSifacininKanadiPlayer() {
     audio.currentTime=next;
     setCurrentTime(next);
     try{
-      window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:next,rate:audio.playbackRate,updatedAt:Date.now()}));
+      window.localStorage.setItem(progressKey,JSON.stringify({currentTime:next,rate:audio.playbackRate,updatedAt:Date.now()}));
     }catch{}
   };
 
@@ -336,20 +372,20 @@ export default function BirSifacininKanadiPlayer() {
     setRate(next);
     if(audioRef.current) audioRef.current.playbackRate=next;
     try{
-      window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime,rate:next,updatedAt:Date.now()}));
+      window.localStorage.setItem(progressKey,JSON.stringify({currentTime,rate:next,updatedAt:Date.now()}));
     }catch{}
   };
 
   const selectChapter=(index:number)=>{
     const audio=audioRef.current;
     if(!audio) return;
-    const target=chapters[index].start;
+    const target=activeChapters[index].start;
     pendingResumeRef.current=target;
     audio.currentTime=target;
     setCurrentTime(target);
     setChapterIndex(index);
     try{
-      window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:target,rate:audio.playbackRate,updatedAt:Date.now()}));
+      window.localStorage.setItem(progressKey,JSON.stringify({currentTime:target,rate:audio.playbackRate,updatedAt:Date.now()}));
     }catch{}
     setChaptersOpen(false);
     void audio.play().then(()=>setPlaying(true)).catch(()=>setAudioError(true));
@@ -374,7 +410,7 @@ export default function BirSifacininKanadiPlayer() {
           if(wholeSecond!==lastSavedSecondRef.current && wholeSecond%4===0){
             lastSavedSecondRef.current=wholeSecond;
             try{
-              window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({currentTime:next,rate,updatedAt:Date.now()}));
+              window.localStorage.setItem(progressKey,JSON.stringify({currentTime:next,rate,updatedAt:Date.now()}));
             }catch{}
           }
         }}
@@ -385,7 +421,7 @@ export default function BirSifacininKanadiPlayer() {
           let resumeAt=0;
           let savedRate=rate;
           try{
-            const saved=window.localStorage.getItem(PROGRESS_KEY);
+            const saved=window.localStorage.getItem(progressKey);
             if(saved){
               const parsed=JSON.parse(saved) as {currentTime?:number;rate?:number};
               if(typeof parsed.currentTime==="number" && parsed.currentTime>=0) resumeAt=parsed.currentTime;
@@ -404,7 +440,7 @@ export default function BirSifacininKanadiPlayer() {
         onPause={(e)=>{
           setPlaying(false);
           try{
-            window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({
+            window.localStorage.setItem(progressKey,JSON.stringify({
               currentTime:e.currentTarget.currentTime,
               rate:e.currentTarget.playbackRate,
               updatedAt:Date.now(),
@@ -425,7 +461,7 @@ export default function BirSifacininKanadiPlayer() {
           setCurrentTime(0);
           setChapterIndex(0);
           pendingResumeRef.current=0;
-          try{ window.localStorage.removeItem(PROGRESS_KEY); }catch{}
+          try{ window.localStorage.removeItem(progressKey); }catch{}
         }}
         onError={()=>{setAudioError(true);setPlaying(false);}}
       />
@@ -440,7 +476,7 @@ export default function BirSifacininKanadiPlayer() {
 
         <div className={styles.content}>
           <div className={styles.coverHero}>
-            <img src="/bir_sifaci_png.png" alt="Bir Şifacının Kanadı - Figen Yavuz" />
+            <img src={bookMeta.coverUrl} alt={`${bookMeta.title} - ${bookMeta.author}`} />
           </div>
 
           <div className={styles.listeningLabel}>
@@ -449,8 +485,8 @@ export default function BirSifacininKanadiPlayer() {
             </svg>
             <span>ŞİMDİ DİNLİYORSUNUZ</span>
           </div>
-          <h1>Bir Şifacının Kanadı</h1>
-          <p className={styles.bookMeta}>Figen Yavuz · Elif sesi · {formatTime(duration)}</p>
+          <h1>{bookMeta.title}</h1>
+          <p className={styles.bookMeta}>{bookMeta.author}{bookMeta.voice ? ` · ${bookMeta.voice} sesi` : ""} · {formatTime(duration)}</p>
 
           <div className={styles.divider}>
             <svg className={styles.ornament} viewBox="0 0 20 20" aria-hidden="true">
@@ -460,9 +496,9 @@ export default function BirSifacininKanadiPlayer() {
           </div>
 
           <div className={styles.nowPlaying}>
-            <span>BİR ŞİFACININ KANADI</span>
+            <span>{bookMeta.title.toLocaleUpperCase("tr-TR")}</span>
             <h2>{chapter.id}. Bölüm — {chapter.title}</h2>
-            <p>{formatTime(chapterDuration)} · Figen Yavuz</p>
+            <p>{formatTime(chapterDuration)} · {bookMeta.author}</p>
           </div>
 
           <div className={styles.progressWrap}>
@@ -480,7 +516,7 @@ export default function BirSifacininKanadiPlayer() {
                 if(audioRef.current) audioRef.current.currentTime=value;
                 setCurrentTime(value);
                 try{
-                  window.localStorage.setItem(PROGRESS_KEY,JSON.stringify({
+                  window.localStorage.setItem(progressKey,JSON.stringify({
                     currentTime:value,
                     rate:audioRef.current?.playbackRate ?? rate,
                     updatedAt:Date.now(),
@@ -550,7 +586,7 @@ export default function BirSifacininKanadiPlayer() {
           </div>
 
           <div className={styles.chapterStrip}>
-            <div><span>BÖLÜM {chapter.id} / {chapters.length}</span><strong>{chapter.title}</strong></div>
+            <div><span>BÖLÜM {chapter.id} / {activeChapters.length}</span><strong>{chapter.title}</strong></div>
             <button onClick={()=>setChaptersOpen(true)}>Tüm bölümler <span>→</span></button>
           </div>
         </div>
@@ -564,12 +600,12 @@ export default function BirSifacininKanadiPlayer() {
             <button onClick={()=>setChaptersOpen(false)} aria-label="Kapat">×</button>
           </div>
           <div className={styles.drawerBook}>
-            <img src="/bir_sifaci_png.png" alt="" />
-            <div><strong>Bir Şifacının Kanadı</strong><span>Figen Yavuz</span><small>{chapters.length} bölüm · {formatTime(duration)}</small></div>
+            <img src={bookMeta.coverUrl} alt="" />
+            <div><strong>{bookMeta.title}</strong><span>{bookMeta.author}</span><small>{activeChapters.length} bölüm · {formatTime(duration)}</small></div>
           </div>
           <div className={styles.chapterList}>
-            {chapters.map((item,index)=>{
-              const end=chapters[index+1]?.start??duration;
+            {activeChapters.map((item,index)=>{
+              const end=activeChapters[index+1]?.start??duration;
               return (
                 <button key={item.id} className={index===chapterIndex?styles.activeChapter:""} onClick={()=>selectChapter(index)}>
                   <span className={styles.chapterNo}>{item.id.toString().padStart(2,"0")}</span>
