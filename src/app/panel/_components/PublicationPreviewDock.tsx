@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import styles from "./PublicationPreviewDock.module.css";
+import { BRAND_ASSETS } from "../../../lib/brandAssets";
 
 type Props = {
   activeMode?: "reader" | "audio";
@@ -69,7 +70,7 @@ export default function PublicationPreviewDock({
         {activeMode === "reader" ? (
           <div className={styles.readerDevice}>
             <header>
-              <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={300} height={190} />
+              <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
               <span>⋮</span>
             </header>
             <div className={styles.readerBody}>
@@ -85,14 +86,14 @@ export default function PublicationPreviewDock({
                 <span>▤ EPUB</span>
               </div>
               <div className={styles.readerBrand}>
-                <Image src="/22_reader_logo.png" alt="22 Reader" width={520} height={170} />
+                <Image src={BRAND_ASSETS.readerLogo} alt="22 Reader" width={520} height={170} />
               </div>
             </div>
           </div>
         ) : (
           <div className={styles.audioDevice}>
             <header>
-              <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={300} height={190} />
+              <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
               <span>•••</span>
             </header>
             <div className={styles.audioBody}>
