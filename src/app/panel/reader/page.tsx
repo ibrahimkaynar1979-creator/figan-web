@@ -66,7 +66,7 @@ export default function ReaderPanelPage() {
           authorHref: book.authorHref || `/yazarlar/${book.authorSlug}`,
           subtitle: book.subtitle || "",
           slug: book.slug,
-          cover: book.coverName || "/bir_sifaci_png.png",
+          cover: book.coverUrl || (book.coverName?.startsWith("/") ? book.coverName : "") || "/bir_sifaci_png.png",
           status: book.status,
           chapters: Number(book.chapterCount ?? 0),
           format: book.format || "EPUB 3",
