@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Cormorant_Garamond, Manrope } from "next/font/google";
+import { Bodoni_Moda, Cormorant_Garamond, Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
 const editorial = Cormorant_Garamond({
@@ -20,6 +20,13 @@ const poetic = Bodoni_Moda({
 const ui = Manrope({
   subsets: ["latin", "latin-ext"],
   variable: "--font-ui",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const panelUi = Inter({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-panel-ui",
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
@@ -117,7 +124,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${editorial.variable} ${poetic.variable} ${ui.variable}`}>
+    <html lang="tr" className={`${editorial.variable} ${poetic.variable} ${ui.variable} ${panelUi.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
