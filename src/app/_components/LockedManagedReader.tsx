@@ -141,26 +141,41 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
           const spineItem = spineItems[i];
           try {
             const loaded = await spineItem.load(epubBook.load.bind(epubBook));
-            const doc =
-              loaded?.nodeType === 9
+
+            const root =
+              loaded && typeof loaded.querySelectorAll === "function"
                 ? loaded
-                : loaded?.ownerDocument ||
-                  spineItem.document ||
-                  spineItem.contents?.document ||
-                  null;
+                : spineItem.document && typeof spineItem.document.querySelectorAll === "function"
+                  ? spineItem.document
+                  : spineItem.contents &&
+                      typeof spineItem.contents.querySelectorAll === "function"
+                    ? spineItem.contents
+                    : loaded?.ownerDocument &&
+                        typeof loaded.ownerDocument.querySelectorAll === "function"
+                      ? loaded.ownerDocument
+                      : null;
 
             const href = String(spineItem.href || "").split("#")[0];
             const title =
-              doc?.querySelector?.("h1,h2,h3")?.textContent?.trim() ||
+              root?.querySelector?.("h1,h2,h3")?.textContent?.trim() ||
               labels.get(href) ||
               `Bölüm ${i + 1}`;
 
-            let paragraphs = Array.from(doc?.querySelectorAll?.("p") || [])
+            let paragraphs = Array.from(root?.querySelectorAll?.("p") || [])
               .map((node: any) => String(node.textContent || "").replace(/\s+/g, " ").trim())
               .filter((text: string) => text.length > 0);
 
             if (paragraphs.length === 0) {
-              const bodyText = String(doc?.body?.textContent || loaded?.textContent || "")
+              paragraphs = Array.from(root?.querySelectorAll?.("div,section,article,li") || [])
+                .map((node: any) => String(node.textContent || "").replace(/\s+/g, " ").trim())
+                .filter((text: string) => text.length >= 20);
+            }
+
+            if (paragraphs.length === 0) {
+              const body =
+                root?.querySelector?.("body") ||
+                (root?.body ?? null);
+              const bodyText = String(body?.textContent || root?.textContent || loaded?.textContent || "")
                 .replace(/\s+/g, " ")
                 .trim();
               if (bodyText) paragraphs = [bodyText];
@@ -987,7 +1002,7 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
       </div>
       <aside className={styles.sidebar}>
         <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
-          <Image src="/22_yayinevi_logo_1.webp" alt="22 Yayınevi" width={360} height={236} priority />
+          <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={236} priority />
         </a>
         <div className={styles.cover}>
           <img src={bookCover} alt={`${bookTitle} - ${bookAuthor}`} />
@@ -1010,14 +1025,14 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
           {index === -1 ? (
             <>
               <div className={styles.coverTopLogo}>
-                <Image src="/22_yayinevi_logo_1.webp" alt="22 Yayınevi" width={300} height={190} priority />
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={300} height={190} priority />
               </div>
               <button className={styles.coverMenuButton} onClick={() => setPanel("toc")} aria-label="Menü">⋮</button>
             </>
           ) : (
             <>
               <div className={styles.mobileBrand}>
-                <Image src="/22_yayinevi_logo_1.webp" alt="22 Yayınevi" width={240} height={158} priority />
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
               </div>
               <div className={styles.chapterMini}>
                 <button
@@ -1082,13 +1097,13 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
                   <i aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M3.5 5.5c2.8-.7 5.5-.2 8 1.5v12c-2.5-1.7-5.2-2.2-8-1.5z"/><path d="M20.5 5.5c-2.8-.7-5.5-.2-8 1.5v12c2.5-1.7 5.2-2.2 8-1.5z"/></svg>
                   </i>
-                  <b>{sections.length} bölüm</b>
+                  <b>{sections.length > 0 ? `${sections.length} bölüm` : "… bölüm"}</b>
                 </span>
                 <span>
                   <i aria-hidden="true">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/></svg>
                   </i>
-                  <b>{readingTime}</b>
+                  <b>{sections.length > 0 ? readingTime : "…"}</b>
                 </span>
                 <span>
                   <i aria-hidden="true">
