@@ -33,8 +33,12 @@ const PREFIX = "audiobooks/bir-sifacinin-kanadi/";
 const PUBLIC_AUDIO_FALLBACK =
   "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/bir-sifacinin-kanadi/master.mp3";
 const PUBLIC_COVER_FALLBACK = "/bir_sifaci_png.png";
+const BLOB_BASE =
+  "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com";
 const ACTIVE_MANIFEST_URL =
-  "https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/active.json";
+  `${BLOB_BASE}/audiobooks/active.json`;
+const CATALOG_URL =
+  `${BLOB_BASE}/audiobooks/catalog.json`;
 
 export const DEFAULT_AUDIOBOOK: AudiobookManifest = {
   version: 1,
@@ -84,7 +88,7 @@ export async function getAudiobookBySlug(slug: string): Promise<CurrentAudiobook
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
 
   const manifestUrl =
-    `https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/${slug}/manifest.json`;
+    `${BLOB_BASE}/audiobooks/${slug}/manifest.json`;
   const manifest = await readManifestUrl(manifestUrl);
 
   if (manifest) {
@@ -161,4 +165,17 @@ export async function getCurrentAudiobook(): Promise<CurrentAudiobookResult> {
     pathname: PREFIX + "master.mp3",
     source: "public-fallback",
   };
+}
+
+
+export async function getAudiobookCatalog(): Promise<AudiobookManifest[]> {
+  try {
+    const response = await fetch(`${CATALOG_URL}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) return [];
+    const data = (await response.json()) as unknown;
+    if (!Array.isArray(data)) return [];
+    return data.filter(isManifest);
+  } catch {
+    return [];
+  }
 }
