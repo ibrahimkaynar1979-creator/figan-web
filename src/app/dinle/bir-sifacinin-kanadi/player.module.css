@@ -51,12 +51,7 @@
   width:146px;
   flex:0 0 146px;
 }
-.logo img{
-  display:block;
-  width:100%;
-  height:auto;
-  object-fit:contain;
-}
+.logo img{\n  display:block;\n  width:auto;\n  max-width:100%;\n  height:34px;\n  object-fit:contain;\n  object-position:left center;\n}
 
 .menuButton{
   width:42px;
