@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import DatabaseEpubReader from "../../_components/DatabaseEpubReader";
+import BirSifacininKanadiReader from "../../_components/BirSifacininKanadiReader";
 import { getPanelRepository } from "../../panel/_server/repository";
 
 export const dynamic = "force-dynamic";
@@ -15,13 +15,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <DatabaseEpubReader
-      title={book.title}
-      subtitle={book.subtitle}
-      author={book.author}
-      coverUrl={book.coverUrl}
-      epubUrl={book.epubUrl}
-      slug={book.slug}
+    <BirSifacininKanadiReader
+      book={{
+        slug: book.slug,
+        title: book.title,
+        author: book.author || "22 Yayınevi",
+        authorHref: book.authorHref || `/yazarlar/${book.authorSlug}`,
+        coverUrl: book.coverUrl || "/bir_sifaci_png.png",
+        epubUrl: book.epubUrl,
+      }}
     />
   );
 }
