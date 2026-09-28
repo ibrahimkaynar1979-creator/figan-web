@@ -861,7 +861,7 @@ export default function BirSifacininKanadiReader() {
       </div>
       <aside className={styles.sidebar}>
         <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
-          <Image src="/22_yayinevi_logo_1.webp" alt="22 Yayınevi" width={360} height={236} priority />
+          <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={236} priority />
         </a>
         <div className={styles.cover}>
           <Image src="/bir_sifaci_png.png" alt="Bir Şifacının Kanadı - Figen Yavuz" width={320} height={440} priority />
@@ -884,14 +884,14 @@ export default function BirSifacininKanadiReader() {
           {index === -1 ? (
             <>
               <div className={styles.coverTopLogo}>
-                <Image src="/22_yayinevi_logo_1.webp" alt="22 Yayınevi" width={300} height={190} priority />
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={300} height={190} priority />
               </div>
               <button className={styles.coverMenuButton} onClick={() => setPanel("toc")} aria-label="Menü">⋮</button>
             </>
           ) : (
             <>
               <div className={styles.mobileBrand}>
-                <Image src="/22_yayinevi_logo_1.webp" alt="22 Yayınevi" width={240} height={158} priority />
+                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
               </div>
               <div className={styles.chapterMini}>
                 <button
