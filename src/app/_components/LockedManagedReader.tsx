@@ -1075,9 +1075,8 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
                 className={styles.startButton}
                 disabled={sections.length === 0}
               >
-                {sections.length === 0 ? "EPUB Hazırlanıyor…" : "Okumaya Başla"} <span>→</span>
+                Okumaya Başla <span>→</span>
               </button>
-              {epubLoadError && <p style={{ color:"#8f3b2e", textAlign:"center", margin:"8px 0 0" }}>{epubLoadError}</p>}
               <div className={styles.coverStats}>
                 <span>
                   <i aria-hidden="true">
