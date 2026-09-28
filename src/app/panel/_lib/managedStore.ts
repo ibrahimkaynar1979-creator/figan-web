@@ -28,6 +28,7 @@ export type ManagedBook = {
   coverName?: string;
   readerHref: string;
   format: string;
+  chapterCount?: number;
   updatedAt: string;
 };
 
@@ -93,6 +94,7 @@ function mapBookFromApi(input: any): ManagedBook {
     coverName: input.coverUrl ?? input.coverName ?? undefined,
     readerHref: input.readerHref || `/oku/${input.slug}`,
     format: input.format || "EPUB 3",
+    chapterCount: Number(input.chapterCount ?? 0),
     updatedAt: input.updatedAt || new Date().toISOString(),
   };
 }
@@ -110,7 +112,7 @@ function mapBookToApi(book: ManagedBook) {
     coverUrl: book.coverName || null,
     epubUrl: null,
     epubFilename: book.epubName || null,
-    chapterCount: 0,
+    chapterCount: Number(book.chapterCount ?? 0),
     metadata: {
       author: book.author,
       authorHref: book.authorHref,
