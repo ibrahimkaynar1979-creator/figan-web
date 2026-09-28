@@ -65,15 +65,50 @@ function isManifest(value: unknown): value is AudiobookManifest {
   );
 }
 
-async function readActiveManifest() {
+async function readManifestUrl(url: string) {
   try {
-    const response = await fetch(`${ACTIVE_MANIFEST_URL}?v=${Date.now()}`, { cache: "no-store" });
+    const response = await fetch(`${url}?v=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) return null;
     const data = (await response.json()) as unknown;
     return isManifest(data) ? data : null;
   } catch {
     return null;
   }
+}
+
+async function readActiveManifest() {
+  return readManifestUrl(ACTIVE_MANIFEST_URL);
+}
+
+export async function getAudiobookBySlug(slug: string): Promise<CurrentAudiobookResult | null> {
+  if (!/^[a-z0-9-]+$/.test(slug)) return null;
+
+  const manifestUrl =
+    `https://edmrsvk0wqrotocr.public.blob.vercel-storage.com/audiobooks/${slug}/manifest.json`;
+  const manifest = await readManifestUrl(manifestUrl);
+
+  if (manifest) {
+    return {
+      ready: true,
+      ...manifest,
+      url: manifest.audioUrl,
+      pathname: `audiobooks/${manifest.slug}/master.mp3`,
+      uploadedAt: manifest.updatedAt,
+      source: "active-manifest",
+    };
+  }
+
+  if (slug === DEFAULT_AUDIOBOOK.slug) {
+    return {
+      ready: true,
+      ...DEFAULT_AUDIOBOOK,
+      url: DEFAULT_AUDIOBOOK.audioUrl,
+      pathname: PREFIX + "master.mp3",
+      source: "public-fallback",
+    };
+  }
+
+  return null;
 }
 
 export async function getCurrentAudiobook(): Promise<CurrentAudiobookResult> {
