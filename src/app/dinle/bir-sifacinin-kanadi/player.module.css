@@ -294,9 +294,6 @@
   transform:none;
 }
 
-.transport .seekButton:last-child svg{
-  transform:scaleX(-1);
-}
 .seekButton small{
   position:absolute;
   inset:20px 0 auto;
