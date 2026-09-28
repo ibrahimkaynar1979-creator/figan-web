@@ -305,7 +305,7 @@ export default function AudiobookUploadPage() {
       });
       setHealthStatus({ok:true,totalSize:audioFile.size});
       setStatus("done");
-      setMessage("Sesli kitap yayınlandı. Aynı player tasarımı bu kitap, kapak, süre ve bölümlerle çalışacak.");
+      setMessage(`Sesli kitap yayınlandı. Kalıcı player adresi: /dinle/${slug}`);
     }catch(error){
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Yükleme sırasında hata oluştu.");
@@ -370,7 +370,7 @@ export default function AudiobookUploadPage() {
             <b>Aktif player</b>
             <strong className={styles.currentTitle}>{current?.title || "Henüz yayın yok"}</strong>
             <p>{current?.author || "Yazar bilgisi yok"}{current?.voice ? ` · ${current.voice} sesi` : ""}</p>
-            <a href="/dinle" target="_blank" rel="noreferrer">Player'ı Aç →</a>
+            <a href={current?.slug ? `/dinle/${current.slug}` : "/dinle"} target="_blank" rel="noreferrer">Player'ı Aç →</a>
           </div>
         </div>
 
