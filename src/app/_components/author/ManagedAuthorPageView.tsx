@@ -15,7 +15,7 @@ function panelBookToAuthorBook(book: ManagedBook, existing?: AuthorBook): Author
     slug: book.slug,
     title: book.title,
     subtitle: book.subtitle || existing?.subtitle || "",
-    cover: existing?.cover || FALLBACK_COVER,
+    cover: book.coverUrl || book.coverName || existing?.cover || FALLBACK_COVER,
     year: existing?.year || String(new Date().getFullYear()),
     genre: existing?.genre || "Dijital Yayın",
     featured: existing?.featured ?? false,
@@ -24,7 +24,7 @@ function panelBookToAuthorBook(book: ManagedBook, existing?: AuthorBook): Author
     audioUrl: existing?.audioUrl,
     sampleUrl: book.readerHref || existing?.sampleUrl || `/oku/${book.slug}`,
     reader: {
-      chapterCount: existing?.reader?.chapterCount ?? 0,
+      chapterCount: book.chapterCount ?? existing?.reader?.chapterCount ?? 0,
       estimatedReadTime: existing?.reader?.estimatedReadTime ?? "—",
       format: book.format || existing?.reader?.format || "EPUB",
     },
@@ -74,10 +74,10 @@ export default function ManagedAuthorPageView({
             name: panelAuthor.name,
             domain: panelAuthor.domain,
             role: panelAuthor.role || "Yazar",
-            heroImage: FALLBACK_IMAGE,
+            heroImage: panelAuthor.photoName || FALLBACK_IMAGE,
             heroQuote: "Her kitabın kendine ait bir dünyası vardır.",
             bio: panelAuthor.bio || "",
-            portraitSecondary: FALLBACK_IMAGE,
+            portraitSecondary: panelAuthor.photoName || FALLBACK_IMAGE,
             books: [],
             articles: [],
             events: [],
@@ -108,22 +108,6 @@ export default function ManagedAuthorPageView({
           <p>22 YAYINEVİ</p>
           <h1>Yazar profili bulunamadı.</h1>
           <a href="/panel/yazarlar">Yazar yönetimine dön</a>
-        </div>
-      </main>
-    );
-  }
-
-  if (author.books.length === 0) {
-    return (
-      <main style={{ minHeight: "100vh", padding: "80px 24px", background: "#f4eee5", color: "#1e150f" }}>
-        <div style={{ maxWidth: 820, margin: "0 auto" }}>
-          <p style={{ letterSpacing: ".18em", fontSize: 11, color: "#9d6635" }}>22 YAYINEVİ YAZARI</p>
-          <h1 style={{ fontFamily: "var(--font-editorial), Georgia, serif", fontSize: 64, margin: "12px 0" }}>{author.name}</h1>
-          <p style={{ maxWidth: 650, lineHeight: 1.75, color: "#6e6258" }}>{author.bio || "Yazar profili oluşturuldu. Kitap bağlantıları eklendiğinde eserleri burada otomatik görünecek."}</p>
-          <div style={{ marginTop: 28, display: "flex", gap: 12 }}>
-            <a href="/panel/reader/yeni">Kitap Bağla →</a>
-            <a href="/panel/yazarlar">Yazar Yönetimi</a>
-          </div>
         </div>
       </main>
     );
