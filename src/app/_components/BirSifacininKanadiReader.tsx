@@ -983,7 +983,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
       </div>
       <aside className={styles.sidebar}>
         <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
-          <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={360} height={236} priority />
+          <Image src="/22-yayinevi-logo.webp" alt="22 Yayınevi" width={360} height={236} priority />
         </a>
         <div className={styles.cover}>
           <img src={bookCover} alt={`${bookTitle} - ${bookAuthor}`} />
@@ -1006,14 +1006,14 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
           {index === -1 ? (
             <>
               <div className={styles.coverTopLogo}>
-                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={300} height={190} priority />
+                <Image src="/22-yayinevi-logo.webp" alt="22 Yayınevi" width={300} height={190} priority />
               </div>
               <button className={styles.coverMenuButton} onClick={() => setPanel("toc")} aria-label="Menü">⋮</button>
             </>
           ) : (
             <>
               <div className={styles.mobileBrand}>
-                <Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={240} height={158} priority />
+                <Image src="/22-yayinevi-logo.webp" alt="22 Yayınevi" width={240} height={158} priority />
               </div>
               <div className={styles.chapterMini}>
                 <button
@@ -1094,7 +1094,7 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
                   <b>EPUB</b>
                 </span>
               </div>
-              <div className={styles.coverReaderBrand}><Image src="/22_reader_logo.png" alt="22 Reader" width={520} height={170} priority /></div>
+              <div className={styles.coverReaderBrand}><div className={styles.readerLogoLockup} aria-label="22 Reader"><strong>22</strong><span>Reader</span></div></div>
             </div>
           ) : (
             <div
