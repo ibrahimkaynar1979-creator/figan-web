@@ -23,7 +23,7 @@ type CurrentBook = {
 };
 
 const formatTime = (seconds?: number) => {
-  if (!seconds || !Number.isFinite(seconds)) return "—";
+  if (seconds === undefined || !Number.isFinite(seconds) || seconds < 0) return "—";
   const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
   const s = Math.floor(seconds % 60);
