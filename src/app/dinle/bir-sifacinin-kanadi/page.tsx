@@ -130,7 +130,7 @@ export default function BirSifacininKanadiPlayer() {
     title:"Bir Şifacının Kanadı",
     author:"Figen Yavuz",
     voice:"Elif",
-    coverUrl:"/bir_sifaci_png.png",
+    coverUrl:"/bsk-player-cover.webp",
   });
   const [activeChapters,setActiveChapters] = useState<Chapter[]>(chapters);
   const progressKey=useMemo(()=>`22y-audio-progress-${bookMeta.slug}`,[bookMeta.slug]);
@@ -177,7 +177,7 @@ export default function BirSifacininKanadiPlayer() {
           title:typeof data.title==="string" && data.title ? data.title : "Bir Şifacının Kanadı",
           author:typeof data.author==="string" && data.author ? data.author : "Figen Yavuz",
           voice:typeof data.voice==="string" ? data.voice : "",
-          coverUrl:typeof data.coverUrl==="string" && data.coverUrl ? data.coverUrl : "/bir_sifaci_png.png",
+          coverUrl:\n            data.coverUrl === "/bir_sifaci_png.png"\n              ? "/bsk-player-cover.webp"\n              : typeof data.coverUrl === "string" && data.coverUrl\n                ? data.coverUrl\n                : "/bsk-player-cover.webp",
         });
         if(typeof data.duration==="number" && Number.isFinite(data.duration) && data.duration>0){
           setDuration(data.duration);
@@ -475,7 +475,7 @@ export default function BirSifacininKanadiPlayer() {
       <section className={styles.stage}>
         <header className={styles.topbar}>
           <a href="/" className={styles.logo} aria-label="22 Yayınevi ana sayfa">
-            <img src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" />
+            <img src="/22-yayinevi-logo.webp" alt="22 Yayınevi" />
           </a>
           <button className={styles.menuButton} onClick={()=>setChaptersOpen(true)} aria-label="Bölümler">⋮</button>
         </header>
