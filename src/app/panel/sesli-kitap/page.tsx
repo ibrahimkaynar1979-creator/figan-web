@@ -5,6 +5,7 @@ import { upload } from "@vercel/blob/client";
 import styles from "./page.module.css";
 import PublicationPreviewDock from "../_components/PublicationPreviewDock";
 import PanelSidebar from "../_components/PanelSidebar";
+import ThemeSwitcher from "../_components/ThemeSwitcher";
 
 type Chapter = { id:number; title:string; start:number };
 
@@ -398,19 +399,21 @@ export default function AudiobookUploadPage() {
   return (
     <main className={styles.page}>
       <PanelSidebar active="audio" />
-      <section className={styles.card}>
-        <div className={styles.adminTop}>
-          <a href="/" className={styles.brand} aria-label="22 Yayınevi ana sayfa">
-            <span>22</span>
-            <small>YAYINEVİ</small>
-          </a>
-          <div className={styles.adminActions}>
-            <a href="/panel/reader">22 Reader</a>
-            <button type="button" onClick={startNewBook}>+ Yeni Kitap</button>
-            <button type="button" onClick={logout}>Çıkış</button>
-          </div>
-        </div>
 
+      <header className={styles.osHeader}>
+        <div>
+          <span>22 PUBLISHING OS · SESLİ KİTAP</span>
+          <h1>Sesli kitap üretimi</h1>
+          <p>Ses dosyası, kapak, bölümler ve yayın ayarlarını tek çalışma alanından yönetin.</p>
+        </div>
+        <div className={styles.osHeaderActions}>
+          <ThemeSwitcher />
+          <button type="button" onClick={startNewBook}>Yeni Sesli Kitap</button>
+          <button type="button" onClick={logout}>Çıkış</button>
+        </div>
+      </header>
+
+      <section className={styles.card}>
         <div className={styles.heading}>
           <p>SESLİ KİTAP YÖNETİMİ</p>
           <h1>{title || "Yeni Sesli Kitap"}</h1>
