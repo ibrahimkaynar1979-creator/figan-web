@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import BirSifacininKanadiReader from "../../_components/BirSifacininKanadiReader";
+import LockedManagedReader from "../../_components/LockedManagedReader";
 import { getPanelRepository } from "../../panel/_server/repository";
 
 export const dynamic = "force-dynamic";
@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <BirSifacininKanadiReader
+    <LockedManagedReader
       book={{
         slug: book.slug,
         title: book.title,
