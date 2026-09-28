@@ -63,9 +63,6 @@
 
 /* White-label hooks. A tenant can override only these variables. */
 .publishing-os[data-tenant-theme="publisher"]{
-  --po-brand:var(--tenant-brand,var(--po-brand));
-  --po-brand-soft:var(--tenant-brand-soft,var(--po-brand-soft));
-  --po-brand-contrast:var(--tenant-brand-contrast,var(--po-brand-contrast));
   --po-radius-card:var(--tenant-radius-card,16px);
   --po-radius-control:var(--tenant-radius-control,9px);
 }
@@ -134,4 +131,17 @@
 .publishing-os :where(p,span,label,small,button,a,input,select,textarea,td,th){
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
+}
+
+.publishing-os-theme-dock{
+  position:fixed;
+  top:116px;
+  right:24px;
+  z-index:1000;
+}
+@media(max-width:820px){
+  .publishing-os-theme-dock{
+    top:78px;
+    right:12px;
+  }
 }
