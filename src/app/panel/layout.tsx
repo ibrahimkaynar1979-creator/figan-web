@@ -1,10 +1,7 @@
 import "../globals.css";
 import "./_styles/design-tokens.css";
+import PanelThemeRoot from "./_components/PanelThemeRoot";
 
 export default function PanelLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <div className="publishing-os" data-theme="light" data-tenant-theme="publisher">
-      {children}
-    </div>
-  );
+  return <PanelThemeRoot>{children}</PanelThemeRoot>;
 }
