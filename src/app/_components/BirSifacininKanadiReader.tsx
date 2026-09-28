@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import styles from "./EbookReader.module.css";
+import coverStyles from "./author/AuthorPlatform.module.css";
 import { bskEpubSections, legacyReaderIndexToEpubIndex } from "../_data/bskEpub/sections";
 
 type Theme = "light" | "cream" | "dark";
@@ -1007,8 +1008,16 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
         <a className={styles.backToBook} href={authorHref}>← {bookAuthor} sayfasına dön</a>
       </aside>
 
-      <section className={styles.stage} onClick={revealChrome}>
-        <header className={styles.topbar} onClick={e => e.stopPropagation()}>
+      <section
+        className={styles.stage}
+        onClick={revealChrome}
+        style={index === -1 ? { gridTemplateRows: "1fr" } : undefined}
+      >
+        <header
+          className={styles.topbar}
+          onClick={e => e.stopPropagation()}
+          style={index === -1 ? { display: "none" } : undefined}
+        >
           {index === -1 ? (
             <>
               <div className={styles.coverTopLogo}>
@@ -1063,45 +1072,35 @@ export default function BirSifacininKanadiReader({ book }: { book?: ManagedReade
           aria-label={index >= 0 && current ? `${current.title} okuma alanı` : "Kitap kapağı"}
         >
           {index === -1 ? (
-            <div className={styles.coverScreen}>
-              <div className={styles.coverHero}>
-                <img
-                  src={bookCover}
-                  alt={`${bookTitle} - ${bookAuthor}`}
-                />
+            <section className={coverStyles.readerSection} onClick={e => e.stopPropagation()}>
+              <div className={coverStyles.devicePanel}>
+                <div className={coverStyles.productHeader}>
+                  <a href="/">22 <span>YAYINEVİ</span></a>
+                  <b>•••</b>
+                </div>
+                <div className={coverStyles.readerCover}>
+                  <img src={bookCover} alt={`${bookTitle} - ${bookAuthor}`} />
+                </div>
+                <h2>{bookAuthor}</h2>
+                <p>22 Yayınevi</p>
+                <button
+                  type="button"
+                  className={coverStyles.readerButton}
+                  onClick={(e) => { e.stopPropagation(); resumeReading(); }}
+                  disabled={Boolean(book && sections.length === 0)}
+                  style={{ border: 0, cursor: book && sections.length === 0 ? "wait" : "pointer" }}
+                >
+                  {book && sections.length === 0 ? "EPUB Hazırlanıyor…" : "Okumaya Başla"} <span>→</span>
+                </button>
+                {epubLoadError && <p style={{ color: "#8f3b2e", textAlign: "center", margin: "10px 20px 0" }}>{epubLoadError}</p>}
+                <div className={coverStyles.readerMeta}>
+                  <span>▤ <b>{sections.length} bölüm</b></span>
+                  <span>◷ <b>{readingTime}</b></span>
+                  <span>▱ <b>EPUB</b></span>
+                </div>
+                <div className={coverStyles.readerBrand}><strong>22</strong><span>Reader</span></div>
               </div>
-              <div className={styles.coverAuthor}>{bookAuthor}</div>
-              <div className={styles.coverPublisher}>22 Yayınevi</div>
-              <button
-                onClick={(e) => { e.stopPropagation(); resumeReading(); }}
-                className={styles.startButton}
-                disabled={Boolean(book && sections.length === 0)}
-              >
-                {book && sections.length === 0 ? "EPUB Hazırlanıyor…" : "Okumaya Başla"} <span>→</span>
-              </button>
-              {epubLoadError && <p style={{ color: "#8f3b2e", textAlign: "center", margin: "10px 0 0" }}>{epubLoadError}</p>}
-              <div className={styles.coverStats}>
-                <span>
-                  <i aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M3.5 5.5c2.8-.7 5.5-.2 8 1.5v12c-2.5-1.7-5.2-2.2-8-1.5z"/><path d="M20.5 5.5c-2.8-.7-5.5-.2-8 1.5v12c2.5-1.7 5.2-2.2 8-1.5z"/></svg>
-                  </i>
-                  <b>{sections.length} bölüm</b>
-                </span>
-                <span>
-                  <i aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/></svg>
-                  </i>
-                  <b>{readingTime}</b>
-                </span>
-                <span>
-                  <i aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6.5 3.5h7l4 4v13h-11z"/><path d="M13.5 3.5v4h4"/><path d="M9 12h6M9 15h6"/></svg>
-                  </i>
-                  <b>EPUB</b>
-                </span>
-              </div>
-              <div className={styles.coverReaderBrand}><div className={styles.readerLogoLockup} aria-label="22 Reader"><strong>22</strong><span>Reader</span></div></div>
-            </div>
+            </section>
           ) : (
             <div
               ref={textWrapRef}
