@@ -28,6 +28,7 @@ export default function AudiobookUploadPage() {
     streaming?:boolean;
     contentType?:string | null;
     contentLength?:number;
+    totalSize?:number;
     acceptRanges?:string | null;
   } | null>(null);
 
@@ -65,6 +66,7 @@ export default function AudiobookUploadPage() {
           streaming:Boolean(health.data?.streaming),
           contentType:typeof health.data?.contentType==="string" ? health.data.contentType : null,
           contentLength:typeof health.data?.contentLength==="number" ? health.data.contentLength : undefined,
+          totalSize:typeof health.data?.totalSize==="number" ? health.data.totalSize : undefined,
           acceptRanges:typeof health.data?.acceptRanges==="string" ? health.data.acceptRanges : null,
         });
       })
@@ -113,6 +115,7 @@ export default function AudiobookUploadPage() {
           streaming:Boolean(health?.streaming),
           contentType:typeof health?.contentType==="string" ? health.contentType : null,
           contentLength:typeof health?.contentLength==="number" ? health.contentLength : undefined,
+          totalSize:typeof health?.totalSize==="number" ? health.totalSize : undefined,
           acceptRanges:typeof health?.acceptRanges==="string" ? health.acceptRanges : null,
         });
         if(ok){
@@ -258,7 +261,7 @@ export default function AudiobookUploadPage() {
           </div>
           <div>
             <span>BOYUT</span>
-            <strong>{masterStatus?.size ? `${(masterStatus.size/1024/1024).toFixed(1)} MB` : "—"}</strong>
+            <strong>{(masterStatus?.size || healthStatus?.totalSize) ? `${((masterStatus?.size || healthStatus?.totalSize || 0)/1024/1024).toFixed(1)} MB` : "—"}</strong>
           </div>
           <div>
             <span>SON YÜKLEME</span>
