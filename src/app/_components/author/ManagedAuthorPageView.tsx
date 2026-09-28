@@ -3,42 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import AuthorPageView from "./AuthorPageView";
 import type { AuthorBook, AuthorProfile } from "../../_data/authors";
+import { getManagedAuthors, getManagedBooks, type ManagedAuthor, type ManagedBook } from "../../panel/_lib/managedStore";
 
-type PanelAuthor = {
-  name: string;
-  slug: string;
-  href?: string;
-  role?: string;
-  bio?: string;
-  domain?: string;
-  status?: "Yayında" | "Taslak";
-  website?: string;
-  instagram?: string;
-  photoName?: string;
-};
 
-type PanelBook = {
-  title: string;
-  subtitle?: string;
-  author?: string;
-  authorSlug: string;
-  authorHref?: string;
-  slug: string;
-  language?: string;
-  status?: "Yayında" | "Taslak";
-  epubName?: string;
-  coverName?: string;
-  readerHref?: string;
-  format?: string;
-  updatedAt?: string;
-};
 
-const AUTHOR_STORAGE = "22reader-panel-authors";
-const BOOK_STORAGE = "22reader-panel-books";
 const FALLBACK_IMAGE = "/figan-hero-final.webp";
 const FALLBACK_COVER = "/bir_sifaci_png.png";
 
-function panelBookToAuthorBook(book: PanelBook, existing?: AuthorBook): AuthorBook {
+function panelBookToAuthorBook(book: ManagedBook, existing?: AuthorBook): AuthorBook {
   return {
     slug: book.slug,
     title: book.title,
@@ -67,24 +39,24 @@ export default function ManagedAuthorPageView({
   slug: string;
   initialAuthor?: AuthorProfile | null;
 }) {
-  const [panelAuthor, setPanelAuthor] = useState<PanelAuthor | null>(null);
-  const [panelBooks, setPanelBooks] = useState<PanelBook[]>([]);
+  const [panelAuthor, setManagedAuthor] = useState<ManagedAuthor | null>(null);
+  const [panelBooks, setManagedBooks] = useState<ManagedBook[]>([]);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     try {
       const authors = JSON.parse(localStorage.getItem(AUTHOR_STORAGE) || "[]");
       if (Array.isArray(authors)) {
-        const found = authors.find((item: PanelAuthor) => item?.slug === slug);
-        if (found) setPanelAuthor(found);
+        const found = authors.find((item: ManagedAuthor) => item?.slug === slug);
+        if (found) setManagedAuthor(found);
       }
     } catch {}
 
     try {
       const books = JSON.parse(localStorage.getItem(BOOK_STORAGE) || "[]");
       if (Array.isArray(books)) {
-        setPanelBooks(
-          books.filter((item: PanelBook) => item?.authorSlug === slug && item?.status !== "Taslak")
+        setManagedBooks(
+          books.filter((item: ManagedBook) => item?.authorSlug === slug && item?.status !== "Taslak")
         );
       }
     } catch {}
