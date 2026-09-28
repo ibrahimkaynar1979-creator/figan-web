@@ -314,3 +314,23 @@
   .actions{position:relative;bottom:auto;display:grid}
   .actions>div:last-child{display:grid;grid-template-columns:1fr 1fr}
 }
+
+/* Readability pass */
+.sidebar nav a{font-size:12px}
+.topbar>div>span{font-size:9px}
+.topbar p{font-size:12px;color:#746a63}
+.sectionTitle b{font-size:8.5px}
+.sectionTitle p{font-size:10px;color:#837970}
+.fields label>span{font-size:10px}
+.fields input,.fields select{font-size:13px}
+.fields small{font-size:10px;color:#81756c}
+.uploadCard span{font-size:8px}
+.uploadCard strong{font-size:13px!important}
+.uploadCard small{font-size:9px}
+.connections>a,.connections>div{font-size:10px}
+.connections b{font-size:9px}
+.systemBox>span{font-size:8px}
+.systemBox>div{font-size:10px}
+.systemBox small{font-size:9px}
+.readySummary span{font-size:8px}
+.actions a,.actions button{font-size:10px}
