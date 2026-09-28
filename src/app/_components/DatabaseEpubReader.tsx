@@ -264,22 +264,11 @@ export default function DatabaseEpubReader({ title, subtitle, author, coverUrl, 
         <article className={styles.readingArea}>
           {!started ? (
             <div className={styles.coverScreen}>
-              <div
-                className={styles.coverHero}
-                style={{ height: "min(54dvh, 430px)", maxHeight: "430px" }}
-              >
+              <div className={styles.coverHero}>
                 {coverUrl && (
                   <img
                     src={coverUrl}
                     alt={title + " - " + (author || "22 Yayınevi")}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      maxHeight: "100%",
-                      objectFit: "contain",
-                      objectPosition: "center",
-                      transform: "none",
-                    }}
                   />
                 )}
               </div>
