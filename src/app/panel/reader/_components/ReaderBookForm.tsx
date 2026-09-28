@@ -5,7 +5,12 @@ import { upload } from "@vercel/blob/client";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./ReaderBookForm.module.css";
 import PublicationPreviewDock from "../../_components/PublicationPreviewDock";
-import { listManagedAuthors, saveManagedBook, type ManagedBook } from "../../_lib/managedStore";
+import {
+  getPanelPersistenceStatus,
+  listManagedAuthors,
+  saveManagedBook,
+  type ManagedBook,
+} from "../../_lib/managedStore";
 
 type Props = {
   mode: "new" | "edit";
@@ -23,6 +28,7 @@ type Props = {
 };
 
 type AuthorOption = { name: string; slug: string; href: string };
+type SystemState = { databaseConfigured: boolean; blobConfigured: boolean };
 
 const BUILT_IN_AUTHORS: AuthorOption[] = [
   { name: "Figen Yavuz", slug: "figen-yavuz", href: "/yazarlar/figen-yavuz" },
@@ -40,6 +46,12 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
+const fileSize = (size?: number) => {
+  if (!size) return "";
+  if (size < 1024 * 1024) return `${Math.max(1, Math.round(size / 1024))} KB`;
+  return `${(size / 1024 / 1024).toFixed(1)} MB`;
+};
+
 export default function ReaderBookForm({ mode, initial }: Props) {
   const [title, setTitle] = useState(initial?.title ?? "");
   const [subtitle, setSubtitle] = useState(initial?.subtitle ?? "");
@@ -47,17 +59,22 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   const [slug, setSlug] = useState(initial?.slug ?? "");
   const [language, setLanguage] = useState(initial?.language ?? "Türkçe");
   const [status, setStatus] = useState<"Taslak" | "Yayında">(initial?.status ?? "Taslak");
-  const [epubName, setEpubName] = useState(mode === "edit" ? "Bir_Sifacinin_Kanadi_Figen_Yavuz_22_Yayinevi.epub" : "");
+
+  const [epubName, setEpubName] = useState("");
   const [epubFile, setEpubFile] = useState<File | null>(null);
   const [epubUrl, setEpubUrl] = useState("");
-  const [coverName, setCoverName] = useState(mode === "edit" ? "bir_sifaci_png.png" : "");
+
+  const [coverName, setCoverName] = useState("");
   const [coverFile, setCoverFile] = useState<File | null>(null);
   const [coverUrl, setCoverUrl] = useState("");
   const [coverPreview, setCoverPreview] = useState("");
+
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
+  const [lastSavedHref, setLastSavedHref] = useState("");
   const [authorOptions, setAuthorOptions] = useState<AuthorOption[]>(BUILT_IN_AUTHORS);
+  const [systemState, setSystemState] = useState<SystemState | null>(null);
 
   useEffect(() => {
     if (!coverFile) {
@@ -72,46 +89,110 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
 
-    void listManagedAuthors().then(({ items }) => {
-      const panelAuthors: AuthorOption[] = items.map(item => ({
-        name: item.name,
-        slug: item.slug,
-        href: item.href || `/yazarlar/${item.slug}`,
-      }));
-      const merged = [...BUILT_IN_AUTHORS];
-      panelAuthors.forEach(item => {
-        if (!merged.some(existing => existing.slug === item.slug)) merged.push(item);
-      });
-      setAuthorOptions(merged);
-      if (mode === "new" && panelAuthors.length > 0) {
-        setAuthorSlug(current =>
-          panelAuthors.some(item => item.slug === current) ? current : panelAuthors[0].slug
-        );
+    void Promise.all([listManagedAuthors(), getPanelPersistenceStatus()]).then(
+      ([authorsResult, persistence]) => {
+        const panelAuthors: AuthorOption[] = authorsResult.items.map(item => ({
+          name: item.name,
+          slug: item.slug,
+          href: item.href || `/yazarlar/${item.slug}`,
+        }));
+
+        const merged = [...BUILT_IN_AUTHORS];
+        panelAuthors.forEach(item => {
+          if (!merged.some(existing => existing.slug === item.slug)) merged.push(item);
+        });
+
+        setAuthorOptions(merged);
+        setSystemState({
+          databaseConfigured: persistence.databaseConfigured,
+          blobConfigured: persistence.blobConfigured,
+        });
+
+        if (mode === "new" && panelAuthors.length > 0) {
+          setAuthorSlug(current =>
+            panelAuthors.some(item => item.slug === current) ? current : panelAuthors[0].slug
+          );
+        }
       }
-    });
+    );
 
     return () => document.body.classList.remove("reader-admin-route");
-  }, []);
+  }, [mode]);
 
   const author = authorOptions.find(item => item.slug === authorSlug) ?? authorOptions[0];
-  const readerHref = useMemo(() => slug ? `/oku/${slug}` : "/oku", [slug]);
+  const readerHref = useMemo(() => (slug ? `/oku/${slug}` : "/oku"), [slug]);
+
+  const hasCover = Boolean(coverFile || coverUrl || initial?.cover);
+  const hasEpub = Boolean(epubFile || epubUrl);
+  const requiredReady = Boolean(title.trim() && slug && authorSlug && hasCover && hasEpub);
+  const infraReady = systemState?.databaseConfigured !== false && systemState?.blobConfigured !== false;
+  const canSave = requiredReady && infraReady && !saving;
 
   const onTitleChange = (value: string) => {
     setTitle(value);
     if (mode === "new") setSlug(slugify(value));
+    setSaved(false);
+    setLastSavedHref("");
+  };
+
+  const selectCover = (file: File | null) => {
+    setCoverFile(file);
+    setCoverName(file?.name ?? "");
+    setSaved(false);
+    setLastSavedHref("");
+    setSaveError("");
+  };
+
+  const selectEpub = (file: File | null) => {
+    setEpubFile(file);
+    setEpubName(file?.name ?? "");
+    setSaved(false);
+    setLastSavedHref("");
+    setSaveError("");
   };
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
-    setSaving(true);
     setSaveError("");
+    setSaved(false);
+
+    if (!title.trim()) {
+      setSaveError("Kitap adını girin.");
+      return;
+    }
+    if (!slug) {
+      setSaveError("Reader adresi için geçerli bir kitap slug'ı gerekli.");
+      return;
+    }
+    if (!authorSlug || !author) {
+      setSaveError("Bir yazar seçin.");
+      return;
+    }
+    if (!hasCover) {
+      setSaveError("Kitap kapağını yükleyin.");
+      return;
+    }
+    if (!hasEpub) {
+      setSaveError("EPUB dosyasını yükleyin.");
+      return;
+    }
+    if (systemState && !systemState.databaseConfigured) {
+      setSaveError("Neon veritabanı bağlantısı hazır değil. DATABASE_URL kontrol edilmeli.");
+      return;
+    }
+    if (systemState && !systemState.blobConfigured) {
+      setSaveError("Vercel Blob bağlantısı hazır değil. BLOB_READ_WRITE_TOKEN kontrol edilmeli.");
+      return;
+    }
+
+    setSaving(true);
 
     try {
       let nextCoverUrl = coverUrl;
       let nextEpubUrl = epubUrl;
 
       if (coverFile) {
-        const extension = coverFile.name.split(".").pop() || "webp";
+        const extension = coverFile.name.split(".").pop()?.toLowerCase() || "webp";
         const blob = await upload(
           `22-reader/${slug}/cover-${Date.now()}.${extension}`,
           coverFile,
@@ -140,8 +221,8 @@ export default function ReaderBookForm({ mode, initial }: Props) {
       }
 
       const payload: ManagedBook = {
-        title,
-        subtitle,
+        title: title.trim(),
+        subtitle: subtitle.trim(),
         author: author.name,
         authorSlug,
         authorHref: author.href,
@@ -160,17 +241,26 @@ export default function ReaderBookForm({ mode, initial }: Props) {
       const result = await saveManagedBook(payload, mode === "edit" ? initial?.slug : undefined);
 
       if (result.mode !== "database") {
-        throw new Error("Veritabanına kaydedilemedi; tarayıcı yedeğine düşüldü.");
+        throw new Error("Kitap veritabanına kaydedilemedi. Yerel tarayıcı kaydı yeterli değil.");
       }
 
       setSaved(true);
-      window.setTimeout(() => setSaved(false), 2600);
+      setLastSavedHref(readerHref);
     } catch (error) {
-      setSaveError(error instanceof Error ? error.message : "Dosya yüklenemedi.");
+      setSaveError(error instanceof Error ? error.message : "Kitap kaydedilemedi.");
     } finally {
       setSaving(false);
     }
   };
+
+  const coverSource =
+    coverPreview ||
+    coverUrl ||
+    (initial?.cover
+      ? initial.cover.startsWith("/") || /^https?:\/\//i.test(initial.cover)
+        ? initial.cover
+        : "/" + initial.cover
+      : "");
 
   return (
     <main className={styles.page}>
@@ -181,186 +271,246 @@ export default function ReaderBookForm({ mode, initial }: Props) {
         <div className={styles.readerMark}>
           <Image src="/22_reader_logo.png" alt="22 Reader" width={360} height={118} priority />
         </div>
+
         <nav>
-          <a href="/panel/reader">← Kitaplara Dön</a>
+          <a href="/panel/reader">← Kitaplar</a>
           <a href="/panel/yazarlar">✒ Yazarlar</a>
           <a href="/panel/sesli-kitap">♪ Sesli Kitap</a>
-          <a className={styles.active} href={mode === "new" ? "/panel/reader/yeni" : `/panel/reader/${slug}/duzenle`}>
-            {mode === "new" ? "Yeni Kitap" : "Kitabı Düzenle"}
+          <a className={styles.active} href={mode === "new" ? "/panel/reader/yeni" : readerHref}>
+            ＋ {mode === "new" ? "Yeni Kitap" : "Kitabı Düzenle"}
           </a>
-          <a href={author.href}>Yazar Profilini Aç ↗</a>
-          {mode === "edit" && <a href={readerHref} target="_blank" rel="noreferrer">Reader&apos;ı Aç ↗</a>}
         </nav>
+
+        <div className={styles.systemBox}>
+          <span>SİSTEM DURUMU</span>
+          <div>
+            <i className={systemState?.databaseConfigured ? styles.okDot : styles.waitDot} />
+            <b>Neon</b>
+            <small>{systemState === null ? "Kontrol" : systemState.databaseConfigured ? "Bağlı" : "Eksik"}</small>
+          </div>
+          <div>
+            <i className={systemState?.blobConfigured ? styles.okDot : styles.waitDot} />
+            <b>Blob</b>
+            <small>{systemState === null ? "Kontrol" : systemState.blobConfigured ? "Bağlı" : "Eksik"}</small>
+          </div>
+        </div>
       </aside>
 
       <section className={styles.workspace}>
         <header className={styles.topbar}>
           <div>
-            <span>22 READER · {mode === "new" ? "YENİ YAYIN" : "DÜZENLEME"}</span>
-            <h1>{mode === "new" ? "Yeni Kitap" : title}</h1>
+            <span>22 READER · YAYIN YÖNETİMİ</span>
+            <h1>{mode === "new" ? "Yeni kitap yükle" : title || "Kitabı düzenle"}</h1>
+            <p>Kitap bilgilerini girin, kapağı ve EPUB'ı yükleyin; sağdaki önizlemeden yayını kontrol edin.</p>
           </div>
-          <a href="/panel/reader">Kapat ×</a>
+          <div className={styles.topActions}>
+            {lastSavedHref ? (
+              <a className={styles.previewButton} href={lastSavedHref} target="_blank" rel="noreferrer">
+                Reader'ı Aç ↗
+              </a>
+            ) : (
+              <span className={styles.draftBadge}>{status}</span>
+            )}
+            <a href="/panel/reader">Kapat ×</a>
+          </div>
         </header>
 
         <div className={styles.editorLayout}>
           <form className={styles.form} onSubmit={submit}>
-          <section className={styles.mainCard}>
-            <div className={styles.sectionTitle}>
-              <span>01</span>
-              <div><b>KİTAP BİLGİLERİ</b><h2>Yayın kimliği</h2></div>
-            </div>
-
-            <div className={styles.fields}>
-              <label>
-                <span>Kitap Adı</span>
-                <input required value={title} onChange={e => onTitleChange(e.target.value)} placeholder="Kitabın adı" />
-              </label>
-              <label>
-                <span>Alt Başlık</span>
-                <input value={subtitle} onChange={e => setSubtitle(e.target.value)} placeholder="Varsa alt başlık" />
-              </label>
-              <label>
-                <span>Yazar</span>
-                <select
-                  value={authorSlug}
-                  onChange={e => setAuthorSlug(e.target.value)}
-                  disabled={authorOptions.length === 0}
-                >
-                  {authorOptions.map(item => <option key={item.slug} value={item.slug}>{item.name}</option>)}
-                </select>
-                <small>
-                  Seçilen yazar: <a href={author.href}>{author.href}</a>
-                  {" · "}<a href="/panel/yazarlar/yeni">Yeni yazar oluştur</a>
-                </small>
-              </label>
-              <label>
-                <span>Kitap Slug</span>
-                <input required value={slug} onChange={e => setSlug(slugify(e.target.value))} placeholder="kitap-adi" />
-                <small>Reader adresi: <code>{readerHref}</code></small>
-              </label>
-              <label>
-                <span>Dil</span>
-                <select value={language} onChange={e => setLanguage(e.target.value)}>
-                  <option>Türkçe</option>
-                  <option>İngilizce</option>
-                  <option>Almanca</option>
-                </select>
-              </label>
-              <label>
-                <span>Yayın Durumu</span>
-                <select value={status} onChange={e => setStatus(e.target.value as "Taslak" | "Yayında")}>
-                  <option>Taslak</option>
-                  <option>Yayında</option>
-                </select>
-              </label>
-            </div>
-          </section>
-
-          <section className={styles.uploadGrid}>
-            <label className={styles.uploadCard}>
-              <span className={styles.uploadNo}>02</span>
-              <strong>Kitap Kapağı</strong>
-              <p>Reader kapağı ve kitap kartlarında kullanılacak görsel.</p>
-              <input
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-                onChange={e => {
-                  const file = e.target.files?.[0] ?? null;
-                  setCoverFile(file);
-                  setCoverName(file?.name ?? "");
-                }}
-              />
-              <b>{coverName || "Kapak seç"}</b>
-            </label>
-
-            <label className={styles.uploadCard}>
-              <span className={styles.uploadNo}>03</span>
-              <strong>EPUB Dosyası</strong>
-              <p>Reader içeriğinin ana kaynağı. EPUB 3 önerilir.</p>
-              <input
-                type="file"
-                accept=".epub,application/epub+zip"
-                onChange={e => {
-                  const file = e.target.files?.[0] ?? null;
-                  setEpubFile(file);
-                  setEpubName(file?.name ?? "");
-                }}
-              />
-              <b>{epubName || "EPUB seç"}</b>
-            </label>
-          </section>
-
-          <section className={styles.connectionCard}>
-            <div className={styles.sectionTitle}>
-              <span>04</span>
-              <div><b>READER BAĞLANTISI</b><h2>EPUB’u 22 Reader’a bağla</h2></div>
-            </div>
-
-            <div className={styles.fields}>
-              <label>
-                <span>Reader Sistemi</span>
-                <select value="22-reader" disabled>
-                  <option value="22-reader">22 Reader</option>
-                </select>
-                <small>Bu kitap veritabanındaki EPUB URL’sinden dinamik olarak açılır.</small>
-              </label>
-              <label>
-                <span>Reader Adresi</span>
-                <input value={readerHref} readOnly />
-                <small>
-                  {epubUrl
-                    ? "EPUB bağlı ve Reader hazır."
-                    : epubFile
-                      ? "Kaydettiğinizde EPUB yüklenip Reader’a bağlanacak."
-                      : "Önce bir EPUB dosyası seçin."}
-                </small>
-              </label>
-            </div>
-
-            <div className={styles.connections} style={{ marginTop: 16 }}>
-              <div>
-                <span>EPUB Kaynağı</span>
-                <code>{epubUrl || epubName || "Henüz EPUB seçilmedi"}</code>
-                <b>{epubUrl ? "Bağlı" : epubFile ? "Hazır" : "Bekliyor"}</b>
+            <section className={styles.mainCard}>
+              <div className={styles.sectionTitle}>
+                <span>01</span>
+                <div>
+                  <b>KİTAP BİLGİLERİ</b>
+                  <h2>Yayın kimliği</h2>
+                  <p>Reader ve yazar sayfasında gösterilecek temel bilgiler.</p>
+                </div>
               </div>
-              <a href={readerHref} target="_blank" rel="noreferrer">
-                <span>Reader Önizleme</span>
-                <code>{readerHref}</code>
-                <b>↗</b>
-              </a>
-            </div>
-          </section>
 
-          <section className={styles.connectionCard}>
-            <div className={styles.sectionTitle}>
-              <span>05</span>
-              <div><b>BAĞLANTILAR</b><h2>Yayın ağı</h2></div>
-            </div>
-            <div className={styles.connections}>
-              <a href={author.href}><span>Yazar Profili</span><code>{author.href}</code><b>↗</b></a>
-              <div><span>Reader Adresi</span><code>{readerHref}</code><b>{epubUrl ? "Bağlı" : "Hazır"}</b></div>
-              <div><span>Yayınevi</span><code>22 Yayınevi</code><b>Sabit</b></div>
-            </div>
-          </section>
+              <div className={styles.fields}>
+                <label className={styles.fieldWide}>
+                  <span>Kitap Adı *</span>
+                  <input
+                    required
+                    value={title}
+                    onChange={e => onTitleChange(e.target.value)}
+                    placeholder="Örn. Bir Şifacının Kanadı"
+                  />
+                </label>
 
-          {saveError && (
-            <p role="alert" style={{ color: "#9f2f24", margin: "0 0 14px" }}>
-              {saveError}
-            </p>
-          )}
+                <label>
+                  <span>Alt Başlık</span>
+                  <input
+                    value={subtitle}
+                    onChange={e => {
+                      setSubtitle(e.target.value);
+                      setSaved(false);
+                    }}
+                    placeholder="Varsa alt başlık"
+                  />
+                </label>
 
-          <footer className={styles.actions}>
-            <a href="/panel/reader">Vazgeç</a>
-            <button type="submit" disabled={saving}>
-              {saving
-                ? "Yükleniyor..."
-                : saved
-                  ? "Kaydedildi ✓"
-                  : mode === "new"
-                    ? "Taslağı Kaydet"
-                    : "Değişiklikleri Kaydet"}
-            </button>
-          </footer>
+                <label>
+                  <span>Yazar *</span>
+                  <select
+                    value={authorSlug}
+                    onChange={e => {
+                      setAuthorSlug(e.target.value);
+                      setSaved(false);
+                    }}
+                  >
+                    {authorOptions.map(item => (
+                      <option key={item.slug} value={item.slug}>{item.name}</option>
+                    ))}
+                  </select>
+                  <small>
+                    {author?.href} · <a href="/panel/yazarlar/yeni">Yeni yazar oluştur</a>
+                  </small>
+                </label>
+
+                <label>
+                  <span>Reader Adresi *</span>
+                  <div className={styles.slugInput}>
+                    <em>/oku/</em>
+                    <input
+                      required
+                      value={slug}
+                      onChange={e => {
+                        setSlug(slugify(e.target.value));
+                        setSaved(false);
+                      }}
+                      placeholder="kitap-adi"
+                    />
+                  </div>
+                </label>
+
+                <label>
+                  <span>Dil</span>
+                  <select value={language} onChange={e => setLanguage(e.target.value)}>
+                    <option>Türkçe</option>
+                    <option>İngilizce</option>
+                    <option>Almanca</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>Yayın Durumu</span>
+                  <select
+                    value={status}
+                    onChange={e => setStatus(e.target.value as "Taslak" | "Yayında")}
+                  >
+                    <option>Taslak</option>
+                    <option>Yayında</option>
+                  </select>
+                </label>
+              </div>
+            </section>
+
+            <section className={styles.uploadSection}>
+              <div className={styles.sectionTitle}>
+                <span>02</span>
+                <div>
+                  <b>DOSYALAR</b>
+                  <h2>Kapak ve EPUB</h2>
+                  <p>Seçtiğiniz dosyalar kaydettiğinizde Vercel Blob'a yüklenir.</p>
+                </div>
+              </div>
+
+              <div className={styles.uploadGrid}>
+                <label className={`${styles.uploadCard} ${hasCover ? styles.fileReady : ""}`}>
+                  <input
+                    type="file"
+                    accept="image/png,image/jpeg,image/webp"
+                    onChange={e => selectCover(e.target.files?.[0] ?? null)}
+                  />
+                  <div className={styles.uploadIcon}>▣</div>
+                  <div>
+                    <span>KİTAP KAPAĞI</span>
+                    <strong>{coverName || (hasCover ? "Mevcut kapak" : "Kapak görselini seç")}</strong>
+                    <small>
+                      {coverFile ? `${coverFile.type.replace("image/", "").toUpperCase()} · ${fileSize(coverFile.size)}` : "PNG · JPG · WebP"}
+                    </small>
+                  </div>
+                  <b>{hasCover ? "Hazır ✓" : "Dosya Seç"}</b>
+                </label>
+
+                <label className={`${styles.uploadCard} ${hasEpub ? styles.fileReady : ""}`}>
+                  <input
+                    type="file"
+                    accept=".epub,application/epub+zip"
+                    onChange={e => selectEpub(e.target.files?.[0] ?? null)}
+                  />
+                  <div className={styles.uploadIcon}>E</div>
+                  <div>
+                    <span>EPUB DOSYASI</span>
+                    <strong>{epubName || (hasEpub ? "Mevcut EPUB" : "EPUB dosyasını seç")}</strong>
+                    <small>{epubFile ? `EPUB · ${fileSize(epubFile.size)}` : "EPUB 3 önerilir"}</small>
+                  </div>
+                  <b>{hasEpub ? "Hazır ✓" : "Dosya Seç"}</b>
+                </label>
+              </div>
+            </section>
+
+            <section className={styles.connectionCard}>
+              <div className={styles.sectionTitle}>
+                <span>03</span>
+                <div>
+                  <b>YAYIN KONTROLÜ</b>
+                  <h2>Bağlantılar</h2>
+                  <p>Kaydetmeden önce Reader, yazar ve dosya bağlantılarını kontrol edin.</p>
+                </div>
+              </div>
+
+              <div className={styles.connections}>
+                <div>
+                  <span>Reader</span>
+                  <code>{readerHref}</code>
+                  <b>{slug ? "Hazır" : "Bekliyor"}</b>
+                </div>
+                <div>
+                  <span>Yazar</span>
+                  <code>{author?.href || "—"}</code>
+                  <b>{author ? "Bağlı" : "Bekliyor"}</b>
+                </div>
+                <div>
+                  <span>Kapak</span>
+                  <code>{coverName || coverUrl || "Dosya seçilmedi"}</code>
+                  <b>{hasCover ? "Hazır" : "Eksik"}</b>
+                </div>
+                <div>
+                  <span>EPUB</span>
+                  <code>{epubName || epubUrl || "Dosya seçilmedi"}</code>
+                  <b>{hasEpub ? "Hazır" : "Eksik"}</b>
+                </div>
+              </div>
+            </section>
+
+            {saveError && <div className={styles.errorBox}>{saveError}</div>}
+
+            {saved && (
+              <div className={styles.successBox}>
+                <div>
+                  <b>Kitap kaydedildi ✓</b>
+                  <span>Kapak ve EPUB bağlandı. Reader adresi hazır.</span>
+                </div>
+                <a href={readerHref} target="_blank" rel="noreferrer">Reader'ı Aç ↗</a>
+              </div>
+            )}
+
+            <footer className={styles.actions}>
+              <div className={styles.readySummary}>
+                <span className={title.trim() ? styles.ready : ""}>Kitap adı</span>
+                <span className={authorSlug ? styles.ready : ""}>Yazar</span>
+                <span className={hasCover ? styles.ready : ""}>Kapak</span>
+                <span className={hasEpub ? styles.ready : ""}>EPUB</span>
+              </div>
+              <div>
+                <a href="/panel/reader">Vazgeç</a>
+                <button type="submit" disabled={!canSave}>
+                  {saving ? "Yükleniyor ve kaydediliyor…" : saved ? "Kaydedildi ✓" : "Kitabı Kaydet"}
+                </button>
+              </div>
+            </footer>
           </form>
 
           <PublicationPreviewDock
@@ -368,10 +518,10 @@ export default function ReaderBookForm({ mode, initial }: Props) {
             title={title}
             subtitle={subtitle}
             author={author?.name || ""}
-            coverSrc={coverPreview || coverUrl || (initial?.cover?.startsWith("/") ? initial.cover : initial?.cover ? "/" + initial.cover : "")}
+            coverSrc={coverSource}
             status={status}
-            chapterLabel={epubFile || epubUrl ? "EPUB bağlı" : "… bölüm"}
-            readingTimeLabel={epubFile || epubUrl ? "otomatik" : "…"}
+            chapterLabel={hasEpub ? "EPUB bağlı" : "… bölüm"}
+            readingTimeLabel={hasEpub ? "otomatik" : "…"}
           />
         </div>
       </section>
