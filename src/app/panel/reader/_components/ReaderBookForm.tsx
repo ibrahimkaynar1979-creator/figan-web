@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { upload } from "@vercel/blob/client";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./ReaderBookForm.module.css";
 import { listManagedAuthors, saveManagedBook, type ManagedBook } from "../../_lib/managedStore";
@@ -46,8 +47,14 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   const [language, setLanguage] = useState(initial?.language ?? "Türkçe");
   const [status, setStatus] = useState<"Taslak" | "Yayında">(initial?.status ?? "Taslak");
   const [epubName, setEpubName] = useState(mode === "edit" ? "Bir_Sifacinin_Kanadi_Figen_Yavuz_22_Yayinevi.epub" : "");
+  const [epubFile, setEpubFile] = useState<File | null>(null);
+  const [epubUrl, setEpubUrl] = useState("");
   const [coverName, setCoverName] = useState(mode === "edit" ? "bir_sifaci_png.png" : "");
+  const [coverFile, setCoverFile] = useState<File | null>(null);
+  const [coverUrl, setCoverUrl] = useState("");
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
   const [authorOptions, setAuthorOptions] = useState<AuthorOption[]>(BUILT_IN_AUTHORS);
 
   useEffect(() => {
@@ -79,25 +86,73 @@ export default function ReaderBookForm({ mode, initial }: Props) {
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
-    const payload: ManagedBook = {
-      title,
-      subtitle,
-      author: author.name,
-      authorSlug,
-      authorHref: author.href,
-      slug,
-      language,
-      status,
-      epubName,
-      coverName,
-      readerHref,
-      format: "EPUB 3",
-      updatedAt: new Date().toISOString(),
-    };
+    setSaving(true);
+    setSaveError("");
 
-    await saveManagedBook(payload, mode === "edit" ? initial?.slug : undefined);
-    setSaved(true);
-    window.setTimeout(() => setSaved(false), 2600);
+    try {
+      let nextCoverUrl = coverUrl;
+      let nextEpubUrl = epubUrl;
+
+      if (coverFile) {
+        const extension = coverFile.name.split(".").pop() || "webp";
+        const blob = await upload(
+          `22-reader/${slug}/cover-${Date.now()}.${extension}`,
+          coverFile,
+          {
+            access: "public",
+            handleUploadUrl: "/api/blob/upload",
+            contentType: coverFile.type || "image/webp",
+          }
+        );
+        nextCoverUrl = blob.url;
+        setCoverUrl(blob.url);
+      }
+
+      if (epubFile) {
+        const blob = await upload(
+          `22-reader/${slug}/book-${Date.now()}.epub`,
+          epubFile,
+          {
+            access: "public",
+            handleUploadUrl: "/api/blob/upload",
+            contentType: "application/epub+zip",
+          }
+        );
+        nextEpubUrl = blob.url;
+        setEpubUrl(blob.url);
+      }
+
+      const payload: ManagedBook = {
+        title,
+        subtitle,
+        author: author.name,
+        authorSlug,
+        authorHref: author.href,
+        slug,
+        language,
+        status,
+        epubName,
+        epubUrl: nextEpubUrl || undefined,
+        coverName,
+        coverUrl: nextCoverUrl || undefined,
+        readerHref,
+        format: "EPUB 3",
+        updatedAt: new Date().toISOString(),
+      };
+
+      const result = await saveManagedBook(payload, mode === "edit" ? initial?.slug : undefined);
+
+      if (result.mode !== "database") {
+        throw new Error("Veritabanına kaydedilemedi; tarayıcı yedeğine düşüldü.");
+      }
+
+      setSaved(true);
+      window.setTimeout(() => setSaved(false), 2600);
+    } catch (error) {
+      setSaveError(error instanceof Error ? error.message : "Dosya yüklenemedi.");
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -183,7 +238,15 @@ export default function ReaderBookForm({ mode, initial }: Props) {
               <span className={styles.uploadNo}>02</span>
               <strong>Kitap Kapağı</strong>
               <p>Reader kapağı ve kitap kartlarında kullanılacak görsel.</p>
-              <input type="file" accept="image/png,image/jpeg,image/webp" onChange={e => setCoverName(e.target.files?.[0]?.name ?? "")} />
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                onChange={e => {
+                  const file = e.target.files?.[0] ?? null;
+                  setCoverFile(file);
+                  setCoverName(file?.name ?? "");
+                }}
+              />
               <b>{coverName || "Kapak seç"}</b>
             </label>
 
@@ -191,7 +254,15 @@ export default function ReaderBookForm({ mode, initial }: Props) {
               <span className={styles.uploadNo}>03</span>
               <strong>EPUB Dosyası</strong>
               <p>Reader içeriğinin ana kaynağı. EPUB 3 önerilir.</p>
-              <input type="file" accept=".epub,application/epub+zip" onChange={e => setEpubName(e.target.files?.[0]?.name ?? "")} />
+              <input
+                type="file"
+                accept=".epub,application/epub+zip"
+                onChange={e => {
+                  const file = e.target.files?.[0] ?? null;
+                  setEpubFile(file);
+                  setEpubName(file?.name ?? "");
+                }}
+              />
               <b>{epubName || "EPUB seç"}</b>
             </label>
           </section>
@@ -208,9 +279,23 @@ export default function ReaderBookForm({ mode, initial }: Props) {
             </div>
           </section>
 
+          {saveError && (
+            <p role="alert" style={{ color: "#9f2f24", margin: "0 0 14px" }}>
+              {saveError}
+            </p>
+          )}
+
           <footer className={styles.actions}>
             <a href="/panel/reader">Vazgeç</a>
-            <button type="submit">{saved ? "Kaydedildi ✓" : mode === "new" ? "Taslağı Kaydet" : "Değişiklikleri Kaydet"}</button>
+            <button type="submit" disabled={saving}>
+              {saving
+                ? "Yükleniyor..."
+                : saved
+                  ? "Kaydedildi ✓"
+                  : mode === "new"
+                    ? "Taslağı Kaydet"
+                    : "Değişiklikleri Kaydet"}
+            </button>
           </footer>
         </form>
       </section>
