@@ -42,3 +42,51 @@
 @media(max-width:980px){
   .editorLayout{grid-template-columns:1fr}
 }
+
+.topbar p{margin:8px 0 0;color:#7b6e63;font-size:12px;line-height:1.5}
+.topActions{display:flex;align-items:center;gap:10px}
+.topActions>a,.draftBadge,.previewButton{min-height:38px;padding:0 13px;border:1px solid #d8cab9;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+.previewButton{background:#28180f;color:#fff!important;border-color:#28180f!important}
+.draftBadge{background:#f0e3d4;color:#8a5b2e}
+.systemBox{margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:grid;gap:9px}
+.systemBox>span{font-size:8px;letter-spacing:.18em;color:#c9945c;font-weight:800}
+.systemBox>div{display:grid;grid-template-columns:10px 1fr auto;gap:8px;align-items:center;color:#d7cabe;font-size:10px}
+.systemBox i{width:7px;height:7px;border-radius:50%}
+.okDot{background:#75c79b;box-shadow:0 0 0 4px rgba(117,199,155,.08)}
+.waitDot{background:#d59b5f;box-shadow:0 0 0 4px rgba(213,155,95,.08)}
+.systemBox small{color:#988a7f}
+.sectionTitle p{margin:6px 0 0;color:#8a7b70;font-size:10px;line-height:1.45}
+.fieldWide{grid-column:1/-1}
+.slugInput{display:grid;grid-template-columns:auto 1fr;align-items:center;border:1px solid #d8cab9;border-radius:11px;background:#fffaf4;overflow:hidden}
+.slugInput em{padding:0 0 0 13px;color:#9d6331;font-style:normal;font-size:12px}
+.slugInput input{border:0!important;box-shadow:none!important;background:transparent!important}
+.uploadSection{padding:32px;border:1px solid #ddd0c0;border-radius:24px;background:#faf6f0;box-shadow:0 12px 34px rgba(55,34,20,.04)}
+.uploadCard{display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;min-height:142px;padding:18px 20px}
+.uploadCard>div:nth-of-type(2){min-width:0}
+.uploadIcon{width:48px;height:48px;border-radius:15px;background:#2a1a12;color:#fff;display:grid;place-items:center;font-size:18px}
+.uploadCard strong{display:block;margin:4px 0 5px!important;font:600 15px/1.2 var(--font-ui),Arial,sans-serif!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uploadCard span{font-size:8px;letter-spacing:.15em;color:#a16b3d;font-weight:800}
+.uploadCard small{display:block;color:#85766a;font-size:9px}
+.uploadCard>b{position:relative;z-index:1;pointer-events:none;background:#2a1a12}
+.fileReady{border-style:solid!important;border-color:#b9ccb9!important;background:#f8fbf6!important}
+.fileReady .uploadIcon{background:#416f50}
+.errorBox{padding:14px 16px;border:1px solid #e7b9ae;border-radius:14px;background:#fff0ec;color:#913d30;font-size:11px;font-weight:700}
+.successBox{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 17px;border:1px solid #bdd3c1;border-radius:14px;background:#f1f8f1}
+.successBox>div{display:grid;gap:3px}.successBox b{font-size:12px;color:#2d6540}.successBox span{font-size:10px;color:#68766b}.successBox a{font-size:10px;font-weight:800;color:#2d6540}
+.actions{justify-content:space-between;padding:14px 2px 0;border-top:1px solid #ddd0c0}
+.actions>div:last-child{display:flex;align-items:center;gap:10px}
+.readySummary{display:flex;flex-wrap:wrap;gap:6px}
+.readySummary span{padding:6px 8px;border-radius:999px;background:#eadfd3;color:#928377;font-size:8px;font-weight:800}
+.readySummary .ready{background:#e6f1e7;color:#3b704d}
+.actions button:disabled{opacity:.35;cursor:not-allowed}
+@media(max-width:980px){
+  .systemBox{display:none}
+}
+@media(max-width:620px){
+  .fieldWide{grid-column:auto}
+  .uploadCard{grid-template-columns:44px 1fr;min-height:130px}
+  .uploadCard>b{grid-column:1/-1;justify-self:start}
+  .actions{display:grid;grid-template-columns:1fr;gap:12px}
+  .actions>div:last-child{display:grid;grid-template-columns:1fr 1fr}
+  .topActions{flex-wrap:wrap;justify-content:flex-end}
+}
