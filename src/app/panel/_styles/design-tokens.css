@@ -61,43 +61,6 @@
   color-scheme:light;
 }
 
-.publishing-os[data-theme="dark"]{
-  --po-bg:#11100F;
-  --po-surface:#191715;
-  --po-surface-soft:#201D1A;
-  --po-surface-raised:#24211E;
-
-  --po-text:#F3EFEA;
-  --po-text-secondary:#B9B1A9;
-  --po-text-muted:#8F8780;
-
-  --po-border:#332F2B;
-  --po-border-soft:#282522;
-
-  --po-brand:#C38A58;
-  --po-brand-soft:#33251B;
-  --po-brand-contrast:#17110D;
-
-  --po-success:#71B88B;
-  --po-success-soft:#1C3023;
-  --po-warning:#D3A15F;
-  --po-warning-soft:#34281B;
-  --po-danger:#D57B70;
-  --po-danger-soft:#34211F;
-  --po-info:#7CA8C8;
-  --po-info-soft:#1E2A33;
-
-  --po-nav-bg:#0D0C0B;
-  --po-nav-bg-2:#15120F;
-  --po-nav-text:#F3EFEA;
-  --po-nav-muted:#AAA098;
-
-  --po-shadow-card:0 8px 24px rgba(0,0,0,.14);
-  --po-shadow-float:0 18px 42px rgba(0,0,0,.28);
-
-  color-scheme:dark;
-}
-
 /* White-label hooks. A tenant can override only these variables. */
 .publishing-os[data-tenant-theme="publisher"]{
   --po-brand:var(--tenant-brand,var(--po-brand));
@@ -117,3 +80,58 @@
 
 /* Keep the public-site mobile dock out of admin routes. */
 .publishing-os + .mobile-dock{display:none!important}
+
+
+/* PanelTakip six-palette system */
+.publishing-os[data-palette="turquoise"]{
+  --po-brand:#12B8C4;--po-brand-soft:#E8F8FA;
+  --po-bg:#F8FCFD;--po-surface:#FBFEFF;--po-surface-soft:#F3FAFC;--po-surface-raised:#FFFFFF;
+  --po-border:#D7EAF0;--po-border-soft:#E8F2F6;
+  --po-text:#17385E;--po-text-secondary:#5F7892;--po-text-muted:#8292A6;
+  --po-nav-bg:#EEF7FB;--po-nav-bg-2:#E7F2F8;--po-nav-text:#17385E;--po-nav-muted:#5F7892;
+}
+.publishing-os[data-palette="coral"]{
+  --po-brand:#EF6A5B;--po-brand-soft:#FFF0ED;
+  --po-bg:#FFFAF9;--po-surface:#FFFDFC;--po-surface-soft:#FFF7F5;--po-surface-raised:#FFFFFF;
+  --po-border:#F2DDD8;--po-border-soft:#F7EAE7;
+  --po-text:#5B2F2A;--po-text-secondary:#8B625D;--po-text-muted:#A4827E;
+  --po-nav-bg:#FFF3F0;--po-nav-bg-2:#FBE8E4;--po-nav-text:#5B2F2A;--po-nav-muted:#8B625D;
+}
+.publishing-os[data-palette="graphite"]{
+  --po-brand:#68737D;--po-brand-soft:#EEF1F3;
+  --po-bg:#FBFCFC;--po-surface:#FDFEFE;--po-surface-soft:#F7F9FA;--po-surface-raised:#FFFFFF;
+  --po-border:#DDE3E6;--po-border-soft:#E9EDF0;
+  --po-text:#27323A;--po-text-secondary:#66737D;--po-text-muted:#8B969E;
+  --po-nav-bg:#F2F4F5;--po-nav-bg-2:#E8ECEE;--po-nav-text:#27323A;--po-nav-muted:#66737D;
+}
+.publishing-os[data-palette="navy"]{
+  --po-brand:#416D9E;--po-brand-soft:#EDF3FA;
+  --po-bg:#FAFCFF;--po-surface:#FCFDFF;--po-surface-soft:#F5F9FC;--po-surface-raised:#FFFFFF;
+  --po-border:#D9E4EE;--po-border-soft:#E7EEF4;
+  --po-text:#1E3D5C;--po-text-secondary:#617A91;--po-text-muted:#8496A7;
+  --po-nav-bg:#EEF4F9;--po-nav-bg-2:#E5EDF5;--po-nav-text:#1E3D5C;--po-nav-muted:#617A91;
+}
+.publishing-os[data-palette="olive"]{
+  --po-brand:#82945D;--po-brand-soft:#F0F4E8;
+  --po-bg:#FCFDFB;--po-surface:#FEFFFC;--po-surface-soft:#F9FAF5;--po-surface-raised:#FFFFFF;
+  --po-border:#E1E7D6;--po-border-soft:#EDF1E7;
+  --po-text:#3F4A31;--po-text-secondary:#6F7B5A;--po-text-muted:#909982;
+  --po-nav-bg:#F4F7EE;--po-nav-bg-2:#EAEFDF;--po-nav-text:#3F4A31;--po-nav-muted:#6F7B5A;
+}
+.publishing-os[data-palette="amber"]{
+  --po-brand:#D99A2B;--po-brand-soft:#FFF3D9;
+  --po-bg:#FFFDF8;--po-surface:#FFFEFA;--po-surface-soft:#FFF9EE;--po-surface-raised:#FFFFFF;
+  --po-border:#EFE2C7;--po-border-soft:#F6ECD9;
+  --po-text:#5A421D;--po-text-secondary:#806B48;--po-text-muted:#9F8C6B;
+  --po-nav-bg:#FFF8E9;--po-nav-bg-2:#F8EDD3;--po-nav-text:#5A421D;--po-nav-muted:#806B48;
+}
+
+/* Global readability floor */
+.publishing-os{
+  font-size:14px;
+  line-height:1.45;
+}
+.publishing-os :where(p,span,label,small,button,a,input,select,textarea,td,th){
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
