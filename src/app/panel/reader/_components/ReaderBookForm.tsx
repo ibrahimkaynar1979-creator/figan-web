@@ -4,6 +4,7 @@ import Image from "next/image";
 import { upload } from "@vercel/blob/client";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./ReaderBookForm.module.css";
+import PublicationPreviewDock from "../../_components/PublicationPreviewDock";
 import { listManagedAuthors, saveManagedBook, type ManagedBook } from "../../_lib/managedStore";
 
 type Props = {
@@ -52,10 +53,21 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   const [coverName, setCoverName] = useState(mode === "edit" ? "bir_sifaci_png.png" : "");
   const [coverFile, setCoverFile] = useState<File | null>(null);
   const [coverUrl, setCoverUrl] = useState("");
+  const [coverPreview, setCoverPreview] = useState("");
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [authorOptions, setAuthorOptions] = useState<AuthorOption[]>(BUILT_IN_AUTHORS);
+
+  useEffect(() => {
+    if (!coverFile) {
+      setCoverPreview("");
+      return;
+    }
+    const url = URL.createObjectURL(coverFile);
+    setCoverPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [coverFile]);
 
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
@@ -189,7 +201,8 @@ export default function ReaderBookForm({ mode, initial }: Props) {
           <a href="/panel/reader">Kapat ×</a>
         </header>
 
-        <form className={styles.form} onSubmit={submit}>
+        <div className={styles.editorLayout}>
+          <form className={styles.form} onSubmit={submit}>
           <section className={styles.mainCard}>
             <div className={styles.sectionTitle}>
               <span>01</span>
@@ -347,7 +360,19 @@ export default function ReaderBookForm({ mode, initial }: Props) {
                     : "Değişiklikleri Kaydet"}
             </button>
           </footer>
-        </form>
+          </form>
+
+          <PublicationPreviewDock
+            activeMode="reader"
+            title={title}
+            subtitle={subtitle}
+            author={author?.name || ""}
+            coverSrc={coverPreview || coverUrl || (initial?.cover?.startsWith("/") ? initial.cover : initial?.cover ? "/" + initial.cover : "")}
+            status={status}
+            chapterLabel={epubFile || epubUrl ? "EPUB bağlı" : "… bölüm"}
+            readingTimeLabel={epubFile || epubUrl ? "otomatik" : "…"}
+          />
+        </div>
       </section>
     </main>
   );
