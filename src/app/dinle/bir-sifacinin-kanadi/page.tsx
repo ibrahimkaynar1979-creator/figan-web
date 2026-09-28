@@ -112,6 +112,7 @@ const formatTime = (seconds: number) => {
 
 export default function BirSifacininKanadiPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const pendingResumeRef = useRef(0);
   const lastSavedSecondRef = useRef(-1);
   const [chapterIndex,setChapterIndex] = useState(0);
   const [playing,setPlaying] = useState(false);
@@ -160,6 +161,7 @@ export default function BirSifacininKanadiPlayer() {
     try{
       const parsed=JSON.parse(saved) as {currentTime?:number;rate?:number};
       if(typeof parsed.currentTime==="number" && parsed.currentTime>=0){
+        pendingResumeRef.current=parsed.currentTime;
         setCurrentTime(parsed.currentTime);
         const idx=[...chapters].reverse().findIndex((item)=>parsed.currentTime!>=item.start);
         if(idx>=0) setChapterIndex(chapters.length-1-idx);
@@ -303,6 +305,10 @@ export default function BirSifacininKanadiPlayer() {
     if(playing){audio.pause();setPlaying(false);return;}
     try{
       if(audio.readyState===0) audio.load();
+      const resumeAt=pendingResumeRef.current || currentTime;
+      if(resumeAt>1 && audio.currentTime<1){
+        audio.currentTime=resumeAt;
+      }
       await audio.play();
       setPlaying(true);
     }catch(error){
@@ -384,6 +390,7 @@ export default function BirSifacininKanadiPlayer() {
             }
           }catch{}
           if(resumeAt>0 && resumeAt<actualDuration-1){
+            pendingResumeRef.current=resumeAt;
             audio.currentTime=resumeAt;
             setCurrentTime(resumeAt);
           }
@@ -401,12 +408,20 @@ export default function BirSifacininKanadiPlayer() {
             }));
           }catch{}
         }}
-        onCanPlay={()=>setAudioError(false)}
+        onCanPlay={(e)=>{
+          setAudioError(false);
+          const resumeAt=pendingResumeRef.current;
+          if(resumeAt>1 && e.currentTarget.currentTime<1 && resumeAt<e.currentTarget.duration-1){
+            e.currentTarget.currentTime=resumeAt;
+            setCurrentTime(resumeAt);
+          }
+        }}
         onEnded={(e)=>{
           setPlaying(false);
           e.currentTarget.currentTime=0;
           setCurrentTime(0);
           setChapterIndex(0);
+          pendingResumeRef.current=0;
           try{ window.localStorage.removeItem(PROGRESS_KEY); }catch{}
         }}
         onError={()=>{setAudioError(true);setPlaying(false);}}
