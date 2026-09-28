@@ -5,6 +5,7 @@ import { upload } from "@vercel/blob/client";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import styles from "../../yeni/NewAuthor.module.css";
+import PanelSidebar from "../../../_components/PanelSidebar";
 import { listManagedAuthors, saveManagedAuthor, type ManagedAuthor } from "../../../_lib/managedStore";
 
 
@@ -114,16 +115,7 @@ export default function EditAuthorPage() {
 
   return (
     <main className={styles.page}>
-      <aside className={styles.sidebar}>
-        <a href="/panel/yazarlar" className={styles.brand}><Image src="/22_yayinevi_logo_1.png" alt="22 Yayınevi" width={330} height={210} priority /></a>
-        <div className={styles.readerMark}><Image src="/22_reader_logo.png" alt="22 Reader" width={360} height={118} priority /></div>
-        <nav>
-          <a href="/panel/reader">▦ Kitaplar</a>
-          <a href="/panel/yazarlar">✒ Yazarlar</a>
-          <a className={styles.active} href={`/panel/yazarlar/${originalSlug}/duzenle`}>Yazarı Düzenle</a>
-          <a href={href} target="_blank" rel="noreferrer">Profili Aç ↗</a>
-        </nav>
-      </aside>
+      <PanelSidebar active="authors" />
 
       <section className={styles.workspace}>
         <header className={styles.topbar}>
