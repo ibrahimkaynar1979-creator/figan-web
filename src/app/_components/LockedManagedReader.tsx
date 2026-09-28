@@ -34,32 +34,61 @@ export type LockedReaderBook = {
 
 declare global {
   interface Window {
-    ePub?: (source: string) => any;
+    ePub?: (source: string, options?: Record<string, unknown>) => any;
+    JSZip?: unknown;
   }
 }
 
 let managedEpubLoader: Promise<void> | null = null;
 
-function loadManagedEpubJs() {
-  if (typeof window === "undefined" || window.ePub) return Promise.resolve();
-  if (managedEpubLoader) return managedEpubLoader;
-
-  managedEpubLoader = new Promise<void>((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>("script[data-22-locked-epubjs]");
+function loadScriptOnce(src: string, marker: string, errorMessage: string) {
+  return new Promise<void>((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>(`script[${marker}]`);
     if (existing) {
+      if (existing.dataset.loaded === "true") {
+        resolve();
+        return;
+      }
       existing.addEventListener("load", () => resolve(), { once: true });
-      existing.addEventListener("error", () => reject(new Error("EPUB motoru yüklenemedi.")), { once: true });
+      existing.addEventListener("error", () => reject(new Error(errorMessage)), { once: true });
       return;
     }
 
     const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js";
+    script.src = src;
     script.async = true;
-    script.setAttribute("data-22-locked-epubjs", "true");
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("EPUB motoru yüklenemedi."));
+    script.setAttribute(marker, "true");
+    script.onload = () => {
+      script.dataset.loaded = "true";
+      resolve();
+    };
+    script.onerror = () => reject(new Error(errorMessage));
     document.head.appendChild(script);
   });
+}
+
+function loadManagedEpubJs() {
+  if (typeof window === "undefined") return Promise.resolve();
+  if (window.ePub && window.JSZip) return Promise.resolve();
+  if (managedEpubLoader) return managedEpubLoader;
+
+  managedEpubLoader = (async () => {
+    if (!window.JSZip) {
+      await loadScriptOnce(
+        "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js",
+        "data-22-locked-jszip",
+        "EPUB sıkıştırma motoru yüklenemedi."
+      );
+    }
+
+    if (!window.ePub) {
+      await loadScriptOnce(
+        "https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js",
+        "data-22-locked-epubjs",
+        "EPUB motoru yüklenemedi."
+      );
+    }
+  })();
 
   return managedEpubLoader;
 }
@@ -127,7 +156,7 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
         await loadManagedEpubJs();
         if (cancelled || !window.ePub) return;
 
-        epubBook = window.ePub(book.epubUrl, { openAs: "epub" });
+        epubBook = window.ePub(book.epubUrl);
         await epubBook.ready;
 
         const navigation = await epubBook.loaded.navigation.catch(() => ({ toc: [] }));
