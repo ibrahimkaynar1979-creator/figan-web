@@ -1063,10 +1063,15 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
           {index === -1 ? (
             <div className={styles.coverScreen}>
               <div className={styles.coverHero}>
-                <img
-                  src={bookCover}
-                  alt={`${bookTitle} - ${bookAuthor}`}
-                />
+                <div className={styles.managedBookMockup}>
+                  <span className={styles.managedBookSpine} aria-hidden="true" />
+                  <span className={styles.managedBookFace}>
+                    <img
+                      src={bookCover}
+                      alt={`${bookTitle} - ${bookAuthor}`}
+                    />
+                  </span>
+                </div>
               </div>
               <div className={styles.coverAuthor}>{bookAuthor}</div>
               <div className={styles.coverPublisher}>22 Yayınevi</div>
