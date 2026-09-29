@@ -640,3 +640,20 @@
   border:0!important;
   background:#f7f2e8!important;
 }
+
+
+/* Local EPUB preview uses the actual Reader component; no iframe/file handoff. */
+.readerEmbedCanvas{
+  position:absolute;
+  left:0;
+  top:0;
+  width:489px;
+  height:828px;
+  transform-origin:top left;
+  overflow:hidden;
+  background:#f7f2e8;
+}
+.readerEmbedCanvas>main{
+  width:489px!important;
+  height:828px!important;
+}

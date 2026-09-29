@@ -987,3 +987,106 @@
 .reader[data-embedded="true"] .panelHead h3{
   font-size:17px!important;
 }
+
+
+/* Approved 489x828 Reader geometry when embedded in Publishing OS. */
+.reader[data-embedded="true"]{
+  width:489px!important;
+  height:828px!important;
+  min-height:828px!important;
+  position:relative!important;
+  overflow:hidden!important;
+  display:block!important;
+  padding:8px!important;
+  box-sizing:border-box!important;
+  background:#eee8df!important;
+}
+.reader[data-embedded="true"] .sidebar{display:none!important}
+.reader[data-embedded="true"] .stage{
+  width:473px!important;
+  height:812px!important;
+  min-height:0!important;
+  display:block!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:28px!important;
+  background:var(--surface)!important;
+  box-shadow:0 10px 30px rgba(66,43,20,.08)!important;
+}
+.reader[data-embedded="true"] .topbar{
+  position:absolute!important;
+  left:0!important;right:0!important;top:0!important;
+  width:auto!important;
+  height:64px!important;
+  padding:0 16px!important;
+  border-bottom:1px solid var(--line)!important;
+  background:color-mix(in srgb,var(--surface) 96%,transparent)!important;
+  z-index:20!important;
+  box-sizing:border-box!important;
+}
+.reader[data-embedded="true"] .chapterMini{
+  max-width:52%!important;
+  font-size:12px!important;
+  gap:8px!important;
+}
+.reader[data-embedded="true"] .chapterMini button{
+  width:32px!important;
+  height:38px!important;
+  font-size:24px!important;
+}
+.reader[data-embedded="true"] .tools button{
+  width:38px!important;
+  height:38px!important;
+  font-size:18px!important;
+}
+.reader[data-embedded="true"] .readingArea{
+  position:absolute!important;
+  inset:64px 0 0!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:22px var(--reader-page-margin) 10px!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+  background:var(--surface)!important;
+}
+.reader[data-embedded="true"] .textWrap{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0 0 34px!important;
+  display:block!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scroll-snap-type:x mandatory!important;
+  scroll-behavior:smooth!important;
+  scrollbar-width:none!important;
+  column-gap:0!important;
+  column-fill:auto!important;
+  column-width:calc(473px - (2 * var(--reader-page-margin)))!important;
+  box-sizing:border-box!important;
+}
+.reader[data-embedded="true"] .chapter{
+  font-size:11px!important;
+  margin:10px 0 10px!important;
+}
+.reader[data-embedded="true"] .textWrap h1{
+  font-size:30px!important;
+  line-height:1.12!important;
+}
+.reader[data-embedded="true"] .rule{margin:14px auto 24px!important}
+.reader[data-embedded="true"] .prose{
+  font-size:clamp(18px,var(--reader-font-size),22px)!important;
+  line-height:var(--reader-line-height)!important;
+}
+.reader[data-embedded="true"] .progressArea{
+  left:10px!important;
+  right:10px!important;
+  bottom:3px!important;
+  height:30px!important;
+}
+.reader[data-embedded="true"] .progressMeta{
+  font-size:10px!important;
+}

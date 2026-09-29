@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./PublicationPreviewDock.module.css";
 import { BRAND_ASSETS } from "../../../lib/brandAssets";
+import LockedManagedReader from "../../_components/LockedManagedReader";
 
 type Props = {
   activeMode?: "reader" | "audio";
@@ -49,7 +50,6 @@ export default function PublicationPreviewDock({
   const [previewMode, setPreviewMode] = useState<"reader" | "audio">(activeMode);
   const [readerOpen, setReaderOpen] = useState(false);
   const [localReaderEpubUrl, setLocalReaderEpubUrl] = useState("");
-  const readerIframeRef = useRef<HTMLIFrameElement | null>(null);
   const readerFrameHostRef = useRef<HTMLDivElement | null>(null);
   const [readerScale, setReaderScale] = useState(1);
 
@@ -79,60 +79,6 @@ export default function PublicationPreviewDock({
   }, [readerPreviewFile]);
 
   const readerSource = localReaderEpubUrl || readerPreviewEpubUrl || "";
-  const readerPreviewHref = readerSource
-    ? `/panel/reader/onizleme?${new URLSearchParams({
-        ...(readerPreviewEpubUrl && !readerPreviewFile ? { epub: readerPreviewEpubUrl } : {}),
-        title: safeTitle,
-        author: safeAuthor,
-        cover,
-        start: "1",
-      }).toString()}`
-    : "";
-
-  const sendReaderPreviewFile = async () => {
-    if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
-    const buffer = await readerPreviewFile.arrayBuffer();
-    readerIframeRef.current.contentWindow.postMessage(
-      {
-        type: "22-reader-preview-file",
-        buffer,
-        name: readerPreviewFile.name,
-        mime: readerPreviewFile.type || "application/epub+zip",
-      },
-      window.location.origin,
-      [buffer]
-    );
-  };
-
-  useEffect(() => {
-    if (!readerOpen) return;
-    const host = readerFrameHostRef.current;
-    if (!host) return;
-
-    const updateScale = () => {
-      const width = host.clientWidth;
-      setReaderScale(width > 0 ? Math.min(1, width / 489) : 1);
-    };
-
-    updateScale();
-    const observer = new ResizeObserver(updateScale);
-    observer.observe(host);
-    return () => observer.disconnect();
-  }, [readerOpen]);
-
-  useEffect(() => {
-    if (!readerOpen || !readerPreviewFile) return;
-
-    const handleReady = (event: MessageEvent) => {
-      if (event.origin !== window.location.origin) return;
-      if (event.source !== readerIframeRef.current?.contentWindow) return;
-      if ((event.data as { type?: string } | null)?.type !== "22-reader-preview-ready") return;
-      void sendReaderPreviewFile();
-    };
-
-    window.addEventListener("message", handleReady);
-    return () => window.removeEventListener("message", handleReady);
-  }, [readerOpen, readerPreviewFile, readerPreviewHref]);
 
 
   return (
@@ -175,14 +121,23 @@ export default function PublicationPreviewDock({
                 className={styles.readerFrameHost}
                 style={{ height: 828 * readerScale }}
               >
-                <iframe
-                  ref={readerIframeRef}
-                  className={styles.readerIframe}
-                  src={readerPreviewHref}
-                  title="22 Reader EPUB önizleme"
+                <div
+                  className={styles.readerEmbedCanvas}
                   style={{ transform: `scale(${readerScale})` }}
-                  onLoad={() => { void sendReaderPreviewFile(); }}
-                />
+                >
+                  <LockedManagedReader
+                    embedded
+                    autoStart
+                    book={{
+                      slug: "panel-canli-onizleme",
+                      title: safeTitle,
+                      author: safeAuthor,
+                      authorHref: "#",
+                      coverUrl: cover,
+                      epubUrl: readerSource,
+                    }}
+                  />
+                </div>
               </div>
             </div>
           ) : (

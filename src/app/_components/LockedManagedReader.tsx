@@ -148,7 +148,14 @@ export default function LockedManagedReader({ book, embedded = false, autoStart 
 
     const firstReadableIndex = sections.findIndex(section => {
       const body = section.paragraphs.join(" ").replace(/\s+/g, " ").trim();
-      return section.paragraphs.length >= 2 && body.length >= 180;
+      const heading = section.title.toLocaleLowerCase("tr-TR");
+      const frontMatter =
+        heading.includes("içindekiler") ||
+        heading.includes("künye") ||
+        heading === "kapak" ||
+        heading === "başlık" ||
+        heading === "22 yayınevi";
+      return !frontMatter && body.length >= 180;
     });
     const targetIndex = firstReadableIndex >= 0 ? firstReadableIndex : 0;
 
