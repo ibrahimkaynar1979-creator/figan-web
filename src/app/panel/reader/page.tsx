@@ -63,6 +63,18 @@ export default function ReaderPanelPage() {
     });
   }, [filter, query, allBooks]);
 
+  const filterCounts = useMemo(() => ({
+    all: allBooks.length,
+    published: allBooks.filter(book => book.status === "Yayında").length,
+    draft: allBooks.filter(book => book.status === "Taslak").length,
+  }), [allBooks]);
+
+  const filterOptions = [
+    { key: "all" as const, label: "Tümü", count: filterCounts.all },
+    { key: "published" as const, label: "Yayında", count: filterCounts.published },
+    { key: "draft" as const, label: "Taslak", count: filterCounts.draft },
+  ];
+
   useEffect(() => {
     document.body.classList.add("reader-admin-route");
     void listManagedBooks().then(({ items }) => {
@@ -149,6 +161,27 @@ export default function ReaderPanelPage() {
             aria-pressed={searchOpen}
             onClick={() => setSearchOpen(value => !value)}
           >⌕</button>
+        </div>
+
+        <div className={styles.libraryToolbar}>
+          <div className={styles.filterGroup} aria-label="Reader kitap filtreleri">
+            {filterOptions.map(option => (
+              <button
+                key={option.key}
+                type="button"
+                className={filter === option.key ? styles.filterActive : ""}
+                aria-pressed={filter === option.key}
+                onClick={() => setFilter(option.key)}
+              >
+                <span>{option.label}</span>
+                <b>{option.count}</b>
+              </button>
+            ))}
+          </div>
+          <div className={styles.resultCount} aria-live="polite">
+            <strong>{visibleBooks.length}</strong>
+            <span>{query.trim() ? "arama sonucu" : filter === "all" ? "kitap" : filter === "published" ? "yayında" : "taslak"}</span>
+          </div>
         </div>
 
         {searchOpen && (
