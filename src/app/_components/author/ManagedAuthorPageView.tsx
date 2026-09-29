@@ -51,7 +51,7 @@ export default function ManagedAuthorPageView({
         if (cancelled) return;
 
         const found = authorsResult.items.find(item => item.slug === slug) ?? null;
-        setManagedAuthor(found);
+        setManagedAuthor(found?.status === "Yayında" ? found : null);
         setManagedBooks(
           booksResult.items.filter(item => item.authorSlug === slug && item.status !== "Taslak")
         );
