@@ -72,11 +72,18 @@ export default function PublicationPreviewDock({
       }).toString()}`
     : "";
 
-  const sendReaderPreviewFile = () => {
+  const sendReaderPreviewFile = async () => {
     if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
+    const buffer = await readerPreviewFile.arrayBuffer();
     readerIframeRef.current.contentWindow.postMessage(
-      { type: "22-reader-preview-file", file: readerPreviewFile },
-      window.location.origin
+      {
+        type: "22-reader-preview-file",
+        buffer,
+        name: readerPreviewFile.name,
+        mime: readerPreviewFile.type || "application/epub+zip",
+      },
+      window.location.origin,
+      [buffer]
     );
   };
 
@@ -87,7 +94,7 @@ export default function PublicationPreviewDock({
       if (event.origin !== window.location.origin) return;
       if (event.source !== readerIframeRef.current?.contentWindow) return;
       if ((event.data as { type?: string } | null)?.type !== "22-reader-preview-ready") return;
-      sendReaderPreviewFile();
+      void sendReaderPreviewFile();
     };
 
     window.addEventListener("message", handlePreviewReady);
@@ -97,7 +104,7 @@ export default function PublicationPreviewDock({
   useEffect(() => {
     if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
     const timers = [100, 400, 1000].map(delay =>
-      window.setTimeout(sendReaderPreviewFile, delay)
+      window.setTimeout(() => { void sendReaderPreviewFile(); }, delay)
     );
     return () => timers.forEach(timer => window.clearTimeout(timer));
   }, [readerPreviewFile, readerPreviewHref]);
@@ -133,7 +140,7 @@ export default function PublicationPreviewDock({
         {previewMode === "reader" ? (
           readerPreviewHref ? (
             <div className={styles.readerIframeShell}>
-              <iframe ref={readerIframeRef} className={styles.readerIframe} src={readerPreviewHref} title="22 Reader canlı önizleme" onLoad={sendReaderPreviewFile} />
+              <iframe ref={readerIframeRef} className={styles.readerIframe} src={readerPreviewHref} title="22 Reader canlı önizleme" onLoad={() => { void sendReaderPreviewFile(); }} />
             </div>
           ) : (
           <div className={styles.readerDevice}>

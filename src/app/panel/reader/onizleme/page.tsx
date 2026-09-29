@@ -31,11 +31,18 @@ export default function Page() {
 
     const receivePreviewFile = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
-      const data = event.data as { type?: string; file?: unknown } | null;
-      if (data?.type !== "22-reader-preview-file" || !(data.file instanceof Blob)) return;
+      const data = event.data as {
+        type?: string;
+        buffer?: ArrayBuffer;
+        mime?: string;
+      } | null;
+      if (data?.type !== "22-reader-preview-file" || !data.buffer) return;
 
       if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current);
-      const nextUrl = URL.createObjectURL(data.file);
+      const previewBlob = new Blob([data.buffer], {
+        type: data.mime || "application/epub+zip",
+      });
+      const nextUrl = URL.createObjectURL(previewBlob);
       blobUrlRef.current = nextUrl;
       setEpubUrl(nextUrl);
     };
