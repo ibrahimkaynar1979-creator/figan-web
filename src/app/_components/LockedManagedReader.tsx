@@ -145,9 +145,19 @@ export default function LockedManagedReader({ book, embedded = false, autoStart 
   }, [embedded]);
   useEffect(() => {
     if (!(embedded || autoStart) || sections.length === 0) return;
-    if (index < 0) setIndex(0);
+
+    const firstReadableIndex = sections.findIndex(section => {
+      const body = section.paragraphs.join(" ").replace(/\s+/g, " ").trim();
+      return section.paragraphs.length >= 2 && body.length >= 180;
+    });
+    const targetIndex = firstReadableIndex >= 0 ? firstReadableIndex : 0;
+
+    if (index < 0 || (autoStart && index === 0 && targetIndex > 0)) {
+      setIndex(targetIndex);
+    }
     setReaderPage(0);
     readerPageRef.current = 0;
+    pendingReaderPage.current = 0;
     setPanel(null);
     setChromeVisible(true);
   }, [embedded, autoStart, sections.length]);
