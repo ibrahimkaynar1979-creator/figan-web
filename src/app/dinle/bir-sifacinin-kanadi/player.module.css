@@ -590,3 +590,91 @@
     display:block;
   }
 }
+
+
+/* Publishing OS live preview only; published player remains unchanged */
+.previewEmbed{
+  padding:0;
+  background:#fbf7ef;
+}
+.previewEmbed .stage{
+  border-radius:0;
+  box-shadow:none;
+  grid-template-rows:52px minmax(0,1fr);
+}
+.previewEmbed .topbar{
+  height:52px;
+  padding:0 16px;
+}
+.previewEmbed .logo{
+  width:112px;
+  flex-basis:112px;
+}
+.previewEmbed .menuButton{
+  width:34px;
+  height:34px;
+  font-size:23px;
+}
+.previewEmbed .content{
+  padding:7px 18px 7px;
+}
+.previewEmbed .coverHero{
+  width:150px;
+  max-width:54%;
+  filter:drop-shadow(0 9px 15px rgba(54,36,20,.13));
+}
+.previewEmbed .listeningLabel{
+  margin-top:4px;
+  gap:6px;
+}
+.previewEmbed .listeningLabel span{font-size:7.5px}
+.previewEmbed .waveIcon{width:19px;height:16px}
+.previewEmbed .content>h1{
+  margin:4px 0 1px;
+  font-size:23px;
+}
+.previewEmbed .bookMeta{font-size:10.5px}
+.previewEmbed .divider{
+  height:10px;
+  margin:2px 0 0;
+}
+.previewEmbed .ornament{width:10px;height:10px}
+.previewEmbed .nowPlaying span{font-size:7px}
+.previewEmbed .nowPlaying h2{
+  margin-top:2px;
+  font-size:13px;
+  line-height:1.05;
+}
+.previewEmbed .nowPlaying p{font-size:8px}
+.previewEmbed .progressWrap{margin-top:4px}
+.previewEmbed .timeRow{font-size:7px}
+.previewEmbed .transport{
+  height:54px;
+  margin:0;
+}
+.previewEmbed .seekButton{transform:scale(.78)}
+.previewEmbed .play{
+  width:54px;
+  height:54px;
+}
+.previewEmbed .play svg{width:21px;height:21px}
+.previewEmbed .tools{
+  height:42px;
+}
+.previewEmbed .tools button,
+.previewEmbed .tools a{
+  gap:3px;
+  font-size:8px;
+}
+.previewEmbed .tools b{font-size:16px}
+.previewEmbed .tools svg{width:17px;height:17px}
+.previewEmbed .chapterStrip{
+  height:42px;
+  min-height:42px;
+  margin-top:4px;
+  padding:7px 10px;
+  border-radius:12px;
+}
+.previewEmbed .chapterStrip span{font-size:7px}
+.previewEmbed .chapterStrip strong{font-size:10px}
+.previewEmbed .chapterStrip button{font-size:7px}
