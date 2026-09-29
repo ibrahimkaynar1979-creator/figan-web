@@ -144,6 +144,14 @@ export default function LockedManagedReader({ book, embedded = false }: { book: 
     return () => document.body.classList.remove("reader-route");
   }, [embedded]);
   useEffect(() => {
+    if (!embedded || sections.length === 0 || index !== -1) return;
+    setIndex(0);
+    setReaderPage(0);
+    readerPageRef.current = 0;
+    setChromeVisible(true);
+  }, [embedded, sections.length, index]);
+
+  useEffect(() => {
     let cancelled = false;
     let epubBook: any = null;
 

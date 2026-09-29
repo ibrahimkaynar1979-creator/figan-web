@@ -784,3 +784,206 @@
 .reader[data-embedded="true"] .readingArea{
   min-height:1131px;
 }
+
+
+/* Final in-panel Reader mode: preserve the real reading UI at panel size. */
+.reader[data-embedded="true"]{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:0!important;
+  display:block!important;
+  overflow:hidden!important;
+  background:#eee8df!important;
+}
+.reader[data-embedded="true"] .sidebar{
+  display:none!important;
+}
+.reader[data-embedded="true"] .stage{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:block!important;
+  overflow:hidden!important;
+  border-radius:0!important;
+  background:var(--surface)!important;
+  box-shadow:none!important;
+}
+.reader[data-embedded="true"] .topbar{
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  top:0!important;
+  height:48px!important;
+  min-height:48px!important;
+  padding:0 9px!important;
+  border-bottom:1px solid var(--line)!important;
+  background:color-mix(in srgb,var(--surface) 96%,transparent)!important;
+  backdrop-filter:none!important;
+  z-index:20!important;
+  box-sizing:border-box!important;
+}
+.reader[data-embedded="true"] .mobileBrand{
+  display:none!important;
+}
+.reader[data-embedded="true"] .chapterMini{
+  display:flex!important;
+  position:static!important;
+  transform:none!important;
+  min-width:0!important;
+  max-width:43%!important;
+  gap:5px!important;
+  font-size:8px!important;
+}
+.reader[data-embedded="true"] .chapterMini button{
+  display:block!important;
+  flex:0 0 24px!important;
+  width:24px!important;
+  height:28px!important;
+  font-size:15px!important;
+}
+.reader[data-embedded="true"] .chapterMini span{
+  min-width:0!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+  text-overflow:ellipsis!important;
+}
+.reader[data-embedded="true"] .tools{
+  gap:0!important;
+}
+.reader[data-embedded="true"] .tools button{
+  width:28px!important;
+  height:28px!important;
+  font-size:13px!important;
+}
+.reader[data-embedded="true"] .tools button:nth-child(3){
+  display:none!important;
+}
+.reader[data-embedded="true"] .readingArea{
+  position:absolute!important;
+  inset:48px 0 0!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:18px 18px 28px!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+  background:var(--surface)!important;
+}
+.reader[data-embedded="true"] .textWrap{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  display:block!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scroll-snap-type:x mandatory!important;
+  scroll-behavior:smooth!important;
+  scrollbar-width:none!important;
+  column-gap:0!important;
+  column-fill:auto!important;
+  box-sizing:border-box!important;
+}
+.reader[data-embedded="true"] .textWrap::-webkit-scrollbar{
+  display:none!important;
+}
+.reader[data-embedded="true"] .chapter{
+  text-align:center!important;
+  font-size:7px!important;
+  letter-spacing:.12em!important;
+  margin:3px 0 5px!important;
+}
+.reader[data-embedded="true"] .textWrap h1{
+  text-align:center!important;
+  font-size:18px!important;
+  line-height:1.08!important;
+  margin:0!important;
+  font-weight:500!important;
+}
+.reader[data-embedded="true"] .rule{
+  width:34px!important;
+  margin:8px auto 12px!important;
+}
+.reader[data-embedded="true"] .prose{
+  font-size:13px!important;
+  line-height:1.55!important;
+  max-width:none!important;
+  width:auto!important;
+}
+.reader[data-embedded="true"] .prose p{
+  margin:0 0 .8em!important;
+}
+.reader[data-embedded="true"] .prev,
+.reader[data-embedded="true"] .next{
+  position:absolute!important;
+  top:0!important;
+  bottom:0!important;
+  width:22%!important;
+  height:auto!important;
+  transform:none!important;
+  opacity:0!important;
+  z-index:6!important;
+}
+.reader[data-embedded="true"] .prev{left:0!important}
+.reader[data-embedded="true"] .next{right:0!important}
+.reader[data-embedded="true"] .progressArea{
+  position:absolute!important;
+  left:8px!important;
+  right:8px!important;
+  bottom:2px!important;
+  width:auto!important;
+  height:24px!important;
+  margin:0!important;
+  padding:0!important;
+  z-index:20!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  gap:1px!important;
+  border:0!important;
+  background:var(--surface)!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+.reader[data-embedded="true"] .progressArea input{
+  flex:0 0 9px!important;
+  width:100%!important;
+  height:9px!important;
+  margin:0!important;
+  padding:0!important;
+}
+.reader[data-embedded="true"] .progressMeta{
+  display:flex!important;
+  justify-content:space-between!important;
+  gap:6px!important;
+  margin:0!important;
+  font-size:6px!important;
+  line-height:1!important;
+}
+.reader[data-embedded="true"] .mobileNav{
+  display:none!important;
+}
+.reader[data-embedded="true"] .backdrop{
+  position:absolute!important;
+  inset:0!important;
+}
+.reader[data-embedded="true"] .panel{
+  position:absolute!important;
+  left:8px!important;
+  right:8px!important;
+  top:54px!important;
+  width:auto!important;
+  max-height:calc(100% - 62px)!important;
+  padding:12px!important;
+  border-radius:12px!important;
+  overflow:auto!important;
+}
+.reader[data-embedded="true"] .panelHead h3{
+  font-size:17px!important;
+}

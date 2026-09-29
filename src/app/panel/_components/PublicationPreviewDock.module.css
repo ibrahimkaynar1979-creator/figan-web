@@ -574,3 +574,20 @@
   background:#f7f2e8;
 }
 .readerOverlay,.readerOverlayClose,.readerOverlayBody{display:none!important}
+
+
+/* Final embedded Reader geometry: real reading view, no scaled desktop UI. */
+.readerInlineShell{
+  height:500px;
+}
+.readerInlineViewport{
+  width:100%!important;
+  height:458px!important;
+  zoom:1!important;
+  overflow:hidden!important;
+  background:#f7f2e8;
+}
+.readerInlineViewport>main{
+  width:100%!important;
+  height:100%!important;
+}
