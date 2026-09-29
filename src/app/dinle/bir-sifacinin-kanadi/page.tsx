@@ -164,35 +164,43 @@ export default function BirSifacininKanadiPlayer() {
     void fetch(endpoint,{cache:"no-store"})
       .then((response)=>response.ok?response.json():null)
       .then((data)=>{
-        if(!data?.ready) return;
+        const params=new URLSearchParams(window.location.search);
+        const preview=params.get("preview")==="1";
+        if(!data?.ready && !preview) return;
+
         const nextAudio=
-          typeof data.audioUrl==="string" && data.audioUrl
+          typeof data?.audioUrl==="string" && data.audioUrl
             ? data.audioUrl
-            : typeof data.url==="string" && data.url
+            : typeof data?.url==="string" && data.url
               ? data.url
               : "";
         if(nextAudio) setAudioSrc(nextAudio);
+
+        const dataSlug=typeof data?.slug==="string" && data.slug ? data.slug : "bir-sifacinin-kanadi";
+        const dataCover=
+          dataSlug==="bir-sifacinin-kanadi"
+            ? "/bir_sifaci_png.png"
+            : typeof data?.coverUrl==="string" && data.coverUrl
+              ? data.coverUrl
+              : "/bir_sifaci_png.png";
+
         setBookMeta({
-          slug:typeof data.slug==="string" && data.slug ? data.slug : "bir-sifacinin-kanadi",
-          title:typeof data.title==="string" && data.title ? data.title : "Bir Şifacının Kanadı",
-          author:typeof data.author==="string" && data.author ? data.author : "Figen Yavuz",
-          voice:typeof data.voice==="string" ? data.voice : "",
-          coverUrl:
-            typeof data.slug === "string" && data.slug === "bir-sifacinin-kanadi"
-              ? "/bir_sifaci_png.png"
-              : typeof data.coverUrl === "string" && data.coverUrl
-                ? data.coverUrl
-                : "/bir_sifaci_png.png",
+          slug:dataSlug,
+          title:preview && params.get("title") ? params.get("title")! : typeof data?.title==="string" && data.title ? data.title : "Bir Şifacının Kanadı",
+          author:preview && params.get("author") ? params.get("author")! : typeof data?.author==="string" && data.author ? data.author : "Figen Yavuz",
+          voice:preview && params.get("voice")!==null ? params.get("voice")! : typeof data?.voice==="string" ? data.voice : "",
+          coverUrl:preview && params.get("cover") ? params.get("cover")! : dataCover,
         });
-        if(typeof data.duration==="number" && Number.isFinite(data.duration) && data.duration>0){
+
+        if(typeof data?.duration==="number" && Number.isFinite(data.duration) && data.duration>0){
           setDuration(data.duration);
         }
-        if(Array.isArray(data.chapters) && data.chapters.length){
+        if(Array.isArray(data?.chapters) && data.chapters.length){
           const nextChapters=data.chapters
             .filter((item:Chapter)=>item && typeof item.id==="number" && typeof item.title==="string" && typeof item.start==="number")
             .sort((a:Chapter,b:Chapter)=>a.start-b.start);
           if(nextChapters.length) setActiveChapters(nextChapters);
-        }else if(data.slug && data.slug!=="bir-sifacinin-kanadi"){
+        }else if(data?.slug && data.slug!=="bir-sifacinin-kanadi"){
           setActiveChapters([{id:1,title:"Kitabın Tamamı",start:0}]);
         }
         setChapterIndex(0);
