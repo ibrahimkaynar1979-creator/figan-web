@@ -17,6 +17,7 @@ type Props = {
   audioDuration?: string;
   status?: string;
   publicationHref?: string;
+  audioPublicationHref?: string;
   audioPreviewHref?: string;
   sourceReady?: boolean;
   onModeChange?: (mode: "reader" | "audio") => void;
@@ -34,6 +35,7 @@ export default function PublicationPreviewDock({
   audioDuration = "—",
   status = "Taslak",
   publicationHref,
+  audioPublicationHref,
   audioPreviewHref,
   sourceReady = false,
   onModeChange,
@@ -49,6 +51,7 @@ export default function PublicationPreviewDock({
     onModeChange?.(mode);
   };
 
+  const activePublicationHref = previewMode === "audio" ? audioPublicationHref : publicationHref;
   const safeTitle = title.trim() || "Kitap adı";
   const safeAuthor = author.trim() || "Yazar adı";
   const cover = coverSrc || "/bir_sifaci_png.png";
@@ -145,9 +148,9 @@ export default function PublicationPreviewDock({
           <div className={sourceReady ? styles.done : ""}><i>{sourceReady ? "✓" : "3"}</i><span>{previewMode === "reader" ? "EPUB kaynağı" : "MP3 kaynağı"}</span><b>{sourceReady ? "Hazır" : "Eksik"}</b></div>
         </div>
 
-        {publicationHref ? (
-          <a className={styles.openPublication} href={publicationHref} target="_blank" rel="noreferrer">
-            <span><small>YAYIN ADRESİ</small><code>{publicationHref}</code></span>
+        {activePublicationHref ? (
+          <a className={styles.openPublication} href={activePublicationHref} target="_blank" rel="noreferrer">
+            <span><small>YAYIN ADRESİ</small><code>{activePublicationHref}</code></span>
             <b>Önizle ↗</b>
           </a>
         ) : null}
