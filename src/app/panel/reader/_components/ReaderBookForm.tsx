@@ -285,23 +285,22 @@ export default function ReaderBookForm({ mode, initial }: Props) {
         : "/" + initial.cover
       : "");
 
-  const readerPreviewHref = useMemo(() => {
-    const previewEpub = epubPreviewUrl || epubUrl;
-    if (!previewEpub) return undefined;
+  const previewEpub = epubPreviewUrl || epubUrl;
+  let readerPreviewHref: string | undefined;
 
+  if (previewEpub) {
     if (mode === "edit" && !epubFile && slug) {
-      return readerHref;
+      readerPreviewHref = readerHref;
+    } else {
+      const params = new URLSearchParams();
+      params.set("title", title.trim() || "Kitap adı");
+      params.set("author", author?.name || "22 Yayınevi");
+      params.set("slug", slug || "onizleme");
+      params.set("epub", previewEpub);
+      if (coverSource) params.set("cover", coverSource);
+      readerPreviewHref = `/oku/onizleme?${params.toString()}`;
     }
-
-    const params = new URLSearchParams({
-      title: title.trim() || "Kitap adı",
-      author: author?.name || "22 Yayınevi",
-      slug: slug || "onizleme",
-      epub: previewEpub,
-    });
-    if (coverSource) params.set("cover", coverSource);
-    return `/oku/onizleme?${params.toString()}`;
-  }, [author?.name, coverSource, epubFile, epubPreviewUrl, epubUrl, mode, readerHref, slug, title]);
+  }
 
   return (
     <main className={styles.page}>
