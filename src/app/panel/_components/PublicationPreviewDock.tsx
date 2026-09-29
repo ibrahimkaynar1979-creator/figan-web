@@ -20,6 +20,7 @@ type Props = {
   audioPublicationHref?: string;
   audioPreviewHref?: string;
   sourceReady?: boolean;
+  audioSourceReady?: boolean;
   onModeChange?: (mode: "reader" | "audio") => void;
 };
 
@@ -38,6 +39,7 @@ export default function PublicationPreviewDock({
   audioPublicationHref,
   audioPreviewHref,
   sourceReady = false,
+  audioSourceReady = false,
   onModeChange,
 }: Props) {
   const [previewMode, setPreviewMode] = useState<"reader" | "audio">(activeMode);
@@ -52,6 +54,7 @@ export default function PublicationPreviewDock({
   };
 
   const activePublicationHref = previewMode === "audio" ? audioPublicationHref : publicationHref;
+  const activeSourceReady = previewMode === "audio" ? audioSourceReady : sourceReady;
   const safeTitle = title.trim() || "Kitap adı";
   const safeAuthor = author.trim() || "Yazar adı";
   const cover = coverSrc || "/bir_sifaci_png.png";
@@ -122,7 +125,7 @@ export default function PublicationPreviewDock({
       <div className={styles.checks}>
         <div><span>Kapak</span><b>{coverSrc ? "Hazır" : "Bekliyor"}</b></div>
         <div><span>Yazar</span><b>{author.trim() ? "Bağlı" : "Bekliyor"}</b></div>
-        <div><span>{previewMode === "reader" ? "EPUB" : "MP3"}</span><b>{sourceReady ? "Hazır" : "Bekliyor"}</b></div>
+        <div><span>{previewMode === "reader" ? "EPUB" : "MP3"}</span><b>{activeSourceReady ? "Hazır" : "Bekliyor"}</b></div>
       </div>
 
       <section className={styles.detailPanel}>
@@ -145,7 +148,7 @@ export default function PublicationPreviewDock({
         <div className={styles.readiness}>
           <div className={coverSrc ? styles.done : ""}><i>{coverSrc ? "✓" : "1"}</i><span>Kapak görseli</span><b>{coverSrc ? "Hazır" : "Eksik"}</b></div>
           <div className={author.trim() ? styles.done : ""}><i>{author.trim() ? "✓" : "2"}</i><span>Yazar bağlantısı</span><b>{author.trim() ? "Hazır" : "Eksik"}</b></div>
-          <div className={sourceReady ? styles.done : ""}><i>{sourceReady ? "✓" : "3"}</i><span>{previewMode === "reader" ? "EPUB kaynağı" : "MP3 kaynağı"}</span><b>{sourceReady ? "Hazır" : "Eksik"}</b></div>
+          <div className={activeSourceReady ? styles.done : ""}><i>{activeSourceReady ? "✓" : "3"}</i><span>{previewMode === "reader" ? "EPUB kaynağı" : "MP3 kaynağı"}</span><b>{activeSourceReady ? "Hazır" : "Eksik"}</b></div>
         </div>
 
         {activePublicationHref ? (
