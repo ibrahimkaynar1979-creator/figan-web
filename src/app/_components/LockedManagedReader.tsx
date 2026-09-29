@@ -109,7 +109,7 @@ export default function LockedManagedReader({ book, embedded = false, autoStart 
   const bookCover = book.coverUrl;
   const authorHref = book.authorHref;
   const storageKey = `22reader-${book.slug}`;
-  const [index, setIndex] = useState(-1);
+  const [index, setIndex] = useState(autoStart ? 0 : -1);
   const [theme, setTheme] = useState<Theme>("cream");
   const [fontSize, setFontSize] = useState(22);
   const [readerFont, setReaderFont] = useState<ReaderFont>("serif");
@@ -144,13 +144,13 @@ export default function LockedManagedReader({ book, embedded = false, autoStart 
     return () => document.body.classList.remove("reader-route");
   }, [embedded]);
   useEffect(() => {
-    if (!(embedded || autoStart) || sections.length === 0 || index !== -1) return;
-    setIndex(0);
+    if (!(embedded || autoStart) || sections.length === 0) return;
+    if (index < 0) setIndex(0);
     setReaderPage(0);
     readerPageRef.current = 0;
     setPanel(null);
     setChromeVisible(true);
-  }, [embedded, autoStart, sections.length, index]);
+  }, [embedded, autoStart, sections.length]);
 
   useEffect(() => {
     let cancelled = false;
