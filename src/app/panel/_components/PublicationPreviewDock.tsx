@@ -82,6 +82,15 @@ export default function PublicationPreviewDock({
 
       <div className={styles.deviceStage}>
         {previewMode === "reader" ? (
+          sourceReady && publicationHref ? (
+            <div className={styles.audioIframeShell}>
+              <iframe
+                className={styles.audioIframe}
+                src={publicationHref}
+                title="22 Reader canlı önizleme"
+              />
+            </div>
+          ) : (
           <div className={styles.readerDevice}>
             <header>
               <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
@@ -104,6 +113,7 @@ export default function PublicationPreviewDock({
               </div>
             </div>
           </div>
+          )
         ) : (
           <div className={styles.audioIframeShell}>
             <iframe
