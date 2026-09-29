@@ -124,7 +124,6 @@ export default function BirSifacininKanadiPlayer() {
   const [sleepMinutes,setSleepMinutes] = useState<number | null>(null);
   const [sleepLeft,setSleepLeft] = useState<number | null>(null);
   const [audioError,setAudioError] = useState(false);
-  const [embeddedPreview,setEmbeddedPreview] = useState(false);
   const [audioSrc,setAudioSrc] = useState(FALLBACK_AUDIO);
   const [bookMeta,setBookMeta] = useState({
     slug:"bir-sifacinin-kanadi",
@@ -139,10 +138,6 @@ export default function BirSifacininKanadiPlayer() {
   const chapter = activeChapters[chapterIndex] ?? activeChapters[0] ?? {id:1,title:"Kitabın Tamamı",start:0};
   const chapterEnd = activeChapters[chapterIndex + 1]?.start ?? duration;
   const chapterDuration = Math.max(0,chapterEnd - chapter.start);
-
-  useEffect(()=>{
-    setEmbeddedPreview(new URLSearchParams(window.location.search).get("preview")==="1");
-  },[]);
 
   useEffect(()=>{
     document.body.classList.add("reader-route");
@@ -426,7 +421,7 @@ export default function BirSifacininKanadiPlayer() {
   };
 
   return (
-    <main className={`${styles.page} ${embeddedPreview ? styles.previewEmbed : ""}`}>
+    <main className={styles.page}>
       <audio
         ref={audioRef}
         src={audioSrc}
