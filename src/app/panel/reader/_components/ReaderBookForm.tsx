@@ -26,6 +26,8 @@ type Props = {
     language: string;
     cover: string;
     readerHref: string;
+    epubName?: string;
+    epubUrl?: string;
   };
 };
 
@@ -62,13 +64,13 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   const [language, setLanguage] = useState(initial?.language ?? "Türkçe");
   const [status, setStatus] = useState<"Taslak" | "Yayında">(initial?.status ?? "Taslak");
 
-  const [epubName, setEpubName] = useState("");
+  const [epubName, setEpubName] = useState(initial?.epubName ?? "");
   const [epubFile, setEpubFile] = useState<File | null>(null);
-  const [epubUrl, setEpubUrl] = useState("");
+  const [epubUrl, setEpubUrl] = useState(initial?.epubUrl ?? "");
 
   const [coverName, setCoverName] = useState("");
   const [coverFile, setCoverFile] = useState<File | null>(null);
-  const [coverUrl, setCoverUrl] = useState("");
+  const [coverUrl, setCoverUrl] = useState(initial?.cover ?? "");
   const [coverPreview, setCoverPreview] = useState("");
 
   const [saved, setSaved] = useState(false);
