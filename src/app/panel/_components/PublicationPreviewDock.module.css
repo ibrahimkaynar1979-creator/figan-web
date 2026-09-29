@@ -25,6 +25,7 @@
 .readerBody{padding:19px 16px 16px;text-align:center}
 .readerCover{height:260px;display:flex;align-items:center;justify-content:center;margin-bottom:13px}
 .readerCover img{max-width:100%;max-height:100%;display:block;object-fit:contain;filter:drop-shadow(0 12px 19px rgba(56,37,20,.18))}
+.readerBody h2{margin:0 0 6px;font:600 18px/1.05 var(--font-editorial),Georgia,serif}
 .readerBody h3{margin:0;font:500 23px/1 var(--font-editorial),Georgia,serif}
 .readerBody>p{margin:6px 0 14px;color:#81766a;font:12px Georgia,serif}
 .readerBody>button{width:78%;height:46px;border:0;border-radius:999px;background:#171411;color:#fff;font:500 15px Georgia,serif}
