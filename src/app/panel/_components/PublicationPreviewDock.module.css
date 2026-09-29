@@ -615,3 +615,28 @@
   background:#f7f2e8!important;
 }
 .readerInlineViewport{display:none!important}
+
+
+/* Preserve the approved Reader viewport geometry (489 x 828) and scale it uniformly into the inspector. */
+.readerIframeShell{
+  height:auto!important;
+  max-height:none!important;
+  min-height:0!important;
+}
+.readerFrameHost{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:#f7f2e8;
+}
+.readerIframe{
+  position:absolute!important;
+  left:0!important;
+  top:0!important;
+  width:489px!important;
+  height:828px!important;
+  max-width:none!important;
+  transform-origin:top left!important;
+  border:0!important;
+  background:#f7f2e8!important;
+}

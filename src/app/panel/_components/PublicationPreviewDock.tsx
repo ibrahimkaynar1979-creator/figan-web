@@ -50,6 +50,8 @@ export default function PublicationPreviewDock({
   const [readerOpen, setReaderOpen] = useState(false);
   const [localReaderEpubUrl, setLocalReaderEpubUrl] = useState("");
   const readerIframeRef = useRef<HTMLIFrameElement | null>(null);
+  const readerFrameHostRef = useRef<HTMLDivElement | null>(null);
+  const [readerScale, setReaderScale] = useState(1);
 
   useEffect(() => {
     setPreviewMode(activeMode);
@@ -103,6 +105,22 @@ export default function PublicationPreviewDock({
   };
 
   useEffect(() => {
+    if (!readerOpen) return;
+    const host = readerFrameHostRef.current;
+    if (!host) return;
+
+    const updateScale = () => {
+      const width = host.clientWidth;
+      setReaderScale(width > 0 ? Math.min(1, width / 489) : 1);
+    };
+
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, [readerOpen]);
+
+  useEffect(() => {
     if (!readerOpen || !readerPreviewFile) return;
 
     const handleReady = (event: MessageEvent) => {
@@ -152,13 +170,20 @@ export default function PublicationPreviewDock({
                 <button type="button" onClick={() => setReaderOpen(false)}>← Kapağa dön</button>
                 <span>22 Reader · EPUB Önizleme</span>
               </div>
-              <iframe
-                ref={readerIframeRef}
-                className={styles.readerIframe}
-                src={readerPreviewHref}
-                title="22 Reader EPUB önizleme"
-                onLoad={() => { void sendReaderPreviewFile(); }}
-              />
+              <div
+                ref={readerFrameHostRef}
+                className={styles.readerFrameHost}
+                style={{ height: 828 * readerScale }}
+              >
+                <iframe
+                  ref={readerIframeRef}
+                  className={styles.readerIframe}
+                  src={readerPreviewHref}
+                  title="22 Reader EPUB önizleme"
+                  style={{ transform: `scale(${readerScale})` }}
+                  onLoad={() => { void sendReaderPreviewFile(); }}
+                />
+              </div>
             </div>
           ) : (
             <div className={styles.readerDevice}>
