@@ -556,3 +556,14 @@
 .sectionTitle h2,.pipelineHead strong,.futureGrid strong,.catalogHead strong,.currentTitle{
   font-family:var(--po-font-ui)!important;font-weight:700!important;
 }
+
+.libraryToolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 18px}
+.filterGroup{display:flex;flex-wrap:wrap;gap:8px}
+.filterGroup button{min-height:38px;display:inline-flex;align-items:center;gap:8px;padding:0 12px;border:1px solid var(--po-border);border-radius:999px;background:var(--po-surface);color:var(--po-text-secondary);font:700 11px var(--po-font-ui),Arial,sans-serif;cursor:pointer}
+.filterGroup button b{min-width:22px;height:22px;display:inline-grid;place-items:center;padding:0 6px;border-radius:999px;background:var(--po-surface-soft);color:var(--po-text-muted);font-size:9px}
+.filterGroup .filterActive{background:var(--po-brand);border-color:var(--po-brand);color:var(--po-brand-contrast)}
+.filterGroup .filterActive b{background:rgba(255,255,255,.18);color:var(--po-brand-contrast)}
+.resultCount{display:flex;align-items:baseline;gap:6px;color:var(--po-text-secondary);white-space:nowrap}
+.resultCount strong{color:var(--po-text);font-size:15px}
+.resultCount span{font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:620px){.libraryToolbar{align-items:flex-start;flex-direction:column}.filterGroup{width:100%}.filterGroup button{flex:1 1 auto;justify-content:center}}
