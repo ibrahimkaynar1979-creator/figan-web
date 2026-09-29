@@ -81,9 +81,25 @@ export default function PublicationPreviewDock({
   };
 
   useEffect(() => {
+    if (!readerPreviewFile) return;
+
+    const handlePreviewReady = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      if (event.source !== readerIframeRef.current?.contentWindow) return;
+      if ((event.data as { type?: string } | null)?.type !== "22-reader-preview-ready") return;
+      sendReaderPreviewFile();
+    };
+
+    window.addEventListener("message", handlePreviewReady);
+    return () => window.removeEventListener("message", handlePreviewReady);
+  }, [readerPreviewFile, readerPreviewHref]);
+
+  useEffect(() => {
     if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
-    const timer = window.setTimeout(sendReaderPreviewFile, 0);
-    return () => window.clearTimeout(timer);
+    const timers = [100, 400, 1000].map(delay =>
+      window.setTimeout(sendReaderPreviewFile, delay)
+    );
+    return () => timers.forEach(timer => window.clearTimeout(timer));
   }, [readerPreviewFile, readerPreviewHref]);
 
   return (

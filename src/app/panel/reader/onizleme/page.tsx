@@ -32,7 +32,7 @@ export default function Page() {
     const receivePreviewFile = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
       const data = event.data as { type?: string; file?: unknown } | null;
-      if (data?.type !== "22-reader-preview-file" || !(data.file instanceof File)) return;
+      if (data?.type !== "22-reader-preview-file" || !(data.file instanceof Blob)) return;
 
       if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current);
       const nextUrl = URL.createObjectURL(data.file);
