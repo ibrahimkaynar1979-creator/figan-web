@@ -759,3 +759,11 @@
   .panel[data-panel="toc"] .tocSearch{margin-bottom:8px}
   .panel[data-panel="toc"] .tocList{overflow:visible;padding-right:0}
 }
+
+.alignRow{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.alignRow button{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:12px;padding:10px 8px;display:grid;justify-items:center;gap:6px;cursor:pointer;}
+.alignRow .selected{border-color:var(--accent);background:var(--accent-soft);}
+.alignIcon,.justifyIcon{display:block;width:28px;height:22px;overflow:hidden;font:20px/18px Arial,sans-serif;letter-spacing:-4px;color:currentColor;}
+.alignIcon{text-align:left;}
+.justifyIcon{text-align:justify;}
+.alignRow small{font:12px Arial,sans-serif;color:var(--muted);}

@@ -29,6 +29,8 @@ const books = [
     publisher: "22 Yayınevi",
     updated: "Bugün",
     readerHref: "/oku/bir-sifacinin-kanadi",
+    epubUrl: "",
+    previewHref: "/oku/bir-sifacinin-kanadi",
   },
 ];
 
@@ -84,6 +86,8 @@ export default function ReaderPanelPage() {
             ? new Date(book.updatedAt).toLocaleDateString("tr-TR")
             : "Bugün",
           readerHref: book.readerHref || `/oku/${book.slug}`,
+          epubUrl: book.epubUrl || "",
+          previewHref: book.status === "Yayında" ? (book.readerHref || `/oku/${book.slug}`) : (book.epubUrl ? `/panel/reader/onizleme?${new URLSearchParams({ epub: book.epubUrl, title: book.title, author: book.author || "", cover: normalizeCoverSrc(book.coverUrl || book.coverName) }).toString()}` : ""),
         }))
       );
     });
@@ -204,7 +208,7 @@ export default function ReaderPanelPage() {
                     <span>Yazar Profili</span>
                     <code>{book.authorHref}</code>
                   </a>
-                  <a href={book.readerHref} target="_blank" rel="noreferrer">
+                  <a href={book.previewHref || book.readerHref} target="_blank" rel="noreferrer">
                     <span>Reader Adresi</span>
                     <code>{book.readerHref}</code>
                   </a>
@@ -215,7 +219,7 @@ export default function ReaderPanelPage() {
                 </div>
 
                 <div className={styles.cardActions}>
-                  <a href={book.readerHref} target="_blank" rel="noreferrer">Reader&apos;ı Aç <span>↗</span></a>
+                  <a href={book.previewHref || book.readerHref} target="_blank" rel="noreferrer">Reader&apos;ı Aç <span>↗</span></a>
                   <a href={`/panel/reader/${book.slug}/duzenle`}>Kitabı Düzenle <span>→</span></a>
                 </div>
               </div>

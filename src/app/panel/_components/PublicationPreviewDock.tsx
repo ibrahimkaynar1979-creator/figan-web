@@ -19,6 +19,7 @@ type Props = {
   publicationHref?: string;
   audioPublicationHref?: string;
   audioPreviewHref?: string;
+  readerPreviewEpubUrl?: string;
   sourceReady?: boolean;
   audioSourceReady?: boolean;
   onModeChange?: (mode: "reader" | "audio") => void;
@@ -38,6 +39,7 @@ export default function PublicationPreviewDock({
   publicationHref,
   audioPublicationHref,
   audioPreviewHref,
+  readerPreviewEpubUrl,
   sourceReady = false,
   audioSourceReady = false,
   onModeChange,
@@ -58,6 +60,7 @@ export default function PublicationPreviewDock({
   const safeTitle = title.trim() || "Kitap adı";
   const safeAuthor = author.trim() || "Yazar adı";
   const cover = coverSrc || "/bir_sifaci_png.png";
+  const readerPreviewHref = readerPreviewEpubUrl ? `/panel/reader/onizleme?${new URLSearchParams({ epub: readerPreviewEpubUrl, title: safeTitle, author: safeAuthor, cover }).toString()}` : "";
 
   return (
     <aside className={styles.dock} aria-label="Yayın önizleme alanı">
@@ -88,6 +91,11 @@ export default function PublicationPreviewDock({
 
       <div className={styles.deviceStage}>
         {previewMode === "reader" ? (
+          readerPreviewHref ? (
+            <div className={styles.readerIframeShell}>
+              <iframe className={styles.readerIframe} src={readerPreviewHref} title="22 Reader canlı önizleme" />
+            </div>
+          ) : (
           <div className={styles.readerDevice}>
             <header>
               <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
@@ -97,6 +105,7 @@ export default function PublicationPreviewDock({
               <div className={styles.readerCover}>
                 <img src={cover} alt="" />
               </div>
+              <h2 className={styles.readerTitle}>{safeTitle}</h2>
               <h3>{safeAuthor}</h3>
               <p>22 Yayınevi</p>
               <button type="button">Okumaya Başla <span>→</span></button>
@@ -110,6 +119,7 @@ export default function PublicationPreviewDock({
               </div>
             </div>
           </div>
+          )
         ) : (
           <div className={styles.audioIframeShell}>
             <iframe

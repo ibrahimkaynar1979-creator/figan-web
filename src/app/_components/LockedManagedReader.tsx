@@ -34,7 +34,7 @@ export type LockedReaderBook = {
 
 declare global {
   interface Window {
-    ePub?: (source: string, options?: Record<string, unknown>) => any;
+    ePub?: (source: string) => any;
     JSZip?: unknown;
   }
 }
