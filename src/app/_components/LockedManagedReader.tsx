@@ -99,7 +99,7 @@ const READER_FONTS: Record<ReaderFont, string> = {
   modern: '"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif',
 };
 
-export default function LockedManagedReader({ book }: { book: LockedReaderBook }) {
+export default function LockedManagedReader({ book, embedded = false }: { book: LockedReaderBook; embedded?: boolean }) {
   const [sections, setSections] = useState<Section[]>([]);
   const [chapterCount, setChapterCount] = useState(0);
   const [estimatedWordCount, setEstimatedWordCount] = useState(0);
@@ -139,9 +139,10 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
   const swipeStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
 
   useEffect(() => {
+    if (embedded) return;
     document.body.classList.add("reader-route");
     return () => document.body.classList.remove("reader-route");
-  }, []);
+  }, [embedded]);
   useEffect(() => {
     let cancelled = false;
     let epubBook: any = null;
@@ -1035,6 +1036,7 @@ export default function LockedManagedReader({ book }: { book: LockedReaderBook }
       data-font={readerFont}
       data-reading={index >= 0 ? "true" : "false"}
       data-chrome={chromeVisible ? "visible" : "hidden"}
+      data-embedded={embedded ? "true" : "false"}
       style={{
         "--reader-font-size": fontSize + "px",
         "--reader-line-height": String(lineHeight),

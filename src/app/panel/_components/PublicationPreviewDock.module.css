@@ -525,3 +525,52 @@
 .readerOverlayBody>div{
   height:100%;
 }
+
+
+/* In-panel EPUB Reader: replaces the compact cover card without leaving the project page. */
+.readerInlineShell{
+  width:min(340px,100%);
+  height:500px;
+  margin:0 auto;
+  overflow:hidden;
+  border:1px solid var(--po-border);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(43,73,98,.10);
+}
+.readerInlineBar{
+  height:42px;
+  padding:0 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  border-bottom:1px solid var(--po-border);
+  background:var(--po-surface);
+  position:relative;
+  z-index:2;
+}
+.readerInlineBar button{
+  border:0;
+  background:transparent;
+  color:var(--po-brand);
+  font:700 10px/1 var(--po-font-ui),Arial,sans-serif;
+  cursor:pointer;
+  padding:6px 4px;
+}
+.readerInlineBar span{
+  min-width:0;
+  color:var(--po-text-secondary);
+  font:700 8px/1 var(--po-font-ui),Arial,sans-serif;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.readerInlineViewport{
+  width:263.1579%;
+  height:1205px;
+  zoom:.38;
+  overflow:hidden;
+  background:#f7f2e8;
+}
+.readerOverlay,.readerOverlayClose,.readerOverlayBody{display:none!important}

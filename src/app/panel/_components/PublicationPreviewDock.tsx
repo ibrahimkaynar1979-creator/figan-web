@@ -76,15 +76,6 @@ export default function PublicationPreviewDock({
     return () => URL.revokeObjectURL(url);
   }, [readerPreviewFile]);
 
-  useEffect(() => {
-    if (!readerOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [readerOpen]);
-
   const readerSource = localReaderEpubUrl || readerPreviewEpubUrl || "";
 
 
@@ -117,35 +108,57 @@ export default function PublicationPreviewDock({
 
       <div className={styles.deviceStage}>
         {previewMode === "reader" ? (
-          <div className={styles.readerDevice}>
-            <header>
-              <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
-              <span>⋮</span>
-            </header>
-            <div className={styles.readerBody}>
-              <div className={styles.readerCover}>
-                <img src={cover} alt="" />
+          readerOpen && readerSource ? (
+            <div className={styles.readerInlineShell}>
+              <div className={styles.readerInlineBar}>
+                <button type="button" onClick={() => setReaderOpen(false)}>← Kapağa dön</button>
+                <span>22 Reader · EPUB Önizleme</span>
               </div>
-              <h2 className={styles.readerTitle}>{safeTitle}</h2>
-              <h3>{safeAuthor}</h3>
-              <p>22 Yayınevi</p>
-              <button
-                type="button"
-                disabled={!readerSource}
-                onClick={() => readerSource && setReaderOpen(true)}
-              >
-                {readerSource ? "Reader'ı Aç" : "Okumaya Başla"} <span>→</span>
-              </button>
-              <div className={styles.readerStats}>
-                <span>▣ {readerSource ? chapterLabel : "EPUB bekleniyor"}</span>
-                <span>◷ {readerSource ? readingTimeLabel : "bekliyor"}</span>
-                <span>▤ EPUB</span>
-              </div>
-              <div className={styles.readerBrand}>
-                <Image src={BRAND_ASSETS.readerLogo} alt="22 Reader" width={520} height={170} />
+              <div className={styles.readerInlineViewport}>
+                <LockedManagedReader
+                  embedded
+                  book={{
+                    slug: "panel-canli-onizleme",
+                    title: safeTitle,
+                    author: safeAuthor,
+                    authorHref: "#",
+                    coverUrl: cover,
+                    epubUrl: readerSource,
+                  }}
+                />
               </div>
             </div>
-          </div>
+          ) : (
+            <div className={styles.readerDevice}>
+              <header>
+                <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
+                <span>⋮</span>
+              </header>
+              <div className={styles.readerBody}>
+                <div className={styles.readerCover}>
+                  <img src={cover} alt="" />
+                </div>
+                <h2 className={styles.readerTitle}>{safeTitle}</h2>
+                <h3>{safeAuthor}</h3>
+                <p>22 Yayınevi</p>
+                <button
+                  type="button"
+                  disabled={!readerSource}
+                  onClick={() => readerSource && setReaderOpen(true)}
+                >
+                  {readerSource ? "Reader'ı Aç" : "Okumaya Başla"} <span>→</span>
+                </button>
+                <div className={styles.readerStats}>
+                  <span>▣ {readerSource ? chapterLabel : "EPUB bekleniyor"}</span>
+                  <span>◷ {readerSource ? readingTimeLabel : "bekliyor"}</span>
+                  <span>▤ EPUB</span>
+                </div>
+                <div className={styles.readerBrand}>
+                  <Image src={BRAND_ASSETS.readerLogo} alt="22 Reader" width={520} height={170} />
+                </div>
+              </div>
+            </div>
+          )
         ) : (
           <div className={styles.audioIframeShell}>
             <iframe
@@ -194,30 +207,6 @@ export default function PublicationPreviewDock({
           </a>
         ) : null}
       </section>
-      {readerOpen && readerSource ? (
-        <div className={styles.readerOverlay} role="dialog" aria-modal="true" aria-label="22 Reader önizleme">
-          <button
-            type="button"
-            className={styles.readerOverlayClose}
-            onClick={() => setReaderOpen(false)}
-            aria-label="Reader önizlemeyi kapat"
-          >
-            ← Projeye Dön
-          </button>
-          <div className={styles.readerOverlayBody}>
-            <LockedManagedReader
-              book={{
-                slug: "panel-canli-onizleme",
-                title: safeTitle,
-                author: safeAuthor,
-                authorHref: "#",
-                coverUrl: cover,
-                epubUrl: readerSource,
-              }}
-            />
-          </div>
-        </div>
-      ) : null}
     </aside>
   );
 }

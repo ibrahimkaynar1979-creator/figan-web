@@ -767,3 +767,20 @@
 .alignIcon{text-align:left;}
 .justifyIcon{text-align:justify;}
 .alignRow small{font:12px Arial,sans-serif;color:var(--muted);}
+
+
+/* Embedded preview mode used inside Publishing OS inspector. */
+.reader[data-embedded="true"]{
+  min-height:1205px;
+}
+.reader[data-embedded="true"] .sidebar{
+  position:relative;
+  top:auto;
+  height:1205px;
+}
+.reader[data-embedded="true"] .stage{
+  min-height:1205px;
+}
+.reader[data-embedded="true"] .readingArea{
+  min-height:1131px;
+}
