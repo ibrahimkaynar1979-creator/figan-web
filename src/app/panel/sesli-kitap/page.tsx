@@ -583,6 +583,7 @@ export default function AudiobookUploadPage() {
         audioDuration={formatTime(detectedDuration || current?.duration)}
         chapterLabel={parsedChapters.length ? `${parsedChapters.length} bölüm` : `${current?.chapters?.length || 1} bölüm`}
         status={status === "done" ? "Yayına hazır" : "Taslak"}
+        audioPublicationHref={previewSlug ? `/dinle/${previewSlug}` : undefined}
         audioPreviewHref={audioPreviewHref}
       />
     </main>
