@@ -82,7 +82,15 @@
 .fontFamilyRow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .fontFamilyRow button{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:12px;padding:12px 6px;display:grid;justify-items:center;gap:3px;font:24px Georgia,serif;cursor:pointer}
 .fontFamilyRow span{font:12px Arial,sans-serif;color:var(--muted)}
-.fontFamilyRow .selected{border-color:var(--accent);background:var(--accent-soft)}
+.fontFamilyRow .selected,
+.fontFamilyRow button[data-selected="true"]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.alignRow{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.alignRow button{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:12px;padding:11px 8px;display:grid;justify-items:center;gap:5px;cursor:pointer}
+.alignRow button.selected{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.alignRow small{font:12px Arial,sans-serif;color:var(--muted)}
+.alignIcon,.justifyIcon{display:block;width:26px;font:21px/1 Arial,sans-serif;overflow:hidden}
+.alignIcon{text-align:left}
+.justifyIcon{text-align:justify;letter-spacing:2px}
 .fontRow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
 .fontRow input{accent-color:var(--accent)}
 .fontRow span:last-child{font-size:24px}
