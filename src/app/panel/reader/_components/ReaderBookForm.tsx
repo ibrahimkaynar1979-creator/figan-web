@@ -557,6 +557,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
             coverSrc={coverSource}
             status={status}
             publicationHref={slug ? readerHref : undefined}
+            audioPublicationHref={slug ? `/dinle/${slug}` : undefined}
             audioPreviewHref={slug ? `/dinle/${slug}` : "/dinle/bir-sifacinin-kanadi"}
             sourceReady={hasEpub}
             chapterLabel={hasEpub ? "EPUB bağlı" : "EPUB bekleniyor"}
