@@ -100,6 +100,7 @@ export default function PublicationPreviewDock({
               <div className={styles.readerCover}>
                 <img src={cover} alt="" />
               </div>
+              <h2>{safeTitle}</h2>
               <h3>{safeAuthor}</h3>
               <p>22 Yayınevi</p>
               <button type="button">Okumaya Başla <span>→</span></button>
