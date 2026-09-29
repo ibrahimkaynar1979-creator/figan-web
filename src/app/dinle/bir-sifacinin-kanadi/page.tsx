@@ -124,6 +124,7 @@ export default function BirSifacininKanadiPlayer() {
   const [sleepMinutes,setSleepMinutes] = useState<number | null>(null);
   const [sleepLeft,setSleepLeft] = useState<number | null>(null);
   const [audioError,setAudioError] = useState(false);
+  const [embeddedPreview,setEmbeddedPreview] = useState(false);
   const [audioSrc,setAudioSrc] = useState(FALLBACK_AUDIO);
   const [bookMeta,setBookMeta] = useState({
     slug:"bir-sifacinin-kanadi",
@@ -138,6 +139,10 @@ export default function BirSifacininKanadiPlayer() {
   const chapter = activeChapters[chapterIndex] ?? activeChapters[0] ?? {id:1,title:"Kitabın Tamamı",start:0};
   const chapterEnd = activeChapters[chapterIndex + 1]?.start ?? duration;
   const chapterDuration = Math.max(0,chapterEnd - chapter.start);
+
+  useEffect(()=>{
+    setEmbeddedPreview(new URLSearchParams(window.location.search).get("preview")==="1");
+  },[]);
 
   useEffect(()=>{
     document.body.classList.add("reader-route");
@@ -174,7 +179,9 @@ export default function BirSifacininKanadiPlayer() {
             : typeof data?.url==="string" && data.url
               ? data.url
               : "";
-        if(nextAudio) setAudioSrc(nextAudio);
+        const previewAudio=preview ? params.get("audio") : "";
+        if(previewAudio) setAudioSrc(previewAudio);
+        else if(nextAudio) setAudioSrc(nextAudio);
 
         const dataSlug=typeof data?.slug==="string" && data.slug ? data.slug : "bir-sifacinin-kanadi";
         const dataCover=
@@ -192,7 +199,10 @@ export default function BirSifacininKanadiPlayer() {
           coverUrl:preview && params.get("cover") ? params.get("cover")! : dataCover,
         });
 
-        if(typeof data?.duration==="number" && Number.isFinite(data.duration) && data.duration>0){
+        const previewDuration=preview ? Number(params.get("duration")) : NaN;
+        if(Number.isFinite(previewDuration) && previewDuration>0){
+          setDuration(previewDuration);
+        }else if(typeof data?.duration==="number" && Number.isFinite(data.duration) && data.duration>0){
           setDuration(data.duration);
         }
         if(Array.isArray(data?.chapters) && data.chapters.length){
@@ -416,7 +426,7 @@ export default function BirSifacininKanadiPlayer() {
   };
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${embeddedPreview ? styles.previewEmbed : ""}`}>
       <audio
         ref={audioRef}
         src={audioSrc}
