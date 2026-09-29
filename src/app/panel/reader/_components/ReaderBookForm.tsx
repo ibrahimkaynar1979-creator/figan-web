@@ -89,16 +89,6 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   }, [coverFile]);
 
   useEffect(() => {
-    if (!epubFile) {
-      setEpubPreviewUrl("");
-      return;
-    }
-    const url = URL.createObjectURL(epubFile);
-    setEpubPreviewUrl(url);
-    return () => URL.revokeObjectURL(url);
-  }, [epubFile]);
-
-  useEffect(() => {
     document.body.classList.add("reader-admin-route");
 
     void Promise.all([listManagedAuthors(), getPanelPersistenceStatus()]).then(
@@ -284,23 +274,6 @@ export default function ReaderBookForm({ mode, initial }: Props) {
         ? initial.cover
         : "/" + initial.cover
       : "");
-
-  const previewEpub = epubPreviewUrl || epubUrl;
-  let readerPreviewHref: string | undefined;
-
-  if (previewEpub) {
-    if (mode === "edit" && !epubFile && slug) {
-      readerPreviewHref = readerHref;
-    } else {
-      const params = new URLSearchParams();
-      params.set("title", title.trim() || "Kitap adı");
-      params.set("author", author?.name || "22 Yayınevi");
-      params.set("slug", slug || "onizleme");
-      params.set("epub", previewEpub);
-      if (coverSource) params.set("cover", coverSource);
-      readerPreviewHref = `/oku/onizleme?${params.toString()}`;
-    }
-  }
 
   return (
     <main className={styles.page}>
@@ -581,7 +554,7 @@ export default function ReaderBookForm({ mode, initial }: Props) {
             author={author?.name || ""}
             coverSrc={coverSource}
             status={status}
-            publicationHref={readerPreviewHref || lastSavedHref || (mode === "edit" && slug ? readerHref : undefined)}
+            publicationHref={lastSavedHref || (mode === "edit" && slug ? readerHref : undefined)}
             audioPreviewHref={slug ? `/dinle/${slug}` : "/dinle/bir-sifacinin-kanadi"}
             sourceReady={hasEpub}
             chapterLabel={hasEpub ? "EPUB bağlı" : "EPUB bekleniyor"}
