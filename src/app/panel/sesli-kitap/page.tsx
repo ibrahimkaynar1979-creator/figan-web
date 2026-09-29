@@ -395,6 +395,15 @@ export default function AudiobookUploadPage() {
 
   const currentSize=current?.size || healthStatus?.totalSize;
   const displayCover=coverPreview || current?.coverUrl || "/bir_sifaci_png.png";
+  const previewSlug=slug || current?.slug || "bir-sifacinin-kanadi";
+  const previewParams=new URLSearchParams({
+    preview:"1",
+    title:title || current?.title || "Bir Şifacının Kanadı",
+    author:author || current?.author || "Figen Yavuz",
+    voice:voice || current?.voice || "",
+    cover:displayCover,
+  });
+  const audioPreviewHref=`/dinle/${previewSlug}?${previewParams.toString()}`;
 
   return (
     <main className={styles.page}>
@@ -562,6 +571,7 @@ export default function AudiobookUploadPage() {
         audioDuration={formatTime(detectedDuration || current?.duration)}
         chapterLabel={parsedChapters.length ? `${parsedChapters.length} bölüm` : `${current?.chapters?.length || 1} bölüm`}
         status={status === "done" ? "Yayına hazır" : "Taslak"}
+        audioPreviewHref={audioPreviewHref}
       />
     </main>
   );
