@@ -142,7 +142,7 @@ export async function getCurrentAudiobook(): Promise<CurrentAudiobookResult> {
         url: preferred.url,
         pathname: preferred.pathname,
         size: preferred.size,
-        uploadedAt: preferred.uploadedAt,
+        uploadedAt: preferred.uploadedAt instanceof Date ? preferred.uploadedAt.toISOString() : String(preferred.uploadedAt),
         source: "blob",
       };
     }
