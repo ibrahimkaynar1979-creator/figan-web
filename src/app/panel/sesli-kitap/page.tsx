@@ -101,6 +101,7 @@ export default function AudiobookUploadPage() {
   const [audioFile,setAudioFile] = useState<File | null>(null);
   const [coverFile,setCoverFile] = useState<File | null>(null);
   const [coverPreview,setCoverPreview] = useState("");
+  const [audioPreview,setAudioPreview] = useState("");
   const [detectedDuration,setDetectedDuration] = useState<number | undefined>();
   const [title,setTitle] = useState("");
   const [author,setAuthor] = useState("");
@@ -178,22 +179,31 @@ export default function AudiobookUploadPage() {
     return()=>URL.revokeObjectURL(url);
   },[coverFile]);
 
-  function inspectAudio(file:File | null){
-    setAudioFile(file);
-    setDetectedDuration(undefined);
-    setStatus("idle");
-    setMessage("");
-    if(!file) return;
+  useEffect(()=>{
+    if(!audioFile){
+      setAudioPreview("");
+      setDetectedDuration(undefined);
+      return;
+    }
 
-    const url=URL.createObjectURL(file);
+    const url=URL.createObjectURL(audioFile);
+    setAudioPreview(url);
+
     const audio=document.createElement("audio");
     audio.preload="metadata";
     audio.src=url;
     audio.onloadedmetadata=()=>{
       if(Number.isFinite(audio.duration)) setDetectedDuration(audio.duration);
-      URL.revokeObjectURL(url);
     };
-    audio.onerror=()=>URL.revokeObjectURL(url);
+
+    return()=>URL.revokeObjectURL(url);
+  },[audioFile]);
+
+  function inspectAudio(file:File | null){
+    setAudioFile(file);
+    setDetectedDuration(undefined);
+    setStatus("idle");
+    setMessage("");
   }
 
   async function login(event: FormEvent<HTMLFormElement>) {
@@ -402,6 +412,8 @@ export default function AudiobookUploadPage() {
     author:author || current?.author || "Figen Yavuz",
     voice:voice || current?.voice || "",
     cover:displayCover,
+    audio:audioPreview,
+    duration:detectedDuration ? String(detectedDuration) : "",
   });
   const audioPreviewHref=`/dinle/${previewSlug}?${previewParams.toString()}`;
 
