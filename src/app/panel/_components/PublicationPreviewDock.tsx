@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./PublicationPreviewDock.module.css";
 import { BRAND_ASSETS } from "../../../lib/brandAssets";
+import LockedManagedReader from "../../_components/LockedManagedReader";
 
 type Props = {
   activeMode?: "reader" | "audio";
@@ -47,7 +48,8 @@ export default function PublicationPreviewDock({
   onModeChange,
 }: Props) {
   const [previewMode, setPreviewMode] = useState<"reader" | "audio">(activeMode);
-  const readerIframeRef = useRef<HTMLIFrameElement | null>(null);
+  const [readerOpen, setReaderOpen] = useState(false);
+  const [localReaderEpubUrl, setLocalReaderEpubUrl] = useState("");
 
   useEffect(() => {
     setPreviewMode(activeMode);
@@ -63,51 +65,28 @@ export default function PublicationPreviewDock({
   const safeTitle = title.trim() || "Kitap adı";
   const safeAuthor = author.trim() || "Yazar adı";
   const cover = coverSrc || "/bir_sifaci_png.png";
-  const readerPreviewHref = readerPreviewFile || readerPreviewEpubUrl
-    ? `/panel/reader/onizleme?${new URLSearchParams({
-        ...(readerPreviewEpubUrl ? { epub: readerPreviewEpubUrl } : {}),
-        title: safeTitle,
-        author: safeAuthor,
-        cover,
-      }).toString()}`
-    : "";
+  useEffect(() => {
+    if (!readerPreviewFile) {
+      setLocalReaderEpubUrl("");
+      return;
+    }
 
-  const sendReaderPreviewFile = async () => {
-    if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
-    const buffer = await readerPreviewFile.arrayBuffer();
-    readerIframeRef.current.contentWindow.postMessage(
-      {
-        type: "22-reader-preview-file",
-        buffer,
-        name: readerPreviewFile.name,
-        mime: readerPreviewFile.type || "application/epub+zip",
-      },
-      window.location.origin,
-      [buffer]
-    );
-  };
+    const url = URL.createObjectURL(readerPreviewFile);
+    setLocalReaderEpubUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [readerPreviewFile]);
 
   useEffect(() => {
-    if (!readerPreviewFile) return;
-
-    const handlePreviewReady = (event: MessageEvent) => {
-      if (event.origin !== window.location.origin) return;
-      if (event.source !== readerIframeRef.current?.contentWindow) return;
-      if ((event.data as { type?: string } | null)?.type !== "22-reader-preview-ready") return;
-      void sendReaderPreviewFile();
+    if (!readerOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
     };
+  }, [readerOpen]);
 
-    window.addEventListener("message", handlePreviewReady);
-    return () => window.removeEventListener("message", handlePreviewReady);
-  }, [readerPreviewFile, readerPreviewHref]);
+  const readerSource = localReaderEpubUrl || readerPreviewEpubUrl || "";
 
-  useEffect(() => {
-    if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
-    const timers = [100, 400, 1000].map(delay =>
-      window.setTimeout(() => { void sendReaderPreviewFile(); }, delay)
-    );
-    return () => timers.forEach(timer => window.clearTimeout(timer));
-  }, [readerPreviewFile, readerPreviewHref]);
 
   return (
     <aside className={styles.dock} aria-label="Yayın önizleme alanı">
@@ -138,11 +117,6 @@ export default function PublicationPreviewDock({
 
       <div className={styles.deviceStage}>
         {previewMode === "reader" ? (
-          readerPreviewHref ? (
-            <div className={styles.readerIframeShell}>
-              <iframe ref={readerIframeRef} className={styles.readerIframe} src={readerPreviewHref} title="22 Reader canlı önizleme" onLoad={() => { void sendReaderPreviewFile(); }} />
-            </div>
-          ) : (
           <div className={styles.readerDevice}>
             <header>
               <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
@@ -155,10 +129,16 @@ export default function PublicationPreviewDock({
               <h2 className={styles.readerTitle}>{safeTitle}</h2>
               <h3>{safeAuthor}</h3>
               <p>22 Yayınevi</p>
-              <button type="button">Okumaya Başla <span>→</span></button>
+              <button
+                type="button"
+                disabled={!readerSource}
+                onClick={() => readerSource && setReaderOpen(true)}
+              >
+                {readerSource ? "Reader'ı Aç" : "Okumaya Başla"} <span>→</span>
+              </button>
               <div className={styles.readerStats}>
-                <span>▣ {chapterLabel}</span>
-                <span>◷ {readingTimeLabel}</span>
+                <span>▣ {readerSource ? chapterLabel : "EPUB bekleniyor"}</span>
+                <span>◷ {readerSource ? readingTimeLabel : "bekliyor"}</span>
                 <span>▤ EPUB</span>
               </div>
               <div className={styles.readerBrand}>
@@ -166,7 +146,6 @@ export default function PublicationPreviewDock({
               </div>
             </div>
           </div>
-          )
         ) : (
           <div className={styles.audioIframeShell}>
             <iframe
@@ -215,6 +194,30 @@ export default function PublicationPreviewDock({
           </a>
         ) : null}
       </section>
+      {readerOpen && readerSource ? (
+        <div className={styles.readerOverlay} role="dialog" aria-modal="true" aria-label="22 Reader önizleme">
+          <button
+            type="button"
+            className={styles.readerOverlayClose}
+            onClick={() => setReaderOpen(false)}
+            aria-label="Reader önizlemeyi kapat"
+          >
+            ← Projeye Dön
+          </button>
+          <div className={styles.readerOverlayBody}>
+            <LockedManagedReader
+              book={{
+                slug: "panel-canli-onizleme",
+                title: safeTitle,
+                author: safeAuthor,
+                authorHref: "#",
+                coverUrl: cover,
+                epubUrl: readerSource,
+              }}
+            />
+          </div>
+        </div>
+      ) : null}
     </aside>
   );
 }

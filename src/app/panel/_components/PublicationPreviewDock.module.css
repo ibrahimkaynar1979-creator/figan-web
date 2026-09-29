@@ -490,3 +490,38 @@
   .dock{max-height:none;overflow:visible}
   .readerIframeShell{height:560px;max-height:none;min-height:0}
 }
+
+
+/* Reader stays inside the project page: compact card + full-screen in-page preview. */
+.readerBody>button:disabled{
+  opacity:.48;
+  cursor:not-allowed;
+}
+.readerOverlay{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  background:#f5fafc;
+  display:grid;
+  grid-template-rows:52px minmax(0,1fr);
+}
+.readerOverlayClose{
+  appearance:none;
+  border:0;
+  border-bottom:1px solid #dce8ee;
+  background:#fff;
+  color:#18324a;
+  font:700 13px/1 var(--po-font-ui),Arial,sans-serif;
+  text-align:left;
+  padding:0 22px;
+  cursor:pointer;
+  box-shadow:0 3px 12px rgba(42,72,96,.08);
+}
+.readerOverlayBody{
+  min-height:0;
+  overflow:hidden;
+  position:relative;
+}
+.readerOverlayBody>div{
+  height:100%;
+}
