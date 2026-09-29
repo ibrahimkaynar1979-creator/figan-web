@@ -24,13 +24,27 @@ function Icon({ name }: { name: IconName }) {
   return <svg {...common}><path d="M4 5.5c3-1.2 5.7-.9 8 1v13c-2.3-1.9-5-2.2-8-1V5.5Z"/><path d="M20 5.5c-3-1.2-5.7-.9-8 1v13c2.3-1.9 5-2.2 8-1V5.5Z"/></svg>;
 }
 
-const Item = ({ href, icon, label, active, badge }: { href:string; icon:IconName; label:string; active?:boolean; badge?:string }) => (
-  <a href={href} className={active ? styles.active : ""}>
-    <span className={styles.icon}><Icon name={icon}/></span>
-    <span>{label}</span>
-    {badge ? <small>{badge}</small> : null}
-  </a>
-);
+const Item = ({ href, icon, label, active, badge, disabled=false }: { href:string; icon:IconName; label:string; active?:boolean; badge?:string; disabled?:boolean }) => {
+  const className = [active ? styles.active : "", disabled ? styles.disabled : ""].filter(Boolean).join(" ");
+
+  if (disabled) {
+    return (
+      <span className={className} aria-disabled="true">
+        <span className={styles.icon}><Icon name={icon}/></span>
+        <span>{label}</span>
+        {badge ? <small>{badge}</small> : null}
+      </span>
+    );
+  }
+
+  return (
+    <a href={href} className={className}>
+      <span className={styles.icon}><Icon name={icon}/></span>
+      <span>{label}</span>
+      {badge ? <small>{badge}</small> : null}
+    </a>
+  );
+};
 
 export default function PanelSidebar({ active="projects", footer }: Props) {
   return (
@@ -50,9 +64,9 @@ export default function PanelSidebar({ active="projects", footer }: Props) {
         <Item href="/panel/sesli-kitap" icon="audio" label="Sesli Kitaplar" active={active==="audio"} />
 
         <span className={styles.group}>ÜRETİM</span>
-        <Item href="/panel/reader/yeni#uretim" icon="production" label="Üretim Merkezi" badge="Yakında" active={active==="production"} />
-        <Item href="/panel/reader/yeni#dagitim" icon="distribution" label="Dijital Dağıtım" badge="Yakında" active={active==="distribution"} />
-        <Item href="/panel/reader/yeni#analitik" icon="analytics" label="Analitik" badge="Yakında" active={active==="analytics"} />
+        <Item href="/panel/reader/yeni#uretim" icon="production" label="Üretim Merkezi" badge="Yakında" active={active==="production"} disabled />
+        <Item href="/panel/reader/yeni#dagitim" icon="distribution" label="Dijital Dağıtım" badge="Yakında" active={active==="distribution"} disabled />
+        <Item href="/panel/reader/yeni#analitik" icon="analytics" label="Analitik" badge="Yakında" active={active==="analytics"} disabled />
       </nav>
 
       <div className={styles.footer}>
