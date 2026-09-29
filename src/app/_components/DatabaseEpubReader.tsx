@@ -19,7 +19,7 @@ type Props = {
 
 declare global {
   interface Window {
-    ePub?: (source: string) => any;
+    ePub?: (source: string, options?: Record<string, unknown>) => any;
   }
 }
 
