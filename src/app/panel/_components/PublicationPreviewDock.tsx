@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./PublicationPreviewDock.module.css";
 import { BRAND_ASSETS } from "../../../lib/brandAssets";
 
@@ -20,6 +20,7 @@ type Props = {
   audioPublicationHref?: string;
   audioPreviewHref?: string;
   readerPreviewEpubUrl?: string;
+  readerPreviewFile?: File | null;
   sourceReady?: boolean;
   audioSourceReady?: boolean;
   onModeChange?: (mode: "reader" | "audio") => void;
@@ -40,11 +41,13 @@ export default function PublicationPreviewDock({
   audioPublicationHref,
   audioPreviewHref,
   readerPreviewEpubUrl,
+  readerPreviewFile,
   sourceReady = false,
   audioSourceReady = false,
   onModeChange,
 }: Props) {
   const [previewMode, setPreviewMode] = useState<"reader" | "audio">(activeMode);
+  const readerIframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
     setPreviewMode(activeMode);
@@ -60,7 +63,28 @@ export default function PublicationPreviewDock({
   const safeTitle = title.trim() || "Kitap adı";
   const safeAuthor = author.trim() || "Yazar adı";
   const cover = coverSrc || "/bir_sifaci_png.png";
-  const readerPreviewHref = readerPreviewEpubUrl ? `/panel/reader/onizleme?${new URLSearchParams({ epub: readerPreviewEpubUrl, title: safeTitle, author: safeAuthor, cover }).toString()}` : "";
+  const readerPreviewHref = readerPreviewFile || readerPreviewEpubUrl
+    ? `/panel/reader/onizleme?${new URLSearchParams({
+        ...(readerPreviewEpubUrl ? { epub: readerPreviewEpubUrl } : {}),
+        title: safeTitle,
+        author: safeAuthor,
+        cover,
+      }).toString()}`
+    : "";
+
+  const sendReaderPreviewFile = () => {
+    if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
+    readerIframeRef.current.contentWindow.postMessage(
+      { type: "22-reader-preview-file", file: readerPreviewFile },
+      window.location.origin
+    );
+  };
+
+  useEffect(() => {
+    if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
+    const timer = window.setTimeout(sendReaderPreviewFile, 0);
+    return () => window.clearTimeout(timer);
+  }, [readerPreviewFile, readerPreviewHref]);
 
   return (
     <aside className={styles.dock} aria-label="Yayın önizleme alanı">
@@ -93,7 +117,7 @@ export default function PublicationPreviewDock({
         {previewMode === "reader" ? (
           readerPreviewHref ? (
             <div className={styles.readerIframeShell}>
-              <iframe className={styles.readerIframe} src={readerPreviewHref} title="22 Reader canlı önizleme" />
+              <iframe ref={readerIframeRef} className={styles.readerIframe} src={readerPreviewHref} title="22 Reader canlı önizleme" onLoad={sendReaderPreviewFile} />
             </div>
           ) : (
           <div className={styles.readerDevice}>

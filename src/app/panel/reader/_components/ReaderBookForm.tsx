@@ -67,7 +67,6 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   const [epubName, setEpubName] = useState(initial?.epubName ?? "");
   const [epubFile, setEpubFile] = useState<File | null>(null);
   const [epubUrl, setEpubUrl] = useState(initial?.epubUrl ?? "");
-  const [epubPreview, setEpubPreview] = useState("");
 
   const [coverName, setCoverName] = useState("");
   const [coverFile, setCoverFile] = useState<File | null>(null);
@@ -81,15 +80,6 @@ export default function ReaderBookForm({ mode, initial }: Props) {
   const [authorOptions, setAuthorOptions] = useState<AuthorOption[]>(BUILT_IN_AUTHORS);
   const [systemState, setSystemState] = useState<SystemState | null>(null);
 
-  useEffect(() => {
-    if (!epubFile) {
-      setEpubPreview("");
-      return;
-    }
-    const url = URL.createObjectURL(epubFile);
-    setEpubPreview(url);
-    return () => URL.revokeObjectURL(url);
-  }, [epubFile]);
 
   useEffect(() => {
     if (!coverFile) {
@@ -571,7 +561,8 @@ export default function ReaderBookForm({ mode, initial }: Props) {
             audioPublicationHref={slug ? `/dinle/${slug}` : undefined}
             audioPreviewHref={slug ? `/dinle/${slug}` : "/dinle/bir-sifacinin-kanadi"}
             sourceReady={hasEpub}
-            readerPreviewEpubUrl={epubPreview || epubUrl}
+            readerPreviewEpubUrl={epubFile ? "" : epubUrl}
+            readerPreviewFile={epubFile}
             chapterLabel={hasEpub ? "EPUB bağlı" : "EPUB bekleniyor"}
             readingTimeLabel={hasEpub ? "otomatik" : "bekliyor"}
           />
