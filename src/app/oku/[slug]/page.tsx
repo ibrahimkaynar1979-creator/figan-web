@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const books = await repository.listBooks();
   const book = books.find(item => item.slug === slug);
 
-  if (!book || !book.epubUrl) {
+  if (!book || !book.epubUrl || book.status !== "Yayında") {
     notFound();
   }
 
