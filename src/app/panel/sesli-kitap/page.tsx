@@ -585,6 +585,7 @@ export default function AudiobookUploadPage() {
         status={status === "done" ? "Yayına hazır" : "Taslak"}
         audioPublicationHref={previewSlug ? `/dinle/${previewSlug}` : undefined}
         audioPreviewHref={audioPreviewHref}
+        audioSourceReady={Boolean(audioFile || current?.audioUrl || current?.url)}
       />
     </main>
   );
