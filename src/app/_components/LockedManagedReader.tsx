@@ -99,7 +99,7 @@ const READER_FONTS: Record<ReaderFont, string> = {
   modern: '"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif',
 };
 
-export default function LockedManagedReader({ book, embedded = false }: { book: LockedReaderBook; embedded?: boolean }) {
+export default function LockedManagedReader({ book, embedded = false, autoStart = false }: { book: LockedReaderBook; embedded?: boolean; autoStart?: boolean }) {
   const [sections, setSections] = useState<Section[]>([]);
   const [chapterCount, setChapterCount] = useState(0);
   const [estimatedWordCount, setEstimatedWordCount] = useState(0);
@@ -144,12 +144,13 @@ export default function LockedManagedReader({ book, embedded = false }: { book: 
     return () => document.body.classList.remove("reader-route");
   }, [embedded]);
   useEffect(() => {
-    if (!embedded || sections.length === 0 || index !== -1) return;
+    if (!(embedded || autoStart) || sections.length === 0 || index !== -1) return;
     setIndex(0);
     setReaderPage(0);
     readerPageRef.current = 0;
+    setPanel(null);
     setChromeVisible(true);
-  }, [embedded, sections.length, index]);
+  }, [embedded, autoStart, sections.length, index]);
 
   useEffect(() => {
     let cancelled = false;

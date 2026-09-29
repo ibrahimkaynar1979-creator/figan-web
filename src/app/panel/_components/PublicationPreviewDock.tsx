@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./PublicationPreviewDock.module.css";
 import { BRAND_ASSETS } from "../../../lib/brandAssets";
-import LockedManagedReader from "../../_components/LockedManagedReader";
 
 type Props = {
   activeMode?: "reader" | "audio";
@@ -50,6 +49,7 @@ export default function PublicationPreviewDock({
   const [previewMode, setPreviewMode] = useState<"reader" | "audio">(activeMode);
   const [readerOpen, setReaderOpen] = useState(false);
   const [localReaderEpubUrl, setLocalReaderEpubUrl] = useState("");
+  const readerIframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
     setPreviewMode(activeMode);
@@ -77,6 +77,44 @@ export default function PublicationPreviewDock({
   }, [readerPreviewFile]);
 
   const readerSource = localReaderEpubUrl || readerPreviewEpubUrl || "";
+  const readerPreviewHref = readerSource
+    ? `/panel/reader/onizleme?${new URLSearchParams({
+        ...(readerPreviewEpubUrl && !readerPreviewFile ? { epub: readerPreviewEpubUrl } : {}),
+        title: safeTitle,
+        author: safeAuthor,
+        cover,
+        start: "1",
+      }).toString()}`
+    : "";
+
+  const sendReaderPreviewFile = async () => {
+    if (!readerPreviewFile || !readerIframeRef.current?.contentWindow) return;
+    const buffer = await readerPreviewFile.arrayBuffer();
+    readerIframeRef.current.contentWindow.postMessage(
+      {
+        type: "22-reader-preview-file",
+        buffer,
+        name: readerPreviewFile.name,
+        mime: readerPreviewFile.type || "application/epub+zip",
+      },
+      window.location.origin,
+      [buffer]
+    );
+  };
+
+  useEffect(() => {
+    if (!readerOpen || !readerPreviewFile) return;
+
+    const handleReady = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      if (event.source !== readerIframeRef.current?.contentWindow) return;
+      if ((event.data as { type?: string } | null)?.type !== "22-reader-preview-ready") return;
+      void sendReaderPreviewFile();
+    };
+
+    window.addEventListener("message", handleReady);
+    return () => window.removeEventListener("message", handleReady);
+  }, [readerOpen, readerPreviewFile, readerPreviewHref]);
 
 
   return (
@@ -109,24 +147,18 @@ export default function PublicationPreviewDock({
       <div className={styles.deviceStage}>
         {previewMode === "reader" ? (
           readerOpen && readerSource ? (
-            <div className={styles.readerInlineShell}>
+            <div className={styles.readerIframeShell}>
               <div className={styles.readerInlineBar}>
                 <button type="button" onClick={() => setReaderOpen(false)}>← Kapağa dön</button>
                 <span>22 Reader · EPUB Önizleme</span>
               </div>
-              <div className={styles.readerInlineViewport}>
-                <LockedManagedReader
-                  embedded
-                  book={{
-                    slug: "panel-canli-onizleme",
-                    title: safeTitle,
-                    author: safeAuthor,
-                    authorHref: "#",
-                    coverUrl: cover,
-                    epubUrl: readerSource,
-                  }}
-                />
-              </div>
+              <iframe
+                ref={readerIframeRef}
+                className={styles.readerIframe}
+                src={readerPreviewHref}
+                title="22 Reader EPUB önizleme"
+                onLoad={() => { void sendReaderPreviewFile(); }}
+              />
             </div>
           ) : (
             <div className={styles.readerDevice}>
@@ -146,7 +178,7 @@ export default function PublicationPreviewDock({
                   disabled={!readerSource}
                   onClick={() => readerSource && setReaderOpen(true)}
                 >
-                  {readerSource ? "Reader'ı Aç" : "Okumaya Başla"} <span>→</span>
+                  Okumaya Başla <span>→</span>
                 </button>
                 <div className={styles.readerStats}>
                   <span>▣ {readerSource ? chapterLabel : "EPUB bekleniyor"}</span>

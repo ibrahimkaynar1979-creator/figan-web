@@ -16,6 +16,7 @@ export default function Page() {
     coverUrl: "/bir_sifaci_png.png",
   });
   const [epubUrl, setEpubUrl] = useState("");
+  const [autoStart, setAutoStart] = useState(false);
   const blobUrlRef = useRef("");
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function Page() {
     });
 
     const persistedEpub = params.get("epub") || "";
+    setAutoStart(params.get("start") === "1");
     if (persistedEpub) setEpubUrl(persistedEpub);
 
     const receivePreviewFile = (event: MessageEvent) => {
@@ -69,6 +71,7 @@ export default function Page() {
 
   return (
     <LockedManagedReader
+      autoStart={autoStart}
       book={{
         slug: "panel-onizleme",
         title: book.title,
