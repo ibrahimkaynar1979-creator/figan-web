@@ -6909,3 +6909,69 @@ body.reader-route .contact-float{display:none!important}
     display:none;
   }
 }
+
+
+/* 2026-09-30 — STRONGER DESKTOP HERO TYPOGRAPHY */
+@media(min-width:768px){
+  .homepage-hero-overlay{
+    left:max(6.5vw,72px)!important;
+    top:48%!important;
+    width:min(600px,42vw)!important;
+    transform:translateY(-42%)!important;
+  }
+
+  .homepage-hero-positioning{
+    margin-bottom:16px;
+  }
+
+  .homepage-hero-first{
+    margin:0 0 2px;
+    color:#2b170e;
+    font-family:var(--font-editorial),Georgia,serif;
+    font-size:clamp(24px,2.1vw,38px);
+    font-weight:600;
+    line-height:.95;
+    letter-spacing:-.035em;
+  }
+
+  .homepage-hero-ecosystem{
+    margin:0;
+    color:#a96934;
+    font-family:var(--font-editorial),Georgia,serif;
+    font-size:clamp(31px,3vw,54px);
+    font-weight:600;
+    line-height:.95;
+    letter-spacing:-.045em;
+  }
+
+  .homepage-hero-overlay h1{
+    margin-top:18px!important;
+    font-size:clamp(52px,4.9vw,84px)!important;
+  }
+
+  .homepage-hero-overlay h2{
+    margin-top:14px!important;
+  }
+
+  .homepage-hero-description{
+    max-width:560px!important;
+    font-size:14px!important;
+    line-height:1.55!important;
+  }
+
+  .homepage-hero-services{
+    max-width:590px;
+    gap:7px 8px!important;
+    margin-top:16px!important;
+  }
+
+  .homepage-hero-services span{
+    padding:7px 10px!important;
+    font-size:9.5px!important;
+    white-space:nowrap;
+  }
+
+  .homepage-hero-actions{
+    margin-top:18px!important;
+  }
+}
