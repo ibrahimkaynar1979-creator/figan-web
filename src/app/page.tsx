@@ -192,6 +192,11 @@ export default function Home() {
             />
           </picture>
 
+          <div className="homepage-founder-note" aria-label="İlk 22 Kurucu Yazar programı">
+            <span>22 Yayınevi’nin kurucu yazar programı</span>
+            <strong>İlk 22 yazara özel kalıcı statü</strong>
+          </div>
+
           <div className="homepage-hero-overlay">
             <div className="homepage-hero-positioning">
               <p className="homepage-hero-first">TÜRKİYE’NİN İLK VE TEK</p>
@@ -203,7 +208,7 @@ export default function Home() {
             </h1>
             <h2>Tek çatı altında.</h2>
             <p className="homepage-hero-description">
-              Yazarın kitabını, sesini, dijital dünyasını ve dağıtımını tek bir ekosistemde birleştiriyoruz.
+              Kitabınızı, sesinizi, dijital dünyanızı ve dağıtımınızı tek bir yayın ekosisteminde birleştiriyoruz.
             </p>
             <div className="homepage-hero-actions">
               <a href="/kurucu-yazar" className="homepage-hero-primary">Yayın Yolculuğunu Başlat <b>→</b></a>
