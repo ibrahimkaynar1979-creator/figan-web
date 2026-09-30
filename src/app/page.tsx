@@ -193,7 +193,10 @@ export default function Home() {
           </picture>
 
           <div className="homepage-hero-overlay">
-            <p className="homepage-hero-kicker">TÜRKİYE’NİN İLK VE TEK 360° YAYINCILIK EKOSİSTEMİ</p>
+            <div className="homepage-hero-positioning">
+              <p className="homepage-hero-first">TÜRKİYE’NİN İLK VE TEK</p>
+              <p className="homepage-hero-ecosystem">360° YAYINCILIK EKOSİSTEMİ</p>
+            </div>
             <h1>
               <span>Bir yazar için</span>
               <em>her şey.</em>
@@ -201,13 +204,16 @@ export default function Home() {
             <h2>Tek çatı altında.</h2>
             <p className="homepage-hero-description">
               Basılı kitaptan e-kitaba, sesli kitaptan yazar sitesine; editörlük, tasarım,
-              dağıtım ve dijital görünürlüğü tek bir yayın dünyasında birleştiriyoruz.
+              basılı kitap dağıtımı, dijital dağıtım, çeviri ve dijital görünürlüğü
+              tek bir yayın dünyasında birleştiriyoruz.
             </p>
             <div className="homepage-hero-services" aria-label="22 Yayınevi yayın hizmetleri">
-              <span>Basılı Kitap</span>
+              <span>Basılı Kitap &amp; Fizikî Dağıtım</span>
               <span>E-Kitap</span>
               <span>Sesli Kitap</span>
               <span>Yazar Sitesi</span>
+              <span>Dijital Dağıtım</span>
+              <span>Çeviri</span>
             </div>
             <div className="homepage-hero-actions">
               <a href="/kurucu-yazar" className="homepage-hero-primary">Yayın Yolculuğunu Başlat <b>→</b></a>
