@@ -258,40 +258,55 @@ export default function Home() {
         </section>
 
 
-        <section className="digital-experiences" aria-label="22 Yayınevi dijital deneyimleri">
-          <div className="digital-experiences-head">
-            <span className="digital-experiences-kicker">22 YAYINEVİ</span>
+        <section className="digital-story" aria-label="22 Yayınevi dijital deneyimleri">
+          <div className="digital-story-head">
+            <span>22 YAYINEVİ</span>
             <h2>Dijital Deneyimler</h2>
-            <p>Yazarın kitabı, sesi ve dijital dünyası her ekranda yaşayan tek bir yayın deneyimine dönüşüyor.</p>
+            <p>Kitap yalnızca yayımlanmaz; okunur, dinlenir ve yazarın dünyasıyla birlikte yaşayan bir deneyime dönüşür.</p>
           </div>
 
-          <div className="digital-experiences-marquee" aria-label="Kayan dijital deneyim vitrini">
-            <div className="digital-experiences-track">
-              {[
-                { title: "E-Kitap", image: "/ekosistem-reader.webp", href: "/oku/bir-sifacinin-kanadi", featured: true },
-                { title: "Sesli Kitap", image: "/ekosistem-audio.webp", href: "/dinle/bir-sifacinin-kanadi", featured: true },
-                { title: "Yazar Sitesi", image: "/figan-hizmet-03-yazar-sitesi.webp", href: "/yazar-sitesi" },
-                { title: "Dijital Dağıtım", image: "/figan-hizmet-05-dijital-dagitim.webp", href: "/dijital-dagitim" },
-                { title: "Çeviri", image: "/figan-hizmet-04-yabanci-dil.webp", href: "/yabanci-dil-ceviri" },
-                { title: "Kitap Sayfası", image: "/figan-hizmet-e-kitap.webp", href: "/e-kitap-yayini" },
-                { title: "E-Kitap", image: "/ekosistem-reader.webp", href: "/oku/bir-sifacinin-kanadi", featured: true },
-                { title: "Sesli Kitap", image: "/ekosistem-audio.webp", href: "/dinle/bir-sifacinin-kanadi", featured: true },
-                { title: "Yazar Sitesi", image: "/figan-hizmet-03-yazar-sitesi.webp", href: "/yazar-sitesi" },
-                { title: "Dijital Dağıtım", image: "/figan-hizmet-05-dijital-dagitim.webp", href: "/dijital-dagitim" },
-                { title: "Çeviri", image: "/figan-hizmet-04-yabanci-dil.webp", href: "/yabanci-dil-ceviri" },
-                { title: "Kitap Sayfası", image: "/figan-hizmet-e-kitap.webp", href: "/e-kitap-yayini" },
-              ].map((item, index) => (
-                <a className={`digital-phone-card ${item.featured ? "is-featured" : ""} digital-phone-card-${index % 6}`} href={item.href} key={index}>
-                  <div className="digital-phone-shell">
-                    <div className="digital-phone-island" aria-hidden="true" />
-                    <div className="digital-phone-screen">
-                      <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
-                    </div>
+          <div className="digital-story-rail">
+            <article className="digital-story-card">
+              <div className="digital-story-copy">
+                <span className="digital-story-number">01</span>
+                <p className="digital-story-label">E-KİTAP · 22 READER</p>
+                <h3>Kitabınız,<br/>okurun cebinde.</h3>
+                <p className="digital-story-text">Kitabınızı yalnızca EPUB dosyasına çevirmiyoruz. 22 Reader deneyimiyle mobilde okunabilir, zarif ve markanıza ait bir dijital esere dönüştürüyoruz.</p>
+                <div className="digital-story-points">
+                  <span>Mobil okuma</span><span>EPUB</span><span>Reader deneyimi</span>
+                </div>
+                <a href="/oku/bir-sifacinin-kanadi">Reader’ı İncele <b>→</b></a>
+              </div>
+              <div className="digital-story-visual" aria-label="22 Reader telefon mockup">
+                <div className="real-phone real-phone-light">
+                  <div className="real-phone-island" />
+                  <div className="real-phone-screen">
+                    <img src="/ekosistem-reader.webp" alt="22 Reader e-kitap arayüzü" loading="lazy" decoding="async" />
                   </div>
-                  <span>{item.title}</span>
-                </a>
-              ))}
-            </div>
+                </div>
+              </div>
+            </article>
+
+            <article className="digital-story-card digital-story-card-reverse">
+              <div className="digital-story-copy">
+                <span className="digital-story-number">02</span>
+                <p className="digital-story-label">SESLİ KİTAP · 22 AUDIO</p>
+                <h3>Kitabınız,<br/>artık dinleniyor.</h3>
+                <p className="digital-story-text">Bölümler, oynatma kontrolleri, hız, uyku modu ve kaldığı yerden devam deneyimiyle sesli kitabınızı kendi dijital vitrininizde sunuyoruz.</p>
+                <div className="digital-story-points">
+                  <span>Bölümlü dinleme</span><span>Uyku modu</span><span>Devam et</span>
+                </div>
+                <a href="/dinle/bir-sifacinin-kanadi">Sesli Kitabı İncele <b>→</b></a>
+              </div>
+              <div className="digital-story-visual" aria-label="22 Audio telefon mockup">
+                <div className="real-phone real-phone-audio">
+                  <div className="real-phone-island" />
+                  <div className="real-phone-screen">
+                    <img src="/ekosistem-audio.webp" alt="22 Yayınevi sesli kitap arayüzü" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
