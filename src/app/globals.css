@@ -8046,3 +8046,70 @@ body.reader-route .contact-float{display:none!important}
     display:none!important;
   }
 }
+
+
+/* 2026-09-30 — FOUNDER NOTE EDITORIAL RED */
+@media(min-width:768px){
+  .homepage-founder-note{
+    top:31.5%!important;
+    right:clamp(38px,4.2vw,74px)!important;
+    width:auto!important;
+    padding:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:4px!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    text-align:center!important;
+  }
+
+  .homepage-founder-note-kicker{
+    color:#8e1717!important;
+    font-size:10px!important;
+    font-weight:900!important;
+    letter-spacing:.14em!important;
+    line-height:1!important;
+    text-shadow:0 1px 0 rgba(255,255,255,.22)!important;
+  }
+
+  .homepage-founder-note strong{
+    display:block!important;
+    color:#5f1717!important;
+    font-family:var(--font-editorial),Georgia,serif!important;
+    font-size:15px!important;
+    font-weight:700!important;
+    line-height:1.1!important;
+  }
+
+  .homepage-founder-note i{
+    width:72px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:7px!important;
+    margin-top:2px!important;
+    color:#b78b48!important;
+    font-style:normal!important;
+  }
+
+  .homepage-founder-note i::before,
+  .homepage-founder-note i::after{
+    content:""!important;
+    flex:1!important;
+    height:1px!important;
+    background:linear-gradient(90deg,transparent,#b78b48)!important;
+  }
+
+  .homepage-founder-note i::after{
+    background:linear-gradient(90deg,#b78b48,transparent)!important;
+  }
+
+  .homepage-founder-note i b{
+    font-size:8px!important;
+    font-weight:700!important;
+  }
+}
