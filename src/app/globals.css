@@ -7448,3 +7448,92 @@ body.reader-route .contact-float{display:none!important}
     display:none;
   }
 }
+
+
+/* 2026-09-30 — READABILITY + DESKTOP REELS CLEANUP */
+@media(min-width:768px){
+  .homepage-hero-first{
+    font-size:clamp(20px,1.45vw,26px)!important;
+    font-weight:700!important;
+  }
+
+  .homepage-hero-ecosystem{
+    font-size:clamp(30px,2.5vw,44px)!important;
+    font-weight:650!important;
+  }
+
+  .homepage-hero-overlay h1{
+    font-size:clamp(58px,4.8vw,82px)!important;
+    font-weight:550!important;
+  }
+
+  .homepage-hero-overlay h2{
+    font-size:clamp(28px,1.9vw,34px)!important;
+    font-weight:550!important;
+  }
+
+  .homepage-hero-description{
+    max-width:525px!important;
+    font-size:15px!important;
+    font-weight:520!important;
+    line-height:1.55!important;
+    color:#46372e!important;
+  }
+
+  .homepage-hero-primary{
+    font-size:13px!important;
+    font-weight:800!important;
+  }
+
+  .homepage-hero-text-link{
+    font-size:13px!important;
+    font-weight:800!important;
+  }
+
+  .homepage-hero-service-item>span:last-child{
+    font-size:11px!important;
+    font-weight:800!important;
+  }
+
+  .homepage-vision-bridge-inner{
+    min-height:94px!important;
+  }
+
+  .homepage-vision-bridge-copy{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:5px;
+    text-align:left;
+  }
+
+  .homepage-vision-bridge-copy p{
+    margin:0;
+    color:#4b3a2f;
+    font-size:16px;
+    font-weight:520;
+    line-height:1.4;
+  }
+
+  .homepage-vision-bridge-copy p strong{
+    color:#2d1b11;
+    font-weight:800;
+  }
+
+  .homepage-vision-bridge-copy small{
+    color:#9a6738;
+    font-size:10px;
+    font-weight:850;
+    letter-spacing:.18em;
+  }
+
+  .home-service-reels{
+    display:none!important;
+  }
+}
+
+@media(max-width:767px){
+  .home-service-reels{
+    display:block!important;
+  }
+}
