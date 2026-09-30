@@ -100,7 +100,7 @@ const READER_FONTS: Record<ReaderFont, string> = {
   modern: '"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif',
 };
 
-export default function LockedManagedReader({ book, embedded = false, autoStart = false }: { book: LockedReaderBook; embedded?: boolean; autoStart?: boolean }) {
+export default function LockedManagedReader({ book, embedded = false, autoStart = false, onStats }: { book: LockedReaderBook; embedded?: boolean; autoStart?: boolean; onStats?: (stats: { chapterCount: number; readingMinutes: number }) => void }) {
   const [sections, setSections] = useState<Section[]>([]);
   const [chapterCount, setChapterCount] = useState(0);
   const [estimatedWordCount, setEstimatedWordCount] = useState(0);
@@ -263,6 +263,10 @@ export default function LockedManagedReader({ book, embedded = false, autoStart 
           setSections(parsed);
           setChapterCount(parsed.length);
           setEstimatedWordCount(words);
+          onStats?.({
+            chapterCount: parsed.length,
+            readingMinutes: words > 0 ? Math.max(1, Math.ceil(words / 200)) : 0,
+          });
 
           if (parsed.length === 0) {
             setEpubLoadError("EPUB içeriği okunamadı.");

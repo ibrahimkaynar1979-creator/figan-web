@@ -657,3 +657,24 @@
   width:489px!important;
   height:828px!important;
 }
+
+
+/* Keep the Reader mounted for EPUB analysis while hiding it behind the cover card. */
+.readerPreviewHidden{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  min-height:0!important;
+  max-height:1px!important;
+  overflow:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  margin:0!important;
+  border:0!important;
+}
+.readerFrameHost{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:#f7f2e8;
+}

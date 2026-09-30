@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./PublicationPreviewDock.module.css";
 import { BRAND_ASSETS } from "../../../lib/brandAssets";
 import LockedManagedReader from "../../_components/LockedManagedReader";
@@ -52,6 +52,7 @@ export default function PublicationPreviewDock({
   const [localReaderEpubUrl, setLocalReaderEpubUrl] = useState("");
   const readerFrameHostRef = useRef<HTMLDivElement | null>(null);
   const [readerScale, setReaderScale] = useState(1);
+  const [readerStats, setReaderStats] = useState<{ chapterCount: number; readingMinutes: number }>({ chapterCount: 0, readingMinutes: 0 });
 
   useEffect(() => {
     setPreviewMode(activeMode);
@@ -79,6 +80,46 @@ export default function PublicationPreviewDock({
   }, [readerPreviewFile]);
 
   const readerSource = localReaderEpubUrl || readerPreviewEpubUrl || "";
+
+  const handleReaderStats = useCallback((stats: { chapterCount: number; readingMinutes: number }) => {
+    setReaderStats(current =>
+      current.chapterCount === stats.chapterCount && current.readingMinutes === stats.readingMinutes
+        ? current
+        : stats
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!readerSource) {
+      setReaderStats({ chapterCount: 0, readingMinutes: 0 });
+      return;
+    }
+  }, [readerSource]);
+
+  useEffect(() => {
+    if (!readerOpen) return;
+    const host = readerFrameHostRef.current;
+    if (!host) return;
+
+    const updateScale = () => {
+      const width = host.clientWidth;
+      setReaderScale(width > 0 ? Math.min(1, width / 489) : 1);
+    };
+
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, [readerOpen]);
+
+  const effectiveChapterLabel = readerStats.chapterCount > 0
+    ? `${readerStats.chapterCount} bölüm`
+    : chapterLabel;
+  const effectiveReadingTimeLabel = readerStats.readingMinutes > 0
+    ? readerStats.readingMinutes >= 60
+      ? `~ ${Math.floor(readerStats.readingMinutes / 60)} sa ${readerStats.readingMinutes % 60} dk`
+      : `~ ${readerStats.readingMinutes} dk`
+    : readingTimeLabel;
 
 
   return (
@@ -110,68 +151,73 @@ export default function PublicationPreviewDock({
 
       <div className={styles.deviceStage}>
         {previewMode === "reader" ? (
-          readerOpen && readerSource ? (
-            <div className={styles.readerIframeShell}>
-              <div className={styles.readerInlineBar}>
-                <button type="button" onClick={() => setReaderOpen(false)}>← Kapağa dön</button>
-                <span>22 Reader · EPUB Önizleme</span>
-              </div>
-              <div
-                ref={readerFrameHostRef}
-                className={styles.readerFrameHost}
-                style={{ height: 828 * readerScale }}
-              >
+          <>
+            {readerSource ? (
+              <div className={`${styles.readerIframeShell} ${readerOpen ? "" : styles.readerPreviewHidden}`}>
+                <div className={styles.readerInlineBar}>
+                  <button type="button" onClick={() => setReaderOpen(false)}>← Kapağa dön</button>
+                  <span>22 Reader · EPUB Önizleme</span>
+                </div>
                 <div
-                  className={styles.readerEmbedCanvas}
-                  style={{ transform: `scale(${readerScale})` }}
+                  ref={readerFrameHostRef}
+                  className={styles.readerFrameHost}
+                  style={{ height: 828 * readerScale }}
                 >
-                  <LockedManagedReader
-                    embedded
-                    autoStart
-                    book={{
-                      slug: "panel-canli-onizleme",
-                      title: safeTitle,
-                      author: safeAuthor,
-                      authorHref: "#",
-                      coverUrl: cover,
-                      epubUrl: readerPreviewEpubUrl || "",
-                      epubFile: readerPreviewFile || undefined,
-                    }}
-                  />
+                  <div
+                    className={styles.readerEmbedCanvas}
+                    style={{ transform: `scale(${readerScale})` }}
+                  >
+                    <LockedManagedReader
+                      embedded
+                      autoStart
+                      onStats={handleReaderStats}
+                      book={{
+                        slug: "panel-canli-onizleme",
+                        title: safeTitle,
+                        author: safeAuthor,
+                        authorHref: "#",
+                        coverUrl: cover,
+                        epubUrl: readerPreviewEpubUrl || "",
+                        epubFile: readerPreviewFile || undefined,
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <div className={styles.readerDevice}>
-              <header>
-                <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
-                <span>⋮</span>
-              </header>
-              <div className={styles.readerBody}>
-                <div className={styles.readerCover}>
-                  <img src={cover} alt="" />
-                </div>
-                <h2 className={styles.readerTitle}>{safeTitle}</h2>
-                <h3>{safeAuthor}</h3>
-                <p>22 Yayınevi</p>
-                <button
-                  type="button"
-                  disabled={!readerSource}
-                  onClick={() => readerSource && setReaderOpen(true)}
-                >
-                  Okumaya Başla <span>→</span>
-                </button>
-                <div className={styles.readerStats}>
-                  <span>▣ {readerSource ? chapterLabel : "EPUB bekleniyor"}</span>
-                  <span>◷ {readerSource ? readingTimeLabel : "bekliyor"}</span>
-                  <span>▤ EPUB</span>
-                </div>
-                <div className={styles.readerBrand}>
-                  <Image src={BRAND_ASSETS.readerLogo} alt="22 Reader" width={520} height={170} />
+            ) : null}
+
+            {!readerOpen ? (
+              <div className={styles.readerDevice}>
+                <header>
+                  <Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={300} height={190} />
+                  <span>⋮</span>
+                </header>
+                <div className={styles.readerBody}>
+                  <div className={styles.readerCover}>
+                    <img src={cover} alt="" />
+                  </div>
+                  <h2 className={styles.readerTitle}>{safeTitle}</h2>
+                  <h3>{safeAuthor}</h3>
+                  <p>22 Yayınevi</p>
+                  <button
+                    type="button"
+                    disabled={!readerSource}
+                    onClick={() => readerSource && setReaderOpen(true)}
+                  >
+                    Okumaya Başla <span>→</span>
+                  </button>
+                  <div className={styles.readerStats}>
+                    <span>▣ {readerSource ? effectiveChapterLabel : "EPUB bekleniyor"}</span>
+                    <span>◷ {readerSource ? effectiveReadingTimeLabel : "bekliyor"}</span>
+                    <span>▤ EPUB</span>
+                  </div>
+                  <div className={styles.readerBrand}>
+                    <Image src={BRAND_ASSETS.readerLogo} alt="22 Reader" width={520} height={170} />
+                  </div>
                 </div>
               </div>
-            </div>
-          )
+            ) : null}
+          </>
         ) : (
           <div className={styles.audioIframeShell}>
             <iframe
@@ -203,7 +249,7 @@ export default function PublicationPreviewDock({
           <div><dt>Yazar</dt><dd>{safeAuthor}</dd></div>
           {subtitle ? <div><dt>Alt başlık</dt><dd>{subtitle}</dd></div> : null}
           <div><dt>Format</dt><dd>{previewMode === "reader" ? "EPUB · 22 Reader" : "MP3 · Sesli Kitap"}</dd></div>
-          <div><dt>İçerik</dt><dd>{previewMode === "reader" ? chapterLabel : audioDuration}</dd></div>
+          <div><dt>İçerik</dt><dd>{previewMode === "reader" ? `${effectiveChapterLabel} · ${effectiveReadingTimeLabel}` : audioDuration}</dd></div>
           <div><dt>Durum</dt><dd>{status}</dd></div>
         </dl>
 
