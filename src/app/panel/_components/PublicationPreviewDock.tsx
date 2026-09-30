@@ -134,7 +134,8 @@ export default function PublicationPreviewDock({
                       author: safeAuthor,
                       authorHref: "#",
                       coverUrl: cover,
-                      epubUrl: readerSource,
+                      epubUrl: readerPreviewEpubUrl || "",
+                      epubFile: readerPreviewFile || undefined,
                     }}
                   />
                 </div>

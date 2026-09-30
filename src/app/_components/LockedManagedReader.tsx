@@ -30,6 +30,7 @@ export type LockedReaderBook = {
   authorHref: string;
   coverUrl: string;
   epubUrl: string;
+  epubFile?: File;
 };
 
 declare global {
@@ -183,7 +184,8 @@ export default function LockedManagedReader({ book, embedded = false, autoStart 
         await loadManagedEpubJs();
         if (cancelled || !window.ePub) return;
 
-        epubBook = window.ePub(book.epubUrl);
+        const epubSource = book.epubFile ? await book.epubFile.arrayBuffer() : book.epubUrl;
+        epubBook = window.ePub(epubSource as any);
         await epubBook.ready;
 
         const navigation = await epubBook.loaded.navigation.catch(() => ({ toc: [] }));
@@ -261,7 +263,29 @@ export default function LockedManagedReader({ book, embedded = false, autoStart 
           setSections(parsed);
           setChapterCount(parsed.length);
           setEstimatedWordCount(words);
-          if (parsed.length === 0) setEpubLoadError("EPUB içeriği okunamadı.");
+
+          if (parsed.length === 0) {
+            setEpubLoadError("EPUB içeriği okunamadı.");
+          } else if (autoStart) {
+            const firstReadableIndex = parsed.findIndex(section => {
+              const body = section.paragraphs.join(" ").replace(/\s+/g, " ").trim();
+              const heading = section.title.toLocaleLowerCase("tr-TR");
+              const frontMatter =
+                heading.includes("içindekiler") ||
+                heading.includes("künye") ||
+                heading === "kapak" ||
+                heading === "başlık" ||
+                heading === "22 yayınevi";
+              return !frontMatter && body.length >= 180;
+            });
+            const targetIndex = firstReadableIndex >= 0 ? firstReadableIndex : 0;
+            pendingReaderPage.current = 0;
+            readerPageRef.current = 0;
+            setReaderPage(0);
+            setIndex(targetIndex);
+            setPanel(null);
+            setChromeVisible(true);
+          }
         }
       } catch (error) {
         if (!cancelled) {
@@ -275,7 +299,7 @@ export default function LockedManagedReader({ book, embedded = false, autoStart 
       cancelled = true;
       try { epubBook?.destroy?.(); } catch {}
     };
-  }, [book.epubUrl]);
+  }, [book.epubUrl, book.epubFile, autoStart]);
 
 
   useEffect(() => {
