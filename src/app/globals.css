@@ -7610,3 +7610,196 @@ body.reader-route .contact-float{display:none!important}
     color:#9a6231!important;
   }
 }
+
+
+/* 2026-09-30 — EDITORIAL LUXURY HERO COMPOSITION */
+@media(min-width:768px){
+  .homepage-image-hero::after{
+    background:
+      radial-gradient(circle at 21% 47%,rgba(255,249,241,.34),rgba(255,249,241,.14) 24%,transparent 48%),
+      linear-gradient(180deg,rgba(30,16,9,.07) 0%,transparent 20%,transparent 80%,rgba(30,16,9,.05) 100%)!important;
+  }
+
+  .homepage-hero-overlay{
+    left:clamp(76px,6.7vw,126px)!important;
+    top:45%!important;
+    width:min(540px,37vw)!important;
+    transform:translateY(-42%)!important;
+  }
+
+  .homepage-hero-positioning{
+    margin-bottom:18px!important;
+    padding-top:14px!important;
+  }
+
+  .homepage-hero-positioning::before{
+    width:54px!important;
+    height:1.5px!important;
+    background:#a66a36!important;
+  }
+
+  .homepage-hero-first{
+    margin-bottom:9px!important;
+    color:#3b291f!important;
+    font-size:clamp(15px,1.1vw,19px)!important;
+    font-weight:750!important;
+    letter-spacing:.18em!important;
+  }
+
+  .homepage-hero-ecosystem{
+    color:#955c2d!important;
+    font-size:clamp(25px,2.15vw,36px)!important;
+    font-weight:650!important;
+    letter-spacing:-.02em!important;
+  }
+
+  .homepage-hero-overlay h1{
+    margin-top:16px!important;
+    font-size:clamp(60px,4.9vw,84px)!important;
+    line-height:.84!important;
+    letter-spacing:-.06em!important;
+  }
+
+  .homepage-hero-overlay h1 span{
+    color:#24150d!important;
+  }
+
+  .homepage-hero-overlay h1 em{
+    color:#a76834!important;
+    font-size:.92em!important;
+  }
+
+  .homepage-hero-overlay h2{
+    margin:12px 0 14px!important;
+    color:#2b1a11!important;
+    font-size:clamp(27px,1.85vw,34px)!important;
+    font-weight:600!important;
+  }
+
+  .homepage-hero-description{
+    max-width:485px!important;
+    font-size:14.5px!important;
+    font-weight:580!important;
+    line-height:1.55!important;
+    color:#49382e!important;
+  }
+
+  .homepage-hero-actions{
+    gap:18px!important;
+    margin-top:18px!important;
+  }
+
+  .homepage-hero-primary{
+    min-height:48px!important;
+    padding:0 20px!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    box-shadow:0 12px 26px rgba(44,24,13,.18)!important;
+  }
+
+  .homepage-hero-text-link{
+    position:relative!important;
+    padding-bottom:3px!important;
+  }
+
+  .homepage-hero-text-link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:18px;
+    bottom:0;
+    height:1px;
+    background:rgba(91,58,36,.28);
+  }
+
+  .homepage-hero-service-band{
+    bottom:20px!important;
+    width:min(1080px,calc(100% - 180px))!important;
+    min-height:66px!important;
+    border-radius:22px!important;
+    border:1px solid rgba(255,255,255,.28)!important;
+    background:linear-gradient(180deg,rgba(255,253,249,.52),rgba(247,235,221,.44))!important;
+    box-shadow:
+      0 14px 34px rgba(52,29,16,.09),
+      inset 0 1px 0 rgba(255,255,255,.56)!important;
+    backdrop-filter:blur(18px) saturate(1.05)!important;
+  }
+
+  .homepage-hero-service-item{
+    min-height:66px!important;
+    gap:4px!important;
+    padding:8px 6px!important;
+  }
+
+  .homepage-hero-service-icon{
+    width:28px!important;
+    height:28px!important;
+    color:#a16431!important;
+  }
+
+  .homepage-hero-service-icon svg{
+    width:23px!important;
+    height:23px!important;
+    stroke-width:1.4!important;
+  }
+
+  .homepage-hero-service-item>span:last-child{
+    font-size:9.5px!important;
+    font-weight:760!important;
+    color:#4b382c!important;
+  }
+
+  .homepage-hero-service-item:not(:last-child)::after{
+    top:14px!important;
+    bottom:14px!important;
+    background:linear-gradient(180deg,transparent,rgba(150,101,61,.14),transparent)!important;
+  }
+
+  .homepage-vision-bridge{
+    padding:34px 0 42px!important;
+    background:#f8f1e8!important;
+    border:0!important;
+  }
+
+  .homepage-vision-bridge-inner{
+    width:min(880px,calc(100% - 80px))!important;
+    min-height:0!important;
+    gap:22px!important;
+    justify-content:center!important;
+  }
+
+  .homepage-vision-bridge-mark{
+    width:44px!important;
+    height:44px!important;
+    border:1px solid rgba(148,91,43,.22)!important;
+    background:rgba(255,255,255,.24)!important;
+    box-shadow:none!important;
+  }
+
+  .homepage-vision-bridge-copy{
+    align-items:center!important;
+    text-align:center!important;
+    gap:8px!important;
+  }
+
+  .homepage-vision-bridge-copy p{
+    max-width:720px!important;
+    font-size:20px!important;
+    line-height:1.35!important;
+    letter-spacing:-.02em!important;
+    color:#3b2a20!important;
+  }
+
+  .homepage-vision-bridge-copy p span{
+    color:#705846!important;
+  }
+
+  .homepage-vision-bridge-copy small{
+    font-size:10px!important;
+    letter-spacing:.22em!important;
+    color:#9a6331!important;
+  }
+
+  .figan-services-showcase{
+    padding-top:96px!important;
+  }
+}
