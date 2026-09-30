@@ -4,71 +4,94 @@ import styles from "./FounderAuthors.module.css";
 const benefits = [
   {
     no: "01",
-    title: "Numaralı Kurucu Statüsü",
-    text: "İlk 22 yazar, 01–22 arasında numaralanan ve sonradan yeniden verilmeyen kalıcı Kurucu Yazar statüsüne sahip olur.",
+    title: "Numaralı Statü",
+    text: "İlk 22 içinde kalıcı sıra numarası.",
   },
   {
     no: "02",
-    title: "Özel Kurucu Yazar Seti",
-    text: "Numaralı sertifika, özel baskı kitap, metal rozet, ex libris, kitap ayracı, kurucu kartı ve özel kutudan oluşan seçkin set.",
+    title: "Özel Kurucu Seti",
+    text: "Sertifika, rozet, kart ve koleksiyon parçaları.",
   },
   {
     no: "03",
-    title: "Yayın Hayatı Boyunca Avantaj",
-    text: "Kurucu Yazarlar, sonraki yayıncılık hizmetlerinde basılı kitap hariç %50 avantajdan yararlanır.",
+    title: "%50 Hizmet Avantajı",
+    text: "Basılı kitap hariç sonraki yayıncılık hizmetlerinde.",
   },
 ] as const;
 
 export default function FounderAuthors() {
   return (
     <section className={styles.section} aria-labelledby="founder-title">
-      <div className={styles.inner}>
-        <div className={styles.copy}>
-          <p className={styles.eyebrow}>
-            <span />
-            İLK 22 KURUCU YAZAR
-          </p>
+      <div className={styles.shell}>
+        <div className={styles.mainGrid}>
+          <div className={styles.copy}>
+            <p className={styles.eyebrow}><span />İLK 22 KURUCU YAZAR</p>
 
-          <h2 id="founder-title">
-            İlk 22’de
-            <em>yerinizi alın.</em>
-          </h2>
+            <h2 id="founder-title">
+              Yalnızca 22 isim.
+              <em>Bir kez verilen bir statü.</em>
+            </h2>
 
-          <p className={styles.lead}>
-            22 Yayınevi’nin kuruluş hikâyesine yalnızca kitabınızla değil,
-            kalıcı bir kurucu statüsüyle dahil olun. Bu ayrıcalık yalnızca ilk
-            22 yazara verilir ve daha sonra yeniden satışa açılmaz.
-          </p>
+            <p className={styles.lead}>
+              22 Yayınevi’nin ilk 22 yazarı, kuruluş hikâyesine numaralı ve kalıcı bir
+              statüyle dahil olur. Bu ayrıcalık daha sonra yeniden sunulmaz.
+            </p>
 
-          <div className={styles.actions}>
-            <Link href="/kurucu-yazar" className={styles.primary}>
-              Kurucu Yazar Statüsünü İncele <b>→</b>
-            </Link>
-            <span className={styles.limit}>22 kişiyle sınırlı</span>
-          </div>
-        </div>
-
-        <div className={styles.visual} aria-hidden="true">
-          <div className={styles.halo} />
-          <div className={styles.seal}>
-            <span>İLK</span>
-            <strong>22</strong>
-            <span>KURUCU YAZAR</span>
-          </div>
-          <p className={styles.signature}>22 YAYINEVİ</p>
-        </div>
-      </div>
-
-      <div className={styles.benefits}>
-        {benefits.map((item) => (
-          <article key={item.no} className={styles.benefit}>
-            <span className={styles.number}>{item.no}</span>
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+            <div className={styles.actions}>
+              <Link href="/kurucu-yazar" className={styles.primary}>
+                Kurucu Yazar Statüsünü Keşfet <b>→</b>
+              </Link>
+              <span className={styles.note}>Sınırlı · Numaralı · Kalıcı</span>
             </div>
-          </article>
-        ))}
+          </div>
+
+          <div className={styles.collection} aria-hidden="true">
+            <div className={styles.box}>
+              <span>22 YAYINEVİ</span>
+              <strong>KURUCU YAZAR</strong>
+            </div>
+
+            <div className={styles.certificate}>
+              <p>22 YAYINEVİ</p>
+              <span>KURUCU YAZAR SERTİFİKASI</span>
+              <strong>07 / 22</strong>
+              <small>NUMARALI · ÖZEL EDİSYON</small>
+            </div>
+
+            <div className={styles.memberCard}>
+              <span>22</span>
+              <strong>FOUNDER AUTHOR</strong>
+              <small>07 / 22</small>
+            </div>
+
+            <div className={styles.bookmark}>
+              <span>22</span>
+            </div>
+
+            <div className={styles.exlibris}>
+              <span>EX LIBRIS</span>
+              <strong>22</strong>
+            </div>
+
+            <div className={styles.waxSeal}>
+              <span>İLK</span>
+              <strong>22</strong>
+              <span>KURUCU<br/>YAZAR</span>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.benefits}>
+          {benefits.map((item) => (
+            <article key={item.no} className={styles.benefit}>
+              <span className={styles.number}>{item.no}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
