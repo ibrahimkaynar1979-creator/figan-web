@@ -268,20 +268,20 @@ export default function Home() {
           <div className="digital-experiences-marquee" aria-label="Kayan dijital deneyim vitrini">
             <div className="digital-experiences-track">
               {[
+                { title: "E-Kitap", image: "/ekosistem-reader.webp", href: "/oku/bir-sifacinin-kanadi", featured: true },
+                { title: "Sesli Kitap", image: "/ekosistem-audio.webp", href: "/dinle/bir-sifacinin-kanadi", featured: true },
                 { title: "Yazar Sitesi", image: "/figan-hizmet-03-yazar-sitesi.webp", href: "/yazar-sitesi" },
-                { title: "E-Kitap", image: "/ekosistem-reader.webp", href: "/e-kitap-yayini" },
-                { title: "Sesli Kitap", image: "/ekosistem-audio.webp", href: "/sesli-kitap" },
-                { title: "Kitap Sayfası", image: "/figan-hizmet-e-kitap.webp", href: "/e-kitap-yayini" },
                 { title: "Dijital Dağıtım", image: "/figan-hizmet-05-dijital-dagitim.webp", href: "/dijital-dagitim" },
                 { title: "Çeviri", image: "/figan-hizmet-04-yabanci-dil.webp", href: "/yabanci-dil-ceviri" },
-                { title: "Yazar Sitesi", image: "/figan-hizmet-03-yazar-sitesi.webp", href: "/yazar-sitesi" },
-                { title: "E-Kitap", image: "/ekosistem-reader.webp", href: "/e-kitap-yayini" },
-                { title: "Sesli Kitap", image: "/ekosistem-audio.webp", href: "/sesli-kitap" },
                 { title: "Kitap Sayfası", image: "/figan-hizmet-e-kitap.webp", href: "/e-kitap-yayini" },
+                { title: "E-Kitap", image: "/ekosistem-reader.webp", href: "/oku/bir-sifacinin-kanadi", featured: true },
+                { title: "Sesli Kitap", image: "/ekosistem-audio.webp", href: "/dinle/bir-sifacinin-kanadi", featured: true },
+                { title: "Yazar Sitesi", image: "/figan-hizmet-03-yazar-sitesi.webp", href: "/yazar-sitesi" },
                 { title: "Dijital Dağıtım", image: "/figan-hizmet-05-dijital-dagitim.webp", href: "/dijital-dagitim" },
                 { title: "Çeviri", image: "/figan-hizmet-04-yabanci-dil.webp", href: "/yabanci-dil-ceviri" },
+                { title: "Kitap Sayfası", image: "/figan-hizmet-e-kitap.webp", href: "/e-kitap-yayini" },
               ].map((item, index) => (
-                <a className="digital-phone-card" href={item.href} key={index}>
+                <a className={`digital-phone-card ${item.featured ? "is-featured" : ""} digital-phone-card-${index % 6}`} href={item.href} key={index}>
                   <div className="digital-phone-shell">
                     <div className="digital-phone-island" aria-hidden="true" />
                     <div className="digital-phone-screen">
