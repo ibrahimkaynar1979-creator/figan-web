@@ -8113,3 +8113,32 @@ body.reader-route .contact-float{display:none!important}
     font-weight:700!important;
   }
 }
+
+
+/* 2026-09-30 — FOUNDER NOTE SCALE + PROXIMITY */
+@media(min-width:768px){
+  .homepage-founder-note{
+    top:29.5%!important;
+    right:clamp(34px,4vw,68px)!important;
+    gap:5px!important;
+  }
+
+  .homepage-founder-note-kicker{
+    font-size:12px!important;
+    font-weight:900!important;
+    letter-spacing:.12em!important;
+    color:#861515!important;
+  }
+
+  .homepage-founder-note strong{
+    font-size:18px!important;
+    font-weight:750!important;
+    color:#6b1b1b!important;
+    line-height:1.08!important;
+  }
+
+  .homepage-founder-note i{
+    width:86px!important;
+    margin-top:3px!important;
+  }
+}
