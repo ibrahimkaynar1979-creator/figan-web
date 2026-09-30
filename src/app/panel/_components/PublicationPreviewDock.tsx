@@ -121,13 +121,6 @@ export default function PublicationPreviewDock({
     });
   };
 
-  const closeReaderPreview = () => {
-    setReaderOpen(false);
-    window.requestAnimationFrame(() => {
-      dockRef.current?.scrollTo({ top: 0, behavior: "auto" });
-    });
-  };
-
   const effectiveChapterLabel = readerStats.chapterCount > 0
     ? `${readerStats.chapterCount} bölüm`
     : chapterLabel;
@@ -170,10 +163,6 @@ export default function PublicationPreviewDock({
           <>
             {readerSource ? (
               <div className={`${styles.readerIframeShell} ${readerOpen ? "" : styles.readerPreviewHidden}`}>
-                <div className={styles.readerInlineBar}>
-                  <button type="button" onClick={closeReaderPreview}>← Kapağa dön</button>
-                  <span>22 Reader · EPUB Önizleme</span>
-                </div>
                 <div
                   ref={readerFrameHostRef}
                   className={styles.readerFrameHost}
