@@ -1,26 +1,16 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 import styles from "./DigitalExperiences.module.css";
 
 export default function DigitalExperiences() {
-  const [imageSrc, setImageSrc] = useState("/telefon%20mackup.png");
-
   return (
     <section className={styles.section} aria-label="22 Yayınevi dijital deneyimleri">
       <div className={styles.stage}>
         <img
-          src={imageSrc}
+          src="/22-yayinevi-dijital-deneyimler-3lu-telefon-vitrini-v1.png"
           alt="22 Yayınevi Reader, Figen Yavuz yazar sitesi ve 22 Audio üçlü dijital deneyim vitrini"
           className={styles.artwork}
           loading="lazy"
           decoding="async"
-          onError={() => {
-            if (imageSrc !== "/22-yayinevi-dijital-deneyimler-3lu-telefon-vitrini-v1.png") {
-              setImageSrc("/22-yayinevi-dijital-deneyimler-3lu-telefon-vitrini-v1.png");
-            }
-          }}
         />
 
         <div className={styles.topCopy}>
