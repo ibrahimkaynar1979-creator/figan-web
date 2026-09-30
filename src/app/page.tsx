@@ -193,8 +193,7 @@ export default function Home() {
           </picture>
 
           <div className="homepage-founder-note" aria-label="İlk 22 Kurucu Yazar programı">
-            <span>22 Yayınevi’nin kurucu yazar programı</span>
-            <strong>İlk 22 yazara özel kalıcı statü</strong>
+            <span>ÖZEL KURUCU YAZAR STATÜSÜ</span>
           </div>
 
           <div className="homepage-hero-overlay">
