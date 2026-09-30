@@ -183,39 +183,25 @@ export default function Home() {
 
         <PublishingReels home />
 
-        <section className="home-hero home-hero-premium">
-          <div className="container hero-grid">
-            <div className="hero-copy">
-              <p className="eyebrow"><span/>360° YAYINCILIK EKOSİSTEMİ</p>
-              <div className="hero-claim">Türkiye’nin ilk ve tek 360° yayıncılık ekosistemi</div>
-              <h1><span>Bir yazar için</span><em>her şey.</em></h1>
-              <h2>Tek çatı altında.</h2>
-              <p className="hero-lead">Basılı kitaptan e-kitaba, sesli kitaptan yazar sitesine; editörlük, tasarım, dağıtım ve dijital görünürlüğü tek bir yayın dünyasında birleştiriyoruz.</p>
-              <div className="hero-proof" aria-label="22 Yayınevi yayın ekosistemi">
-                <span>Basılı Kitap</span>
-                <span>E-Kitap</span>
-                <span>Sesli Kitap</span>
-                <span>Yazar Sitesi</span>
-                <span>Dağıtım</span>
-                <span>Çeviri</span>
-              </div>
-              <div className="hero-actions">
-                <a href="/kurucu-yazar" className="btn primary"><span className="cta-icon">22</span><span className="cta-label">Yayın Yolculuğunu Başlat</span><b className="cta-arrow">→</b></a>
-                <a href="#ekosistem" className="btn secondary"><span className="cta-icon">360°</span><span className="cta-label">Ekosistemi İncele</span><b className="cta-arrow">↓</b></a>
-              </div>
-            </div>
-            <div className="hero-visual hero-visual-premium">
-              <div className="hero-founder-seal" aria-label="İlk 22 Kurucu Yazar">
-                <span>İLK 22</span>
-                <strong>KURUCU<br/>YAZAR</strong>
-              </div>
-              <img src="/figan-hero-mobile-cropped.webp" alt="22 Yayınevi 360 derece yayıncılık ekosistemi: basılı kitap, e-kitap, sesli kitap ve yazar sitesi" fetchPriority="high" decoding="async"/>
-              <div className="hero-visual-caption">
-                <b>Bir kitap.</b>
-                <span>Birden fazla yaşam.</span>
-              </div>
-            </div>
-          </div>
+        <section
+          aria-label="22 Yayınevi 360 derece yayıncılık ekosistemi"
+          style={{ position: "relative", width: "100%", margin: 0, padding: 0, overflow: "hidden", background: "#050505" }}
+        >
+          <picture style={{ display: "block", width: "100%" }}>
+            <source media="(max-width: 767px)" srcSet="/22-yayinevi-hero-mobile.png" />
+            <img
+              src="/22-yayinevi-hero-desktop.png"
+              alt="22 Yayınevi - Basılı kitap, e-kitap, sesli kitap ve yazar sitesiyle 360 derece yayıncılık ekosistemi"
+              fetchPriority="high"
+              decoding="async"
+              style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0 }}
+            />
+          </picture>
+          <a
+            href="/kurucu-yazar"
+            aria-label="İlk 22 Kurucu Yazar başvurusuna git"
+            style={{ position: "absolute", inset: 0, zIndex: 2 }}
+          />
         </section>
 
         <section id="hizmetler" className="section services figan-services-showcase">
