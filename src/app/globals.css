@@ -7803,3 +7803,56 @@ body.reader-route .contact-float{display:none!important}
     padding-top:96px!important;
   }
 }
+
+
+/* 2026-09-30 — GOLD LOGO + FOUNDER PROGRAM NOTE */
+@media(min-width:901px){
+  .home-overlay-header:not(.is-scrolled) .brand img{
+    width:172px!important;
+    filter:none!important;
+    opacity:1!important;
+    drop-shadow:none;
+  }
+}
+
+@media(min-width:768px){
+  .homepage-founder-note{
+    position:absolute;
+    z-index:4;
+    top:30%;
+    right:clamp(36px,4.5vw,82px);
+    width:min(250px,18vw);
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    padding:12px 14px 11px;
+    border:1px solid rgba(255,255,255,.34);
+    border-radius:16px;
+    background:linear-gradient(180deg,rgba(255,249,240,.72),rgba(247,232,216,.60));
+    box-shadow:0 12px 28px rgba(46,23,12,.12);
+    backdrop-filter:blur(14px);
+    text-align:center;
+  }
+
+  .homepage-founder-note span{
+    color:#6c4a32;
+    font-size:9.5px;
+    font-weight:750;
+    line-height:1.25;
+    letter-spacing:.03em;
+  }
+
+  .homepage-founder-note strong{
+    color:#3a2115;
+    font-family:var(--font-editorial),Georgia,serif;
+    font-size:14px;
+    font-weight:650;
+    line-height:1.15;
+  }
+}
+
+@media(max-width:767px){
+  .homepage-founder-note{
+    display:none;
+  }
+}
