@@ -7168,3 +7168,155 @@ body.reader-route .contact-float{display:none!important}
     display:none;
   }
 }
+
+
+/* 2026-09-30 — FINAL LUXURY HERO REFINEMENT */
+@media(min-width:768px){
+  .homepage-image-hero::after{
+    background:
+      linear-gradient(90deg,rgba(255,247,236,.30) 0%,rgba(255,247,236,.14) 27%,rgba(255,247,236,.02) 49%,transparent 68%),
+      linear-gradient(180deg,rgba(28,15,8,.08) 0%,transparent 20%,transparent 78%,rgba(28,15,8,.08) 100%)!important;
+  }
+
+  .home-overlay-header .header-inner{
+    height:88px!important;
+  }
+
+  .home-overlay-header:not(.is-scrolled) .brand img{
+    width:166px!important;
+    filter:brightness(0) invert(1) sepia(.10)!important;
+  }
+
+  .homepage-hero-overlay{
+    top:45.5%!important;
+    width:min(610px,40vw)!important;
+    transform:translateY(-43%)!important;
+  }
+
+  .homepage-hero-positioning{
+    margin-bottom:18px!important;
+  }
+
+  .homepage-hero-first{
+    font-size:clamp(18px,1.35vw,24px)!important;
+    letter-spacing:.08em!important;
+    font-weight:650!important;
+  }
+
+  .homepage-hero-ecosystem{
+    font-size:clamp(28px,2.4vw,42px)!important;
+    letter-spacing:-.025em!important;
+  }
+
+  .homepage-hero-overlay h1{
+    font-size:clamp(54px,4.6vw,78px)!important;
+    line-height:.86!important;
+  }
+
+  .homepage-hero-overlay h1 em{
+    font-size:.90em!important;
+  }
+
+  .homepage-hero-overlay h2{
+    margin:12px 0 13px!important;
+    font-size:clamp(26px,1.75vw,32px)!important;
+  }
+
+  .homepage-hero-description{
+    max-width:515px!important;
+    font-size:13px!important;
+    line-height:1.5!important;
+  }
+
+  .homepage-hero-actions{
+    margin-top:17px!important;
+  }
+
+  .homepage-hero-primary,
+  .homepage-hero-secondary{
+    min-height:50px!important;
+    padding:0 21px!important;
+  }
+
+  .homepage-hero-primary{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg,#2b170e 0%,#402416 100%)!important;
+    box-shadow:0 16px 36px rgba(44,24,13,.22)!important;
+  }
+
+  .homepage-hero-primary::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(110deg,transparent 0 38%,rgba(255,255,255,.12) 50%,transparent 62%);
+    transform:translateX(-120%);
+    transition:transform .55s ease;
+  }
+
+  .homepage-hero-primary:hover::after{
+    transform:translateX(120%);
+  }
+
+  .homepage-hero-secondary{
+    background:rgba(255,251,246,.68)!important;
+    border-color:rgba(78,46,27,.18)!important;
+    backdrop-filter:blur(12px)!important;
+  }
+
+  .homepage-hero-service-band{
+    bottom:22px!important;
+    width:min(1240px,calc(100% - 118px))!important;
+    border-radius:30px!important;
+    background:linear-gradient(180deg,rgba(255,253,249,.74),rgba(245,232,216,.63))!important;
+    border-color:rgba(255,255,255,.48)!important;
+    box-shadow:
+      0 20px 50px rgba(52,29,16,.13),
+      inset 0 1px 0 rgba(255,255,255,.74)!important;
+    backdrop-filter:blur(24px) saturate(1.12)!important;
+  }
+
+  .homepage-hero-service-item{
+    min-height:74px!important;
+    gap:6px!important;
+    padding:10px 8px!important;
+  }
+
+  .homepage-hero-service-icon{
+    width:34px!important;
+    height:34px!important;
+  }
+
+  .homepage-hero-service-icon svg{
+    width:29px!important;
+    height:29px!important;
+    stroke-width:1.45!important;
+  }
+
+  .homepage-hero-service-item>span:last-child{
+    font-size:10px!important;
+    font-weight:750!important;
+  }
+
+  .homepage-hero-service-item:nth-last-child(2)::before{
+    content:"";
+    position:absolute;
+    left:-1px;
+    top:14px;
+    bottom:14px;
+    width:2px;
+    background:linear-gradient(180deg,transparent,#c48d50,transparent);
+  }
+}
+
+@media(min-width:768px) and (max-height:820px){
+  .homepage-hero-overlay{
+    top:47%!important;
+    transform:translateY(-42%) scale(.93)!important;
+    transform-origin:left center!important;
+  }
+
+  .homepage-hero-service-band{
+    bottom:14px!important;
+  }
+}
