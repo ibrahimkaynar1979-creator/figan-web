@@ -207,18 +207,55 @@ export default function Home() {
               basılı kitap dağıtımı, dijital dağıtım, çeviri ve dijital görünürlüğü
               tek bir yayın dünyasında birleştiriyoruz.
             </p>
-            <div className="homepage-hero-services" aria-label="22 Yayınevi yayın hizmetleri">
-              <span>Basılı Kitap &amp; Fizikî Dağıtım</span>
-              <span>E-Kitap</span>
-              <span>Sesli Kitap</span>
-              <span>Yazar Sitesi</span>
-              <span>Dijital Dağıtım</span>
-              <span>Çeviri</span>
-            </div>
             <div className="homepage-hero-actions">
               <a href="/kurucu-yazar" className="homepage-hero-primary">Yayın Yolculuğunu Başlat <b>→</b></a>
               <a href="#ekosistem" className="homepage-hero-secondary">Ekosistemi İncele <b>↓</b></a>
             </div>
+          </div>
+
+          <div className="homepage-hero-service-band" aria-label="22 Yayınevi yayın hizmetleri">
+            <a href="/yazar-sitesi" className="homepage-hero-service-item">
+              <span className="homepage-hero-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </span>
+              <span>Yazar Sitesi</span>
+            </a>
+            <a href="/e-kitap-yayini" className="homepage-hero-service-item">
+              <span className="homepage-hero-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M9 6h6M10 18h4"/></svg>
+              </span>
+              <span>E-Kitap</span>
+            </a>
+            <a href="/sesli-kitap" className="homepage-hero-service-item">
+              <span className="homepage-hero-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><path d="M5 12h2a2 2 0 0 1 2 2v5H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2ZM19 12h-2a2 2 0 0 0-2 2v5h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z"/></svg>
+              </span>
+              <span>Sesli Kitap</span>
+            </a>
+            <a href="/dijital-dagitim" className="homepage-hero-service-item">
+              <span className="homepage-hero-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 7.5 10 10M17 7.5 14 10M7 16.5 10 14M17 16.5 14 14"/></svg>
+              </span>
+              <span>Dijital Dağıtım</span>
+            </a>
+            <a href="/yabanci-dil-ceviri" className="homepage-hero-service-item">
+              <span className="homepage-hero-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17M12 3c2.2 2.4 3.4 5.4 3.4 9S14.2 18.6 12 21M12 3C9.8 5.4 8.6 8.4 8.6 12S9.8 18.6 12 21"/></svg>
+              </span>
+              <span>Çeviri</span>
+            </a>
+            <a href="/basili-kitap-yayini" className="homepage-hero-service-item">
+              <span className="homepage-hero-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5.5c3.1-.8 5.7-.3 8 1.4v12c-2.3-1.7-4.9-2.2-8-1.4v-12ZM20 5.5c-3.1-.8-5.7-.3-8 1.4v12c2.3-1.7 4.9-2.2 8-1.4v-12Z"/></svg>
+              </span>
+              <span>Basılı Kitap</span>
+            </a>
+            <a href="/basili-kitap-yayini" className="homepage-hero-service-item">
+              <span className="homepage-hero-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+              </span>
+              <span>Fizikî Dağıtım</span>
+            </a>
           </div>
         </section>
 
