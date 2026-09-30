@@ -183,20 +183,37 @@ export default function Home() {
 
         <PublishingReels home />
 
-        <section className="home-hero">
+        <section className="home-hero home-hero-premium">
           <div className="container hero-grid">
             <div className="hero-copy">
-              <p className="eyebrow"><span/>22 YAYINEVİ</p>
-              <h1><span>Bir kitap</span><em>yazdınız.</em></h1>
-              <h2>Şimdi ona ait bir dünya kuralım.</h2>
-              <p className="hero-lead">Editörlükten bandrollü basıma, e-kitaptan sesli kitaba, yazar sitenizden dijital ve fizikî dağıtıma kadar tüm yayın dünyanızı tek çatı altında kuruyoruz.</p>
+              <p className="eyebrow"><span/>360° YAYINCILIK EKOSİSTEMİ</p>
+              <div className="hero-claim">Türkiye’nin ilk ve tek 360° yayıncılık ekosistemi</div>
+              <h1><span>Bir yazar için</span><em>her şey.</em></h1>
+              <h2>Tek çatı altında.</h2>
+              <p className="hero-lead">Basılı kitaptan e-kitaba, sesli kitaptan yazar sitesine; editörlük, tasarım, dağıtım ve dijital görünürlüğü tek bir yayın dünyasında birleştiriyoruz.</p>
+              <div className="hero-proof" aria-label="22 Yayınevi yayın ekosistemi">
+                <span>Basılı Kitap</span>
+                <span>E-Kitap</span>
+                <span>Sesli Kitap</span>
+                <span>Yazar Sitesi</span>
+                <span>Dağıtım</span>
+                <span>Çeviri</span>
+              </div>
               <div className="hero-actions">
-                <a href="/kurucu-yazar" className="btn primary"><span className="cta-icon">▤</span><span className="cta-label">İlk 22’ye Başvur</span><b className="cta-arrow">→</b></a>
-                <a href="#fi-video" className="btn secondary"><span className="cta-icon cta-play">▶</span><span className="cta-label">22’yi İzleyin</span><b className="cta-arrow">→</b></a>
+                <a href="/kurucu-yazar" className="btn primary"><span className="cta-icon">22</span><span className="cta-label">Yayın Yolculuğunu Başlat</span><b className="cta-arrow">→</b></a>
+                <a href="#ekosistem" className="btn secondary"><span className="cta-icon">360°</span><span className="cta-label">Ekosistemi İncele</span><b className="cta-arrow">↓</b></a>
               </div>
             </div>
-            <div className="hero-visual">
-              <img src="/figan-hero-mobile-cropped.webp" alt="22 Yayınevi yayın dünyası: basılı kitap, e-kitap, sesli kitap ve yazar sitesi" fetchPriority="high" decoding="async"/>
+            <div className="hero-visual hero-visual-premium">
+              <div className="hero-founder-seal" aria-label="İlk 22 Kurucu Yazar">
+                <span>İLK 22</span>
+                <strong>KURUCU<br/>YAZAR</strong>
+              </div>
+              <img src="/figan-hero-mobile-cropped.webp" alt="22 Yayınevi 360 derece yayıncılık ekosistemi: basılı kitap, e-kitap, sesli kitap ve yazar sitesi" fetchPriority="high" decoding="async"/>
+              <div className="hero-visual-caption">
+                <b>Bir kitap.</b>
+                <span>Birden fazla yaşam.</span>
+              </div>
             </div>
           </div>
         </section>
@@ -205,9 +222,9 @@ export default function Home() {
           <div className="container">
             <header className="figan-services-header">
               <p className="figan-services-eyebrow">HİZMETLERİMİZ</p>
-              <h2>Her biri farklı,<br/>hepsi <strong>aynı yayın dünyasında.</strong></h2>
+              <h2>Tek kitap.<br/><strong>Bütün yayın dünyası.</strong></h2>
               <p className="figan-services-description">
-                Eserinizi yalnızca yayıma hazırlamıyoruz; yazar kimliğinizden dijital dağıtıma kadar bütün yayın dünyasını birlikte kuruyoruz.
+                Bir yazarın ihtiyaç duyduğu yayıncılık adımlarını birbirinden kopuk hizmetler olarak değil, tek bir 360° ekosistemin parçaları olarak yönetiyoruz.
               </p>
             </header>
 
