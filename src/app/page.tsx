@@ -181,25 +181,39 @@ export default function Home() {
       <main id="top" className="home-page-main">
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
 
-        <section
-          aria-label="22 Yayınevi 360 derece yayıncılık ekosistemi"
-          style={{ position: "relative", width: "100%", margin: 0, padding: 0, overflow: "hidden", background: "#050505" }}
-        >
-          <picture style={{ display: "block", width: "100%" }}>
+        <section className="homepage-image-hero" aria-label="22 Yayınevi 360 derece yayıncılık ekosistemi">
+          <picture className="homepage-image-hero-picture">
             <source media="(max-width: 767px)" srcSet="/22-yayinevi-hero-mobile.png" />
             <img
               src="/22-yayinevi-hero-desktop.png"
               alt="22 Yayınevi - Basılı kitap, e-kitap, sesli kitap ve yazar sitesiyle 360 derece yayıncılık ekosistemi"
               fetchPriority="high"
               decoding="async"
-              style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0 }}
             />
           </picture>
-          <a
-            href="/kurucu-yazar"
-            aria-label="İlk 22 Kurucu Yazar başvurusuna git"
-            style={{ position: "absolute", inset: 0, zIndex: 2 }}
-          />
+
+          <div className="homepage-hero-overlay">
+            <p className="homepage-hero-kicker">TÜRKİYE’NİN İLK VE TEK 360° YAYINCILIK EKOSİSTEMİ</p>
+            <h1>
+              <span>Bir yazar için</span>
+              <em>her şey.</em>
+            </h1>
+            <h2>Tek çatı altında.</h2>
+            <p className="homepage-hero-description">
+              Basılı kitaptan e-kitaba, sesli kitaptan yazar sitesine; editörlük, tasarım,
+              dağıtım ve dijital görünürlüğü tek bir yayın dünyasında birleştiriyoruz.
+            </p>
+            <div className="homepage-hero-services" aria-label="22 Yayınevi yayın hizmetleri">
+              <span>Basılı Kitap</span>
+              <span>E-Kitap</span>
+              <span>Sesli Kitap</span>
+              <span>Yazar Sitesi</span>
+            </div>
+            <div className="homepage-hero-actions">
+              <a href="/kurucu-yazar" className="homepage-hero-primary">Yayın Yolculuğunu Başlat <b>→</b></a>
+              <a href="#ekosistem" className="homepage-hero-secondary">Ekosistemi İncele <b>↓</b></a>
+            </div>
+          </div>
         </section>
 
         <PublishingReels home />
