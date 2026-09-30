@@ -259,20 +259,20 @@ export default function Home() {
         </section>
 
 
-        <DigitalExperiences />
-
         <section className="homepage-vision-bridge" aria-label="22 Yayınevi kurucu vizyonu ve teknoloji yaklaşımı">
           <div className="homepage-vision-bridge-inner">
             <span className="homepage-vision-bridge-mark">22</span>
             <div className="homepage-vision-bridge-copy">
               <p>
-                <strong>Figen Yavuz’un yayıncılık vizyonu</strong>,
+                <strong>Figen Yavuz’un yayıncılık vizyonu</strong>
                 <span> Naribo’nun tasarım, yazılım ve teknoloji gücüyle buluşuyor.</span>
               </p>
-              <small>YAYINCILIK + TASARIM + TEKNOLOJİ</small>
+              <small>YAYINCILIK · TASARIM · TEKNOLOJİ</small>
             </div>
           </div>
         </section>
+
+        <DigitalExperiences />
 
         <PublishingReels home />
 
