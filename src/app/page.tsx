@@ -192,12 +192,6 @@ export default function Home() {
             />
           </picture>
 
-          <div className="homepage-founder-note" aria-label="İlk 22 Kurucu Yazar programı">
-            <span className="homepage-founder-note-kicker">KURUCU YAZAR PROGRAMI</span>
-            <strong>İlk 22’ye özel kalıcı statü</strong>
-            <i aria-hidden="true"><b>✦</b></i>
-          </div>
-
           <div className="homepage-hero-overlay">
             <div className="homepage-hero-positioning">
               <p className="homepage-hero-first">TÜRKİYE’NİN İLK VE TEK</p>
