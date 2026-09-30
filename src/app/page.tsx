@@ -203,9 +203,8 @@ export default function Home() {
             </h1>
             <h2>Tek çatı altında.</h2>
             <p className="homepage-hero-description">
-              Basılı kitaptan e-kitaba, sesli kitaptan yazar sitesine; editörlük, tasarım,
-              basılı kitap dağıtımı, dijital dağıtım, çeviri ve dijital görünürlüğü
-              tek bir yayın dünyasında birleştiriyoruz.
+              Basılı kitaptan e-kitaba, sesli kitaptan yazar sitesine; yayıncılığın tüm adımlarını
+              tek bir ekosistemde birleştiriyoruz.
             </p>
             <div className="homepage-hero-actions">
               <a href="/kurucu-yazar" className="homepage-hero-primary">Yayın Yolculuğunu Başlat <b>→</b></a>
