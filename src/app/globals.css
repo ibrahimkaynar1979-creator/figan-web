@@ -7320,3 +7320,32 @@ body.reader-route .contact-float{display:none!important}
     bottom:14px!important;
   }
 }
+
+
+/* 2026-09-30 — HERO FOUNDER VISION NOTE */
+@media(min-width:768px){
+  .homepage-hero-vision{
+    max-width:560px;
+    margin:10px 0 0;
+    padding-left:14px;
+    border-left:2px solid rgba(169,105,52,.55);
+    color:#58483d;
+    font-size:11.5px;
+    line-height:1.55;
+  }
+
+  .homepage-hero-vision strong{
+    color:#2f1c12;
+    font-weight:800;
+  }
+
+  .homepage-hero-actions{
+    margin-top:16px!important;
+  }
+}
+
+@media(max-width:767px){
+  .homepage-hero-vision{
+    display:none;
+  }
+}
