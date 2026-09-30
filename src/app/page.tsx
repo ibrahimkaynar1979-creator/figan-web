@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import FiFooter from "./_components/FiFooter";
 import PublishingReels from "./_components/PublishingReels";
+import DigitalExperiences from "./_components/DigitalExperiences";
 import { BRAND_ASSETS } from "../lib/brandAssets";
 
 const nav = [
@@ -258,57 +259,7 @@ export default function Home() {
         </section>
 
 
-        <section className="digital-story" aria-label="22 Yayınevi dijital deneyimleri">
-          <div className="digital-story-head">
-            <span>22 YAYINEVİ</span>
-            <h2>Dijital Deneyimler</h2>
-            <p>Kitap yalnızca yayımlanmaz; okunur, dinlenir ve yazarın dünyasıyla birlikte yaşayan bir deneyime dönüşür.</p>
-          </div>
-
-          <div className="digital-story-rail">
-            <article className="digital-story-card">
-              <div className="digital-story-copy">
-                <span className="digital-story-number">01</span>
-                <p className="digital-story-label">E-KİTAP · 22 READER</p>
-                <h3>Kitabınız,<br/>okurun cebinde.</h3>
-                <p className="digital-story-text">Kitabınızı yalnızca EPUB dosyasına çevirmiyoruz. 22 Reader deneyimiyle mobilde okunabilir, zarif ve markanıza ait bir dijital esere dönüştürüyoruz.</p>
-                <div className="digital-story-points">
-                  <span>Mobil okuma</span><span>EPUB</span><span>Reader deneyimi</span>
-                </div>
-                <a href="/oku/bir-sifacinin-kanadi">Reader’ı İncele <b>→</b></a>
-              </div>
-              <div className="digital-story-visual" aria-label="22 Reader telefon mockup">
-                <div className="real-phone real-phone-light">
-                  <div className="real-phone-island" />
-                  <div className="real-phone-screen">
-                    <img src="/ekosistem-reader.webp" alt="22 Reader e-kitap arayüzü" loading="lazy" decoding="async" />
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article className="digital-story-card digital-story-card-reverse">
-              <div className="digital-story-copy">
-                <span className="digital-story-number">02</span>
-                <p className="digital-story-label">SESLİ KİTAP · 22 AUDIO</p>
-                <h3>Kitabınız,<br/>artık dinleniyor.</h3>
-                <p className="digital-story-text">Bölümler, oynatma kontrolleri, hız, uyku modu ve kaldığı yerden devam deneyimiyle sesli kitabınızı kendi dijital vitrininizde sunuyoruz.</p>
-                <div className="digital-story-points">
-                  <span>Bölümlü dinleme</span><span>Uyku modu</span><span>Devam et</span>
-                </div>
-                <a href="/dinle/bir-sifacinin-kanadi">Sesli Kitabı İncele <b>→</b></a>
-              </div>
-              <div className="digital-story-visual" aria-label="22 Audio telefon mockup">
-                <div className="real-phone real-phone-audio">
-                  <div className="real-phone-island" />
-                  <div className="real-phone-screen">
-                    <img src="/ekosistem-audio.webp" alt="22 Yayınevi sesli kitap arayüzü" loading="lazy" decoding="async" />
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
+        <DigitalExperiences />
 
         <section className="homepage-vision-bridge" aria-label="22 Yayınevi kurucu vizyonu ve teknoloji yaklaşımı">
           <div className="homepage-vision-bridge-inner">
