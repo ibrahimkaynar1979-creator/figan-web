@@ -8903,3 +8903,33 @@ body.reader-route .contact-float{display:none!important}
     letter-spacing:.20em!important;
   }
 }
+
+
+/* 2026-10-01 — VISION BRIDGE COMPACT FINAL OVERRIDE */
+@media(min-width:768px){
+  .homepage-vision-bridge-inner{
+    min-height:92px!important;
+    gap:16px!important;
+  }
+
+  .homepage-vision-bridge-mark{
+    width:42px!important;
+    height:42px!important;
+    flex-basis:42px!important;
+    font-size:18px!important;
+  }
+
+  .homepage-vision-bridge-copy{
+    gap:5px!important;
+  }
+
+  .homepage-vision-bridge-copy p{
+    font-size:clamp(17px,1.25vw,21px)!important;
+    line-height:1.2!important;
+  }
+
+  .homepage-vision-bridge-copy small{
+    font-size:9px!important;
+    letter-spacing:.26em!important;
+  }
+}
