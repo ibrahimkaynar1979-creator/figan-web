@@ -51,6 +51,7 @@ export default function PublicationPreviewDock({
   const [readerOpen, setReaderOpen] = useState(false);
   const [localReaderEpubUrl, setLocalReaderEpubUrl] = useState("");
   const readerFrameHostRef = useRef<HTMLDivElement | null>(null);
+  const dockRef = useRef<HTMLElement | null>(null);
   const [readerScale, setReaderScale] = useState(1);
   const [readerStats, setReaderStats] = useState<{ chapterCount: number; readingMinutes: number }>({ chapterCount: 0, readingMinutes: 0 });
 
@@ -112,6 +113,21 @@ export default function PublicationPreviewDock({
     return () => observer.disconnect();
   }, [readerOpen]);
 
+  const openReaderPreview = () => {
+    if (!readerSource) return;
+    setReaderOpen(true);
+    window.requestAnimationFrame(() => {
+      dockRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  };
+
+  const closeReaderPreview = () => {
+    setReaderOpen(false);
+    window.requestAnimationFrame(() => {
+      dockRef.current?.scrollTo({ top: 0, behavior: "auto" });
+    });
+  };
+
   const effectiveChapterLabel = readerStats.chapterCount > 0
     ? `${readerStats.chapterCount} bölüm`
     : chapterLabel;
@@ -123,7 +139,7 @@ export default function PublicationPreviewDock({
 
 
   return (
-    <aside className={styles.dock} aria-label="Yayın önizleme alanı">
+    <aside ref={dockRef} className={styles.dock} aria-label="Yayın önizleme alanı">
       <div className={styles.dockHead}>
         <div>
           <span>CANLI ÖNİZLEME</span>
@@ -155,7 +171,7 @@ export default function PublicationPreviewDock({
             {readerSource ? (
               <div className={`${styles.readerIframeShell} ${readerOpen ? "" : styles.readerPreviewHidden}`}>
                 <div className={styles.readerInlineBar}>
-                  <button type="button" onClick={() => setReaderOpen(false)}>← Kapağa dön</button>
+                  <button type="button" onClick={closeReaderPreview}>← Kapağa dön</button>
                   <span>22 Reader · EPUB Önizleme</span>
                 </div>
                 <div
@@ -202,7 +218,7 @@ export default function PublicationPreviewDock({
                   <button
                     type="button"
                     disabled={!readerSource}
-                    onClick={() => readerSource && setReaderOpen(true)}
+                    onClick={openReaderPreview}
                   >
                     Okumaya Başla <span>→</span>
                   </button>
