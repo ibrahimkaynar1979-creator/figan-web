@@ -7537,3 +7537,76 @@ body.reader-route .contact-float{display:none!important}
     display:block!important;
   }
 }
+
+
+/* 2026-09-30 — FINAL DESKTOP HERO MICRO POLISH */
+@media(min-width:768px){
+  .homepage-hero-ecosystem{
+    color:#8f5728!important;
+    font-weight:700!important;
+    text-shadow:0 1px 0 rgba(255,255,255,.18);
+  }
+
+  .homepage-hero-overlay h2{
+    font-size:clamp(30px,2vw,36px)!important;
+    font-weight:600!important;
+    margin-top:10px!important;
+    margin-bottom:14px!important;
+  }
+
+  .homepage-hero-description{
+    font-size:15.5px!important;
+    font-weight:600!important;
+    line-height:1.56!important;
+    color:#3f3128!important;
+  }
+
+  .homepage-hero-primary{
+    font-size:13.5px!important;
+    font-weight:850!important;
+  }
+
+  .homepage-hero-text-link{
+    font-size:13.5px!important;
+    color:#4d3425!important;
+  }
+
+  .homepage-vision-bridge{
+    background:linear-gradient(180deg,#f9f2e9 0%,#f3e6d7 100%)!important;
+  }
+
+  .homepage-vision-bridge-inner{
+    min-height:100px!important;
+    gap:20px!important;
+  }
+
+  .homepage-vision-bridge-mark{
+    width:42px!important;
+    height:42px!important;
+    font-size:20px!important;
+    border-color:rgba(153,95,43,.28)!important;
+    color:#945b2b!important;
+    background:rgba(255,255,255,.34)!important;
+  }
+
+  .homepage-vision-bridge-copy p{
+    font-family:var(--font-editorial),Georgia,serif!important;
+    font-size:18px!important;
+    font-weight:500!important;
+    letter-spacing:-.01em!important;
+    line-height:1.35!important;
+    color:#3a281e!important;
+  }
+
+  .homepage-vision-bridge-copy p strong{
+    color:#24150d!important;
+    font-weight:700!important;
+  }
+
+  .homepage-vision-bridge-copy small{
+    margin-top:2px;
+    font-size:10.5px!important;
+    letter-spacing:.2em!important;
+    color:#9a6231!important;
+  }
+}
