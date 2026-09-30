@@ -203,16 +203,11 @@ export default function Home() {
             </h1>
             <h2>Tek çatı altında.</h2>
             <p className="homepage-hero-description">
-              Basılı kitaptan e-kitaba, sesli kitaptan yazar sitesine; yayıncılığın tüm adımlarını
-              tek bir ekosistemde birleştiriyoruz.
-            </p>
-            <p className="homepage-hero-vision">
-              <strong>22 Yayınevi</strong>, Figen Yavuz’un yazarın yalnızca kitabını değil, kendi dünyasını da kurması gerektiği vizyonuyla doğdu.
-              Bu vizyonu <strong>Naribo’nun</strong> tasarım, yazılım ve teknoloji gücüyle yaşayan bir 360° yayıncılık ekosistemine dönüştürüyoruz.
+              Yazarın kitabını, sesini, dijital dünyasını ve dağıtımını tek bir ekosistemde birleştiriyoruz.
             </p>
             <div className="homepage-hero-actions">
               <a href="/kurucu-yazar" className="homepage-hero-primary">Yayın Yolculuğunu Başlat <b>→</b></a>
-              <a href="#ekosistem" className="homepage-hero-secondary">Ekosistemi İncele <b>↓</b></a>
+              <a href="#ekosistem" className="homepage-hero-text-link">Ekosistemi keşfet <b>↓</b></a>
             </div>
           </div>
 
@@ -259,6 +254,15 @@ export default function Home() {
               </span>
               <span>Fizikî Dağıtım</span>
             </a>
+          </div>
+        </section>
+
+        <section className="homepage-vision-bridge" aria-label="22 Yayınevi kurucu vizyonu ve teknoloji yaklaşımı">
+          <div className="homepage-vision-bridge-inner">
+            <span className="homepage-vision-bridge-mark">22</span>
+            <p>
+              <strong>Figen Yavuz’un yayıncılık vizyonu</strong>, <strong>Naribo’nun tasarım, yazılım ve teknoloji gücüyle</strong> buluşuyor.
+            </p>
           </div>
         </section>
 
