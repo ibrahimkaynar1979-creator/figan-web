@@ -6975,3 +6975,196 @@ body.reader-route .contact-float{display:none!important}
     margin-top:18px!important;
   }
 }
+
+
+/* 2026-09-30 — PREMIUM HERO SERVICE ICON BAND */
+@media(min-width:768px){
+  .homepage-image-hero{
+    height:100svh!important;
+    min-height:680px!important;
+  }
+
+  .homepage-image-hero-picture{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+  }
+
+  .homepage-image-hero-picture img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+
+  .homepage-image-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background:
+      linear-gradient(90deg,rgba(255,247,236,.38) 0%,rgba(255,247,236,.19) 27%,rgba(255,247,236,.03) 49%,transparent 69%),
+      linear-gradient(180deg,rgba(28,15,8,.10) 0%,transparent 22%,transparent 76%,rgba(28,15,8,.10) 100%);
+  }
+
+  .homepage-hero-overlay{
+    z-index:3!important;
+    left:clamp(72px,6.5vw,120px)!important;
+    top:47%!important;
+    width:min(660px,43vw)!important;
+    transform:translateY(-45%)!important;
+  }
+
+  .homepage-hero-positioning{
+    position:relative!important;
+    margin:0 0 20px!important;
+    padding-top:17px!important;
+  }
+
+  .homepage-hero-positioning::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:72px;
+    height:2px;
+    background:linear-gradient(90deg,#8b5526,#c9995e);
+  }
+
+  .homepage-hero-first{
+    margin:0 0 7px!important;
+    color:#2b180f!important;
+    font-size:clamp(20px,1.55vw,28px)!important;
+    font-weight:650!important;
+    line-height:1!important;
+    letter-spacing:-.02em!important;
+  }
+
+  .homepage-hero-ecosystem{
+    margin:0!important;
+    color:#9f6530!important;
+    font-size:clamp(30px,2.55vw,45px)!important;
+    font-weight:600!important;
+    line-height:.98!important;
+    letter-spacing:-.04em!important;
+    white-space:nowrap!important;
+  }
+
+  .homepage-hero-overlay h1{
+    margin:0!important;
+    font-size:clamp(56px,4.8vw,84px)!important;
+    line-height:.84!important;
+    letter-spacing:-.055em!important;
+  }
+
+  .homepage-hero-overlay h2{
+    margin:16px 0 14px!important;
+    font-size:clamp(27px,1.9vw,35px)!important;
+  }
+
+  .homepage-hero-description{
+    max-width:585px!important;
+    font-size:13.5px!important;
+    line-height:1.55!important;
+  }
+
+  .homepage-hero-actions{
+    margin-top:20px!important;
+  }
+
+  .homepage-hero-service-band{
+    position:absolute;
+    z-index:4;
+    left:50%;
+    bottom:26px;
+    width:min(1320px,calc(100% - 96px));
+    transform:translateX(-50%);
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    align-items:stretch;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.36);
+    border-radius:26px;
+    background:linear-gradient(180deg,rgba(255,252,247,.88),rgba(247,236,224,.78));
+    box-shadow:
+      0 22px 55px rgba(45,25,13,.16),
+      inset 0 1px 0 rgba(255,255,255,.68);
+    backdrop-filter:blur(18px) saturate(1.08);
+  }
+
+  .homepage-hero-service-item{
+    position:relative;
+    min-height:86px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 10px;
+    color:#3f2a1e;
+    text-align:center;
+    transition:background .22s ease,transform .22s ease,color .22s ease;
+  }
+
+  .homepage-hero-service-item:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    right:0;
+    top:18px;
+    bottom:18px;
+    width:1px;
+    background:linear-gradient(180deg,transparent,rgba(146,96,51,.20),transparent);
+  }
+
+  .homepage-hero-service-item:hover{
+    background:rgba(255,255,255,.46);
+    color:#8f592c;
+    transform:translateY(-2px);
+  }
+
+  .homepage-hero-service-icon{
+    width:32px;
+    height:32px;
+    display:grid;
+    place-items:center;
+    color:#9f6530;
+  }
+
+  .homepage-hero-service-icon svg{
+    width:27px;
+    height:27px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.55;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  .homepage-hero-service-item>span:last-child{
+    font-size:11px;
+    font-weight:750;
+    letter-spacing:.01em;
+    line-height:1.15;
+  }
+}
+
+@media(min-width:768px) and (max-width:1180px){
+  .homepage-hero-service-band{
+    width:calc(100% - 48px);
+  }
+  .homepage-hero-service-item{
+    min-height:80px;
+    padding:10px 6px;
+  }
+  .homepage-hero-service-item>span:last-child{
+    font-size:9.5px;
+  }
+}
+
+@media(max-width:767px){
+  .homepage-hero-service-band{
+    display:none;
+  }
+}
