@@ -8142,3 +8142,236 @@ body.reader-route .contact-float{display:none!important}
     margin-top:3px!important;
   }
 }
+
+
+/* 2026-09-30 — SECTION 2: SCROLLING DIGITAL EXPERIENCES */
+.digital-experiences{
+  position:relative;
+  overflow:hidden;
+  padding:92px 0 84px;
+  background:
+    radial-gradient(circle at 15% 10%,rgba(236,207,166,.32),transparent 28%),
+    radial-gradient(circle at 88% 8%,rgba(224,190,145,.20),transparent 24%),
+    linear-gradient(180deg,#fbf6ef 0%,#f6ecdf 100%);
+}
+
+.digital-experiences::before,
+.digital-experiences::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:110px;
+  z-index:3;
+  pointer-events:none;
+}
+
+.digital-experiences::before{
+  left:0;
+  background:linear-gradient(90deg,#faf4ec,rgba(250,244,236,0));
+}
+
+.digital-experiences::after{
+  right:0;
+  background:linear-gradient(270deg,#f7ede1,rgba(247,237,225,0));
+}
+
+.digital-experiences-head{
+  width:min(920px,calc(100% - 48px));
+  margin:0 auto 42px;
+  text-align:center;
+}
+
+.digital-experiences-kicker{
+  display:block;
+  margin-bottom:8px;
+  color:#9a6130;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.22em;
+}
+
+.digital-experiences-head h2{
+  margin:0;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:clamp(44px,5vw,74px);
+  font-weight:500;
+  line-height:.95;
+  letter-spacing:-.045em;
+  color:#2a180f;
+}
+
+.digital-experiences-head p{
+  max-width:720px;
+  margin:14px auto 0;
+  color:#6a5545;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.digital-experiences-marquee{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+}
+
+.digital-experiences-track{
+  display:flex;
+  align-items:flex-end;
+  gap:34px;
+  width:max-content;
+  padding:10px 0 20px;
+  animation:digitalExperiencesMarquee 46s linear infinite;
+  will-change:transform;
+}
+
+.digital-experiences:hover .digital-experiences-track{
+  animation-play-state:paused;
+}
+
+.digital-phone-card{
+  flex:0 0 auto;
+  width:250px;
+  color:#3b291e;
+  text-align:center;
+  text-decoration:none;
+  transition:transform .25s ease;
+}
+
+.digital-phone-card:hover{
+  transform:translateY(-8px);
+}
+
+.digital-phone-shell{
+  position:relative;
+  width:250px;
+  height:520px;
+  padding:10px;
+  border-radius:46px;
+  background:
+    linear-gradient(145deg,#f0d9b8 0%,#c89655 16%,#2a2019 27%,#0b0b0b 52%,#6f4b2d 78%,#dfc19a 100%);
+  box-shadow:
+    0 24px 46px rgba(53,31,19,.22),
+    inset 0 0 0 1px rgba(255,255,255,.28);
+}
+
+.digital-phone-shell::before{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border-radius:42px;
+  border:1px solid rgba(255,255,255,.12);
+  pointer-events:none;
+}
+
+.digital-phone-island{
+  position:absolute;
+  z-index:3;
+  top:17px;
+  left:50%;
+  width:86px;
+  height:24px;
+  transform:translateX(-50%);
+  border-radius:999px;
+  background:#050505;
+  box-shadow:0 1px 0 rgba(255,255,255,.08);
+}
+
+.digital-phone-screen{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:37px;
+  background:#efe5d6;
+}
+
+.digital-phone-screen img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+}
+
+.digital-phone-card>span{
+  display:inline-block;
+  margin-top:14px;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:22px;
+  line-height:1;
+  color:#3a2518;
+}
+
+@keyframes digitalExperiencesMarquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(-50% - 17px))}
+}
+
+@media(max-width:767px){
+  .digital-experiences{
+    padding:64px 0 58px;
+  }
+
+  .digital-experiences-head{
+    margin-bottom:28px;
+  }
+
+  .digital-experiences-head h2{
+    font-size:42px;
+  }
+
+  .digital-experiences-head p{
+    font-size:14px;
+  }
+
+  .digital-experiences::before,
+  .digital-experiences::after{
+    width:48px;
+  }
+
+  .digital-experiences-track{
+    gap:18px;
+    animation-duration:36s;
+  }
+
+  .digital-phone-card{
+    width:196px;
+  }
+
+  .digital-phone-shell{
+    width:196px;
+    height:408px;
+    border-radius:38px;
+    padding:8px;
+  }
+
+  .digital-phone-screen{
+    border-radius:31px;
+  }
+
+  .digital-phone-island{
+    top:14px;
+    width:68px;
+    height:20px;
+  }
+
+  .digital-phone-card>span{
+    font-size:18px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .digital-experiences-track{
+    animation:none;
+  }
+
+  .digital-experiences-marquee{
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+
+  .digital-experiences-marquee::-webkit-scrollbar{
+    display:none;
+  }
+}
