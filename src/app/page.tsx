@@ -159,7 +159,7 @@ export default function Home() {
 
   return (
     <>
-      <header className={`site-header ${scrolled?"is-scrolled":""}`}>
+      <header className={`site-header home-overlay-header ${scrolled?"is-scrolled":""}`}>
         <div className="container header-inner">
           <a href="#top" className="brand brand-fi brand-logo-image" aria-label="22 Yayınevi ana sayfa"><Image src={BRAND_ASSETS.publisherLogo} alt="22 Yayınevi" width={420} height={140} priority /></a>
           <nav className="desktop-nav">
@@ -181,8 +181,6 @@ export default function Home() {
       <main id="top" className="home-page-main">
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
 
-        <PublishingReels home />
-
         <section
           aria-label="22 Yayınevi 360 derece yayıncılık ekosistemi"
           style={{ position: "relative", width: "100%", margin: 0, padding: 0, overflow: "hidden", background: "#050505" }}
@@ -203,6 +201,8 @@ export default function Home() {
             style={{ position: "absolute", inset: 0, zIndex: 2 }}
           />
         </section>
+
+        <PublishingReels home />
 
         <section id="hizmetler" className="section services figan-services-showcase">
           <div className="container">
