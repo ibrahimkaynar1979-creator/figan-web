@@ -11539,3 +11539,24 @@ body.reader-route .contact-float{display:none!important}
     color:#efb47d!important;
   }
 }
+
+
+/* 2026-10-01 — AUTHORS CARD SIZE RESTORE */
+@media(min-width:1101px){
+  .authors-showcase-card:not(.authors-showcase-card-empty){
+    min-height:360px!important;
+  }
+
+  .authors-showcase-card:not(.authors-showcase-card-empty) .authors-showcase-hit{
+    min-height:360px!important;
+    height:360px!important;
+  }
+
+  .authors-showcase-card-empty{
+    min-height:360px!important;
+  }
+
+  .authors-showcase-empty{
+    min-height:360px!important;
+  }
+}
