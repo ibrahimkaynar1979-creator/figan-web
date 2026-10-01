@@ -951,3 +951,177 @@
     font-size:10.5px;
   }
 }
+
+
+/* 2026-10-01 — JOURNEY REBALANCE: fill left column + premium 2-column service matrix */
+@media(min-width:1181px){
+  .journeyPanel{
+    grid-template-columns:36% 64%;
+    grid-template-rows:1fr auto;
+    column-gap:0;
+    padding:0;
+  }
+
+  .journeyHeader{
+    grid-column:1;
+    grid-row:1;
+    justify-content:flex-start;
+    padding:28px 28px 18px 36px;
+    border-right:1px solid rgba(145,89,47,.14);
+    border-bottom:0;
+  }
+
+  .journeyHeader h2{
+    font-size:55px;
+    line-height:.93;
+  }
+
+  .journeyIntro{
+    max-width:290px;
+    margin-top:14px;
+    font-size:14.5px;
+    line-height:1.5;
+  }
+
+  .journeyHeader::after{
+    content:"01 → 09  ·  TEK SİSTEM";
+    margin-top:auto;
+    padding-top:18px;
+    color:#a56b38;
+    font-size:9px;
+    font-weight:850;
+    letter-spacing:.18em;
+    border-top:1px solid rgba(145,89,47,.14);
+    width:100%;
+  }
+
+  .journeyGrid{
+    grid-column:2;
+    grid-row:1 / span 2;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-auto-rows:1fr;
+    gap:10px;
+    padding:18px 20px;
+    align-content:stretch;
+  }
+
+  .journeyItem{
+    min-height:0;
+    display:grid;
+    grid-template-columns:42px 1fr;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    border:1px solid rgba(151,91,44,.15);
+    border-radius:16px;
+    background:
+      radial-gradient(circle at 12% 10%,rgba(255,255,255,.98),transparent 42%),
+      linear-gradient(145deg,rgba(255,253,249,.96),rgba(246,232,216,.94));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.95),
+      0 8px 18px rgba(84,49,28,.045);
+    overflow:hidden;
+  }
+
+  .journeyItem:nth-child(3n+2),
+  .journeyItem:nth-child(3n+3),
+  .journeyItem:nth-child(n+4){
+    border-left:1px solid rgba(151,91,44,.15);
+    border-top:1px solid rgba(151,91,44,.15);
+  }
+
+  .journeyItem:nth-child(9){
+    grid-column:1 / -1;
+  }
+
+  .journeyItem::after{
+    left:14px;
+    right:14px;
+    bottom:8px;
+  }
+
+  .iconDisc{
+    width:38px;
+    height:38px;
+    flex:0 0 38px;
+  }
+
+  .iconDisc svg{
+    width:18px;
+    height:18px;
+  }
+
+  .stepCopy span{
+    font-size:9px;
+    margin-bottom:3px;
+  }
+
+  .stepCopy strong{
+    font-size:15.5px;
+    line-height:1.12;
+  }
+
+  .stepCopy small{
+    font-size:10.5px;
+    line-height:1.28;
+  }
+
+  .journeyFooter{
+    grid-column:1;
+    grid-row:2;
+    margin:0;
+    padding:0 28px 18px 36px;
+    border-top:0;
+    border-right:1px solid rgba(145,89,47,.14);
+    align-items:flex-end;
+  }
+
+  .journeyFooter > span{
+    display:none;
+  }
+
+  .journeyFooter a{
+    min-height:38px;
+    padding:0 17px;
+    font-size:10px;
+    background:#fffaf4;
+    border-color:rgba(117,73,39,.16);
+    box-shadow:0 7px 16px rgba(83,49,28,.04);
+  }
+}
+
+@media(min-width:1500px){
+  .journeyHeader{
+    padding:30px 30px 20px 40px;
+  }
+
+  .journeyHeader h2{
+    font-size:57px;
+  }
+
+  .journeyIntro{
+    font-size:15px;
+  }
+
+  .journeyGrid{
+    gap:11px;
+    padding:20px 22px;
+  }
+
+  .journeyItem{
+    padding:13px 15px;
+  }
+
+  .stepCopy strong{
+    font-size:16px;
+  }
+
+  .stepCopy small{
+    font-size:11px;
+  }
+
+  .journeyFooter{
+    padding:0 30px 20px 40px;
+  }
+}
