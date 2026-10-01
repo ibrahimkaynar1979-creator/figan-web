@@ -277,6 +277,26 @@ export default function Home() {
 
         <DigitalExperiences />
 
+        <section className="homepage-experience-links" aria-label="Figen Yavuz dijital deneyimleri">
+          <div className="container homepage-experience-links-panel">
+            <a className="homepage-experience-pill homepage-experience-pill-site" href="/yazarlar/figen-yavuz">
+              <span className="homepage-experience-pill-icon" aria-hidden="true">↗</span>
+              <strong>Yazar Web Sitesi</strong>
+              <b aria-hidden="true">→</b>
+            </a>
+            <a className="homepage-experience-pill homepage-experience-pill-reader" href="/oku/bir-sifacinin-kanadi">
+              <span className="homepage-experience-pill-icon" aria-hidden="true">▤</span>
+              <strong>E-Kitabını Oku</strong>
+              <b aria-hidden="true">→</b>
+            </a>
+            <a className="homepage-experience-pill homepage-experience-pill-audio" href="/dinle/bir-sifacinin-kanadi">
+              <span className="homepage-experience-pill-icon" aria-hidden="true">◎</span>
+              <strong>Sesli Kitabını Dinle</strong>
+              <b aria-hidden="true">→</b>
+            </a>
+          </div>
+        </section>
+
         <section className="homepage-author-bridge" aria-label="22 Yayınevi yayın yaklaşımı">
           <div className="homepage-author-bridge-inner">
             <div className="homepage-author-bridge-copy">
