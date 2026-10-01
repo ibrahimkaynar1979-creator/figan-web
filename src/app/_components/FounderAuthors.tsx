@@ -2,50 +2,29 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./FounderAuthors.module.css";
 
-function CrownIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4 18h16l-1.5-9-4.5 4-2-6-2 6-4.5-4L4 18Z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-    </svg>
-  );
-}
-
-function GiftIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4 9h16v11H4zM12 9v11M4 13h16M6 9V7c0-1 .8-1.8 1.8-1.8 2 0 4.2 3.8 4.2 3.8s2.2-3.8 4.2-3.8C17.2 5.2 18 6 18 7v2" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-    </svg>
-  );
-}
-
-function DiamondIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7 4h10l4 5-9 11L3 9l4-5ZM3 9h18M7 4l5 16L17 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-    </svg>
-  );
-}
-
-const highlights = [
-  ["01", <CrownIcon key="crown" />, "Numaralı Statü", "01–22 arasında kalıcı sıra."],
-  ["02", <GiftIcon key="gift" />, "Kurucu Koleksiyonu", "Sertifika, kart, ayraç ve mühür."],
-  ["03", <DiamondIcon key="diamond" />, "%50 Hizmet Avantajı", "Basılı kitap hariç sonraki hizmetlerde."],
+const journey = [
+  ["01", "Başvuru"],
+  ["02", "Editörlük"],
+  ["03", "Tasarım"],
+  ["04", "E-Kitap"],
+  ["05", "Sesli Kitap"],
+  ["06", "Dağıtım"],
 ] as const;
 
 export default function FounderAuthors() {
   return (
-    <section className={styles.section} aria-labelledby="founder-title">
+    <section className={styles.section} aria-label="Kurucu Yazar ve Yayın Yolculuğu">
       <div className={styles.shell}>
-        <div className={styles.main}>
-          <div className={styles.copy}>
-            <div className={styles.brandLine}>
+        <article className={`${styles.panel} ${styles.founderPanel}`}>
+          <div className={styles.founderCopy}>
+            <div className={styles.eyebrow}>
               <span>22 YAYINEVİ</span>
               <i />
             </div>
 
-            <p className={styles.kicker}>KURUCU STATÜSÜ</p>
+            <p className={styles.kicker}>İLK 22 KURUCU YAZAR</p>
 
-            <h2 id="founder-title">
+            <h2>
               22 isim.
               <em>Bir kuruluş hikâyesi.</em>
             </h2>
@@ -53,54 +32,81 @@ export default function FounderAuthors() {
             <p className={styles.statement}>Bu statü yalnızca bir kez verilir.</p>
 
             <p className={styles.lead}>
-              İlk 22 yazar, 22 Yayınevi’nin kuruluş dönemine numaralı ve kalıcı
-              bir statüyle dahil olur. Her kurucu yazar için hazırlanan koleksiyon,
-              bu ayrıcalığı fiziksel bir hatıraya dönüştürür.
+              Kuruluş dönemine numaralı ve kalıcı bir statüyle dahil olun;
+              bu ayrıcalığı size özel hazırlanan koleksiyonla yaşatın.
             </p>
 
-            <div className={styles.collectionBlock}>
-              <span>NUMARALI KOLEKSİYON</span>
-              <p>Sertifika <i>—</i> Metal Kart <i>—</i> Metal Ayraç <i>—</i> Mühür</p>
+            <div className={styles.collectionLine}>
+              Sertifika <span>·</span> Metal Kart <span>·</span> Metal Ayraç <span>·</span> Mühür
             </div>
 
-            <Link href="/kurucu-yazar" className={styles.cta}>
-              Kurucu Yazar Koleksiyonunu Keşfet <b>→</b>
+            <Link href="/kurucu-yazar" className={styles.darkCta}>
+              Koleksiyonu Keşfet <b>→</b>
             </Link>
           </div>
 
-          <div className={styles.visualColumn}>
-            <div className={styles.visual}>
-              <Image
-                src="/22-yayinevi-kurucu-yazar-koleksiyon-yatay-v2.png"
-                alt="22 Yayınevi İlk 22 Kurucu Yazar koleksiyonu"
-                fill
-                sizes="(max-width: 980px) 100vw, 55vw"
-                className={styles.image}
-              />
-
-              <Image
-                src="/muhur_koleksiyon_v1.png"
-                alt="07/22 Kurucu Yazar mührü"
-                width={180}
-                height={180}
-                className={styles.numberBadgeImage}
-              />
-            </div>
+          <div className={styles.founderVisual}>
+            <Image
+              src="/22-yayinevi-kurucu-yazar-koleksiyon-yatay-v2.png"
+              alt="22 Yayınevi İlk 22 Kurucu Yazar koleksiyonu"
+              fill
+              sizes="(max-width: 980px) 100vw, 26vw"
+              className={styles.collectionImage}
+            />
+            <div className={styles.visualShade} />
+            <Image
+              src="/muhur_koleksiyon_v1.png"
+              alt="07/22 Kurucu Yazar mührü"
+              width={150}
+              height={150}
+              className={styles.seal}
+            />
           </div>
-        </div>
+        </article>
 
-        <div className={styles.strip}>
-          {highlights.map(([no,icon,title,text]) => (
-            <article key={no} className={styles.stripItem}>
-              <span className={styles.stripNo}>{no}</span>
-              <span className={styles.stripIcon}>{icon}</span>
-              <div>
+        <article className={`${styles.panel} ${styles.journeyPanel}`}>
+          <div className={styles.journeyTop}>
+            <div className={styles.eyebrow}>
+              <span>22 YAYINEVİ</span>
+              <i />
+            </div>
+
+            <p className={styles.kicker}>YAYIN YOLCULUĞU</p>
+
+            <h2>
+              Bir dosyadan,
+              <em>yaşayan bir yayına.</em>
+            </h2>
+
+            <p className={styles.lead}>
+              Editoryal hazırlıktan tasarıma, dijital yayından dağıtıma kadar
+              eseriniz tek bir sistem içinde hayata geçirilir.
+            </p>
+          </div>
+
+          <div className={styles.journeyRail} aria-label="Yayın süreci adımları">
+            {journey.map(([no, title], index) => (
+              <div className={styles.journeyStep} key={no}>
+                <span className={styles.stepNo}>{no}</span>
+                <span className={styles.stepDot} />
                 <strong>{title}</strong>
-                <p>{text}</p>
+                {index < journey.length - 1 && <i className={styles.connector} />}
               </div>
-            </article>
-          ))}
-        </div>
+            ))}
+          </div>
+
+          <div className={styles.journeyFooter}>
+            <div className={styles.journeyMark}>
+              <span>01</span>
+              <b>→</b>
+              <span>06</span>
+            </div>
+
+            <Link href="/surec" className={styles.lightCta}>
+              Süreci Keşfet <b>→</b>
+            </Link>
+          </div>
+        </article>
       </div>
     </section>
   );
