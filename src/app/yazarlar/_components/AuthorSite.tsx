@@ -44,6 +44,11 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
           {author.affiliation && <p className={styles.heroAffiliation}>{author.affiliation}</p>}
         </div>
 
+        <div className={styles.heroActions} aria-label="Kitap seçenekleri">
+          {featured.readerUrl && <a href={featured.readerUrl}>E-Kitap Oku <span>→</span></a>}
+          {featured.audioUrl && <a href={featured.audioUrl}>Sesli Kitap Dinle <span>→</span></a>}
+          {featured.purchaseUrl && <a href={featured.purchaseUrl}>Kitabı Keşfet <span>→</span></a>}
+        </div>
         <a className={styles.scrollCue} href="#kitap">AŞAĞI KAYDIR <span>↓</span></a>
       </section>
 
