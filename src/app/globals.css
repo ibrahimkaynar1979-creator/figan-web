@@ -12707,3 +12707,123 @@ body.reader-route .contact-float{display:none!important}
     grid-row:auto!important;
   }
 }
+
+
+/* 2026-10-01 — BASILI HERO FULL-VIEW PREMIUM */
+@media(min-width:1101px){
+  /* keep desktop service reels, but make them a quiet navigation strip */
+  .seo-service-premium-reference .figan-category-nav{
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+  }
+  .seo-service-premium-reference .figan-category-nav .container{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+  }
+
+  /* first screen: header + reels + hero should fit within desktop viewport */
+  .seo-service-premium-reference .seo-service-hero{
+    min-height:calc(100svh - 188px)!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    display:flex!important;
+    align-items:stretch!important;
+  }
+
+  .seo-service-premium-reference .seo-service-hero>.container{
+    min-height:calc(100svh - 208px)!important;
+  }
+
+  .seo-service-premium-reference .seo-service-grid{
+    height:100%!important;
+    min-height:0!important;
+    grid-template-columns:.88fr 1.12fr!important;
+    gap:10px!important;
+    padding:10px!important;
+    border-radius:24px!important;
+    background:
+      radial-gradient(circle at 15% 6%,rgba(255,255,255,.82),transparent 28rem),
+      linear-gradient(145deg,#fbf6ef 0%,#f6ecdf 48%,#efe1d3 100%)!important;
+    box-shadow:0 16px 38px rgba(69,42,25,.05)!important;
+  }
+
+  .seo-service-premium-reference .seo-service-copy{
+    min-width:0!important;
+    padding:34px 30px 30px 30px!important;
+    justify-content:center!important;
+  }
+
+  .seo-service-premium-reference .seo-service-copy .eyebrow{
+    margin-bottom:10px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-copy h1{
+    max-width:620px!important;
+    margin:0 0 16px!important;
+    font-size:clamp(46px,4.2vw,68px)!important;
+    line-height:.92!important;
+    letter-spacing:-.05em!important;
+  }
+
+  .seo-service-premium-reference .seo-service-copy h1 em{
+    display:block!important;
+    margin-top:2px!important;
+    color:#b46543!important;
+    font-family:var(--font-poetic),Georgia,serif!important;
+    font-weight:400!important;
+  }
+
+  .seo-service-premium-reference .seo-service-lead{
+    max-width:560px!important;
+    margin:0 0 18px!important;
+    font-size:12.5px!important;
+    line-height:1.55!important;
+    color:#67574e!important;
+  }
+
+  .seo-service-premium-reference .seo-service-copy .btn.primary{
+    align-self:flex-start!important;
+    min-width:0!important;
+    width:auto!important;
+    padding:12px 18px!important;
+    border-radius:999px!important;
+    background:#4a2a1a!important;
+    color:#fff8f1!important;
+    box-shadow:none!important;
+  }
+
+  .seo-service-premium-reference .seo-service-visual{
+    min-height:0!important;
+    height:100%!important;
+    border-radius:18px!important;
+    overflow:hidden!important;
+    background:#eadfcf!important;
+  }
+
+  .seo-service-premium-reference .seo-service-visual img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center 52%!important;
+    transform:scale(1.015);
+  }
+}
+
+@media(min-width:1101px) and (max-height:820px){
+  .seo-service-premium-reference .seo-service-hero{
+    min-height:calc(100svh - 174px)!important;
+  }
+  .seo-service-premium-reference .seo-service-hero>.container{
+    min-height:calc(100svh - 194px)!important;
+  }
+  .seo-service-premium-reference .seo-service-copy{
+    padding:26px 28px!important;
+  }
+  .seo-service-premium-reference .seo-service-copy h1{
+    font-size:clamp(42px,3.8vw,58px)!important;
+  }
+  .seo-service-premium-reference .seo-service-lead{
+    font-size:11.8px!important;
+    line-height:1.48!important;
+  }
+}
