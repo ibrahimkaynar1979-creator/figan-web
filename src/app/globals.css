@@ -9040,3 +9040,189 @@ body.reader-route .contact-float{display:none!important}
     font-size:9px;
   }
 }
+
+
+/* 2026-10-01 — PREMIUM CAPSULE BRIDGES FINAL */
+.homepage-vision-bridge,
+.homepage-author-bridge{
+  position:relative!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:12px 0!important;
+  overflow:visible!important;
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+.homepage-vision-bridge::before,
+.homepage-vision-bridge::after,
+.homepage-author-bridge::before,
+.homepage-author-bridge::after{
+  display:none!important;
+}
+
+.homepage-vision-bridge-inner,
+.homepage-author-bridge-inner{
+  width:min(1180px,calc(100% - 72px))!important;
+  min-height:62px!important;
+  height:auto!important;
+  margin:0 auto!important;
+  padding:10px 34px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:18px!important;
+  border:1px solid rgba(151,94,43,.20)!important;
+  border-radius:999px!important;
+  background:
+    radial-gradient(circle at 50% -60%,rgba(255,255,255,.92),transparent 48%),
+    linear-gradient(180deg,rgba(255,252,248,.96) 0%,rgba(245,232,216,.94) 100%)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    0 10px 28px rgba(84,49,28,.065)!important;
+  backdrop-filter:blur(8px)!important;
+}
+
+.homepage-vision-bridge-mark{
+  width:40px!important;
+  height:40px!important;
+  flex:0 0 40px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid rgba(157,98,48,.24)!important;
+  border-radius:50%!important;
+  background:linear-gradient(145deg,#fffdf8,#f0dac0)!important;
+  color:#9b5f2f!important;
+  font-family:var(--font-editorial),Georgia,serif!important;
+  font-size:17px!important;
+  font-weight:600!important;
+  box-shadow:none!important;
+}
+
+.homepage-vision-bridge-copy{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  gap:3px!important;
+  text-align:left!important;
+}
+
+.homepage-vision-bridge-copy p{
+  margin:0!important;
+  color:#3d2a20!important;
+  font-family:var(--font-editorial),Georgia,serif!important;
+  font-size:clamp(17px,1.25vw,21px)!important;
+  font-weight:400!important;
+  line-height:1.15!important;
+  letter-spacing:-.02em!important;
+}
+
+.homepage-vision-bridge-copy p strong{
+  color:#2b190f!important;
+  font-weight:600!important;
+}
+
+.homepage-vision-bridge-copy p span{
+  color:#9d6232!important;
+  font-style:normal!important;
+}
+
+.homepage-vision-bridge-copy small{
+  margin:0!important;
+  color:#9d6b43!important;
+  font-size:9px!important;
+  font-weight:850!important;
+  letter-spacing:.22em!important;
+}
+
+.homepage-author-bridge-copy{
+  width:100%!important;
+  text-align:center!important;
+}
+
+.homepage-author-bridge-eyebrow{
+  display:none!important;
+}
+
+.homepage-author-bridge-copy h2{
+  margin:0!important;
+  color:#34241b!important;
+  font-family:var(--font-editorial),Georgia,serif!important;
+  font-size:clamp(22px,1.6vw,30px)!important;
+  font-weight:500!important;
+  line-height:1!important;
+  letter-spacing:-.035em!important;
+}
+
+.homepage-author-bridge-copy h2 span,
+.homepage-author-bridge-copy h2 strong{
+  display:inline!important;
+}
+
+.homepage-author-bridge-copy h2 strong{
+  margin-left:.28em!important;
+  color:#a96a36!important;
+  font-weight:500!important;
+}
+
+.homepage-author-bridge-text{
+  margin:4px auto 0!important;
+  max-width:760px!important;
+  color:#6b5a4f!important;
+  font-size:11px!important;
+  line-height:1.25!important;
+}
+
+@media(max-width:900px){
+  .homepage-vision-bridge,
+  .homepage-author-bridge{
+    padding:9px 0!important;
+  }
+
+  .homepage-vision-bridge-inner,
+  .homepage-author-bridge-inner{
+    width:calc(100% - 28px)!important;
+    min-height:58px!important;
+    padding:9px 18px!important;
+    border-radius:28px!important;
+  }
+
+  .homepage-vision-bridge-mark{
+    width:34px!important;
+    height:34px!important;
+    flex-basis:34px!important;
+    font-size:15px!important;
+  }
+
+  .homepage-vision-bridge-copy p{
+    font-size:14px!important;
+    line-height:1.2!important;
+  }
+
+  .homepage-vision-bridge-copy small{
+    font-size:7.5px!important;
+    letter-spacing:.16em!important;
+  }
+
+  .homepage-author-bridge-copy h2{
+    font-size:24px!important;
+    line-height:1.02!important;
+  }
+
+  .homepage-author-bridge-copy h2 span,
+  .homepage-author-bridge-copy h2 strong{
+    display:block!important;
+  }
+
+  .homepage-author-bridge-copy h2 strong{
+    margin:2px 0 0!important;
+  }
+
+  .homepage-author-bridge-text{
+    max-width:420px!important;
+    font-size:9.5px!important;
+  }
+}
