@@ -741,3 +741,41 @@
     margin:0!important;
   }
 }
+
+/* Mobile header: hamburger replaces the 22 position at far right */
+@media(max-width:800px){
+  .hero .header{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    padding:16px 18px!important;
+    min-height:70px!important;
+  }
+  .hero .brand{
+    position:static!important;
+    font-size:28px!important;
+    font-weight:600!important;
+  }
+  .hero .publisher{
+    display:none!important;
+  }
+  .hero .mobileMenuButton{
+    position:static!important;
+    width:34px!important;
+    height:38px!important;
+    margin:0!important;
+    padding:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+    gap:6px!important;
+    transform:none!important;
+  }
+  .hero .mobileMenuButton span{
+    width:25px!important;
+    height:1.5px!important;
+    margin:0!important;
+    background:#2a1b12!important;
+  }
+}
