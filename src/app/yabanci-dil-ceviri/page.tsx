@@ -24,6 +24,7 @@ export default function Page(){
   return (
     <SeoServicePage
       editorialLayout
+      premiumReference
       eyebrow="ÇEVİRİ"
       title="Eseriniz yeni bir dilde de kendi sesini korusun."
       lead="Metninizi yalnızca çevirmiyor; anlatım tonu, terminoloji, kültürel bağlam ve hedef dilin doğal akışıyla birlikte ele alarak yayıma hazır yeni bir dil sürümüne dönüştürüyoruz."
