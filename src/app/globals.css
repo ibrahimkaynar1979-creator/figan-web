@@ -8934,542 +8934,99 @@ body.reader-route .contact-float{display:none!important}
   }
 }
 
-
-/* 2026-10-01 — editorial transition between Digital Experiences and Founder Authors */
+/* 2026-10-01 — AUTHOR BRIDGE CLEAN FINAL */
 .homepage-author-bridge{
   position:relative;
+  height:92px;
   overflow:hidden;
-  min-height:118px;
   display:flex;
   align-items:center;
-  background:
-    radial-gradient(circle at 18% 35%,rgba(255,255,255,.88),transparent 31%),
-    radial-gradient(circle at 83% 50%,rgba(206,153,92,.10),transparent 28%),
-    linear-gradient(90deg,#fbf6ef 0%,#f5eadf 48%,#f7efe5 100%);
-  border-top:1px solid rgba(148,98,57,.14);
-  border-bottom:1px solid rgba(148,98,57,.15);
+  justify-content:center;
+  background-color:#f6eee4;
+  background-image:url("/22-yayinevi-editorial-gecis-v1.png");
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:100% 100%;
+  border-top:1px solid rgba(145,91,48,.12);
+  border-bottom:1px solid rgba(145,91,48,.16);
 }
-.homepage-author-bridge::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.42;
-  pointer-events:none;
-  background:
-    linear-gradient(115deg,transparent 0 31%,rgba(173,118,68,.035) 31% 32%,transparent 32% 100%),
-    linear-gradient(65deg,transparent 0 72%,rgba(173,118,68,.03) 72% 73%,transparent 73% 100%);
-}
+
 .homepage-author-bridge-inner{
-  position:relative;
-  z-index:1;
-  width:min(1460px,calc(100% - 72px));
+  width:min(1180px,calc(100% - 48px));
+  height:100%;
   margin:0 auto;
-  display:grid;
-  grid-template-columns:170px minmax(0,1fr) 170px;
-  align-items:center;
-  gap:24px;
-  padding:18px 0;
-}
-.homepage-author-bridge-mark{
   display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
-  min-height:78px;
-  border-right:1px solid rgba(154,102,60,.18);
-  color:#a66b38;
 }
-.homepage-author-bridge-mark span{
-  font-family:var(--font-editorial),Georgia,serif;
-  font-size:52px;
-  line-height:.82;
-  letter-spacing:-.06em;
-  font-style:italic;
-}
-.homepage-author-bridge-mark small{
-  margin-top:8px;
-  font-size:7px;
-  font-weight:800;
-  letter-spacing:.22em;
-}
+
 .homepage-author-bridge-copy{
+  width:min(720px,68%);
   text-align:center;
-  max-width:860px;
-  justify-self:center;
 }
-.homepage-author-bridge-rule{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin:0 auto 4px;
-  color:#aa6c37;
+
+.homepage-author-bridge-eyebrow{
+  display:none;
 }
-.homepage-author-bridge-rule i{
-  display:block;
-  width:76px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(166,103,50,.48));
-}
-.homepage-author-bridge-rule i:last-child{
-  transform:scaleX(-1);
-}
-.homepage-author-bridge-rule b{
-  font-size:9px;
-  font-weight:500;
-}
+
 .homepage-author-bridge-copy h2{
   margin:0;
+  color:#33231b;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:clamp(30px,2.65vw,48px);
+  font-size:clamp(28px,2.2vw,40px);
   font-weight:500;
-  line-height:.92;
-  letter-spacing:-.045em;
-  color:#2f1c14;
+  line-height:.9;
+  letter-spacing:-.04em;
 }
+
 .homepage-author-bridge-copy h2 span,
-.homepage-author-bridge-copy h2 em{
-  display:block;
+.homepage-author-bridge-copy h2 strong{
+  display:inline;
 }
-.homepage-author-bridge-copy h2 em{
-  margin-top:2px;
-  color:#912f28;
-  font-family:var(--font-poetic),var(--font-editorial),Georgia,serif;
-  font-style:normal;
-  font-weight:400;
+
+.homepage-author-bridge-copy h2 strong{
+  margin-left:.28em;
+  color:#a76a36;
+  font-weight:500;
 }
-.homepage-author-bridge-kicker{
-  margin:10px 0 0;
-  color:#a46c3c;
-  font-size:8px;
-  font-weight:850;
-  letter-spacing:.28em;
-}
+
 .homepage-author-bridge-text{
   margin:6px auto 0;
-  color:#715e50;
-  font-family:var(--font-editorial),Georgia,serif;
+  max-width:620px;
+  color:#68584f;
   font-size:11px;
-  line-height:1.45;
-}
-.homepage-author-bridge-ornament{
-  min-height:78px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-left:1px solid rgba(154,102,60,.18);
-}
-.homepage-author-bridge-feather{
-  display:block;
-  color:#b77a43;
-  font-family:Georgia,serif;
-  font-size:68px;
-  font-style:italic;
-  line-height:1;
-  transform:rotate(-19deg) scaleX(1.35);
-  opacity:.48;
-}
-.homepage-author-bridge-ornament i{
-  position:absolute;
-  width:82px;
-  height:1px;
-  bottom:21px;
-  background:linear-gradient(90deg,transparent,rgba(154,97,51,.32),transparent);
+  line-height:1.3;
 }
 
 @media(max-width:900px){
-  .homepage-author-bridge-inner{
-    width:min(100% - 34px,760px);
-    grid-template-columns:72px minmax(0,1fr) 72px;
-    gap:14px;
-  }
-  .homepage-author-bridge-mark span{font-size:40px}
-  .homepage-author-bridge-copy h2{font-size:36px}
-  .homepage-author-bridge-kicker{letter-spacing:.20em}
-  .homepage-author-bridge-feather{font-size:52px}
-}
-
-@media(max-width:600px){
   .homepage-author-bridge{
-    min-height:0;
+    height:120px;
+    background-size:auto 100%;
   }
+
   .homepage-author-bridge-inner{
     width:calc(100% - 28px);
-    grid-template-columns:1fr;
-    padding:24px 0 26px;
   }
-  .homepage-author-bridge-mark,
-  .homepage-author-bridge-ornament{
-    display:none;
+
+  .homepage-author-bridge-copy{
+    width:100%;
   }
-  .homepage-author-bridge-rule{margin-bottom:8px}
-  .homepage-author-bridge-copy h2{font-size:34px}
-  .homepage-author-bridge-kicker{
-    font-size:7px;
-    letter-spacing:.16em;
-    line-height:1.5;
+
+  .homepage-author-bridge-copy h2{
+    font-size:30px;
   }
+
+  .homepage-author-bridge-copy h2 span,
+  .homepage-author-bridge-copy h2 strong{
+    display:block;
+  }
+
+  .homepage-author-bridge-copy h2 strong{
+    margin:2px 0 0;
+  }
+
   .homepage-author-bridge-text{
     max-width:320px;
     font-size:10px;
   }
-}
-
-
-/* 2026-10-01 — compact author bridge final polish */
-.homepage-author-bridge{
-  min-height:76px!important;
-  background:linear-gradient(90deg,#fbf7f1 0%,#f6ede3 50%,#f8f1e8 100%)!important;
-}
-.homepage-author-bridge-inner{
-  width:min(1320px,calc(100% - 72px))!important;
-  grid-template-columns:92px minmax(0,1fr) 92px!important;
-  gap:18px!important;
-  padding:8px 0!important;
-}
-.homepage-author-bridge-mark{
-  min-height:54px!important;
-}
-.homepage-author-bridge-mark span{
-  font-size:36px!important;
-}
-.homepage-author-bridge-mark small{
-  margin-top:5px!important;
-  font-size:6px!important;
-}
-.homepage-author-bridge-copy{
-  max-width:760px!important;
-}
-.homepage-author-bridge-rule{
-  margin-bottom:2px!important;
-}
-.homepage-author-bridge-rule i{
-  width:54px!important;
-}
-.homepage-author-bridge-copy h2{
-  font-size:clamp(25px,2vw,36px)!important;
-  line-height:.92!important;
-}
-.homepage-author-bridge-kicker{
-  margin-top:6px!important;
-  font-size:7px!important;
-  letter-spacing:.23em!important;
-}
-.homepage-author-bridge-text{
-  margin-top:3px!important;
-  font-size:9px!important;
-}
-.homepage-author-bridge-ornament{
-  min-height:54px!important;
-}
-.homepage-author-bridge-feather{
-  font-size:44px!important;
-  opacity:.25!important;
-}
-.homepage-author-bridge-ornament i{
-  bottom:12px!important;
-  width:54px!important;
-}
-
-@media(max-width:900px){
-  .homepage-author-bridge-inner{
-    grid-template-columns:58px minmax(0,1fr) 58px!important;
-    width:min(100% - 34px,760px)!important;
-  }
-  .homepage-author-bridge-copy h2{font-size:30px!important}
-}
-
-@media(max-width:600px){
-  .homepage-author-bridge-inner{
-    width:calc(100% - 28px)!important;
-    grid-template-columns:1fr!important;
-    padding:17px 0 19px!important;
-  }
-  .homepage-author-bridge-copy h2{font-size:30px!important}
-  .homepage-author-bridge-text{font-size:9px!important}
-}
-
-
-/* 2026-10-01 — FINAL EDITORIAL BRIDGE using 22-yayinevi-editorial-gecis-v1 */
-.homepage-author-bridge{
-  min-height:220px!important;
-  display:flex!important;
-  align-items:center!important;
-  background:
-    linear-gradient(90deg,rgba(250,246,239,.12),rgba(250,246,239,.08)),
-    url("/22-yayinevi-editorial-gecis-v1.png") center center / cover no-repeat!important;
-  border-top:0!important;
-  border-bottom:1px solid rgba(145,91,48,.14)!important;
-}
-.homepage-author-bridge::before{display:none!important}
-.homepage-author-bridge-inner{
-  width:min(1320px,calc(100% - 56px))!important;
-  margin:0 auto!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  padding:26px 0!important;
-}
-.homepage-author-bridge-copy{
-  width:min(780px,72%)!important;
-  max-width:none!important;
-  margin:0 auto!important;
-  text-align:center!important;
-}
-.homepage-author-bridge-eyebrow{
-  display:inline-flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  margin:0 0 12px!important;
-  padding:7px 12px!important;
-  border:1px solid rgba(169,105,52,.20)!important;
-  border-radius:999px!important;
-  background:rgba(255,255,255,.58)!important;
-  color:#9b5d2d!important;
-  font-size:10px!important;
-  font-weight:800!important;
-  letter-spacing:.18em!important;
-}
-.homepage-author-bridge-copy h2{
-  margin:0!important;
-  color:#3d2b23!important;
-  font-family:var(--font-editorial),Georgia,serif!important;
-  font-size:clamp(50px,5vw,76px)!important;
-  font-weight:500!important;
-  line-height:.95!important;
-  letter-spacing:-.05em!important;
-  text-shadow:0 1px 0 rgba(255,255,255,.38)!important;
-}
-.homepage-author-bridge-copy h2 span,
-.homepage-author-bridge-copy h2 strong{
-  display:block!important;
-}
-.homepage-author-bridge-copy h2 strong{
-  color:#a96934!important;
-  font-weight:500!important;
-}
-.homepage-author-bridge-text{
-  max-width:650px!important;
-  margin:16px auto 0!important;
-  color:#65564e!important;
-  font-family:var(--font-ui),Arial,sans-serif!important;
-  font-size:15px!important;
-  line-height:1.65!important;
-}
-.homepage-author-bridge-rule,
-.homepage-author-bridge-kicker,
-.homepage-author-bridge-mark,
-.homepage-author-bridge-ornament{
-  display:none!important;
-}
-
-@media(max-width:900px){
-  .homepage-author-bridge{
-    min-height:190px!important;
-    background-position:center center!important;
-  }
-  .homepage-author-bridge-inner{
-    width:min(100% - 34px,760px)!important;
-    padding:22px 0!important;
-  }
-  .homepage-author-bridge-copy{
-    width:min(680px,82%)!important;
-  }
-  .homepage-author-bridge-copy h2{
-    font-size:clamp(42px,7vw,58px)!important;
-  }
-  .homepage-author-bridge-text{
-    font-size:14px!important;
-  }
-}
-
-@media(max-width:600px){
-  .homepage-author-bridge{
-    min-height:250px!important;
-    background-position:58% center!important;
-  }
-  .homepage-author-bridge-inner{
-    width:calc(100% - 28px)!important;
-    padding:26px 0!important;
-  }
-  .homepage-author-bridge-copy{
-    width:100%!important;
-    padding:0 10px!important;
-  }
-  .homepage-author-bridge-eyebrow{
-    margin-bottom:10px!important;
-    font-size:8px!important;
-  }
-  .homepage-author-bridge-copy h2{
-    font-size:42px!important;
-    line-height:.94!important;
-  }
-  .homepage-author-bridge-text{
-    max-width:310px!important;
-    margin-top:12px!important;
-    font-size:12px!important;
-    line-height:1.5!important;
-  }
-}
-
-
-/* 2026-10-01 — thin editorial bridge final */
-.homepage-author-bridge{
-  min-height:132px!important;
-  background:
-    linear-gradient(90deg,rgba(250,246,239,.10),rgba(250,246,239,.06)),
-    url("/22-yayinevi-editorial-gecis-v1.png") center center / cover no-repeat!important;
-}
-.homepage-author-bridge-inner{
-  width:min(1260px,calc(100% - 56px))!important;
-  padding:14px 0!important;
-}
-.homepage-author-bridge-copy{
-  width:min(720px,70%)!important;
-}
-.homepage-author-bridge-eyebrow{
-  margin:0 0 7px!important;
-  padding:5px 10px!important;
-  font-size:8px!important;
-}
-.homepage-author-bridge-copy h2{
-  font-size:clamp(36px,3.4vw,54px)!important;
-  line-height:.92!important;
-}
-.homepage-author-bridge-text{
-  margin-top:8px!important;
-  font-size:12px!important;
-  line-height:1.45!important;
-}
-
-@media(max-width:900px){
-  .homepage-author-bridge{min-height:142px!important}
-  .homepage-author-bridge-copy{width:min(640px,80%)!important}
-  .homepage-author-bridge-copy h2{font-size:40px!important}
-}
-
-@media(max-width:600px){
-  .homepage-author-bridge{
-    min-height:190px!important;
-    background-position:60% center!important;
-  }
-  .homepage-author-bridge-inner{padding:18px 0!important}
-  .homepage-author-bridge-copy{width:100%!important}
-  .homepage-author-bridge-copy h2{font-size:36px!important}
-  .homepage-author-bridge-text{
-    max-width:300px!important;
-    font-size:11px!important;
-  }
-}
-
-
-/* 2026-10-01 — FINAL THIN BRIDGE: preserve full artwork without cropping */
-.homepage-author-bridge{
-  min-height:108px!important;
-  height:108px!important;
-  overflow:hidden!important;
-  background:
-    linear-gradient(90deg,rgba(250,246,239,.06),rgba(250,246,239,.04)),
-    url("/22-yayinevi-editorial-gecis-v1.png") center center / 100% 100% no-repeat!important;
-}
-.homepage-author-bridge-inner{
-  width:min(1260px,calc(100% - 56px))!important;
-  height:100%!important;
-  padding:7px 0!important;
-}
-.homepage-author-bridge-copy{
-  width:min(720px,68%)!important;
-}
-.homepage-author-bridge-eyebrow{
-  margin:0 0 4px!important;
-  padding:4px 9px!important;
-  font-size:7px!important;
-}
-.homepage-author-bridge-copy h2{
-  font-size:clamp(30px,2.6vw,43px)!important;
-  line-height:.9!important;
-}
-.homepage-author-bridge-text{
-  margin-top:5px!important;
-  font-size:11px!important;
-  line-height:1.35!important;
-}
-
-@media(max-width:900px){
-  .homepage-author-bridge{
-    min-height:112px!important;
-    height:112px!important;
-    background-size:100% 100%!important;
-  }
-  .homepage-author-bridge-copy h2{font-size:34px!important}
-}
-
-@media(max-width:600px){
-  .homepage-author-bridge{
-    min-height:160px!important;
-    height:160px!important;
-    background-size:auto 100%!important;
-    background-position:center center!important;
-  }
-  .homepage-author-bridge-copy h2{font-size:31px!important}
-  .homepage-author-bridge-text{font-size:10px!important}
-}
-
-
-/* 2026-10-01 — visibly thinner bridge */
-.homepage-author-bridge{
-  min-height:86px!important;
-  height:86px!important;
-}
-.homepage-author-bridge-inner{
-  padding:4px 0!important;
-}
-.homepage-author-bridge-eyebrow{
-  margin-bottom:2px!important;
-  padding:3px 8px!important;
-  font-size:6px!important;
-}
-.homepage-author-bridge-copy h2{
-  font-size:clamp(26px,2.2vw,36px)!important;
-  line-height:.88!important;
-}
-.homepage-author-bridge-text{
-  margin-top:3px!important;
-  font-size:10px!important;
-  line-height:1.25!important;
-}
-
-
-/* 2026-10-01 — bridge: thinner, no stretching */
-.homepage-author-bridge{
-  min-height:74px!important;
-  height:74px!important;
-  background-color:#f6eee4!important;
-  background-image:url("/22-yayinevi-editorial-gecis-v1.png")!important;
-  background-repeat:no-repeat!important;
-  background-position:center center!important;
-  background-size:cover!important;
-}
-.homepage-author-bridge-copy{
-  width:min(680px,66%)!important;
-}
-.homepage-author-bridge-eyebrow{
-  display:none!important;
-}
-.homepage-author-bridge-copy h2{
-  font-size:clamp(24px,1.85vw,34px)!important;
-  line-height:.88!important;
-}
-.homepage-author-bridge-copy h2 span,
-.homepage-author-bridge-copy h2 strong{
-  display:inline!important;
-}
-.homepage-author-bridge-copy h2 strong{
-  margin-left:.28em!important;
-}
-.homepage-author-bridge-text{
-  margin-top:4px!important;
-  font-size:10px!important;
-  line-height:1.2!important;
 }
