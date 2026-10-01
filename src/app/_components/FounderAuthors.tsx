@@ -86,11 +86,6 @@ export default function FounderAuthors() {
                 className={styles.numberBadgeImage}
               />
             </div>
-
-            <div className={styles.visualMeta}>
-              <span>KURUCU YAZAR KOLEKSİYONU</span>
-              <strong>Sınırlı · Numaralı · Kalıcı</strong>
-            </div>
           </div>
         </div>
 
