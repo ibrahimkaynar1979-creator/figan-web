@@ -24,6 +24,7 @@ export default function Page(){
   return (
     <SeoServicePage
       editorialLayout
+      premiumReference
       eyebrow="YAZAR SİTESİ"
       title="Kitaplarınızın ötesinde, size ait bir yazar dünyası kuralım."
       lead="Biyografinizi, kitaplarınızı, yazılarınızı ve duyurularınızı sosyal medya akışında kaybolmadan size ait profesyonel ve mobil uyumlu bir dijital adreste buluşturuyoruz."
