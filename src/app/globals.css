@@ -12104,3 +12104,30 @@ body.reader-route .contact-float{display:none!important}
     margin-top:auto!important;
   }
 }
+
+
+/* 2026-10-01 — HOMEPAGE 10PX RHYTHM LOCK */
+@media(min-width:1101px){
+  /* Lock the vertical rhythm of all homepage sections after Authors to 10px */
+  .home-page-main .authors-showcase,
+  .home-page-main .journey-duo,
+  .home-page-main .author-site,
+  .home-page-main .home-tail-section,
+  .home-page-main .final-cta{
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+  }
+
+  .authors-showcase-header{
+    margin-bottom:10px!important;
+  }
+
+  .journey-duo-grid,
+  .about-listen-grid{
+    gap:10px!important;
+  }
+
+  .home-footer-zone footer{
+    margin-top:10px!important;
+  }
+}
