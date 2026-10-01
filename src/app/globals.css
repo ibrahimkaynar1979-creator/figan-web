@@ -9439,3 +9439,37 @@ body.reader-route .contact-float{display:none!important}
   font-size:10px!important;
   line-height:1.25!important;
 }
+
+
+/* 2026-10-01 — bridge: thinner, no stretching */
+.homepage-author-bridge{
+  min-height:74px!important;
+  height:74px!important;
+  background-color:#f6eee4!important;
+  background-image:url("/22-yayinevi-editorial-gecis-v1.png")!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:cover!important;
+}
+.homepage-author-bridge-copy{
+  width:min(680px,66%)!important;
+}
+.homepage-author-bridge-eyebrow{
+  display:none!important;
+}
+.homepage-author-bridge-copy h2{
+  font-size:clamp(24px,1.85vw,34px)!important;
+  line-height:.88!important;
+}
+.homepage-author-bridge-copy h2 span,
+.homepage-author-bridge-copy h2 strong{
+  display:inline!important;
+}
+.homepage-author-bridge-copy h2 strong{
+  margin-left:.28em!important;
+}
+.homepage-author-bridge-text{
+  margin-top:4px!important;
+  font-size:10px!important;
+  line-height:1.2!important;
+}
