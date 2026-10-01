@@ -330,56 +330,6 @@ export default function Home() {
 
         <PublishingReels home />
 
-        <section id="surec" className="section journey-duo">
-          <div className="container journey-duo-grid">
-            <article className="journey-card journey-card-process">
-              <header className="journey-card-head">
-                <p className="journey-kicker">22 YAYINEVİ · YAYIN SÜRECİ</p>
-                <h2><span>Bir dosya.</span><em>Bir yayın yolculuğu.</em></h2>
-                <p>Metinden yayına, bütün süreç tek sistemde ilerler.</p>
-              </header>
-
-              <div className="journey-process-list">
-                {process.map(([no,title,text])=>(
-                  <div className="journey-process-row" key={no}>
-                    <span className="journey-process-no">{no}</span>
-                    <div className="journey-process-copy">
-                      <h3>{title}</h3>
-                      <p>{text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <a href="/kurucu-yazar" className="journey-card-cta journey-card-cta-light">
-                <span>Yayın Yolculuğunu Başlat</span><b>→</b>
-              </a>
-            </article>
-
-            <article id="ekosistem" className="journey-card journey-card-ecosystem">
-              <header className="journey-card-head journey-card-head-dark">
-                <p className="journey-kicker">22 YAYINEVİ · EKOSİSTEM</p>
-                <h2><span>Bir kitap.</span><em>Birden fazla yaşam.</em></h2>
-                <p>Kitabınız basılı, dijital ve sesli dünyada birlikte yaşar; tek ekosistem içinde okura ulaşır.</p>
-              </header>
-
-              <div className="journey-ecosystem-grid" aria-label="22 Yayınevi ekosistemi">
-                <span>Basılı Kitap</span>
-                <span>E-Kitap</span>
-                <span>Sesli Kitap</span>
-                <span>Yazar Sitesi</span>
-                <span>Türkiye Dağıtımı</span>
-                <span>Global Yayın</span>
-                <strong>22</strong>
-              </div>
-
-              <a href="/kurucu-yazar" className="journey-card-cta journey-card-cta-dark">
-                <span>Kurucu Yazar Statüsünü İncele</span><b>→</b>
-              </a>
-            </article>
-          </div>
-        </section>
-
         <section id="yazarlar" className="section authors-section authors-showcase">
           <div className="container authors-showcase-wrap">
             <header className="authors-showcase-header">
@@ -429,6 +379,56 @@ export default function Home() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="surec" className="section journey-duo">
+          <div className="container journey-duo-grid">
+            <article className="journey-card journey-card-process">
+              <header className="journey-card-head">
+                <p className="journey-kicker">22 YAYINEVİ · YAYIN SÜRECİ</p>
+                <h2><span>Bir dosya.</span><em>Bir yayın yolculuğu.</em></h2>
+                <p>Metinden yayına, bütün süreç tek sistemde ilerler.</p>
+              </header>
+
+              <div className="journey-process-list">
+                {process.map(([no,title,text])=>(
+                  <div className="journey-process-row" key={no}>
+                    <span className="journey-process-no">{no}</span>
+                    <div className="journey-process-copy">
+                      <h3>{title}</h3>
+                      <p>{text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <a href="/kurucu-yazar" className="journey-card-cta journey-card-cta-light">
+                <span>Yayın Yolculuğunu Başlat</span><b>→</b>
+              </a>
+            </article>
+
+            <article id="ekosistem" className="journey-card journey-card-ecosystem">
+              <header className="journey-card-head journey-card-head-dark">
+                <p className="journey-kicker">22 YAYINEVİ · EKOSİSTEM</p>
+                <h2><span>Bir kitap.</span><em>Birden fazla yaşam.</em></h2>
+                <p>Kitabınız basılı, dijital ve sesli dünyada birlikte yaşar; tek ekosistem içinde okura ulaşır.</p>
+              </header>
+
+              <div className="journey-ecosystem-grid" aria-label="22 Yayınevi ekosistemi">
+                <span>Basılı Kitap</span>
+                <span>E-Kitap</span>
+                <span>Sesli Kitap</span>
+                <span>Yazar Sitesi</span>
+                <span>Türkiye Dağıtımı</span>
+                <span>Global Yayın</span>
+                <strong>22</strong>
+              </div>
+
+              <a href="/kurucu-yazar" className="journey-card-cta journey-card-cta-dark">
+                <span>Kurucu Yazar Statüsünü İncele</span><b>→</b>
+              </a>
+            </article>
           </div>
         </section>
 
