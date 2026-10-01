@@ -20,6 +20,12 @@ const founderBenefits = [
   ["03", "%50 Hizmet Avantajı", "Basılı kitap hariç sonraki hizmetlerde"],
 ] as const;
 
+const journeyBenefits = [
+  ["01", "9 Yayın Adımı", "Editoryal hazırlıktan dağıtıma"],
+  ["02", "Tek Sistem", "Bütün süreçler aynı yapı içinde"],
+  ["03", "Yayın Sonrası", "Yazar sitesi ve dijital görünürlük"],
+] as const;
+
 function JourneyIcon({ type }: { type: string }) {
   const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.55, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   if (type === "edit") return <svg viewBox="0 0 24 24" aria-hidden="true"><path {...common} d="M4 19h4l10-10-4-4L4 15v4Zm9-13 4 4M6 12l6 6" /></svg>;
@@ -98,34 +104,46 @@ export default function FounderAuthors() {
         </article>
 
         <article className={styles.journeyPanel}>
-          <header className={styles.journeyHeader}>
-            <div>
+          <div className={styles.journeyMain}>
+            <header className={styles.journeyHeader}>
               <p className={styles.eyebrow}>22 YAYINEVİ</p>
               <p className={styles.kicker}>YAYIN YOLCULUĞU</p>
               <h2>
                 <span>Bir dosyadan,</span>
                 <em>yaşayan bir yayına.</em>
               </h2>
-            </div>
-            <p className={styles.statement}>Dokuz adım. Tek sistem.</p>
-            <p className={styles.journeyIntro}>
-              Editoryal hazırlıktan tasarıma, dijital yayından dağıtıma kadar
-              eseriniz tek bir sistem içinde hayata geçirilir.
-            </p>
-            <div className={styles.journeyMeta}>
-              01–09 <span>·</span> Editoryal <span>·</span> Dijital <span>·</span> Dağıtım
-            </div>
-            <Link href="/surec" className={styles.journeyCta}>
-              Süreci Keşfet <b>→</b>
-            </Link>
-          </header>
+              <p className={styles.statement}>Dokuz adım. Tek sistem.</p>
+              <p className={styles.journeyIntro}>
+                Editoryal hazırlıktan tasarıma, dijital yayından dağıtıma kadar
+                eseriniz tek bir sistem içinde hayata geçirilir.
+              </p>
+              <div className={styles.journeyMeta}>
+                Editoryal <span>·</span> Tasarım <span>·</span> Dijital <span>·</span> Dağıtım
+              </div>
+              <Link href="/surec" className={styles.journeyCta}>
+                Süreci Keşfet <b>→</b>
+              </Link>
+            </header>
 
-          <div className={styles.journeyGrid}>
-            {journey.map(([no, type, title, text]) => (
-              <div className={styles.journeyItem} key={no}>
-                <div className={styles.iconDisc}><JourneyIcon type={type} /></div>
-                <div className={styles.stepCopy}>
-                  <span>{no}</span>
+            <div className={styles.journeyGrid}>
+              {journey.map(([no, type, title, text]) => (
+                <div className={styles.journeyItem} key={no}>
+                  <div className={styles.iconDisc}><JourneyIcon type={type} /></div>
+                  <div className={styles.stepCopy}>
+                    <span>{no}</span>
+                    <strong>{title}</strong>
+                    <small>{text}</small>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.journeyBenefits}>
+            {journeyBenefits.map(([no, title, text]) => (
+              <div className={styles.benefit} key={no}>
+                <span>{no}</span>
+                <div>
                   <strong>{title}</strong>
                   <small>{text}</small>
                 </div>
