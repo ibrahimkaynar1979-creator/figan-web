@@ -12827,3 +12827,399 @@ body.reader-route .contact-float{display:none!important}
     line-height:1.48!important;
   }
 }
+
+
+/* 2026-10-01 — ALL SERVICE INNER PAGES COMPACT LOCK */
+@media(min-width:1101px){
+  .seo-service-editorial{
+    background:#f6f0e7!important;
+  }
+
+  .seo-service-editorial .seo-service-hero,
+  .seo-service-editorial .seo-service-scope,
+  .seo-service-editorial .seo-service-audience,
+  .seo-service-editorial .seo-service-process,
+  .seo-service-editorial .seo-service-output,
+  .seo-service-editorial .seo-service-faq,
+  .seo-service-editorial .seo-service-final-cta{
+    padding-left:0!important;
+    padding-right:0!important;
+    padding-bottom:10px!important;
+  }
+
+  .seo-service-editorial .seo-service-hero{
+    min-height:0!important;
+    padding-top:10px!important;
+  }
+
+  .seo-service-editorial .seo-service-hero>.container,
+  .seo-service-editorial .seo-service-scope>.container,
+  .seo-service-editorial .seo-service-audience>.container,
+  .seo-service-editorial .seo-service-process>.container,
+  .seo-service-editorial .seo-service-output>.container,
+  .seo-service-editorial .seo-service-faq>.container,
+  .seo-service-editorial .seo-service-final-cta>.container{
+    width:min(calc(100% - 24px),1180px)!important;
+    max-width:1180px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+
+  .seo-service-editorial .seo-service-grid{
+    min-height:390px!important;
+    height:auto!important;
+    grid-template-columns:.9fr 1.1fr!important;
+    gap:10px!important;
+    padding:10px!important;
+    border-radius:22px!important;
+  }
+
+  .seo-service-editorial .seo-service-copy{
+    padding:26px 28px!important;
+  }
+
+  .seo-service-editorial .legal-back{
+    margin-bottom:12px!important;
+    font-size:9px!important;
+  }
+
+  .seo-service-editorial .seo-service-copy .eyebrow{
+    margin-bottom:8px!important;
+  }
+
+  .seo-service-editorial .seo-service-copy h1{
+    max-width:600px!important;
+    margin:0 0 13px!important;
+    font-size:clamp(40px,3.4vw,56px)!important;
+    line-height:.94!important;
+  }
+
+  .seo-service-editorial .seo-service-copy h1 em{
+    margin-top:1px!important;
+  }
+
+  .seo-service-editorial .seo-service-lead{
+    max-width:540px!important;
+    margin:0 0 15px!important;
+    font-size:11.8px!important;
+    line-height:1.48!important;
+  }
+
+  .seo-service-editorial .seo-service-copy .btn.primary{
+    min-height:38px!important;
+    width:auto!important;
+    align-self:flex-start!important;
+    padding:0 16px!important;
+    border-radius:999px!important;
+    font-size:10px!important;
+  }
+
+  .seo-service-editorial .seo-service-visual{
+    min-height:370px!important;
+    height:370px!important;
+    border-radius:16px!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-card,
+  .seo-service-editorial .seo-service-process-card,
+  .seo-service-editorial .seo-service-output-card,
+  .seo-service-editorial .seo-service-faq-card,
+  .seo-service-editorial .seo-service-audience-note-card{
+    padding:22px 24px!important;
+    border-radius:20px!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-card h2,
+  .seo-service-editorial .seo-service-process-card h2,
+  .seo-service-editorial .seo-service-output-head h2,
+  .seo-service-editorial .seo-service-faq-card h2,
+  .seo-service-editorial .seo-service-audience-premium h2{
+    font-size:clamp(30px,2.35vw,40px)!important;
+    line-height:.97!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:8px!important;
+    margin-top:16px!important;
+    border:0!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-grid article,
+  .seo-service-editorial .seo-service-scope-grid article:nth-child(odd),
+  .seo-service-editorial .seo-service-scope-grid article:nth-child(even){
+    min-height:112px!important;
+    display:block!important;
+    padding:14px!important;
+    border:1px solid rgba(145,91,48,.12)!important;
+    border-radius:14px!important;
+    background:rgba(255,255,255,.28)!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-grid article>b{
+    width:auto!important;
+    height:auto!important;
+    margin:0 0 8px!important;
+    display:block!important;
+    border:0!important;
+    font-size:14px!important;
+  }
+
+  .seo-service-editorial .seo-service-step-icon{
+    display:none!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-grid h3{
+    margin:0 0 6px!important;
+    font-size:12.5px!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-grid p{
+    font-size:10.5px!important;
+    line-height:1.38!important;
+  }
+
+  .seo-service-editorial .seo-service-audience-note-card{
+    min-height:280px!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:10px!important;
+    padding:10px!important;
+  }
+
+  .seo-service-editorial .seo-service-audience-premium{
+    padding:22px 24px!important;
+  }
+
+  .seo-service-editorial .seo-service-section-intro{
+    margin-top:9px!important;
+    font-size:11px!important;
+    line-height:1.45!important;
+  }
+
+  .seo-service-editorial .seo-service-fit-box{
+    margin-top:12px!important;
+  }
+
+  .seo-service-editorial .seo-service-fit-box p{
+    padding:6px 0!important;
+    font-size:10.5px!important;
+  }
+
+  .seo-service-editorial .seo-service-note-premium{
+    min-height:260px!important;
+    grid-template-columns:48px 1fr!important;
+    gap:14px!important;
+    padding:22px!important;
+    border-radius:16px!important;
+  }
+
+  .seo-service-editorial .seo-service-note-premium .seo-service-note-mark{
+    width:48px!important;
+    height:48px!important;
+    font-size:18px!important;
+  }
+
+  .seo-service-editorial .seo-service-note-premium h2{
+    margin:6px 0 8px!important;
+    font-size:25px!important;
+  }
+
+  .seo-service-editorial .seo-service-note-premium>div:last-child>p:last-child{
+    font-size:10.5px!important;
+    line-height:1.45!important;
+  }
+
+  .seo-service-editorial .seo-service-process-list{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:8px!important;
+    margin-top:16px!important;
+    border:0!important;
+  }
+
+  .seo-service-editorial .seo-service-process-list article{
+    min-height:112px!important;
+    display:block!important;
+    padding:14px!important;
+    border:1px solid rgba(145,91,48,.12)!important;
+    border-radius:14px!important;
+    background:rgba(255,255,255,.28)!important;
+  }
+
+  .seo-service-editorial .seo-service-process-list b{
+    margin-bottom:8px!important;
+    font-size:14px!important;
+  }
+
+  .seo-service-editorial .seo-service-process-list h3{
+    margin:0 0 6px!important;
+    font-size:12.5px!important;
+  }
+
+  .seo-service-editorial .seo-service-process-list p{
+    font-size:10.5px!important;
+    line-height:1.38!important;
+  }
+
+  .seo-service-editorial .seo-service-output-card{
+    grid-template-columns:.72fr 1.28fr!important;
+    gap:22px!important;
+    align-items:center!important;
+  }
+
+  .seo-service-editorial .seo-service-output-list{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+
+  .seo-service-editorial .seo-service-output-list article{
+    min-height:108px!important;
+    padding:14px!important;
+    border-radius:14px!important;
+  }
+
+  .seo-service-editorial .seo-service-output-list b{
+    width:26px!important;
+    height:26px!important;
+    margin-bottom:9px!important;
+    font-size:9px!important;
+  }
+
+  .seo-service-editorial .seo-service-output-list h3{
+    margin:0 0 5px!important;
+    font-size:11.5px!important;
+  }
+
+  .seo-service-editorial .seo-service-output-list p{
+    font-size:10px!important;
+    line-height:1.38!important;
+  }
+
+  .seo-service-editorial .seo-service-faq-card{
+    grid-template-columns:.75fr 1.25fr!important;
+    gap:24px!important;
+  }
+
+  .seo-service-editorial .seo-service-faq-card>h2{
+    font-size:clamp(28px,2.15vw,36px)!important;
+  }
+
+  .seo-service-editorial .seo-service-faq-card .faq-list{
+    margin-top:0!important;
+    gap:7px!important;
+  }
+
+  .seo-service-editorial .faq-list details{
+    padding:0 12px!important;
+    border-radius:10px!important;
+  }
+
+  .seo-service-editorial .faq-list summary{
+    min-height:42px!important;
+    font-size:10.5px!important;
+  }
+
+  .seo-service-editorial .faq-list details p{
+    padding-bottom:11px!important;
+    font-size:10.5px!important;
+    line-height:1.42!important;
+  }
+
+  .seo-service-editorial .seo-service-final-cta-card{
+    min-height:220px!important;
+    padding:30px 34px!important;
+    border-radius:20px!important;
+  }
+
+  .seo-service-editorial .seo-service-final-cta-card h2{
+    font-size:clamp(34px,2.7vw,46px)!important;
+  }
+
+  .seo-service-editorial .seo-service-final-cta-card>p{
+    margin:10px 0 14px!important;
+    font-size:11px!important;
+  }
+}
+
+@media(max-width:760px){
+  .seo-service-editorial .seo-service-hero,
+  .seo-service-editorial .seo-service-scope,
+  .seo-service-editorial .seo-service-audience,
+  .seo-service-editorial .seo-service-process,
+  .seo-service-editorial .seo-service-output,
+  .seo-service-editorial .seo-service-faq,
+  .seo-service-editorial .seo-service-final-cta{
+    padding-left:8px!important;
+    padding-right:8px!important;
+    padding-bottom:8px!important;
+  }
+
+  .seo-service-editorial .seo-service-hero{
+    padding-top:8px!important;
+  }
+
+  .seo-service-editorial .seo-service-grid{
+    min-height:0!important;
+    padding:8px!important;
+    gap:8px!important;
+  }
+
+  .seo-service-editorial .seo-service-copy{
+    padding:16px 10px!important;
+  }
+
+  .seo-service-editorial .seo-service-copy h1{
+    font-size:34px!important;
+  }
+
+  .seo-service-editorial .seo-service-lead{
+    font-size:12px!important;
+  }
+
+  .seo-service-editorial .seo-service-visual{
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:16/10!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-card,
+  .seo-service-editorial .seo-service-process-card,
+  .seo-service-editorial .seo-service-output-card,
+  .seo-service-editorial .seo-service-faq-card{
+    padding:16px!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-grid,
+  .seo-service-editorial .seo-service-process-list,
+  .seo-service-editorial .seo-service-output-list{
+    grid-template-columns:1fr 1fr!important;
+    gap:7px!important;
+  }
+
+  .seo-service-editorial .seo-service-scope-grid article,
+  .seo-service-editorial .seo-service-process-list article,
+  .seo-service-editorial .seo-service-output-list article{
+    min-height:0!important;
+    padding:12px!important;
+  }
+
+  .seo-service-editorial .seo-service-audience-note-card{
+    grid-template-columns:1fr!important;
+    padding:8px!important;
+  }
+
+  .seo-service-editorial .seo-service-note-premium{
+    min-height:0!important;
+  }
+
+  .seo-service-editorial .seo-service-output-card,
+  .seo-service-editorial .seo-service-faq-card{
+    grid-template-columns:1fr!important;
+  }
+
+  .seo-service-editorial .seo-service-faq-card>.eyebrow,
+  .seo-service-editorial .seo-service-faq-card>h2,
+  .seo-service-editorial .seo-service-faq-card .faq-list{
+    grid-column:1!important;
+    grid-row:auto!important;
+  }
+}
