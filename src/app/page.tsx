@@ -290,44 +290,77 @@ export default function Home() {
 
         <FounderAuthors />
 
-        <PublishingReels home />
-
-        <section id="hizmetler" className="section services figan-services-showcase">
-          <div className="container">
-            <header className="figan-services-header">
-              <p className="figan-services-eyebrow">HİZMETLERİMİZ</p>
-              <h2>Tek kitap.<br/><strong>Bütün yayın dünyası.</strong></h2>
-              <p className="figan-services-description">
-                Bir yazarın ihtiyaç duyduğu yayıncılık adımlarını birbirinden kopuk hizmetler olarak değil, tek bir 360° ekosistemin parçaları olarak yönetiyoruz.
+        <section className="why22-compact" aria-label="Neden 22 Yayınevi">
+          <div className="why22-compact-inner">
+            <div className="why22-compact-copy">
+              <p className="why22-compact-eyebrow">NEDEN 22?</p>
+              <h2>
+                <span>Bazı hikâyeler,</span>
+                <em>bittiği yerde bitmez.</em>
+              </h2>
+              <p className="why22-compact-lead">
+                7 Haziran 2015’te başlayan bir yolculuk, yıllar sonra yeniden aynı sayıda buluştu.
+                <strong> 22</strong>, bir tarihten çıktı; bir kitabın adına, oradan da bir yayınevinin hikâyesine dönüştü.
               </p>
+              <div className="why22-compact-note">
+                <span>22 bizim için yalnızca bir sayı değil.</span>
+                <strong>Bir hikâyenin devam ettiği yer.</strong>
+              </div>
+            </div>
+
+            <div className="why22-compact-line" aria-label="22 Yayınevi kuruluş zaman çizgisi">
+              <div className="why22-point">
+                <span>07.06.2015</span>
+                <strong>İlk karşılaşma</strong>
+                <small>Hikâyenin başladığı gün.</small>
+              </div>
+              <div className="why22-center">22</div>
+              <div className="why22-point">
+                <span>2026</span>
+                <strong>22 Yayınevi</strong>
+                <small>Hikâyenin yeni adı.</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="hizmetler" className="services-compact" aria-label="22 Yayınevi hizmetleri">
+          <div className="services-compact-inner">
+            <header className="services-compact-copy">
+              <p className="services-compact-eyebrow">HİZMETLERİMİZ</p>
+              <h2>
+                <span>Tek kitap.</span>
+                <em>Bütün yayın dünyası.</em>
+              </h2>
+              <p>
+                Bir yazarın ihtiyaç duyduğu yayıncılık adımlarını tek bir sistem içinde,
+                birbirini tamamlayan parçalar olarak yönetiyoruz.
+              </p>
+              <div className="services-compact-meta">
+                Basılı <span>·</span> Dijital <span>·</span> Ses <span>·</span> Yazar Dünyası
+              </div>
+              <a href="/kurucu-yazar" className="services-compact-cta">Yayın Yolculuğunu Başlat <b>→</b></a>
             </header>
 
-            <div className="figan-services-track" aria-label="22 Yayınevi yayın hizmetleri">
+            <div className="services-compact-grid">
               {services.map((service) => (
-                <article className="figan-service-card" key={service.no}>
-                  <a className="figan-service-link" href={service.href}>
-                    <div className="figan-service-photo">
-                      <img src={service.image} alt="" loading="lazy" decoding="async" />
+                <a className="services-compact-item" href={service.href} key={service.no}>
+                  <span className="services-compact-no">{service.no}</span>
+                  <div className="services-compact-item-copy">
+                    <h3>{service.title}</h3>
+                    <p>{service.text}</p>
+                    <div className="services-compact-traits">
+                      {service.traits.map((trait) => <span key={trait}>{trait}</span>)}
                     </div>
-
-                    <div className="figan-service-content">
-                      <span className="figan-service-emblem" aria-hidden="true">✦</span>
-                      <div className="figan-service-title-row">
-                        <h3>{service.title}</h3>
-                        <span className="figan-service-title-mark" aria-hidden="true">✦</span>
-                      </div>
-                      <ul className="figan-service-traits" aria-label={`${service.title} özellikleri`}>
-                        {service.traits.map((trait) => <li key={trait}>{trait}</li>)}
-                      </ul>
-                      <p>{service.text}</p>
-                      <span className="figan-service-cta">Hizmeti İnceleyin <i>→</i></span>
-                    </div>
-                  </a>
-                </article>
+                  </div>
+                  <span className="services-compact-arrow" aria-hidden="true">→</span>
+                </a>
               ))}
             </div>
           </div>
         </section>
+
+        <PublishingReels home />
 
         <section id="surec" className="section process">
           <div className="container process-wrap">
