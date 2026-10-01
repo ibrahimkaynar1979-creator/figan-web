@@ -35,74 +35,77 @@ const highlights = [
 export default function FounderAuthors() {
   return (
     <section className={styles.section} aria-labelledby="founder-title">
-      <div className={styles.main}>
-        <div className={styles.visual} aria-hidden="true">
-          <Image
-            src="/22-yayinevi-kurucu-yazar-koleksiyon-v1.png"
-            alt=""
-            fill
-            sizes="(max-width: 900px) 100vw, 68vw"
-            className={styles.image}
-          />
-          <div className={styles.visualFade} />
-
-          <Image
-            src="/muhur_koleksiyon_v1.png"
-            alt="07/22 Kurucu Yazar mührü"
-            width={180}
-            height={180}
-            className={styles.numberBadgeImage}
-          />
-
-          <div className={styles.visualNote}>
-            <span>İlk 22’ye özel</span>
-            <strong>Sınırlı · Numaralı · Kalıcı</strong>
-          </div>
-        </div>
-
-        <div className={styles.copy}>
-          <div className={styles.brandLine}>
-            <span>22 YAYINEVİ</span>
-            <i />
-          </div>
-
-          <p className={styles.kicker}>KURUCU STATÜSÜ</p>
-
-          <h2 id="founder-title">
-            22 isim.
-            <em>Bir kuruluş hikâyesi.</em>
-          </h2>
-
-          <p className={styles.statement}>Bu statü yalnızca bir kez verilir.</p>
-
-          <p className={styles.lead}>
-            İlk 22 yazar, 22 Yayınevi’nin kuruluş dönemine numaralı ve kalıcı
-            bir statüyle dahil olur. Her kurucu yazar için hazırlanan koleksiyon,
-            bu ayrıcalığı fiziksel bir hatıraya dönüştürür.
-          </p>
-
-          <div className={styles.collectionBlock}>
-            <span>NUMARALI KOLEKSİYON</span>
-            <p>Sertifika <i>—</i> Metal Kart <i>—</i> Metal Ayraç <i>—</i> Mühür</p>
-          </div>
-
-          <Link href="/kurucu-yazar" className={styles.cta}>
-            Kurucu Yazar Koleksiyonunu Keşfet <b>→</b>
-          </Link>
-        </div>
-      </div>
-
-      <div className={styles.strip}>
-        {highlights.map(([no,icon,title,text]) => (
-          <article key={no} className={styles.stripItem}>
-            <span className={styles.stripNo}>{no}</span>
-            <span className={styles.stripIcon}>{icon}</span>
-            <div>
-              <strong>{title}</strong>
-              <p>{text}</p>
+      <div className={styles.shell}>
+        <div className={styles.main}>
+          <div className={styles.copy}>
+            <div className={styles.brandLine}>
+              <span>22 YAYINEVİ</span>
+              <i />
             </div>
-          </article>
-        ))}
+
+            <p className={styles.kicker}>KURUCU STATÜSÜ</p>
+
+            <h2 id="founder-title">
+              22 isim.
+              <em>Bir kuruluş hikâyesi.</em>
+            </h2>
+
+            <p className={styles.statement}>Bu statü yalnızca bir kez verilir.</p>
+
+            <p className={styles.lead}>
+              İlk 22 yazar, 22 Yayınevi’nin kuruluş dönemine numaralı ve kalıcı
+              bir statüyle dahil olur. Her kurucu yazar için hazırlanan koleksiyon,
+              bu ayrıcalığı fiziksel bir hatıraya dönüştürür.
+            </p>
+
+            <div className={styles.collectionBlock}>
+              <span>NUMARALI KOLEKSİYON</span>
+              <p>Sertifika <i>—</i> Metal Kart <i>—</i> Metal Ayraç <i>—</i> Mühür</p>
+            </div>
+
+            <Link href="/kurucu-yazar" className={styles.cta}>
+              Kurucu Yazar Koleksiyonunu Keşfet <b>→</b>
+            </Link>
+          </div>
+
+          <div className={styles.visualColumn}>
+            <div className={styles.visual}>
+              <Image
+                src="/22-yayinevi-kurucu-yazar-koleksiyon-v1.png"
+                alt="22 Yayınevi İlk 22 Kurucu Yazar koleksiyonu"
+                fill
+                sizes="(max-width: 980px) 100vw, 55vw"
+                className={styles.image}
+              />
+
+              <Image
+                src="/muhur_koleksiyon_v1.png"
+                alt="07/22 Kurucu Yazar mührü"
+                width={180}
+                height={180}
+                className={styles.numberBadgeImage}
+              />
+            </div>
+
+            <div className={styles.visualMeta}>
+              <span>KURUCU YAZAR KOLEKSİYONU</span>
+              <strong>Sınırlı · Numaralı · Kalıcı</strong>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.strip}>
+          {highlights.map(([no,icon,title,text]) => (
+            <article key={no} className={styles.stripItem}>
+              <span className={styles.stripNo}>{no}</span>
+              <span className={styles.stripIcon}>{icon}</span>
+              <div>
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
