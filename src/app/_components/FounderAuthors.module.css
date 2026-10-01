@@ -123,8 +123,8 @@
 .lead{
   margin:8px 0 0;
   color:#69574c;
-  font-size:14px;
-  line-height:1.56;
+  font-size:15.5px;
+  line-height:1.55;
 }
 
 .collectionLine{
@@ -133,7 +133,7 @@
   border-top:1px solid rgba(145,91,48,.17);
   color:#715345;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:12.5px;
+  font-size:13.5px;
   line-height:1.5;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .darkCta b,.lightCta b{
-  font-size:15px;
+  font-size:16px;
   font-weight:500;
 }
 
@@ -254,8 +254,8 @@
 .founderBenefit p{
   margin:3px 0 0;
   color:#806b5f;
-  font-size:10.5px;
-  line-height:1.35;
+  font-size:11.5px;
+  line-height:1.4;
 }
 
 .journeyPanel{
@@ -299,7 +299,7 @@
 
 .journeyTop .lead{
   max-width:620px;
-  font-size:14px;
+  font-size:15px;
   line-height:1.5;
 }
 
@@ -314,22 +314,22 @@
 
 .journeyStep{
   position:relative;
-  min-height:88px;
+  min-height:92px;
   padding:13px 13px 13px 14px;
   display:grid;
-  grid-template-columns:40px 1fr;
+  grid-template-columns:46px 1fr;
   grid-template-rows:auto auto;
   column-gap:10px;
   align-items:center;
-  border:1px solid rgba(152,94,43,.18);
-  border-radius:18px;
+  border:1px solid rgba(157,96,43,.20);
+  border-radius:20px;
   background:
-    radial-gradient(circle at 14% 18%,rgba(255,255,255,.96),transparent 42%),
-    linear-gradient(145deg,rgba(255,253,249,.92),rgba(246,233,218,.78));
+    radial-gradient(circle at 12% 12%,rgba(255,255,255,.98),transparent 46%),
+    linear-gradient(145deg,rgba(255,253,249,.96),rgba(245,229,211,.80));
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.96),
-    inset 0 0 0 1px rgba(255,255,255,.28),
-    0 12px 26px rgba(82,49,28,.055);
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 0 0 1px rgba(255,255,255,.34),
+    0 14px 30px rgba(82,49,28,.065);
   transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
 }
 
@@ -355,8 +355,8 @@
 
 .iconDisc{
   grid-row:1 / span 2;
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   display:grid;
   place-items:center;
   border-radius:50%;
@@ -370,14 +370,14 @@
 }
 
 .iconDisc svg{
-  width:20px;
-  height:20px;
+  width:21px;
+  height:21px;
 }
 
 .stepNo{
   align-self:end;
   color:#a96b36;
-  font-size:8.5px;
+  font-size:9.5px;
   font-weight:850;
   letter-spacing:.15em;
 }
@@ -386,7 +386,7 @@
   align-self:start;
   color:#34231b;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:15px;
+  font-size:16px;
   font-weight:500;
   line-height:1.18;
 }
@@ -425,10 +425,23 @@
   box-shadow:0 8px 18px rgba(72,42,22,.04);
 }
 
-@media(max-width:1100px){
+@media(max-width:1380px){
   .shell{grid-template-columns:1fr}
-  .panel{height:auto;min-height:430px}
+  .panel{height:auto;min-height:0}
   .founderPanel{border-right:0;border-bottom:1px solid rgba(112,72,43,.12)}
+  .founderTop{min-height:500px}
+  .journeyPanel{min-height:520px}
+  .journeyRail{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+@media(min-width:1381px) and (max-width:1640px){
+  .panel{height:570px;min-height:570px}
+  .founderCopy{padding:30px 22px 22px 30px}
+  .panel h2{font-size:clamp(38px,2.5vw,50px)}
+  .journeyPanel{padding:30px 28px 20px}
+  .journeyStep{padding:12px 10px;grid-template-columns:42px 1fr;column-gap:8px}
+  .iconDisc{width:40px;height:40px}
+  .journeyStep strong{font-size:14px}
 }
 
 @media(max-width:680px){
