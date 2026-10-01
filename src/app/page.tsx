@@ -333,10 +333,9 @@ export default function Home() {
           <div className="container process-wrap">
             <div className="process-panel">
               <div className="process-panel-head">
-                <p className="process-kicker"><span>✦</span> BİR DOSYA, BİR YOLCULUK</p>
-                <h2>Nasıl çalışıyoruz?</h2>
-                <div className="process-ornament" aria-hidden="true"><span/><i>✦</i></div>
-                <p className="process-intro">Eseriniz, 22 Yayınevi’nin profesyonel yayın süreciyle adım adım hazırlanır; metinden tasarıma, dijital yayından dağıtıma kadar bütün yolculuk tek bir yayın dünyasında ilerler.</p>
+                <p className="process-kicker">22 YAYINEVİ · YAYIN SÜRECİ</p>
+                <h2><span>Bir dosya.</span><br/><em>Bir yayın yolculuğu.</em></h2>
+                <p className="process-intro">Metinden tasarıma, dijital yayından dağıtıma kadar bütün süreç tek bir sistem içinde ilerler.</p>
               </div>
               <div className="process-list">
                 {process.map(([no,title,text])=>(
@@ -346,7 +345,7 @@ export default function Home() {
                   </article>
                 ))}
               </div>
-              <a href="/kurucu-yazar" className="process-cta"><span>İlk 22’ye Başvur</span><b>→</b></a>
+              <a href="/kurucu-yazar" className="process-cta"><span>Yayın Yolculuğunu Başlat</span><b>→</b></a>
             </div>
           </div>
         </section>
