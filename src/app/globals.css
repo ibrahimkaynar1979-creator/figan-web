@@ -10768,3 +10768,93 @@ body.reader-route .contact-float{display:none!important}
     width:100%;
   }
 }
+
+
+/* 2026-10-01 — ECOSYSTEM CARD REFINEMENT */
+@media(min-width:901px){
+  .journey-card-ecosystem{
+    padding:34px 34px 28px!important;
+    background:
+      radial-gradient(circle at 78% 12%,rgba(204,151,101,.12),transparent 22rem),
+      linear-gradient(145deg,#321b11 0%,#442517 100%)!important;
+  }
+
+  .journey-card-head-dark{
+    min-height:176px!important;
+  }
+
+  .journey-card-head-dark h2{
+    font-size:clamp(39px,3vw,52px)!important;
+    line-height:.92!important;
+  }
+
+  .journey-card-head-dark>p:last-child{
+    max-width:520px!important;
+  }
+
+  .journey-ecosystem-grid{
+    flex:1!important;
+    min-height:0!important;
+    margin-top:8px!important;
+    padding:18px!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-rows:repeat(3,52px)!important;
+    gap:10px!important;
+    align-content:start!important;
+    border:1px solid rgba(255,255,255,.10)!important;
+    border-radius:20px!important;
+    background:rgba(255,255,255,.018)!important;
+  }
+
+  .journey-ecosystem-grid span{
+    min-height:52px!important;
+    height:52px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    padding:0 16px!important;
+    border:1px solid rgba(238,203,169,.18)!important;
+    border-radius:999px!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025))!important;
+    color:#f4e9df!important;
+    font-size:10.5px!important;
+    font-weight:760!important;
+    text-align:left!important;
+  }
+
+  .journey-ecosystem-grid span::before{
+    content:"";
+    width:6px;
+    height:6px;
+    margin-right:10px;
+    flex:0 0 6px;
+    border-radius:50%;
+    background:#d5a16e;
+    box-shadow:0 0 0 4px rgba(213,161,110,.08);
+  }
+
+  .journey-ecosystem-grid strong{
+    position:absolute!important;
+    right:18px!important;
+    bottom:18px!important;
+    left:auto!important;
+    top:auto!important;
+    width:54px!important;
+    height:54px!important;
+    transform:none!important;
+    border:1px solid rgba(255,255,255,.16)!important;
+    background:#f6eee4!important;
+    color:#3a2115!important;
+    font-size:17px!important;
+    box-shadow:0 10px 22px rgba(0,0,0,.16)!important;
+  }
+
+  .journey-card-cta-dark{
+    min-width:220px!important;
+    min-height:44px!important;
+    margin-top:20px!important;
+    background:rgba(255,255,255,.04)!important;
+    border:1px solid rgba(224,187,147,.48)!important;
+  }
+}
