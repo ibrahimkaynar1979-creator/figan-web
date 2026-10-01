@@ -345,15 +345,20 @@ export default function Home() {
             <div className="services-compact-grid">
               {services.map((service) => (
                 <a className="services-compact-item" href={service.href} key={service.no}>
-                  <span className="services-compact-no">{service.no}</span>
+                  <div className="services-compact-thumb">
+                    <img src={service.image} alt="" loading="lazy" decoding="async" />
+                    <span className="services-compact-no">{service.no}</span>
+                  </div>
                   <div className="services-compact-item-copy">
-                    <h3>{service.title}</h3>
+                    <div className="services-compact-title-row">
+                      <h3>{service.title}</h3>
+                      <span className="services-compact-arrow" aria-hidden="true">→</span>
+                    </div>
                     <p>{service.text}</p>
                     <div className="services-compact-traits">
                       {service.traits.map((trait) => <span key={trait}>{trait}</span>)}
                     </div>
                   </div>
-                  <span className="services-compact-arrow" aria-hidden="true">→</span>
                 </a>
               ))}
             </div>
