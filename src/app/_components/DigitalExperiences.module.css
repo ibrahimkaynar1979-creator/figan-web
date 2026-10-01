@@ -825,3 +825,130 @@
     bottom: 5.4%;
   }
 }
+
+
+/* 2026-10-01 — DIGITAL EXPERIENCES LOCAL READABILITY VEIL */
+@media (min-width: 1181px) {
+  .stage::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 9% 50%,
+        rgba(255,249,241,.78) 0%,
+        rgba(255,249,241,.56) 15%,
+        rgba(255,249,241,.24) 26%,
+        rgba(255,249,241,0) 37%),
+      radial-gradient(ellipse at 91% 50%,
+        rgba(255,249,241,.78) 0%,
+        rgba(255,249,241,.56) 15%,
+        rgba(255,249,241,.24) 26%,
+        rgba(255,249,241,0) 37%);
+  }
+
+  .topCopy,
+  .leftCopy,
+  .rightCopy,
+  .centerLink {
+    z-index: 3;
+  }
+
+  .topCopy {
+    top: 1.45%;
+    width: 48%;
+  }
+
+  .topCopy h2 {
+    font-size: clamp(36px,4vw,64px);
+    line-height: .96;
+  }
+
+  .lead {
+    margin-top: .38vw;
+    max-width: 600px;
+    font-size: clamp(11.5px,.88vw,14.5px);
+    line-height: 1.28;
+    font-weight: 650;
+    color: #453126;
+  }
+
+  .leftCopy,
+  .rightCopy {
+    top: 28.2%;
+    width: 14.9%;
+  }
+
+  .leftCopy {
+    left: 2.85%;
+  }
+
+  .rightCopy {
+    right: 2.85%;
+  }
+
+  .kicker {
+    margin-bottom: .62vw;
+    font-size: clamp(10px,.69vw,11.8px);
+    color: #8a4b1e;
+  }
+
+  .leftCopy h3,
+  .rightCopy h3 {
+    font-size: clamp(25px,1.94vw,34px);
+    line-height: 1.02;
+    color: #24130b;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,.72),
+      0 3px 12px rgba(255,246,232,.88);
+  }
+
+  .leftCopy > p:not(.kicker),
+  .rightCopy > p:not(.kicker) {
+    margin: .74vw 0 .8vw;
+    font-size: clamp(11px,.79vw,13px);
+    line-height: 1.44;
+    font-weight: 650;
+    color: #3f2d23;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,.72),
+      0 2px 10px rgba(255,246,232,.92);
+  }
+
+  .features {
+    gap: .38vw;
+    margin-bottom: .84vw;
+  }
+
+  .features > div {
+    grid-template-columns: 29px 1fr;
+    gap: 7px;
+    min-height: 30px;
+    font-size: clamp(10px,.72vw,12px);
+    line-height: 1.22;
+    font-weight: 700;
+    color: #3f2d23;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,.68),
+      0 2px 9px rgba(255,246,232,.86);
+  }
+
+  .features i {
+    width: 27px;
+    height: 27px;
+    background: rgba(255,251,245,.76);
+    border-color: rgba(143,82,35,.22);
+  }
+
+  .leftCopy > a,
+  .rightCopy > a {
+    min-width: 164px;
+    min-height: 40px;
+    font-size: 10.5px;
+  }
+
+  .centerLink {
+    bottom: 5.15%;
+  }
+}
