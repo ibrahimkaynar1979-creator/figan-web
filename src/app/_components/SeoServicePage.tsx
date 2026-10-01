@@ -13,6 +13,7 @@ type ServicePageProps = {
   faqs?: { q: string; a: string }[];
   editorialLayout?: boolean;
   premiumReference?: boolean;
+  heroAccent?: string;
   scopeTitle?: string;
   scopeAccent?: string;
   scopeStepTitles?: string[];
@@ -50,6 +51,7 @@ export default function SeoServicePage({
   ],
   editorialLayout = false,
   premiumReference = false,
+  heroAccent = "",
   scopeTitle = "Bir dosyadan,",
   scopeAccent = "gerçek bir kitaba.",
   scopeStepTitles = ["Editoryal Kontrol","Mizanpaj & Kapak","ISBN & Bandrol","Baskı & Dağıtım"],
@@ -79,7 +81,7 @@ export default function SeoServicePage({
           <div className="seo-service-copy">
             <a className="legal-back" href="/">← 22 Yayınevi</a>
             <p className="eyebrow"><span/>{eyebrow}</p>
-            <h1>{title}</h1>
+            <h1>{premiumReference && heroAccent && title.endsWith(heroAccent) ? <>{title.slice(0, -heroAccent.length)}<em>{heroAccent}</em></> : title}</h1>
             <p className="seo-service-lead">{lead}</p>
             <a className="btn primary" href={whatsapp} target="_blank" rel="noreferrer">Bilgi Alın <b>→</b></a>
           </div>
