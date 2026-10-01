@@ -432,8 +432,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="yazar-sitesi" className="section author-site author-site-compact">
-          <div className="container author-grid">
+        <section id="yazar-sitesi" className="section author-site author-site-compact home-tail-section">
+          <div className="container home-tail-panel author-grid">
             <div className="author-copy">
               <p className="eyebrow"><span/>YAZAR SİTESİ</p>
               <h2>Sadece bir sayfa değil.<br/><em>Size ait bir yazar dünyası.</em></h2>
@@ -444,31 +444,28 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="hakkimizda" className="section about-figan about-fi-manifesto">
-          <div className="container">
-            <div className="about-figan-card">
-              <div className="about-figan-copy">
-                <p className="eyebrow"><span/>22 YAYINEVİ HAKKINDA</p>
-                <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
-                <p>22 Yayınevi, bir eseri yalnızca basılacak bir dosya olarak görmez. Metnin editoryal hazırlığından basılı ve dijital yayına, sesli kitaptan yazarın kendi dijital alanına kadar birbirini tamamlayan bir yayın dünyası kurar.</p>
-                <p className="about-fi-note">Yazarın eseri kadar kendi adıyla da kalıcı, görünür ve erişilebilir olmasını önemsiyoruz.</p>
+        <section id="hakkimizda" className="section home-tail-section about-listen">
+          <div className="container home-tail-panel about-listen-grid">
+            <div className="about-listen-copy">
+              <p className="eyebrow"><span/>22 YAYINEVİ HAKKINDA</p>
+              <h2>Bir kitabın ötesinde,<br/><em>bütün bir yayın dünyası.</em></h2>
+              <p>22 Yayınevi; editoryal hazırlıktan basılı ve dijital yayına, sesli kitaptan yazarın kendi dijital alanına kadar birbirini tamamlayan bir yayın dünyası kurar.</p>
+            </div>
+
+            <div className="about-listen-audio">
+              <span className="about-listen-mark">22</span>
+              <div>
+                <small>22’Yİ DİNLEYİN</small>
+                <strong>Yayın dünyamızı sesimizden keşfedin.</strong>
+                <p>22 Yayınevi’nin yaklaşımını ve yayıncılık vizyonunu kısa sesli anlatımla dinleyin.</p>
               </div>
+              <span className="about-listen-play" aria-hidden="true">▶</span>
             </div>
           </div>
         </section>
 
-        <section id="fi-video" className="section fi-video-teaser">
-          <div className="container fi-video-teaser-card">
-            <div>
-              <p className="eyebrow light"><span/>22 YAYINEVİ’Nİ İZLEYİN</p>
-              <h2>Yayın dünyamızı<br/><em>yakında videoda anlatıyoruz.</em></h2>
-            </div>
-            <div className="fi-video-teaser-play" aria-hidden="true"><span>▶</span><small>Tanıtım videosu yakında</small></div>
-          </div>
-        </section>
-
-        <section id="basvuru" className="section final-cta">
-          <div className="container final-panel">
+        <section id="basvuru" className="section home-tail-section final-cta">
+          <div className="container home-tail-panel final-panel">
             <p className="eyebrow light"><span/>İLK 22 KURUCU YAZAR</p>
             <h2>Bir kitabınız varsa,<br/><em>ona ait dünyayı birlikte kuralım.</em></h2>
             <p>Dosyanızı paylaşın; yayın yolculuğunuzu birlikte planlayalım.</p>
