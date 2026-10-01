@@ -10456,3 +10456,28 @@ body.reader-route .contact-float{display:none!important}
     grid-template-columns:220px 1fr!important;
   }
 }
+
+
+/* 2026-10-01 — SERVICES TUBE CARD-EDGE ALIGN FINAL */
+@media(min-width:1101px){
+  .home-page-main .figan-services-showcase{
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+  }
+
+  .home-page-main .figan-services-showcase .figan-services-header{
+    position:relative!important;
+    left:auto!important;
+    transform:none!important;
+    width:calc(100% - 4px)!important;
+    max-width:none!important;
+    min-height:92px!important;
+    margin:0 auto 10px!important;
+    padding-top:9px!important;
+    padding-bottom:9px!important;
+  }
+
+  .home-page-main .figan-services-showcase .figan-services-track{
+    margin-top:0!important;
+  }
+}
