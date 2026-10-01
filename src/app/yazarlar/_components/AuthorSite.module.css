@@ -705,3 +705,39 @@
     margin-top:10px!important;
   }
 }
+
+/* Mobile header geometry correction: brand / menu / 22 are three fixed columns */
+@media(max-width:800px){
+  .hero .header{
+    display:grid!important;
+    grid-template-columns:1fr auto auto!important;
+    align-items:center!important;
+    column-gap:18px!important;
+    padding:16px 18px!important;
+    min-height:70px!important;
+  }
+  .hero .brand{
+    position:static!important;
+    grid-column:1!important;
+    grid-row:1!important;
+    font-size:28px!important;
+  }
+  .hero .mobileMenuButton{
+    position:static!important;
+    grid-column:2!important;
+    grid-row:1!important;
+    transform:none!important;
+    width:32px!important;
+    height:38px!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .hero .publisher{
+    position:static!important;
+    grid-column:3!important;
+    grid-row:1!important;
+    justify-self:end!important;
+    font-size:38px!important;
+    margin:0!important;
+  }
+}
