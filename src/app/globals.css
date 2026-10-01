@@ -9362,3 +9362,56 @@ body.reader-route .contact-float{display:none!important}
     font-size:11px!important;
   }
 }
+
+
+/* 2026-10-01 — FINAL THIN BRIDGE: preserve full artwork without cropping */
+.homepage-author-bridge{
+  min-height:108px!important;
+  height:108px!important;
+  overflow:hidden!important;
+  background:
+    linear-gradient(90deg,rgba(250,246,239,.06),rgba(250,246,239,.04)),
+    url("/22-yayinevi-editorial-gecis-v1.png") center center / 100% 100% no-repeat!important;
+}
+.homepage-author-bridge-inner{
+  width:min(1260px,calc(100% - 56px))!important;
+  height:100%!important;
+  padding:7px 0!important;
+}
+.homepage-author-bridge-copy{
+  width:min(720px,68%)!important;
+}
+.homepage-author-bridge-eyebrow{
+  margin:0 0 4px!important;
+  padding:4px 9px!important;
+  font-size:7px!important;
+}
+.homepage-author-bridge-copy h2{
+  font-size:clamp(30px,2.6vw,43px)!important;
+  line-height:.9!important;
+}
+.homepage-author-bridge-text{
+  margin-top:5px!important;
+  font-size:11px!important;
+  line-height:1.35!important;
+}
+
+@media(max-width:900px){
+  .homepage-author-bridge{
+    min-height:112px!important;
+    height:112px!important;
+    background-size:100% 100%!important;
+  }
+  .homepage-author-bridge-copy h2{font-size:34px!important}
+}
+
+@media(max-width:600px){
+  .homepage-author-bridge{
+    min-height:160px!important;
+    height:160px!important;
+    background-size:auto 100%!important;
+    background-position:center center!important;
+  }
+  .homepage-author-bridge-copy h2{font-size:31px!important}
+  .homepage-author-bridge-text{font-size:10px!important}
+}
