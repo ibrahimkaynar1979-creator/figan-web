@@ -8933,3 +8933,185 @@ body.reader-route .contact-float{display:none!important}
     letter-spacing:.26em!important;
   }
 }
+
+
+/* 2026-10-01 — editorial transition between Digital Experiences and Founder Authors */
+.homepage-author-bridge{
+  position:relative;
+  overflow:hidden;
+  min-height:118px;
+  display:flex;
+  align-items:center;
+  background:
+    radial-gradient(circle at 18% 35%,rgba(255,255,255,.88),transparent 31%),
+    radial-gradient(circle at 83% 50%,rgba(206,153,92,.10),transparent 28%),
+    linear-gradient(90deg,#fbf6ef 0%,#f5eadf 48%,#f7efe5 100%);
+  border-top:1px solid rgba(148,98,57,.14);
+  border-bottom:1px solid rgba(148,98,57,.15);
+}
+.homepage-author-bridge::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.42;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,transparent 0 31%,rgba(173,118,68,.035) 31% 32%,transparent 32% 100%),
+    linear-gradient(65deg,transparent 0 72%,rgba(173,118,68,.03) 72% 73%,transparent 73% 100%);
+}
+.homepage-author-bridge-inner{
+  position:relative;
+  z-index:1;
+  width:min(1460px,calc(100% - 72px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:170px minmax(0,1fr) 170px;
+  align-items:center;
+  gap:24px;
+  padding:18px 0;
+}
+.homepage-author-bridge-mark{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:78px;
+  border-right:1px solid rgba(154,102,60,.18);
+  color:#a66b38;
+}
+.homepage-author-bridge-mark span{
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:52px;
+  line-height:.82;
+  letter-spacing:-.06em;
+  font-style:italic;
+}
+.homepage-author-bridge-mark small{
+  margin-top:8px;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+.homepage-author-bridge-copy{
+  text-align:center;
+  max-width:860px;
+  justify-self:center;
+}
+.homepage-author-bridge-rule{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:0 auto 4px;
+  color:#aa6c37;
+}
+.homepage-author-bridge-rule i{
+  display:block;
+  width:76px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(166,103,50,.48));
+}
+.homepage-author-bridge-rule i:last-child{
+  transform:scaleX(-1);
+}
+.homepage-author-bridge-rule b{
+  font-size:9px;
+  font-weight:500;
+}
+.homepage-author-bridge-copy h2{
+  margin:0;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:clamp(30px,2.65vw,48px);
+  font-weight:500;
+  line-height:.92;
+  letter-spacing:-.045em;
+  color:#2f1c14;
+}
+.homepage-author-bridge-copy h2 span,
+.homepage-author-bridge-copy h2 em{
+  display:block;
+}
+.homepage-author-bridge-copy h2 em{
+  margin-top:2px;
+  color:#912f28;
+  font-family:var(--font-poetic),var(--font-editorial),Georgia,serif;
+  font-style:normal;
+  font-weight:400;
+}
+.homepage-author-bridge-kicker{
+  margin:10px 0 0;
+  color:#a46c3c;
+  font-size:8px;
+  font-weight:850;
+  letter-spacing:.28em;
+}
+.homepage-author-bridge-text{
+  margin:6px auto 0;
+  color:#715e50;
+  font-family:var(--font-editorial),Georgia,serif;
+  font-size:11px;
+  line-height:1.45;
+}
+.homepage-author-bridge-ornament{
+  min-height:78px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-left:1px solid rgba(154,102,60,.18);
+}
+.homepage-author-bridge-feather{
+  display:block;
+  color:#b77a43;
+  font-family:Georgia,serif;
+  font-size:68px;
+  font-style:italic;
+  line-height:1;
+  transform:rotate(-19deg) scaleX(1.35);
+  opacity:.48;
+}
+.homepage-author-bridge-ornament i{
+  position:absolute;
+  width:82px;
+  height:1px;
+  bottom:21px;
+  background:linear-gradient(90deg,transparent,rgba(154,97,51,.32),transparent);
+}
+
+@media(max-width:900px){
+  .homepage-author-bridge-inner{
+    width:min(100% - 34px,760px);
+    grid-template-columns:72px minmax(0,1fr) 72px;
+    gap:14px;
+  }
+  .homepage-author-bridge-mark span{font-size:40px}
+  .homepage-author-bridge-copy h2{font-size:36px}
+  .homepage-author-bridge-kicker{letter-spacing:.20em}
+  .homepage-author-bridge-feather{font-size:52px}
+}
+
+@media(max-width:600px){
+  .homepage-author-bridge{
+    min-height:0;
+  }
+  .homepage-author-bridge-inner{
+    width:calc(100% - 28px);
+    grid-template-columns:1fr;
+    padding:24px 0 26px;
+  }
+  .homepage-author-bridge-mark,
+  .homepage-author-bridge-ornament{
+    display:none;
+  }
+  .homepage-author-bridge-rule{margin-bottom:8px}
+  .homepage-author-bridge-copy h2{font-size:34px}
+  .homepage-author-bridge-kicker{
+    font-size:7px;
+    letter-spacing:.16em;
+    line-height:1.5;
+  }
+  .homepage-author-bridge-text{
+    max-width:320px;
+    font-size:10px;
+  }
+}
