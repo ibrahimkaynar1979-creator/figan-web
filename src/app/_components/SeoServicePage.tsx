@@ -12,6 +12,7 @@ type ServicePageProps = {
   outputs?: string[];
   faqs?: { q: string; a: string }[];
   editorialLayout?: boolean;
+  premiumReference?: boolean;
   scopeTitle?: string;
   scopeAccent?: string;
   scopeStepTitles?: string[];
@@ -48,6 +49,7 @@ export default function SeoServicePage({
     "Yayın veya dağıtım için uygulanabilir bir sonraki adım planı",
   ],
   editorialLayout = false,
+  premiumReference = false,
   scopeTitle = "Bir dosyadan,",
   scopeAccent = "gerçek bir kitaba.",
   scopeStepTitles = ["Editoryal Kontrol","Mizanpaj & Kapak","ISBN & Bandrol","Baskı & Dağıtım"],
@@ -69,7 +71,7 @@ export default function SeoServicePage({
 
   return (
     <InnerPageShell>
-    <main className={`seo-service-page${editorialLayout ? " seo-service-editorial" : ""}`}>
+    <main className={`seo-service-page${editorialLayout ? " seo-service-editorial" : ""}${premiumReference ? " seo-service-premium-reference" : ""}`}>
       
 
       <section className="seo-service-hero">
@@ -105,7 +107,84 @@ export default function SeoServicePage({
       </section>
 
       {editorialLayout ? (
-        <>
+        premiumReference ? (
+          <>
+            <section className="seo-service-audience seo-service-audience-note">
+              <div className="container seo-service-audience-note-card">
+                <div className="seo-service-audience-premium">
+                  <p className="eyebrow"><span/>KİMLER İÇİN?</p>
+                  <h2>{audienceTitle}<br/><em>{audienceAccent}</em></h2>
+                  <p className="seo-service-section-intro">{audienceIntro}</p>
+                  <div className="seo-service-fit-box">
+                    {audience.map((item)=><p key={item}><span>✓</span>{item}</p>)}
+                  </div>
+                </div>
+                <aside className="seo-service-note-premium">
+                  <div className="seo-service-note-mark">22</div>
+                  <div>
+                    <p className="eyebrow"><span/>YAYIN NOTU</p>
+                    <h2>{noteTitle}</h2>
+                    <p>{noteText}</p>
+                  </div>
+                </aside>
+              </div>
+            </section>
+
+            <section className="seo-service-process">
+              <div className="container seo-service-process-card">
+                <p className="eyebrow"><span/>SÜREÇ</p>
+                <h2>{processTitle}</h2>
+                <div className="seo-service-process-list">
+                  {process.map((item,index)=>(
+                    <article key={item}>
+                      <b>{String(index+1).padStart(2,"0")}</b>
+                      <div>
+                        <h3>{processStepTitles[index] || `Yayın adımı ${index+1}`}</h3>
+                        <p>{item}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="seo-service-output">
+              <div className="container seo-service-output-card">
+                <div className="seo-service-output-head">
+                  <p className="eyebrow"><span/>TESLİM ÇIKTILARI</p>
+                  <h2>Süreç sonunda ne elde edersiniz?</h2>
+                </div>
+                <div className="seo-service-output-list">
+                  {outputs.map((item, index)=>(
+                    <article key={item}>
+                      <b>{["▧","◫","↗"][index] || String(index+1).padStart(2,"0")}</b>
+                      <div>
+                        <h3>{outputTitles[index] || "Yayın çıktısı"}</h3>
+                        <p>{item}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="seo-service-faq">
+              <div className="container seo-service-faq-card">
+                <p className="eyebrow"><span/>SIK SORULAN SORULAR</p>
+                <h2>Bu hizmet hakkında merak edilenler</h2>
+                <div className="faq-list">
+                  {faqs.map((item)=>(
+                    <details key={item.q}>
+                      <summary>{item.q}<span>+</span></summary>
+                      <p>{item.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        ) : (
+          <>
           <section className="seo-service-audience">
             <div className="container seo-service-audience-card">
               <p className="eyebrow"><span/>KİMLER İÇİN?</p>
@@ -181,6 +260,7 @@ export default function SeoServicePage({
             </div>
           </section>
         </>
+        )
       ) : (
         <>
           <section className="seo-service-combined">
