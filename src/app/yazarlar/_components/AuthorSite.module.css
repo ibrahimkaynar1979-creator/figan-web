@@ -675,3 +675,33 @@
   .menuPanelLabel{font-size:9px!important;font-weight:800!important}
   .menuClose{font-size:25px!important;right:2px!important}
 }
+
+/* Mobile final alignment: hamburger centered on header axis; hero identity lower */
+@media(max-width:800px){
+  .mobileMenuButton{
+    right:50%!important;
+    top:16px!important;
+    transform:translateX(50%)!important;
+    width:32px!important;
+    height:38px!important;
+  }
+  .heroCopy{
+    bottom:18vh!important;
+  }
+  .heroCopy h1{
+    margin-bottom:26px!important;
+  }
+  .heroDescriptor{
+    font-size:15px!important;
+    font-weight:800!important;
+    line-height:1.55!important;
+    letter-spacing:.015em!important;
+  }
+  .heroAffiliation{
+    font-size:11px!important;
+    font-weight:800!important;
+    line-height:1.5!important;
+    letter-spacing:.10em!important;
+    margin-top:10px!important;
+  }
+}
