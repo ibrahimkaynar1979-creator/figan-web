@@ -277,24 +277,13 @@ export default function Home() {
 
         <section className="homepage-author-bridge" aria-label="22 Yayınevi yayın yaklaşımı">
           <div className="homepage-author-bridge-inner">
-            <div className="homepage-author-bridge-mark" aria-hidden="true">
-              <span>22</span>
-              <small>YAYINEVİ</small>
-            </div>
-
             <div className="homepage-author-bridge-copy">
-              <div className="homepage-author-bridge-rule" aria-hidden="true"><i/><b>✦</b><i/></div>
+              <p className="homepage-author-bridge-eyebrow">22 YAYINEVİ</p>
               <h2>
                 <span>Bir kitapla başlamaz.</span>
-                <em>Bir yazarla başlar.</em>
+                <strong>Bir yazarla başlar.</strong>
               </h2>
-              <p className="homepage-author-bridge-kicker">YAYINCILIK · TASARIM · TEKNOLOJİ · DAĞITIM</p>
               <p className="homepage-author-bridge-text">22 Yayınevi, eseri yalnızca yayımlamaz; yazarın dünyasını baştan sona kurar.</p>
-            </div>
-
-            <div className="homepage-author-bridge-ornament" aria-hidden="true">
-              <span className="homepage-author-bridge-feather">〰</span>
-              <i />
             </div>
           </div>
         </section>
