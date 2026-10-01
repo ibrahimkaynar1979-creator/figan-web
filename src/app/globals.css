@@ -9381,3 +9381,56 @@ body.reader-route .contact-float{display:none!important}
   color:#fff8f1!important;
   box-shadow:0 8px 18px rgba(95,49,25,.14)!important;
 }
+
+
+/* 2026-10-01 — SERVICE ROW WIDER DESKTOP CANVAS */
+@media(min-width:1101px){
+  .figan-services-showcase .container{
+    width:calc(100% - 56px)!important;
+    max-width:1760px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+
+  .figan-services-track{
+    display:grid!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:12px!important;
+    width:100%!important;
+  }
+
+  .figan-service-card{
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+  }
+
+  .figan-service-photo{
+    aspect-ratio:4 / 3.55!important;
+  }
+
+  .figan-service-content{
+    min-height:220px!important;
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+
+  .figan-service-title-row h3{
+    font-size:clamp(18px,1.2vw,23px)!important;
+  }
+
+  .figan-service-content>p{
+    font-size:.66rem!important;
+  }
+}
+
+@media(min-width:1600px){
+  .figan-services-showcase .container{
+    width:calc(100% - 72px)!important;
+    max-width:1820px!important;
+  }
+
+  .figan-services-track{
+    gap:14px!important;
+  }
+}
