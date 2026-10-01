@@ -71,7 +71,7 @@ export default function FounderAuthors() {
           <div className={styles.visualColumn}>
             <div className={styles.visual}>
               <Image
-                src="/22-yayinevi-kurucu-yazar-koleksiyon-v1.png"
+                src="/22-yayinevi-kurucu-yazar-koleksiyon-yatay-v2.png"
                 alt="22 Yayınevi İlk 22 Kurucu Yazar koleksiyonu"
                 fill
                 sizes="(max-width: 980px) 100vw, 55vw"
