@@ -39,15 +39,15 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
         <div className={styles.heroCopy}>
           <SectionNumber n="01" label="YAZAR" />
           <h1>{author.name}</h1>
-          <blockquote>“{author.heroQuote}”</blockquote>
+          <blockquote className={styles.heroQuoteDesktop}>“{author.heroQuote}”</blockquote>
           <p className={styles.heroDescriptor}>{author.descriptor ?? author.role}</p>
           {author.affiliation && <p className={styles.heroAffiliation}>{author.affiliation}</p>}
         </div>
 
         <div className={styles.heroActions} aria-label="Kitap seçenekleri">
-          {featured.readerUrl && <a href={featured.readerUrl}>E-Kitap Oku <span>→</span></a>}
-          {featured.audioUrl && <a href={featured.audioUrl}>Sesli Kitap Dinle <span>→</span></a>}
-          {featured.purchaseUrl && <a href={featured.purchaseUrl}>Eserlerini Keşfet <span>→</span></a>}
+          {featured.readerUrl && <a className={styles.heroActionReader} href={featured.readerUrl}><span className={styles.heroActionIcon} aria-hidden="true">▣</span>E-Kitap Oku <span>→</span></a>}
+          {featured.audioUrl && <a className={styles.heroActionAudio} href={featured.audioUrl}><span className={styles.heroActionIcon} aria-hidden="true">◉</span>Sesli Kitap Dinle <span>→</span></a>}
+          {featured.purchaseUrl && <a className={styles.heroActionWorks} href={featured.purchaseUrl}><span className={styles.heroActionIcon} aria-hidden="true">▤</span>Eserlerini Keşfet <span>→</span></a>}
         </div>
         <a className={styles.scrollCue} href="#kitap">AŞAĞI KAYDIR <span>↓</span></a>
       </section>
