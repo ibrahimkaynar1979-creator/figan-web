@@ -68,9 +68,9 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
             <a href="#yazilar">Yazılar</a>
             <a href="#iletisim">İletişim</a>
           </nav>
-          <button className={styles.mobileMenuButton} type="button" aria-label="Menüyü aç">
+          <a className={styles.mobileMenuButton} href="#mobile-menu" aria-label="Menüyü aç">
             <span /><span /><span />
-          </button>
+          </a>
           <a className={styles.publisher} href="/" aria-label="22 Yayınevi">22</a>
         </header>
 
@@ -226,7 +226,7 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
 
       <section className={styles.menuPanel} id="mobile-menu">
         <div className={styles.menuPanelInner}>
-          <span className={styles.menuPanelLabel}>FIGEN YAVUZ</span>
+          <div className={styles.menuPanelTop}><span className={styles.menuPanelLabel}>FIGEN YAVUZ</span><a className={styles.menuClose} href="#ana-sayfa" aria-label="Menüyü kapat">×</a></div>
           <a href="#ana-sayfa">Ana Sayfa</a>
           <a href="#hakkinda">Figen · Biyografi</a>
           <a href="#kitaplik">Kitaplar</a>
