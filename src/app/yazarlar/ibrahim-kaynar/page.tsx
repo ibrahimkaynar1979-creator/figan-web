@@ -20,7 +20,7 @@ const personSchema = {
 export default function Page() {
   return (
     <InnerPageShell>
-      <main className="seo-service-page seo-service-editorial">
+      <main className="seo-service-page seo-service-editorial ibrahim-author-profile">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
