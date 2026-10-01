@@ -11086,3 +11086,150 @@ body.reader-route .contact-float{display:none!important}
     margin-top:auto!important;
   }
 }
+
+
+/* 2026-10-01 — AUTHORS TUBE + 3-COLUMN SCALABLE GRID */
+@media(min-width:1101px){
+  .home-page-main .authors-showcase{
+    padding:10px 0 14px!important;
+  }
+
+  .authors-showcase-wrap{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+  }
+
+  .authors-showcase-header{
+    width:100%!important;
+    max-width:none!important;
+    min-height:92px!important;
+    margin:0 auto 10px!important;
+    padding:9px 42px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    border:1px solid rgba(145,91,48,.16)!important;
+    border-radius:999px!important;
+    background:
+      radial-gradient(circle at 50% 0,rgba(255,255,255,.88),transparent 56%),
+      linear-gradient(180deg,#fffaf4 0%,#f6eadc 100%)!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.96),
+      0 10px 24px rgba(69,42,25,.04)!important;
+  }
+
+  .authors-showcase-eyebrow{
+    display:none!important;
+  }
+
+  .authors-showcase-header h2{
+    margin:0!important;
+    font-family:var(--font-editorial),Georgia,serif!important;
+    font-size:clamp(35px,2.55vw,48px)!important;
+    font-weight:500!important;
+    line-height:.98!important;
+    letter-spacing:-.035em!important;
+    color:#3d2b23!important;
+  }
+
+  .authors-showcase-header h2 strong{
+    color:#a96934!important;
+    font-weight:500!important;
+  }
+
+  .authors-showcase-header>p{
+    max-width:900px!important;
+    margin:5px auto 0!important;
+    color:#65564e!important;
+    font-size:14px!important;
+    line-height:1.25!important;
+  }
+
+  .authors-showcase-panel{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:10px!important;
+    width:100%!important;
+    padding:14px!important;
+    border:1px solid rgba(145,91,48,.12)!important;
+    border-radius:24px!important;
+    background:
+      radial-gradient(circle at 15% 0,rgba(255,255,255,.82),transparent 36%),
+      linear-gradient(145deg,#f5eadf 0%,#ead7c3 100%)!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.92),
+      0 14px 32px rgba(69,42,25,.04)!important;
+  }
+
+  .authors-showcase-card{
+    min-width:0!important;
+    width:100%!important;
+    height:100%!important;
+  }
+
+  .authors-showcase-hit{
+    grid-template-columns:42% 58%!important;
+    min-height:300px!important;
+    height:100%!important;
+  }
+
+  .authors-showcase-visual{
+    min-height:300px!important;
+  }
+
+  .authors-showcase-card-empty{
+    min-height:300px!important;
+    border:1px dashed rgba(145,91,48,.22)!important;
+    border-radius:18px!important;
+    background:rgba(255,250,245,.48)!important;
+    overflow:hidden!important;
+  }
+
+  .authors-showcase-empty{
+    min-height:300px!important;
+    height:100%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:8px!important;
+    color:#a96934!important;
+  }
+
+  .authors-showcase-empty-mark{
+    width:54px!important;
+    height:54px!important;
+    display:grid!important;
+    place-items:center!important;
+    border:1px solid rgba(169,105,52,.25)!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,.60)!important;
+    font-family:var(--font-editorial),Georgia,serif!important;
+    font-size:20px!important;
+  }
+
+  .authors-showcase-empty small{
+    font-size:8px!important;
+    font-weight:800!important;
+    letter-spacing:.20em!important;
+    opacity:.65!important;
+  }
+
+  .home-page-main .author-site-compact{
+    padding-top:14px!important;
+  }
+}
+
+@media(max-width:1100px) and (min-width:761px){
+  .authors-showcase-panel{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+
+@media(max-width:760px){
+  .authors-showcase-card-empty{
+    display:none!important;
+  }
+}
