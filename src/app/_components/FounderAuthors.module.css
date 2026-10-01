@@ -1,335 +1,290 @@
 .section {
   position: relative;
   overflow: hidden;
-  background: #f8f1e8;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,255,255,.88), transparent 28%),
+    linear-gradient(180deg,#f8f2ea 0%,#f2e7da 100%);
   color: #2c1a12;
 }
 
 .main {
-  position: relative;
-  min-height: 700px;
-  display: flex;
-  align-items: stretch;
-}
-
-.visual {
-  position: absolute;
-  inset: 0 0 0 31%;
-  overflow: hidden;
-  background: #2a1a13;
-}
-
-.image {
-  object-fit: cover;
-  object-position: center center;
-  transform: scale(1.01);
-}
-
-.visualFade {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg,
-      #f8f1e8 0%,
-      rgba(248,241,232,.97) 4%,
-      rgba(248,241,232,.80) 11%,
-      rgba(248,241,232,.35) 20%,
-      rgba(248,241,232,.06) 31%,
-      transparent 42%),
-    linear-gradient(180deg, rgba(255,255,255,.03), rgba(32,18,12,.05));
+  width: min(1460px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 34px 0 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 34px;
+  align-items: center;
 }
 
 .copy {
   position: relative;
-  z-index: 5;
-  width: 38%;
-  max-width: 660px;
-  padding: 44px 0 36px clamp(56px,5vw,92px);
-  align-self: center;
+  z-index: 2;
+  max-width: 600px;
+  padding: 6px 0 8px;
 }
 
 .brandLine {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 27px;
-  color: #9e744f;
-  font-size: 10px;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #9d744f;
+  font-size: 8px;
   font-weight: 850;
-  letter-spacing: .25em;
+  letter-spacing: .24em;
 }
 
 .brandLine i {
-  width: 245px;
+  width: 170px;
   height: 1px;
-  background: linear-gradient(90deg, rgba(160,105,58,.38), transparent);
+  background: linear-gradient(90deg, rgba(160,105,58,.36), transparent);
 }
 
 .kicker {
-  margin: 0 0 17px;
-  color: #9b3b31;
-  font-size: 11px;
+  margin: 0 0 12px;
+  color: #96382f;
+  font-size: 9px;
   font-weight: 850;
-  letter-spacing: .25em;
+  letter-spacing: .24em;
 }
 
 .copy h2 {
   margin: 0;
-  max-width: 590px;
+  max-width: 520px;
   color: #2c1a12;
-  font-family: var(--font-editorial),Georgia,serif;
-  font-size: clamp(62px,5.6vw,92px);
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: clamp(48px, 4.2vw, 66px);
   font-weight: 500;
-  line-height: .91;
-  letter-spacing: -.058em;
+  line-height: .92;
+  letter-spacing: -.05em;
 }
 
 .copy h2 em {
   display: block;
-  margin-top: 8px;
-  color: #8b241f;
-  font-family: var(--font-poetic),var(--font-editorial),Georgia,serif;
+  margin-top: 5px;
+  color: #8a2823;
+  font-family: var(--font-poetic), var(--font-editorial), Georgia, serif;
   font-style: normal;
   font-weight: 400;
 }
 
 .statement {
-  margin: 21px 0 0;
+  margin: 14px 0 0;
   color: #3f2a20;
-  font-family: var(--font-editorial),Georgia,serif;
-  font-size: 18px;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: 15px;
   font-style: italic;
   line-height: 1.4;
 }
 
 .lead {
-  max-width: 520px;
-  margin: 13px 0 0;
-  color: #6b584d;
-  font-size: 13.5px;
-  line-height: 1.68;
+  max-width: 500px;
+  margin: 9px 0 0;
+  color: #6c594d;
+  font-size: 11.5px;
+  line-height: 1.6;
 }
 
 .collectionBlock {
-  max-width: 510px;
-  margin-top: 20px;
-  padding-top: 17px;
-  border-top: 1px solid rgba(145,91,48,.22);
+  max-width: 470px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(145,91,48,.20);
 }
 
 .collectionBlock > span {
   display: block;
   color: #a06735;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 850;
   letter-spacing: .18em;
 }
 
 .collectionBlock p {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: #6b4d3c;
-  font-family: var(--font-editorial),Georgia,serif;
-  font-size: 15px;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: 13px;
 }
 
 .collectionBlock i {
   padding: 0 7px;
-  color: rgba(107,77,60,.48);
+  color: rgba(107,77,60,.44);
   font-style: normal;
 }
 
 .cta {
-  margin-top: 24px;
-  min-height: 52px;
-  padding: 0 24px;
+  margin-top: 16px;
+  min-height: 42px;
+  padding: 0 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
+  gap: 12px;
   border-radius: 999px;
   background: linear-gradient(180deg,#402217,#28130c);
   color: #fff8ef;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 850;
-  box-shadow: 0 13px 30px rgba(49,26,16,.16);
+  box-shadow: 0 12px 28px rgba(49,26,16,.14);
 }
 
 .cta b {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
+}
+
+.visual {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+  background: #2a1a13;
+  box-shadow: 0 22px 52px rgba(64,38,23,.14);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.visualFade {
+  display: none;
+}
+
+.numberBadgeImage {
+  position: absolute;
+  z-index: 5;
+  top: 14px;
+  right: 14px;
+  width: 82px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(63,19,15,.18));
 }
 
 .visualNote {
   position: absolute;
   z-index: 5;
-  left: 9%;
-  bottom: 20px;
-  min-width: 300px;
-  padding: 15px 20px 14px 56px;
-  border: 1px solid rgba(143,94,51,.17);
-  background: rgba(251,246,239,.95);
-  box-shadow: 0 14px 30px rgba(66,39,23,.10);
-  backdrop-filter: blur(10px);
+  left: 16px;
+  bottom: 14px;
+  min-width: 210px;
+  padding: 10px 14px 9px 40px;
+  border: 1px solid rgba(143,94,51,.16);
+  background: rgba(251,246,239,.94);
+  box-shadow: 0 12px 28px rgba(66,39,23,.10);
+  backdrop-filter: blur(8px);
 }
 
 .visualNote::before {
   content: "◆";
   position: absolute;
-  left: 22px;
+  left: 15px;
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
   color: #b67a3d;
-  font-size: 14px;
+  font-size: 9px;
 }
 
 .visualNote span {
   display: block;
   color: #a36a38;
-  font-size: 9px;
+  font-size: 7px;
   font-weight: 850;
   letter-spacing: .12em;
 }
 
 .visualNote strong {
   display: block;
-  margin-top: 4px;
+  margin-top: 2px;
   color: #3c291f;
-  font-family: var(--font-editorial),Georgia,serif;
-  font-size: 15px;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: 11px;
   font-weight: 500;
 }
 
 .strip {
-  position: relative;
-  z-index: 7;
-  margin: 0 clamp(38px,4.6vw,78px) 28px;
+  width: min(1460px, calc(100% - 64px));
+  margin: 0 auto 24px;
   display: grid;
   grid-template-columns: repeat(3,minmax(0,1fr));
-  border-top: 1px solid rgba(143,92,49,.20);
-  border-bottom: 1px solid rgba(143,92,49,.17);
-  background: rgba(251,247,241,.72);
+  border-top: 1px solid rgba(143,92,49,.18);
+  border-bottom: 1px solid rgba(143,92,49,.15);
+  background: rgba(251,247,241,.68);
 }
 
 .stripItem {
   display: grid;
-  grid-template-columns: 30px 46px 1fr;
-  gap: 12px;
+  grid-template-columns: 22px 30px 1fr;
+  gap: 9px;
   align-items: center;
-  min-height: 92px;
-  padding: 16px 22px;
+  min-height: 64px;
+  padding: 10px 15px;
 }
 
 .stripItem + .stripItem {
-  border-left: 1px solid rgba(143,92,49,.16);
+  border-left: 1px solid rgba(143,92,49,.14);
 }
 
 .stripNo {
   align-self: start;
-  padding-top: 4px;
+  padding-top: 3px;
   color: #aa6e35;
-  font-size: 9px;
+  font-size: 7px;
   font-weight: 850;
-  letter-spacing: .17em;
+  letter-spacing: .16em;
 }
 
 .stripIcon {
-  width: 42px;
-  height: 42px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
   color: #9a3b31;
 }
 
 .stripIcon svg {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 
 .stripItem strong {
   display: block;
   color: #36241a;
-  font-family: var(--font-editorial),Georgia,serif;
-  font-size: 19px;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.1;
 }
 
 .stripItem p {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: #806b5c;
-  font-size: 10.5px;
-  line-height: 1.4;
+  font-size: 8.5px;
+  line-height: 1.35;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 980px) {
   .main {
-    min-height: 640px;
-  }
-
-  .visual {
-    left: 35%;
+    width: min(100% - 36px, 900px);
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 28px;
   }
 
   .copy {
-    width: 44%;
-    padding-left: 40px;
-  }
-
-  .copy h2 {
-    font-size: 60px;
-  }
-
-  .numberBadge {
-    width: 126px;
-  }
-}
-
-@media (max-width: 900px) {
-  .main {
-    min-height: 0;
-    display: block;
+    max-width: none;
   }
 
   .visual {
-    position: relative;
-    inset: auto;
-    width: 100%;
+    height: auto;
     aspect-ratio: 16 / 10;
   }
 
-  .visualFade {
-    background: linear-gradient(180deg,transparent 60%,rgba(248,241,232,.35));
-  }
-
-  .copy {
-    width: auto;
-    max-width: none;
-    padding: 38px 22px 34px;
-  }
-
-  .brandLine i {
-    width: 150px;
-  }
-
-  .copy h2 {
-    font-size: 52px;
-  }
-
-  .numberBadge {
-    top: 18px;
-    right: 18px;
-    width: 110px;
-  }
-
-  .visualNote {
-    left: 18px;
-    bottom: 16px;
-  }
-
   .strip {
-    margin: 0 20px 24px;
+    width: min(100% - 36px, 900px);
     grid-template-columns: 1fr;
   }
 
@@ -340,8 +295,9 @@
 }
 
 @media (max-width: 520px) {
-  .copy {
-    padding: 32px 18px 30px;
+  .main {
+    width: calc(100% - 28px);
+    padding-top: 24px;
   }
 
   .copy h2 {
@@ -349,206 +305,34 @@
   }
 
   .statement {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .lead {
-    font-size: 13px;
+    font-size: 12.5px;
+  }
+
+  .visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .numberBadgeImage {
+    width: 68px;
+    top: 10px;
+    right: 10px;
   }
 
   .visualNote {
-    left: 12px;
-    right: 12px;
+    left: 10px;
+    right: 10px;
     min-width: 0;
   }
 
   .cta {
     width: 100%;
   }
-}
-
-
-/* 2026-10-01 — COMPACT DESKTOP FINAL */
-@media (min-width: 901px) {
-  .main {
-    min-height: 410px;
-  }
-
-  .visual {
-    inset: 0 0 0 34%;
-  }
-
-  .copy {
-    width: 37%;
-    max-width: 560px;
-    padding: 24px 0 22px clamp(48px,4.4vw,76px);
-  }
-
-  .brandLine {
-    margin-bottom: 15px;
-    font-size: 8px;
-  }
-
-  .brandLine i {
-    width: 180px;
-  }
-
-  .kicker {
-    margin-bottom: 11px;
-    font-size: 9px;
-  }
-
-  .copy h2 {
-    max-width: 500px;
-    font-size: clamp(48px,4.15vw,66px);
-    line-height: .91;
-  }
-
-  .copy h2 em {
-    margin-top: 4px;
-  }
-
-  .statement {
-    margin-top: 12px;
-    font-size: 15px;
-  }
-
-  .lead {
-    max-width: 470px;
-    margin-top: 8px;
-    font-size: 11.5px;
-    line-height: 1.58;
-  }
-
-  .collectionBlock {
-    max-width: 450px;
-    margin-top: 12px;
-    padding-top: 11px;
-  }
-
-  .collectionBlock > span {
-    font-size: 8px;
-  }
-
-  .collectionBlock p {
-    margin-top: 5px;
-    font-size: 13px;
-  }
-
-  .cta {
-    margin-top: 14px;
-    min-height: 42px;
-    padding: 0 18px;
-    font-size: 10px;
-  }
-
-  .numberBadge {
-    top: 28px;
-    right: 4.5%;
-    width: 92px;
-  }
-
-  .numberBadge span {
-    font-size: 6px;
-  }
-
-  .numberBadge strong {
-    font-size: 20px;
-  }
-
-  .numberBadge small {
-    font-size: 5px;
-  }
-
-  .visualNote {
-    left: 7%;
-    bottom: 12px;
-    min-width: 230px;
-    padding: 10px 14px 10px 42px;
-  }
-
-  .visualNote::before {
-    left: 17px;
-    font-size: 10px;
-  }
-
-  .visualNote span {
-    font-size: 7px;
-  }
-
-  .visualNote strong {
-    margin-top: 2px;
-    font-size: 12px;
-  }
 
   .strip {
-    margin: 0 clamp(34px,4.2vw,70px) 18px;
-  }
-
-  .stripItem {
-    grid-template-columns: 24px 34px 1fr;
-    gap: 9px;
-    min-height: 66px;
-    padding: 10px 16px;
-  }
-
-  .stripNo {
-    font-size: 7px;
-  }
-
-  .stripIcon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .stripIcon svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .stripItem strong {
-    font-size: 15px;
-  }
-
-  .stripItem p {
-    margin-top: 2px;
-    font-size: 9px;
-  }
-}
-
-
-/* 2026-10-01 — REAL SEAL IMAGE */
-.numberBadgeImage {
-  position: absolute;
-  z-index: 5;
-  top: 24px;
-  right: 4.2%;
-  width: 96px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 14px 28px rgba(63,19,15,.20));
-}
-
-@media (max-width: 1100px) and (min-width: 901px) {
-  .numberBadgeImage {
-    width: 84px;
-    top: 18px;
-    right: 3.5%;
-  }
-}
-
-@media (max-width: 900px) {
-  .numberBadgeImage {
-    width: 88px;
-    top: 14px;
-    right: 14px;
-  }
-}
-
-@media (max-width: 520px) {
-  .numberBadgeImage {
-    width: 72px;
-    top: 10px;
-    right: 10px;
+    width: calc(100% - 28px);
   }
 }
