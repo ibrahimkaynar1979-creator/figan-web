@@ -10199,3 +10199,48 @@ body.reader-route .contact-float{display:none!important}
     padding:16px!important;
   }
 }
+
+
+/* 2026-10-01 — SERVICES CAPSULE MATCH AUTHOR BRIDGE */
+@media(min-width:1101px){
+  .figan-services-showcase{
+    padding-top:10px!important;
+  }
+
+  .figan-services-header{
+    position:relative!important;
+    left:50%!important;
+    transform:translateX(-50%)!important;
+    width:calc(100vw - 24px)!important;
+    max-width:none!important;
+    min-height:96px!important;
+    margin:0 0 20px!important;
+    padding:10px 42px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border-radius:999px!important;
+  }
+
+  .figan-services-eyebrow{
+    margin:0 0 4px!important;
+    font-size:8px!important;
+    line-height:1!important;
+    letter-spacing:.20em!important;
+  }
+
+  .figan-services-header h2{
+    margin:0!important;
+    font-size:clamp(35px,2.55vw,48px)!important;
+    line-height:.98!important;
+    letter-spacing:-.035em!important;
+  }
+
+  .figan-services-description{
+    max-width:900px!important;
+    margin:5px auto 0!important;
+    font-size:14px!important;
+    line-height:1.25!important;
+  }
+}
