@@ -1,21 +1,22 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./FounderAuthors.module.css";
 
 const benefits = [
   {
     no: "01",
-    title: "Numaralı Statü",
-    text: "İlk 22 içinde kalıcı sıra numarası.",
+    title: "Numaralı Sertifika",
+    text: "İlk 22 içinde kişiye özel sıra numarasıyla hazırlanan kurucu yazar sertifikası.",
   },
   {
     no: "02",
-    title: "Özel Kurucu Seti",
-    text: "Sertifika, rozet, kart ve koleksiyon parçaları.",
+    title: "Metal Kurucu Kartı",
+    text: "Yazar adına ve kurucu numarasına özel, kalıcı koleksiyon parçası.",
   },
   {
     no: "03",
-    title: "%50 Hizmet Avantajı",
-    text: "Basılı kitap hariç sonraki yayıncılık hizmetlerinde.",
+    title: "Metal Ayraç & Mühür",
+    text: "22 Yayınevi kimliğini taşıyan, kitabın dünyasına ait iki seçkin obje.",
   },
 ] as const;
 
@@ -33,9 +34,20 @@ export default function FounderAuthors() {
             </h2>
 
             <p className={styles.lead}>
-              22 Yayınevi’nin ilk 22 yazarı, kuruluş hikâyesine numaralı ve kalıcı bir
-              statüyle dahil olur. Bu ayrıcalık daha sonra yeniden sunulmaz.
+              22 Yayınevi’nin ilk 22 yazarı, kuruluş hikâyesine numaralı ve kalıcı
+              bir statüyle dahil olur. Her kurucu yazar için hazırlanan koleksiyon,
+              bu ayrıcalığı fiziksel bir hatıraya dönüştürür.
             </p>
+
+            <div className={styles.collectionLine}>
+              <span>Sertifika</span>
+              <i>·</i>
+              <span>Metal Kart</span>
+              <i>·</i>
+              <span>Metal Ayraç</span>
+              <i>·</i>
+              <span>Mühür</span>
+            </div>
 
             <div className={styles.actions}>
               <Link href="/kurucu-yazar" className={styles.primary}>
@@ -45,38 +57,20 @@ export default function FounderAuthors() {
             </div>
           </div>
 
-          <div className={styles.collection} aria-hidden="true">
-            <div className={styles.box}>
-              <span>22 YAYINEVİ</span>
-              <strong>KURUCU YAZAR</strong>
+          <div className={styles.visual}>
+            <div className={styles.imageFrame}>
+              <Image
+                src="/22-yayinevi-kurucu-yazar-koleksiyon-v1.png"
+                alt="22 Yayınevi İlk 22 Kurucu Yazar koleksiyonu; sertifika, metal kart, metal ayraç, mühür ve premium koleksiyon kutusu"
+                fill
+                sizes="(max-width: 980px) 94vw, 48vw"
+                className={styles.collectionImage}
+              />
             </div>
 
-            <div className={styles.certificate}>
-              <p>22 YAYINEVİ</p>
-              <span>KURUCU YAZAR SERTİFİKASI</span>
+            <div className={styles.imageCaption}>
+              <span>KURUCU YAZAR KOLEKSİYONU</span>
               <strong>07 / 22</strong>
-              <small>NUMARALI · ÖZEL EDİSYON</small>
-            </div>
-
-            <div className={styles.memberCard}>
-              <span>22</span>
-              <strong>FOUNDER AUTHOR</strong>
-              <small>07 / 22</small>
-            </div>
-
-            <div className={styles.bookmark}>
-              <span>22</span>
-            </div>
-
-            <div className={styles.exlibris}>
-              <span>EX LIBRIS</span>
-              <strong>22</strong>
-            </div>
-
-            <div className={styles.waxSeal}>
-              <span>İLK</span>
-              <strong>22</strong>
-              <span>KURUCU<br/>YAZAR</span>
             </div>
           </div>
         </div>
