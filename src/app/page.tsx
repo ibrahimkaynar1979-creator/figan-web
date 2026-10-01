@@ -293,7 +293,6 @@ export default function Home() {
         <section id="hizmetler" className="section services figan-services-showcase">
           <div className="container">
             <header className="figan-services-header">
-              <p className="figan-services-eyebrow">HİZMETLERİMİZ</p>
               <h2>Tek kitap.<br/><strong>Bütün yayın dünyası.</strong></h2>
               <p className="figan-services-description">
                 Bir yazarın ihtiyaç duyduğu yayıncılık adımlarını birbirinden kopuk hizmetler olarak değil, tek bir 360° ekosistemin parçaları olarak yönetiyoruz.
