@@ -78,9 +78,9 @@ const process = [
   ["01","Başvuru ve Değerlendirme","Dosyanızı ve yayın hedefinizi birlikte değerlendiriyoruz."],
   ["02","Editörlük","Metni yayın standardına hazırlıyoruz."],
   ["03","Kapak ve Tasarım","Eserin görsel yayın kimliğini oluşturuyoruz."],
-  ["04","Basım ve Fizikî Dağıtım","Bandrollü baskı ve uygun satış kanallarını planlıyoruz."],
-  ["05","Dijital Yayın","E-kitap ve sesli kitabı yayına hazırlıyoruz."],
-  ["06","Yazar Dünyası","Site, dağıtım ve görünürlüğü tek yapıda birleştiriyoruz."],
+  ["04","Dijital Yayın","E-kitap ve sesli kitabı yayına hazırlıyoruz."],
+  ["05","Yazar Dünyası","Site, dağıtım ve görünürlüğü tek yapıda birleştiriyoruz."],
+  ["06","Basım ve Fizikî Dağıtım","Bandrollü baskı ve uygun satış kanallarını planlıyoruz."],
 ] as const;
 
 type AuthorCard = {
