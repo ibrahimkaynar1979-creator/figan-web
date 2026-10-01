@@ -46,7 +46,7 @@ export default function Page() {
 
             <div className="seo-service-visual">
               <Image
-                src="/icimdeki-ibrahim.webp"
+                src="/figen_hero_22yayinevi/yazar_ibrahim_kaynar.png"
                 alt="İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken"
                 width={1200}
                 height={900}
@@ -92,7 +92,7 @@ export default function Page() {
             </div>
             <div className="author-profile-featured-visual">
               <Image
-                src="/icimdeki-ibrahim.webp"
+                src="/figen_hero_22yayinevi/yazar_ibrahim_kaynar.png"
                 alt="İçimdeki İbrahim kitap kapağı"
                 width={900}
                 height={1100}
@@ -110,7 +110,7 @@ export default function Page() {
               <article className="author-profile-book-card-rich">
                 <div className="author-profile-book-thumb">
                   <Image
-                    src="/icimdeki-ibrahim.webp"
+                    src="/figen_hero_22yayinevi/yazar_ibrahim_kaynar.png"
                     alt="İçimdeki İbrahim"
                     width={260}
                     height={320}
