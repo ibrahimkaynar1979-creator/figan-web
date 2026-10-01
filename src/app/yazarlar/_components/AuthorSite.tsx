@@ -27,12 +27,50 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
         <header className={styles.header}>
           <a href="#ana-sayfa" className={styles.brand}>figenyavuz.com</a>
           <nav className={styles.nav} aria-label="Yazar sitesi">
-            <a href="#kitap">Kitap</a>
-            <a href="#oku">Oku</a>
-            <a href="#dinle">Dinle</a>
-            <a href="#hakkinda">Hakkında</a>
+            <a href="#ana-sayfa">Ana Sayfa</a>
+            <div className={styles.navGroup}>
+              <a href="#hakkinda">Figen <span>⌄</span></a>
+              <div className={styles.dropdown}>
+                <a href="#hakkinda">Biyografi</a>
+                <a href="#hakkinda">Hayat Yolculuğu</a>
+                <a href="#hakkinda">Yazar Figen</a>
+                <a href="#hakkinda">Sanatçı Figen</a>
+                <a href="#hakkinda">22 Yayınevi</a>
+              </div>
+            </div>
+            <div className={styles.navGroup}>
+              <a href="#kitaplik">Kitaplar <span>⌄</span></a>
+              <div className={styles.dropdown}>
+                <a href="#kitap">Bir Şifacının Kanadı</a>
+                <a href="#kitaplik">Kitaplık</a>
+                <a href="#oku">E-Kitap Oku</a>
+                <a href="#dinle">Sesli Kitap Dinle</a>
+              </div>
+            </div>
+            <div className={styles.navGroup}>
+              <a href="#cizimler">Çizimler <span>⌄</span></a>
+              <div className={styles.dropdown}>
+                <a href="#cizimler">Çizimler</a>
+                <a href="#cizimler">Resimler</a>
+                <a href="#cizimler">Sanatsal Çalışmalar</a>
+              </div>
+            </div>
+            <div className={styles.navGroup}>
+              <a href="#spirituel">Spiritüel Çalışmalar <span>⌄</span></a>
+              <div className={styles.dropdown}>
+                <a href="#spirituel">Şifa Çalışmaları</a>
+                <a href="#spirituel">Farkındalık &amp; Dönüşüm</a>
+                <a href="#spirituel">Semboller</a>
+                <a href="#spirituel">Mandalalar</a>
+                <a href="#spirituel">Ruhsal Yolculuk</a>
+              </div>
+            </div>
             <a href="#yazilar">Yazılar</a>
+            <a href="#iletisim">İletişim</a>
           </nav>
+          <button className={styles.mobileMenuButton} type="button" aria-label="Menüyü aç">
+            <span /><span /><span />
+          </button>
           <a className={styles.publisher} href="/" aria-label="22 Yayınevi">22</a>
         </header>
 
@@ -181,6 +219,19 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
               <button type="submit">Katıl →</button>
             </div>
           </form>
+        </div>
+      </section>
+
+      <section className={styles.menuPanel} id="mobile-menu">
+        <div className={styles.menuPanelInner}>
+          <span className={styles.menuPanelLabel}>FIGEN YAVUZ</span>
+          <a href="#ana-sayfa">Ana Sayfa</a>
+          <a href="#hakkinda">Figen · Biyografi</a>
+          <a href="#kitaplik">Kitaplar</a>
+          <a href="#cizimler">Çizimler</a>
+          <a href="#spirituel">Spiritüel Çalışmalar</a>
+          <a href="#yazilar">Yazılar</a>
+          <a href="#iletisim">İletişim</a>
         </div>
       </section>
 
