@@ -12131,3 +12131,146 @@ body.reader-route .contact-float{display:none!important}
     margin-top:10px!important;
   }
 }
+
+
+/* 2026-10-01 — JOURNEY MATCH ABOUT CARD FINAL */
+@media(min-width:1101px){
+  .journey-duo-grid{
+    min-height:310px!important;
+    padding:26px 30px!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:10px!important;
+    align-items:stretch!important;
+  }
+
+  .journey-card{
+    min-height:0!important;
+    padding:8px 12px!important;
+  }
+
+  .journey-card-process{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    padding:8px 18px 8px 12px!important;
+    border:0!important;
+    background:transparent!important;
+  }
+
+  .journey-card-head{
+    min-height:0!important;
+    margin:0 0 16px!important;
+  }
+
+  .journey-card-head h2{
+    font-size:clamp(38px,2.7vw,50px)!important;
+    line-height:.94!important;
+  }
+
+  .journey-card-head>p:last-child{
+    margin-top:10px!important;
+    font-size:12.5px!important;
+    line-height:1.4!important;
+  }
+
+  .journey-process-list{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:0 22px!important;
+    margin:0!important;
+    border:0!important;
+  }
+
+  .journey-process-row{
+    min-height:42px!important;
+    display:grid!important;
+    grid-template-columns:28px 1fr!important;
+    gap:8px!important;
+    align-items:center!important;
+    padding:8px 0!important;
+    border:0!important;
+    border-bottom:1px solid rgba(145,88,45,.13)!important;
+    border-radius:0!important;
+    background:transparent!important;
+  }
+
+  .journey-process-no{
+    width:24px!important;
+    height:24px!important;
+    margin:0!important;
+    font-size:7.5px!important;
+    background:rgba(255,255,255,.54)!important;
+  }
+
+  .journey-process-copy{
+    display:block!important;
+  }
+
+  .journey-process-copy h3{
+    margin:0!important;
+    font-size:11.5px!important;
+    line-height:1.2!important;
+  }
+
+  .journey-process-copy p{
+    display:none!important;
+  }
+
+  .journey-card-ecosystem{
+    min-height:258px!important;
+    padding:28px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    border-radius:20px!important;
+  }
+
+  .journey-card-head-dark{
+    margin-bottom:16px!important;
+  }
+
+  .journey-card-head-dark h2{
+    font-size:clamp(38px,2.7vw,50px)!important;
+  }
+
+  .journey-ecosystem-grid{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    grid-template-rows:repeat(3,auto)!important;
+    gap:0 20px!important;
+    margin:0!important;
+    padding:0!important;
+    background:transparent!important;
+  }
+
+  .journey-ecosystem-grid span{
+    position:relative!important;
+    min-height:40px!important;
+    height:auto!important;
+    padding:10px 0 10px 18px!important;
+    border:0!important;
+    border-bottom:1px solid rgba(255,255,255,.16)!important;
+    border-radius:0!important;
+    background:transparent!important;
+    color:#fff7f0!important;
+    font-size:11px!important;
+    font-weight:720!important;
+    justify-content:flex-start!important;
+  }
+
+  .journey-ecosystem-grid span::before{
+    content:""!important;
+    position:absolute!important;
+    left:0!important;
+    top:50%!important;
+    width:6px!important;
+    height:6px!important;
+    margin-top:-3px!important;
+    border-radius:50%!important;
+    background:#e9b37f!important;
+  }
+
+  .journey-card-cta{
+    display:none!important;
+  }
+}
