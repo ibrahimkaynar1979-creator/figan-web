@@ -11005,3 +11005,84 @@ body.reader-route .contact-float{display:none!important}
     color:#fff!important;
   }
 }
+
+
+/* 2026-10-01 — JOURNEY READABILITY + ECOSYSTEM POLISH */
+@media(min-width:1101px){
+  .journey-process-row{
+    min-height:48px!important;
+  }
+
+  .journey-process-no{
+    width:32px!important;
+    height:32px!important;
+    font-size:9px!important;
+    font-weight:850!important;
+    border-color:rgba(169,101,53,.36)!important;
+    background:rgba(255,255,255,.58)!important;
+  }
+
+  .journey-process-copy h3{
+    font-size:12.8px!important;
+    line-height:1.22!important;
+    font-weight:800!important;
+    color:#704124!important;
+  }
+
+  .journey-process-copy p{
+    font-size:11.6px!important;
+    line-height:1.38!important;
+    font-weight:500!important;
+    color:#5d5048!important;
+  }
+
+  .journey-card-head>p:last-child{
+    font-size:13px!important;
+    color:#5d5048!important;
+  }
+
+  .journey-card-ecosystem{
+    background:
+      radial-gradient(circle at 82% 12%,rgba(255,255,255,.13),transparent 24rem),
+      linear-gradient(145deg,#76513a 0%,#936b50 100%)!important;
+  }
+
+  .journey-card-head-dark>p:last-child{
+    color:#fff3e9!important;
+  }
+
+  .journey-ecosystem-grid{
+    flex:0 0 auto!important;
+    min-height:0!important;
+    padding:12px!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    grid-template-rows:repeat(2,46px)!important;
+    gap:8px!important;
+    align-content:start!important;
+  }
+
+  .journey-ecosystem-grid span{
+    min-height:46px!important;
+    height:46px!important;
+    padding:0 14px!important;
+    font-size:11.6px!important;
+    line-height:1.2!important;
+    font-weight:760!important;
+  }
+
+  .journey-ecosystem-grid strong{
+    width:44px!important;
+    height:44px!important;
+    right:12px!important;
+    bottom:12px!important;
+    font-size:14px!important;
+  }
+
+  .journey-card-cta-dark{
+    margin-top:auto!important;
+  }
+
+  .journey-card-cta-light{
+    margin-top:auto!important;
+  }
+}
