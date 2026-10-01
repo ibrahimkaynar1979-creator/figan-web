@@ -509,3 +509,35 @@
     font-weight:600!important;
   }
 }
+
+/* Final alignment correction */
+@media(min-width:801px){
+  .nav{transform:translateX(115px)!important}
+  .heroCopy{
+    right:5.5vw!important;
+    bottom:18vh!important;
+    width:min(540px,38vw)!important;
+  }
+  .heroCopy h1{font-weight:500!important}
+  .heroDescriptor{font-weight:700!important}
+  .heroAffiliation{font-weight:700!important}
+}
+@media(max-width:800px){
+  .heroCopy h1{
+    font-weight:500!important;
+    letter-spacing:-.065em!important;
+  }
+  .heroDescriptor{
+    font-weight:800!important;
+    font-size:14px!important;
+    line-height:1.5!important;
+    color:#2f2017!important;
+  }
+  .heroAffiliation{
+    font-weight:800!important;
+    font-size:10px!important;
+    line-height:1.45!important;
+    letter-spacing:.11em!important;
+    color:#2f2017!important;
+  }
+}
