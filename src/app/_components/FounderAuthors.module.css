@@ -14,7 +14,7 @@
 .founderPanel,
 .journeyPanel{
   min-width:0;
-  height:620px;
+  height:540px;
   box-sizing:border-box;
 }
 
@@ -30,13 +30,13 @@
   flex:1;
   min-height:0;
   display:grid;
-  grid-template-columns:40% 60%;
+  grid-template-columns:37% 63%;
 }
 
 .founderCopy{
   position:relative;
   z-index:2;
-  padding:38px 30px 26px 40px;
+  padding:26px 26px 20px 34px;
   background:
     radial-gradient(circle at 0 0,rgba(255,255,255,.96),transparent 44%),
     linear-gradient(90deg,#fbf8f3 0%,#f7efe5 100%);
@@ -78,7 +78,7 @@
 
 .founderCopy h2{
   color:#2e1d15;
-  font-size:clamp(48px,3vw,64px);
+  font-size:clamp(44px,2.7vw,58px);
   line-height:.93;
 }
 
@@ -98,28 +98,28 @@
 }
 
 .statement{
-  margin:14px 0 0;
+  margin:10px 0 0;
   color:#4d372c;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:16px;
+  font-size:15px;
   font-style:italic;
 }
 
 .lead{
-  margin:9px 0 0;
+  margin:7px 0 0;
   color:#6a594f;
-  font-size:15.5px;
-  line-height:1.58;
+  font-size:14.5px;
+  line-height:1.5;
 }
 
 .collectionLine{
-  margin-top:15px;
-  padding-top:12px;
+  margin-top:11px;
+  padding-top:10px;
   border-top:1px solid rgba(151,91,44,.17);
   color:#72584a;
   font-family:var(--font-editorial),Georgia,serif;
-  font-size:13.5px;
-  line-height:1.5;
+  font-size:12.5px;
+  line-height:1.45;
 }
 
 .collectionLine span{
@@ -129,7 +129,7 @@
 
 .primaryCta{
   min-height:40px;
-  margin-top:16px;
+  margin-top:12px;
   padding:0 17px;
   display:inline-flex;
   align-items:center;
@@ -159,14 +159,14 @@
 .founderVisual::before{
   content:"";
   position:absolute;
-  inset:-18px;
+  inset:0;
   z-index:0;
   background:
-    linear-gradient(rgba(36,21,14,.18),rgba(36,21,14,.18)),
+    linear-gradient(rgba(36,21,14,.06),rgba(36,21,14,.06)),
     url("/22-yayinevi-kurucu-yazar-koleksiyon-yatay-v2.png") center center / cover no-repeat;
-  filter:blur(18px) saturate(.88);
-  transform:scale(1.05);
-  opacity:.62;
+  filter:blur(2px) saturate(.92);
+  transform:scale(1.015);
+  opacity:.96;
 }
 
 .collectionImage{
@@ -181,32 +181,27 @@
   inset:0;
   z-index:2;
   background:
-    linear-gradient(90deg,rgba(248,242,234,.04),transparent 18%),
-    linear-gradient(180deg,rgba(255,255,255,.02),transparent 74%);
+    linear-gradient(90deg,rgba(248,242,234,.025),transparent 16%),
+    linear-gradient(180deg,rgba(255,255,255,.015),transparent 78%);
   pointer-events:none;
 }
 
 .founderVisual::after{
-  content:"";
-  position:absolute;
-  z-index:3;
-  inset:14px;
-  border:1px solid rgba(255,235,210,.22);
-  pointer-events:none;
+  display:none;
 }
 
 .seal{
   position:absolute;
   z-index:3;
-  top:18px;
-  right:18px;
-  width:76px;
+  top:14px;
+  right:14px;
+  width:70px;
   height:auto;
   filter:drop-shadow(0 10px 20px rgba(50,15,12,.25));
 }
 
 .founderBenefits{
-  flex:0 0 78px;
+  flex:0 0 70px;
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   background:#fffaf4;
@@ -448,23 +443,23 @@
 @media(min-width:1500px){
   .founderPanel,
   .journeyPanel{
-    height:680px;
+    height:570px;
   }
 
   .founderCopy{
-    padding:46px 36px 30px 48px;
+    padding:30px 28px 22px 38px;
   }
 
   .founderCopy h2{
-    font-size:64px;
+    font-size:58px;
   }
 
   .lead{
-    font-size:16px;
+    font-size:15px;
   }
 
   .collectionLine{
-    font-size:14px;
+    font-size:13px;
   }
 
   .journeyPanel{
