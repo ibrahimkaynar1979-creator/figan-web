@@ -541,3 +541,59 @@
     color:#2f2017!important;
   }
 }
+
+/* Hero final composition: no header band; navigation lives directly on the photograph */
+@media(min-width:801px){
+  .hero .header{
+    background:transparent!important;
+    border-bottom:0!important;
+    top:0!important;
+    padding:0!important;
+    height:92px!important;
+    display:block!important;
+  }
+  .hero .brand{
+    position:absolute!important;
+    left:5vw!important;
+    top:28px!important;
+    color:#2a1b12!important;
+    font-size:30px!important;
+    font-weight:600!important;
+  }
+  .hero .publisher{
+    position:absolute!important;
+    right:5vw!important;
+    top:25px!important;
+    color:#2a1b12!important;
+    font-size:42px!important;
+    font-weight:600!important;
+  }
+  .hero .nav{
+    position:absolute!important;
+    right:10vw!important;
+    top:34px!important;
+    transform:none!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:28px!important;
+    color:#2a1b12!important;
+    font-size:12px!important;
+    font-weight:800!important;
+    letter-spacing:.10em!important;
+  }
+  .hero .nav a{font-weight:800!important;color:#2a1b12!important;opacity:1!important}
+  .hero .heroCopy{
+    right:5.5vw!important;
+    bottom:18vh!important;
+    width:min(540px,38vw)!important;
+  }
+}
+@media(max-width:800px){
+  .hero .header{
+    background:transparent!important;
+    border-bottom:0!important;
+  }
+  .hero .brand{color:#2a1b12!important}
+  .hero .publisher{color:#2a1b12!important}
+}
