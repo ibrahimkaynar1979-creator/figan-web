@@ -425,7 +425,7 @@
   box-shadow:0 8px 18px rgba(72,42,22,.04);
 }
 
-@media(max-width:1380px){
+@media(max-width:1600px){
   .shell{grid-template-columns:1fr}
   .panel{height:auto;min-height:0}
   .founderPanel{border-right:0;border-bottom:1px solid rgba(112,72,43,.12)}
@@ -434,7 +434,7 @@
   .journeyRail{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 
-@media(min-width:1381px) and (max-width:1640px){
+@media(min-width:1601px) and (max-width:1760px){
   .panel{height:570px;min-height:570px}
   .founderCopy{padding:30px 22px 22px 30px}
   .panel h2{font-size:clamp(38px,2.5vw,50px)}
@@ -455,4 +455,40 @@
   .journeyStep{min-height:64px}
   .journeyFooter{margin-top:14px}
   .lightCta{width:100%}
+}
+
+
+/* 2026-10-01 — final visible polish */
+.journeyPanel{
+  background:
+    radial-gradient(circle at 88% 8%,rgba(194,132,66,.16),transparent 28%),
+    linear-gradient(145deg,#f8efe5 0%,#ead5bc 100%);
+}
+.journeyRail{gap:14px;}
+.journeyStep{
+  min-height:96px;
+  padding:15px 15px 15px 16px;
+  border-color:rgba(154,91,38,.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 14px 32px rgba(88,50,25,.085);
+}
+.journeyStep strong{font-size:17px;}
+.stepNo{font-size:10px;}
+.iconDisc{width:46px;height:46px;}
+.iconDisc svg{width:22px;height:22px;}
+.journeyTop .lead{font-size:16px;}
+.founderCopy .lead{font-size:16px;}
+.collectionLine{font-size:14px;}
+.founderBenefit strong{font-size:16px;}
+.founderBenefit p{font-size:12px;}
+
+@media(max-width:1600px){
+  .shell{grid-template-columns:1fr;}
+  .founderTop{grid-template-columns:42% 58%;min-height:520px;}
+  .journeyPanel{min-height:560px;}
+  .journeyRail{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .panel h2{font-size:clamp(44px,4.5vw,64px);}
+  .founderCopy .lead,.journeyTop .lead{font-size:16px;}
+  .journeyStep strong{font-size:17px;}
 }
