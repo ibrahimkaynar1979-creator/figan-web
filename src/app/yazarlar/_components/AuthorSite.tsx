@@ -28,43 +28,10 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
           <a href="#ana-sayfa" className={styles.brand}>figenyavuz.com</a>
           <nav className={styles.nav} aria-label="Yazar sitesi">
             <a href="#ana-sayfa">Ana Sayfa</a>
-            <div className={styles.navGroup}>
-              <a href="#hakkinda">Figen <span>⌄</span></a>
-              <div className={styles.dropdown}>
-                <a href="#hakkinda">Biyografi</a>
-                <a href="#hakkinda">Hayat Yolculuğu</a>
-                <a href="#hakkinda">Yazar Figen</a>
-                <a href="#hakkinda">Sanatçı Figen</a>
-                <a href="#hakkinda">22 Yayınevi</a>
-              </div>
-            </div>
-            <div className={styles.navGroup}>
-              <a href="#kitaplik">Kitaplar <span>⌄</span></a>
-              <div className={styles.dropdown}>
-                <a href="#kitap">Bir Şifacının Kanadı</a>
-                <a href="#kitaplik">Kitaplık</a>
-                <a href="#oku">E-Kitap Oku</a>
-                <a href="#dinle">Sesli Kitap Dinle</a>
-              </div>
-            </div>
-            <div className={styles.navGroup}>
-              <a href="#cizimler">Çizimler <span>⌄</span></a>
-              <div className={styles.dropdown}>
-                <a href="#cizimler">Çizimler</a>
-                <a href="#cizimler">Resimler</a>
-                <a href="#cizimler">Sanatsal Çalışmalar</a>
-              </div>
-            </div>
-            <div className={styles.navGroup}>
-              <a href="#spirituel">Spiritüel Çalışmalar <span>⌄</span></a>
-              <div className={styles.dropdown}>
-                <a href="#spirituel">Şifa Çalışmaları</a>
-                <a href="#spirituel">Farkındalık &amp; Dönüşüm</a>
-                <a href="#spirituel">Semboller</a>
-                <a href="#spirituel">Mandalalar</a>
-                <a href="#spirituel">Ruhsal Yolculuk</a>
-              </div>
-            </div>
+            <a href="#hakkinda">Figen</a>
+            <a href="#kitaplik">Kitaplar</a>
+            <a href="#cizimler">Çizimler</a>
+            <a href="#spirituel">Spiritüel Çalışmalar</a>
             <a href="#yazilar">Yazılar</a>
             <a href="#iletisim">İletişim</a>
           </nav>
