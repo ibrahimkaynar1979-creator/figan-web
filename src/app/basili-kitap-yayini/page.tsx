@@ -28,7 +28,7 @@ export default function Page(){
       eyebrow="BASILI KİTAP YAYINI"
       title="Kitabınız yalnızca basılmasın. Okuruyla buluşsun."
       lead="Metninizin editoryal hazırlığını ve mevcut mizanpajınızı kontrol ediyor; kapak, ISBN, bandrol, prova, baskı ve fizikî dağıtım sürecini birlikte yürütüyor, kitabınızı satış ve dağıtım kanallarına hazır hâle getiriyoruz."
-      image="/figan-hizmet-basili-kitap-yayini.webp"
+      image="/figen-mockup.png"
       bullets={[
         "Editörlük kontrolü ve mevcut mizanpajın baskıya uygunluk kontrolü",
         "Kapak, prova ve baskı dosyalarının son kontrolü",
