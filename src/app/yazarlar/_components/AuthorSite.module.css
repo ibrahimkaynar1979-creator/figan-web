@@ -32,7 +32,9 @@
 .heroCopy .sectionNumber{margin-bottom:20px}
 .heroCopy h1{margin:0 0 22px;font:500 clamp(76px,10vw,152px)/.80 var(--font-editorial),Georgia,serif;letter-spacing:-.06em;text-wrap:balance}
 .heroCopy blockquote{margin:0;max-width:700px;font:italic 400 clamp(30px,3.7vw,56px)/1.06 var(--font-poetic),Georgia,serif;letter-spacing:-.025em;text-wrap:balance}
-.heroCopy p{margin:20px 0 0;font:700 10px/1 var(--font-ui),Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;opacity:.88}
+.heroCopy p{margin:20px 0 0;font:700 10px/1 var(--font-ui),Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;opacity:.9}
+.heroDescriptor{font-family:var(--font-editorial),Georgia,serif!important;font-size:15px!important;letter-spacing:.08em!important;text-transform:none!important;font-weight:500!important}
+.heroAffiliation{margin-top:9px!important;font-size:9px!important;letter-spacing:.24em!important;opacity:.82!important}
 .scrollCue{position:absolute;z-index:2;right:5vw;bottom:5vh;display:flex;align-items:center;gap:12px;font:700 9px/1 var(--font-ui),Arial,sans-serif;letter-spacing:.2em;opacity:.9}
 .scrollCue span{margin:0;font-size:14px;transform:translateY(-1px)}
 .bookSection{padding:100px 6vw;background:linear-gradient(135deg,#fbf7ef,#efe1cf)}
@@ -114,6 +116,8 @@
   .heroCopy h1{font-size:clamp(64px,18vw,88px);line-height:.84;margin-bottom:18px}
   .heroCopy blockquote{font-size:clamp(30px,8.3vw,40px);line-height:1.04;max-width:92%}
   .heroCopy p{margin-top:16px}
+  .heroDescriptor{font-size:13px!important;letter-spacing:.04em!important;line-height:1.35!important}
+  .heroAffiliation{font-size:8px!important;letter-spacing:.18em!important}
   .scrollCue{left:18px;right:auto;bottom:3.5vh}
   .bookSection{padding:64px 18px}
   .bookInner{display:flex;flex-direction:column;gap:16px}
