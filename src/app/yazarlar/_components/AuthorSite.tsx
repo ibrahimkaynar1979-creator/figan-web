@@ -94,17 +94,19 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
         <div className={styles.bookInner}>
           <div className={styles.bookCopy}>
             <SectionNumber n="02" label="SON KİTAP" />
+            <span className={styles.bookKicker}>BİR ŞİFACININ KANADI</span>
             <h2>{featured.title}</h2>
             <p className={styles.bookSubtitle}>{featured.subtitle}</p>
             <p className={styles.bookQuote}>{featured.quote}</p>
             <div className={styles.actions}>
-              {featured.purchaseUrl && <a className={styles.primaryAction} href={featured.purchaseUrl}>Satın Al <span>→</span></a>}
-              {featured.readerUrl && <a href={featured.readerUrl}>E-Kitap Oku <span>→</span></a>}
-              {featured.audioUrl && <a href={featured.audioUrl}>Sesli Kitap Dinle <span>→</span></a>}
+              {featured.purchaseUrl && <a className={styles.primaryAction} href={featured.purchaseUrl}><span className={styles.actionIcon}>↗</span> Satın Al <b>→</b></a>}
+              {featured.readerUrl && <a href={featured.readerUrl}><span className={styles.actionIcon}>▣</span> E-Kitap Oku <b>→</b></a>}
+              {featured.audioUrl && <a href={featured.audioUrl}><span className={styles.actionIcon}>◉</span> Sesli Kitap Dinle <b>→</b></a>}
             </div>
           </div>
 
           <div className={styles.bookVisual}>
+            <div className={styles.bookHalo} aria-hidden="true" />
             <Image src={featured.mockup} alt={featured.title} width={1100} height={1400} sizes="(max-width: 800px) 88vw, 45vw" priority />
           </div>
         </div>
