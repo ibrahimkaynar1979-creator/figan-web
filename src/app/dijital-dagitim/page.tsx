@@ -24,6 +24,7 @@ export default function Page(){
   return (
     <SeoServicePage
       editorialLayout
+      premiumReference
       eyebrow="DİJİTAL DAĞITIM"
       title="Kitabınız hazırsa, şimdi doğru kanallarda okuruyla buluşsun."
       lead="Yayın dosyalarınızı, kapak ve metadata bilgilerinizi platform standartlarına göre düzenliyor; kitabınızın Türkiye ve uygun global dijital kanallara hazırlanmasını tek bir dağıtım planı içinde yürütüyoruz."
