@@ -1,35 +1,36 @@
 .section {
   position: relative;
   overflow: hidden;
-  padding: 24px 0 24px;
+  padding: 16px 0 18px;
   background:
-    radial-gradient(circle at 8% 0%, rgba(255,255,255,.86), transparent 30%),
+    radial-gradient(circle at 8% 0%, rgba(255,255,255,.84), transparent 29%),
     linear-gradient(180deg,#f8f2ea 0%,#f2e7da 100%);
   color: #2c1a12;
 }
 
 .shell {
-  width: min(1380px, calc(100% - 80px));
+  width: min(1300px, calc(100% - 72px));
   margin: 0 auto;
 }
 
 .main {
   display: grid;
-  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-  gap: clamp(28px, 3.2vw, 48px);
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+  gap: clamp(20px, 2.2vw, 32px);
   align-items: center;
 }
 
 .copy {
-  max-width: 540px;
-  padding: 2px 0;
+  max-width: 550px;
+  padding: 0;
+  transform: translateX(8px);
 }
 
 .brandLine {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 13px;
+  margin-bottom: 12px;
   color: #9d744f;
   font-size: 8px;
   font-weight: 850;
@@ -37,13 +38,13 @@
 }
 
 .brandLine i {
-  width: 150px;
+  width: 145px;
   height: 1px;
-  background: linear-gradient(90deg, rgba(160,105,58,.36), transparent);
+  background: linear-gradient(90deg, rgba(160,105,58,.38), transparent);
 }
 
 .kicker {
-  margin: 0 0 10px;
+  margin: 0 0 9px;
   color: #96382f;
   font-size: 9px;
   font-weight: 850;
@@ -55,9 +56,9 @@
   max-width: 500px;
   color: #2c1a12;
   font-family: var(--font-editorial), Georgia, serif;
-  font-size: clamp(52px, 4.4vw, 70px);
+  font-size: clamp(54px, 4.5vw, 72px);
   font-weight: 500;
-  line-height: .92;
+  line-height: .91;
   letter-spacing: -.05em;
 }
 
@@ -71,7 +72,7 @@
 }
 
 .statement {
-  margin: 13px 0 0;
+  margin: 12px 0 0;
   color: #3f2a20;
   font-family: var(--font-editorial), Georgia, serif;
   font-size: 15px;
@@ -84,14 +85,14 @@
   margin: 8px 0 0;
   color: #6c594d;
   font-size: 12px;
-  line-height: 1.6;
+  line-height: 1.58;
 }
 
 .collectionBlock {
   max-width: 470px;
-  margin-top: 14px;
-  padding-top: 11px;
-  border-top: 1px solid rgba(145,91,48,.20);
+  margin-top: 13px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(145,91,48,.18);
 }
 
 .collectionBlock > span {
@@ -103,7 +104,7 @@
 }
 
 .collectionBlock p {
-  margin: 6px 0 0;
+  margin: 5px 0 0;
   color: #6b4d3c;
   font-family: var(--font-editorial), Georgia, serif;
   font-size: 13px;
@@ -111,13 +112,13 @@
 
 .collectionBlock i {
   padding: 0 7px;
-  color: rgba(107,77,60,.44);
+  color: rgba(107,77,60,.42);
   font-style: normal;
 }
 
 .cta {
-  margin-top: 15px;
-  min-height: 43px;
+  margin-top: 14px;
+  min-height: 42px;
   padding: 0 19px;
   display: inline-flex;
   align-items: center;
@@ -139,11 +140,13 @@
 
 .visualColumn {
   min-width: 0;
+  transform: translateX(-8px);
 }
 
 .visual {
   position: relative;
-  width: 100%;
+  width: 106%;
+  margin-left: -3%;
   aspect-ratio: 3 / 2;
   overflow: visible;
   background: transparent;
@@ -152,40 +155,51 @@
 .image {
   object-fit: contain;
   object-position: center;
-  filter: drop-shadow(0 18px 34px rgba(64,38,23,.11));
+  transform: scale(1.06);
+  filter: drop-shadow(0 18px 34px rgba(64,38,23,.10));
 }
 
 .numberBadgeImage {
   position: absolute;
   z-index: 3;
-  top: 16px;
-  right: 16px;
-  width: 96px;
+  top: 18px;
+  right: 18px;
+  width: 116px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 12px 24px rgba(63,19,15,.22));
 }
 
 .strip {
-  margin-top: 22px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(3,minmax(0,1fr));
-  border-top: 1px solid rgba(143,92,49,.20);
+  border-top: 1px solid rgba(143,92,49,.22);
   border-bottom: 1px solid rgba(143,92,49,.18);
-  background: rgba(251,247,241,.78);
+  background: transparent;
 }
 
 .stripItem {
   display: grid;
-  grid-template-columns: 24px 36px 1fr;
-  gap: 11px;
+  grid-template-columns: 22px 40px 1fr;
+  gap: 12px;
   align-items: center;
-  min-height: 76px;
-  padding: 12px 18px;
+  min-height: 74px;
+  padding: 10px 16px;
 }
 
 .stripItem + .stripItem {
-  border-left: 1px solid rgba(143,92,49,.15);
+  position: relative;
+}
+
+.stripItem + .stripItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 1px;
+  background: linear-gradient(180deg,transparent,rgba(143,92,49,.22),transparent);
 }
 
 .stripNo {
@@ -198,37 +212,37 @@
 }
 
 .stripIcon {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
   color: #9a3b31;
 }
 
 .stripIcon svg {
-  width: 24px;
-  height: 24px;
+  width: 27px;
+  height: 27px;
 }
 
 .stripItem strong {
   display: block;
   color: #36241a;
   font-family: var(--font-editorial), Georgia, serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.08;
 }
 
 .stripItem p {
   margin: 3px 0 0;
   color: #806b5c;
-  font-size: 10px;
+  font-size: 10.5px;
   line-height: 1.35;
 }
 
 @media (max-width: 980px) {
   .section {
-    padding-top: 26px;
+    padding-top: 24px;
   }
 
   .shell {
@@ -240,6 +254,11 @@
     gap: 22px;
   }
 
+  .copy,
+  .visualColumn {
+    transform: none;
+  }
+
   .visualColumn {
     order: -1;
   }
@@ -248,19 +267,33 @@
     max-width: none;
   }
 
+  .visual {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .image {
+    transform: none;
+  }
+
   .strip {
     grid-template-columns: 1fr;
   }
 
-  .stripItem + .stripItem {
-    border-left: 0;
-    border-top: 1px solid rgba(143,92,49,.14);
+  .stripItem + .stripItem::before {
+    left: 14px;
+    right: 14px;
+    top: 0;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(90deg,transparent,rgba(143,92,49,.22),transparent);
   }
 }
 
 @media (max-width: 520px) {
   .section {
-    padding: 20px 0 22px;
+    padding: 18px 0 20px;
   }
 
   .shell {
@@ -284,7 +317,7 @@
   }
 
   .numberBadgeImage {
-    width: 70px;
+    width: 76px;
     top: 10px;
     right: 10px;
   }
