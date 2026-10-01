@@ -620,3 +620,119 @@
 .journeyItem:hover .stepCopy span{
   color:#a45f2e;
 }
+
+
+/* 2026-10-01 — JOURNEY PANEL ELEGANCE PASS */
+@media(min-width:1181px){
+  .journeyPanel{
+    grid-template-columns:34% 66%;
+    column-gap:26px;
+    padding:28px 28px 18px;
+  }
+
+  .journeyHeader{
+    padding:10px 24px 10px 6px;
+    gap:16px;
+  }
+
+  .journeyHeader h2{
+    font-size:clamp(40px,2.25vw,50px);
+    line-height:.94;
+  }
+
+  .journeyIntro{
+    max-width:270px;
+    font-size:14px;
+    line-height:1.55;
+  }
+
+  .journeyGrid{
+    gap:12px;
+    padding:2px 0 12px;
+    align-content:center;
+  }
+
+  .journeyItem{
+    min-height:86px;
+    grid-template-columns:40px 1fr;
+    gap:11px;
+    padding:13px 14px;
+    border-radius:16px;
+    border:1px solid rgba(150,91,45,.14);
+    background:
+      linear-gradient(135deg,rgba(255,254,251,.98) 0%,rgba(250,241,231,.96) 55%,rgba(245,227,207,.94) 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.95),
+      0 8px 18px rgba(91,53,29,.045);
+  }
+
+  .journeyItem::after{
+    content:"";
+    position:absolute;
+    left:14px;
+    right:14px;
+    bottom:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(176,111,57,.16),transparent);
+    opacity:.75;
+  }
+
+  .journeyItem:hover{
+    transform:translateY(-3px);
+    border-color:rgba(163,94,38,.28);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,1),
+      0 15px 28px rgba(84,49,28,.08);
+  }
+
+  .iconDisc{
+    width:36px;
+    height:36px;
+    border-color:rgba(171,105,51,.19);
+    background:linear-gradient(145deg,#fffdf8,#f4e3d1);
+    box-shadow:0 5px 12px rgba(107,61,29,.045);
+  }
+
+  .iconDisc svg{
+    width:17px;
+    height:17px;
+  }
+
+  .stepCopy span{
+    margin-bottom:3px;
+    font-size:8px;
+    letter-spacing:.18em;
+  }
+
+  .stepCopy strong{
+    font-size:14px;
+    line-height:1.12;
+    letter-spacing:-.01em;
+  }
+
+  .stepCopy small{
+    margin-top:4px;
+    color:#766258;
+    font-size:10px;
+    line-height:1.28;
+  }
+
+  .journeyFooter{
+    padding-top:10px;
+    border-top:1px solid rgba(145,89,47,.11);
+  }
+
+  .journeyFooter > span{
+    font-size:9px;
+    letter-spacing:.18em;
+  }
+
+  .journeyFooter a{
+    min-height:36px;
+    padding:0 16px;
+    border-color:rgba(117,73,39,.14);
+    background:rgba(255,252,248,.90);
+    font-size:10px;
+    box-shadow:0 7px 16px rgba(83,49,28,.045);
+  }
+}
