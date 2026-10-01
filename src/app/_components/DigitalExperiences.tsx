@@ -43,10 +43,10 @@ export default function DigitalExperiences() {
 
         <div className={styles.leftCopy}>
           <p className={styles.kicker}>E-KİTAP</p>
-          <h3>Kitabınız,<br />her zaman yanınızda.</h3>
+          <h3>Kitabınız,<br />okurunuzun hep yanında.</h3>
           <p>
-            22 Reader ile kitaplarınız her yerde sizinle. Sade, konforlu ve
-            odaklanmayı destekleyen bir okuma deneyimiyle, ilham veren eserler cebinizde.
+            22 Reader ile eseriniz okurun cebinde, çantasında ve ekranında her an erişilebilir olur.
+            Sade ve konforlu bir okuma deneyimiyle kitabınız okuruyla her yerde buluşur.
           </p>
           <div className={styles.features}>
             <div><i><FeatureIcon type="device" /></i><span>Her cihazda pürüzsüz okuma</span></div>
