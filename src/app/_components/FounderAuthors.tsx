@@ -46,11 +46,13 @@ export default function FounderAuthors() {
           />
           <div className={styles.visualFade} />
 
-          <div className={styles.numberBadge}>
-            <span>NO.</span>
-            <strong>07 / 22</strong>
-            <small>KURUCU YAZAR</small>
-          </div>
+          <Image
+            src="/muhur_koleksiyon_v1.png"
+            alt="07/22 Kurucu Yazar mührü"
+            width={180}
+            height={180}
+            className={styles.numberBadgeImage}
+          />
 
           <div className={styles.visualNote}>
             <span>İlk 22’ye özel</span>
