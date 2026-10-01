@@ -9226,3 +9226,74 @@ body.reader-route .contact-float{display:none!important}
     font-size:9.5px!important;
   }
 }
+
+
+/* 2026-10-01 — FULL-WIDTH CAPSULES + LARGER TYPE */
+@media(min-width:901px){
+  .homepage-vision-bridge,
+  .homepage-author-bridge{
+    padding:10px 0!important;
+  }
+
+  .homepage-vision-bridge-inner,
+  .homepage-author-bridge-inner{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+    min-height:76px!important;
+    padding:12px 42px!important;
+    border-radius:999px!important;
+  }
+
+  .homepage-vision-bridge-inner{
+    justify-content:center!important;
+  }
+
+  .homepage-vision-bridge-copy{
+    flex:0 1 auto!important;
+    max-width:none!important;
+  }
+
+  .homepage-vision-bridge-copy p{
+    white-space:nowrap!important;
+    font-size:clamp(27px,2vw,34px)!important;
+    line-height:1.06!important;
+  }
+
+  .homepage-vision-bridge-copy small{
+    font-size:12px!important;
+    letter-spacing:.24em!important;
+  }
+
+  .homepage-vision-bridge-mark{
+    width:48px!important;
+    height:48px!important;
+    flex-basis:48px!important;
+    font-size:20px!important;
+  }
+
+  .homepage-author-bridge-copy h2{
+    white-space:nowrap!important;
+    font-size:clamp(35px,2.55vw,48px)!important;
+    line-height:.98!important;
+  }
+
+  .homepage-author-bridge-text{
+    max-width:900px!important;
+    font-size:16px!important;
+    line-height:1.25!important;
+  }
+}
+
+@media(min-width:901px) and (max-width:1380px){
+  .homepage-vision-bridge-copy p{
+    font-size:24px!important;
+  }
+
+  .homepage-author-bridge-copy h2{
+    font-size:34px!important;
+  }
+
+  .homepage-author-bridge-text{
+    font-size:14px!important;
+  }
+}
