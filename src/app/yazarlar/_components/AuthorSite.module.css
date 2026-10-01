@@ -216,3 +216,25 @@
   .bookHalo{width:88vw}
   .actions .actionIcon{width:22px;height:22px}
 }
+
+/* Final author navigation typography and hero tube palette */
+@media(min-width:801px){
+  .nav{gap:30px;font-size:11px;font-weight:800;letter-spacing:.13em}
+  .navGroup>a{font-weight:800}
+  .navGroup>a span{font-weight:900}
+  .dropdown{min-width:250px;padding:14px}
+  .dropdown a{padding:13px 14px;font-size:12px;font-weight:700;letter-spacing:.04em}
+}
+.menuPanelTop{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.menuClose{font:300 32px/1 var(--font-editorial),Georgia,serif;color:#2a1b12!important}
+@media(max-width:800px){
+  .mobileMenuButton{position:absolute;right:58px;top:18px;margin:0!important;padding:0!important;z-index:5;text-decoration:none}
+  .mobileMenuButton span{width:24px!important;height:1.5px!important;background:#2a1b12!important}
+  .heroActions .heroActionReader{background:#f3e4cf!important;color:#2a1b12!important;border-color:#b58a55!important}
+  .heroActions .heroActionAudio{background:#d9c5a7!important;color:#2a1b12!important;border-color:#987044!important}
+  .heroActions .heroActionWorks{background:#2a1b12!important;color:#f7efe4!important;border-color:#2a1b12!important}
+  .heroActions .heroActionReader .heroActionIcon{color:#9b6a32!important}
+  .heroActions .heroActionAudio .heroActionIcon{color:#6f4a29!important}
+  .heroActions .heroActionWorks .heroActionIcon{color:#d6a55f!important}
+  .heroActions a{font-weight:800!important}
+}
