@@ -24,6 +24,7 @@ export default function Page(){
   return (
     <SeoServicePage
       editorialLayout
+      premiumReference
       eyebrow="E-KİTAP YAYINI"
       title="E-kitabınız, yalnızca PDF olmasın. Her ekranda doğru görünsün."
       lead="Eserinizi dijital okuma standartlarına göre hazırlıyor; EPUB yapısı, kapak, metadata ve cihaz uyumluluğunu birlikte ele alarak platformlara yüklemeye hazır bir yayın paketine dönüştürüyoruz."
