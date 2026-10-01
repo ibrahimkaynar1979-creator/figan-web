@@ -1125,3 +1125,147 @@
     padding:0 30px 20px 40px;
   }
 }
+
+
+/* 2026-10-01 — JOURNEY LEFT COPY MATCHES FOUNDER */
+@media(min-width:1181px){
+  .journeyPanel{
+    grid-template-columns:35% 65%;
+    grid-template-rows:1fr;
+  }
+
+  .journeyHeader{
+    grid-column:1;
+    grid-row:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    gap:0;
+    padding:26px 26px 20px 36px;
+    border-right:1px solid rgba(145,89,47,.14);
+  }
+
+  .journeyHeader::after{
+    display:none;
+  }
+
+  .journeyHeader .eyebrow{
+    margin:0 0 10px;
+  }
+
+  .journeyHeader .kicker{
+    margin:0 0 12px;
+  }
+
+  .journeyHeader h2{
+    margin:0;
+    font-size:55px;
+    line-height:.93;
+  }
+
+  .journeyHeader .statement{
+    margin:8px 0 0;
+    color:#4d372c;
+    font-family:var(--font-editorial),Georgia,serif;
+    font-size:14px;
+    font-style:italic;
+  }
+
+  .journeyIntro{
+    max-width:100%;
+    margin:7px 0 0;
+    color:#6a594f;
+    font-size:14px;
+    line-height:1.5;
+  }
+
+  .journeyMeta{
+    width:100%;
+    margin-top:9px;
+    padding-top:9px;
+    border-top:1px solid rgba(151,91,44,.17);
+    color:#72584a;
+    font-family:var(--font-editorial),Georgia,serif;
+    font-size:12px;
+    line-height:1.42;
+  }
+
+  .journeyMeta span{
+    padding:0 4px;
+    color:#b38a6a;
+  }
+
+  .journeyCta{
+    min-height:36px;
+    margin-top:10px;
+    padding:0 17px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    border-radius:999px;
+    background:#32180f;
+    color:#fffaf4;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:850;
+    box-shadow:0 10px 22px rgba(49,26,16,.12);
+  }
+
+  .journeyCta b{
+    font-size:15px;
+    font-weight:500;
+  }
+
+  .journeyGrid{
+    grid-column:2;
+    grid-row:1;
+    height:100%;
+    padding:18px 20px;
+  }
+}
+
+@media(min-width:1500px){
+  .journeyHeader{
+    padding:26px 26px 20px 36px;
+  }
+
+  .journeyHeader h2{
+    font-size:55px;
+  }
+
+  .journeyIntro{
+    font-size:14.5px;
+  }
+
+  .journeyMeta{
+    font-size:12.5px;
+  }
+}
+
+@media(max-width:1180px){
+  .journeyMeta{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px solid rgba(151,91,44,.17);
+    color:#72584a;
+    font-family:var(--font-editorial),Georgia,serif;
+    font-size:12px;
+  }
+
+  .journeyCta{
+    min-height:38px;
+    margin-top:12px;
+    padding:0 17px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border-radius:999px;
+    background:#32180f;
+    color:#fffaf4;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:850;
+  }
+}
