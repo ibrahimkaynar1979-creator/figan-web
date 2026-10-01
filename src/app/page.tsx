@@ -98,7 +98,7 @@ const authors: readonly AuthorCard[] = [
     name:"Figen Yavuz",
     kicker:"22 YAYINEVİ YAZARI",
     description:"“Arayışın Yolculuğu” ile insanın kendine, hayata ve varoluşa dair içsel yolculuğuna eşlik eden bir eser.",
-    image:"/figen-yavuz-arayisin-yolculugu-mockup.webp",
+    image:"/figen_hero_22yayinevi/yazar_figen_yavuz.png",
     initials:"FY",
     href:"/yazarlar/figen-yavuz",
     published:true,
@@ -107,7 +107,7 @@ const authors: readonly AuthorCard[] = [
     name:"İbrahim Kaynar",
     kicker:"22 YAYINEVİ YAZARI",
     description:"“İçimdeki İbrahim – Âsaf Hâlet Çelebi’yi Ararken” ile şiir, hafıza ve edebiyatın izinde kişisel bir yolculuk.",
-    image:"/icimdeki-ibrahim-mockup.png",
+    image:"/figen_hero_22yayinevi/yazar_ibrahim_kaynar.png",
     initials:"İK",
     href:"/yazarlar/ibrahim-kaynar",
     published:true,
@@ -404,7 +404,7 @@ export default function Home() {
                       <span className="authors-showcase-badge">22 YAYINEVİ YAZARI</span>
                     </div>
 
-                    <div className="authors-showcase-copy">
+                    <div className="authors-showcase-copy authors-showcase-overlay">
                       <span className="authors-showcase-emblem" aria-hidden="true">✦</span>
                       <div className="authors-showcase-title-row">
                         <h3>{author.name}</h3>
