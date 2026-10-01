@@ -3,15 +3,15 @@ import Link from "next/link";
 import styles from "./FounderAuthors.module.css";
 
 const journey = [
-  ["01", "edit", "Editörlük & Redaksiyon"],
-  ["02", "layout", "Mizanpaj & İç Tasarım"],
-  ["03", "cover", "Kapak Tasarımı"],
-  ["04", "ebook", "E-Kitap"],
-  ["05", "audio", "Sesli Kitap"],
-  ["06", "site", "Yazar Sitesi"],
-  ["07", "reader", "Reader / Audio"],
-  ["08", "digital", "Dijital Dağıtım"],
-  ["09", "print", "Basılı Kitap & Dağıtım"],
+  ["01", "edit", "Editörlük & Redaksiyon", "Metni yayına hazırlarız."],
+  ["02", "layout", "Mizanpaj & İç Tasarım", "Sayfa düzenini profesyonelleştiririz."],
+  ["03", "cover", "Kapak Tasarımı", "Eserin kimliğini görünür kılarız."],
+  ["04", "ebook", "E-Kitap", "EPUB ve dijital okuma deneyimi."],
+  ["05", "audio", "Sesli Kitap", "Eseri sese dönüştürürüz."],
+  ["06", "site", "Yazar Sitesi", "Yazara ait dijital vitrin kurarız."],
+  ["07", "reader", "Reader / Audio", "Okuma ve dinleme deneyimi."],
+  ["08", "digital", "Dijital Dağıtım", "Dijital kanallara erişim sağlarız."],
+  ["09", "print", "Basılı Kitap & Dağıtım", "Baskıdan okura uzanan fizikî süreç."],
 ] as const;
 
 function JourneyIcon({ type }: { type: string }) {
@@ -122,13 +122,14 @@ export default function FounderAuthors() {
           </div>
 
           <div className={styles.journeyRail} aria-label="Yayın süreci adımları">
-            {journey.map(([no, type, title]) => (
+            {journey.map(([no, type, title, text]) => (
               <div className={styles.journeyStep} key={no}>
                 <div className={styles.iconDisc}>
                   <JourneyIcon type={type} />
                 </div>
                 <span className={styles.stepNo}>{no}</span>
                 <strong>{title}</strong>
+                <small>{text}</small>
               </div>
             ))}
           </div>
