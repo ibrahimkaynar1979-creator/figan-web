@@ -9988,3 +9988,105 @@ body.reader-route .contact-float{display:none!important}
     font-size:20px!important;
   }
 }
+
+
+/* 2026-10-01 — SERVICES HEADER INTEGRATED INTO SHOWCASE PANEL */
+@media(min-width:1101px){
+  .figan-services-showcase{
+    padding:28px 0 46px!important;
+    background:#f8f3eb!important;
+  }
+
+  .figan-services-showcase .container{
+    position:relative!important;
+    width:calc(100% - 36px)!important;
+    max-width:1860px!important;
+    padding:26px 14px 14px!important;
+    overflow:hidden!important;
+    border:1px solid rgba(145,91,48,.14)!important;
+    border-radius:28px!important;
+    background:
+      radial-gradient(circle at 50% -12%,rgba(255,255,255,.92),transparent 42%),
+      linear-gradient(145deg,#fbf7f1 0%,#ead7c3 100%)!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.95),
+      0 18px 40px rgba(69,42,25,.05)!important;
+  }
+
+  .figan-services-showcase .container::before,
+  .figan-services-showcase .container::after{
+    content:"";
+    position:absolute;
+    top:70px;
+    width:18%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(166,101,48,.28));
+  }
+
+  .figan-services-showcase .container::before{
+    left:22px;
+  }
+
+  .figan-services-showcase .container::after{
+    right:22px;
+    transform:scaleX(-1);
+  }
+
+  .figan-services-header{
+    position:relative!important;
+    z-index:1!important;
+    max-width:840px!important;
+    margin:0 auto 22px!important;
+    padding:0 24px 20px!important;
+    text-align:center!important;
+    border-bottom:1px solid rgba(145,91,48,.11)!important;
+  }
+
+  .figan-services-eyebrow{
+    margin-bottom:8px!important;
+    padding:6px 12px!important;
+    background:#fffaf4!important;
+    border:1px solid rgba(169,105,52,.18)!important;
+    box-shadow:0 5px 14px rgba(82,49,28,.035)!important;
+  }
+
+  .figan-services-header h2{
+    font-size:clamp(40px,3vw,54px)!important;
+    line-height:.92!important;
+    letter-spacing:-.045em!important;
+  }
+
+  .figan-services-header h2 strong{
+    display:block!important;
+    margin-top:3px!important;
+  }
+
+  .figan-services-description{
+    max-width:700px!important;
+    margin:10px auto 0!important;
+    font-size:12.5px!important;
+    line-height:1.45!important;
+  }
+
+  .figan-services-track{
+    position:relative!important;
+    z-index:1!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+}
+
+@media(min-width:1500px){
+  .figan-services-showcase .container{
+    width:calc(100% - 48px)!important;
+    max-width:1880px!important;
+    padding:28px 16px 16px!important;
+  }
+
+  .figan-services-header{
+    margin-bottom:24px!important;
+  }
+}
