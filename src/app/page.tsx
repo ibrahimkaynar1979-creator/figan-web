@@ -383,34 +383,44 @@ export default function Home() {
 
 
 
-        <section id="yazarlar" className="section authors-section">
-          <div className="container authors-wrap">
-            <header className="authors-header">
-              <p className="eyebrow"><span/>YAZAR DÜNYAMIZ</p>
-              <h2>22 Yayınevi yazarları,<br/><em>bir yayın vitrini.</em></h2>
-              <p>Yeni yazarlar eklendikçe aynı kart sistemi içinde yan yana yer alacak ve yayın vitrini büyüyecek.</p>
+        <section id="yazarlar" className="section authors-section authors-showcase">
+          <div className="container authors-showcase-wrap">
+            <header className="authors-showcase-header">
+              <p className="authors-showcase-eyebrow">YAZAR DÜNYAMIZ</p>
+              <h2>Yazarlarımız.<br/><strong>Eserleriyle yaşayan bir dünya.</strong></h2>
+              <p>Her yazar; kendi sesi, eserleri ve dijital dünyasıyla 22 Yayınevi vitrininin bir parçası.</p>
             </header>
 
-            <div className="authors-track" aria-label="22 Yayınevi yazarları">
+            <div className="authors-showcase-panel" aria-label="22 Yayınevi yazarları">
               {authors.filter((author)=>author.published).map((author)=>(
-                <article className="author-slide-card" key={author.name}>
+                <article className="authors-showcase-card" key={author.name}>
                   <a
-                    className="author-slide-card-hit"
+                    className="authors-showcase-hit"
                     href={author.href}
                     aria-label={`${author.name} yazar sayfasını görüntüle`}
                   >
-                    <div className="author-slide-visual">
+                    <div className="authors-showcase-visual">
                       {author.image ? (
                         <img src={author.image} alt={author.name} loading="lazy" decoding="async"/>
                       ) : (
                         <div className="author-placeholder" aria-hidden="true">{author.initials}</div>
                       )}
+                      <span className="authors-showcase-badge">22 YAYINEVİ YAZARI</span>
                     </div>
-                    <div className="author-slide-copy">
-                      <p className="author-card-kicker">{author.kicker}</p>
-                      <h3>{author.name}</h3>
+
+                    <div className="authors-showcase-copy">
+                      <span className="authors-showcase-emblem" aria-hidden="true">✦</span>
+                      <div className="authors-showcase-title-row">
+                        <h3>{author.name}</h3>
+                        <span aria-hidden="true">✦</span>
+                      </div>
                       <p>{author.description}</p>
-                      <span className="author-slide-link">Yazarı Gör <span>→</span></span>
+                      <div className="authors-showcase-meta">
+                        <span>Yazar Profili</span>
+                        <span>Eserler</span>
+                        <span>Dijital Dünya</span>
+                      </div>
+                      <span className="authors-showcase-link">Yazarı Gör <b>→</b></span>
                     </div>
                   </a>
                 </article>
