@@ -28,6 +28,8 @@ export type AuthorProfile = {
   slug: string;
   name: string;
   role: string;
+  descriptor?: string;
+  affiliation?: string;
   heroQuote: string;
   heroDesktop: string;
   heroMobile: string;
@@ -67,6 +69,8 @@ export const authors: Record<string, AuthorProfile> = {
     slug: "figen-yavuz",
     name: "Figen Yavuz",
     role: "Yazar",
+    descriptor: "Yazar • Şair • Yayıncı • Spiritüel Araştırmacı",
+    affiliation: "22 Yayınevi Kurucusu",
     heroQuote: "Bazı yolculuklar insanı kendine götürür.",
     heroDesktop: "/figen-yavuz-hero-desktop.png",
     heroMobile: "/figen-yavuz-hero-mobile.png",
