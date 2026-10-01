@@ -1161,3 +1161,30 @@
     bottom: 5.5%;
   }
 }
+
+
+/* 2026-10-01 — TITLE COLOR / READABILITY FINAL */
+@media (min-width: 1181px) {
+  .topCopy h2 {
+    color: #3a1f12;
+    font-size: clamp(36px,3.85vw,62px);
+    font-weight: 560;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,.35),
+      0 4px 18px rgba(75,43,23,.12);
+  }
+
+  .lead {
+    color: #6f3f22;
+    font-size: clamp(12.5px,.92vw,15.2px);
+    font-weight: 700;
+    line-height: 1.32;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,.45),
+      0 3px 12px rgba(75,43,23,.10);
+  }
+
+  .ornament {
+    color: #a9652d;
+  }
+}
