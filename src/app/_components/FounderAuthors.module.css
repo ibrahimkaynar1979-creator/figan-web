@@ -161,49 +161,6 @@
   font-weight: 500;
 }
 
-.numberBadge {
-  position: absolute;
-  z-index: 5;
-  top: 55px;
-  right: 5.5%;
-  width: 150px;
-  aspect-ratio: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(244,199,121,.52);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 35% 25%,rgba(255,255,255,.12),transparent 26%),
-    linear-gradient(145deg,#971d20,#691013);
-  box-shadow:
-    0 20px 42px rgba(63,19,15,.24),
-    inset 0 0 0 7px rgba(105,13,17,.15);
-  color: #f0c776;
-  text-align: center;
-}
-
-.numberBadge span {
-  font-size: 8px;
-  font-weight: 850;
-  letter-spacing: .17em;
-}
-
-.numberBadge strong {
-  margin: 4px 0;
-  font-family: var(--font-editorial),Georgia,serif;
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.numberBadge small {
-  font-size: 7px;
-  font-weight: 850;
-  letter-spacing: .12em;
-}
-
 .visualNote {
   position: absolute;
   z-index: 5;
@@ -556,5 +513,42 @@
   .stripItem p {
     margin-top: 2px;
     font-size: 9px;
+  }
+}
+
+
+/* 2026-10-01 — REAL SEAL IMAGE */
+.numberBadgeImage {
+  position: absolute;
+  z-index: 5;
+  top: 24px;
+  right: 4.2%;
+  width: 96px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 28px rgba(63,19,15,.20));
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .numberBadgeImage {
+    width: 84px;
+    top: 18px;
+    right: 3.5%;
+  }
+}
+
+@media (max-width: 900px) {
+  .numberBadgeImage {
+    width: 88px;
+    top: 14px;
+    right: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .numberBadgeImage {
+    width: 72px;
+    top: 10px;
+    right: 10px;
   }
 }
