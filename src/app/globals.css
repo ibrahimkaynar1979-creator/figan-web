@@ -9297,3 +9297,35 @@ body.reader-route .contact-float{display:none!important}
     font-size:14px!important;
   }
 }
+
+
+/* 2026-10-01 — CENTER VISION CAPSULE CONTENT */
+@media(min-width:901px){
+  .homepage-vision-bridge-inner{
+    position:relative!important;
+    justify-content:center!important;
+  }
+
+  .homepage-vision-bridge-mark{
+    position:absolute!important;
+    left:28px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+  }
+
+  .homepage-vision-bridge-copy{
+    width:100%!important;
+    max-width:none!important;
+    align-items:center!important;
+    text-align:center!important;
+  }
+
+  .homepage-vision-bridge-copy p{
+    width:100%!important;
+    text-align:center!important;
+  }
+
+  .homepage-vision-bridge-copy small{
+    text-align:center!important;
+  }
+}
