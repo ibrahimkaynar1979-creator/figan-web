@@ -1269,3 +1269,167 @@
     font-weight:850;
   }
 }
+
+
+/* 2026-10-01 — JOURNEY MATCHES FOUNDER 1:1 RHYTHM */
+@media(min-width:1181px){
+  .journeyPanel{
+    display:flex;
+    flex-direction:column;
+    padding:0;
+    background:#fbf7f1;
+  }
+
+  .journeyMain{
+    flex:1;
+    min-height:0;
+    display:grid;
+    grid-template-columns:35% 65%;
+    background:
+      radial-gradient(circle at 100% 0,rgba(207,151,85,.12),transparent 30%),
+      linear-gradient(145deg,#faf3eb 0%,#eedcc8 100%);
+  }
+
+  .journeyHeader{
+    position:relative;
+    display:block;
+    padding:24px 24px 18px 32px;
+    border-right:1px solid rgba(137,83,43,.13);
+    background:
+      radial-gradient(circle at 0 0,rgba(255,255,255,.96),transparent 44%),
+      linear-gradient(90deg,#fbf8f3 0%,#f7efe5 100%);
+  }
+
+  .journeyHeader::after{display:none;}
+
+  .journeyHeader .eyebrow{margin:0 0 10px;font-size:11px;letter-spacing:.23em;}
+  .journeyHeader .kicker{margin:0 0 12px;font-size:11px;letter-spacing:.20em;}
+
+  .journeyHeader h2{
+    margin:0;
+    color:#2e1d15;
+    font-size:clamp(42px,2.55vw,55px);
+    line-height:.93;
+    letter-spacing:-.045em;
+  }
+
+  .journeyHeader h2 em{
+    margin-top:4px;
+    color:#96362e;
+  }
+
+  .journeyHeader .statement{
+    margin:8px 0 0;
+    color:#4d372c;
+    font-family:var(--font-editorial),Georgia,serif;
+    font-size:14px;
+    font-style:italic;
+  }
+
+  .journeyIntro{
+    max-width:none;
+    margin:7px 0 0;
+    color:#6a594f;
+    font-size:14px;
+    line-height:1.5;
+  }
+
+  .journeyMeta{
+    width:100%;
+    margin-top:9px;
+    padding-top:9px;
+    border-top:1px solid rgba(151,91,44,.17);
+    color:#72584a;
+    font-family:var(--font-editorial),Georgia,serif;
+    font-size:12px;
+    line-height:1.42;
+  }
+
+  .journeyMeta span{padding:0 4px;color:#b38a6a;}
+
+  .journeyCta{
+    min-height:36px;
+    margin-top:10px;
+    padding:0 17px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    border-radius:999px;
+    background:#32180f;
+    color:#fffaf4;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:850;
+    box-shadow:0 10px 22px rgba(49,26,16,.12);
+  }
+
+  .journeyGrid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-rows:repeat(3,1fr);
+    gap:10px;
+    padding:18px;
+    align-content:stretch;
+  }
+
+  .journeyItem,
+  .journeyItem:nth-child(3n+2),
+  .journeyItem:nth-child(3n+3),
+  .journeyItem:nth-child(n+4),
+  .journeyItem:nth-child(9){
+    grid-column:auto;
+    min-height:0;
+    border:1px solid rgba(151,91,44,.14);
+    border-radius:15px;
+    padding:10px 11px;
+    display:grid;
+    grid-template-columns:34px 1fr;
+    gap:9px;
+    align-items:center;
+    background:
+      radial-gradient(circle at 12% 10%,rgba(255,255,255,.98),transparent 42%),
+      linear-gradient(145deg,rgba(255,253,249,.96),rgba(246,232,216,.94));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.95),
+      0 7px 16px rgba(84,49,28,.04);
+    overflow:hidden;
+  }
+
+  .journeyItem::after{display:none;}
+  .iconDisc{width:32px;height:32px;margin:0;}
+  .iconDisc svg{width:15px;height:15px;}
+  .stepCopy span{margin-bottom:2px;font-size:8px;}
+  .stepCopy strong{font-size:13.5px;line-height:1.12;}
+  .stepCopy small{margin-top:3px;font-size:9.5px;line-height:1.24;}
+
+  .journeyBenefits{
+    flex:0 0 66px;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    background:#fffaf4;
+    border-top:1px solid rgba(135,80,39,.12);
+  }
+
+  .journeyBenefits .benefit + .benefit{
+    border-left:1px solid rgba(135,80,39,.10);
+  }
+}
+
+@media(max-width:1180px){
+  .journeyMain{display:block;}
+  .journeyBenefits{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    background:#fffaf4;
+    border-top:1px solid rgba(135,80,39,.12);
+  }
+}
+
+@media(max-width:760px){
+  .journeyBenefits{grid-template-columns:1fr;}
+  .journeyBenefits .benefit + .benefit{
+    border-left:0;
+    border-top:1px solid rgba(135,80,39,.10);
+  }
+}
