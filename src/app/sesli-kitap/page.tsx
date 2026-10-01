@@ -24,6 +24,7 @@ export default function Page(){
   return (
     <SeoServicePage
       editorialLayout
+      premiumReference
       eyebrow="SESLİ KİTAP"
       title="Hikâyeniz yalnızca okunsun değil, dinlensin."
       lead="Metninizi seslendirme yapısına hazırlıyor; anlatım tonu, kayıt düzeni, bölümleme ve mastering süreçlerini birlikte planlayarak profesyonel bir dinleme deneyimine dönüştürüyoruz."
