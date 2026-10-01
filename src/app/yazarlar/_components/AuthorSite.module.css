@@ -428,3 +428,84 @@
     text-shadow:0 1px 0 rgba(255,255,255,.85)!important;
   }
 }
+
+/* Mobile hamburger: minimal floating trigger, no framed button */
+@media(max-width:800px){
+  .mobileMenuButton{
+    position:absolute!important;
+    right:60px!important;
+    top:16px!important;
+    width:34px!important;
+    height:38px!important;
+    margin:0!important;
+    padding:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+    gap:6px!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    color:#2a1b12!important;
+  }
+  .mobileMenuButton span{
+    display:block!important;
+    width:25px!important;
+    height:1.5px!important;
+    margin:0!important;
+    flex:none!important;
+    background:#2a1b12!important;
+  }
+  .menuPanel{
+    position:fixed!important;
+    top:86px!important;
+    right:16px!important;
+    left:auto!important;
+    width:min(88vw,430px)!important;
+    height:auto!important;
+    aspect-ratio:4 / 3!important;
+    max-height:calc(100vh - 110px)!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:#f5eadb!important;
+    transform:translateY(-10px)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  .menuPanel:target{
+    transform:translateY(0)!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+  .menuPanelInner{
+    height:100%!important;
+    padding:28px 30px!important;
+    justify-content:center!important;
+    align-items:center!important;
+    text-align:center!important;
+    overflow:auto!important;
+  }
+  .menuPanelTop{
+    width:100%!important;
+    justify-content:center!important;
+    position:relative!important;
+  }
+  .menuClose{
+    position:absolute!important;
+    right:0!important;
+    top:-5px!important;
+  }
+  .menuPanelInner>a{
+    width:100%!important;
+    text-align:center!important;
+    padding:11px 0!important;
+    border-bottom:1px solid rgba(42,27,18,.12)!important;
+    font-size:24px!important;
+    font-weight:600!important;
+  }
+}
