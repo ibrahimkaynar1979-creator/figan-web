@@ -9434,3 +9434,179 @@ body.reader-route .contact-float{display:none!important}
     gap:14px!important;
   }
 }
+
+
+/* 2026-10-01 — SERVICES FINAL: 3x2 PREMIUM VITRIN PANEL */
+@media(min-width:1101px){
+  .figan-services-showcase{
+    padding:44px 0 54px!important;
+    background:
+      radial-gradient(circle at 80% 8%,rgba(176,113,58,.055),transparent 24rem),
+      #f8f3eb!important;
+  }
+
+  .figan-services-showcase .container{
+    width:calc(100% - 48px)!important;
+    max-width:1760px!important;
+  }
+
+  .figan-services-header{
+    max-width:760px!important;
+    margin:0 auto 24px!important;
+  }
+
+  .figan-services-eyebrow{
+    margin-bottom:9px!important;
+    padding:6px 11px!important;
+    font-size:9px!important;
+  }
+
+  .figan-services-header h2{
+    font-size:clamp(42px,3.25vw,58px)!important;
+    line-height:.94!important;
+  }
+
+  .figan-services-description{
+    max-width:650px!important;
+    margin:11px auto 0!important;
+    font-size:13px!important;
+    line-height:1.48!important;
+  }
+
+  .figan-services-track{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    grid-template-rows:repeat(2,minmax(0,1fr))!important;
+    gap:14px!important;
+    width:100%!important;
+    padding:18px!important;
+    overflow:visible!important;
+    border:1px solid rgba(145,91,48,.12)!important;
+    border-radius:28px!important;
+    background:
+      radial-gradient(circle at 15% 0,rgba(255,255,255,.82),transparent 36%),
+      linear-gradient(145deg,#f5eadf 0%,#ead7c3 100%)!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.92),
+      0 16px 38px rgba(69,42,25,.045)!important;
+  }
+
+  .figan-service-card{
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    overflow:hidden!important;
+    border:1px solid rgba(122,78,49,.13)!important;
+    border-radius:21px!important;
+    background:#fffaf4!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.95),
+      0 8px 18px rgba(57,39,26,.035)!important;
+  }
+
+  .figan-service-link{
+    display:grid!important;
+    grid-template-columns:44% 56%!important;
+    min-height:245px!important;
+    height:100%!important;
+  }
+
+  .figan-service-photo{
+    min-height:245px!important;
+    height:100%!important;
+    aspect-ratio:auto!important;
+    border-right:1px solid rgba(137,83,43,.10)!important;
+  }
+
+  .figan-service-photo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+  }
+
+  .figan-service-content{
+    min-height:245px!important;
+    padding:26px 20px 18px!important;
+    background:
+      radial-gradient(circle at 0 0,rgba(255,255,255,.98),transparent 42%),
+      linear-gradient(180deg,#fffdf9 0%,#fbf2e8 100%)!important;
+  }
+
+  .figan-service-emblem{
+    top:18px!important;
+    left:0!important;
+    width:40px!important;
+    height:40px!important;
+    font-size:15px!important;
+    transform:translate(-50%,0)!important;
+  }
+
+  .figan-service-title-row{
+    display:flex!important;
+    align-items:flex-start!important;
+    justify-content:space-between!important;
+    gap:8px!important;
+  }
+
+  .figan-service-title-row h3{
+    font-size:clamp(22px,1.45vw,28px)!important;
+    line-height:1.02!important;
+  }
+
+  .figan-service-title-mark{
+    flex:0 0 auto!important;
+    font-size:.72rem!important;
+  }
+
+  .figan-service-traits{
+    gap:5px!important;
+    margin:.65rem 0 0!important;
+  }
+
+  .figan-service-traits li{
+    padding:.34rem .5rem!important;
+    font-size:.55rem!important;
+  }
+
+  .figan-service-content>p{
+    display:-webkit-box!important;
+    margin:.7rem 0 0!important;
+    overflow:hidden!important;
+    color:#65564e!important;
+    font-size:.69rem!important;
+    line-height:1.5!important;
+    -webkit-line-clamp:4!important;
+    -webkit-box-orient:vertical!important;
+  }
+
+  .figan-service-cta{
+    margin-top:auto!important;
+    padding-top:.9rem!important;
+    font-size:.66rem!important;
+  }
+
+  .figan-service-card:hover{
+    transform:translateY(-3px)!important;
+    box-shadow:
+      inset 0 1px 0 #fff,
+      0 14px 28px rgba(69,42,25,.075)!important;
+  }
+}
+
+@media(min-width:1500px){
+  .figan-services-showcase .container{
+    width:calc(100% - 64px)!important;
+    max-width:1820px!important;
+  }
+
+  .figan-services-track{
+    gap:16px!important;
+    padding:20px!important;
+  }
+
+  .figan-service-link,
+  .figan-service-photo,
+  .figan-service-content{
+    min-height:260px!important;
+  }
+}
