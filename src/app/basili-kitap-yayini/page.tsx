@@ -24,6 +24,7 @@ export default function Page(){
   return (
     <SeoServicePage
       editorialLayout
+      premiumReference
       eyebrow="BASILI KİTAP YAYINI"
       title="Kitabınız yalnızca basılmasın. Okuruyla buluşsun."
       lead="Metninizin editoryal hazırlığını ve mevcut mizanpajınızı kontrol ediyor; kapak, ISBN, bandrol, prova, baskı ve fizikî dağıtım sürecini birlikte yürütüyor, kitabınızı satış ve dağıtım kanallarına hazır hâle getiriyoruz."
