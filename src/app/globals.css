@@ -9415,3 +9415,27 @@ body.reader-route .contact-float{display:none!important}
   .homepage-author-bridge-copy h2{font-size:31px!important}
   .homepage-author-bridge-text{font-size:10px!important}
 }
+
+
+/* 2026-10-01 — visibly thinner bridge */
+.homepage-author-bridge{
+  min-height:86px!important;
+  height:86px!important;
+}
+.homepage-author-bridge-inner{
+  padding:4px 0!important;
+}
+.homepage-author-bridge-eyebrow{
+  margin-bottom:2px!important;
+  padding:3px 8px!important;
+  font-size:6px!important;
+}
+.homepage-author-bridge-copy h2{
+  font-size:clamp(26px,2.2vw,36px)!important;
+  line-height:.88!important;
+}
+.homepage-author-bridge-text{
+  margin-top:3px!important;
+  font-size:10px!important;
+  line-height:1.25!important;
+}
