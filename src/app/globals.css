@@ -9861,3 +9861,130 @@ body.reader-route .contact-float{display:none!important}
   }
   .authors-showcase-title-row h3{font-size:28px;}
 }
+
+
+/* 2026-10-01 — SERVICES FINAL: 6 CARDS SIDE BY SIDE */
+@media(min-width:1101px){
+  .figan-services-showcase{
+    padding:42px 0 52px!important;
+  }
+
+  .figan-services-showcase .container{
+    width:calc(100% - 36px)!important;
+    max-width:1860px!important;
+  }
+
+  .figan-services-header{
+    max-width:760px!important;
+    margin:0 auto 22px!important;
+  }
+
+  .figan-services-track{
+    display:grid!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    grid-template-rows:1fr!important;
+    gap:10px!important;
+    padding:14px!important;
+    width:100%!important;
+    overflow:visible!important;
+    border-radius:24px!important;
+  }
+
+  .figan-service-card{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    border-radius:17px!important;
+  }
+
+  .figan-service-link{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:440px!important;
+    height:100%!important;
+  }
+
+  .figan-service-photo{
+    width:100%!important;
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:1 / .78!important;
+    border-right:0!important;
+    border-bottom:1px solid rgba(137,83,43,.10)!important;
+  }
+
+  .figan-service-content{
+    flex:1!important;
+    min-height:0!important;
+    padding:26px 12px 14px!important;
+  }
+
+  .figan-service-emblem{
+    top:0!important;
+    left:50%!important;
+    width:36px!important;
+    height:36px!important;
+    font-size:13px!important;
+    transform:translate(-50%,-50%)!important;
+  }
+
+  .figan-service-title-row h3{
+    font-size:clamp(16px,1.02vw,20px)!important;
+    line-height:1.02!important;
+  }
+
+  .figan-service-title-mark{
+    font-size:.62rem!important;
+  }
+
+  .figan-service-traits{
+    gap:4px!important;
+    margin:.55rem 0 0!important;
+  }
+
+  .figan-service-traits li{
+    padding:.28rem .4rem!important;
+    font-size:.48rem!important;
+  }
+
+  .figan-service-content>p{
+    display:-webkit-box!important;
+    margin:.58rem 0 0!important;
+    overflow:hidden!important;
+    font-size:.61rem!important;
+    line-height:1.45!important;
+    -webkit-line-clamp:5!important;
+    -webkit-box-orient:vertical!important;
+  }
+
+  .figan-service-cta{
+    margin-top:auto!important;
+    padding-top:.8rem!important;
+    font-size:.58rem!important;
+  }
+}
+
+@media(min-width:1500px){
+  .figan-services-showcase .container{
+    width:calc(100% - 48px)!important;
+    max-width:1880px!important;
+  }
+
+  .figan-services-track{
+    gap:12px!important;
+    padding:16px!important;
+  }
+
+  .figan-service-link{
+    min-height:460px!important;
+  }
+
+  .figan-service-content{
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+
+  .figan-service-title-row h3{
+    font-size:20px!important;
+  }
+}
