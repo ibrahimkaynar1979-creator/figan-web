@@ -25,7 +25,7 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
         <BackgroundPicture desktop={author.heroDesktop} mobile={author.heroMobile} alt={author.name} />
         <div className={styles.heroShade} />
         <header className={styles.header}>
-          <a href="#ana-sayfa" className={styles.brand}>{author.name}</a>
+          <a href="#ana-sayfa" className={styles.brand}>figenyavuz.com</a>
           <nav className={styles.nav} aria-label="Yazar sitesi">
             <a href="#kitap">Kitap</a>
             <a href="#oku">Oku</a>
@@ -40,7 +40,8 @@ export default function AuthorSite({ author }: { author: AuthorProfile }) {
           <SectionNumber n="01" label="YAZAR" />
           <h1>{author.name}</h1>
           <blockquote>“{author.heroQuote}”</blockquote>
-          <p>{author.role}</p>
+          <p className={styles.heroDescriptor}>{author.descriptor ?? author.role}</p>
+          {author.affiliation && <p className={styles.heroAffiliation}>{author.affiliation}</p>}
         </div>
 
         <a className={styles.scrollCue} href="#kitap">AŞAĞI KAYDIR <span>↓</span></a>
