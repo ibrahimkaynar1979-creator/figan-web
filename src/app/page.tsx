@@ -290,44 +290,75 @@ export default function Home() {
 
         <FounderAuthors />
 
-        <PublishingReels home />
-
-        <section id="hizmetler" className="section services figan-services-showcase">
-          <div className="container">
-            <header className="figan-services-header">
-              <p className="figan-services-eyebrow">HİZMETLERİMİZ</p>
-              <h2>Tek kitap.<br/><strong>Bütün yayın dünyası.</strong></h2>
-              <p className="figan-services-description">
-                Bir yazarın ihtiyaç duyduğu yayıncılık adımlarını birbirinden kopuk hizmetler olarak değil, tek bir 360° ekosistemin parçaları olarak yönetiyoruz.
+        <section className="why22-section" aria-label="Neden 22 Yayınevi">
+          <div className="why22-inner">
+            <div className="why22-copy">
+              <p className="why22-eyebrow">NEDEN 22?</p>
+              <h2>
+                Bazı hikâyeler,
+                <em>bittiğini sandığınız yerde bitmez.</em>
+              </h2>
+              <p className="why22-lead">
+                7 Haziran 2015’te başlayan bir hikâye, yıllar sonra 22 Yayınevi’nin kuruluşuna dönüştü.
+                Bir kitabın adında kalan 22, bugün yazarların kendi dünyalarını kurduğu bir yayıncılık fikrinin adı.
               </p>
-            </header>
+              <p className="why22-manifesto">
+                22 bizim için bir sayı değil.
+                <strong>Bir hikâyenin devam ettiği yer.</strong>
+              </p>
+            </div>
 
-            <div className="figan-services-track" aria-label="22 Yayınevi yayın hizmetleri">
-              {services.map((service) => (
-                <article className="figan-service-card" key={service.no}>
-                  <a className="figan-service-link" href={service.href}>
-                    <div className="figan-service-photo">
-                      <img src={service.image} alt="" loading="lazy" decoding="async" />
-                    </div>
-
-                    <div className="figan-service-content">
-                      <span className="figan-service-emblem" aria-hidden="true">✦</span>
-                      <div className="figan-service-title-row">
-                        <h3>{service.title}</h3>
-                        <span className="figan-service-title-mark" aria-hidden="true">✦</span>
-                      </div>
-                      <ul className="figan-service-traits" aria-label={`${service.title} özellikleri`}>
-                        {service.traits.map((trait) => <li key={trait}>{trait}</li>)}
-                      </ul>
-                      <p>{service.text}</p>
-                      <span className="figan-service-cta">Hizmeti İnceleyin <i>→</i></span>
-                    </div>
-                  </a>
-                </article>
-              ))}
+            <div className="why22-timeline" aria-label="22 Yayınevi kuruluş hikâyesi">
+              <div className="why22-year">
+                <span>07.06.2015</span>
+                <strong>İlk karşılaşma</strong>
+                <small>Hikâyenin başladığı tarih.</small>
+              </div>
+              <div className="why22-symbol" aria-hidden="true">22</div>
+              <div className="why22-year">
+                <span>2026</span>
+                <strong>22 Yayınevi</strong>
+                <small>Bir tarihten, yeni bir yayın dünyasına.</small>
+              </div>
             </div>
           </div>
         </section>
+
+        <section id="hizmetler" className="editorial-services">
+          <div className="editorial-services-head">
+            <p className="editorial-services-eyebrow">HİZMETLERİMİZ</p>
+            <h2>Tek kitap.<br/><strong>Bütün yayın dünyası.</strong></h2>
+            <p>
+              Bir yazarın ihtiyaç duyduğu yayıncılık adımlarını birbirinden kopuk hizmetler olarak değil,
+              aynı dünyanın birbirini tamamlayan parçaları olarak kuruyoruz.
+            </p>
+          </div>
+
+          <div className="editorial-services-list" aria-label="22 Yayınevi yayın hizmetleri">
+            {services.map((service, index) => (
+              <article className={`editorial-service ${index % 2 ? "is-reverse" : ""}`} key={service.no}>
+                <a href={service.href} className="editorial-service-hit">
+                  <div className="editorial-service-visual">
+                    <img src={service.image} alt="" loading="lazy" decoding="async" />
+                    <span className="editorial-service-no">{service.no}</span>
+                  </div>
+
+                  <div className="editorial-service-copy">
+                    <p className="editorial-service-kicker">22 YAYINEVİ · HİZMET {service.no}</p>
+                    <h3>{service.title}</h3>
+                    <p className="editorial-service-text">{service.text}</p>
+                    <div className="editorial-service-traits" aria-label={`${service.title} özellikleri`}>
+                      {service.traits.map((trait) => <span key={trait}>{trait}</span>)}
+                    </div>
+                    <span className="editorial-service-cta">Hizmeti İnceleyin <b>→</b></span>
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <PublishingReels home />
 
         <section id="surec" className="section process">
           <div className="container process-wrap">
