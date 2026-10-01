@@ -603,3 +603,89 @@
     transition: transform .2s ease, box-shadow .2s ease;
   }
 }
+
+
+/* 2026-10-01 — DIGITAL EXPERIENCES READABILITY FIX */
+@media (min-width: 1181px) {
+  .topCopy {
+    top: 1.8%;
+    width: 44%;
+    padding: .7vw 1.7vw .8vw;
+    background: rgba(255,250,243,.74);
+    border: 1px solid rgba(255,255,255,.72);
+    box-shadow: 0 16px 38px rgba(66,38,21,.10);
+    backdrop-filter: blur(14px) saturate(.88);
+    -webkit-backdrop-filter: blur(14px) saturate(.88);
+  }
+
+  .topCopy h2 {
+    color: #2b160d;
+    text-shadow: none;
+  }
+
+  .lead {
+    color: #3f2c21;
+    font-weight: 600;
+  }
+
+  .leftCopy,
+  .rightCopy {
+    top: 25.8%;
+    width: 17.4%;
+    padding: 1.15vw 1.18vw 1.2vw;
+    background: rgba(255,249,240,.84);
+    border: 1px solid rgba(255,255,255,.78);
+    box-shadow:
+      0 20px 50px rgba(58,34,20,.14),
+      inset 0 1px 0 rgba(255,255,255,.80);
+    backdrop-filter: blur(16px) saturate(.82);
+    -webkit-backdrop-filter: blur(16px) saturate(.82);
+  }
+
+  .leftCopy {
+    left: 2.3%;
+  }
+
+  .rightCopy {
+    right: 2.3%;
+  }
+
+  .kicker {
+    color: #8e4f20;
+    font-size: clamp(10px,.72vw,12px);
+    font-weight: 900;
+  }
+
+  .leftCopy h3,
+  .rightCopy h3 {
+    color: #241208;
+    font-size: clamp(26px,2vw,35px);
+    font-weight: 600;
+  }
+
+  .leftCopy > p:not(.kicker),
+  .rightCopy > p:not(.kicker) {
+    color: #3f2c22;
+    font-size: clamp(11px,.8vw,13.2px);
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .features > div {
+    color: #3b291f;
+    font-size: clamp(10px,.74vw,12.2px);
+    font-weight: 650;
+  }
+
+  .features i {
+    background: rgba(255,252,247,.9);
+    border-color: rgba(151,87,36,.28);
+  }
+
+  .leftCopy > a,
+  .rightCopy > a {
+    min-width: 172px;
+    min-height: 43px;
+    font-size: 11px;
+  }
+}
