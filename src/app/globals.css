@@ -10244,3 +10244,17 @@ body.reader-route .contact-float{display:none!important}
     line-height:1.25!important;
   }
 }
+
+
+/* 2026-10-01 — SERVICES SECTION VERTICAL RHYTHM MATCH */
+@media(min-width:1101px){
+  .home-page-main .figan-services-showcase{
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+  }
+
+  .home-page-main .figan-services-showcase .figan-services-header{
+    margin-top:0!important;
+    margin-bottom:20px!important;
+  }
+}
