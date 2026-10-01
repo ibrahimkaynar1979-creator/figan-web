@@ -328,41 +328,53 @@ export default function Home() {
 
         <PublishingReels home />
 
-        <section id="surec" className="section process">
-          <div className="container process-wrap">
-            <div className="process-panel">
-              <div className="process-panel-head">
-                <p className="process-kicker">22 YAYINEVİ · YAYIN SÜRECİ</p>
-                <h2><span>Bir dosya.</span><br/><em>Bir yayın yolculuğu.</em></h2>
-                <p className="process-intro">Metinden yayına, bütün süreç tek sistemde ilerler.</p>
-              </div>
-              <div className="process-list">
+        <section id="surec" className="section journey-duo">
+          <div className="container journey-duo-grid">
+            <article className="journey-card journey-card-process">
+              <header className="journey-card-head">
+                <p className="journey-kicker">22 YAYINEVİ · YAYIN SÜRECİ</p>
+                <h2><span>Bir dosya.</span><em>Bir yayın yolculuğu.</em></h2>
+                <p>Metinden yayına, bütün süreç tek sistemde ilerler.</p>
+              </header>
+
+              <div className="journey-process-list">
                 {process.map(([no,title,text])=>(
-                  <article className="process-card" key={no}>
-                    <span className="process-no">{no}</span>
-                    <div className="process-copy"><h3>{title}</h3><p>{text}</p></div>
-                  </article>
+                  <div className="journey-process-row" key={no}>
+                    <span className="journey-process-no">{no}</span>
+                    <div className="journey-process-copy">
+                      <h3>{title}</h3>
+                      <p>{text}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
-              <a href="/kurucu-yazar" className="process-cta"><span>Yayın Yolculuğunu Başlat</span><b>→</b></a>
-            </div>
-          </div>
-        </section>
 
-        <section id="ekosistem" className="section ecosystem">
-          <div className="container ecosystem-grid">
-            <div className="ecosystem-copy">
-              <p className="eyebrow light"><span/>22 YAYINEVİ EKOSİSTEMİ</p>
-              <h2>Bir kitap.<br/><em>Birden fazla yaşam.</em></h2>
-              <p>Kitabınız dijitalde ve fizikî dünyada birlikte yaşar; okunur, dinlenir, bandrollü olarak basılır ve uygun dağıtım kanallarıyla okura ulaşır.</p>
-              <a href="/kurucu-yazar" className="btn light-btn">Kurucu Yazar Statüsünü İncele <b>→</b></a>
-            </div>
-            <div className="ecosystem-visual" aria-hidden="true">
-              <div className="ecosystem-orbit">
-                <span>Basılı Kitap</span><span>E-Kitap</span><span>Sesli Kitap</span><span>Yazar Sitesi</span><span>Türkiye Dağıtımı</span><span>Global Yayın</span>
+              <a href="/kurucu-yazar" className="journey-card-cta journey-card-cta-light">
+                <span>Yayın Yolculuğunu Başlat</span><b>→</b>
+              </a>
+            </article>
+
+            <article id="ekosistem" className="journey-card journey-card-ecosystem">
+              <header className="journey-card-head journey-card-head-dark">
+                <p className="journey-kicker">22 YAYINEVİ · EKOSİSTEM</p>
+                <h2><span>Bir kitap.</span><em>Birden fazla yaşam.</em></h2>
+                <p>Kitabınız basılı, dijital ve sesli dünyada birlikte yaşar; tek ekosistem içinde okura ulaşır.</p>
+              </header>
+
+              <div className="journey-ecosystem-grid" aria-label="22 Yayınevi ekosistemi">
+                <span>Basılı Kitap</span>
+                <span>E-Kitap</span>
+                <span>Sesli Kitap</span>
+                <span>Yazar Sitesi</span>
+                <span>Türkiye Dağıtımı</span>
+                <span>Global Yayın</span>
                 <strong>22</strong>
               </div>
-            </div>
+
+              <a href="/kurucu-yazar" className="journey-card-cta journey-card-cta-dark">
+                <span>Kurucu Yazar Statüsünü İncele</span><b>→</b>
+              </a>
+            </article>
           </div>
         </section>
 
