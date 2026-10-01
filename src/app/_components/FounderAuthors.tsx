@@ -107,10 +107,17 @@ export default function FounderAuthors() {
                 <em>yaşayan bir yayına.</em>
               </h2>
             </div>
+            <p className={styles.statement}>Dokuz adım. Tek sistem.</p>
             <p className={styles.journeyIntro}>
               Editoryal hazırlıktan tasarıma, dijital yayından dağıtıma kadar
               eseriniz tek bir sistem içinde hayata geçirilir.
             </p>
+            <div className={styles.journeyMeta}>
+              01–09 <span>·</span> Editoryal <span>·</span> Dijital <span>·</span> Dağıtım
+            </div>
+            <Link href="/surec" className={styles.journeyCta}>
+              Süreci Keşfet <b>→</b>
+            </Link>
           </header>
 
           <div className={styles.journeyGrid}>
@@ -124,11 +131,6 @@ export default function FounderAuthors() {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className={styles.journeyFooter}>
-            <span>01 — 09</span>
-            <Link href="/surec">Süreci Keşfet <b>→</b></Link>
           </div>
         </article>
       </div>
