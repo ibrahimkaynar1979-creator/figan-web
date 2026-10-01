@@ -290,40 +290,6 @@ export default function Home() {
 
         <FounderAuthors />
 
-        <section className="why22-compact" aria-label="Neden 22 Yayınevi">
-          <div className="why22-compact-inner">
-            <div className="why22-compact-copy">
-              <p className="why22-compact-eyebrow">NEDEN 22?</p>
-              <h2>
-                <span>Bazı hikâyeler,</span>
-                <em>bittiği yerde bitmez.</em>
-              </h2>
-              <p className="why22-compact-lead">
-                7 Haziran 2015’te başlayan bir yolculuk, yıllar sonra yeniden aynı sayıda buluştu.
-                <strong> 22</strong>, bir tarihten çıktı; bir kitabın adına, oradan da bir yayınevinin hikâyesine dönüştü.
-              </p>
-              <div className="why22-compact-note">
-                <span>22 bizim için yalnızca bir sayı değil.</span>
-                <strong>Bir hikâyenin devam ettiği yer.</strong>
-              </div>
-            </div>
-
-            <div className="why22-compact-line" aria-label="22 Yayınevi kuruluş zaman çizgisi">
-              <div className="why22-point">
-                <span>07.06.2015</span>
-                <strong>İlk karşılaşma</strong>
-                <small>Hikâyenin başladığı gün.</small>
-              </div>
-              <div className="why22-center">22</div>
-              <div className="why22-point">
-                <span>2026</span>
-                <strong>22 Yayınevi</strong>
-                <small>Hikâyenin yeni adı.</small>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section id="hizmetler" className="section services figan-services-showcase">
           <div className="container">
             <header className="figan-services-header">
