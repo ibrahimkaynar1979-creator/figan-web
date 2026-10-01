@@ -120,17 +120,17 @@
   .brand{font-size:24px}
   .hero .backgroundPicture img{object-fit:cover;object-position:center 34%}
   .heroShade{background:transparent}
-  .heroCopy{left:18px;right:18px;bottom:20vh;width:auto;max-width:none;text-align:left}
+  .heroCopy{left:18px;right:18px;bottom:21vh;width:auto;max-width:none;text-align:left}
   .heroCopy .sectionNumber{margin-bottom:16px}
-  .heroCopy h1{font-size:clamp(60px,17vw,84px);line-height:.84;margin-bottom:16px}
+  .heroCopy h1{font-size:clamp(58px,16.5vw,82px);line-height:.84;margin-bottom:14px}
   .heroCopy blockquote{font-size:clamp(30px,8.3vw,40px);line-height:1.04;max-width:92%}
   .heroCopy p{margin-top:16px}
   .heroActions a:nth-child(1){background:#f7ead8;border-color:#c9a77b}
   .heroActions a:nth-child(2){background:#e9dccb;border-color:#b98d5d}
   .heroActions a:nth-child(3){background:#2a1b12;color:#fff;border-color:#2a1b12}
   .heroActions a:nth-child(3) span{color:#e7b978}
-  .heroDescriptor{font-size:13px!important;letter-spacing:.025em!important;line-height:1.4!important;margin-top:14px!important}
-  .heroAffiliation{font-size:8px!important;letter-spacing:.16em!important;margin-top:8px!important}
+  .heroDescriptor{font-size:13px!important;letter-spacing:.02em!important;line-height:1.4!important;margin-top:13px!important;font-weight:700!important}
+  .heroAffiliation{font-size:8px!important;letter-spacing:.15em!important;margin-top:7px!important;font-weight:700!important}
   .heroAffiliation{font-size:8px!important;letter-spacing:.18em!important}
   .heroActions{left:18px;right:18px;bottom:7.5vh;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
   .heroActions a{min-width:0;height:42px;padding:0 10px;justify-content:center;gap:5px;font-size:8px;letter-spacing:.03em;white-space:nowrap;background:rgba(255,255,255,.88);color:#17110d;border-color:rgba(255,255,255,.9);backdrop-filter:none}
