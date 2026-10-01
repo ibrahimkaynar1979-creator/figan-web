@@ -72,8 +72,8 @@ export const authors: Record<string, AuthorProfile> = {
     descriptor: "Yazar • Şair • Yayıncı • Spiritüel Araştırmacı",
     affiliation: "22 Yayınevi Kurucusu",
     heroQuote: "Bazı yolculuklar insanı kendine götürür.",
-    heroDesktop: "/figen-yavuz-01-hero-desktop.png",
-    heroMobile: "/figen-yavuz-01-hero-mobile.png",
+    heroDesktop: "/figen-yavuz-hero-desktop.png",
+    heroMobile: "/figen-yavuz-hero-mobile.png",
     quoteSection: {
       desktop: "/figen-section2-bg-desktop.png",
       mobile: "/figen-section2-bg-mobile.png",
@@ -94,7 +94,7 @@ export const authors: Record<string, AuthorProfile> = {
       text: "Bir Şifacının Kanadı’nı 22 Audio deneyimiyle dinleyin.",
     },
     bio: "Figen Yavuz, insanın kendine dönüşünü, içsel yolculuğu, farkındalığı ve dönüşümü merkeze alan metinler kaleme alır. Yazı dünyasında sezgi, anlam arayışı ve insanın kendi sesiyle yeniden buluşması öne çıkar.",
-    portrait: "/figen-yavuz-01-hero-mobile.png",
+    portrait: "/figen-yavuz-hero-mobile.png",
     articles: [
       { title: "Bir kitabın doğduğu gece", excerpt: "Bir hikâyenin ilk cümlesinden kitaba dönüşmesine uzanan kişisel anlatı.", href: "#" },
       { title: "Neden yazıyorum?", excerpt: "Yazının, hatırlamanın ve kendine dönmenin iç içe geçtiği yer.", href: "#" },
