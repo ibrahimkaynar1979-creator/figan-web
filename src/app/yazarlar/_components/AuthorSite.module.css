@@ -154,3 +154,19 @@
   .newsletter label{font-size:28px}
   .footer{padding:56px 18px 28px}.footer h2{font-size:72px}.footerBottom{display:grid}
 }
+
+/* Mobile hero refinement: local to AuthorSite only */
+.heroActionIcon{font-size:14px;line-height:1;color:currentColor}
+.heroActionReader,.heroActionAudio,.heroActionWorks{font-weight:700!important}
+@media(max-width:800px){
+  .heroQuoteDesktop{display:none}
+  .heroCopy h1{font-weight:600;letter-spacing:-.07em}
+  .heroDescriptor{font-weight:700!important;color:#2f2017!important;text-shadow:0 1px 0 rgba(255,255,255,.72)}
+  .heroAffiliation{font-weight:700!important;color:#2f2017!important;text-shadow:0 1px 0 rgba(255,255,255,.72)}
+  .heroActions a{font-weight:800!important;letter-spacing:.01em!important;text-shadow:none}
+  .heroActions .heroActionReader{background:#f5dfbd!important;color:#24170f!important;border-color:#d4ae78!important}
+  .heroActions .heroActionAudio{background:#d8e1d4!important;color:#1d2a20!important;border-color:#a7bda9!important}
+  .heroActions .heroActionWorks{background:#d9c5e9!important;color:#2d1d36!important;border-color:#b99acb!important}
+  .heroActionIcon{font-size:13px!important;font-weight:900}
+  .heroActions a>span:last-child{font-size:12px!important}
+}
