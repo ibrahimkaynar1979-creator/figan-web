@@ -13731,3 +13731,313 @@ body.reader-route .contact-float{display:none!important}
     font-size:16px;
   }
 }
+
+
+/* 2026-10-01 — IBRAHIM AUTHOR PROFILE PREMIUM RESPONSIVE */
+.ibrahim-author-profile{
+  background:#f6f0e7!important;
+}
+
+.ibrahim-author-profile .seo-service-hero,
+.ibrahim-author-profile .author-profile-section{
+  padding-left:0!important;
+  padding-right:0!important;
+  padding-bottom:10px!important;
+}
+
+.ibrahim-author-profile .seo-service-hero{
+  padding-top:10px!important;
+}
+
+.ibrahim-author-profile .seo-service-hero>.container,
+.ibrahim-author-profile .author-profile-section>.container{
+  width:min(calc(100% - 24px),1180px)!important;
+  max-width:1180px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+.ibrahim-author-profile .seo-service-grid{
+  min-height:420px!important;
+  grid-template-columns:.8fr 1.2fr!important;
+  gap:10px!important;
+  padding:10px!important;
+  border:1px solid rgba(145,91,48,.14)!important;
+  border-radius:24px!important;
+  background:
+    radial-gradient(circle at 16% 0,rgba(255,255,255,.78),transparent 24rem),
+    linear-gradient(145deg,#faf4ec,#f0e3d5)!important;
+  box-shadow:0 14px 34px rgba(69,42,25,.04)!important;
+}
+
+.ibrahim-author-profile .seo-service-copy{
+  min-width:0!important;
+  padding:28px 24px!important;
+  justify-content:center!important;
+}
+
+.ibrahim-author-profile .seo-service-copy h1{
+  margin:2px 0 8px!important;
+  font-size:clamp(42px,3.4vw,58px)!important;
+  line-height:.94!important;
+  letter-spacing:-.045em!important;
+}
+
+.ibrahim-author-profile .author-profile-book-title{
+  margin:0 0 12px!important;
+  font-size:26px!important;
+  line-height:1.05!important;
+}
+
+.ibrahim-author-profile .seo-service-lead{
+  max-width:480px!important;
+  margin:0!important;
+  font-size:11.8px!important;
+  line-height:1.48!important;
+}
+
+.ibrahim-author-profile .author-content-actions-stacked{
+  gap:8px!important;
+  margin-top:18px!important;
+}
+
+.ibrahim-author-profile .author-content-actions-stacked a{
+  min-height:44px!important;
+  padding:0 14px!important;
+  border-radius:999px!important;
+  font-size:11.5px!important;
+  box-shadow:none!important;
+}
+
+.ibrahim-author-profile .seo-service-visual{
+  min-height:400px!important;
+  height:400px!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+  background:#eadfcf!important;
+}
+
+.ibrahim-author-profile .seo-service-visual img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+
+.ibrahim-author-profile .author-profile-standard-card{
+  width:100%!important;
+  max-width:none!important;
+  padding:24px 26px!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 16% 0,rgba(255,255,255,.76),transparent 24rem),
+    linear-gradient(145deg,#faf4ec,#f0e3d5)!important;
+  box-shadow:0 14px 34px rgba(69,42,25,.035)!important;
+}
+
+.ibrahim-author-profile .author-profile-standard-card h2{
+  font-size:clamp(32px,2.5vw,42px)!important;
+  line-height:.98!important;
+}
+
+.ibrahim-author-profile .author-profile-prose{
+  gap:22px!important;
+  margin-top:16px!important;
+}
+
+.ibrahim-author-profile .author-profile-prose p,
+.ibrahim-author-profile .author-profile-featured-copy>p,
+.ibrahim-author-profile .author-profile-audio-card>p{
+  font-size:11.5px!important;
+  line-height:1.52!important;
+}
+
+.ibrahim-author-profile .author-profile-featured-book{
+  grid-template-columns:1fr .72fr!important;
+  gap:24px!important;
+}
+
+.ibrahim-author-profile .author-profile-featured-visual{
+  max-height:340px!important;
+  border-radius:16px!important;
+}
+
+.ibrahim-author-profile .author-profile-featured-visual img{
+  width:100%!important;
+  height:340px!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+
+.ibrahim-author-profile .author-profile-book-actions{
+  gap:8px!important;
+  margin-top:16px!important;
+}
+
+.ibrahim-author-profile .author-profile-book-actions a{
+  min-height:38px!important;
+  padding:0 12px!important;
+  border-radius:999px!important;
+  font-size:10.5px!important;
+}
+
+.ibrahim-author-profile .author-profile-books-grid{
+  margin-top:16px!important;
+}
+
+.ibrahim-author-profile .author-profile-book-card-rich{
+  grid-template-columns:120px 1fr!important;
+  gap:18px!important;
+  padding:14px!important;
+  border-radius:16px!important;
+}
+
+.ibrahim-author-profile .author-profile-book-thumb{
+  min-height:150px!important;
+  border-radius:12px!important;
+  overflow:hidden!important;
+  background:#efe4d5!important;
+}
+
+.ibrahim-author-profile .author-profile-book-thumb img{
+  width:100%!important;
+  height:150px!important;
+  object-fit:cover!important;
+}
+
+.ibrahim-author-profile .author-profile-books-grid h3{
+  font-size:20px!important;
+}
+
+.ibrahim-author-profile .author-profile-books-grid p{
+  font-size:11px!important;
+}
+
+.ibrahim-author-profile .author-profile-themes{
+  margin-top:16px!important;
+  gap:7px!important;
+}
+
+.ibrahim-author-profile .author-profile-themes span{
+  padding:7px 10px!important;
+  font-size:10px!important;
+}
+
+@media(max-width:760px){
+  .ibrahim-author-profile .seo-service-hero,
+  .ibrahim-author-profile .author-profile-section{
+    padding-left:8px!important;
+    padding-right:8px!important;
+    padding-bottom:8px!important;
+  }
+
+  .ibrahim-author-profile .seo-service-hero{
+    padding-top:8px!important;
+  }
+
+  .ibrahim-author-profile .seo-service-hero>.container,
+  .ibrahim-author-profile .author-profile-section>.container{
+    width:100%!important;
+    max-width:none!important;
+  }
+
+  .ibrahim-author-profile .seo-service-grid{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    min-height:0!important;
+    padding:8px!important;
+    border-radius:20px!important;
+  }
+
+  .ibrahim-author-profile .seo-service-copy{
+    padding:16px 14px 8px!important;
+  }
+
+  .ibrahim-author-profile .seo-service-copy h1{
+    font-size:38px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-book-title{
+    font-size:24px!important;
+  }
+
+  .ibrahim-author-profile .seo-service-lead{
+    font-size:12px!important;
+    line-height:1.48!important;
+  }
+
+  .ibrahim-author-profile .author-content-actions-stacked{
+    gap:7px!important;
+    margin-top:14px!important;
+  }
+
+  .ibrahim-author-profile .author-content-actions-stacked a{
+    min-height:44px!important;
+    font-size:11px!important;
+  }
+
+  .ibrahim-author-profile .seo-service-visual{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:16/10!important;
+    border-radius:15px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-standard-card{
+    padding:18px 16px!important;
+    border-radius:18px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-standard-card h2{
+    font-size:30px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-prose{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    margin-top:14px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-featured-book{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-featured-visual{
+    order:-1!important;
+    max-height:none!important;
+  }
+
+  .ibrahim-author-profile .author-profile-featured-visual img{
+    height:auto!important;
+    aspect-ratio:16/10!important;
+    object-fit:cover!important;
+  }
+
+  .ibrahim-author-profile .author-profile-book-card-rich{
+    grid-template-columns:82px 1fr!important;
+    gap:12px!important;
+    padding:12px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-book-thumb,
+  .ibrahim-author-profile .author-profile-book-thumb img{
+    min-height:112px!important;
+    height:112px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-books-grid h3{
+    font-size:17px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-book-actions{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:7px!important;
+  }
+
+  .ibrahim-author-profile .author-profile-book-actions a{
+    width:100%!important;
+    justify-content:space-between!important;
+  }
+}
