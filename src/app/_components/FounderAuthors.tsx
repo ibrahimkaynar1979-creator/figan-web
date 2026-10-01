@@ -75,6 +75,7 @@ export default function FounderAuthors() {
                 fill
                 sizes="(max-width: 980px) 100vw, 28vw"
                 className={styles.collectionImage}
+                loading="eager"
               />
               <div className={styles.visualShade} />
               <Image
