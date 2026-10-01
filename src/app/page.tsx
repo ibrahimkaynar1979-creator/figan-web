@@ -75,12 +75,12 @@ const services = [
 ];
 
 const process = [
-  ["01","Başvuru ve Değerlendirme","Dosyanızı alıyor, eserinizi ve yayın hedefinizi birlikte değerlendiriyoruz."],
-  ["02","Editörlük","Metni dil, akış ve yayın standardı açısından yayına hazırlıyoruz."],
-  ["03","Kapak ve Tasarım","Kapak, iç sayfa ve eserin görsel yayın kimliğini oluşturuyoruz."],
-  ["04","Bandrollü Basım ve Fizikî Dağıtım","Kitabınızı bandrollü basıma hazırlıyor, uygun fizikî satış ve dağıtım kanallarına taşıyoruz."],
-  ["05","Dijital Yayına Hazırlık","E-kitap, sesli kitap ve gerekli dijital dosyaları platformlara uygun biçimde hazırlıyoruz."],
-  ["06","Yayın ve Yazar Dünyası","Dijital dağıtımınızı, yazar sitenizi ve yayın sonrası görünürlüğünüzü tek yapıda birleştiriyoruz."],
+  ["01","Başvuru ve Değerlendirme","Dosyanızı ve yayın hedefinizi birlikte değerlendiriyoruz."],
+  ["02","Editörlük","Metni yayın standardına hazırlıyoruz."],
+  ["03","Kapak ve Tasarım","Eserin görsel yayın kimliğini oluşturuyoruz."],
+  ["04","Basım ve Fizikî Dağıtım","Bandrollü baskı ve uygun satış kanallarını planlıyoruz."],
+  ["05","Dijital Yayın","E-kitap ve sesli kitabı yayına hazırlıyoruz."],
+  ["06","Yazar Dünyası","Site, dağıtım ve görünürlüğü tek yapıda birleştiriyoruz."],
 ] as const;
 
 type AuthorCard = {
@@ -334,7 +334,7 @@ export default function Home() {
               <div className="process-panel-head">
                 <p className="process-kicker">22 YAYINEVİ · YAYIN SÜRECİ</p>
                 <h2><span>Bir dosya.</span><br/><em>Bir yayın yolculuğu.</em></h2>
-                <p className="process-intro">Metinden tasarıma, dijital yayından dağıtıma kadar bütün süreç tek bir sistem içinde ilerler.</p>
+                <p className="process-intro">Metinden yayına, bütün süreç tek sistemde ilerler.</p>
               </div>
               <div className="process-list">
                 {process.map(([no,title,text])=>(
