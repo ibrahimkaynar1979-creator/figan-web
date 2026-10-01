@@ -405,18 +405,15 @@ export default function Home() {
                     </div>
 
                     <div className="authors-showcase-copy authors-showcase-overlay">
-                      <span className="authors-showcase-emblem" aria-hidden="true">✦</span>
                       <div className="authors-showcase-title-row">
                         <h3>{author.name}</h3>
-                        <span aria-hidden="true">✦</span>
                       </div>
-                      <p>{author.description}</p>
-                      <div className="authors-showcase-meta">
-                        <span>Yazar Profili</span>
-                        <span>Eserler</span>
-                        <span>Dijital Dünya</span>
-                      </div>
-                      <span className="authors-showcase-link">Yazarı Gör <b>→</b></span>
+                      <p className="authors-showcase-work">
+                        {author.name === "Figen Yavuz"
+                          ? "Yazar · Bir Şifacının Kanadı"
+                          : "Yazar · İçimdeki İbrahim"}
+                      </p>
+                      <span className="authors-showcase-link">Yazar Dünyasını Gör <b>→</b></span>
                     </div>
                   </a>
                 </article>
@@ -426,7 +423,8 @@ export default function Home() {
                 <article className="authors-showcase-card authors-showcase-card-empty" key={`author-empty-${index}`} aria-hidden="true">
                   <div className="authors-showcase-empty">
                     <span className="authors-showcase-empty-mark">22</span>
-                    <small>YENİ YAZAR</small>
+                    <strong>Yeni yazar dünyası</strong>
+                    <small>YAKINDA</small>
                   </div>
                 </article>
               ))}
