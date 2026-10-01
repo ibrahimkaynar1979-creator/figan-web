@@ -12707,3 +12707,205 @@ body.reader-route .contact-float{display:none!important}
     grid-row:auto!important;
   }
 }
+
+
+/* 2026-10-01 — BASILI REFERENCE POLISH V2 */
+@media(min-width:1101px){
+  /* Hizmet kapsami: less table-like, more editorial */
+  .seo-service-premium-reference .seo-service-scope-grid{
+    gap:10px!important;
+    border:0!important;
+  }
+
+  .seo-service-premium-reference .seo-service-scope-grid article,
+  .seo-service-premium-reference .seo-service-scope-grid article:nth-child(odd),
+  .seo-service-premium-reference .seo-service-scope-grid article:nth-child(even){
+    min-height:138px!important;
+    padding:20px 18px!important;
+    border:1px solid rgba(145,91,48,.11)!important;
+    border-radius:16px!important;
+    background:rgba(255,255,255,.30)!important;
+  }
+
+  .seo-service-premium-reference .seo-service-scope-grid article:last-child{
+    border-right:1px solid rgba(145,91,48,.11)!important;
+  }
+
+  .seo-service-premium-reference .seo-service-scope-grid article>b{
+    margin-bottom:10px!important;
+    font-size:17px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-scope-grid h3{
+    margin-bottom:7px!important;
+    font-size:14px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-scope-grid p{
+    font-size:11px!important;
+    line-height:1.42!important;
+  }
+
+  /* Surec: lighter editorial timeline */
+  .seo-service-premium-reference .seo-service-process-card{
+    padding-top:26px!important;
+    padding-bottom:24px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-process-list{
+    position:relative!important;
+    gap:14px!important;
+    margin-top:24px!important;
+    border:0!important;
+  }
+
+  .seo-service-premium-reference .seo-service-process-list::before{
+    content:""!important;
+    position:absolute!important;
+    left:5%!important;
+    right:5%!important;
+    top:18px!important;
+    height:1px!important;
+    background:rgba(145,91,48,.18)!important;
+  }
+
+  .seo-service-premium-reference .seo-service-process-list article{
+    position:relative!important;
+    min-height:132px!important;
+    padding:0 8px 0!important;
+    border:0!important;
+    background:transparent!important;
+  }
+
+  .seo-service-premium-reference .seo-service-process-list b{
+    position:relative!important;
+    z-index:2!important;
+    width:36px!important;
+    height:36px!important;
+    margin-bottom:18px!important;
+    display:grid!important;
+    place-items:center!important;
+    border:1px solid rgba(169,101,53,.24)!important;
+    border-radius:50%!important;
+    background:#f8efe4!important;
+    color:#a76535!important;
+    font-size:12px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-process-list h3{
+    margin-bottom:6px!important;
+    font-size:13px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-process-list p{
+    font-size:10.8px!important;
+    line-height:1.42!important;
+  }
+
+  /* Teslim ciktilari: remove card-within-card feeling */
+  .seo-service-premium-reference .seo-service-output-card{
+    grid-template-columns:.72fr 1.28fr!important;
+    gap:34px!important;
+    align-items:center!important;
+  }
+
+  .seo-service-premium-reference .seo-service-output-list{
+    grid-template-columns:1fr!important;
+    gap:0!important;
+    border-top:1px solid rgba(145,91,48,.13)!important;
+  }
+
+  .seo-service-premium-reference .seo-service-output-list article{
+    min-height:0!important;
+    display:grid!important;
+    grid-template-columns:34px 1fr!important;
+    gap:12px!important;
+    align-items:start!important;
+    padding:14px 0!important;
+    border:0!important;
+    border-bottom:1px solid rgba(145,91,48,.13)!important;
+    border-radius:0!important;
+    background:transparent!important;
+  }
+
+  .seo-service-premium-reference .seo-service-output-list b{
+    width:28px!important;
+    height:28px!important;
+    margin:0!important;
+    font-size:10px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-output-list h3{
+    margin:0 0 4px!important;
+    font-size:12.5px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-output-list p{
+    font-size:10.8px!important;
+    line-height:1.42!important;
+  }
+
+  /* FAQ: rebalance title vs questions */
+  .seo-service-premium-reference .seo-service-faq-card{
+    grid-template-columns:.82fr 1.18fr!important;
+    gap:40px!important;
+    align-items:center!important;
+  }
+
+  .seo-service-premium-reference .seo-service-faq-card>h2{
+    max-width:430px!important;
+    font-size:clamp(32px,2.35vw,42px)!important;
+    line-height:.98!important;
+  }
+
+  .seo-service-premium-reference .faq-list{
+    gap:8px!important;
+  }
+
+  .seo-service-premium-reference .faq-list details{
+    padding:0 14px!important;
+    border:1px solid rgba(145,91,48,.11)!important;
+    border-radius:11px!important;
+    background:rgba(255,255,255,.28)!important;
+  }
+
+  .seo-service-premium-reference .faq-list summary{
+    min-height:48px!important;
+    font-size:11.5px!important;
+  }
+
+  .seo-service-premium-reference .faq-list details p{
+    padding-bottom:13px!important;
+    font-size:11px!important;
+    line-height:1.48!important;
+  }
+}
+
+@media(max-width:760px){
+  .seo-service-premium-reference .seo-service-scope-grid{
+    gap:8px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-scope-grid article,
+  .seo-service-premium-reference .seo-service-scope-grid article:nth-child(odd),
+  .seo-service-premium-reference .seo-service-scope-grid article:nth-child(even){
+    min-height:0!important;
+    padding:14px 13px!important;
+  }
+
+  .seo-service-premium-reference .seo-service-process-list::before{
+    display:none!important;
+  }
+
+  .seo-service-premium-reference .seo-service-process-list article{
+    padding:10px 0!important;
+  }
+
+  .seo-service-premium-reference .seo-service-output-list article{
+    grid-template-columns:30px 1fr!important;
+  }
+
+  .seo-service-premium-reference .seo-service-faq-card{
+    gap:18px!important;
+  }
+}
