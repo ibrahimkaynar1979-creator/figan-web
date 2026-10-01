@@ -199,3 +199,20 @@
   .menuPanelInner>a{padding:14px 0;border-bottom:1px solid rgba(42,27,18,.12);font:500 30px/1.05 "Cormorant Garamond",var(--font-editorial),Georgia,serif;color:#2a1b12}
   .nav{display:none}
 }
+
+/* Section 02 — featured book, local to AuthorSite */
+.bookSection{position:relative;overflow:hidden}
+.bookSection::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 45%,rgba(169,121,67,.12),transparent 34%);pointer-events:none}
+.bookInner{position:relative;z-index:1}
+.bookKicker{display:block;margin-top:24px;color:#9b6a32;font:700 10px/1 var(--font-ui),Arial,sans-serif;letter-spacing:.22em}
+.bookCopy h2{max-width:620px}
+.bookVisual{position:relative}
+.bookHalo{position:absolute;width:min(42vw,560px);aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.42);filter:blur(2px)}
+.bookVisual img{position:relative;z-index:1}
+.actions .actionIcon{display:inline-grid;place-items:center;width:25px;height:25px;margin-right:8px;font-size:12px;color:#9b6a32}
+.actions a b{margin-left:auto;font-size:15px}
+@media(max-width:800px){
+  .bookKicker{margin-top:18px;font-size:9px;letter-spacing:.17em}
+  .bookHalo{width:88vw}
+  .actions .actionIcon{width:22px;height:22px}
+}
