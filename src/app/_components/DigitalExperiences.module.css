@@ -328,3 +328,34 @@
     font-size: 12px;
   }
 }
+
+
+/* 2026-10-01 — DIGITAL EXPERIENCES TITLE REFINEMENT */
+.lead {
+  display: none;
+}
+
+@media (min-width: 1181px) {
+  .topCopy {
+    top: 4.15%;
+    width: 48%;
+  }
+
+  .topCopy h2 {
+    color: #6b3d22;
+    font-size: clamp(40px, 4.15vw, 68px);
+    font-weight: 560;
+    line-height: .95;
+    letter-spacing: -.052em;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,.28),
+      0 4px 16px rgba(58,31,17,.10);
+  }
+}
+
+@media (max-width: 760px) {
+  .topCopy h2 {
+    color: #6b3d22;
+    font-size: 46px;
+  }
+}
