@@ -114,6 +114,8 @@ const authors: readonly AuthorCard[] = [
   },
 ];
 
+const publishedAuthors = authors.filter((author)=>author.published);
+
 const faqs = [
   {
     q:"Kitap yayınlatmak için ne yapmalıyım?",
@@ -378,32 +380,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="yazar-sitesi" className="section author-site author-site-compact">
-          <div className="container author-grid">
-            <div className="author-copy">
-              <p className="eyebrow"><span/>YAZAR SİTESİ</p>
-              <h2>Sadece bir sayfa değil.<br/><em>Size ait bir yazar dünyası.</em></h2>
-              <p>Kitaplarınız, biyografiniz ve okurla kurduğunuz bağ size ait kalıcı bir dijital adreste buluşur.</p>
-              <a className="author-site-more" href="/yazar-sitesi">Yazar Sitesini İnceleyin <span>→</span></a>
-            </div>
-            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="22 Yayınevi yazar sitesi örneği" loading="lazy" decoding="async"/></div>
-          </div>
-        </section>
-
-        
-
-
-
         <section id="yazarlar" className="section authors-section authors-showcase">
           <div className="container authors-showcase-wrap">
             <header className="authors-showcase-header">
-              <p className="authors-showcase-eyebrow">YAZAR DÜNYAMIZ</p>
-              <h2>Yazarlarımız.<br/><strong>Eserleriyle yaşayan bir dünya.</strong></h2>
+              <h2>Yazarlarımız. <strong>Eserleriyle yaşayan bir dünya.</strong></h2>
               <p>Her yazar; kendi sesi, eserleri ve dijital dünyasıyla 22 Yayınevi vitrininin bir parçası.</p>
             </header>
 
             <div className="authors-showcase-panel" aria-label="22 Yayınevi yazarları">
-              {authors.filter((author)=>author.published).map((author)=>(
+              {publishedAuthors.map((author)=>(
                 <article className="authors-showcase-card" key={author.name}>
                   <a
                     className="authors-showcase-hit"
@@ -436,7 +421,28 @@ export default function Home() {
                   </a>
                 </article>
               ))}
+
+              {Array.from({length:(3 - (publishedAuthors.length % 3)) % 3}).map((_,index)=>(
+                <article className="authors-showcase-card authors-showcase-card-empty" key={`author-empty-${index}`} aria-hidden="true">
+                  <div className="authors-showcase-empty">
+                    <span className="authors-showcase-empty-mark">22</span>
+                    <small>YENİ YAZAR</small>
+                  </div>
+                </article>
+              ))}
             </div>
+          </div>
+        </section>
+
+        <section id="yazar-sitesi" className="section author-site author-site-compact">
+          <div className="container author-grid">
+            <div className="author-copy">
+              <p className="eyebrow"><span/>YAZAR SİTESİ</p>
+              <h2>Sadece bir sayfa değil.<br/><em>Size ait bir yazar dünyası.</em></h2>
+              <p>Kitaplarınız, biyografiniz ve okurla kurduğunuz bağ size ait kalıcı bir dijital adreste buluşur.</p>
+              <a className="author-site-more" href="/yazar-sitesi">Yazar Sitesini İnceleyin <span>→</span></a>
+            </div>
+            <div className="author-visual"><img src="/figan-yazar-sitesi-laptop.webp" alt="22 Yayınevi yazar sitesi örneği" loading="lazy" decoding="async"/></div>
           </div>
         </section>
 
