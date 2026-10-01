@@ -11,56 +11,76 @@ const journey = [
   ["06", "Dağıtım"],
 ] as const;
 
+const founderBenefits = [
+  ["01", "Kalıcı Bir İmza", "Numaralı kurucu statüsü"],
+  ["02", "Özel Koleksiyon", "Sertifika, kart, ayraç ve mühür"],
+  ["03", "Sınırlı Sayıda", "Yalnızca ilk 22 yazar"],
+] as const;
+
 export default function FounderAuthors() {
   return (
     <section className={styles.section} aria-label="Kurucu Yazar ve Yayın Yolculuğu">
       <div className={styles.shell}>
         <article className={`${styles.panel} ${styles.founderPanel}`}>
-          <div className={styles.founderCopy}>
-            <div className={styles.eyebrow}>
-              <span>22 YAYINEVİ</span>
-              <i />
+          <div className={styles.founderTop}>
+            <div className={styles.founderCopy}>
+              <div className={styles.eyebrow}>
+                <span>22 YAYINEVİ</span>
+                <i />
+              </div>
+
+              <p className={styles.kicker}>İLK 22 KURUCU YAZAR</p>
+
+              <h2>
+                22 isim.
+                <em>Bir kuruluş hikâyesi.</em>
+              </h2>
+
+              <p className={styles.statement}>Bu statü yalnızca bir kez verilir.</p>
+
+              <p className={styles.lead}>
+                Kuruluş dönemine numaralı ve kalıcı bir statüyle dahil olun;
+                bu ayrıcalığı size özel hazırlanan koleksiyonla yaşatın.
+              </p>
+
+              <div className={styles.collectionLine}>
+                Sertifika <span>·</span> Metal Kart <span>·</span> Metal Ayraç <span>·</span> Mühür
+              </div>
+
+              <Link href="/kurucu-yazar" className={styles.darkCta}>
+                Koleksiyonu Keşfet <b>→</b>
+              </Link>
             </div>
 
-            <p className={styles.kicker}>İLK 22 KURUCU YAZAR</p>
-
-            <h2>
-              22 isim.
-              <em>Bir kuruluş hikâyesi.</em>
-            </h2>
-
-            <p className={styles.statement}>Bu statü yalnızca bir kez verilir.</p>
-
-            <p className={styles.lead}>
-              Kuruluş dönemine numaralı ve kalıcı bir statüyle dahil olun;
-              bu ayrıcalığı size özel hazırlanan koleksiyonla yaşatın.
-            </p>
-
-            <div className={styles.collectionLine}>
-              Sertifika <span>·</span> Metal Kart <span>·</span> Metal Ayraç <span>·</span> Mühür
+            <div className={styles.founderVisual}>
+              <Image
+                src="/22-yayinevi-kurucu-yazar-koleksiyon-yatay-v2.png"
+                alt="22 Yayınevi İlk 22 Kurucu Yazar koleksiyonu"
+                fill
+                sizes="(max-width: 980px) 100vw, 28vw"
+                className={styles.collectionImage}
+              />
+              <div className={styles.visualShade} />
+              <Image
+                src="/muhur_koleksiyon_v1.png"
+                alt="07/22 Kurucu Yazar mührü"
+                width={150}
+                height={150}
+                className={styles.seal}
+              />
             </div>
-
-            <Link href="/kurucu-yazar" className={styles.darkCta}>
-              Koleksiyonu Keşfet <b>→</b>
-            </Link>
           </div>
 
-          <div className={styles.founderVisual}>
-            <Image
-              src="/22-yayinevi-kurucu-yazar-koleksiyon-yatay-v2.png"
-              alt="22 Yayınevi İlk 22 Kurucu Yazar koleksiyonu"
-              fill
-              sizes="(max-width: 980px) 100vw, 26vw"
-              className={styles.collectionImage}
-            />
-            <div className={styles.visualShade} />
-            <Image
-              src="/muhur_koleksiyon_v1.png"
-              alt="07/22 Kurucu Yazar mührü"
-              width={150}
-              height={150}
-              className={styles.seal}
-            />
+          <div className={styles.founderBenefits}>
+            {founderBenefits.map(([no, title, text]) => (
+              <div className={styles.founderBenefit} key={no}>
+                <span>{no}</span>
+                <div>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </article>
 
