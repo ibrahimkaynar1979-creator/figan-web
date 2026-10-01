@@ -10090,3 +10090,112 @@ body.reader-route .contact-float{display:none!important}
     margin-bottom:24px!important;
   }
 }
+
+
+/* 2026-10-01 — SERVICES: PILL HEADER + KEEP SIX CARDS */
+@media(min-width:1101px){
+  .figan-services-showcase{
+    padding:24px 0 46px!important;
+    background:#f8f3eb!important;
+  }
+
+  .figan-services-showcase .container{
+    width:calc(100% - 36px)!important;
+    max-width:1860px!important;
+    padding:0!important;
+    overflow:visible!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+
+  .figan-services-showcase .container::before,
+  .figan-services-showcase .container::after{
+    display:none!important;
+  }
+
+  .figan-services-header{
+    width:100%!important;
+    max-width:none!important;
+    margin:0 0 18px!important;
+    padding:14px 34px 13px!important;
+    border:1px solid rgba(145,91,48,.16)!important;
+    border-radius:999px!important;
+    background:
+      radial-gradient(circle at 50% 0,rgba(255,255,255,.88),transparent 56%),
+      linear-gradient(180deg,#fffaf4 0%,#f6eadc 100%)!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.96),
+      0 10px 24px rgba(69,42,25,.04)!important;
+    text-align:center!important;
+  }
+
+  .figan-services-eyebrow{
+    margin:0 0 4px!important;
+    padding:0!important;
+    border:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    font-size:8px!important;
+    letter-spacing:.20em!important;
+  }
+
+  .figan-services-header h2{
+    margin:0!important;
+    font-size:clamp(31px,2.3vw,42px)!important;
+    line-height:.96!important;
+    letter-spacing:-.035em!important;
+  }
+
+  .figan-services-header h2 br{
+    display:none!important;
+  }
+
+  .figan-services-header h2 strong{
+    display:inline!important;
+    margin:0 0 0 9px!important;
+    color:#a96934!important;
+    font-weight:500!important;
+  }
+
+  .figan-services-description{
+    max-width:760px!important;
+    margin:6px auto 0!important;
+    font-size:11.5px!important;
+    line-height:1.35!important;
+  }
+
+  .figan-services-track{
+    display:grid!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:10px!important;
+    width:100%!important;
+    padding:14px!important;
+    border:1px solid rgba(145,91,48,.12)!important;
+    border-radius:24px!important;
+    background:
+      radial-gradient(circle at 15% 0,rgba(255,255,255,.82),transparent 36%),
+      linear-gradient(145deg,#f5eadf 0%,#ead7c3 100%)!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.92),
+      0 14px 32px rgba(69,42,25,.04)!important;
+  }
+}
+
+@media(min-width:1500px){
+  .figan-services-showcase .container{
+    width:calc(100% - 48px)!important;
+    max-width:1880px!important;
+  }
+
+  .figan-services-header{
+    padding:15px 38px 14px!important;
+    margin-bottom:20px!important;
+  }
+
+  .figan-services-track{
+    gap:12px!important;
+    padding:16px!important;
+  }
+}
